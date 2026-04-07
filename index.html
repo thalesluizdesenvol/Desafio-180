@@ -17,18 +17,13 @@
             --text: #ffffff;
             --text-muted: #8888aa;
             --saude: #22c55e;
+            --vitalidade: #f59e0b;
             --corpo: #ef4444;
             --dinheiro: #f7b731;
             --relacionamento: #ec4899;
             --carreira: #a855f7;
         }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
+        * { margin: 0; padding: 0; box-sizing: border-box; }
         body {
             font-family: 'Rajdhani', sans-serif;
             background: var(--bg-dark);
@@ -36,1516 +31,1486 @@
             min-height: 100vh;
             overflow-x: hidden;
         }
-
-        .particles {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            pointer-events: none;
-            z-index: 0;
-        }
-
+        .particles { position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 0; }
         .particle {
-            position: absolute;
-            width: 4px;
-            height: 4px;
-            background: var(--primary);
-            border-radius: 50%;
-            opacity: 0.3;
+            position: absolute; width: 4px; height: 4px;
+            background: var(--primary); border-radius: 50%; opacity: 0.3;
             animation: float 15s infinite;
         }
-
         @keyframes float {
             0%, 100% { transform: translateY(100vh) rotate(0deg); opacity: 0; }
             10% { opacity: 0.5; }
             90% { opacity: 0.5; }
             100% { transform: translateY(-100vh) rotate(720deg); opacity: 0; }
         }
-
-        .container {
-            max-width: 900px;
-            margin: 0 auto;
-            padding: 20px;
-            position: relative;
-            z-index: 1;
-        }
-
-        header {
-            text-align: center;
-            padding: 30px 0;
-            position: relative;
-        }
-
-        .nav-nutribot {
-            position: absolute;
-            left: 0;
-            top: 30px;
-            background: linear-gradient(135deg, var(--secondary), #10b981);
-            border: none;
-            color: white;
-            padding: 10px 20px;
-            border-radius: 10px;
-            cursor: pointer;
-            font-family: 'Orbitron', sans-serif;
-            font-size: 0.9rem;
-            font-weight: 700;
-            transition: all 0.3s;
-            text-decoration: none;
-        }
-
-        .nav-nutribot:hover {
-            transform: scale(1.05);
-            box-shadow: 0 10px 25px rgba(0, 212, 170, 0.4);
-        }
-
+        .container { max-width: 900px; margin: 0 auto; padding: 20px; position: relative; z-index: 1; }
+        header { text-align: center; padding: 30px 0 20px; position: relative; }
         h1 {
-            font-family: 'Orbitron', sans-serif;
-            font-size: 2.2rem;
-            font-weight: 900;
+            font-family: 'Orbitron', sans-serif; font-size: 2.2rem; font-weight: 900;
             background: linear-gradient(135deg, var(--primary), var(--accent), var(--secondary));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
         }
+        .subtitle { color: var(--text-muted); font-size: 1rem; margin-top: 8px; }
 
-        .subtitle {
-            color: var(--text-muted);
-            font-size: 1rem;
-            margin-top: 8px;
+        /* ===== WELCOME SCREEN ===== */
+        #welcome-screen { text-align: center; }
+        .welcome-title {
+            font-family: 'Orbitron', sans-serif; font-size: 1.2rem; color: var(--text-muted);
+            margin-bottom: 30px; letter-spacing: 2px; text-transform: uppercase;
         }
-
-        .user-select {
-            display: flex;
-            gap: 20px;
-            justify-content: center;
-            flex-wrap: wrap;
-            margin: 30px 0;
-        }
-
+        .user-select { display: flex; gap: 20px; justify-content: center; flex-wrap: wrap; margin: 10px 0 30px; }
         .user-btn {
             background: linear-gradient(135deg, var(--bg-card), #1a1a25);
-            border: 2px solid #555;
-            border-radius: 15px;
-            padding: 20px 35px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            text-align: center;
-            min-width: 180px;
-            position: relative;
+            border: 2px solid #333; border-radius: 20px; padding: 25px 40px;
+            cursor: pointer; transition: all 0.35s ease; text-align: center;
+            min-width: 190px; position: relative; overflow: hidden;
         }
-
-        .user-btn::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 3px;
-            background: linear-gradient(90deg, var(--primary), var(--accent));
-            transform: scaleX(0);
-            transition: transform 0.3s;
+        .user-btn::after {
+            content: ''; position: absolute; inset: 0; opacity: 0;
+            transition: opacity 0.35s; border-radius: 18px;
         }
+        .user-btn.dev::after { background: radial-gradient(circle at 50% 50%, rgba(255,107,53,0.15), transparent 70%); }
+        .user-btn.makeup::after { background: radial-gradient(circle at 50% 50%, rgba(236,72,153,0.15), transparent 70%); }
+        .user-btn:hover::after { opacity: 1; }
+        .user-btn:hover { transform: translateY(-5px); }
+        .user-btn.dev:hover { border-color: var(--primary); box-shadow: 0 20px 40px rgba(255,107,53,0.3); }
+        .user-btn.makeup:hover { border-color: var(--pink); box-shadow: 0 20px 40px rgba(236,72,153,0.3); }
+        .user-icon { font-size: 3rem; margin-bottom: 10px; }
+        .user-name { font-family: 'Orbitron', sans-serif; font-size: 1.2rem; font-weight: 700; }
+        .user-role { color: var(--text-muted); font-size: 0.85rem; margin-top: 5px; }
+        .user-btn.dev .user-name { color: var(--primary); }
+        .user-btn.makeup .user-name { color: var(--pink); }
 
-        .user-btn:hover::before, .user-btn.active::before {
-            transform: scaleX(1);
+        /* ===== GAME VIEW ===== */
+        .game-view { display: none; }
+        .game-view.active { display: block; }
+
+        .view-header {
+            display: flex; align-items: center; justify-content: space-between;
+            margin-bottom: 20px; padding: 12px 16px;
+            background: var(--bg-card); border-radius: 12px; border: 1px solid #222;
         }
-
-        .user-btn:hover, .user-btn.active {
-            transform: translateY(-3px);
+        .back-btn {
+            background: none; border: 1px solid #444; color: var(--text-muted);
+            padding: 6px 14px; border-radius: 8px; cursor: pointer;
+            font-family: 'Rajdhani', sans-serif; font-size: 0.9rem; transition: all 0.3s;
         }
+        .back-btn:hover { border-color: var(--primary); color: var(--primary); }
+        .view-user-name { font-family: 'Orbitron', sans-serif; font-size: 1rem; font-weight: 700; }
+        .view-user-name.dev { color: var(--primary); }
+        .view-user-name.makeup { color: var(--pink); }
+        .view-user-role { color: var(--text-muted); font-size: 0.8rem; text-align: right; }
 
-        .user-btn.dev { --user-color: var(--primary); }
-        .user-btn.dev:hover, .user-btn.dev.active {
-            box-shadow: 0 15px 30px rgba(255, 107, 53, 0.25);
-            border-color: var(--primary);
-        }
-
-        .user-btn.makeup:hover, .user-btn.makeup.active {
-            box-shadow: 0 15px 30px rgba(236, 72, 153, 0.25);
-            border-color: var(--pink);
-        }
-
-        /* Add visible border for user buttons */
-        .user-btn {
-            background: linear-gradient(135deg, var(--bg-card), #1a1a25);
-            border: 2px solid #444;
-            border-radius: 15px;
-            padding: 20px 35px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            text-align: center;
-            min-width: 180px;
-        }
-
-        .user-btn.dev:hover, .user-btn.dev.active {
-            border-color: var(--primary) !important;
-        }
-
-        .user-btn.makeup:hover, .user-btn.makeup.active {
-            border-color: var(--pink) !important;
-        }
-
-        .user-icon {
-            font-size: 2.5rem;
-            margin-bottom: 8px;
-        }
-
-        .user-name {
-            font-family: 'Orbitron', sans-serif;
-            font-size: 1.1rem;
-            font-weight: 700;
-        }
-
-        .user-role {
-            color: var(--text-muted);
-            font-size: 0.85rem;
-            margin-top: 4px;
-        }
-
-        .game-view {
-            display: none;
-        }
-
-        .game-view.active {
-            display: block;
-        }
-
+        /* Day navigation */
         .day-nav {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 15px;
-            margin: 20px 0;
+            display: flex; align-items: center; justify-content: center;
+            gap: 20px; margin: 20px 0;
         }
-
         .nav-btn {
-            background: var(--bg-card);
-            border: 1px solid #333;
-            color: var(--text);
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            cursor: pointer;
-            font-size: 1rem;
-            transition: all 0.3s;
+            background: var(--bg-card); border: 1px solid #333; color: var(--text);
+            width: 44px; height: 44px; border-radius: 50%; cursor: pointer;
+            font-size: 1rem; transition: all 0.3s;
         }
-
-        .nav-btn:hover {
-            background: var(--primary);
-            border-color: var(--primary);
-        }
-
-        .day-display {
-            text-align: center;
-        }
-
+        .nav-btn:hover { background: var(--primary); border-color: var(--primary); transform: scale(1.1); }
+        .day-display { text-align: center; }
         .day-number {
-            font-family: 'Orbitron', sans-serif;
-            font-size: 2.5rem;
-            font-weight: 900;
+            font-family: 'Orbitron', sans-serif; font-size: 3rem; font-weight: 900;
             background: linear-gradient(135deg, var(--primary), var(--accent));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+            line-height: 1;
         }
-
-        .day-label {
-            color: var(--text-muted);
-            font-size: 0.9rem;
-        }
-
+        .day-label { color: var(--text-muted); font-size: 0.9rem; margin-top: 4px; }
         .intensity-badge {
-            display: inline-block;
-            padding: 4px 12px;
-            border-radius: 12px;
-            font-size: 0.75rem;
-            font-weight: 600;
-            text-transform: uppercase;
-            margin-top: 5px;
+            display: inline-block; padding: 4px 14px; border-radius: 12px;
+            font-size: 0.75rem; font-weight: 600; text-transform: uppercase;
+            letter-spacing: 1px; margin-top: 6px;
         }
+        .intensity-badge.iniciante { background: rgba(34,197,94,0.15); color: #22c55e; border: 1px solid rgba(34,197,94,0.3); }
+        .intensity-badge.intermediario { background: rgba(247,183,49,0.15); color: #f7b731; border: 1px solid rgba(247,183,49,0.3); }
+        .intensity-badge.avancado { background: rgba(239,68,68,0.15); color: #ef4444; border: 1px solid rgba(239,68,68,0.3); }
+        .intensity-badge.lendario { background: rgba(168,85,247,0.15); color: #a855f7; border: 1px solid rgba(168,85,247,0.3); }
 
-        .intensity-badge.iniciante { background: rgba(34, 197, 94, 0.2); color: #22c55e; }
-        .intensity-badge.intermediario { background: rgba(247, 183, 49, 0.2); color: #f7b731; }
-        .intensity-badge.avancado { background: rgba(239, 68, 68, 0.2); color: #ef4444; }
-        .intensity-badge.lendario { background: rgba(168, 85, 247, 0.2); color: #a855f7; }
-
-        .month-selector {
-            display: flex;
-            gap: 8px;
-            justify-content: center;
-            flex-wrap: wrap;
-            margin-bottom: 20px;
-        }
-
+        /* Month selector */
+        .month-selector { display: flex; gap: 8px; justify-content: center; flex-wrap: wrap; margin-bottom: 16px; }
         .month-btn {
-            background: var(--bg-card);
-            border: 1px solid #333;
-            color: var(--text-muted);
-            padding: 6px 14px;
-            border-radius: 15px;
-            cursor: pointer;
-            font-family: 'Rajdhani', sans-serif;
-            font-size: 0.85rem;
-            transition: all 0.3s;
+            background: var(--bg-card); border: 1px solid #333; color: var(--text-muted);
+            padding: 6px 14px; border-radius: 15px; cursor: pointer;
+            font-family: 'Rajdhani', sans-serif; font-size: 0.85rem; font-weight: 600; transition: all 0.3s;
+        }
+        .month-btn:hover { background: rgba(255,107,53,0.2); color: var(--primary); border-color: var(--primary); }
+        .month-btn.current { background: var(--primary); color: white; border-color: var(--primary); }
+
+        /* Stats bar */
+        .stats-bar-top {
+            display: flex; gap: 8px; flex-wrap: wrap; justify-content: center;
+            margin: 10px 0 20px;
+        }
+        .stat-pill {
+            display: flex; align-items: center; gap: 6px;
+            background: var(--bg-card); border: 1px solid #222;
+            border-radius: 20px; padding: 5px 12px; font-size: 0.8rem;
+        }
+        .stat-pill-dot { width: 8px; height: 8px; border-radius: 50%; }
+        .stat-pill-dot.saude { background: var(--saude); }
+        .stat-pill-dot.vitalidade { background: var(--vitalidade); }
+        .stat-pill-dot.corpo { background: var(--corpo); }
+        .stat-pill-dot.dinheiro { background: var(--dinheiro); }
+        .stat-pill-dot.relacionamento { background: var(--relacionamento); }
+        .stat-pill-dot.carreira { background: var(--carreira); }
+
+        /* Streak & XP */
+        .top-widgets {
+            display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin: 15px 0;
+        }
+        .widget-box {
+            background: var(--bg-card); border-radius: 12px; padding: 14px;
+            text-align: center; border: 1px solid #222;
+        }
+        .widget-label { color: var(--text-muted); font-size: 0.75rem; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 6px; }
+        .widget-value {
+            font-family: 'Orbitron', sans-serif; font-size: 1.8rem; font-weight: 900;
+        }
+        .widget-value.streak { color: var(--accent); }
+        .widget-value.xp { color: var(--purple); }
+        .widget-sub { color: var(--text-muted); font-size: 0.75rem; margin-top: 2px; }
+
+        /* Progress bar */
+        .progress-bar-wrap {
+            background: var(--bg-card); border-radius: 12px; padding: 12px 16px;
+            margin-bottom: 16px; border: 1px solid #222;
+        }
+        .progress-bar-label {
+            display: flex; justify-content: space-between; align-items: center;
+            font-size: 0.8rem; color: var(--text-muted); margin-bottom: 8px;
+        }
+        .progress-bar-track { height: 6px; background: #222; border-radius: 3px; overflow: hidden; }
+        .progress-bar-fill {
+            height: 100%; border-radius: 3px;
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+            transition: width 0.6s ease;
         }
 
-        .month-btn:hover, .month-btn.active {
-            background: var(--primary);
-            color: white;
-            border-color: var(--primary);
-        }
-
-        .challenges-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 15px;
-            margin: 20px 0;
-        }
-
+        /* Challenges grid */
+        .challenges-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(270px, 1fr)); gap: 14px; margin: 16px 0; }
         .challenge-card {
             background: linear-gradient(135deg, var(--bg-card), #181825);
-            border-radius: 15px;
-            padding: 20px;
-            position: relative;
-            border: 1px solid #333;
-            transition: all 0.3s;
+            border-radius: 14px; padding: 18px; position: relative;
+            border: 1px solid #2a2a35; transition: all 0.3s;
         }
-
-        .challenge-card:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 10px 25px rgba(0,0,0,0.3);
-        }
-
-        .challenge-card.saúde { border-left: 4px solid var(--saude); }
-        .challenge-card.vitalidade { border-left: 4px solid #f59e0b; }
+        .challenge-card:hover { transform: translateY(-3px); box-shadow: 0 12px 28px rgba(0,0,0,0.4); }
+        .challenge-card.saude { border-left: 4px solid var(--saude); }
+        .challenge-card.vitalidade { border-left: 4px solid var(--vitalidade); }
         .challenge-card.corpo { border-left: 4px solid var(--corpo); }
         .challenge-card.dinheiro { border-left: 4px solid var(--dinheiro); }
         .challenge-card.relacionamento { border-left: 4px solid var(--relacionamento); }
         .challenge-card.carreira { border-left: 4px solid var(--carreira); }
+        .challenge-card.done { opacity: 0.7; }
+        .challenge-card.done .challenge-title { text-decoration: line-through; color: var(--text-muted); }
 
-        .challenge-header {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            margin-bottom: 12px;
-        }
-
+        .challenge-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px; }
         .category-badge {
-            padding: 4px 12px;
-            border-radius: 12px;
-            font-size: 0.75rem;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 1px;
+            padding: 3px 10px; border-radius: 10px;
+            font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px;
         }
-
-        .category-badge.saúde { background: rgba(34, 197, 94, 0.2); color: var(--saude); }
-        .category-badge.vitalidade { background: rgba(245, 158, 11, 0.2); color: #f59e0b; }
-        .category-badge.corpo { background: rgba(239, 68, 68, 0.2); color: var(--corpo); }
-        .category-badge.dinheiro { background: rgba(247, 183, 49, 0.2); color: var(--dinheiro); }
-        .category-badge.relacionamento { background: rgba(236, 72, 153, 0.2); color: var(--relacionamento); }
-        .category-badge.carreira { background: rgba(168, 85, 247, 0.2); color: var(--carreira); }
-
+        .category-badge.saude { background: rgba(34,197,94,0.15); color: var(--saude); }
+        .category-badge.vitalidade { background: rgba(245,158,11,0.15); color: var(--vitalidade); }
+        .category-badge.corpo { background: rgba(239,68,68,0.15); color: var(--corpo); }
+        .category-badge.dinheiro { background: rgba(247,183,49,0.15); color: var(--dinheiro); }
+        .category-badge.relacionamento { background: rgba(236,72,153,0.15); color: var(--relacionamento); }
+        .category-badge.carreira { background: rgba(168,85,247,0.15); color: var(--carreira); }
         .xp-badge {
             background: linear-gradient(135deg, var(--accent), #f59e0b);
-            padding: 4px 10px;
-            border-radius: 10px;
-            font-size: 0.75rem;
-            font-weight: 700;
+            padding: 3px 8px; border-radius: 8px; font-size: 0.72rem; font-weight: 700; color: #000;
         }
-
         .challenge-title {
-            font-family: 'Orbitron', sans-serif;
-            font-size: 0.95rem;
-            font-weight: 700;
-            margin-bottom: 8px;
-            line-height: 1.3;
+            font-family: 'Orbitron', sans-serif; font-size: 0.88rem; font-weight: 700;
+            margin-bottom: 6px; line-height: 1.4;
+        }
+        .challenge-desc { color: var(--text-muted); font-size: 0.82rem; line-height: 1.45; margin-bottom: 12px; }
+
+        .complete-btn {
+            width: 100%; background: rgba(255,255,255,0.04); border: 1px solid #333;
+            color: var(--text); padding: 9px 12px; border-radius: 9px;
+            cursor: pointer; font-family: 'Rajdhani', sans-serif; font-size: 0.88rem;
+            font-weight: 600; transition: all 0.3s; display: flex; align-items: center; justify-content: center; gap: 8px;
+        }
+        .complete-btn:hover { background: rgba(0,212,170,0.15); border-color: var(--secondary); }
+        .complete-btn.done { background: rgba(0,212,170,0.2); border-color: var(--secondary); color: var(--secondary); }
+
+        /* Quote */
+        .quote-box {
+            background: linear-gradient(135deg, rgba(168,85,247,0.08), rgba(236,72,153,0.08));
+            border-radius: 12px; padding: 16px; margin: 16px 0;
+            text-align: center; border: 1px solid rgba(168,85,247,0.25);
+            font-style: italic; color: var(--text-muted); font-size: 0.9rem; line-height: 1.5;
         }
 
-        .challenge-desc {
-            color: var(--text-muted);
-            font-size: 0.85rem;
-            line-height: 1.4;
-        }
-
-        .checkbox-wrapper {
-            margin-top: 12px;
-        }
-
-        .complete-checkbox {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            cursor: pointer;
-            padding: 10px;
-            background: rgba(255,255,255,0.03);
-            border-radius: 10px;
-            transition: all 0.3s;
-        }
-
-        .complete-checkbox:hover {
-            background: rgba(255,255,255,0.08);
-        }
-
-        .complete-checkbox.checked {
-            background: rgba(0, 212, 170, 0.15);
-        }
-
-        .complete-checkbox input {
-            display: none;
-        }
-
-        .checkbox-custom {
-            width: 22px;
-            height: 22px;
-            border: 2px solid #555;
-            border-radius: 6px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: all 0.3s;
-            font-size: 0.8rem;
-        }
-
-        .complete-checkbox.checked .checkbox-custom {
-            background: var(--secondary);
-            border-color: var(--secondary);
-        }
-
-        .checkbox-label {
-            font-size: 0.9rem;
-            font-weight: 500;
-        }
-
-        .streak-display {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
-            padding: 15px;
-            background: linear-gradient(135deg, rgba(255, 107, 53, 0.1), rgba(247, 183, 49, 0.1));
-            border-radius: 12px;
-            margin: 15px 0;
-            border: 1px solid rgba(255, 107, 53, 0.3);
-        }
-
-        .streak-fire {
-            font-size: 1.5rem;
-            animation: pulse 1s infinite;
-        }
-
-        @keyframes pulse {
-            0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.1); }
-        }
-
-        .streak-number {
-            font-family: 'Orbitron', sans-serif;
-            font-size: 1.5rem;
-            font-weight: 900;
-            color: var(--accent);
-        }
-
-        .streak-label {
-            color: var(--text-muted);
-            font-size: 0.85rem;
-        }
-
-        .total-xp {
-            text-align: center;
-            padding: 12px;
-            background: linear-gradient(135deg, rgba(168, 85, 247, 0.1), rgba(236, 72, 153, 0.1));
-            border-radius: 12px;
-            margin: 15px 0;
-            border: 1px solid rgba(168, 85, 247, 0.3);
-        }
-
-        .total-xp-label {
-            color: var(--text-muted);
-            font-size: 0.85rem;
-        }
-
-        .total-xp-value {
-            font-family: 'Orbitron', sans-serif;
-            font-size: 1.8rem;
-            font-weight: 900;
-            color: var(--purple);
-        }
-
-        .stats-panel {
-            background: var(--bg-card);
-            border-radius: 15px;
-            padding: 20px;
-            margin-top: 20px;
-        }
-
+        /* Stats panel */
+        .stats-panel { background: var(--bg-card); border-radius: 14px; padding: 20px; margin-top: 16px; border: 1px solid #222; }
         .stats-title {
-            font-family: 'Orbitron', sans-serif;
-            font-size: 1rem;
-            margin-bottom: 15px;
-            color: var(--accent);
+            font-family: 'Orbitron', sans-serif; font-size: 0.9rem;
+            margin-bottom: 16px; color: var(--accent); letter-spacing: 1px;
         }
-
-        .stat-row {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            margin-bottom: 12px;
-        }
-
-        .stat-icon {
-            font-size: 1.3rem;
-            width: 35px;
-            text-align: center;
-        }
-
-        .stat-info {
-            flex: 1;
-        }
-
-        .stat-label {
-            font-size: 0.8rem;
-            color: var(--text-muted);
-            margin-bottom: 4px;
-        }
-
-        .stat-bar {
-            height: 6px;
-            background: #222;
-            border-radius: 3px;
-            overflow: hidden;
-        }
-
-        .stat-fill {
-            height: 100%;
-            border-radius: 3px;
-            transition: width 0.5s ease;
-        }
-
-        .stat-fill.saúde { background: linear-gradient(90deg, #22c55e, #4ade80); }
+        .stat-row { display: flex; align-items: center; gap: 12px; margin-bottom: 12px; }
+        .stat-icon { font-size: 1.2rem; width: 30px; text-align: center; }
+        .stat-info { flex: 1; }
+        .stat-label { font-size: 0.78rem; color: var(--text-muted); margin-bottom: 5px; }
+        .stat-bar { height: 7px; background: #1c1c28; border-radius: 4px; overflow: hidden; }
+        .stat-fill { height: 100%; border-radius: 4px; transition: width 0.5s ease; width: 0%; }
+        .stat-fill.saude { background: linear-gradient(90deg, #22c55e, #4ade80); }
         .stat-fill.vitalidade { background: linear-gradient(90deg, #f59e0b, #fbbf24); }
         .stat-fill.corpo { background: linear-gradient(90deg, #ef4444, #f87171); }
         .stat-fill.dinheiro { background: linear-gradient(90deg, #f7b731, #fbbf24); }
         .stat-fill.relacionamento { background: linear-gradient(90deg, #ec4899, #f472b6); }
         .stat-fill.carreira { background: linear-gradient(90deg, #a855f7, #c084fc); }
+        .stat-value { font-weight: 700; min-width: 38px; text-align: right; font-size: 0.82rem; }
 
-        .stat-value {
-            font-weight: 700;
-            min-width: 35px;
-            text-align: right;
-            font-size: 0.85rem;
+        /* Celebration */
+        .day-complete-banner {
+            display: none; background: linear-gradient(135deg, rgba(0,212,170,0.2), rgba(34,197,94,0.2));
+            border: 1px solid var(--secondary); border-radius: 14px; padding: 16px;
+            text-align: center; margin: 16px 0; animation: popIn 0.4s ease;
         }
-
-        .quote-box {
-            background: linear-gradient(135deg, rgba(168, 85, 247, 0.1), rgba(236, 72, 153, 0.1));
-            border-radius: 12px;
-            padding: 15px;
-            margin: 15px 0;
-            text-align: center;
-            border: 1px solid rgba(168, 85, 247, 0.3);
-            font-style: italic;
-            color: var(--text-muted);
-            font-size: 0.9rem;
-        }
+        .day-complete-banner.show { display: block; }
+        @keyframes popIn { 0% { transform: scale(0.9); opacity: 0; } 100% { transform: scale(1); opacity: 1; } }
+        .banner-title { font-family: 'Orbitron', sans-serif; font-size: 1.1rem; color: var(--secondary); margin-bottom: 4px; }
+        .banner-sub { color: var(--text-muted); font-size: 0.85rem; }
 
         @media (max-width: 600px) {
             h1 { font-size: 1.6rem; }
-            .user-btn { min-width: 140px; padding: 15px 20px; }
+            .user-btn { min-width: 145px; padding: 18px 22px; }
             .challenges-grid { grid-template-columns: 1fr; }
-            .challenge-card { padding: 15px; }
+            .challenge-card { padding: 14px; }
+            .day-number { font-size: 2.2rem; }
+            .top-widgets { gap: 8px; }
         }
     </style>
 </head>
 <body>
-    <div class="particles" id="particles"></div>
-    
-    <div class="container">
-        <header>
-            <button class="nav-nutribot" onclick="window.location.href='nutribot.html'">🤖 NutriBot</button>
-            <button class="nav-nutribot" style="left: 140px; background: linear-gradient(135deg, #00d4ff, #0099cc);" onclick="window.location.href='jarvis.html'">🎙️ JARVIS</button>
-            <h1>🎮 JOGO DA VIDA</h1>
-            <p class="subtitle">180 Dias de Transformação Radical</p>
-        </header>
+<div class="particles" id="particles"></div>
 
+<div class="container">
+    <header>
+        <h1>🎮 JOGO DA VIDA</h1>
+        <p class="subtitle">180 Dias de Transformação Radical</p>
+    </header>
+
+    <!-- WELCOME SCREEN -->
+    <div id="welcome-screen">
+        <p class="welcome-title">Escolha seu perfil</p>
         <div class="user-select">
-            <button class="user-btn dev" id="btn-thales" style="cursor: pointer; pointer-events: auto;">
+            <button class="user-btn dev" id="btn-thales" onclick="selectUser('dev')">
                 <div class="user-icon">👨‍💻</div>
                 <div class="user-name">Thales</div>
                 <div class="user-role">Dev de IA</div>
             </button>
-            <button class="user-btn makeup" id="btn-gyovanna" style="cursor: pointer; pointer-events: auto;">
+            <button class="user-btn makeup" id="btn-gyovanna" onclick="selectUser('makeup')">
                 <div class="user-icon">💄</div>
                 <div class="user-name">Gyovanna</div>
                 <div class="user-role">Maquiadora</div>
             </button>
         </div>
+        <div class="stats-bar-top" id="welcome-stats"></div>
+    </div>
 
-        <div id="dev-view" class="game-view">
-            <div class="month-selector" id="dev-months"></div>
-            
-            <div class="day-nav">
-                <button class="nav-btn" onclick="changeDay('dev', -1)">◀</button>
-                <div class="day-display">
-                    <div class="day-number" id="dev-day-num">1</div>
-                    <div class="day-label">de 180</div>
-                    <span class="intensity-badge iniciante" id="dev-intensity">Iniciante</span>
-                </div>
-                <button class="nav-btn" onclick="changeDay('dev', 1)">▶</button>
-            </div>
-
-            <div class="streak-display">
-                <span class="streak-fire">🔥</span>
-                <span class="streak-number" id="dev-streak">0</span>
-                <span class="streak-label">dias seguidos</span>
-            </div>
-
-            <div class="total-xp">
-                <div class="total-xp-label">XP TOTAL</div>
-                <div class="total-xp-value" id="dev-total-xp">0</div>
-            </div>
-
-            <div class="challenges-grid" id="dev-challenges"></div>
-
-            <div class="quote-box" id="dev-quote"></div>
-
-            <div class="stats-panel">
-                <h3 class="stats-title">📊 PROGRESSO POR ÁREA</h3>
-                <div class="stat-row">
-                    <span class="stat-icon">💪</span>
-                    <div class="stat-info"><div class="stat-label">Saúde</div><div class="stat-bar"><div class="stat-fill saúde" id="dev-stat-saúde"></div></div></div>
-                    <span class="stat-value" id="dev-val-saúde">0%</span>
-                </div>
-                <div class="stat-row">
-                    <span class="stat-icon">⚡</span>
-                    <div class="stat-info"><div class="stat-label">Vitalidade</div><div class="stat-bar"><div class="stat-fill vitalidade" id="dev-stat-vitalidade"></div></div></div>
-                    <span class="stat-value" id="dev-val-vitalidade">0%</span>
-                </div>
-                <div class="stat-row">
-                    <span class="stat-icon">🔥</span>
-                    <div class="stat-info"><div class="stat-label">Corpo</div><div class="stat-bar"><div class="stat-fill corpo" id="dev-stat-corpo"></div></div></div>
-                    <span class="stat-value" id="dev-val-corpo">0%</span>
-                </div>
-                <div class="stat-row">
-                    <span class="stat-icon">💰</span>
-                    <div class="stat-info"><div class="stat-label">Dinheiro</div><div class="stat-bar"><div class="stat-fill dinheiro" id="dev-stat-dinheiro"></div></div></div>
-                    <span class="stat-value" id="dev-val-dinheiro">0%</span>
-                </div>
-                <div class="stat-row">
-                    <span class="stat-icon">💕</span>
-                    <div class="stat-info"><div class="stat-label">Casal</div><div class="stat-bar"><div class="stat-fill relacionamento" id="dev-stat-relacionamento"></div></div></div>
-                    <span class="stat-value" id="dev-val-relacionamento">0%</span>
-                </div>
-                <div class="stat-row">
-                    <span class="stat-icon">🚀</span>
-                    <div class="stat-info"><div class="stat-label">Carreira</div><div class="stat-bar"><div class="stat-fill carreira" id="dev-stat-carreira"></div></div></div>
-                    <span class="stat-value" id="dev-val-carreira">0%</span>
-                </div>
+    <!-- DEV VIEW -->
+    <div id="dev-view" class="game-view">
+        <div class="view-header">
+            <button class="back-btn" onclick="goBack()">← Voltar</button>
+            <div>
+                <div class="view-user-name dev">👨‍💻 Thales</div>
+                <div class="view-user-role">Dev de IA</div>
             </div>
         </div>
 
-        <div id="makeup-view" class="game-view">
-            <div class="month-selector" id="makeup-months"></div>
-            
-            <div class="day-nav">
-                <button class="nav-btn" onclick="changeDay('makeup', -1)">◀</button>
-                <div class="day-display">
-                    <div class="day-number" id="makeup-day-num">1</div>
-                    <div class="day-label">de 180</div>
-                    <span class="intensity-badge iniciante" id="makeup-intensity">Iniciante</span>
-                </div>
-                <button class="nav-btn" onclick="changeDay('makeup', 1)">▶</button>
+        <div class="month-selector" id="dev-months"></div>
+
+        <div class="day-nav">
+            <button class="nav-btn" onclick="changeDay('dev', -1)">◀</button>
+            <div class="day-display">
+                <div class="day-number" id="dev-day-num">1</div>
+                <div class="day-label">de 180</div>
+                <span class="intensity-badge iniciante" id="dev-intensity">Iniciante</span>
             </div>
+            <button class="nav-btn" onclick="changeDay('dev', 1)">▶</button>
+        </div>
 
-            <div class="streak-display">
-                <span class="streak-fire">🔥</span>
-                <span class="streak-number" id="makeup-streak">0</span>
-                <span class="streak-label">dias seguidos</span>
+        <div class="progress-bar-wrap">
+            <div class="progress-bar-label">
+                <span>Progresso Geral</span>
+                <span id="dev-overall-pct">0%</span>
             </div>
-
-            <div class="total-xp">
-                <div class="total-xp-label">XP TOTAL</div>
-                <div class="total-xp-value" id="makeup-total-xp">0</div>
+            <div class="progress-bar-track">
+                <div class="progress-bar-fill" id="dev-overall-bar" style="width:0%"></div>
             </div>
+        </div>
 
-            <div class="challenges-grid" id="makeup-challenges"></div>
+        <div class="top-widgets">
+            <div class="widget-box">
+                <div class="widget-label">🔥 Sequência</div>
+                <div class="widget-value streak" id="dev-streak">0</div>
+                <div class="widget-sub">dias seguidos</div>
+            </div>
+            <div class="widget-box">
+                <div class="widget-label">⚡ XP Total</div>
+                <div class="widget-value xp" id="dev-total-xp">0</div>
+                <div class="widget-sub">pontos de exp</div>
+            </div>
+        </div>
 
-            <div class="quote-box" id="makeup-quote"></div>
+        <div class="day-complete-banner" id="dev-banner">
+            <div class="banner-title">🏆 DIA COMPLETO!</div>
+            <div class="banner-sub">Você completou todos os desafios de hoje. Incrível!</div>
+        </div>
 
-            <div class="stats-panel">
-                <h3 class="stats-title">📊 PROGRESSO POR ÁREA</h3>
-                <div class="stat-row">
-                    <span class="stat-icon">💪</span>
-                    <div class="stat-info"><div class="stat-label">Saúde</div><div class="stat-bar"><div class="stat-fill saúde" id="makeup-stat-saúde"></div></div></div>
-                    <span class="stat-value" id="makeup-val-saúde">0%</span>
+        <div class="challenges-grid" id="dev-challenges"></div>
+
+        <div class="quote-box" id="dev-quote"></div>
+
+        <div class="stats-panel">
+            <h3 class="stats-title">📊 PROGRESSO POR ÁREA</h3>
+            <div class="stat-row">
+                <span class="stat-icon">💪</span>
+                <div class="stat-info">
+                    <div class="stat-label">Saúde</div>
+                    <div class="stat-bar"><div class="stat-fill saude" id="dev-stat-saude"></div></div>
                 </div>
-                <div class="stat-row">
-                    <span class="stat-icon">🔥</span>
-                    <div class="stat-info"><div class="stat-label">Corpo</div><div class="stat-bar"><div class="stat-fill corpo" id="makeup-stat-corpo"></div></div></div>
-                    <span class="stat-value" id="makeup-val-corpo">0%</span>
+                <span class="stat-value" id="dev-val-saude">0%</span>
+            </div>
+            <div class="stat-row">
+                <span class="stat-icon">⚡</span>
+                <div class="stat-info">
+                    <div class="stat-label">Vitalidade</div>
+                    <div class="stat-bar"><div class="stat-fill vitalidade" id="dev-stat-vitalidade"></div></div>
                 </div>
-                <div class="stat-row">
-                    <span class="stat-icon">💰</span>
-                    <div class="stat-info"><div class="stat-label">Dinheiro</div><div class="stat-bar"><div class="stat-fill dinheiro" id="makeup-stat-dinheiro"></div></div></div>
-                    <span class="stat-value" id="makeup-val-dinheiro">0%</span>
+                <span class="stat-value" id="dev-val-vitalidade">0%</span>
+            </div>
+            <div class="stat-row">
+                <span class="stat-icon">🔥</span>
+                <div class="stat-info">
+                    <div class="stat-label">Corpo</div>
+                    <div class="stat-bar"><div class="stat-fill corpo" id="dev-stat-corpo"></div></div>
                 </div>
-                <div class="stat-row">
-                    <span class="stat-icon">💕</span>
-                    <div class="stat-info"><div class="stat-label">Casal</div><div class="stat-bar"><div class="stat-fill relacionamento" id="makeup-stat-relacionamento"></div></div></div>
-                    <span class="stat-value" id="makeup-val-relacionamento">0%</span>
+                <span class="stat-value" id="dev-val-corpo">0%</span>
+            </div>
+            <div class="stat-row">
+                <span class="stat-icon">💰</span>
+                <div class="stat-info">
+                    <div class="stat-label">Dinheiro</div>
+                    <div class="stat-bar"><div class="stat-fill dinheiro" id="dev-stat-dinheiro"></div></div>
                 </div>
-                <div class="stat-row">
-                    <span class="stat-icon">🚀</span>
-                    <div class="stat-info"><div class="stat-label">Carreira</div><div class="stat-bar"><div class="stat-fill carreira" id="makeup-stat-carreira"></div></div></div>
-                    <span class="stat-value" id="makeup-val-carreira">0%</span>
+                <span class="stat-value" id="dev-val-dinheiro">0%</span>
+            </div>
+            <div class="stat-row">
+                <span class="stat-icon">💕</span>
+                <div class="stat-info">
+                    <div class="stat-label">Casal</div>
+                    <div class="stat-bar"><div class="stat-fill relacionamento" id="dev-stat-relacionamento"></div></div>
                 </div>
+                <span class="stat-value" id="dev-val-relacionamento">0%</span>
+            </div>
+            <div class="stat-row">
+                <span class="stat-icon">🚀</span>
+                <div class="stat-info">
+                    <div class="stat-label">Carreira</div>
+                    <div class="stat-bar"><div class="stat-fill carreira" id="dev-stat-carreira"></div></div>
+                </div>
+                <span class="stat-value" id="dev-val-carreira">0%</span>
             </div>
         </div>
     </div>
 
-    <script>
-        const categories = ['saúde', 'vitalidade', 'corpo', 'dinheiro', 'relacionamento', 'carreira'];
+    <!-- MAKEUP VIEW -->
+    <div id="makeup-view" class="game-view">
+        <div class="view-header">
+            <button class="back-btn" onclick="goBack()">← Voltar</button>
+            <div>
+                <div class="view-user-name makeup">💄 Gyovanna</div>
+                <div class="view-user-role">Maquiadora</div>
+            </div>
+        </div>
 
-        const quotes = [
-            "Grandes conquistas vêm de pequenos passos Consistency.",
-            "O músculo mais importante é o mental.",
-            "Sua única competência é consistency.",
-            "O sucesso é construído nos dias difíceis.",
-            "Transforme consistency em resultado.",
-            "Você não precisa ser perfeito, precisa ser consistente.",
-            "A excelência é a soma de pequenas vitórias diárias.",
-            "Cada desafio é uma oportunidade de evolução.",
-            "Disciplina é o caminho para a liberdade.",
-            "O progresso é maior que a perfeição.",
-            "Suas escolhas de hoje são seus resultados de amanhã.",
-            "A resistência é o que separa os médiuns dos grandes.",
-            "Evoluir é sair da zona de conforto com estratégia.",
-            "Consistência > Intensidade.",
-            "O tempo passa para todos, aproveite-o com propósito."
-        ];
+        <div class="month-selector" id="makeup-months"></div>
 
-        const intensityLevels = {
-            iniciante: { days: [1, 30], label: 'Iniciante', class: 'iniciante' },
-            intermediario: { days: [31, 90], label: 'Intermediário', class: 'intermediario' },
-            avancado: { days: [91, 150], label: 'Avançado', class: 'avancado' },
-            lendario: { days: [151, 180], label: 'Lendário', class: 'lendario' }
-        };
+        <div class="day-nav">
+            <button class="nav-btn" onclick="changeDay('makeup', -1)">◀</button>
+            <div class="day-display">
+                <div class="day-number" id="makeup-day-num">1</div>
+                <div class="day-label">de 180</div>
+                <span class="intensity-badge iniciante" id="makeup-intensity">Iniciante</span>
+            </div>
+            <button class="nav-btn" onclick="changeDay('makeup', 1)">▶</button>
+        </div>
 
-        const devChallenges = {
-            saúde: {
-                iniciante: [
-                    "Meditar 10 minutos",
-                    "Beber 2L de água",
-                    "Dormir antes das 23h",
-                    "Caminhada de 15 min",
-                    "Não usar celular 1h antes de dormir",
-                    "Tomar café da manhã",
-                    "Alongar por 5 minutos",
-                    "Escrever 3 gratidões",
-                    "Tomar sol 10 min",
-                    "Comer 1 fruta"
-                ],
-                intermediario: [
-                    "Meditar 20 minutos",
-                    "Beber 3L de água",
-                    "Dormir antes das 22h",
-                    "Caminhada de 30 min",
-                    "Jejum de tela 2h",
-                    "Café da manhã com proteína",
-                    "Alongamento de 15 min",
-                    "Rotina de skincare",
-                    "Tomar sol 15 min",
-                    "Eliminar açúcar por 24h"
-                ],
-                avancado: [
-                    "Meditar 30 minutos",
-                    "Beber 4L de água + elektrolitos",
-                    "Dormir antes das 21:30h",
-                    "Corrida de 5km",
-                    "Jejum de tela 4h completo",
-                    "Treino de respiração box",
-                    "Yoga de 45 minutos",
-                    "Rotina de sauna (se disponível)",
-                    "Jejum intermitente 16:8",
-                    "Desintoxicação digital total 1 dia"
-                ],
-                lendario: [
-                    "Meditação profunda 45 min",
-                    "Desafio água: 5L + jejum",
-                    "Dormir 21h - acordar 5h (monge)",
-                    "Corrida de 10km",
-                    "24h sem celular (desintoxicação)",
-                    "Treino de respiração Wim Hof",
-                    "2h de yoga avançado",
-                    "Jejum de 24h (água only)",
-                    "Retiro de silêncio 1 dia",
-                    "Desafio completo: corpo e mente"
-                ]
-            },
-            vitalidade: {
-                iniciante: [
-                    "Tomar café da manhã com proteína (3 ovos ou aveia com whey)",
-                    "Exposição solar 15 min (vitamina D)",
-                    "Caminhada de 15 min ao ar livre",
-                    "Beber 2.5L de água com limão",
-                    "Dormir 7h mínimo",
-                    "Alongar 5 min ao acordar",
-                    "Comer 1 banana pela manhã",
-                    "Tomar café verde ou café preto sem açúcar",
-                    "Ouvir música energética por 10 min",
-                    "Rir intencionalmente 5 min (aumenta endorfinas)"
-                ],
-                intermediario: [
-                    "Café da manhã hipercalórico: aveia + whey + banana + pasta de amendoim",
-                    "Treino de força 45 min (peito, costas, perna)",
-                    "Corrida intervalada 20 min",
-                    "Exercícios de respiração profunda 10 min",
-                    "Beber shake de proteína pós-treino",
-                    "Tomar sol 20 min (sem protetor para vitamina D)",
-                    "Dormir 8h e acordar às 6h",
-                    "Meditar 15 min ao acordar",
-                    "Comer alimentos ricos em zinco: carne, ovos, castanha",
-                    "Evitar açúcar e ultraprocessados o dia todo"
-                ],
-                avancado: [
-                    "Treino pesado 1h30 com foco em compound movements",
-                    "Corrida de 6km em ritmo moderado",
-                    "Suplementação: Whey + Creatina + Zinco + Magnésio + Vit D",
-                    "Jejum intermitente 16:8 + café pela manhã",
-                    "Meditação Wim Hof: 3 rodadas de respiração",
-                    "Dormir 21:30h - acordar 5h (rotina de monge)",
-                    "Treino matinal em jejum (se não tiver hypotension)",
-                    "Exposição ao frio: ducha fria de 3 min",
-                    "Sessão de sauna 20 min",
-                    "Plano alimentar: 3000kcal high protein"
-                ],
-                lendario: [
-                    "Treino duplo: manhã (força) + noite (cardio)",
-                    "Corrida de 10km em jejum",
-                    "Desafio 24h sem açúcar, sem cafeína, sem telemóvel",
-                    "Rotina de campeão: 5h sono + 5h trabalho + 3h treino + 1h estudo",
-                    "Jejum de 48h (apenas água)",
-                    "Treino de alta intensidade intervals (HIIT) 30 min",
-                    "Meditação de 60 min + visualization técnicas",
-                    "Plano de suplementação avançado: tribulus, ashwagandha, rhodiola",
-                    "Retiro fitness: 2 dias de treino intensivo",
-                    "Teste de resistência: 5km em menos de 20 min"
-                ]
-            },
-            corpo: {
-                    "Corrida de 5km",
-                    "Jejum de tela 4h completo",
-                    "Treino de respiração box",
-                    "Yoga de 45 minutos",
-                    "Rotina de sauna (se disponível)",
-                    "Jejum intermitente 16:8",
-                    "Desintoxicação digital total 1 dia"
-                ],
-                lendario: [
-                    "Meditação profunda 45 min",
-                    "Desafio água: 5L + jejum",
-                    "Dormir 21h - acordar 5h (monge)",
-                    "Corrida de 10km",
-                    "24h sem celular (desintoxicação)",
-                    "Treino de respiração Wim Hof",
-                    "2h de yoga avançado",
-                    "Jejum de 24h (água only)",
-                    "Retiro de silêncio 1 dia",
-                    "Desafio completo: corpo e mente"
-                ]
-            },
-            corpo: {
-                iniciante: [
-                    "30 min de exercício leve",
-                    "50 abdominais",
-                    "Alongamento matinal",
-                    "Caminhada de 3km",
-                    "Postura correta o dia",
-                    "50 polichinelos",
-                    "Prancha 1 min",
-                    "Agachamentos 30x",
-                    "Flexões 20x",
-                    "Caminhada pós-jantar"
-                ],
-                intermediario: [
-                    "45 min exercício intenso",
-                    "100 abdominais",
-                    "Alongamento de 20 min",
-                    "Caminhada de 5km",
-                    "HIIT 20 min",
-                    "100 polichinelos",
-                    "Prancha 2 min",
-                    "Agachamentos 50x",
-                    "Flexões 40x",
-                    "Corrida de 3km"
-                ],
-                avancado: [
-                    "1h treino pesado",
-                    "200 abdominais",
-                    "Alongamento profundo 30 min",
-                    "Corrida de 7km",
-                    "HIIT 30 min (sprints)",
-                    "200 polichinelos",
-                    "Prancha 4 min",
-                    "100 agachamentos c/ peso",
-                    "80 flexões",
-                    "Treino em jejum"
-                ],
-                lendario: [
-                    "Maratona de treino 2h",
-                    "500 abdominais",
-                    "Yoga de 1h30",
-                    "Corrida de 15km",
-                    "Desafio 1000 polichinelos",
-                    "Prancha 10 min",
-                    "200 agachamentos weighted",
-                    "150 flexões",
-                    "Dupla sessão (manhã + noite)",
-                    "Desafio Spartan completo"
-                ]
-            },
-            dinheiro: {
-                iniciante: [
-                    "Ler 15 min sobre finanças",
-                    "Revisar gastos da semana",
-                    "Criar planilha de orçamento",
-                    "Economizar R$30",
-                    "Assistir 1 vídeo sobre investimentos",
-                    "Pesquisar 1 forma de renda extra",
-                    "Definir 1 meta financeira",
-                    "Cancelar 1 assinatura",
-                    "Ler 10 páginas de livro financeiro",
-                    "Organizar recibos"
-                ],
-                intermediario: [
-                    "Ler 30 min sobre investimentos",
-                    "Revisar investimentos",
-                    "Criar orçamento mensal",
-                    "Economizar R$100",
-                    "Estudar sobre ações",
-                    "Contatar 1 cliente potencial",
-                    "Criar um produto digital",
-                    "Análise de gastos por categoria",
-                    "Estudar imposto de renda",
-                    "Networking com 2 pessoas"
-                ],
-                avancado: [
-                    "Ler 1h sobre finanças avançadas",
-                    "Análise completa de portfolio",
-                    "Criar sistema de investimento",
-                    "Economizar R$300",
-                    "Estudar crypto/ações profundas",
-                    "Criar curso/serviço digital",
-                    "Análise de fluxo de caixa",
-                    "Estudar tributação",
-                    "3 networkings estratégicos",
-                    "Build de renda passiva"
-                ],
-                lendario: [
-                    "Estudo profundo: Valuation",
-                    "Revisão total patrimônio",
-                    "Criar empresa/LLC (se applicable)",
-                    "Economizar R$1000",
-                    "Investimento avançado: Options",
-                    "Multi 5位数k digits de renda extra",
-                    "Due diligence de investimentos",
-                    "Estrutura tributária otimizada",
-                    "Mentoria de finanças",
-                    "Build: Primeiro milhão (mindset)"
-                ]
-            },
-            relacionamento: {
-                iniciante: [
-                    "Preparar café da manhã",
-                    "Enviar msg carinhosa",
-                    "Jantar sem celular",
-                    "Elogio genuíno",
-                    "Caminhada juntos 20 min",
-                    "Massagem de 10 min",
-                    "Foto juntos",
-                    "Perguntar sobre o dia",
-                    "Escrever bilhetinho",
-                    "Playlist para ela"
-                ],
-                intermediario: [
-                    "Café da manhã completo",
-                    "Planejar date",
-                    "Jantar romântico (sem celular)",
-                    "Carta de amor",
-                    "Caminhada de 1h",
-                    "Massagem completa 30 min",
-                    "Sessão de fotos",
-                    "Conversa profunda 1h",
-                    "Surpresa planejada",
-                    "Planejar viagem"
-                ],
-                avancado: [
-                    "Café da manhã na cama",
-                    "Date day completo",
-                    "Celular OFF por 4h",
-                    "Carta manuscrita",
-                    "Caminhada + piquenique",
-                    "Massagem tantrica 1h",
-                    "Sessão de fotos profissional",
-                    "Terapia de casal (leitura)",
-                    "Vazamento de segredos",
-                    "Planejar casa/matemática"
-                ],
-                lendario: [
-                    "Retiro romântico 2 dias",
-                    "Semana sem celular (só vocês)",
-                    "Casamento renew vows",
-                    "Carta de 10 páginas",
-                    "Maratona de movies + popcorn",
-                    "Massagem completa + oils",
-                    "Dia de spa juntos",
-                    "Confissão e vulnerabilidade",
-                    "Plano de vida juntos",
-                    "Proposta de metas conjugais"
-                ]
-            },
-            carreira: {
-                iniciante: [
-                    "Estudar 30 min de IA",
-                    "Praticar Python 15 min",
-                    "Ler 1 artigo técnico",
-                    "Atualizar LinkedIn",
-                    "Resolver 1 desafio código",
-                    "Contribuir open source",
-                    "Assistir tutorial",
-                    "Praticar SQL básico",
-                    "Estudar 1 biblioteca nova",
-                    "Organizar arquivos projeto"
-                ],
-                intermediario: [
-                    "Estudar 1h de ML",
-                    "Projeto prático 1h",
-                    "Ler paper de IA",
-                    "Contribuir 2 PRs open source",
-                    "Criar portfólio",
-                    "Resolver 5 desafios",
-                    "Estudar cloud (AWS)",
-                    "Praticar FastAPI",
-                    "Escrever artigo técnico",
-                    "Mentorar 1 pessoa"
-                ],
-                avancado: [
-                    "Estudar 2h deep learning",
-                    "Build projeto completo",
-                    "Ler papers ArXiv",
-                    "Deploy app produção",
-                    "Criar biblioteca open source",
-                    "Resolver 10 desafios hard",
-                    "Estudar MLOps",
-                    "Arquitetura de sistema",
-                    "Escrever série tutoriais",
-                    "Palestra/presentação"
-                ],
-                lendario: [
-                    "Estudo 4h: Transformers",
-                    "Criar modelo próprio",
-                    "Publicar paper/artigo",
-                    "Lançar SaaS/Open source",
-                    "Kaggle competition",
-                    "Arquitetura distribuída",
-                    "PhD-level reading",
-                    "Estudar AGI/ASI concepts",
-                    "Keynote talk prep",
-                    "Build startup MVP"
-                ]
-            }
-        };
+        <div class="progress-bar-wrap">
+            <div class="progress-bar-label">
+                <span>Progresso Geral</span>
+                <span id="makeup-overall-pct">0%</span>
+            </div>
+            <div class="progress-bar-track">
+                <div class="progress-bar-fill" id="makeup-overall-bar" style="width:0%"></div>
+            </div>
+        </div>
 
-        const makeupChallenges = {
-            saúde: {
-                iniciante: [
-                    "Meditar 10 minutos",
-                    "Beber 2L de água",
-                    "Dormir antes das 22h",
-                    "Rotina skincare matinal",
-                    "Caminhada de 15 min",
-                    "Café da manhã saudável",
-                    "Alongamento 5 min",
-                    "3 gratidões",
-                    "Vitamina D sol 10 min",
-                    "Não celular 1h dormir"
-                ],
-                intermediario: [
-                    "Meditar 15 minutos",
-                    "Beber 2.5L água",
-                    "Dormir antes das 21:30h",
-                    "Skincare completo + máscara",
-                    "Caminhada de 25 min",
-                    "Shake proteína",
-                    "Alongamento 15 min",
-                    "Facial yoga",
-                    "Jejum de tela 2h",
-                    "Eliminar açúcar"
-                ],
-                avancado: [
-                    "Meditar 25 minutos",
-                    "Beber 3L + limão",
-                    "Dormir 21:30h - 5:30h",
-                    "Rotina skincare pro",
-                    "Corrida 4km",
-                    "Yoga 30 min",
-                    "Rotina facial completa",
-                    "Jejum intermitente 16:8",
-                    "Desintoxicação digital",
-                    "Aromaterapia"
-                ],
-                lendario: [
-                    "Meditação 40 min",
-                    "Challenge 4L água",
-                    "Sonho 20:30h - 4:30h",
-                    "Maratona skincare",
-                    "Corrida 8km",
-                    "Yoga 1h",
-                    "Facial massage pro",
-                    "Jejum 24h",
-                    "Retiro silêncio",
-                    "Desafio corpo-mente"
-                ]
-            },
-            corpo: {
-                iniciante: [
-                    "20 min exercício leve",
-                    "Alongamento 10 min",
-                    "Caminhada 3km",
-                    "50 abdominais",
-                    "Prancha 1 min",
-                    "Postura.apply makeup",
-                    "Exercícios mãos/pulsos",
-                    "Exercício facial",
-                    "Alongamento pescoço",
-                    "Dançar 1 música"
-                ],
-                intermediario: [
-                    "30 min exercício",
-                    "Alongamento 20 min",
-                    "Caminhada 5km",
-                    "100 abdominais",
-                    "Prancha 2 min",
-                    "Pilates 25 min",
-                    "Corrida 2km",
-                    "Exercícios postura",
-                    "Alongamento rosto",
-                    "Treino gluteos"
-                ],
-                avancado: [
-                    "45 min treino",
-                    "Alongamento 30 min",
-                    "Corrida 6km",
-                    "200 abdominais",
-                    "Prancha 4 min",
-                    "Pilates advanced",
-                    "Corrida intervalada",
-                    "Treino funcional",
-                    "Facial yoga pro",
-                    "HIIT 20 min"
-                ],
-                lendario: [
-                    "1h treino power",
-                    "Yoga 1h",
-                    "10km corrida",
-                    "300 abdominais",
-                    "Prancha 8 min",
-                    "Maratona pilates",
-                    "15km corrida",
-                    "Treino duplo",
-                    "Spartan challenge",
-                    "Body transformation"
-                ]
-            },
-            dinheiro: {
-                iniciante: [
-                    "Estudar precificação",
-                    "Organizar planilha",
-                    "Pesquisar tendências",
-                    "Economizar R$50",
-                    "Criar pacote serviços",
-                    "Atualizar lista preços",
-                    "Assistir vídeo marketing",
-                    "Definir meta mês",
-                    "Estudar concorrentes",
-                    "Calcular custo cliente"
-                ],
-                intermediario: [
-                    "Precificação avançada",
-                    "Orçamento negócio",
-                    "Estratégia marketing",
-                    "Economizar R$150",
-                    "Pacote premium criar",
-                    "Promoção clientes",
-                    "Estudar funil vendas",
-                    "Análise concorrentes",
-                    "Gestão autônoma",
-                    "Investimento curso"
-                ],
-                avancado: [
-                    "Precificação Expert",
-                    "Sistema financeiro",
-                    "Funil completo",
-                    "Economizar R$400",
-                    "Multi serviços",
-                    "Lançamento oficial",
-                    "Vendas alta conversão",
-                    "Escale seu negócio",
-                    "Parcerias estratégicas",
-                    "Build marca pessoal"
-                ],
-                lendario: [
-                    "Mentoria precificação",
-                    "Patrimônio negócio",
-                    "Multi 5-digit revenue",
-                    "Economizar R$1000",
-                    "Build agência",
-                    "Expansão equipe",
-                    "Franchising modelo",
-                    "6-figure business",
-                    "Milestone primeiro 100k",
-                    "Imperio beauty"
-                ]
-            },
-            relacionamento: {
-                iniciante: [
-                    "Preparar café manhã",
-                    "Tirar foto casal",
-                    "Msg carinhosa",
-                    "Jantar sem celular",
-                    "Escrever gratidão",
-                    "Massagem mãos",
-                    "Caminhada juntos",
-                    "Elogio específico",
-                    "Conversa 30 min",
-                    "Playlist together"
-                ],
-                intermediario: [
-                    "Café da manhã completo",
-                    "Surpresa romântica",
-                    "Planejar date",
-                    "Celular OFF 2h",
-                    "Carta de amor",
-                    "Massagem completa",
-                    "Movie night",
-                    "Conversa profunda",
-                    "Planejar viagem",
-                    "Selfie romântica"
-                ],
-                avancado: [
-                    "Café na cama",
-                    "Date day completo",
-                    "Celular OFF 4h",
-                    "Carta manuscrita",
-                    "Massagem tantrica",
-                    "Sessão fotos",
-                    "Piquenique parque",
-                    "Terapia casal",
-                    "Vazamento",
-                    "Future planning"
-                ],
-                lendario: [
-                    "Retiro 2 dias",
-                    "Semana digital detox",
-                    "Renovação votos",
-                    "Carta 10 páginas",
-                    "Maratona romance",
-                    "Day spa together",
-                    "Confissão profunda",
-                    "Plano vida conjugal",
-                    "Casamento 2.0",
-                    "Soulmates level"
-                ]
-            },
-            carreira: {
-                iniciante: [
-                    "Estudar técnica nova",
-                    "Criar 1 post insta",
-                    "Atualizar portfólio",
-                    "Assistir tutorial",
-                    "Praticar look completo",
-                    "Estudar colorimetria",
-                    "Criar cards serviços",
-                    "Estudar iluminação",
-                    "Bio atualizada",
-                    "Praticar em si"
-                ],
-                intermediario: [
-                    "Técnica avançada",
-                    "3 posts conteúdo",
-                    "Portfólio novo",
-                    "Tutorial hard",
-                    "4 looks completos",
-                    "Colorimetria pro",
-                    "Reel transformação",
-                    "Light setup",
-                    "Estudo Photoshop",
-                    "Praticar em modelo"
-                ],
-                avancado: [
-                    "Master técnica",
-                    "Conteúdo diário",
-                    "Portfólio profissional",
-                    "Estudo completo",
-                    "6 looks avançados",
-                    "Correção colorido",
-                    "Série tutoriais",
-                    "Estúdio próprio",
-                    "Edição pro",
-                    "Mentoria carreira"
-                ],
-                lendario: [
-                    "Technique masterclass",
-                    "Build marca própria",
-                    "Portfolio internacional",
-                    "Publicação profissional",
-                    "10 makes premium",
-                    "Maquiagem editorial",
-                    "TV/Filme makeup",
-                    "Brand ambassador",
-                    "Educadora renomada",
-                    "Imperio beauty industry"
-                ]
-            }
-        };
+        <div class="top-widgets">
+            <div class="widget-box">
+                <div class="widget-label">🔥 Sequência</div>
+                <div class="widget-value streak" id="makeup-streak">0</div>
+                <div class="widget-sub">dias seguidos</div>
+            </div>
+            <div class="widget-box">
+                <div class="widget-label">⚡ XP Total</div>
+                <div class="widget-value xp" id="makeup-total-xp">0</div>
+                <div class="widget-sub">pontos de exp</div>
+            </div>
+        </div>
 
-        function generateParticles() {
-            const container = document.getElementById('particles');
-            for (let i = 0; i < 40; i++) {
-                const p = document.createElement('div');
-                p.className = 'particle';
-                p.style.left = Math.random() * 100 + '%';
-                p.style.animationDelay = Math.random() * 15 + 's';
-                p.style.animationDuration = (15 + Math.random() * 10) + 's';
-                if (Math.random() > 0.5) p.style.background = '#00d4aa';
-                else if (Math.random() > 0.5) p.style.background = '#a855f7';
-                container.appendChild(p);
-            }
-        }
+        <div class="day-complete-banner" id="makeup-banner">
+            <div class="banner-title">🏆 DIA COMPLETO!</div>
+            <div class="banner-sub">Você completou todos os desafios de hoje. Incrível!</div>
+        </div>
 
-        let currentUser = null;
-        let devCurrentDay = 1;
-        let makeupCurrentDay = 1;
+        <div class="challenges-grid" id="makeup-challenges"></div>
 
-        function loadProgress() {
-            const saved = localStorage.getItem('jogoDaVida');
-            if (saved) {
-                const data = JSON.parse(saved);
-                devCurrentDay = data.dev?.currentDay || 1;
-                makeupCurrentDay = data.makeup?.currentDay || 1;
-                return data;
-            }
-            return {
-                dev: { completed: {}, stats: { saúde: 0, vitalidade: 0, corpo: 0, dinheiro: 0, relacionamento: 0, carreira: 0 }, streak: 0, totalXp: 0 },
-                makeup: { completed: {}, stats: { saúde: 0, vitalidade: 0, corpo: 0, dinheiro: 0, relacionamento: 0, carreira: 0 }, streak: 0, totalXp: 0 }
-            };
-        }
+        <div class="quote-box" id="makeup-quote"></div>
 
-        function saveProgress(data) {
-            localStorage.setItem('jogoDaVida', JSON.stringify(data));
-        }
+        <div class="stats-panel">
+            <h3 class="stats-title">📊 PROGRESSO POR ÁREA</h3>
+            <div class="stat-row">
+                <span class="stat-icon">💪</span>
+                <div class="stat-info">
+                    <div class="stat-label">Saúde</div>
+                    <div class="stat-bar"><div class="stat-fill saude" id="makeup-stat-saude"></div></div>
+                </div>
+                <span class="stat-value" id="makeup-val-saude">0%</span>
+            </div>
+            <div class="stat-row">
+                <span class="stat-icon">🔥</span>
+                <div class="stat-info">
+                    <div class="stat-label">Corpo</div>
+                    <div class="stat-bar"><div class="stat-fill corpo" id="makeup-stat-corpo"></div></div>
+                </div>
+                <span class="stat-value" id="makeup-val-corpo">0%</span>
+            </div>
+            <div class="stat-row">
+                <span class="stat-icon">💰</span>
+                <div class="stat-info">
+                    <div class="stat-label">Dinheiro</div>
+                    <div class="stat-bar"><div class="stat-fill dinheiro" id="makeup-stat-dinheiro"></div></div>
+                </div>
+                <span class="stat-value" id="makeup-val-dinheiro">0%</span>
+            </div>
+            <div class="stat-row">
+                <span class="stat-icon">💕</span>
+                <div class="stat-info">
+                    <div class="stat-label">Casal</div>
+                    <div class="stat-bar"><div class="stat-fill relacionamento" id="makeup-stat-relacionamento"></div></div>
+                </div>
+                <span class="stat-value" id="makeup-val-relacionamento">0%</span>
+            </div>
+            <div class="stat-row">
+                <span class="stat-icon">🚀</span>
+                <div class="stat-info">
+                    <div class="stat-label">Carreira</div>
+                    <div class="stat-bar"><div class="stat-fill carreira" id="makeup-stat-carreira"></div></div>
+                </div>
+                <span class="stat-value" id="makeup-val-carreira">0%</span>
+            </div>
+            <div class="stat-row">
+                <span class="stat-icon">✨</span>
+                <div class="stat-info">
+                    <div class="stat-label">Skincare & Beleza</div>
+                    <div class="stat-bar"><div class="stat-fill vitalidade" id="makeup-stat-vitalidade"></div></div>
+                </div>
+                <span class="stat-value" id="makeup-val-vitalidade">0%</span>
+            </div>
+        </div>
+    </div>
+</div>
 
-        function getIntensity(day) {
-            if (day <= 30) return 'iniciante';
-            if (day <= 90) return 'intermediario';
-            if (day <= 150) return 'avancado';
-            return 'lendario';
-        }
+<script>
+// ===== DATA =====
+const DEV_CATEGORIES = ['saude', 'vitalidade', 'corpo', 'dinheiro', 'relacionamento', 'carreira'];
+const MAKEUP_CATEGORIES = ['saude', 'corpo', 'dinheiro', 'relacionamento', 'carreira', 'vitalidade'];
 
-        function getIntensityLabel(day) {
-            const int = getIntensity(day);
-            return intensityLevels[int].label;
-        }
+const CATEGORY_LABELS = {
+    saude: 'Saúde', vitalidade: 'Vitalidade', corpo: 'Corpo',
+    dinheiro: 'Dinheiro', relacionamento: 'Casal', carreira: 'Carreira'
+};
 
-        function getChallenge(user, category, day, index) {
-            const isDev = user === 'dev';
-            const allChallenges = isDev ? devChallenges : makeupChallenges;
-            const intensity = getIntensity(day);
-            
-            const categoryArray = allChallenges[category][intensity];
-            const challengeIndex = ((day - 1) * 5 + index) % categoryArray.length;
-            
-            return categoryArray[challengeIndex];
-        }
+const QUOTES = [
+    "Grandes conquistas vêm de pequenos passos diários.",
+    "O músculo mais importante é o mental.",
+    "Consistência supera intensidade.",
+    "O sucesso é construído nos dias difíceis.",
+    "Você não precisa ser perfeito, precisa ser constante.",
+    "A excelência é a soma de pequenas vitórias diárias.",
+    "Cada desafio é uma oportunidade de evolução.",
+    "Disciplina é o caminho para a liberdade.",
+    "O progresso importa mais que a perfeição.",
+    "Suas escolhas de hoje são seus resultados de amanhã.",
+    "Evoluir é sair da zona de conforto com estratégia.",
+    "Consistência > Intensidade. Sempre.",
+    "O tempo passa para todos — aproveite-o com propósito.",
+    "Pequenas melhorias diárias levam a grandes resultados.",
+    "Você é mais forte do que pensa.",
+    "Cada dia é uma nova chance de superar você mesmo.",
+    "O hábito começa com uma escolha repetida.",
+    "Foco no processo, e os resultados vêm naturalmente.",
+    "A jornada de 180 dias começa com um único passo.",
+    "Construa o melhor você, um dia de cada vez."
+];
 
-        function selectUser(user) {
-            currentUser = user;
-            
-            // Remove active from all buttons
-            document.getElementById('btn-thales').classList.remove('active');
-            document.getElementById('btn-gyovanna').classList.remove('active');
-            
-            // Add active to selected
-            if (user === 'dev') {
-                document.getElementById('btn-thales').classList.add('active');
-            } else {
-                document.getElementById('btn-gyovanna').classList.add('active');
-            }
-            
-            // Hide all views
-            document.getElementById('dev-view').classList.remove('active');
-            document.getElementById('makeup-view').classList.remove('active');
-            
-            // Show selected view
-            document.getElementById(user + '-view').classList.add('active');
-            
-            const day = user === 'dev' ? devCurrentDay : makeupCurrentDay;
-            renderChallenges(user, day);
-            updateStats(user);
-            updateMonthSelector(user);
-        }
+const INTENSITY_LEVELS = {
+    iniciante: { label: 'Iniciante', cls: 'iniciante' },
+    intermediario: { label: 'Intermediário', cls: 'intermediario' },
+    avancado: { label: 'Avançado', cls: 'avancado' },
+    lendario: { label: 'Lendário', cls: 'lendario' }
+};
 
-        function changeDay(user, delta) {
-            if (user === 'dev') {
-                devCurrentDay = Math.max(1, Math.min(180, devCurrentDay + delta));
-                renderChallenges('dev', devCurrentDay);
-            } else {
-                makeupCurrentDay = Math.max(1, Math.min(180, makeupCurrentDay + delta));
-                renderChallenges('makeup', makeupCurrentDay);
-            }
-        }
+// ===== CHALLENGE DATA =====
+const DEV_CHALLENGES = {
+    saude: {
+        iniciante: [
+            "Meditar 10 minutos ao acordar",
+            "Beber 2L de água durante o dia",
+            "Dormir antes das 23h30",
+            "Caminhar 15 minutos após o almoço",
+            "Não usar celular 1h antes de dormir",
+            "Tomar café da manhã completo",
+            "Fazer 5 min de alongamento matinal",
+            "Escrever 3 coisas pelas quais é grato",
+            "Tomar 10 min de sol pela manhã",
+            "Comer pelo menos 1 fruta durante o dia",
+            "Fazer pausa de 5 min a cada hora de trabalho",
+            "Respirar fundo 10 vezes antes de dormir"
+        ],
+        intermediario: [
+            "Meditar 20 minutos com guia",
+            "Beber 3L de água com limão",
+            "Dormir antes das 22h30",
+            "Caminhar 30 minutos em ritmo moderado",
+            "Jejum de tela 2h antes de dormir",
+            "Café da manhã rico em proteína",
+            "Alongamento de 15 min pela manhã",
+            "Eliminar açúcar refinado por 24h",
+            "Tomar sol 15 min sem protetor",
+            "Praticar respiração diafragmática 10 min",
+            "Jantar antes das 20h",
+            "Ler 20 páginas de livro físico"
+        ],
+        avancado: [
+            "Meditar 30 minutos em silêncio",
+            "Beber 4L de água + eletrólitos",
+            "Dormir às 22h, acordar às 5h30",
+            "Corrida de 5km em ritmo constante",
+            "Jejum de tela 4h consecutivas",
+            "Praticar respiração box breathing 15 min",
+            "Yoga de 45 minutos",
+            "Jejum intermitente 16:8",
+            "Desintoxicação digital completa por 1 dia",
+            "Banho frio pela manhã (3 min)",
+            "Criar rotina matinal de 1h sem celular",
+            "Planejar cardápio saudável para a semana"
+        ],
+        lendario: [
+            "Meditação Wim Hof: 3 rodadas completas",
+            "Desafio 5L de água + jejum 20:4",
+            "Dormir 21h, acordar 5h (ritmo monge)",
+            "Corrida de 10km abaixo de 55 min",
+            "24h sem celular: desintoxicação total",
+            "Retiro de silêncio por 2h com journaling",
+            "Yoga avançado 1h30 + meditação 30 min",
+            "Jejum de 24h (apenas água e eletrólitos)",
+            "Plano de bem-estar de 30 dias: elaborar e iniciar",
+            "Ir dormir e acordar no mesmo horário por 7 dias"
+        ]
+    },
+    vitalidade: {
+        iniciante: [
+            "Café da manhã com 3 ovos e aveia",
+            "Exposição solar 15 min (vitamina D)",
+            "Caminhada ao ar livre 20 min",
+            "Beber 2.5L de água ao longo do dia",
+            "Dormir no mínimo 7h",
+            "Alongar 5 min ao acordar",
+            "Comer 1 banana antes do treino",
+            "Substituir café com açúcar por preto puro",
+            "Ouvir música energizante pela manhã 10 min",
+            "Rir intencionalmente: ver 5 min de comédia",
+            "Comer devagar e mastigar bem no almoço",
+            "Evitar ultraprocessados o dia todo"
+        ],
+        intermediario: [
+            "Café hipercalórico: aveia + whey + banana + pasta de amendoim",
+            "Treino de força 45 min (push/pull/legs)",
+            "Corrida intervalada 20 min (LISS)",
+            "Beber shake de proteína pós-treino",
+            "Tomar sol 20 min",
+            "Dormir 8h e acordar às 6h",
+            "Meditar 15 min ao acordar",
+            "Comer alimentos com zinco: carne, ovos, castanhas",
+            "Evitar açúcar e ultraprocessados o dia todo",
+            "Exercícios de respiração profunda 10 min",
+            "Comer 5 refeições balanceadas",
+            "Suplementar vitamina D3 + K2"
+        ],
+        avancado: [
+            "Treino pesado 1h30 com compound movements",
+            "Corrida de 6km em ritmo moderado-forte",
+            "Suplementação completa: whey + creatina + zinco + magnésio",
+            "Jejum intermitente 16:8 + café preto pela manhã",
+            "Meditação Wim Hof: 3 rodadas de respiração",
+            "Rotina: dormir 21:30h — acordar 5h",
+            "Treino matinal em jejum",
+            "Ducha fria de 3 minutos",
+            "Sessão de sauna 20 min (se disponível)",
+            "Plano alimentar: 3000kcal high protein por 1 dia",
+            "Comer 200g de proteína magra",
+            "Eliminar álcool e cafeína por 48h"
+        ],
+        lendario: [
+            "Treino duplo: força de manhã + cardio à noite",
+            "Corrida de 10km em jejum",
+            "Desafio 24h: zero açúcar, zero cafeína, zero tela",
+            "Rotina de campeão: 5h sono + 3h trabalho + 2h treino",
+            "HIIT 30 min de alta intensidade",
+            "Meditação 60 min + visualização de metas",
+            "Plano de suplementação avançado: ashwagandha + rhodiola",
+            "5km em menos de 22 min: desafio de performance",
+            "Retiro fitness: 2 dias de treino + dieta rigorosa",
+            "Bio-hacking: cold plunge + sauna + meditação no mesmo dia"
+        ]
+    },
+    corpo: {
+        iniciante: [
+            "30 min de exercício leve (caminhada/bike)",
+            "50 abdominais divididos em 2 séries",
+            "Alongamento matinal completo 10 min",
+            "Caminhada de 3km em ritmo leve",
+            "Postura correta durante todo o dia de trabalho",
+            "50 polichinelos em 2 séries",
+            "Prancha isométrica por 1 minuto",
+            "30 agachamentos com peso corporal",
+            "20 flexões (pode ser joelhos)",
+            "Caminhada de 15 min após o jantar",
+            "Subir escadas em vez de usar elevador o dia todo",
+            "10 min de mobilidade de quadril"
+        ],
+        intermediario: [
+            "45 min de exercício moderado a intenso",
+            "100 abdominais em 3 séries",
+            "Alongamento de 20 min com foco em mobilidade",
+            "Corrida contínua de 5km",
+            "HIIT 20 min: 30s sprint / 30s descanso",
+            "100 polichinelos + 50 burpees",
+            "Prancha 2 minutos",
+            "50 agachamentos com halteres",
+            "40 flexões em boa forma",
+            "Ciclismo ou natação 30 min",
+            "Treino de core: 4 exercícios, 3 séries cada",
+            "Corrida de 3km em ritmo forte"
+        ],
+        avancado: [
+            "Treino pesado 1h com foco em força",
+            "200 abdominais em 4 séries variadas",
+            "Alongamento profundo 30 min (yoga ou mobilidade)",
+            "Corrida de 7km em ritmo moderado-forte",
+            "HIIT 30 min com sprints de 200m",
+            "Prancha 4 minutos com variações",
+            "100 agachamentos com barra",
+            "80 flexões consecutivas",
+            "Treino em jejum (60-90 min)",
+            "Treino calistenia completo: 45 min",
+            "5 séries pesadas de deadlift",
+            "Corrida de montanha ou subida inclinada 40 min"
+        ],
+        lendario: [
+            "Sessão de treino de 2h variada",
+            "500 abdominais ao longo do dia",
+            "Yoga dinâmico 1h30",
+            "Corrida de 15km abaixo de 1h30",
+            "Desafio 1000 polichinelos no dia",
+            "Prancha 10 minutos com variações",
+            "200 agachamentos com peso",
+            "150 flexões ao longo do dia",
+            "Treino duplo (manhã + noite) com 2h total",
+            "Desafio calistenia: muscle-up ou handstand push-up",
+            "50km de ciclismo",
+            "Maratona de 42km (ou trail equivalente)"
+        ]
+    },
+    dinheiro: {
+        iniciante: [
+            "Ler 15 min sobre finanças pessoais",
+            "Revisar todos os gastos da semana",
+            "Criar planilha de orçamento mensal",
+            "Economizar R$30 hoje (não gastar)",
+            "Assistir 1 vídeo sobre investimentos",
+            "Pesquisar 1 ideia de renda extra viável",
+            "Definir 1 meta financeira clara para 6 meses",
+            "Cancelar 1 assinatura desnecessária",
+            "Ler 10 páginas de 'Pai Rico, Pai Pobre'",
+            "Organizar recibos e notas do mês",
+            "Calcular quanto gasta por dia em média",
+            "Criar regra 50/30/20 no orçamento"
+        ],
+        intermediario: [
+            "Ler 30 min sobre investimentos em renda variável",
+            "Revisar carteira de investimentos existente",
+            "Criar orçamento mensal detalhado por categoria",
+            "Economizar R$100 extra hoje",
+            "Estudar como funciona a bolsa de valores (B3)",
+            "Enviar proposta para 1 cliente potencial de serviço",
+            "Criar 1 produto digital ou serviço freelance",
+            "Análise completa de gastos por categoria",
+            "Estudar sobre imposto de renda para autônomo",
+            "Fazer networking com 2 pessoas da área de tech",
+            "Calcular sua taxa horária real de trabalho",
+            "Pesquisar ETFs ou fundos indexados brasileiros"
+        ],
+        avancado: [
+            "Estudar 1h finanças avançadas: valuation ou opções",
+            "Análise completa do portfólio de investimentos",
+            "Criar sistema automatizado de poupança",
+            "Economizar R$300 extra no mês",
+            "Aprofundar em ações: fundamentalista ou técnica",
+            "Criar produto digital ou curso mini e divulgar",
+            "Análise de fluxo de caixa dos últimos 3 meses",
+            "Estudar tributação para pessoa jurídica (MEI/ME)",
+            "3 reuniões de networking estratégico na semana",
+            "Construir fonte de renda passiva: afiliados, dividendos",
+            "Estudar trading: price action ou tape reading",
+            "Criar proposta de consultoria em IA"
+        ],
+        lendario: [
+            "Estudo profundo: Valuation de empresas abertas",
+            "Revisão total do patrimônio líquido",
+            "Dar o primeiro passo para abrir empresa (CNPJ/MEI)",
+            "Economizar R$1.000 no mês",
+            "Operar 1 trade real com critérios definidos",
+            "Lançar produto ou serviço com meta de R$5k",
+            "Due diligence completo em 2 empresas da B3",
+            "Estrutura tributária otimizada com contador",
+            "Dar 1 mentoria paga ou palestra remunerada",
+            "Criar plano de independência financeira em 5 anos",
+            "Atingir 10% da renda mensal investida",
+            "Montar portfólio passivo de dividendos"
+        ]
+    },
+    relacionamento: {
+        iniciante: [
+            "Preparar café da manhã especial para ela",
+            "Enviar mensagem carinhosa inesperada durante o dia",
+            "Jantar juntos sem celular por 30 min",
+            "Fazer 1 elogio genuíno e específico",
+            "Caminhar juntos por 20 min",
+            "Massagem nas mãos ou pés por 10 min",
+            "Tirar uma foto juntos e guardar a memória",
+            "Perguntar como foi o dia dela e ouvir com atenção",
+            "Escrever um bilhetinho carinhoso e deixar surpresa",
+            "Criar uma playlist especial para ela",
+            "Assistir 1 episódio do seriado favorito dela",
+            "Agradecer por algo específico que ela fez"
+        ],
+        intermediario: [
+            "Preparar café da manhã na cama",
+            "Planejar um date para o fim de semana",
+            "Jantar romântico: velas, sem celular, conversa boa",
+            "Escrever carta de 1 página para ela",
+            "Caminhar juntos 1h em lugar novo",
+            "Massagem nas costas por 30 min",
+            "Sessão de fotos juntos em lugar bonito",
+            "Conversa profunda de 1h sobre sonhos e metas",
+            "Planejar surpresa pequena para a semana",
+            "Planejar viagem juntos para os próximos 6 meses",
+            "Cozinhar refeição especial juntos",
+            "Ler juntos por 20 min (cada um seu livro)"
+        ],
+        avancado: [
+            "Café da manhã elaborado: suco, frutas, ovos, pão caseiro",
+            "Date day completo: atividade + refeição + passeio",
+            "Celular desligado por 4h juntos (modo offline)",
+            "Carta manuscrita de 3 páginas",
+            "Caminhada + piquenique em parque",
+            "Massagem profissional feita em casa (1h)",
+            "Sessão de fotos criativa com tema escolhido por ela",
+            "Terapia de casal: ler livro de relacionamento juntos",
+            "Planejar juntos os próximos 6 meses de metas comuns",
+            "Aprender algo novo juntos: dança, culinária, arte",
+            "1 dia inteiro dedicado a ela: fazer o que ela quiser",
+            "Vídeo compilação de memórias juntos"
+        ],
+        lendario: [
+            "Retiro romântico de 2 dias em local especial",
+            "Semana de detox digital: celular apenas 1h/dia juntos",
+            "Cerimônia de renovação de promessas (em casa, íntimo)",
+            "Carta de 10 páginas: história do casal + visão do futuro",
+            "Maratona de romance: 12h de atividades só para o casal",
+            "Day spa criativo feito em casa",
+            "Confissão profunda: contar um sonho que nunca contou",
+            "Plano de vida conjugal: 1, 5 e 10 anos",
+            "Criar álbum físico com fotos dos 180 dias",
+            "Surpresa que ela nunca vai esquecer",
+            "Viajar para o lugar que ela sempre quis conhecer",
+            "Criar tradição nova que virou de vocês dois"
+        ]
+    },
+    carreira: {
+        iniciante: [
+            "Estudar 1h de IA/ML: novo conceito ou ferramenta",
+            "Contribuir com 1 commit em projeto open source",
+            "Atualizar 1 seção do portfólio no GitHub/site",
+            "Ler 1 paper técnico de IA (resumo executivo)",
+            "Compartilhar 1 aprendizado no LinkedIn",
+            "Explorar 1 API nova (OpenAI, Anthropic, Gemini)",
+            "Completar 1 módulo de curso técnico",
+            "Fazer um projeto pet de 1h",
+            "Ler documentação de biblioteca relevante",
+            "Estudar arquitetura de software 30 min",
+            "Resolver 1 problema no LeetCode ou HackerRank",
+            "Assistir palestra técnica no YouTube (30 min)"
+        ],
+        intermediario: [
+            "Construir mini-projeto completo com IA em 2h",
+            "Contribuir em open source: PR ou issue bem documentada",
+            "Atualizar portfólio com projeto novo",
+            "Ler paper completo de IA e fazer resumo",
+            "Escrever post técnico no LinkedIn ou Dev.to",
+            "Explorar Fine-tuning ou RAG pipeline na prática",
+            "Completar módulo de curso avançado (2h)",
+            "Criar API REST ou endpoint funcional",
+            "Estudar LLMs: arquitetura Transformer profundo",
+            "Fazer code review em projeto de terceiro",
+            "Estudar DevOps básico: Docker, CI/CD",
+            "Mentoria com colega da área: 1h de troca"
+        ],
+        avancado: [
+            "Construir produto completo com IA em 4h",
+            "Liderar contribuição significativa em open source",
+            "Portfólio com case de negócio documentado",
+            "Submeter paper ou artigo técnico",
+            "Palestra ou workshop técnico para grupo",
+            "Implementar pipeline completo de ML em produção",
+            "Curso técnico: finalizar módulo avançado",
+            "Criar dataset customizado e treinar modelo small",
+            "Publicar ferramenta open source com README completo",
+            "Fechar contrato de consultoria em IA",
+            "Criar aula ou tutorial técnico gravado",
+            "Sistema multi-agent funcional: build e documentar"
+        ],
+        lendario: [
+            "Lançar produto SaaS com IA e primeiros usuários",
+            "Contribuição reconhecida em projeto open source relevante",
+            "Portfolio internacional: projeto com impacto real",
+            "Publicação em conferência ou veículo técnico",
+            "10 projetos de IA no portfolio com resultados medidos",
+            "Criar masterclass paga ou conteúdo de referência",
+            "Liderar equipe técnica em projeto de IA real",
+            "Brand pessoal: referência reconhecida na área",
+            "Primeiro contrato enterprise de consultoria em IA",
+            "Criar startup ou spin-off de tecnologia",
+            "Falar em evento ou podcast da área",
+            "Primeiro SaaS com MRR positivo"
+        ]
+    }
+};
 
-        function renderChallenges(user, day) {
+const MAKEUP_CHALLENGES = {
+    saude: {
+        iniciante: [
+            "Meditar 10 minutos pela manhã",
+            "Beber 2L de água ao longo do dia",
+            "Dormir antes das 22h30",
+            "Tomar café da manhã com proteína (iogurte, ovos)",
+            "Rotina de skincare matinal completa",
+            "Caminhar 20 min ao ar livre",
+            "Tomar sol 10 min pela manhã",
+            "Escrever 3 gratidões antes de dormir",
+            "Alongar 5 min ao acordar",
+            "Usar protetor solar FPS 50+ todos os dias",
+            "Evitar celular 1h antes de dormir",
+            "Comer pelo menos 2 frutas no dia"
+        ],
+        intermediario: [
+            "Meditar 15 min com respiração guiada",
+            "Beber 2.5L de água com limão",
+            "Dormir antes das 22h",
+            "Café da manhã: proteína + carboidrato complexo + fruta",
+            "Rotina de skincare matinal + noturna completa",
+            "Caminhar 30 min ou fazer aula de dança",
+            "Eliminar açúcar refinado por 24h",
+            "Consumir colágeno + vitamina C",
+            "Facial gua sha ou rolo de quartzo 10 min",
+            "Jornada de gratidão: escrever carta para si mesma",
+            "Jantar antes das 20h",
+            "Respiração 4-7-8 antes de dormir"
+        ],
+        avancado: [
+            "Meditação 25 min em silêncio total",
+            "3L de água + suplementação (colágeno, biotina, ômega 3)",
+            "Dormir às 21:30h, acordar às 6h",
+            "Eliminar ultraprocessados por 3 dias",
+            "Facial completo: esfoliação, máscara, hidratação",
+            "Corrida ou bike 30 min",
+            "Aula de yoga ou pilates",
+            "Desintoxicação digital: 4h sem redes sociais",
+            "Journaling de 20 min: reflexão pessoal",
+            "Programar alimentação saudável para 7 dias",
+            "Cuidado com postura ao trabalhar (ergonomia)",
+            "Consulta com nutricionista (ou pesquisar cardápio)"
+        ],
+        lendario: [
+            "Rotina de bem-estar completa: meditação + exercício + alimentação perfeita",
+            "Desafio 7 dias: zero açúcar + 2h sem celular/dia",
+            "Plano de saúde e beleza de 30 dias: criar e iniciar",
+            "Spa day em casa: esfoliação corporal + facial + hidratação profunda",
+            "Jejum intermitente 16:8 por 5 dias seguidos",
+            "Dormir e acordar no mesmo horário por 7 dias",
+            "Montar kit de suplementação completo para pele e saúde",
+            "Desafio de hidratação: 3L de água por 14 dias",
+            "Retiro de autocuidado: 1 dia só para você",
+            "Criar rotina de saúde que dure além dos 180 dias"
+        ]
+    },
+    corpo: {
+        iniciante: [
+            "20 min de exercício leve (dança, caminhada)",
+            "Alongamento de 10 min pela manhã",
+            "Caminhada de 2km no ritmo confortável",
+            "Exercício facial: massagem linfática 10 min",
+            "Postura correta ao aplicar maquiagem",
+            "20 agachamentos + 10 flexões joelhos",
+            "Prancha por 40 segundos",
+            "Pilates iniciante 25 min (YouTube)",
+            "Corrida leve de 1.5km",
+            "Treino de glúteos 15 min",
+            "Caminhada de 20 min após o jantar",
+            "Exercício de respiração + fortalecimento core"
+        ],
+        intermediario: [
+            "35 min de exercício moderado",
+            "Pilates intermediário 30 min",
+            "Corrida de 3km em ritmo contínuo",
+            "100 abdominais divididos em séries",
+            "Prancha 2 min com variações",
+            "Treino de glúteos + pernas 40 min",
+            "Aula de jump ou zumba 35 min",
+            "Alongamento avançado 25 min",
+            "Facial yoga 15 min (tonificação do rosto)",
+            "Caminhada com subidas por 40 min",
+            "HIIT leve 20 min",
+            "Treino de resistência com elástico 30 min"
+        ],
+        avancado: [
+            "45 min de treino intenso (HIIT + força)",
+            "Pilates avançado 40 min",
+            "Corrida de 6km em ritmo moderado-forte",
+            "200 abdominais variados",
+            "Prancha 4 min + side planks",
+            "Treino funcional completo 45 min",
+            "Aula de boxe ou muay thai 40 min",
+            "Treino pesado de glúteos + posterior 50 min",
+            "Facial gua sha + exercícios faciais 20 min",
+            "Corrida intervalada 30 min",
+            "Yoga avançado 45 min",
+            "Treino de explosão: saltos e burpees 30 min"
+        ],
+        lendario: [
+            "1h30 de treino: força + cardio",
+            "Yoga 1h ou pilates avançado 1h",
+            "Corrida de 10km",
+            "300 abdominais no dia",
+            "Prancha 8 min com variações completas",
+            "Maratona de pilates: 1h30",
+            "Treino duplo: manhã (força) + noite (cardio)",
+            "Spartan challenge caseiro: 20 exercícios, 3 rounds",
+            "Transformação corporal: foto antes/depois + medidas",
+            "Competição pessoal: bater recorde de cárdio",
+            "15km corrida ou 3h de caminhada intensa",
+            "Rotina de treino que mantém por 30 dias seguidos"
+        ]
+    },
+    dinheiro: {
+        iniciante: [
+            "Estudar precificação de serviços de maquiagem",
+            "Organizar planilha de ganhos do mês",
+            "Pesquisar tendências de mercado beauty (2024/2025)",
+            "Economizar R$50 extra hoje",
+            "Criar ou revisar tabela de preços dos serviços",
+            "Atualizar lista de preços e pacotes",
+            "Assistir vídeo sobre marketing para maquiadoras",
+            "Definir meta de faturamento para o mês",
+            "Pesquisar preços de concorrentes locais",
+            "Calcular custo real de cada serviço (produtos + tempo)",
+            "Criar orçamento pessoal básico",
+            "Listar todos os gastos com produtos profissionais"
+        ],
+        intermediario: [
+            "Precificação avançada com margem de lucro definida",
+            "Orçamento mensal completo: pessoal + negócio",
+            "Estratégia de marketing para atrair novas clientes",
+            "Economizar R$150 extra",
+            "Criar pacote premium de serviços e divulgar",
+            "Enviar promoção para clientes antigas",
+            "Estudar funil de vendas para serviços de beleza",
+            "Análise detalhada de concorrentes",
+            "Gestão financeira de autônomo: separar contas",
+            "Investir em curso de aperfeiçoamento técnico",
+            "Criar programa de indicação: cliente indica + ganho",
+            "Parceria com fotógrafo ou salão da região"
+        ],
+        avancado: [
+            "Precificação expert: calcular valor hora + meta mensal",
+            "Sistema financeiro digital para o negócio",
+            "Funil completo: captação + atendimento + fidelização",
+            "Economizar R$400 extra",
+            "Lançar multi-serviços: noiva, formatura, editorial",
+            "Lançamento oficial de serviço ou pacote novo",
+            "Vendas com alta conversão: script de atendimento",
+            "Escalar negócio: contratar assistente ou parceria",
+            "Parcerias estratégicas: assessoras, fotógrafos, salões",
+            "Build marca pessoal: nome + logo + identidade visual",
+            "Criar sistema de agendamento online",
+            "Meta de R$5k+ no mês: criar plano de ação"
+        ],
+        lendario: [
+            "Mentoria de negócios de beleza com profissional",
+            "Patrimônio do negócio: valor da marca + equipamentos",
+            "Meta de faturamento R$10k em um mês",
+            "Economizar R$1.000 extra",
+            "Construir equipe ou delegar tarefas operacionais",
+            "Expansão: atender mais cidades ou modalidades",
+            "Modelo de franchising ou licenciamento da marca",
+            "Negócio 6 dígitos: plano e primeiros passos",
+            "Milestone: primeiro R$100k no ano",
+            "Criar impérios da beleza: escola, produto, serviço",
+            "Brand deal ou parceria com marca de cosméticos",
+            "Lançar curso online de maquiagem"
+        ]
+    },
+    relacionamento: {
+        iniciante: [
+            "Preparar café da manhã especial para ele",
+            "Tirar foto do casal e postar com carinho",
+            "Mensagem carinhosa surpresa durante o dia",
+            "Jantar sem celular — foco um no outro",
+            "Escrever 3 coisas que ama nele",
+            "Massagem nas mãos ou pés",
+            "Caminhar juntos 20 min",
+            "Elogio genuíno e específico",
+            "Conversa de 30 min sem distração",
+            "Criar playlist juntos",
+            "Assistir filme que ele escolher",
+            "Agradecer por algo que ele fez essa semana"
+        ],
+        intermediario: [
+            "Café da manhã elaborado para os dois",
+            "Planejar surpresa romântica para o fim de semana",
+            "Planejar date: atividade + refeição",
+            "Celular desligado por 2h juntos",
+            "Carta de amor de 1 página",
+            "Massagem completa nas costas 30 min",
+            "Movie night: pipoca + série favorita dele",
+            "Conversa profunda sobre sonhos e planos",
+            "Planejar viagem juntos",
+            "Selfie romântica em lugar novo",
+            "Cozinhar juntos: nova receita",
+            "Noite de jogos de tabuleiro ou cartas"
+        ],
+        avancado: [
+            "Café na cama com bandeja decorada",
+            "Date day completo: surpresa total para ele",
+            "Celular OFF por 4h — modo casal",
+            "Carta manuscrita de 3 páginas",
+            "Massagem tantrica caseira 1h",
+            "Sessão de fotos criativa do casal",
+            "Piquenique no parque com ele",
+            "Terapia de casal: ler capítulo de livro juntos",
+            "Planejar futuro: casa, casamento, filhos (sonhos)",
+            "Aprender algo juntos: culinária, dança, idioma",
+            "1 dia inteiro dedicado a ele: fazer o que ele quiser",
+            "Escrever história de amor de vocês dois"
+        ],
+        lendario: [
+            "Retiro romântico de 2 dias fora de casa",
+            "Semana detox digital: redes só 1h/dia",
+            "Cerimônia de renovação de promessas criativa",
+            "Carta de 10 páginas: passado + presente + futuro do casal",
+            "Maratona romance: 12h de atividades a dois",
+            "Day spa caseiro para os dois",
+            "Confissão profunda: sonho que nunca contou",
+            "Plano de vida conjugal: 1, 5 e 10 anos",
+            "Álbum físico dos 180 dias do jogo",
+            "Surpresa que ele nunca vai esquecer",
+            "Viajar para lugar que ele sempre quis ir",
+            "Criar tradição nova que é só de vocês dois"
+        ]
+    },
+    carreira: {
+        iniciante: [
+            "Estudar técnica nova de maquiagem (1 tutorial)",
+            "Criar 1 post no Instagram com técnica ou dica",
+            "Atualizar portfólio com foto recente",
+            "Assistir tutorial avançado no YouTube",
+            "Praticar look completo em si mesma",
+            "Estudar teoria de colorimetria 30 min",
+            "Criar cards de serviços para stories",
+            "Estudar iluminação para fotos de maquiagem",
+            "Atualizar bio do Instagram",
+            "Praticar técnica de contorno no rosto",
+            "Organizar kit de maquiagem profissional",
+            "Pesquisar tendências de maquiagem para a estação"
+        ],
+        intermediario: [
+            "Dominar técnica intermediária: cut crease ou smoky",
+            "Criar 3 posts de conteúdo educativo",
+            "Portfólio novo com looks diferentes por categoria",
+            "Tutorial gravado e editado de 5 min",
+            "Criar 4 looks completos: noiva, festa, editorial, dia",
+            "Colorimetria avançada: tons de pele + subtons",
+            "Reel de transformação antes/depois",
+            "Estudar Lightroom para edição de fotos de maquiagem",
+            "Praticar em amiga ou modelo",
+            "Criar série de stories educativos (5 cards)",
+            "Parceria com fotógrafo para book de makes",
+            "Estudar maquiagem artística ou fantasia"
+        ],
+        avancado: [
+            "Master técnica: airbrush, encapsulamento ou olho gato perfeito",
+            "Conteúdo consistente: 5 posts + 3 reels na semana",
+            "Portfólio profissional com 20+ looks categorizados",
+            "Gravar e editar tutorial avançado completo",
+            "6 looks avançados em session day",
+            "Correção colorida profissional: cobrir tatuagem ou mancha",
+            "Série de tutoriais: 5 episódios planejados",
+            "Criar estúdio fotográfico caseiro para fotos profissionais",
+            "Edição pro: Lightroom + Canva + Capcut",
+            "Mentoria de carreira com maquiadora referência",
+            "Lançar serviço de curso de maquiagem para iniciantes",
+            "Fazer maquiagem de noiva completa: do início ao fim"
+        ],
+        lendario: [
+            "Technique masterclass: técnica exclusiva sua",
+            "Construir marca própria com identidade visual completa",
+            "Portfólio internacional: submeter para agência ou editorial",
+            "Publicação em revista ou blog de beleza reconhecido",
+            "10 makes premium em session de 2 dias",
+            "Editorial de maquiagem completo: fotógrafo + modelo + tema",
+            "Maquiagem para TV, vídeo clip ou produção profissional",
+            "Brand ambassador de marca de cosméticos",
+            "Educadora reconhecida: curso com 50+ alunas",
+            "Impérios da beleza: escola + produto + serviço",
+            "Falar em evento ou podcast da área de beleza",
+            "Criar coleção de produto próprio (pigmento, paleta, gloss)"
+        ]
+    },
+    vitalidade: {  // For makeup = Skincare & Beleza category
+        iniciante: [
+            "Rotina de skincare matinal: limpeza + tônico + hidratante + FPS",
+            "Rotina noturna: demaquilante + sérum + hidratante",
+            "Beber água com colágeno + vitamina C",
+            "Massagem facial com rolo de quartzo 10 min",
+            "Aplicar máscara facial hidratante",
+            "Esfoliar o rosto (1x por semana)",
+            "Usar sérum de vitamina C pela manhã",
+            "Hidratar o corpo do pescoço aos pés",
+            "Usar ácido hialurônico antes do hidratante",
+            "Não dormir com maquiagem",
+            "Tomar sol com protetor e hidratar depois",
+            "Aplicar óleo de rosa mosqueta à noite"
+        ],
+        intermediario: [
+            "Rotina skincare 4 etapas + tratamento alvo (ácido ou retinol)",
+            "Gua sha + massagem linfática facial 15 min",
+            "Suplementação: biotina + colágeno + ômega 3 + zinco",
+            "Máscara de argila ou lama + massagem corporal",
+            "Aplicar niacinamida para poros e manchas",
+            "Peeling suave com AHA/BHA",
+            "Dermaplaning (raspagem) com lâmina própria",
+            "Cuidado com colo e mãos: hidratação + FPS",
+            "Estudar ingredientes: o que cada um faz na pele",
+            "Fazer unhas: cutícula + hidratação + esmalte",
+            "Cronograma capilar: hidratação profunda",
+            "Criar rotina de skincare para a noite com retinol"
+        ],
+        avancado: [
+            "Skincare avançado: bakuchiol + retinol + niacinamida + ácido",
+            "Micro-agulhamento caseiro com dermaroller limpo",
+            "LED facial 20 min (se tiver aparelho)",
+            "Facial profissional completo em esteticista",
+            "Estudo profundo de ingredientes: INCI + função",
+            "Criar rotina personalizada de skincare para tipo de pele",
+            "Peeling químico suave supervisionado",
+            "Mapeamento de manchas e plano de tratamento",
+            "Estudo de composição de produtos: aprender a ler rótulos",
+            "Cronograma capilar com proteína + hidratação + nutrição",
+            "Cuidado das sobrancelhas: design + crescimento",
+            "Esfoliação corporal com ingredientes naturais + hidratação"
+        ],
+        lendario: [
+            "Protocolo de rejuvenescimento facial: 30 dias de rotina avançada",
+            "Consulta com dermatologista + plano de tratamento personalizado",
+            "Dominar técnica de microblading ou laminação (observar profissional)",
+            "Criar linha de skincare: fórmulas naturais testadas",
+            "Rotina completa: rosto + corpo + cabelo + unhas em 1h",
+            "Protocolo capilar mensal: todo o crescimento e cuidado",
+            "Transformação de pele em 30 dias: registrar com fotos",
+            "Criar guia de skincare personalizado para clientes",
+            "Ensinar rotina de skincare para 5 pessoas próximas",
+            "Criar conteúdo de skincare educativo: série no Instagram"
+        ]
+    }
+};
+
+// ===== STATE =====
+let currentUser = null;
+let devCurrentDay = 1;
+let makeupCurrentDay = 1;
+
+function getIntensity(day) {
+    if (day <= 30) return 'iniciante';
+    if (day <= 90) return 'intermediario';
+    if (day <= 150) return 'avancado';
+    return 'lendario';
+}
+
+function getXP(day) {
+    const intensity = getIntensity(day);
+    return intensity === 'lendario' ? 25 : intensity === 'avancado' ? 20 : intensity === 'intermediario' ? 15 : 10;
+}
+
+function loadProgress() {
+    try {
+        const saved = localStorage.getItem('jogoDaVida_v2');
+        if (saved) return JSON.parse(saved);
+    } catch(e) {}
+    return {
+        dev: { completed: {}, stats: {saude:0, vitalidade:0, corpo:0, dinheiro:0, relacionamento:0, carreira:0}, streak: 0, totalXp: 0, currentDay: 1, lastCompletedDay: null },
+        makeup: { completed: {}, stats: {saude:0, corpo:0, dinheiro:0, relacionamento:0, carreira:0, vitalidade:0}, streak: 0, totalXp: 0, currentDay: 1, lastCompletedDay: null }
+    };
+}
+
+function saveProgress(data) {
+    localStorage.setItem('jogoDaVida_v2', JSON.stringify(data));
+}
+
+function getChallenge(user, category, day, index) {
+    const pool = user === 'dev' ? DEV_CHALLENGES : MAKEUP_CHALLENGES;
+    const intensity = getIntensity(day);
+    const arr = pool[category][intensity];
+    return arr[((day - 1) * 7 + index * 3) % arr.length];
+}
+
+function getChallengeDesc(user, category, day) {
+    const pool = user === 'dev' ? DEV_CHALLENGES : MAKEUP_CHALLENGES;
+    const intensity = getIntensity(day);
+    const arr = pool[category][intensity];
+    // Return a tip from adjacent item
+    const tip = arr[(((day - 1) * 7 + 11)) % arr.length];
+    return tip !== getChallenge(user, category, day, 0) ? '💡 ' + tip : '';
+}
+
+// ===== UI =====
+function selectUser(user) {
+    currentUser = user;
+    document.getElementById('welcome-screen').style.display = 'none';
+    document.getElementById('dev-view').classList.remove('active');
+    document.getElementById('makeup-view').classList.remove('active');
+    document.getElementById(user + '-view').classList.add('active');
+
+    const data = loadProgress();
+    devCurrentDay = data.dev.currentDay || 1;
+    makeupCurrentDay = data.makeup.currentDay || 1;
+
+    const day = user === 'dev' ? devCurrentDay : makeupCurrentDay;
+    renderMonths(user);
+    renderChallenges(user, day);
+    updateStats(user);
+}
+
+function goBack() {
+    document.getElementById('dev-view').classList.remove('active');
+    document.getElementById('makeup-view').classList.remove('active');
+    document.getElementById('welcome-screen').style.display = '';
+    currentUser = null;
+}
+
+function changeDay(user, delta) {
+    const data = loadProgress();
+    if (user === 'dev') {
+        devCurrentDay = Math.max(1, Math.min(180, devCurrentDay + delta));
+        data.dev.currentDay = devCurrentDay;
+    } else {
+        makeupCurrentDay = Math.max(1, Math.min(180, makeupCurrentDay + delta));
+        data.makeup.currentDay = makeupCurrentDay;
+    }
+    saveProgress(data);
+    const day = user === 'dev' ? devCurrentDay : makeupCurrentDay;
+    renderChallenges(user, day);
+    renderMonths(user);
+}
+
+function renderMonths(user) {
+    const container = document.getElementById(user + '-months');
+    const months = ['Jan', 'Fev', 'Mar', 'Abr', 'Mai', 'Jun'];
+    container.innerHTML = '';
+    const currentDay = user === 'dev' ? devCurrentDay : makeupCurrentDay;
+    const currentMonth = Math.floor((currentDay - 1) / 30);
+    months.forEach((m, i) => {
+        const btn = document.createElement('button');
+        btn.className = 'month-btn' + (i === currentMonth ? ' current' : '');
+        btn.textContent = 'Mês ' + (i + 1) + ' · ' + m;
+        btn.onclick = () => {
+            if (user === 'dev') devCurrentDay = i * 30 + 1;
+            else makeupCurrentDay = i * 30 + 1;
             const data = loadProgress();
-            const userData = data[user];
-            const intensity = getIntensity(day);
-            const intensityConfig = intensityLevels[intensity];
-
-            document.getElementById(`${user}-day-num`).textContent = day;
-            
-            const intensityBadge = document.getElementById(`${user}-intensity`);
-            intensityBadge.textContent = intensityConfig.label;
-            intensityBadge.className = `intensity-badge ${intensityConfig.class}`;
-
-            document.getElementById(`${user}-streak`).textContent = userData.streak;
-            document.getElementById(`${user}-total-xp`).textContent = userData.totalXp;
-
-            const quotesIndex = (day - 1) % quotes.length;
-            document.getElementById(`${user}-quote`).textContent = `"${quotes[quotesIndex]}"`;
-
-            const container = document.getElementById(`${user}-challenges`);
-            container.innerHTML = '';
-
-            const categoryLabels = {
-                saúde: 'Saúde',
-                vitalidade: 'Vitalidade',
-                corpo: 'Corpo',
-                dinheiro: 'Dinheiro',
-                relacionamento: 'Casal',
-                carreira: 'Carreira'
-            };
-
-            categories.forEach((category, index) => {
-                const challenge = getChallenge(user, category, day, index);
-                const isCompleted = userData.completed[`${day}-${category}`];
-                const xp = 10 + (intensity === 'lendario' ? 15 : intensity === 'avancado' ? 10 : 5);
-
-                const card = document.createElement('div');
-                card.className = `challenge-card ${category}`;
-                card.innerHTML = `
-                    <div class="challenge-header">
-                        <span class="category-badge ${category}">${categoryLabels[category]}</span>
-                        <span class="xp-badge">+${xp} XP</span>
-                    </div>
-                    <h3 class="challenge-title">${challenge}</h3>
-                    <div class="checkbox-wrapper">
-                        <label class="complete-checkbox ${isCompleted ? 'checked' : ''}" onclick="toggleChallenge('${user}', '${category}', ${day})">
-                            <input type="checkbox" ${isCompleted ? 'checked' : ''}>
-                            <span class="checkbox-custom">${isCompleted ? '✓' : ''}</span>
-                            <span class="checkbox-label">${isCompleted ? 'Concluído!' : 'Marcar como feito'}</span>
-                        </label>
-                    </div>
-                `;
-                container.appendChild(card);
-            });
-        }
-
-        function toggleChallenge(user, category, day) {
-            const data = loadProgress();
-            const key = `${day}-${category}`;
-            const wasCompleted = data[user].completed[key];
-            
-            const intensity = getIntensity(day);
-            const xp = 10 + (intensity === 'lendario' ? 15 : intensity === 'avancado' ? 10 : 5);
-
-            if (wasCompleted) {
-                data[user].completed[key] = false;
-                data[user].stats[category] = Math.max(0, data[user].stats[category] - xp);
-                data[user].totalXp = Math.max(0, data[user].totalXp - xp);
-            } else {
-                data[user].completed[key] = true;
-                data[user].stats[category] += xp;
-                data[user].totalXp += xp;
-
-                const allDone = categories.every(cat => data[user].completed[`${day}-${cat}`]);
-                if (allDone) {
-                    const yesterday = day - 1;
-                    const yesterdayAllDone = yesterday > 0 && categories.every(cat => data[user].completed[`${yesterday}-${cat}`]);
-                    if (yesterdayAllDone) {
-                        data[user].streak += 1;
-                    } else {
-                        data[user].streak = 1;
-                    }
-                }
-            }
-
+            if (user === 'dev') data.dev.currentDay = devCurrentDay;
+            else data.makeup.currentDay = makeupCurrentDay;
             saveProgress(data);
-            const currentDay = user === 'dev' ? devCurrentDay : makeupCurrentDay;
-            renderChallenges(user, currentDay);
-            updateStats(user);
-        }
-
-        function updateStats(user) {
-            const data = loadProgress();
-            const stats = data[user].stats;
-            
-            categories.forEach(cat => {
-                const percentage = Math.min(100, stats[cat]);
-                document.getElementById(`${user}-stat-${cat}`).style.width = percentage + '%';
-                document.getElementById(`${user}-val-${cat}`).textContent = percentage + '%';
-            });
-        }
-
-        function updateMonthSelector(user) {
-            const container = document.getElementById(`${user}-months`);
-            const months = ['Jan', 'Fev', 'Mar', 'Abr', 'Mai', 'Jun', 'Jul', 'Ago', 'Set', 'Out', 'Nov', 'Dez'];
-            container.innerHTML = '';
-            
-            const currentDay = user === 'dev' ? devCurrentDay : makeupCurrentDay;
-            const startMonth = Math.floor((currentDay - 1) / 30);
-            
-            for (let i = startMonth; i < Math.min(startMonth + 3, 12); i++) {
-                const btn = document.createElement('button');
-                btn.className = 'month-btn';
-                btn.textContent = months[i];
-                btn.onclick = () => {
-                    if (user === 'dev') {
-                        devCurrentDay = i * 30 + 1;
-                    } else {
-                        makeupCurrentDay = i * 30 + 1;
-                    }
-                    const day = user === 'dev' ? devCurrentDay : makeupCurrentDay;
-                    renderChallenges(user, day);
-                    updateMonthSelector(user);
-                };
-                container.appendChild(btn);
-            }
-        }
-
-        generateParticles();
-        const data = loadProgress();
-        if (data.dev.currentDay) devCurrentDay = data.dev.currentDay;
-        if (data.makeup.currentDay) makeupCurrentDay = data.makeup.currentDay;
-
-        // Add click listeners
-        document.getElementById('btn-thales').onclick = function() { 
-            alert('Clicou em Thales!');
-            selectUser('dev'); 
+            renderChallenges(user, i * 30 + 1);
+            renderMonths(user);
         };
-        document.getElementById('btn-gyovanna').onclick = function() { 
-            alert('Clicou em Gyovanna!');
-            selectUser('makeup'); 
-        };
-    </script>
+        container.appendChild(btn);
+    });
+}
+
+function renderChallenges(user, day) {
+    const data = loadProgress();
+    const ud = data[user];
+    const intensity = getIntensity(day);
+    const intensityConfig = INTENSITY_LEVELS[intensity];
+    const categories = user === 'dev' ? DEV_CATEGORIES : MAKEUP_CATEGORIES;
+
+    document.getElementById(user + '-day-num').textContent = day;
+    const badge = document.getElementById(user + '-intensity');
+    badge.textContent = intensityConfig.label;
+    badge.className = 'intensity-badge ' + intensityConfig.cls;
+
+    document.getElementById(user + '-streak').textContent = ud.streak;
+    document.getElementById(user + '-total-xp').textContent = ud.totalXp;
+
+    // Overall progress
+    const totalPossible = day * categories.length * getXP(day);
+    const totalEarned = ud.totalXp;
+    const pct = Math.min(100, Math.round((totalEarned / Math.max(1, day * categories.length * 10)) * 100));
+    document.getElementById(user + '-overall-bar').style.width = Math.min(100, pct) + '%';
+    document.getElementById(user + '-overall-pct').textContent = Math.min(100, pct) + '%';
+
+    // Quote
+    document.getElementById(user + '-quote').textContent = '"' + QUOTES[(day - 1) % QUOTES.length] + '"';
+
+    // Day complete banner
+    const allDone = categories.every(cat => ud.completed[day + '-' + cat]);
+    const banner = document.getElementById(user + '-banner');
+    if (allDone) banner.classList.add('show');
+    else banner.classList.remove('show');
+
+    // Challenges
+    const container = document.getElementById(user + '-challenges');
+    container.innerHTML = '';
+    const xp = getXP(day);
+
+    const catEmojis = { saude:'💪', vitalidade:'⚡', corpo:'🔥', dinheiro:'💰', relacionamento:'💕', carreira:'🚀' };
+
+    categories.forEach((cat, idx) => {
+        const challenge = getChallenge(user, cat, day, idx);
+        const key = day + '-' + cat;
+        const isDone = !!ud.completed[key];
+
+        const card = document.createElement('div');
+        card.className = 'challenge-card ' + cat + (isDone ? ' done' : '');
+        card.innerHTML = `
+            <div class="challenge-header">
+                <span class="category-badge ${cat}">${catEmojis[cat]} ${CATEGORY_LABELS[cat]}</span>
+                <span class="xp-badge">+${xp} XP</span>
+            </div>
+            <h3 class="challenge-title">${challenge}</h3>
+            <button class="complete-btn ${isDone ? 'done' : ''}" onclick="toggleChallenge('${user}', '${cat}', ${day})">
+                ${isDone ? '✅ Concluído!' : '⬜ Marcar como feito'}
+            </button>
+        `;
+        container.appendChild(card);
+    });
+}
+
+function toggleChallenge(user, category, day) {
+    const data = loadProgress();
+    const ud = data[user];
+    const key = day + '-' + category;
+    const xp = getXP(day);
+    const categories = user === 'dev' ? DEV_CATEGORIES : MAKEUP_CATEGORIES;
+
+    if (ud.completed[key]) {
+        ud.completed[key] = false;
+        ud.stats[category] = Math.max(0, (ud.stats[category] || 0) - xp);
+        ud.totalXp = Math.max(0, ud.totalXp - xp);
+    } else {
+        ud.completed[key] = true;
+        ud.stats[category] = (ud.stats[category] || 0) + xp;
+        ud.totalXp += xp;
+
+        // Streak logic
+        const allDoneToday = categories.every(cat => ud.completed[day + '-' + cat]);
+        if (allDoneToday) {
+            const prevDay = day - 1;
+            const prevAllDone = prevDay > 0 && categories.every(cat => ud.completed[prevDay + '-' + cat]);
+            ud.streak = prevAllDone ? (ud.streak + 1) : 1;
+            ud.lastCompletedDay = day;
+        }
+    }
+
+    saveProgress(data);
+    renderChallenges(user, day);
+    updateStats(user);
+}
+
+function updateStats(user) {
+    const data = loadProgress();
+    const stats = data[user].stats;
+    const categories = user === 'dev' ? DEV_CATEGORIES : MAKEUP_CATEGORIES;
+    categories.forEach(cat => {
+        const el = document.getElementById(user + '-stat-' + cat);
+        const val = document.getElementById(user + '-val-' + cat);
+        if (el && val) {
+            const raw = stats[cat] || 0;
+            const pct = Math.min(100, raw);
+            el.style.width = pct + '%';
+            val.textContent = Math.min(9999, raw) + ' XP';
+        }
+    });
+}
+
+function generateParticles() {
+    const container = document.getElementById('particles');
+    for (let i = 0; i < 35; i++) {
+        const p = document.createElement('div');
+        p.className = 'particle';
+        p.style.left = Math.random() * 100 + '%';
+        p.style.animationDelay = Math.random() * 15 + 's';
+        p.style.animationDuration = (15 + Math.random() * 10) + 's';
+        const colors = ['#ff6b35', '#00d4aa', '#a855f7', '#f7b731'];
+        p.style.background = colors[Math.floor(Math.random() * colors.length)];
+        container.appendChild(p);
+    }
+}
+
+// ===== INIT =====
+generateParticles();
+
+// Welcome stats: show combined XP
+(function() {
+    const data = loadProgress();
+    const el = document.getElementById('welcome-stats');
+    const devXP = data.dev.totalXp;
+    const makeupXP = data.makeup.totalXp;
+    if (devXP > 0 || makeupXP > 0) {
+        el.innerHTML = `
+            <div class="stat-pill"><span class="stat-pill-dot saude"></span>Thales: ${devXP} XP</div>
+            <div class="stat-pill"><span class="stat-pill-dot relacionamento"></span>Gyovanna: ${makeupXP} XP</div>
+        `;
+    }
+})();
+</script>
 </body>
 </html>
