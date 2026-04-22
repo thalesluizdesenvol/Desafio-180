@@ -1,0 +1,1388 @@
+/* ============================================
+   SLOTMESTRE v3.0 — APP.JS
+   Leve · Elegante · Sem dependências externas
+   ============================================ */
+'use strict';
+
+const APP_VERSION = '3.0.0';
+const STORAGE_KEYS = {
+  GAMES:    'sm_games_v3',
+  SOCIAL:   'sm_social_v3',
+  CLICKS:   'sm_clicks_v3',
+  SESSION:  'sm_admin_session',
+  ATTEMPTS: 'sm_login_attempts',
+  LOCKOUT:  'sm_lockout_until',
+  CREDS:    'sm_admin_creds',
+};
+
+const MAX_LOGIN_ATTEMPTS = 5;
+const LOCKOUT_DURATION_MS = 15 * 60 * 1000;
+const SESSION_DURATION_MS = 4 * 60 * 60 * 1000;
+
+const PROVIDER_META = {
+  pgsoft:    { name:'PG Soft',        color:'#E11D48', dot:'#E11D48' },
+  pragmatic: { name:'Pragmatic Play', color:'#F59E0B', dot:'#F59E0B' },
+  wg:        { name:'WG Casino',      color:'#8B5CF6', dot:'#8B5CF6' },
+};
+
+const DEFAULT_SOCIAL = { ig:'#', tg:'#', wa:'#' };
+
+/* ============================================
+   STORAGE
+   ============================================ */
+function store(key, val) {
+  try { localStorage.setItem(key, JSON.stringify(val)); return true; }
+  catch(e) { console.warn('Storage error', e); return false; }
+}
+function load(key, fallback = null) {
+  try { const r = localStorage.getItem(key); return r !== null ? JSON.parse(r) : fallback; }
+  catch { return fallback; }
+}
+
+function getGames() {
+  let g = load(STORAGE_KEYS.GAMES, null);
+  if (!g || !g.length) {
+    g = window.SlotMestreCatalog.buildFullCatalog();
+    store(STORAGE_KEYS.GAMES, g);
+  }
+  return g;
+}
+function saveGames(g) {
+  store(STORAGE_KEYS.GAMES, g);
+  try { window.dispatchEvent(new CustomEvent('sm:gamesUpdated')); } catch {}
+}
+function getSocial() { return load(STORAGE_KEYS.SOCIAL, DEFAULT_SOCIAL); }
+function saveSocial(s){ store(STORAGE_KEYS.SOCIAL, s); }
+
+/* ============================================
+   SECURITY
+   ============================================ */
+async function hashString(str) {
+  if (window.crypto && window.crypto.subtle) {
+    const enc = new TextEncoder().encode(str);
+    const buf = await window.crypto.subtle.digest('SHA-256', enc);
+    return Array.from(new Uint8Array(buf)).map(b => b.toString(16).padStart(2,'0')).join('');
+  }
+  let h = 0x811c9dc5;
+  for (let i = 0; i < str.length; i++) { h ^= str.charCodeAt(i); h = (h * 0x01000193) >>> 0; }
+  return h.toString(16);
+}
+function generateToken() {
+  const arr = new Uint8Array(32);
+  crypto.getRandomValues(arr);
+  return Array.from(arr).map(b=>b.toString(16).padStart(2,'0')).join('');
+}
+function createSession(token, expires) {
+  sessionStorage.setItem(STORAGE_KEYS.SESSION, JSON.stringify({ token, expires }));
+}
+function getSession() {
+  try {
+    const s = JSON.parse(sessionStorage.getItem(STORAGE_KEYS.SESSION));
+    if (!s) return null;
+    if (Date.now() > s.expires) { clearSession(); return null; }
+    return s;
+  } catch { return null; }
+}
+function clearSession() { sessionStorage.removeItem(STORAGE_KEYS.SESSION); }
+function isLoggedIn() { return getSession() !== null; }
+function refreshSession() {
+  const s = getSession();
+  if (s) createSession(s.token, Date.now() + SESSION_DURATION_MS);
+}
+
+function getLoginAttempts() { return parseInt(localStorage.getItem(STORAGE_KEYS.ATTEMPTS) || '0'); }
+function bumpLoginAttempts() {
+  const n = getLoginAttempts() + 1;
+  localStorage.setItem(STORAGE_KEYS.ATTEMPTS, String(n));
+  if (n >= MAX_LOGIN_ATTEMPTS) {
+    localStorage.setItem(STORAGE_KEYS.LOCKOUT, String(Date.now() + LOCKOUT_DURATION_MS));
+  }
+  return n;
+}
+function resetLoginAttempts() {
+  localStorage.removeItem(STORAGE_KEYS.ATTEMPTS);
+  localStorage.removeItem(STORAGE_KEYS.LOCKOUT);
+}
+function isLockedOut() {
+  const until = parseInt(localStorage.getItem(STORAGE_KEYS.LOCKOUT) || '0');
+  return Date.now() < until;
+}
+function lockoutRemainingMs() {
+  const until = parseInt(localStorage.getItem(STORAGE_KEYS.LOCKOUT) || '0');
+  return Math.max(0, until - Date.now());
+}
+
+const DEFAULT_CREDS = { user:'admin', pass:'slotmestre2026' };
+function getAdminCreds() { return load(STORAGE_KEYS.CREDS, DEFAULT_CREDS); }
+function saveAdminCreds(user, passHash) { store(STORAGE_KEYS.CREDS, { user, passHash }); }
+
+async function verifyLogin(user, pass) {
+  const c = getAdminCreds();
+  if (c.passHash) {
+    const h = await hashString(pass);
+    return user === c.user && h === c.passHash;
+  }
+  const ok = user === (c.user || DEFAULT_CREDS.user) && pass === (c.pass || DEFAULT_CREDS.pass);
+  if (ok) {
+    const h = await hashString(pass);
+    saveAdminCreds(user, h);
+  }
+  return ok;
+}
+
+function sanitize(str) {
+  const d = document.createElement('div');
+  d.textContent = String(str || '');
+  return d.innerHTML;
+}
+
+/* ============================================
+   HEADER
+   ============================================ */
+function initHeader() {
+  const h = document.getElementById('header');
+  if (!h) return;
+  window.addEventListener('scroll', () => h.classList.toggle('scrolled', window.scrollY > 50), { passive: true });
+
+  const hamburger = document.getElementById('hamburger');
+  const nav = document.getElementById('navLinks');
+  if (hamburger && nav) {
+    hamburger.addEventListener('click', () => {
+      const isOpen = nav.classList.toggle('open');
+      hamburger.classList.toggle('open', isOpen);
+    });
+    nav.querySelectorAll('.nav-link').forEach(l => {
+      l.addEventListener('click', () => {
+        nav.classList.remove('open');
+        hamburger.classList.remove('open');
+      });
+    });
+  }
+}
+
+/* ============================================
+   SOCIAL
+   ============================================ */
+function applySocialLinks() {
+  const s = getSocial();
+  const map = {
+    'hdr-ig':s.ig, 'hdr-tg':s.tg,
+    'hero-tg':s.tg,
+    'float-ig':s.ig, 'float-tg':s.tg,
+    'foot-ig':s.ig, 'foot-tg':s.tg,
+    'tgModalLink': s.tg,
+  };
+  Object.entries(map).forEach(([id, url]) => {
+    const el = document.getElementById(id);
+    if (el) el.href = (url && url !== '#') ? url : '#';
+  });
+}
+
+/* ============================================
+   COUNTERS
+   ============================================ */
+function animateCounters() {
+  document.querySelectorAll('[data-target]').forEach(el => {
+    const target = parseInt(el.dataset.target);
+    if (!target) return;
+    let current = 0;
+    const inc = Math.max(1, target / 60);
+    const timer = setInterval(() => {
+      current = Math.min(current + inc, target);
+      el.textContent = Math.floor(current);
+      if (current >= target) clearInterval(timer);
+    }, 16);
+  });
+}
+
+/* ============================================
+   TICKER
+   ============================================ */
+function renderTicker() {
+  const wrap = document.getElementById('tickerContent');
+  if (!wrap) return;
+  const games = getGames().filter(g => g.hot === 'fire');
+  const names = ['ana_luz','bia_vibes','carol_sortuda','dani_slots','juli_lucky','mari_bolada','nati_queen','sofia_r','lara_bet','gabi_play'];
+  const pick = () => names[Math.floor(Math.random() * names.length)];
+  const pickG = () => games[Math.floor(Math.random() * games.length)]?.name || 'Fortune Tiger';
+  const items = [
+    `🏆 @${pick()} ganhou R$${(1 + Math.random()*7).toFixed(1)}k em ${pickG()}`,
+    `🔥 Super vitória em ${pickG()}`,
+    `⭐ @${pick()} acertou rodada bônus em ${pickG()}`,
+    `💎 RTP MÁXIMO agora em ${pickG()}`,
+    `🎰 @${pick()} ganhou R$${(2 + Math.random()*10).toFixed(1)}k em ${pickG()}`,
+    `✨ @${pick()} deu sorte no ${pickG()}`,
+    `💖 @${pick()} ativou free spins em ${pickG()}`,
+    `🌸 @${pick()} com streak de vitórias em ${pickG()}`,
+  ];
+  const sep = '<span class="ticker-sep">✦</span>';
+  const line = items.join(sep);
+  wrap.innerHTML = `<span class="ticker-content">${line}${sep}${line}${sep}</span>`;
+}
+
+/* ============================================
+   CARDS GRID (INDEX)
+   ============================================ */
+function resolveThumbnail(game) {
+  // Se o usuário definiu URL customizada no admin, usa ela
+  if (game.img && game.img.trim()) return game.img;
+  // Caso contrário, delega para o catálogo (que tem URLs oficiais)
+  if (window.SlotMestreCatalog?.getImageUrl) {
+    return window.SlotMestreCatalog.getImageUrl(game);
+  }
+  return window.SlotMestreCatalog.generateThumbnail(game);
+}
+
+/**
+ * Instala handler de fallback em cascata em uma <img> recém-renderizada.
+ * Quando a URL principal falha (CDN fora, imagem removida, etc), tenta a próxima
+ * e, no último recurso, gera thumbnail SVG local.
+ */
+function attachImgFallback(imgEl, game) {
+  if (!imgEl || !game) return;
+  if (window.SlotMestreCatalog?.installImgFallback) {
+    window.SlotMestreCatalog.installImgFallback(imgEl, game);
+  } else {
+    // Fallback ultra simples
+    imgEl.onerror = () => {
+      imgEl.onerror = null;
+      imgEl.src = window.SlotMestreCatalog.generateThumbnail(game);
+    };
+  }
+}
+
+function renderCards(filter = 'all', search = '') {
+  const grid = document.getElementById('cardsGrid');
+  if (!grid) return;
+
+  const games = getGames();
+  let list = filter === 'all' ? games : games.filter(g => g.provider === filter);
+  if (search) {
+    const q = search.toLowerCase();
+    list = list.filter(g => g.name.toLowerCase().includes(q) || (PROVIDER_META[g.provider]?.name || '').toLowerCase().includes(q));
+  }
+
+  // atualizar contadores nas tabs
+  document.querySelectorAll('.tab').forEach(tab => {
+    const f = tab.dataset.filter;
+    const count = f === 'all' ? games.length : games.filter(g => g.provider === f).length;
+    const base = tab.dataset.originalName || tab.childNodes[0]?.textContent.trim() || '';
+    tab.dataset.originalName = base;
+    tab.innerHTML = `${base} <span class="tab-count">${count}</span>`;
+  });
+
+  if (!list.length) {
+    grid.innerHTML = `<div class="cards-empty"><div class="empty-icon">🎀</div><div>Nenhum jogo encontrado.</div></div>`;
+    updateLastUpdated();
+    return;
+  }
+
+  grid.innerHTML = '';
+  list.forEach((g, i) => {
+    const card = document.createElement('article');
+    card.className = 'game-card';
+    card.style.animationDelay = `${Math.min(i * 0.03, 0.5)}s`;
+    card.dataset.provider = g.provider;
+
+    const hasLink = g.link && g.link.trim() && g.link.trim() !== '#';
+    const href = hasLink ? g.link : '#';
+    const thumb = resolveThumbnail(g);
+    const prov = PROVIDER_META[g.provider] || { name: g.provider, color:'#C084FC' };
+
+    card.innerHTML = `
+      <div class="card-img-wrap">
+        <img src="${sanitize(thumb)}" alt="${sanitize(g.name)}" class="card-img" loading="lazy">
+        <div class="card-hot ${g.hot}">${g.hot === 'fire' ? '🔥 HOT' : '✨ Novo'}</div>
+        ${g.tag ? `<div class="card-tag">${sanitize(g.tag)}</div>` : ''}
+        <div class="card-rtp">RTP ${g.dist}%</div>
+        <div class="card-overlay">
+          <a href="${hasLink ? sanitize(href) : '#'}"
+             class="overlay-play${hasLink ? '' : ' no-link'}"
+             ${hasLink ? 'target="_blank" rel="noopener noreferrer"' : ''}
+             data-game-id="${g.id}">
+            ${hasLink ? '▶ Jogar Agora' : '⚙ Sem Link'}
+          </a>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="card-provider">
+          <span class="provider-dot" style="background:${prov.color}"></span>
+          <span class="provider-name">${sanitize(prov.name)}</span>
+        </div>
+        <h3 class="card-title">${sanitize(g.name)}</h3>
+        <div class="card-stats">
+          <div class="stat-item">
+            <span class="stat-label">RTP</span>
+            <span class="stat-value">${g.dist}%</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-label">Volatilidade</span>
+            <span class="stat-value">${g.hot === 'fire' ? 'Alta' : 'Média'}</span>
+          </div>
+        </div>
+        <a href="${hasLink ? sanitize(href) : '#'}"
+           class="card-cta${hasLink ? '' : ' no-link'}"
+           ${hasLink ? 'target="_blank" rel="noopener noreferrer"' : ''}
+           data-game-id="${g.id}">
+          ${hasLink ? 'Jogar Agora' : 'Em breve'}
+          ${hasLink ? '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 5l7 7-7 7"/></svg>' : ''}
+        </a>
+      </div>
+    `;
+
+    card.querySelectorAll('[data-game-id]').forEach(el => {
+      el.addEventListener('click', e => {
+        if (el.classList.contains('no-link')) { e.preventDefault(); return; }
+        trackClick(g.id);
+      });
+    });
+
+    // Fallback automático de imagem: CDN principal → CDN alternativo → SVG local
+    const imgEl = card.querySelector('.card-img');
+    if (imgEl) attachImgFallback(imgEl, g);
+
+    grid.appendChild(card);
+  });
+
+  updateLastUpdated();
+}
+
+function updateLastUpdated() {
+  const t = new Date().toLocaleTimeString('pt-BR', { hour:'2-digit', minute:'2-digit', second:'2-digit' });
+  const el = document.getElementById('lastUpdated');
+  if (el) el.textContent = t;
+  const hero = document.getElementById('heroLastUpdate');
+  if (hero) hero.textContent = t.slice(0,5);
+}
+
+function trackClick(gameId) {
+  const games = getGames();
+  const g = games.find(x => x.id === gameId);
+  if (g) {
+    g.clicks = (g.clicks || 0) + 1;
+    saveGames(games);
+  }
+}
+
+/* ============================================
+   FILTER / SORT
+   ============================================ */
+function initFilters() {
+  const tabs = document.querySelectorAll('.tab');
+  const getState = () => ({
+    filter: document.querySelector('.tab.active')?.dataset.filter || 'all',
+    search: document.getElementById('gameSearch')?.value.trim() || '',
+  });
+
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      tabs.forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      const s = getState();
+      renderCards(tab.dataset.filter, s.search);
+    });
+  });
+
+  const search = document.getElementById('gameSearch');
+  if (search) {
+    let t;
+    search.addEventListener('input', () => {
+      clearTimeout(t);
+      t = setTimeout(() => {
+        const s = getState();
+        renderCards(s.filter, s.search);
+      }, 200);
+    });
+  }
+}
+
+/* ============================================
+   TOAST
+   ============================================ */
+function showToast(msg, type = 'default') {
+  let t = document.querySelector('.toast');
+  if (!t) {
+    t = document.createElement('div');
+    t.className = 'toast';
+    document.body.appendChild(t);
+  }
+  t.textContent = msg;
+  t.className = `toast ${type} show`;
+  clearTimeout(t._timeout);
+  t._timeout = setTimeout(() => t.classList.remove('show'), 2500);
+}
+
+/* ============================================
+   AGE GATE
+   ============================================ */
+function initAgeGate() {
+  if (sessionStorage.getItem('sm_age_ok')) {
+    if (!sessionStorage.getItem('sm_tg_shown')) setTimeout(initTelegramModal, 1500);
+    return;
+  }
+  const overlay = document.getElementById('ageGate');
+  if (!overlay) return;
+  overlay.classList.add('show');
+
+  document.getElementById('ageYes')?.addEventListener('click', () => {
+    sessionStorage.setItem('sm_age_ok', '1');
+    overlay.classList.add('hide');
+    setTimeout(() => { overlay.style.display = 'none'; }, 500);
+    setTimeout(initTelegramModal, 800);
+  });
+
+  document.getElementById('ageNo')?.addEventListener('click', () => {
+    document.body.innerHTML = `
+      <div style="display:flex;align-items:center;justify-content:center;min-height:100vh;background:#1a0b2e;flex-direction:column;gap:18px;font-family:'Exo 2',sans-serif;color:#f0c3ff;text-align:center;padding:24px">
+        <div style="font-size:4.5rem">🚫</div>
+        <div style="font-size:1.6rem;color:#fff;font-family:'Playfair Display',serif;font-weight:700">Acesso Restrito</div>
+        <div style="max-width:420px;line-height:1.6">Este site é destinado exclusivamente a maiores de 18 anos.</div>
+      </div>`;
+  });
+}
+
+function initTelegramModal() {
+  if (sessionStorage.getItem('sm_tg_shown')) return;
+  sessionStorage.setItem('sm_tg_shown', '1');
+  const modal = document.getElementById('tgModal');
+  if (!modal) return;
+  modal.style.display = 'flex';
+  requestAnimationFrame(() => modal.classList.add('show'));
+
+  const s = getSocial();
+  const tgLink = document.getElementById('tgModalLink');
+  if (tgLink && s.tg && s.tg !== '#') tgLink.href = s.tg;
+
+  const closeModal = () => {
+    modal.classList.remove('show');
+    setTimeout(() => { modal.style.display = 'none'; }, 400);
+  };
+  document.getElementById('tgModalClose')?.addEventListener('click', closeModal);
+  document.getElementById('tgModalSkip')?.addEventListener('click', closeModal);
+  modal.addEventListener('click', e => { if (e.target === modal) closeModal(); });
+}
+
+/* ============================================
+   BACKGROUND CANVAS (suave, feminino)
+   ============================================ */
+function initBackgroundCanvas() {
+  const canvas = document.getElementById('bgCanvas');
+  if (!canvas) return;
+  const ctx = canvas.getContext('2d');
+
+  function resize() {
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+  }
+  resize();
+  window.addEventListener('resize', resize);
+
+  const particles = [];
+  const count = Math.min(35, Math.floor(window.innerWidth / 40));
+  const colors = ['rgba(244,114,182,', 'rgba(192,132,252,', 'rgba(251,191,36,', 'rgba(236,72,153,'];
+  for (let i = 0; i < count; i++) {
+    particles.push({
+      x: Math.random() * canvas.width,
+      y: Math.random() * canvas.height,
+      vx: (Math.random() - 0.5) * 0.2,
+      vy: (Math.random() - 0.5) * 0.2,
+      r: Math.random() * 2.5 + 0.5,
+      c: colors[Math.floor(Math.random() * colors.length)],
+      alpha: Math.random() * 0.4 + 0.1,
+    });
+  }
+
+  function draw() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    particles.forEach(p => {
+      p.x += p.vx;
+      p.y += p.vy;
+      if (p.x < 0 || p.x > canvas.width) p.vx *= -1;
+      if (p.y < 0 || p.y > canvas.height) p.vy *= -1;
+      ctx.beginPath();
+      ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+      ctx.fillStyle = p.c + p.alpha + ')';
+      ctx.fill();
+    });
+    requestAnimationFrame(draw);
+  }
+  draw();
+}
+
+/* ============================================
+   INIT MAIN (INDEX)
+   ============================================ */
+function initMain() {
+  initBackgroundCanvas();
+  initHeader();
+  applySocialLinks();
+  renderTicker();
+  renderCards();
+  initFilters();
+  initAgeGate();
+
+  window.addEventListener('sm:gamesUpdated', () => {
+    const f = document.querySelector('.tab.active')?.dataset.filter || 'all';
+    const q = document.getElementById('gameSearch')?.value.trim() || '';
+    renderCards(f, q);
+    renderTicker();
+  });
+
+  // Counters
+  const statsEl = document.querySelector('.hero-stats');
+  if (statsEl) {
+    const obs = new IntersectionObserver(entries => {
+      if (entries[0].isIntersecting) { animateCounters(); obs.disconnect(); }
+    });
+    obs.observe(statsEl);
+  }
+
+  // Refresh ticker every minute
+  setInterval(renderTicker, 60000);
+}
+
+if (document.getElementById('cardsGrid')) {
+  document.addEventListener('DOMContentLoaded', initMain);
+}
+
+/* ============================================
+   ======== ADMIN ==========================
+   ============================================ */
+
+function initAdminLogin() {
+  const loginSection = document.getElementById('loginSection');
+  const adminApp = document.getElementById('adminApp');
+  if (!loginSection || !adminApp) return;
+
+  const showApp = () => {
+    loginSection.style.display = 'none';
+    adminApp.style.display = 'flex';
+    renderDashboard();
+  };
+  const showLogin = () => {
+    loginSection.style.display = 'flex';
+    adminApp.style.display = 'none';
+  };
+  const checkAuth = () => isLoggedIn() ? (showApp(), refreshSession()) : showLogin();
+
+  ['click','keydown','mousemove'].forEach(ev =>
+    document.addEventListener(ev, refreshSession, { passive: true })
+  );
+
+  setInterval(() => {
+    if (!isLoggedIn() && adminApp.style.display !== 'none') {
+      showLogin();
+      showToast('Sessão expirada. Faça login novamente.', 'error');
+    }
+  }, 60000);
+
+  const loginBtn = document.getElementById('loginBtn');
+  const loginError = document.getElementById('loginError');
+  const lockoutMsg = document.getElementById('lockoutMsg');
+  let lockoutTimer;
+
+  function updateLockoutUI() {
+    if (!isLockedOut()) {
+      if (lockoutMsg) lockoutMsg.style.display = 'none';
+      if (loginBtn) loginBtn.disabled = false;
+      return;
+    }
+    const remaining = Math.ceil(lockoutRemainingMs() / 60000);
+    if (lockoutMsg) {
+      lockoutMsg.textContent = `🔒 Conta bloqueada por ${remaining} min.`;
+      lockoutMsg.style.display = 'block';
+    }
+    if (loginBtn) loginBtn.disabled = true;
+    clearInterval(lockoutTimer);
+    lockoutTimer = setInterval(() => {
+      if (!isLockedOut()) { clearInterval(lockoutTimer); updateLockoutUI(); }
+      else {
+        const r = Math.ceil(lockoutRemainingMs() / 60000);
+        if (lockoutMsg) lockoutMsg.textContent = `🔒 Conta bloqueada por ${r} min.`;
+      }
+    }, 1000);
+  }
+  updateLockoutUI();
+
+  loginBtn?.addEventListener('click', async () => {
+    if (isLockedOut()) { updateLockoutUI(); return; }
+    const u = document.getElementById('adminUser')?.value.trim() || '';
+    const p = document.getElementById('adminPass')?.value || '';
+    loginBtn.disabled = true;
+    loginBtn.textContent = 'Verificando...';
+
+    if (!u || !p) {
+      if (loginError) { loginError.textContent = 'Preencha todos os campos.'; loginError.style.display = 'block'; }
+      loginBtn.disabled = false;
+      loginBtn.textContent = 'Entrar';
+      return;
+    }
+
+    const ok = await verifyLogin(u, p);
+    if (ok) {
+      resetLoginAttempts();
+      if (loginError) loginError.style.display = 'none';
+      createSession(generateToken(), Date.now() + SESSION_DURATION_MS);
+      checkAuth();
+    } else {
+      const attempts = bumpLoginAttempts();
+      const remaining = MAX_LOGIN_ATTEMPTS - attempts;
+      const msg = remaining > 0
+        ? `Usuário ou senha incorretos. ${remaining} tentativa(s) restante(s).`
+        : 'Usuário ou senha incorretos.';
+      if (loginError) { loginError.textContent = msg; loginError.style.display = 'block'; }
+      updateLockoutUI();
+      loginBtn.disabled = false;
+      loginBtn.textContent = 'Entrar';
+    }
+  });
+
+  document.getElementById('adminPass')?.addEventListener('keydown', e => {
+    if (e.key === 'Enter' && !loginBtn.disabled) loginBtn.click();
+  });
+  document.getElementById('adminUser')?.addEventListener('keydown', e => {
+    if (e.key === 'Enter') document.getElementById('adminPass')?.focus();
+  });
+
+  document.getElementById('logoutBtn')?.addEventListener('click', () => {
+    clearSession();
+    showLogin();
+    showToast('Sessão encerrada.', 'default');
+  });
+
+  checkAuth();
+}
+
+/* ---- ADMIN NAV ---- */
+function showAdminPage(page) {
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.sidebar-item').forEach(i => i.classList.remove('active'));
+
+  const pageEl = document.getElementById(`page-${page}`);
+  if (pageEl) pageEl.classList.add('active');
+  const sideEl = document.querySelector(`.sidebar-item[data-page="${page}"]`);
+  if (sideEl) sideEl.classList.add('active');
+
+  const titles = {
+    dashboard: 'Painel Geral',
+    insights:  'Insights Avançados',
+    jogos:     'Gerenciar Jogos',
+    social:    'Links Sociais',
+    settings:  'Configurações',
+  };
+  const t = document.getElementById('pageTitle');
+  if (t) t.textContent = titles[page] || page;
+
+  switch (page) {
+    case 'dashboard': renderDashboard(); break;
+    case 'insights':  renderInsightsPage(); break;
+    case 'jogos':     renderCardsConfig(); break;
+    case 'social':    renderSocialConfig(); break;
+    case 'settings':  renderSettingsPage(); break;
+  }
+}
+window.showAdminPage = showAdminPage;
+
+function initAdmin() {
+  if (!document.getElementById('adminApp')) return;
+  initAdminLogin();
+
+  document.querySelectorAll('.sidebar-item[data-page]').forEach(item => {
+    item.addEventListener('click', () => {
+      showAdminPage(item.dataset.page);
+      document.getElementById('sidebar')?.classList.remove('open');
+      document.getElementById('sidebarOverlay')?.classList.remove('show');
+    });
+  });
+
+  document.getElementById('mobileMenuBtn')?.addEventListener('click', () => {
+    document.getElementById('sidebar')?.classList.toggle('open');
+    document.getElementById('sidebarOverlay')?.classList.toggle('show');
+  });
+  document.getElementById('sidebarOverlay')?.addEventListener('click', () => {
+    document.getElementById('sidebar')?.classList.remove('open');
+    document.getElementById('sidebarOverlay')?.classList.remove('show');
+  });
+
+  // Session info
+  setInterval(() => {
+    const el = document.getElementById('sessionInfo');
+    if (!el) return;
+    if (isLoggedIn()) {
+      const s = getSession();
+      const remain = Math.max(0, Math.floor((s.expires - Date.now()) / 60000));
+      el.textContent = `Sessão: ${remain} min restantes`;
+    }
+  }, 15000);
+}
+
+/* ============================================
+   DASHBOARD
+   ============================================ */
+function renderDashboard() {
+  renderStatsCards();
+  renderTopGamesTable();
+  renderProviderChart();
+  renderHotRanking();
+}
+
+function renderStatsCards() {
+  const games = getGames();
+  const totalClicks = games.reduce((s,g) => s+(g.clicks||0), 0);
+  const sorted = [...games].sort((a,b) => (b.clicks||0)-(a.clicks||0));
+  const top = sorted[0];
+  const hotCount = games.filter(g => g.hot === 'fire').length;
+  const withLink = games.filter(g => g.link && g.link.trim() && g.link.trim() !== '#').length;
+
+  const el = document.getElementById('statsCards');
+  if (!el) return;
+  el.innerHTML = `
+    <div class="stat-card">
+      <div class="stat-card-icon" style="background:linear-gradient(135deg,#F472B6,#EC4899)">🎮</div>
+      <div class="stat-card-label">Total de Jogos</div>
+      <div class="stat-card-value">${games.length}</div>
+      <div class="stat-card-delta">${withLink} com link ativo</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-card-icon" style="background:linear-gradient(135deg,#C084FC,#9333EA)">👆</div>
+      <div class="stat-card-label">Total de Cliques</div>
+      <div class="stat-card-value">${totalClicks.toLocaleString('pt-BR')}</div>
+      <div class="stat-card-delta">Acumulado histórico</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-card-icon" style="background:linear-gradient(135deg,#FBBF24,#F59E0B)">🔥</div>
+      <div class="stat-card-label">Jogo Top</div>
+      <div class="stat-card-value sm">${top?.clicks ? sanitize(top.emoji + ' ' + top.name) : '—'}</div>
+      <div class="stat-card-delta">${top?.clicks || 0} cliques</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-card-icon" style="background:linear-gradient(135deg,#F87171,#EF4444)">⚡</div>
+      <div class="stat-card-label">Slots Quentes</div>
+      <div class="stat-card-value">${hotCount}</div>
+      <div class="stat-card-delta">Marcados como 🔥</div>
+    </div>
+  `;
+}
+
+function renderTopGamesTable() {
+  const games = [...getGames()].sort((a,b) => (b.clicks||0)-(a.clicks||0)).slice(0,10);
+  const el = document.getElementById('topGamesTable');
+  if (!el) return;
+  if (!games.length) { el.innerHTML = '<div class="empty">Nenhum jogo.</div>'; return; }
+  const topClicks = games[0]?.clicks || 1;
+  el.innerHTML = `
+    <table class="data-table">
+      <thead><tr><th>#</th><th>Jogo</th><th>Provedor</th><th>RTP</th><th>Cliques</th><th style="min-width:120px">Performance</th></tr></thead>
+      <tbody>
+        ${games.map((g,i) => {
+          const pct = Math.max(4, Math.round(((g.clicks||0) / topClicks) * 100));
+          return `
+          <tr>
+            <td><span class="rank-badge rank-${i<3?i+1:'n'}">${i===0?'🥇':i===1?'🥈':i===2?'🥉':i+1}</span></td>
+            <td><strong>${sanitize(g.emoji||'🎰')} ${sanitize(g.name)}</strong></td>
+            <td><span class="provider-tag prov-${g.provider}">${sanitize(PROVIDER_META[g.provider]?.name || g.provider)}</span></td>
+            <td>${g.dist}%</td>
+            <td><span class="badge-clicks">${g.clicks||0}</span></td>
+            <td><div class="perf-bar"><div class="perf-fill" style="width:${pct}%"></div></div></td>
+          </tr>
+        `}).join('')}
+      </tbody>
+    </table>
+  `;
+}
+
+function renderProviderChart() {
+  const games = getGames();
+  const byProv = { pgsoft:0, pragmatic:0, wg:0 };
+  const clicksByProv = { pgsoft:0, pragmatic:0, wg:0 };
+  games.forEach(g => {
+    if (byProv.hasOwnProperty(g.provider)) {
+      byProv[g.provider]++;
+      clicksByProv[g.provider] += (g.clicks||0);
+    }
+  });
+
+  const el = document.getElementById('providerChart');
+  if (!el) return;
+  const total = games.length || 1;
+  el.innerHTML = Object.entries(byProv).map(([p,n]) => {
+    const pct = Math.round((n / total) * 100);
+    const m = PROVIDER_META[p];
+    return `
+      <div class="donut-item">
+        <div class="donut-head">
+          <span class="donut-dot" style="background:${m.color}"></span>
+          <span class="donut-name">${m.name}</span>
+          <span class="donut-count">${n} jogos</span>
+        </div>
+        <div class="donut-track"><div class="donut-fill" style="width:${pct}%;background:linear-gradient(90deg, ${m.color}, ${m.color}dd)"></div></div>
+        <div class="donut-meta">${clicksByProv[p]} cliques · ${pct}% do catálogo</div>
+      </div>
+    `;
+  }).join('');
+}
+
+function renderHotRanking() {
+  const el = document.getElementById('hotRanking');
+  if (!el) return;
+  const hot = getGames().filter(g => g.hot === 'fire').slice(0, 6);
+  if (!hot.length) { el.innerHTML = '<div class="empty">Nenhum jogo quente ativo.</div>'; return; }
+  el.innerHTML = hot.map(g => `
+    <div class="hot-item">
+      <div class="hot-emoji">${g.emoji||'🎰'}</div>
+      <div class="hot-info">
+        <div class="hot-name">${sanitize(g.name)}</div>
+        <div class="hot-prov">${PROVIDER_META[g.provider]?.name || g.provider} · RTP ${g.dist}%</div>
+      </div>
+      <div class="hot-clicks">${g.clicks||0} <small>cliques</small></div>
+    </div>
+  `).join('');
+}
+
+/* ============================================
+   INSIGHTS (avançado)
+   ============================================ */
+function renderInsightsPage() {
+  const el = document.getElementById('insightsContent');
+  if (!el) return;
+
+  const games = getGames();
+  const totalClicks = games.reduce((s,g) => s+(g.clicks||0), 0);
+  const avgRtp = (games.reduce((s,g) => s+(g.rtp||g.dist||0), 0) / (games.length || 1)).toFixed(2);
+  const highRtp = games.filter(g => (g.rtp||g.dist) >= 97).length;
+  const noClick = games.filter(g => (g.clicks||0) === 0).length;
+
+  // Distribuição de RTP por faixa
+  const rtpBuckets = { '95–95.9':0, '96–96.5':0, '96.5–97':0, '97+':0 };
+  games.forEach(g => {
+    const r = g.rtp || g.dist || 0;
+    if (r < 96) rtpBuckets['95–95.9']++;
+    else if (r < 96.5) rtpBuckets['96–96.5']++;
+    else if (r < 97) rtpBuckets['96.5–97']++;
+    else rtpBuckets['97+']++;
+  });
+  const maxBucket = Math.max(...Object.values(rtpBuckets), 1);
+
+  // Top provedor por cliques
+  const provClicks = {};
+  games.forEach(g => { provClicks[g.provider] = (provClicks[g.provider]||0) + (g.clicks||0); });
+  const topProv = Object.entries(provClicks).sort((a,b) => b[1]-a[1])[0] || [];
+
+  // CTR estimado (jogos com link vs total cliques)
+  const withLink = games.filter(g => g.link && g.link.trim() && g.link.trim() !== '#').length;
+
+  el.innerHTML = `
+    <div class="stats-grid">
+      <div class="stat-card">
+        <div class="stat-card-icon" style="background:linear-gradient(135deg,#A78BFA,#8B5CF6)">📊</div>
+        <div class="stat-card-label">RTP Médio do Catálogo</div>
+        <div class="stat-card-value">${avgRtp}%</div>
+        <div class="stat-card-delta">${highRtp} jogos acima de 97%</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-card-icon" style="background:linear-gradient(135deg,#FB7185,#E11D48)">🏆</div>
+        <div class="stat-card-label">Provedor Líder (cliques)</div>
+        <div class="stat-card-value sm">${PROVIDER_META[topProv[0]]?.name || '—'}</div>
+        <div class="stat-card-delta">${topProv[1]||0} cliques</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-card-icon" style="background:linear-gradient(135deg,#60A5FA,#3B82F6)">🔗</div>
+        <div class="stat-card-label">Cobertura de Links</div>
+        <div class="stat-card-value">${Math.round((withLink/(games.length||1))*100)}%</div>
+        <div class="stat-card-delta">${withLink}/${games.length} jogos linkados</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-card-icon" style="background:linear-gradient(135deg,#FBBF24,#D97706)">💤</div>
+        <div class="stat-card-label">Jogos sem Engajamento</div>
+        <div class="stat-card-value">${noClick}</div>
+        <div class="stat-card-delta">Considere promover ou remover</div>
+      </div>
+    </div>
+
+    <div class="admin-panel">
+      <h3>🎯 Distribuição de RTP</h3>
+      <p class="panel-sub">Quantos jogos do catálogo estão em cada faixa de RTP</p>
+      <div class="rtp-buckets">
+        ${Object.entries(rtpBuckets).map(([label, n]) => `
+          <div class="rtp-bucket">
+            <div class="bucket-label">${label}%</div>
+            <div class="bucket-bar">
+              <div class="bucket-fill" style="width:${(n/maxBucket*100)}%"></div>
+            </div>
+            <div class="bucket-count">${n}</div>
+          </div>
+        `).join('')}
+      </div>
+    </div>
+
+    <div class="admin-panel">
+      <h3>🔥 Top 5 Jogos que Mais Convertem</h3>
+      <p class="panel-sub">Ranqueados pelo total de cliques no botão "Jogar"</p>
+      <div class="top-convert">
+        ${[...games].sort((a,b)=>(b.clicks||0)-(a.clicks||0)).slice(0,5).map((g,i) => `
+          <div class="convert-item">
+            <div class="convert-rank">${i+1}</div>
+            <div class="convert-emoji">${g.emoji||'🎰'}</div>
+            <div class="convert-info">
+              <div class="convert-name">${sanitize(g.name)}</div>
+              <div class="convert-meta">${PROVIDER_META[g.provider]?.name || g.provider} · RTP ${g.dist}%</div>
+            </div>
+            <div class="convert-clicks">
+              <span class="big">${g.clicks||0}</span>
+              <span class="sm">${totalClicks ? ((g.clicks||0)/totalClicks*100).toFixed(1) : 0}% do total</span>
+            </div>
+          </div>
+        `).join('')}
+        ${!totalClicks ? '<div class="empty">Ainda não há cliques registrados. Compartilhe o site para começar!</div>' : ''}
+      </div>
+    </div>
+
+    <div class="admin-panel">
+      <h3>📉 Jogos com Menor Performance</h3>
+      <p class="panel-sub">Considere atualizar links, imagem ou marcar como destaque</p>
+      <div class="low-perf">
+        ${[...games].filter(g => (g.clicks||0) === 0).slice(0,6).map(g => `
+          <div class="low-item">
+            <span class="low-emoji">${g.emoji||'🎰'}</span>
+            <span class="low-name">${sanitize(g.name)}</span>
+            <span class="low-tag ${g.link ? 'ok' : 'warn'}">${g.link ? 'Com link' : 'Sem link'}</span>
+          </div>
+        `).join('') || '<div class="empty">Todos os jogos têm engajamento! 🎉</div>'}
+      </div>
+    </div>
+  `;
+}
+
+/* ============================================
+   SOCIAL CONFIG
+   ============================================ */
+function renderSocialConfig() {
+  const s = getSocial();
+  const el = document.getElementById('socialConfigForm');
+  if (!el) return;
+  el.innerHTML = `
+    <div class="social-config">
+      <div class="social-input-row">
+        <label><span class="ig-ico">📸</span> Instagram</label>
+        <input class="form-input" id="cfg-ig" type="url" placeholder="https://instagram.com/seu_perfil" value="${sanitize(s.ig !== '#' ? s.ig : '')}">
+      </div>
+      <div class="social-input-row">
+        <label><span class="tg-ico">✈️</span> Telegram</label>
+        <input class="form-input" id="cfg-tg" type="url" placeholder="https://t.me/seu_canal" value="${sanitize(s.tg !== '#' ? s.tg : '')}">
+      </div>
+      <div class="social-input-row">
+        <label><span class="wa-ico">💬</span> WhatsApp</label>
+        <input class="form-input" id="cfg-wa" type="url" placeholder="https://wa.me/55DDNUMERO" value="${sanitize(s.wa !== '#' ? s.wa : '')}">
+      </div>
+      <div class="actions-row">
+        <button class="btn-save" id="saveSocialBtn">💾 Salvar Links</button>
+        <span class="success-msg" id="socialSaved">✅ Salvo!</span>
+      </div>
+    </div>
+
+    <div class="admin-panel" style="margin-top:24px">
+      <h3>🎨 Prévia dos Botões</h3>
+      <p class="panel-sub">Veja como os botões aparecem no site público</p>
+      <div class="social-preview">
+        <a class="social-preview-btn ig"><span>📸</span> Instagram</a>
+        <a class="social-preview-btn tg"><span>✈️</span> Telegram</a>
+        <a class="social-preview-btn wa"><span>💬</span> WhatsApp</a>
+      </div>
+    </div>
+  `;
+  document.getElementById('saveSocialBtn')?.addEventListener('click', () => {
+    const ig = document.getElementById('cfg-ig').value.trim() || '#';
+    const tg = document.getElementById('cfg-tg').value.trim() || '#';
+    const wa = document.getElementById('cfg-wa').value.trim() || '#';
+    saveSocial({ ig, tg, wa });
+    applySocialLinks();
+    const msg = document.getElementById('socialSaved');
+    if (msg) { msg.style.display = 'inline-block'; setTimeout(() => msg.style.display = 'none', 2500); }
+    showToast('Links salvos com sucesso!', 'success');
+  });
+}
+
+/* ============================================
+   CARDS CONFIG (GERENCIAR JOGOS)
+   ============================================ */
+let cardsFilterProvider = 'all';
+let cardsSearchQuery = '';
+
+function renderCardsConfig() {
+  const games = getGames();
+  const el = document.getElementById('cardsConfigList');
+  const headerEl = document.getElementById('cardsConfigHeader');
+  if (!el) return;
+
+  // Header com filtros
+  if (headerEl) {
+    const counts = { all: games.length };
+    Object.keys(PROVIDER_META).forEach(p => { counts[p] = games.filter(g => g.provider === p).length; });
+    headerEl.innerHTML = `
+      <div class="config-filters">
+        <input type="text" id="cardsSearch" class="form-input" placeholder="🔍 Buscar jogo..." value="${sanitize(cardsSearchQuery)}">
+        <div class="filter-chips">
+          <button class="chip ${cardsFilterProvider==='all'?'active':''}" data-p="all">Todos <span>${counts.all}</span></button>
+          <button class="chip ${cardsFilterProvider==='pgsoft'?'active':''}" data-p="pgsoft">PG Soft <span>${counts.pgsoft||0}</span></button>
+          <button class="chip ${cardsFilterProvider==='pragmatic'?'active':''}" data-p="pragmatic">Pragmatic <span>${counts.pragmatic||0}</span></button>
+          <button class="chip ${cardsFilterProvider==='wg'?'active':''}" data-p="wg">WG Casino <span>${counts.wg||0}</span></button>
+        </div>
+      </div>
+    `;
+    headerEl.querySelectorAll('.chip').forEach(c => c.addEventListener('click', () => {
+      cardsFilterProvider = c.dataset.p;
+      renderCardsConfig();
+    }));
+    let t;
+    document.getElementById('cardsSearch')?.addEventListener('input', function() {
+      clearTimeout(t);
+      t = setTimeout(() => { cardsSearchQuery = this.value.trim(); renderCardsConfig(); }, 250);
+    });
+  }
+
+  // Filtered list
+  let list = cardsFilterProvider === 'all' ? games : games.filter(g => g.provider === cardsFilterProvider);
+  if (cardsSearchQuery) {
+    const q = cardsSearchQuery.toLowerCase();
+    list = list.filter(g => g.name.toLowerCase().includes(q));
+  }
+
+  if (!list.length) {
+    el.innerHTML = '<div class="empty">Nenhum jogo encontrado com esse filtro.</div>';
+    return;
+  }
+
+  el.innerHTML = list.map(g => {
+    const thumb = resolveThumbnail(g);
+    return `
+      <div class="card-config-item" data-id="${g.id}">
+        <div class="card-config-thumb-wrap">
+          <img src="${sanitize(thumb)}" class="card-config-thumb" alt="">
+        </div>
+        <div class="card-config-body">
+          <div class="card-config-top">
+            <div>
+              <div class="card-config-name">${sanitize(g.name)}</div>
+              <div class="card-config-sub">
+                <span class="provider-tag prov-${g.provider}">${PROVIDER_META[g.provider]?.name || g.provider}</span>
+                <span>RTP ${g.dist}%</span>
+                <span>${g.clicks||0} cliques</span>
+              </div>
+            </div>
+            <button class="btn-remove" data-id="${g.id}">✕</button>
+          </div>
+          <div class="card-config-fields">
+            <div class="field-group field-group--full">
+              <label>🔗 Link do Jogo</label>
+              <input type="url" class="f-link" value="${sanitize(g.link||'')}" placeholder="https://... cole aqui o link de afiliado">
+            </div>
+            <div class="field-group field-group--full">
+              <label>🖼️ Imagem Customizada (opcional — deixe vazio para usar thumbnail padrão)</label>
+              <input type="url" class="f-img" value="${sanitize(g.img||'')}" placeholder="https://... URL da imagem oficial">
+            </div>
+            <div class="field-group">
+              <label>Nome</label>
+              <input type="text" class="f-name" value="${sanitize(g.name)}">
+            </div>
+            <div class="field-group">
+              <label>Provedor</label>
+              <select class="f-provider">
+                ${Object.entries(PROVIDER_META).map(([v,m]) =>
+                  `<option value="${v}" ${g.provider===v?'selected':''}>${m.name}</option>`
+                ).join('')}
+              </select>
+            </div>
+            <div class="field-group">
+              <label>RTP %</label>
+              <input type="number" class="f-dist" min="50" max="100" step="0.01" value="${g.rtp || g.dist}">
+            </div>
+            <div class="field-group">
+              <label>Status</label>
+              <select class="f-hot">
+                <option value="fire" ${g.hot==='fire'?'selected':''}>🔥 Quente</option>
+                <option value="cold" ${g.hot==='cold'?'selected':''}>✨ Normal</option>
+              </select>
+            </div>
+            <div class="field-group">
+              <label>Emoji</label>
+              <input type="text" class="f-emoji" value="${g.emoji||'🎰'}" maxlength="4">
+            </div>
+            <div class="field-group">
+              <label>Tag (opcional)</label>
+              <input type="text" class="f-tag" value="${sanitize(g.tag||'')}" placeholder="Ex: Tigrinho">
+            </div>
+          </div>
+        </div>
+      </div>
+    `;
+  }).join('');
+
+  // Autosave
+  el.querySelectorAll('.card-config-item').forEach(item => {
+    // Fallback de imagem no admin também
+    const itemId = parseInt(item.dataset.id, 10);
+    const itemGame = list.find(g => g.id === itemId);
+    const thumbEl = item.querySelector('.card-config-thumb');
+    if (thumbEl && itemGame) attachImgFallback(thumbEl, itemGame);
+
+    let saveTimer;
+    item.querySelectorAll('input,select').forEach(input => {
+      input.addEventListener('change', () => {
+        clearTimeout(saveTimer);
+        saveTimer = setTimeout(() => saveCardFromItem(item), 300);
+      });
+    });
+    item.querySelector('.f-link')?.addEventListener('input', () => {
+      clearTimeout(saveTimer);
+      saveTimer = setTimeout(() => saveCardFromItem(item), 500);
+    });
+  });
+
+  el.querySelectorAll('.btn-remove').forEach(btn => {
+    btn.addEventListener('click', () => {
+      if (!confirm('Remover este jogo do catálogo?')) return;
+      const id = parseInt(btn.dataset.id);
+      saveGames(getGames().filter(g => g.id !== id));
+      renderCardsConfig();
+      renderStatsCards();
+      showToast('Jogo removido.', 'default');
+    });
+  });
+}
+
+function saveCardFromItem(item) {
+  const id = parseInt(item.dataset.id);
+  const games = getGames();
+  const g = games.find(x => x.id === id);
+  if (!g) return;
+  g.name   = item.querySelector('.f-name')?.value || g.name;
+  g.emoji  = item.querySelector('.f-emoji')?.value || '🎰';
+  g.link   = item.querySelector('.f-link')?.value.trim() || '';
+  g.img    = item.querySelector('.f-img')?.value.trim() || '';
+  g.provider = item.querySelector('.f-provider')?.value || g.provider;
+  const rtpVal = parseFloat(item.querySelector('.f-dist')?.value) || g.dist;
+  g.rtp = Math.min(100, Math.max(50, rtpVal));
+  g.dist = Math.round(g.rtp);
+  g.hot = item.querySelector('.f-hot')?.value || g.hot;
+  g.tag = item.querySelector('.f-tag')?.value || '';
+  saveGames(games);
+  item.classList.add('saved-flash');
+  setTimeout(() => item.classList.remove('saved-flash'), 700);
+}
+
+window.addNewCard = function() {
+  const games = getGames();
+  const newId = Math.max(...games.map(g => g.id || 0), 0) + 1;
+  games.unshift({
+    id: newId,
+    name: 'Novo Jogo',
+    provider: 'pgsoft',
+    emoji: '🎰',
+    theme: 'chinese',
+    img: '',
+    link: '',
+    dist: 96,
+    rtp: 96,
+    minBet: 80,
+    maxBet: 70,
+    hot: 'cold',
+    tag: '',
+    clicks: 0,
+  });
+  saveGames(games);
+  renderCardsConfig();
+  showToast('Novo jogo adicionado!', 'success');
+  setTimeout(() => {
+    document.getElementById('cardsConfigList')?.firstElementChild?.scrollIntoView({ behavior: 'smooth', block: 'center' });
+  }, 100);
+};
+
+window.resetClicks = function() {
+  if (!confirm('Zerar TODOS os cliques? Esta ação não pode ser desfeita.')) return;
+  const games = getGames().map(g => ({ ...g, clicks: 0 }));
+  saveGames(games);
+  renderDashboard();
+  showToast('Cliques zerados!', 'default');
+};
+
+window.restoreCatalog = function() {
+  if (!confirm('Restaurar catálogo completo de fábrica? Todos os links e personalizações serão perdidos.')) return;
+  localStorage.removeItem(STORAGE_KEYS.GAMES);
+  getGames(); // rebuild
+  renderCardsConfig();
+  renderDashboard();
+  showToast('Catálogo restaurado!', 'success');
+};
+
+/* ============================================
+   SETTINGS
+   ============================================ */
+function renderSettingsPage() {
+  const el = document.getElementById('settingsPageContent');
+  if (!el) return;
+  const games = getGames();
+
+  el.innerHTML = `
+    <div class="admin-panel">
+      <h3>🔐 Segurança</h3>
+      <p class="panel-sub">Altere suas credenciais de acesso ao painel administrativo</p>
+      <div class="form-stack">
+        <div class="form-group">
+          <label class="form-label">Novo Usuário</label>
+          <input class="form-input" id="newUser" type="text" placeholder="Novo nome de usuário" autocomplete="username">
+        </div>
+        <div class="form-group">
+          <label class="form-label">Senha Atual</label>
+          <input class="form-input" id="currentPass" type="password" placeholder="Digite sua senha atual" autocomplete="current-password">
+        </div>
+        <div class="form-group">
+          <label class="form-label">Nova Senha (mínimo 8 caracteres)</label>
+          <input class="form-input" id="newPass" type="password" placeholder="Nova senha" autocomplete="new-password">
+          <div class="password-strength"><div class="password-strength-bar" id="pwdStrengthBar"></div></div>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Confirmar Nova Senha</label>
+          <input class="form-input" id="confirmPass" type="password" placeholder="Confirme a nova senha" autocomplete="new-password">
+        </div>
+        <button class="btn-save" id="btnChangePwd">🔐 Alterar Credenciais</button>
+        <span class="success-msg" id="pwdMsg"></span>
+      </div>
+    </div>
+
+    <div class="admin-panel">
+      <h3>💾 Backup & Restauração</h3>
+      <p class="panel-sub">Exporte ou importe todas as configurações do site</p>
+      <div class="actions-row">
+        <button class="btn-save" id="btnExportData">📤 Exportar Dados</button>
+        <label class="btn-save btn-secondary" style="cursor:pointer">📥 Importar Dados
+          <input type="file" id="importFile" accept=".json" style="display:none">
+        </label>
+        <button class="btn-save btn-danger" id="btnResetAll">⚠️ Resetar Tudo</button>
+      </div>
+    </div>
+
+    <div class="admin-panel">
+      <h3>📦 Catálogo</h3>
+      <p class="panel-sub">Gerencie o catálogo base de jogos</p>
+      <div class="actions-row">
+        <button class="btn-save" onclick="restoreCatalog()">🔄 Restaurar Catálogo Padrão</button>
+        <button class="btn-save btn-secondary" onclick="resetClicks()">🗑️ Zerar Todos os Cliques</button>
+      </div>
+    </div>
+
+    <div class="admin-panel">
+      <h3>ℹ️ Informações</h3>
+      <div class="info-grid">
+        <div class="info-item"><span>Versão</span><strong>${APP_VERSION}</strong></div>
+        <div class="info-item"><span>Total de Jogos</span><strong>${games.length}</strong></div>
+        <div class="info-item"><span>PG Soft</span><strong>${games.filter(g=>g.provider==='pgsoft').length}</strong></div>
+        <div class="info-item"><span>Pragmatic Play</span><strong>${games.filter(g=>g.provider==='pragmatic').length}</strong></div>
+        <div class="info-item"><span>WG Casino</span><strong>${games.filter(g=>g.provider==='wg').length}</strong></div>
+        <div class="info-item"><span>Tamanho em Storage</span><strong>${getStorageSize()} KB</strong></div>
+      </div>
+    </div>
+  `;
+
+  // Password strength
+  document.getElementById('newPass')?.addEventListener('input', function() {
+    const bar = document.getElementById('pwdStrengthBar');
+    if (!bar) return;
+    let score = 0;
+    if (this.value.length >= 8) score++;
+    if (/[A-Z]/.test(this.value)) score++;
+    if (/[0-9]/.test(this.value)) score++;
+    if (/[^A-Za-z0-9]/.test(this.value)) score++;
+    const pct = (score / 4) * 100;
+    const color = score <= 1 ? '#ef4444' : score === 2 ? '#f97316' : score === 3 ? '#eab308' : '#22c55e';
+    bar.style.width = pct + '%';
+    bar.style.background = color;
+  });
+
+  document.getElementById('btnChangePwd')?.addEventListener('click', async () => {
+    const newUser = document.getElementById('newUser').value.trim();
+    const currentPass = document.getElementById('currentPass').value;
+    const newPass = document.getElementById('newPass').value;
+    const confirmPass = document.getElementById('confirmPass').value;
+    const msg = document.getElementById('pwdMsg');
+    const setMsg = (txt, color) => {
+      msg.textContent = txt;
+      msg.style.display = 'block';
+      msg.style.color = color;
+    };
+
+    if (!currentPass || !newPass) return setMsg('❌ Preencha senha atual e nova senha.', '#ef4444');
+    if (newPass.length < 8) return setMsg('❌ Nova senha deve ter pelo menos 8 caracteres.', '#ef4444');
+    if (newPass !== confirmPass) return setMsg('❌ Senhas não coincidem.', '#ef4444');
+
+    const creds = getAdminCreds();
+    const currentUser = creds.user || DEFAULT_CREDS.user;
+    const ok = await verifyLogin(currentUser, currentPass);
+    if (!ok) return setMsg('❌ Senha atual incorreta.', '#ef4444');
+
+    const h = await hashString(newPass);
+    saveAdminCreds(newUser || currentUser, h);
+    setMsg('✅ Credenciais atualizadas! Faça login novamente.', '#22c55e');
+    setTimeout(() => { clearSession(); location.reload(); }, 2000);
+  });
+
+  document.getElementById('btnExportData')?.addEventListener('click', () => {
+    const data = {
+      version: APP_VERSION,
+      exportedAt: new Date().toISOString(),
+      games: getGames(),
+      social: getSocial(),
+    };
+    const blob = new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url; a.download = `slotmestre-backup-${Date.now()}.json`;
+    a.click(); URL.revokeObjectURL(url);
+    showToast('Backup exportado!', 'success');
+  });
+
+  document.getElementById('importFile')?.addEventListener('change', function() {
+    const file = this.files[0];
+    if (!file) return;
+    const reader = new FileReader();
+    reader.onload = e => {
+      try {
+        const data = JSON.parse(e.target.result);
+        if (data.games) saveGames(data.games);
+        if (data.social) saveSocial(data.social);
+        showToast('Dados importados!', 'success');
+        renderDashboard();
+      } catch {
+        showToast('Erro ao importar JSON.', 'error');
+      }
+    };
+    reader.readAsText(file);
+    this.value = '';
+  });
+
+  document.getElementById('btnResetAll')?.addEventListener('click', () => {
+    if (!confirm('ATENÇÃO: isso apaga TODOS os dados. Confirmar?')) return;
+    if (!confirm('Tem certeza? Esta ação é IRREVERSÍVEL.')) return;
+    Object.values(STORAGE_KEYS).forEach(k => localStorage.removeItem(k));
+    clearSession();
+    showToast('Sistema resetado. Recarregando...', 'default');
+    setTimeout(() => location.reload(), 1200);
+  });
+}
+
+function getStorageSize() {
+  try {
+    let size = 0;
+    Object.values(STORAGE_KEYS).forEach(k => {
+      const v = localStorage.getItem(k);
+      if (v) size += v.length;
+    });
+    return (size / 1024).toFixed(1);
+  } catch { return '?'; }
+}
+
+/* ============================================
+   INIT
+   ============================================ */
+document.addEventListener('DOMContentLoaded', () => {
+  if (document.getElementById('adminApp')) initAdmin();
+});

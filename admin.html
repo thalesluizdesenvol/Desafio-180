@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Admin – SlotMestre</title>
+<meta name="robots" content="noindex, nofollow">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;900&family=Rajdhani:wght@400;500;600;700&family=Exo+2:wght@300;400;600;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- ========================
+     LOGIN SCREEN
+     ======================== -->
+<div id="loginSection" class="admin-body">
+  <div class="login-card">
+    <div class="login-logo">
+      <div style="font-size:3rem;filter:drop-shadow(0 0 16px rgba(244,114,182,0.6))">🎰</div>
+      <div class="login-title">SlotMestre</div>
+      <div class="login-subtitle">Painel Administrativo</div>
+    </div>
+    <div class="form-group">
+      <label class="form-label">Usuário</label>
+      <input class="form-input" id="adminUser" type="text" placeholder="admin" autocomplete="username" spellcheck="false">
+    </div>
+    <div class="form-group">
+      <label class="form-label">Senha</label>
+      <input class="form-input" id="adminPass" type="password" placeholder="••••••••" autocomplete="current-password">
+    </div>
+    <button class="btn-login" id="loginBtn">Entrar no Painel 🔐</button>
+    <div class="login-error" id="loginError"></div>
+    <div class="lockout-msg" id="lockoutMsg"></div>
+    <div style="text-align:center;margin-top:20px">
+      <a href="index.html" class="login-back-link">← Voltar ao site</a>
+    </div>
+  </div>
+</div>
+
+<!-- ========================
+     ADMIN DASHBOARD
+     ======================== -->
+<div id="adminApp" class="admin-layout" style="display:none">
+
+  <!-- Sidebar Overlay (mobile) -->
+  <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-logo">
+      <a href="index.html" class="logo">
+        <span class="logo-icon-wrap" style="font-size:1.4rem">🎰</span>
+        <span class="logo-text" style="font-size:1.1rem">Slot<span class="logo-accent">Mestre</span></span>
+      </a>
+      <div class="sidebar-subtitle">ADMIN PANEL</div>
+    </div>
+
+    <nav class="sidebar-nav">
+      <a class="sidebar-item active" data-page="dashboard">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg>
+        Dashboard
+      </a>
+      <a class="sidebar-item" data-page="insights">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 3v18h18"/><path d="M7 14l4-4 4 4 5-7"/></svg>
+        Insights
+      </a>
+      <a class="sidebar-item" data-page="jogos">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/><circle cx="9" cy="10" r="1" fill="currentColor"/><circle cx="15" cy="10" r="1" fill="currentColor"/><circle cx="12" cy="10" r="1" fill="currentColor"/></svg>
+        Gerenciar Jogos
+      </a>
+      <a class="sidebar-item" data-page="social">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg>
+        Links Sociais
+      </a>
+
+      <div class="sidebar-sep"></div>
+
+      <a class="sidebar-item" data-page="settings">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+        Configurações
+      </a>
+
+      <a class="sidebar-item" href="index.html">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+        Ver Site
+      </a>
+    </nav>
+
+    <div class="sidebar-logout">
+      <div class="sidebar-session" id="sessionInfo"></div>
+      <button class="btn-logout" id="logoutBtn">🚪 Encerrar Sessão</button>
+    </div>
+  </aside>
+
+  <!-- MAIN CONTENT -->
+  <main class="admin-main">
+
+    <!-- Mobile top bar -->
+    <div class="admin-topbar">
+      <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Menu">☰</button>
+      <h1 class="admin-page-title" id="pageTitle"><span>Dashboard</span></h1>
+    </div>
+
+    <!-- ============ DASHBOARD ============ -->
+    <div class="page active" id="page-dashboard">
+      <div class="stats-grid" id="statsCards"></div>
+
+      <div class="admin-panel">
+        <h3>📊 Top Jogos (Cliques)</h3>
+        <div id="topGamesTable"></div>
+      </div>
+
+      <div class="admin-two-col">
+        <div class="admin-panel">
+          <h3>🎨 Distribuição por Provedor</h3>
+          <div id="providerChart"></div>
+        </div>
+        <div class="admin-panel">
+          <h3>🔥 Ranking Quente</h3>
+          <div id="hotRanking"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ============ INSIGHTS ============ -->
+    <div class="page" id="page-insights">
+      <div id="insightsContent"></div>
+    </div>
+
+    <!-- ============ JOGOS ============ -->
+    <div class="page" id="page-jogos">
+      <div class="admin-panel">
+        <h3>🎮 Configurar Cards de Jogos</h3>
+        <p class="panel-desc">
+          Alterações salvas automaticamente. Filtre por provedor ou busque pelo nome para encontrar rapidamente.
+        </p>
+        <div id="cardsConfigHeader"></div>
+        <div id="cardsConfigList" class="cards-config-list"></div>
+        <div class="panel-actions-footer">
+          <button class="btn-save btn-add-card" onclick="addNewCard()">➕ Adicionar Novo Jogo</button>
+          <button class="btn-save btn-secondary" onclick="restoreCatalog()">♻️ Restaurar Catálogo Padrão</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- ============ SOCIAL ============ -->
+    <div class="page" id="page-social">
+      <div class="admin-panel">
+        <h3>🔗 Links das Redes Sociais</h3>
+        <p class="panel-desc">Os links configurados aqui aparecem em todos os botões do site automaticamente.</p>
+        <div id="socialConfigForm"></div>
+      </div>
+
+      <div class="admin-panel">
+        <h3>🎨 Prévia dos Botões</h3>
+        <div class="social-preview-row">
+          <div class="social-preview-btn prev-ig">📸 Instagram</div>
+          <div class="social-preview-btn prev-tg">✈️ Telegram</div>
+          <div class="social-preview-btn prev-wa">💬 WhatsApp</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ============ SETTINGS ============ -->
+    <div class="page" id="page-settings">
+      <div id="settingsPageContent"></div>
+    </div>
+
+  </main>
+</div><!-- /adminApp -->
+
+<script src="catalog.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
