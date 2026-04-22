@@ -1563,15 +1563,16 @@ function renderSettingsPage() {
     </div>
 
     <div class="admin-panel" style="border: 2px dashed rgba(239, 68, 68, 0.4); background: linear-gradient(135deg, rgba(239,68,68,0.06), rgba(236,72,153,0.06));">
-      <h3>🧹 Começar do Zero (Catálogo Limpo)</h3>
-      <p class="panel-sub">Se você quer <strong>zerar o catálogo atual</strong> e montar um novo populando com o script de extração + "Aplicar + Criar Faltantes", use esta opção. Útil quando o catálogo padrão não bate com o que você tem disponível.</p>
+      <h3>🧹 Limpar Catálogo</h3>
+      <p class="panel-sub">Use estas opções para remover jogos indesejados do catálogo. Útil quando seu catálogo tem jogos padrão que você não quer e prefere só os extraídos de um concorrente real.</p>
       <div class="actions-row">
+        <button class="btn-save" id="btnKeepOnlyWithImg" style="background: linear-gradient(135deg, #10B981, #06B6D4);">🎯 Manter só os jogos com imagem oficial</button>
         <button class="btn-save btn-danger" id="btnClearCatalog">💣 Zerar TODOS os Jogos</button>
         <button class="btn-save btn-secondary" id="btnClearCatalogBackup">💾 Zerar (com Backup)</button>
       </div>
       <div id="clearCatalogMsg" style="display:none; padding: 10px; border-radius: 8px; font-size: 0.9rem; margin-top: 10px;"></div>
       <p class="panel-sub" style="margin-top: 12px; font-size: 0.82rem; opacity: 0.8;">
-        ⚠️ Depois de zerar: vá no painel <strong>"URLs de Imagens em Massa"</strong> abaixo, cole os dados do script do concorrente e clique em <strong>"🎁 Aplicar + Criar Faltantes"</strong>. Os jogos novos serão criados com provider/emoji/tema detectados automaticamente.
+        💡 <strong>"Manter só os jogos com imagem oficial"</strong> é o que você quer se já rodou o script do concorrente e quer deixar só os jogos que realmente receberam capa. Jogos sem URL (que ainda mostram SVG padrão) são deletados.
       </p>
     </div>
 
@@ -2004,6 +2005,38 @@ function renderSettingsPage() {
     el.style.color = color === 'green' ? '#4ADE80' : color === 'red' ? '#F87171' : '#CBD5E1';
     el.style.border = `1px solid ${color === 'green' ? '#22c55e' : color === 'red' ? '#ef4444' : '#475569'}`;
   };
+
+  // ========= 🎯 Manter apenas jogos com imagem oficial aplicada =========
+  document.getElementById('btnKeepOnlyWithImg')?.addEventListener('click', () => {
+    const games = getGames();
+    const comImg = games.filter(g => {
+      if (!g.img || !g.img.trim()) return false;
+      // Considera imagem oficial se não for data URI (SVG gerado) nem URL interna de placeholder
+      if (g.img.startsWith('data:')) return false;
+      return true;
+    });
+    const semImg = games.length - comImg.length;
+
+    if (comImg.length === 0) {
+      clearCatalogMsg(`⚠️ Nenhum jogo tem imagem oficial ainda. Rode o script do concorrente primeiro e aplique as URLs com "🎁 Aplicar + Criar Faltantes".`, 'red');
+      return;
+    }
+
+    if (semImg === 0) {
+      clearCatalogMsg(`✅ Todos os ${games.length} jogos já têm imagem oficial. Nada a remover.`, 'green');
+      return;
+    }
+
+    if (!confirm(`Isso vai DELETAR ${semImg} jogo(s) que ainda não receberam imagem oficial.\n\nVão ficar só ${comImg.length} jogos (os que você já aplicou URL do concorrente).\n\nContinuar?`)) return;
+
+    // Reatribui IDs sequenciais para manter a ordem
+    comImg.forEach((g, i) => g.id = i + 1);
+    saveGames(comImg);
+
+    clearCatalogMsg(`🎯 Catálogo limpo: mantidos ${comImg.length} jogos com imagem oficial · deletados ${semImg} jogos sem imagem.`, 'green');
+    renderCardsConfig();
+    if (typeof renderDashboard === 'function') renderDashboard();
+  });
 
   document.getElementById('btnClearCatalog')?.addEventListener('click', () => {
     const games = getGames();
