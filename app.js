@@ -6,7 +6,7 @@
 
 const APP_VERSION = '3.0.0';
 const STORAGE_KEYS = {
-  GAMES:    'sm_games_v3',
+  GAMES:    'sm_games_v4',
   SOCIAL:   'sm_social_v3',
   CLICKS:   'sm_clicks_v3',
   SESSION:  'sm_admin_session',
@@ -43,7 +43,21 @@ function getGames() {
   let g = load(STORAGE_KEYS.GAMES, null);
   if (!g || !g.length) {
     g = window.SlotMestreCatalog.buildFullCatalog();
+    // Limpa URLs externas que sabemos que falham (slotcatalog)
+    g.forEach(game => {
+      if (game.img && game.img.includes('slotcatalog.com')) game.img = '';
+    });
     store(STORAGE_KEYS.GAMES, g);
+  } else {
+    // Migração silenciosa: limpa URLs quebradas de storage antigo
+    let dirty = false;
+    g.forEach(game => {
+      if (game.img && game.img.includes('slotcatalog.com')) {
+        game.img = '';
+        dirty = true;
+      }
+    });
+    if (dirty) store(STORAGE_KEYS.GAMES, g);
   }
   return g;
 }
@@ -224,11 +238,16 @@ function renderTicker() {
    CARDS GRID (INDEX)
    ============================================ */
 function resolveThumbnail(game) {
-  // Se o usuário definiu URL customizada no admin, usa ela
-  if (game.img && game.img.trim()) return game.img;
-  // Caso contrário, delega para o catálogo (que tem URLs oficiais)
+  // URLs conhecidas como não-funcionais → ignora e usa o SVG
+  const brokenCDNs = ['slotcatalog.com'];
+  const isBroken = game.img && brokenCDNs.some(cdn => game.img.includes(cdn));
+
+  // Se o usuário definiu URL customizada no admin (e não é uma URL quebrada), usa ela
+  if (game.img && game.img.trim() && !isBroken) return game.img;
+
+  // Caso contrário, delega para o catálogo (que retorna SVG instantaneamente)
   if (window.SlotMestreCatalog?.getImageUrl) {
-    return window.SlotMestreCatalog.getImageUrl(game);
+    return window.SlotMestreCatalog.getImageUrl({ ...game, img: isBroken ? '' : game.img });
   }
   return window.SlotMestreCatalog.generateThumbnail(game);
 }
