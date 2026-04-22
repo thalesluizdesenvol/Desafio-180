@@ -20,7 +20,7 @@
     "maxBet": 500,
     "hot": "fire",
     "tag": "VIRAL",
-    "img": "https://slotcatalog.com/userfiles/image/game_logos/gates-of-olympus.jpg",
+    "img": "https://www.pragmaticplay.com/wp-content/uploads/2021/02/Gates-of-Olympus_339x180_EN.png",
     "link": "",
     "clicks": 0
   },
@@ -36,7 +36,7 @@
     "maxBet": 500,
     "hot": "fire",
     "tag": "NOVO",
-    "img": "https://slotcatalog.com/userfiles/image/game_logos/gates-of-olympus-1000.jpg",
+    "img": "https://www.pragmaticplay.com/wp-content/uploads/2023/12/Gates-of-Olympus-1000_339x180_EN.png",
     "link": "",
     "clicks": 0
   },
@@ -52,7 +52,7 @@
     "maxBet": 500,
     "hot": null,
     "tag": null,
-    "img": "https://slotcatalog.com/userfiles/image/game_logos/gates-of-olympus-super-scatter.jpg",
+    "img": "https://www.pragmaticplay.com/wp-content/uploads/2025/05/Gates-of-Olympus-Super-Scatter_339x180_EN.png",
     "link": "",
     "clicks": 0
   },
@@ -68,7 +68,7 @@
     "maxBet": 500,
     "hot": "fire",
     "tag": "TOP",
-    "img": "https://slotcatalog.com/userfiles/image/game_logos/sweet-bonanza.jpg",
+    "img": "https://www.pragmaticplay.com/wp-content/uploads/2019/06/Sweet-Bonanza_339x180_EN.png",
     "link": "",
     "clicks": 0
   },
@@ -84,7 +84,7 @@
     "maxBet": 500,
     "hot": "fire",
     "tag": null,
-    "img": "https://slotcatalog.com/userfiles/image/game_logos/sweet-bonanza-1000.jpg",
+    "img": "https://www.pragmaticplay.com/wp-content/uploads/2024/06/Sweet-Bonanza-1000_339x180_EN.png",
     "link": "",
     "clicks": 0
   },
@@ -100,7 +100,7 @@
     "maxBet": 500,
     "hot": null,
     "tag": null,
-    "img": "https://slotcatalog.com/userfiles/image/game_logos/sweet-bonanza-xmas.jpg",
+    "img": "",
     "link": "",
     "clicks": 0
   },
@@ -116,7 +116,7 @@
     "maxBet": 500,
     "hot": "fire",
     "tag": null,
-    "img": "https://slotcatalog.com/userfiles/image/game_logos/sugar-rush.jpg",
+    "img": "https://www.pragmaticplay.com/wp-content/uploads/2022/06/Sugar-Rush_339x180_EN.png",
     "link": "",
     "clicks": 0
   },
@@ -132,7 +132,7 @@
     "maxBet": 500,
     "hot": "fire",
     "tag": null,
-    "img": "https://slotcatalog.com/userfiles/image/game_logos/sugar-rush-1000.jpg",
+    "img": "https://www.pragmaticplay.com/wp-content/uploads/2024/04/Sugar-Rush-1000_339x180_EN.png",
     "link": "",
     "clicks": 0
   },
@@ -148,7 +148,7 @@
     "maxBet": 500,
     "hot": null,
     "tag": null,
-    "img": "https://slotcatalog.com/userfiles/image/game_logos/sugar-rush-xmas.jpg",
+    "img": "",
     "link": "",
     "clicks": 0
   },
@@ -164,7 +164,7 @@
     "maxBet": 500,
     "hot": "fire",
     "tag": null,
-    "img": "https://slotcatalog.com/userfiles/image/game_logos/big-bass-bonanza.jpg",
+    "img": "https://www.pragmaticplay.com/wp-content/uploads/2020/10/Big-Bass-Bonanza_339x180_EN.png",
     "link": "",
     "clicks": 0
   },
@@ -180,7 +180,7 @@
     "maxBet": 500,
     "hot": null,
     "tag": null,
-    "img": "https://slotcatalog.com/userfiles/image/game_logos/christmas-big-bass-bonanza.jpg",
+    "img": "",
     "link": "",
     "clicks": 0
   },
@@ -196,7 +196,7 @@
     "maxBet": 500,
     "hot": null,
     "tag": null,
-    "img": "https://slotcatalog.com/userfiles/image/game_logos/big-bass-splash.jpg",
+    "img": "https://www.pragmaticplay.com/wp-content/uploads/2022/08/Big-Bass-Splash_339x180_EN.png",
     "link": "",
     "clicks": 0
   },
@@ -212,7 +212,7 @@
     "maxBet": 500,
     "hot": null,
     "tag": null,
-    "img": "https://slotcatalog.com/userfiles/image/game_logos/big-bass-halloween.jpg",
+    "img": "https://www.pragmaticplay.com/wp-content/uploads/2022/10/Big-Bass-Halloween_339x180_EN.png",
     "link": "",
     "clicks": 0
   },
@@ -228,7 +228,7 @@
     "maxBet": 500,
     "hot": "fire",
     "tag": null,
-    "img": "https://slotcatalog.com/userfiles/image/game_logos/big-bass-king-midas.jpg",
+    "img": "",
     "link": "",
     "clicks": 0
   },
@@ -244,7 +244,7 @@
     "maxBet": 500,
     "hot": null,
     "tag": null,
-    "img": "https://slotcatalog.com/userfiles/image/game_logos/big-bass-amazon-xtreme.jpg",
+    "img": "",
     "link": "",
     "clicks": 0
   },
@@ -260,7 +260,7 @@
     "maxBet": 500,
     "hot": null,
     "tag": null,
-    "img": "https://slotcatalog.com/userfiles/image/game_logos/big-bass-day-at-the-races.jpg",
+    "img": "",
     "link": "",
     "clicks": 0
   },
@@ -276,7 +276,7 @@
     "maxBet": 500,
     "hot": null,
     "tag": null,
-    "img": "https://slotcatalog.com/userfiles/image/game_logos/big-bass-crash.jpg",
+    "img": "",
     "link": "",
     "clicks": 0
   },
@@ -292,7 +292,7 @@
     "maxBet": 500,
     "hot": "fire",
     "tag": null,
-    "img": "https://slotcatalog.com/userfiles/image/game_logos/starlight-princess.jpg",
+    "img": "https://www.pragmaticplay.com/wp-content/uploads/2021/07/Starlight-Princess_339x180_EN.png",
     "link": "",
     "clicks": 0
   },
@@ -308,7 +308,7 @@
     "maxBet": 500,
     "hot": "fire",
     "tag": null,
-    "img": "https://slotcatalog.com/userfiles/image/game_logos/starlight-princess-1000.jpg",
+    "img": "https://www.pragmaticplay.com/wp-content/uploads/2024/03/Starlight-Princess-1000_339x180_EN.png",
     "link": "",
     "clicks": 0
   },
@@ -324,7 +324,7 @@
     "maxBet": 500,
     "hot": null,
     "tag": null,
-    "img": "https://slotcatalog.com/userfiles/image/game_logos/starlight-princess-xmas.jpg",
+    "img": "",
     "link": "",
     "clicks": 0
   },
@@ -340,7 +340,7 @@
     "maxBet": 500,
     "hot": null,
     "tag": null,
-    "img": "https://slotcatalog.com/userfiles/image/game_logos/the-dog-house.jpg",
+    "img": "https://www.pragmaticplay.com/wp-content/uploads/2019/04/The-Dog-House_339x180_EN.png",
     "link": "",
     "clicks": 0
   },
@@ -356,7 +356,7 @@
     "maxBet": 500,
     "hot": "fire",
     "tag": null,
-    "img": "https://slotcatalog.com/userfiles/image/game_logos/the-dog-house-muttley-crew.jpg",
+    "img": "",
     "link": "",
     "clicks": 0
   },
@@ -372,7 +372,7 @@
     "maxBet": 500,
     "hot": null,
     "tag": null,
-    "img": "https://slotcatalog.com/userfiles/image/game_logos/the-dog-house-megaways.jpg",
+    "img": "https://www.pragmaticplay.com/wp-content/uploads/2020/08/The-Dog-House-Megaways_339x180_EN.png",
     "link": "",
     "clicks": 0
   },
@@ -388,7 +388,7 @@
     "maxBet": 500,
     "hot": null,
     "tag": null,
-    "img": "https://slotcatalog.com/userfiles/image/game_logos/the-dog-house-dog-or-alive.jpg",
+    "img": "",
     "link": "",
     "clicks": 0
   },
@@ -404,7 +404,7 @@
     "maxBet": 500,
     "hot": null,
     "tag": null,
-    "img": "https://slotcatalog.com/userfiles/image/game_logos/wolf-gold.jpg",
+    "img": "https://www.pragmaticplay.com/wp-content/uploads/2018/03/Wolf-Gold_339x180_EN.png",
     "link": "",
     "clicks": 0
   },
@@ -420,7 +420,7 @@
     "maxBet": 500,
     "hot": null,
     "tag": null,
-    "img": "https://slotcatalog.com/userfiles/image/game_logos/wild-west-gold.jpg",
+    "img": "https://www.pragmaticplay.com/wp-content/uploads/2020/05/Wild-West-Gold_339x180_EN.png",
     "link": "",
     "clicks": 0
   },
@@ -436,7 +436,7 @@
     "maxBet": 500,
     "hot": null,
     "tag": null,
-    "img": "https://slotcatalog.com/userfiles/image/game_logos/wild-west-gold-megaways.jpg",
+    "img": "",
     "link": "",
     "clicks": 0
   },
@@ -452,7 +452,7 @@
     "maxBet": 500,
     "hot": null,
     "tag": null,
-    "img": "https://slotcatalog.com/userfiles/image/game_logos/fruit-party.jpg",
+    "img": "https://www.pragmaticplay.com/wp-content/uploads/2020/10/Fruit-Party_339x180_EN.png",
     "link": "",
     "clicks": 0
   },
@@ -468,7 +468,7 @@
     "maxBet": 500,
     "hot": "fire",
     "tag": null,
-    "img": "https://slotcatalog.com/userfiles/image/game_logos/fruit-party-2.jpg",
+    "img": "",
     "link": "",
     "clicks": 0
   },
@@ -484,7 +484,7 @@
     "maxBet": 500,
     "hot": null,
     "tag": null,
-    "img": "https://slotcatalog.com/userfiles/image/game_logos/the-masked-song.jpg",
+    "img": "",
     "link": "",
     "clicks": 0
   },
@@ -500,7 +500,7 @@
     "maxBet": 500,
     "hot": null,
     "tag": null,
-    "img": "https://slotcatalog.com/userfiles/image/game_logos/aztec-gems.jpg",
+    "img": "https://www.pragmaticplay.com/wp-content/uploads/2018/07/Aztec-Gems_339x180_EN.png",
     "link": "",
     "clicks": 0
   },
@@ -516,7 +516,7 @@
     "maxBet": 500,
     "hot": null,
     "tag": null,
-    "img": "https://slotcatalog.com/userfiles/image/game_logos/aztec-gems-deluxe.jpg",
+    "img": "https://www.pragmaticplay.com/wp-content/uploads/2019/03/Aztec-Gems-Deluxe_339x180_EN.png",
     "link": "",
     "clicks": 0
   },
@@ -532,7 +532,7 @@
     "maxBet": 500,
     "hot": null,
     "tag": null,
-    "img": "https://slotcatalog.com/userfiles/image/game_logos/aztec-king.jpg",
+    "img": "",
     "link": "",
     "clicks": 0
   },
@@ -548,7 +548,7 @@
     "maxBet": 500,
     "hot": null,
     "tag": null,
-    "img": "https://slotcatalog.com/userfiles/image/game_logos/buffalo-king.jpg",
+    "img": "https://www.pragmaticplay.com/wp-content/uploads/2018/06/Buffalo-King_339x180_EN.png",
     "link": "",
     "clicks": 0
   },
@@ -564,7 +564,7 @@
     "maxBet": 500,
     "hot": null,
     "tag": null,
-    "img": "https://slotcatalog.com/userfiles/image/game_logos/buffalo-king-megaways.jpg",
+    "img": "https://www.pragmaticplay.com/wp-content/uploads/2020/03/Buffalo-King-Megaways_339x180_EN.png",
     "link": "",
     "clicks": 0
   },
@@ -580,7 +580,7 @@
     "maxBet": 500,
     "hot": null,
     "tag": null,
-    "img": "https://slotcatalog.com/userfiles/image/game_logos/buffalo-king-untamed-megaways.jpg",
+    "img": "",
     "link": "",
     "clicks": 0
   },
@@ -596,7 +596,7 @@
     "maxBet": 500,
     "hot": "fire",
     "tag": null,
-    "img": "https://slotcatalog.com/userfiles/image/game_logos/madame-destiny.jpg",
+    "img": "https://www.pragmaticplay.com/wp-content/uploads/2018/10/Madame-Destiny_339x180_EN.png",
     "link": "",
     "clicks": 0
   },
@@ -612,7 +612,7 @@
     "maxBet": 500,
     "hot": null,
     "tag": null,
-    "img": "https://slotcatalog.com/userfiles/image/game_logos/madame-destiny-megaways.jpg",
+    "img": "https://www.pragmaticplay.com/wp-content/uploads/2021/05/Madame-Destiny-Megaways_339x180_EN.png",
     "link": "",
     "clicks": 0
   },
@@ -628,7 +628,7 @@
     "maxBet": 500,
     "hot": null,
     "tag": null,
-    "img": "https://slotcatalog.com/userfiles/image/game_logos/pirate-gold.jpg",
+    "img": "https://www.pragmaticplay.com/wp-content/uploads/2018/11/Pirate-Gold_339x180_EN.png",
     "link": "",
     "clicks": 0
   },
@@ -644,7 +644,7 @@
     "maxBet": 500,
     "hot": null,
     "tag": null,
-    "img": "https://slotcatalog.com/userfiles/image/game_logos/pirate-gold-deluxe.jpg",
+    "img": "",
     "link": "",
     "clicks": 0
   },
@@ -660,7 +660,7 @@
     "maxBet": 500,
     "hot": "fire",
     "tag": null,
-    "img": "https://slotcatalog.com/userfiles/image/game_logos/release-the-kraken.jpg",
+    "img": "https://www.pragmaticplay.com/wp-content/uploads/2020/09/Release-the-Kraken_339x180_EN.png",
     "link": "",
     "clicks": 0
   },
@@ -676,7 +676,7 @@
     "maxBet": 500,
     "hot": null,
     "tag": null,
-    "img": "https://slotcatalog.com/userfiles/image/game_logos/release-the-kraken-2.jpg",
+    "img": "",
     "link": "",
     "clicks": 0
   },
@@ -692,7 +692,7 @@
     "maxBet": 500,
     "hot": null,
     "tag": null,
-    "img": "https://slotcatalog.com/userfiles/image/game_logos/chicken-drop.jpg",
+    "img": "https://www.pragmaticplay.com/wp-content/uploads/2022/07/Chicken-Drop_339x180_EN.png",
     "link": "",
     "clicks": 0
   },
@@ -708,7 +708,7 @@
     "maxBet": 500,
     "hot": null,
     "tag": null,
-    "img": "https://slotcatalog.com/userfiles/image/game_logos/cleocatra.jpg",
+    "img": "https://www.pragmaticplay.com/wp-content/uploads/2022/02/Cleocatra_339x180_EN.png",
     "link": "",
     "clicks": 0
   },
@@ -724,7 +724,7 @@
     "maxBet": 500,
     "hot": null,
     "tag": null,
-    "img": "https://slotcatalog.com/userfiles/image/game_logos/might-of-ra.jpg",
+    "img": "https://www.pragmaticplay.com/wp-content/uploads/2022/06/Might-of-Ra_339x180_EN.png",
     "link": "",
     "clicks": 0
   },
@@ -740,7 +740,7 @@
     "maxBet": 500,
     "hot": "fire",
     "tag": null,
-    "img": "https://slotcatalog.com/userfiles/image/game_logos/rhino-rage.jpg",
+    "img": "",
     "link": "",
     "clicks": 0
   },
@@ -756,7 +756,7 @@
     "maxBet": 500,
     "hot": null,
     "tag": null,
-    "img": "https://slotcatalog.com/userfiles/image/game_logos/koi-pond.jpg",
+    "img": "https://www.pragmaticplay.com/wp-content/uploads/2022/10/Koi-Pond_339x180_EN.png",
     "link": "",
     "clicks": 0
   },
@@ -772,7 +772,7 @@
     "maxBet": 500,
     "hot": null,
     "tag": null,
-    "img": "https://slotcatalog.com/userfiles/image/game_logos/phoenix-forge.jpg",
+    "img": "https://www.pragmaticplay.com/wp-content/uploads/2023/02/Phoenix-Forge_339x180_EN.png",
     "link": "",
     "clicks": 0
   },
@@ -788,7 +788,7 @@
     "maxBet": 500,
     "hot": null,
     "tag": null,
-    "img": "https://slotcatalog.com/userfiles/image/game_logos/zeus-vs-hades.jpg",
+    "img": "https://www.pragmaticplay.com/wp-content/uploads/2023/06/Zeus-vs-Hades_339x180_EN.png",
     "link": "",
     "clicks": 0
   },
@@ -804,7 +804,7 @@
     "maxBet": 500,
     "hot": null,
     "tag": null,
-    "img": "https://slotcatalog.com/userfiles/image/game_logos/power-of-merlin-megaways.jpg",
+    "img": "https://www.pragmaticplay.com/wp-content/uploads/2022/07/Power-of-Merlin-Megaways_339x180_EN.png",
     "link": "",
     "clicks": 0
   },
@@ -820,7 +820,7 @@
     "maxBet": 500,
     "hot": null,
     "tag": null,
-    "img": "https://slotcatalog.com/userfiles/image/game_logos/mustang-gold.jpg",
+    "img": "https://www.pragmaticplay.com/wp-content/uploads/2019/08/Mustang-Gold_339x180_EN.png",
     "link": "",
     "clicks": 0
   },
@@ -836,7 +836,7 @@
     "maxBet": 500,
     "hot": "fire",
     "tag": null,
-    "img": "https://slotcatalog.com/userfiles/image/game_logos/john-hunter-and-the-book-of-tut.jpg",
+    "img": "https://www.pragmaticplay.com/wp-content/uploads/2018/08/John-Hunter-and-the-Book-of-Tut_339x180_EN.png",
     "link": "",
     "clicks": 0
   },
@@ -852,7 +852,7 @@
     "maxBet": 500,
     "hot": null,
     "tag": null,
-    "img": "https://slotcatalog.com/userfiles/image/game_logos/john-hunter-and-the-tomb-of-the-scarab-queen.jpg",
+    "img": "",
     "link": "",
     "clicks": 0
   },
@@ -868,7 +868,7 @@
     "maxBet": 500,
     "hot": null,
     "tag": null,
-    "img": "https://slotcatalog.com/userfiles/image/game_logos/john-hunter-and-the-aztec-treasure.jpg",
+    "img": "",
     "link": "",
     "clicks": 0
   },
@@ -884,7 +884,7 @@
     "maxBet": 500,
     "hot": null,
     "tag": null,
-    "img": "https://slotcatalog.com/userfiles/image/game_logos/the-wild-gang.jpg",
+    "img": "",
     "link": "",
     "clicks": 0
   },
@@ -900,7 +900,7 @@
     "maxBet": 500,
     "hot": null,
     "tag": null,
-    "img": "https://slotcatalog.com/userfiles/image/game_logos/big-juan.jpg",
+    "img": "",
     "link": "",
     "clicks": 0
   },
@@ -916,7 +916,7 @@
     "maxBet": 500,
     "hot": null,
     "tag": null,
-    "img": "https://slotcatalog.com/userfiles/image/game_logos/temujin-treasures.jpg",
+    "img": "",
     "link": "",
     "clicks": 0
   },
@@ -932,7 +932,7 @@
     "maxBet": 500,
     "hot": null,
     "tag": null,
-    "img": "https://slotcatalog.com/userfiles/image/game_logos/monkey-warrior.jpg",
+    "img": "",
     "link": "",
     "clicks": 0
   },
@@ -948,7 +948,7 @@
     "maxBet": 500,
     "hot": null,
     "tag": null,
-    "img": "https://slotcatalog.com/userfiles/image/game_logos/day-of-dead.jpg",
+    "img": "",
     "link": "",
     "clicks": 0
   },
@@ -964,7 +964,7 @@
     "maxBet": 500,
     "hot": null,
     "tag": null,
-    "img": "https://slotcatalog.com/userfiles/image/game_logos/eye-of-the-storm.jpg",
+    "img": "",
     "link": "",
     "clicks": 0
   },
@@ -980,7 +980,7 @@
     "maxBet": 500,
     "hot": "fire",
     "tag": null,
-    "img": "https://slotcatalog.com/userfiles/image/game_logos/8-dragons.jpg",
+    "img": "",
     "link": "",
     "clicks": 0
   },
@@ -996,7 +996,7 @@
     "maxBet": 500,
     "hot": null,
     "tag": null,
-    "img": "https://slotcatalog.com/userfiles/image/game_logos/lock-it-link.jpg",
+    "img": "",
     "link": "",
     "clicks": 0
   },
@@ -1012,7 +1012,7 @@
     "maxBet": 500,
     "hot": null,
     "tag": null,
-    "img": "https://slotcatalog.com/userfiles/image/game_logos/pirots-2.jpg",
+    "img": "",
     "link": "",
     "clicks": 0
   },
@@ -1028,7 +1028,7 @@
     "maxBet": 500,
     "hot": null,
     "tag": null,
-    "img": "https://slotcatalog.com/userfiles/image/game_logos/book-of-fallen.jpg",
+    "img": "",
     "link": "",
     "clicks": 0
   },
@@ -1044,7 +1044,7 @@
     "maxBet": 500,
     "hot": "fire",
     "tag": null,
-    "img": "https://slotcatalog.com/userfiles/image/game_logos/the-big-dawgs.jpg",
+    "img": "",
     "link": "",
     "clicks": 0
   },
@@ -1060,7 +1060,7 @@
     "maxBet": 500,
     "hot": "fire",
     "tag": null,
-    "img": "https://slotcatalog.com/userfiles/image/game_logos/drago-jewels-of-fortune.jpg",
+    "img": "",
     "link": "",
     "clicks": 0
   },
@@ -1076,7 +1076,7 @@
     "maxBet": 500,
     "hot": "fire",
     "tag": null,
-    "img": "https://slotcatalog.com/userfiles/image/game_logos/christmas-carol-megaways.jpg",
+    "img": "",
     "link": "",
     "clicks": 0
   },
@@ -1092,7 +1092,7 @@
     "maxBet": 500,
     "hot": null,
     "tag": null,
-    "img": "https://slotcatalog.com/userfiles/image/game_logos/midas-golden-touch.jpg",
+    "img": "",
     "link": "",
     "clicks": 0
   },
@@ -1108,7 +1108,7 @@
     "maxBet": 500,
     "hot": "fire",
     "tag": null,
-    "img": "https://slotcatalog.com/userfiles/image/game_logos/caishen-wins.jpg",
+    "img": "https://www.pg-demo.com/game-icon/rectangle/caishen-wins.png",
     "link": "",
     "clicks": 0
   },
@@ -1124,7 +1124,7 @@
     "maxBet": 500,
     "hot": "fire",
     "tag": null,
-    "img": "https://slotcatalog.com/userfiles/image/game_logos/santa.jpg",
+    "img": "",
     "link": "",
     "clicks": 0
   },
@@ -1140,7 +1140,7 @@
     "maxBet": 500,
     "hot": null,
     "tag": null,
-    "img": "https://slotcatalog.com/userfiles/image/game_logos/panther-queen.jpg",
+    "img": "",
     "link": "",
     "clicks": 0
   },
@@ -1156,7 +1156,7 @@
     "maxBet": 500,
     "hot": null,
     "tag": null,
-    "img": "https://slotcatalog.com/userfiles/image/game_logos/rainbow-gold.jpg",
+    "img": "",
     "link": "",
     "clicks": 0
   },
@@ -1172,7 +1172,7 @@
     "maxBet": 500,
     "hot": null,
     "tag": null,
-    "img": "https://slotcatalog.com/userfiles/image/game_logos/super-joker.jpg",
+    "img": "",
     "link": "",
     "clicks": 0
   },
@@ -1188,7 +1188,7 @@
     "maxBet": 500,
     "hot": null,
     "tag": null,
-    "img": "https://slotcatalog.com/userfiles/image/game_logos/sonic-reels.jpg",
+    "img": "",
     "link": "",
     "clicks": 0
   },
@@ -1204,7 +1204,7 @@
     "maxBet": 500,
     "hot": "fire",
     "tag": null,
-    "img": "https://slotcatalog.com/userfiles/image/game_logos/extra-juicy-megaways.jpg",
+    "img": "",
     "link": "",
     "clicks": 0
   },
@@ -1220,7 +1220,7 @@
     "maxBet": 500,
     "hot": null,
     "tag": null,
-    "img": "https://slotcatalog.com/userfiles/image/game_logos/day-of-the-dead.jpg",
+    "img": "",
     "link": "",
     "clicks": 0
   },
@@ -1236,7 +1236,7 @@
     "maxBet": 500,
     "hot": null,
     "tag": null,
-    "img": "https://slotcatalog.com/userfiles/image/game_logos/return-of-the-dead.jpg",
+    "img": "",
     "link": "",
     "clicks": 0
   },
@@ -1252,7 +1252,7 @@
     "maxBet": 500,
     "hot": "fire",
     "tag": null,
-    "img": "https://slotcatalog.com/userfiles/image/game_logos/honey-rush.jpg",
+    "img": "",
     "link": "",
     "clicks": 0
   },
@@ -1268,7 +1268,7 @@
     "maxBet": 500,
     "hot": "fire",
     "tag": null,
-    "img": "https://slotcatalog.com/userfiles/image/game_logos/treasure-wild.jpg",
+    "img": "",
     "link": "",
     "clicks": 0
   },
@@ -1284,7 +1284,7 @@
     "maxBet": 500,
     "hot": null,
     "tag": null,
-    "img": "https://slotcatalog.com/userfiles/image/game_logos/gold-party.jpg",
+    "img": "",
     "link": "",
     "clicks": 0
   },
@@ -1300,7 +1300,7 @@
     "maxBet": 500,
     "hot": "fire",
     "tag": null,
-    "img": "https://slotcatalog.com/userfiles/image/game_logos/gold-train.jpg",
+    "img": "",
     "link": "",
     "clicks": 0
   },
@@ -1316,7 +1316,7 @@
     "maxBet": 500,
     "hot": null,
     "tag": null,
-    "img": "https://slotcatalog.com/userfiles/image/game_logos/mystic-chief.jpg",
+    "img": "",
     "link": "",
     "clicks": 0
   },
@@ -1332,7 +1332,7 @@
     "maxBet": 500,
     "hot": null,
     "tag": null,
-    "img": "https://slotcatalog.com/userfiles/image/game_logos/mystery-of-the-orient.jpg",
+    "img": "",
     "link": "",
     "clicks": 0
   },
@@ -1348,7 +1348,7 @@
     "maxBet": 500,
     "hot": null,
     "tag": null,
-    "img": "https://slotcatalog.com/userfiles/image/game_logos/jungle-gorilla.jpg",
+    "img": "",
     "link": "",
     "clicks": 0
   },
@@ -1364,7 +1364,7 @@
     "maxBet": 500,
     "hot": null,
     "tag": null,
-    "img": "https://slotcatalog.com/userfiles/image/game_logos/safari-king.jpg",
+    "img": "",
     "link": "",
     "clicks": 0
   },
@@ -1380,7 +1380,7 @@
     "maxBet": 500,
     "hot": null,
     "tag": null,
-    "img": "https://slotcatalog.com/userfiles/image/game_logos/5-lions.jpg",
+    "img": "",
     "link": "",
     "clicks": 0
   },
@@ -1396,7 +1396,7 @@
     "maxBet": 500,
     "hot": null,
     "tag": null,
-    "img": "https://slotcatalog.com/userfiles/image/game_logos/5-lions-gold.jpg",
+    "img": "",
     "link": "",
     "clicks": 0
   },
@@ -1412,7 +1412,7 @@
     "maxBet": 500,
     "hot": "fire",
     "tag": null,
-    "img": "https://slotcatalog.com/userfiles/image/game_logos/5-lions-megaways.jpg",
+    "img": "",
     "link": "",
     "clicks": 0
   },
@@ -1428,7 +1428,7 @@
     "maxBet": 500,
     "hot": null,
     "tag": null,
-    "img": "https://slotcatalog.com/userfiles/image/game_logos/5-lions-dance.jpg",
+    "img": "",
     "link": "",
     "clicks": 0
   },
@@ -1444,7 +1444,7 @@
     "maxBet": 500,
     "hot": null,
     "tag": null,
-    "img": "https://slotcatalog.com/userfiles/image/game_logos/5-frozen-charms-megaways.jpg",
+    "img": "",
     "link": "",
     "clicks": 0
   },
@@ -1460,7 +1460,7 @@
     "maxBet": 500,
     "hot": null,
     "tag": null,
-    "img": "https://slotcatalog.com/userfiles/image/game_logos/fire-hot-5.jpg",
+    "img": "",
     "link": "",
     "clicks": 0
   },
@@ -1476,7 +1476,7 @@
     "maxBet": 500,
     "hot": null,
     "tag": null,
-    "img": "https://slotcatalog.com/userfiles/image/game_logos/fire-hot-20.jpg",
+    "img": "",
     "link": "",
     "clicks": 0
   },
@@ -1492,7 +1492,7 @@
     "maxBet": 500,
     "hot": null,
     "tag": null,
-    "img": "https://slotcatalog.com/userfiles/image/game_logos/fire-hot-40.jpg",
+    "img": "",
     "link": "",
     "clicks": 0
   },
@@ -1508,7 +1508,7 @@
     "maxBet": 500,
     "hot": null,
     "tag": null,
-    "img": "https://slotcatalog.com/userfiles/image/game_logos/fire-hot-100.jpg",
+    "img": "",
     "link": "",
     "clicks": 0
   },
@@ -1524,7 +1524,7 @@
     "maxBet": 500,
     "hot": null,
     "tag": null,
-    "img": "https://slotcatalog.com/userfiles/image/game_logos/asgard.jpg",
+    "img": "",
     "link": "",
     "clicks": 0
   },
@@ -1540,7 +1540,7 @@
     "maxBet": 500,
     "hot": "fire",
     "tag": null,
-    "img": "https://slotcatalog.com/userfiles/image/game_logos/asgardian-rising.jpg",
+    "img": "",
     "link": "",
     "clicks": 0
   },
@@ -1556,7 +1556,7 @@
     "maxBet": 500,
     "hot": "fire",
     "tag": null,
-    "img": "https://slotcatalog.com/userfiles/image/game_logos/gates-of-valhalla.jpg",
+    "img": "",
     "link": "",
     "clicks": 0
   },
@@ -1572,7 +1572,7 @@
     "maxBet": 500,
     "hot": null,
     "tag": null,
-    "img": "https://slotcatalog.com/userfiles/image/game_logos/sweet-powernudge.jpg",
+    "img": "",
     "link": "",
     "clicks": 0
   },
@@ -1588,7 +1588,7 @@
     "maxBet": 500,
     "hot": "fire",
     "tag": null,
-    "img": "https://slotcatalog.com/userfiles/image/game_logos/candy-village.jpg",
+    "img": "",
     "link": "",
     "clicks": 0
   },
@@ -1604,7 +1604,7 @@
     "maxBet": 500,
     "hot": "fire",
     "tag": null,
-    "img": "https://slotcatalog.com/userfiles/image/game_logos/candy-blitz.jpg",
+    "img": "",
     "link": "",
     "clicks": 0
   },
@@ -1620,7 +1620,7 @@
     "maxBet": 500,
     "hot": null,
     "tag": null,
-    "img": "https://slotcatalog.com/userfiles/image/game_logos/candy-stars.jpg",
+    "img": "",
     "link": "",
     "clicks": 0
   },
@@ -1636,7 +1636,7 @@
     "maxBet": 500,
     "hot": null,
     "tag": null,
-    "img": "https://slotcatalog.com/userfiles/image/game_logos/hot-to-burn.jpg",
+    "img": "",
     "link": "",
     "clicks": 0
   },
@@ -1652,7 +1652,7 @@
     "maxBet": 500,
     "hot": null,
     "tag": null,
-    "img": "https://slotcatalog.com/userfiles/image/game_logos/hot-to-burn-extreme.jpg",
+    "img": "",
     "link": "",
     "clicks": 0
   },
@@ -1668,7 +1668,7 @@
     "maxBet": 500,
     "hot": "fire",
     "tag": null,
-    "img": "https://slotcatalog.com/userfiles/image/game_logos/hot-to-burn-hold-and-spin.jpg",
+    "img": "",
     "link": "",
     "clicks": 0
   },
@@ -1684,7 +1684,7 @@
     "maxBet": 500,
     "hot": null,
     "tag": null,
-    "img": "https://slotcatalog.com/userfiles/image/game_logos/rainbow-reels.jpg",
+    "img": "",
     "link": "",
     "clicks": 0
   },
@@ -1700,7 +1700,7 @@
     "maxBet": 500,
     "hot": "fire",
     "tag": null,
-    "img": "https://slotcatalog.com/userfiles/image/game_logos/lucky-grace-and-charm.jpg",
+    "img": "",
     "link": "",
     "clicks": 0
   },
@@ -1716,7 +1716,7 @@
     "maxBet": 500,
     "hot": null,
     "tag": null,
-    "img": "https://slotcatalog.com/userfiles/image/game_logos/wild-wild-riches.jpg",
+    "img": "",
     "link": "",
     "clicks": 0
   },
@@ -1732,7 +1732,7 @@
     "maxBet": 500,
     "hot": null,
     "tag": null,
-    "img": "https://slotcatalog.com/userfiles/image/game_logos/wild-wild-bananas.jpg",
+    "img": "",
     "link": "",
     "clicks": 0
   },
@@ -1748,7 +1748,7 @@
     "maxBet": 500,
     "hot": null,
     "tag": null,
-    "img": "https://slotcatalog.com/userfiles/image/game_logos/fairytale-fortune.jpg",
+    "img": "",
     "link": "",
     "clicks": 0
   },
@@ -1764,7 +1764,7 @@
     "maxBet": 500,
     "hot": null,
     "tag": null,
-    "img": "https://slotcatalog.com/userfiles/image/game_logos/magic-journey.jpg",
+    "img": "",
     "link": "",
     "clicks": 0
   },
@@ -1780,7 +1780,7 @@
     "maxBet": 500,
     "hot": null,
     "tag": null,
-    "img": "https://slotcatalog.com/userfiles/image/game_logos/great-rhino.jpg",
+    "img": "",
     "link": "",
     "clicks": 0
   },
@@ -1796,7 +1796,7 @@
     "maxBet": 500,
     "hot": null,
     "tag": null,
-    "img": "https://slotcatalog.com/userfiles/image/game_logos/great-rhino-megaways.jpg",
+    "img": "",
     "link": "",
     "clicks": 0
   },
@@ -1812,7 +1812,7 @@
     "maxBet": 500,
     "hot": "fire",
     "tag": null,
-    "img": "https://slotcatalog.com/userfiles/image/game_logos/great-rhino-deluxe.jpg",
+    "img": "",
     "link": "",
     "clicks": 0
   },
@@ -1828,7 +1828,7 @@
     "maxBet": 500,
     "hot": null,
     "tag": null,
-    "img": "https://slotcatalog.com/userfiles/image/game_logos/cash-bonanza.jpg",
+    "img": "",
     "link": "",
     "clicks": 0
   },
@@ -1844,7 +1844,7 @@
     "maxBet": 500,
     "hot": "fire",
     "tag": null,
-    "img": "https://slotcatalog.com/userfiles/image/game_logos/gold-rush.jpg",
+    "img": "",
     "link": "",
     "clicks": 0
   },
@@ -1860,7 +1860,7 @@
     "maxBet": 500,
     "hot": null,
     "tag": null,
-    "img": "https://slotcatalog.com/userfiles/image/game_logos/hand-of-midas.jpg",
+    "img": "https://www.pragmaticplay.com/wp-content/uploads/2020/06/The-Hand-of-Midas_339x180_EN.png",
     "link": "",
     "clicks": 0
   },
@@ -1876,7 +1876,7 @@
     "maxBet": 500,
     "hot": null,
     "tag": null,
-    "img": "https://slotcatalog.com/userfiles/image/game_logos/ancient-egypt.jpg",
+    "img": "",
     "link": "",
     "clicks": 0
   },
@@ -1892,7 +1892,7 @@
     "maxBet": 500,
     "hot": "fire",
     "tag": null,
-    "img": "https://slotcatalog.com/userfiles/image/game_logos/queen-of-gods.jpg",
+    "img": "",
     "link": "",
     "clicks": 0
   },
@@ -1908,7 +1908,7 @@
     "maxBet": 500,
     "hot": "fire",
     "tag": null,
-    "img": "https://slotcatalog.com/userfiles/image/game_logos/hot-hot-halloween.jpg",
+    "img": "",
     "link": "",
     "clicks": 0
   },
@@ -1924,7 +1924,7 @@
     "maxBet": 500,
     "hot": "fire",
     "tag": null,
-    "img": "https://slotcatalog.com/userfiles/image/game_logos/diamond-strike.jpg",
+    "img": "",
     "link": "",
     "clicks": 0
   },
@@ -1940,7 +1940,7 @@
     "maxBet": 500,
     "hot": null,
     "tag": null,
-    "img": "https://slotcatalog.com/userfiles/image/game_logos/diamonds-of-egypt.jpg",
+    "img": "",
     "link": "",
     "clicks": 0
   },
@@ -1956,7 +1956,7 @@
     "maxBet": 500,
     "hot": null,
     "tag": null,
-    "img": "https://slotcatalog.com/userfiles/image/game_logos/santas-wonderland.jpg",
+    "img": "",
     "link": "",
     "clicks": 0
   },
@@ -1972,7 +1972,7 @@
     "maxBet": 500,
     "hot": null,
     "tag": null,
-    "img": "https://slotcatalog.com/userfiles/image/game_logos/peking-luck.jpg",
+    "img": "",
     "link": "",
     "clicks": 0
   },
@@ -1988,7 +1988,7 @@
     "maxBet": 500,
     "hot": null,
     "tag": null,
-    "img": "https://slotcatalog.com/userfiles/image/game_logos/treasure-horse.jpg",
+    "img": "",
     "link": "",
     "clicks": 0
   },
@@ -2004,7 +2004,7 @@
     "maxBet": 500,
     "hot": null,
     "tag": null,
-    "img": "https://slotcatalog.com/userfiles/image/game_logos/shining-hot-5.jpg",
+    "img": "",
     "link": "",
     "clicks": 0
   },
@@ -2020,7 +2020,7 @@
     "maxBet": 500,
     "hot": null,
     "tag": null,
-    "img": "https://slotcatalog.com/userfiles/image/game_logos/shining-hot-20.jpg",
+    "img": "",
     "link": "",
     "clicks": 0
   },
@@ -2036,7 +2036,7 @@
     "maxBet": 500,
     "hot": "fire",
     "tag": null,
-    "img": "https://slotcatalog.com/userfiles/image/game_logos/shining-hot-40.jpg",
+    "img": "",
     "link": "",
     "clicks": 0
   },
@@ -2052,7 +2052,7 @@
     "maxBet": 500,
     "hot": null,
     "tag": null,
-    "img": "https://slotcatalog.com/userfiles/image/game_logos/shining-hot-100.jpg",
+    "img": "",
     "link": "",
     "clicks": 0
   },
@@ -2068,7 +2068,7 @@
     "maxBet": 500,
     "hot": "fire",
     "tag": null,
-    "img": "https://slotcatalog.com/userfiles/image/game_logos/triple-tigers.jpg",
+    "img": "",
     "link": "",
     "clicks": 0
   },
@@ -2084,7 +2084,7 @@
     "maxBet": 500,
     "hot": "fire",
     "tag": "BR",
-    "img": "https://slotcatalog.com/userfiles/image/game_logos/tigre-sortudo.jpg",
+    "img": "https://www.pragmaticplay.com/wp-content/uploads/2023/06/Lucky-Tiger-Fortune_339x180_EN.png",
     "link": "",
     "clicks": 0
   },
@@ -2100,7 +2100,7 @@
     "maxBet": 500,
     "hot": null,
     "tag": "BR",
-    "img": "https://slotcatalog.com/userfiles/image/game_logos/touro-sortudo.jpg",
+    "img": "",
     "link": "",
     "clicks": 0
   },
@@ -2116,7 +2116,7 @@
     "maxBet": 500,
     "hot": null,
     "tag": null,
-    "img": "https://slotcatalog.com/userfiles/image/game_logos/fortune-panda.jpg",
+    "img": "",
     "link": "",
     "clicks": 0
   },
@@ -2132,7 +2132,7 @@
     "maxBet": 500,
     "hot": "fire",
     "tag": "BR",
-    "img": "https://slotcatalog.com/userfiles/image/game_logos/ratinho-sortudo.jpg",
+    "img": "",
     "link": "",
     "clicks": 0
   },
@@ -2148,7 +2148,7 @@
     "maxBet": 500,
     "hot": "fire",
     "tag": null,
-    "img": "https://slotcatalog.com/userfiles/image/game_logos/spartan-king.jpg",
+    "img": "",
     "link": "",
     "clicks": 0
   },
@@ -2164,7 +2164,7 @@
     "maxBet": 500,
     "hot": "fire",
     "tag": null,
-    "img": "https://slotcatalog.com/userfiles/image/game_logos/lady-godiva.jpg",
+    "img": "",
     "link": "",
     "clicks": 0
   },
@@ -2180,7 +2180,7 @@
     "maxBet": 500,
     "hot": "fire",
     "tag": null,
-    "img": "https://slotcatalog.com/userfiles/image/game_logos/voodoo-magic.jpg",
+    "img": "",
     "link": "",
     "clicks": 0
   },
@@ -2196,7 +2196,7 @@
     "maxBet": 500,
     "hot": null,
     "tag": null,
-    "img": "https://slotcatalog.com/userfiles/image/game_logos/amazing-money-machine.jpg",
+    "img": "",
     "link": "",
     "clicks": 0
   },
@@ -2212,7 +2212,7 @@
     "maxBet": 500,
     "hot": null,
     "tag": null,
-    "img": "https://slotcatalog.com/userfiles/image/game_logos/bierfest.jpg",
+    "img": "",
     "link": "",
     "clicks": 0
   },
@@ -2228,7 +2228,7 @@
     "maxBet": 500,
     "hot": "fire",
     "tag": null,
-    "img": "https://slotcatalog.com/userfiles/image/game_logos/samurai-code.jpg",
+    "img": "",
     "link": "",
     "clicks": 0
   },
@@ -2244,7 +2244,7 @@
     "maxBet": 500,
     "hot": null,
     "tag": null,
-    "img": "https://slotcatalog.com/userfiles/image/game_logos/wild-bounty-showdown.jpg",
+    "img": "https://www.pg-demo.com/game-icon/rectangle/wild-bounty-showdown.png",
     "link": "",
     "clicks": 0
   },
@@ -2260,7 +2260,7 @@
     "maxBet": 500,
     "hot": null,
     "tag": null,
-    "img": "https://slotcatalog.com/userfiles/image/game_logos/barn-festival.jpg",
+    "img": "",
     "link": "",
     "clicks": 0
   },
@@ -2276,7 +2276,7 @@
     "maxBet": 500,
     "hot": null,
     "tag": null,
-    "img": "https://slotcatalog.com/userfiles/image/game_logos/country-farming.jpg",
+    "img": "",
     "link": "",
     "clicks": 0
   },
@@ -2292,7 +2292,7 @@
     "maxBet": 500,
     "hot": "fire",
     "tag": null,
-    "img": "https://slotcatalog.com/userfiles/image/game_logos/liliths-inferno.jpg",
+    "img": "",
     "link": "",
     "clicks": 0
   },
@@ -2308,7 +2308,7 @@
     "maxBet": 500,
     "hot": "fire",
     "tag": null,
-    "img": "https://slotcatalog.com/userfiles/image/game_logos/crystal-caverns-megaways.jpg",
+    "img": "",
     "link": "",
     "clicks": 0
   },
@@ -2324,7 +2324,7 @@
     "maxBet": 500,
     "hot": null,
     "tag": null,
-    "img": "https://slotcatalog.com/userfiles/image/game_logos/hercules-and-pegasus.jpg",
+    "img": "",
     "link": "",
     "clicks": 0
   },
@@ -2340,7 +2340,7 @@
     "maxBet": 500,
     "hot": null,
     "tag": null,
-    "img": "https://slotcatalog.com/userfiles/image/game_logos/heart-of-cleopatra.jpg",
+    "img": "",
     "link": "",
     "clicks": 0
   },
@@ -2356,7 +2356,7 @@
     "maxBet": 500,
     "hot": null,
     "tag": null,
-    "img": "https://slotcatalog.com/userfiles/image/game_logos/pets-royale.jpg",
+    "img": "",
     "link": "",
     "clicks": 0
   },
@@ -2372,7 +2372,7 @@
     "maxBet": 500,
     "hot": null,
     "tag": null,
-    "img": "https://slotcatalog.com/userfiles/image/game_logos/3-kings-battle.jpg",
+    "img": "",
     "link": "",
     "clicks": 0
   },
@@ -2388,7 +2388,7 @@
     "maxBet": 500,
     "hot": null,
     "tag": null,
-    "img": "https://slotcatalog.com/userfiles/image/game_logos/treasures-of-aztec.jpg",
+    "img": "",
     "link": "",
     "clicks": 0
   },
@@ -2404,7 +2404,7 @@
     "maxBet": 500,
     "hot": null,
     "tag": null,
-    "img": "https://slotcatalog.com/userfiles/image/game_logos/rocket-reels.jpg",
+    "img": "",
     "link": "",
     "clicks": 0
   },
@@ -2420,7 +2420,7 @@
     "maxBet": 500,
     "hot": null,
     "tag": null,
-    "img": "https://slotcatalog.com/userfiles/image/game_logos/dance-party.jpg",
+    "img": "",
     "link": "",
     "clicks": 0
   },
@@ -2436,7 +2436,7 @@
     "maxBet": 500,
     "hot": null,
     "tag": null,
-    "img": "https://slotcatalog.com/userfiles/image/game_logos/fresh-fruits.jpg",
+    "img": "",
     "link": "",
     "clicks": 0
   },
@@ -2452,7 +2452,7 @@
     "maxBet": 500,
     "hot": "fire",
     "tag": null,
-    "img": "https://slotcatalog.com/userfiles/image/game_logos/floating-dragon.jpg",
+    "img": "",
     "link": "",
     "clicks": 0
   },
@@ -2468,7 +2468,7 @@
     "maxBet": 500,
     "hot": "fire",
     "tag": null,
-    "img": "https://slotcatalog.com/userfiles/image/game_logos/floating-dragon-megaways.jpg",
+    "img": "",
     "link": "",
     "clicks": 0
   },
@@ -2484,7 +2484,7 @@
     "maxBet": 500,
     "hot": null,
     "tag": null,
-    "img": "https://slotcatalog.com/userfiles/image/game_logos/joker-king.jpg",
+    "img": "",
     "link": "",
     "clicks": 0
   },
@@ -2500,7 +2500,7 @@
     "maxBet": 500,
     "hot": "fire",
     "tag": null,
-    "img": "https://slotcatalog.com/userfiles/image/game_logos/jokers-jewels.jpg",
+    "img": "",
     "link": "",
     "clicks": 0
   },
@@ -2516,7 +2516,7 @@
     "maxBet": 500,
     "hot": null,
     "tag": null,
-    "img": "https://slotcatalog.com/userfiles/image/game_logos/jokers-jewels-wild.jpg",
+    "img": "",
     "link": "",
     "clicks": 0
   },
@@ -2532,7 +2532,7 @@
     "maxBet": 500,
     "hot": "fire",
     "tag": null,
-    "img": "https://slotcatalog.com/userfiles/image/game_logos/snakes-and-ladders.jpg",
+    "img": "",
     "link": "",
     "clicks": 0
   },
@@ -2548,7 +2548,7 @@
     "maxBet": 500,
     "hot": "fire",
     "tag": null,
-    "img": "https://slotcatalog.com/userfiles/image/game_logos/robin-hoods-heroes.jpg",
+    "img": "",
     "link": "",
     "clicks": 0
   },
@@ -2564,7 +2564,7 @@
     "maxBet": 500,
     "hot": null,
     "tag": null,
-    "img": "https://slotcatalog.com/userfiles/image/game_logos/master-joker.jpg",
+    "img": "",
     "link": "",
     "clicks": 0
   },
@@ -2580,7 +2580,7 @@
     "maxBet": 500,
     "hot": "fire",
     "tag": null,
-    "img": "https://slotcatalog.com/userfiles/image/game_logos/knight-rider.jpg",
+    "img": "",
     "link": "",
     "clicks": 0
   },
@@ -2596,7 +2596,7 @@
     "maxBet": 500,
     "hot": null,
     "tag": null,
-    "img": "https://slotcatalog.com/userfiles/image/game_logos/winemakers-quest.jpg",
+    "img": "",
     "link": "",
     "clicks": 0
   },
@@ -2612,7 +2612,7 @@
     "maxBet": 500,
     "hot": null,
     "tag": null,
-    "img": "https://slotcatalog.com/userfiles/image/game_logos/colossal-cash-zone.jpg",
+    "img": "",
     "link": "",
     "clicks": 0
   },
@@ -2628,7 +2628,7 @@
     "maxBet": 500,
     "hot": "fire",
     "tag": null,
-    "img": "https://slotcatalog.com/userfiles/image/game_logos/stray-riches.jpg",
+    "img": "",
     "link": "",
     "clicks": 0
   },
@@ -2644,7 +2644,7 @@
     "maxBet": 500,
     "hot": "fire",
     "tag": null,
-    "img": "https://slotcatalog.com/userfiles/image/game_logos/farm-fest.jpg",
+    "img": "",
     "link": "",
     "clicks": 0
   },
@@ -2660,7 +2660,7 @@
     "maxBet": 500,
     "hot": "fire",
     "tag": null,
-    "img": "https://slotcatalog.com/userfiles/image/game_logos/vampire-crystals.jpg",
+    "img": "",
     "link": "",
     "clicks": 0
   },
@@ -2676,7 +2676,7 @@
     "maxBet": 500,
     "hot": null,
     "tag": null,
-    "img": "https://slotcatalog.com/userfiles/image/game_logos/book-of-gold-multichance.jpg",
+    "img": "",
     "link": "",
     "clicks": 0
   },
@@ -2692,7 +2692,7 @@
     "maxBet": 500,
     "hot": null,
     "tag": null,
-    "img": "https://slotcatalog.com/userfiles/image/game_logos/hand-of-gold.jpg",
+    "img": "",
     "link": "",
     "clicks": 0
   },
@@ -2708,7 +2708,7 @@
     "maxBet": 500,
     "hot": "fire",
     "tag": null,
-    "img": "https://slotcatalog.com/userfiles/image/game_logos/piggy-bank.jpg",
+    "img": "",
     "link": "",
     "clicks": 0
   },
@@ -2724,7 +2724,7 @@
     "maxBet": 500,
     "hot": null,
     "tag": null,
-    "img": "https://slotcatalog.com/userfiles/image/game_logos/wild-sparks.jpg",
+    "img": "",
     "link": "",
     "clicks": 0
   },
@@ -2740,7 +2740,7 @@
     "maxBet": 500,
     "hot": null,
     "tag": null,
-    "img": "https://slotcatalog.com/userfiles/image/game_logos/gold-club.jpg",
+    "img": "",
     "link": "",
     "clicks": 0
   },
@@ -2756,7 +2756,7 @@
     "maxBet": 500,
     "hot": null,
     "tag": null,
-    "img": "https://slotcatalog.com/userfiles/image/game_logos/pinup-girls.jpg",
+    "img": "",
     "link": "",
     "clicks": 0
   },
@@ -2772,7 +2772,7 @@
     "maxBet": 500,
     "hot": null,
     "tag": null,
-    "img": "https://slotcatalog.com/userfiles/image/game_logos/ming-dynasty.jpg",
+    "img": "",
     "link": "",
     "clicks": 0
   },
@@ -2788,7 +2788,7 @@
     "maxBet": 500,
     "hot": "fire",
     "tag": null,
-    "img": "https://slotcatalog.com/userfiles/image/game_logos/lucky-lightning.jpg",
+    "img": "",
     "link": "",
     "clicks": 0
   },
@@ -2804,7 +2804,7 @@
     "maxBet": 500,
     "hot": null,
     "tag": null,
-    "img": "https://slotcatalog.com/userfiles/image/game_logos/aladdins-treasure.jpg",
+    "img": "",
     "link": "",
     "clicks": 0
   },
@@ -2820,7 +2820,7 @@
     "maxBet": 500,
     "hot": null,
     "tag": null,
-    "img": "https://slotcatalog.com/userfiles/image/game_logos/rudolphs-revenge.jpg",
+    "img": "",
     "link": "",
     "clicks": 0
   },
@@ -2836,7 +2836,7 @@
     "maxBet": 500,
     "hot": null,
     "tag": null,
-    "img": "https://slotcatalog.com/userfiles/image/game_logos/tropical-tiki.jpg",
+    "img": "",
     "link": "",
     "clicks": 0
   },
@@ -2852,7 +2852,7 @@
     "maxBet": 500,
     "hot": "fire",
     "tag": null,
-    "img": "https://slotcatalog.com/userfiles/image/game_logos/pixie-wings.jpg",
+    "img": "",
     "link": "",
     "clicks": 0
   },
@@ -2868,7 +2868,7 @@
     "maxBet": 500,
     "hot": null,
     "tag": null,
-    "img": "https://slotcatalog.com/userfiles/image/game_logos/fortune-of-serengeti.jpg",
+    "img": "",
     "link": "",
     "clicks": 0
   },
@@ -2884,7 +2884,7 @@
     "maxBet": 500,
     "hot": "fire",
     "tag": null,
-    "img": "https://slotcatalog.com/userfiles/image/game_logos/little-gem.jpg",
+    "img": "",
     "link": "",
     "clicks": 0
   },
@@ -2900,7 +2900,7 @@
     "maxBet": 500,
     "hot": "fire",
     "tag": null,
-    "img": "https://slotcatalog.com/userfiles/image/game_logos/gold-of-inca.jpg",
+    "img": "",
     "link": "",
     "clicks": 0
   },
@@ -2916,7 +2916,7 @@
     "maxBet": 500,
     "hot": null,
     "tag": null,
-    "img": "https://slotcatalog.com/userfiles/image/game_logos/cleos-riches.jpg",
+    "img": "",
     "link": "",
     "clicks": 0
   },
@@ -2932,7 +2932,7 @@
     "maxBet": 500,
     "hot": "fire",
     "tag": null,
-    "img": "https://slotcatalog.com/userfiles/image/game_logos/congo-cash.jpg",
+    "img": "",
     "link": "",
     "clicks": 0
   },
@@ -2948,7 +2948,7 @@
     "maxBet": 500,
     "hot": null,
     "tag": null,
-    "img": "https://slotcatalog.com/userfiles/image/game_logos/congo-cash-xl.jpg",
+    "img": "",
     "link": "",
     "clicks": 0
   },
@@ -2964,7 +2964,7 @@
     "maxBet": 500,
     "hot": null,
     "tag": null,
-    "img": "https://slotcatalog.com/userfiles/image/game_logos/dynamite-blast.jpg",
+    "img": "",
     "link": "",
     "clicks": 0
   },
@@ -2980,7 +2980,7 @@
     "maxBet": 500,
     "hot": "fire",
     "tag": null,
-    "img": "https://slotcatalog.com/userfiles/image/game_logos/ninja-vs-samurai.jpg",
+    "img": "",
     "link": "",
     "clicks": 0
   },
@@ -2996,7 +2996,7 @@
     "maxBet": 500,
     "hot": null,
     "tag": null,
-    "img": "https://slotcatalog.com/userfiles/image/game_logos/leprechaun-carol.jpg",
+    "img": "",
     "link": "",
     "clicks": 0
   },
@@ -3012,7 +3012,7 @@
     "maxBet": 500,
     "hot": null,
     "tag": null,
-    "img": "https://slotcatalog.com/userfiles/image/game_logos/super-x.jpg",
+    "img": "",
     "link": "",
     "clicks": 0
   },
@@ -3028,7 +3028,7 @@
     "maxBet": 500,
     "hot": null,
     "tag": null,
-    "img": "https://slotcatalog.com/userfiles/image/game_logos/meerkat-mayhem.jpg",
+    "img": "",
     "link": "",
     "clicks": 0
   },
@@ -3044,7 +3044,7 @@
     "maxBet": 500,
     "hot": null,
     "tag": null,
-    "img": "https://slotcatalog.com/userfiles/image/game_logos/zombie-carnival.jpg",
+    "img": "",
     "link": "",
     "clicks": 0
   },
@@ -3060,7 +3060,7 @@
     "maxBet": 500,
     "hot": null,
     "tag": null,
-    "img": "https://slotcatalog.com/userfiles/image/game_logos/book-of-kingdoms.jpg",
+    "img": "",
     "link": "",
     "clicks": 0
   },
@@ -3076,7 +3076,7 @@
     "maxBet": 500,
     "hot": null,
     "tag": null,
-    "img": "https://slotcatalog.com/userfiles/image/game_logos/burning-chilli-x.jpg",
+    "img": "",
     "link": "",
     "clicks": 0
   },
@@ -3092,7 +3092,7 @@
     "maxBet": 500,
     "hot": "fire",
     "tag": null,
-    "img": "https://slotcatalog.com/userfiles/image/game_logos/three-lanterns.jpg",
+    "img": "",
     "link": "",
     "clicks": 0
   },
@@ -3108,7 +3108,7 @@
     "maxBet": 500,
     "hot": null,
     "tag": null,
-    "img": "https://slotcatalog.com/userfiles/image/game_logos/eagle-bucks.jpg",
+    "img": "",
     "link": "",
     "clicks": 0
   },
@@ -3124,7 +3124,7 @@
     "maxBet": 500,
     "hot": null,
     "tag": null,
-    "img": "https://slotcatalog.com/userfiles/image/game_logos/5-super-hot.jpg",
+    "img": "",
     "link": "",
     "clicks": 0
   },
@@ -3140,7 +3140,7 @@
     "maxBet": 500,
     "hot": null,
     "tag": null,
-    "img": "https://slotcatalog.com/userfiles/image/game_logos/hercules.jpg",
+    "img": "",
     "link": "",
     "clicks": 0
   },
@@ -3156,7 +3156,7 @@
     "maxBet": 500,
     "hot": "fire",
     "tag": null,
-    "img": "https://slotcatalog.com/userfiles/image/game_logos/demon-pots.jpg",
+    "img": "",
     "link": "",
     "clicks": 0
   },
@@ -3172,7 +3172,7 @@
     "maxBet": 500,
     "hot": "fire",
     "tag": null,
-    "img": "https://slotcatalog.com/userfiles/image/game_logos/hot-fiesta.jpg",
+    "img": "",
     "link": "",
     "clicks": 0
   },
@@ -3188,7 +3188,7 @@
     "maxBet": 500,
     "hot": null,
     "tag": null,
-    "img": "https://slotcatalog.com/userfiles/image/game_logos/cosmic-cash.jpg",
+    "img": "",
     "link": "",
     "clicks": 0
   },
@@ -3204,7 +3204,7 @@
     "maxBet": 500,
     "hot": null,
     "tag": null,
-    "img": "https://slotcatalog.com/userfiles/image/game_logos/zeus-rush.jpg",
+    "img": "",
     "link": "",
     "clicks": 0
   },
@@ -3220,7 +3220,7 @@
     "maxBet": 500,
     "hot": null,
     "tag": null,
-    "img": "https://slotcatalog.com/userfiles/image/game_logos/juicy-fruits.jpg",
+    "img": "",
     "link": "",
     "clicks": 0
   },
@@ -3236,7 +3236,7 @@
     "maxBet": 500,
     "hot": null,
     "tag": null,
-    "img": "https://slotcatalog.com/userfiles/image/game_logos/juicy-fruits-multihold.jpg",
+    "img": "",
     "link": "",
     "clicks": 0
   },
@@ -3252,7 +3252,7 @@
     "maxBet": 500,
     "hot": null,
     "tag": null,
-    "img": "https://slotcatalog.com/userfiles/image/game_logos/penny-pelican.jpg",
+    "img": "",
     "link": "",
     "clicks": 0
   },
@@ -3268,7 +3268,7 @@
     "maxBet": 500,
     "hot": null,
     "tag": null,
-    "img": "https://slotcatalog.com/userfiles/image/game_logos/bull-fiesta.jpg",
+    "img": "",
     "link": "",
     "clicks": 0
   },
@@ -3284,7 +3284,7 @@
     "maxBet": 500,
     "hot": null,
     "tag": null,
-    "img": "https://slotcatalog.com/userfiles/image/game_logos/fruit-rainbow.jpg",
+    "img": "",
     "link": "",
     "clicks": 0
   },
@@ -3300,7 +3300,7 @@
     "maxBet": 500,
     "hot": null,
     "tag": null,
-    "img": "https://slotcatalog.com/userfiles/image/game_logos/northern-sky.jpg",
+    "img": "",
     "link": "",
     "clicks": 0
   },
@@ -3316,7 +3316,7 @@
     "maxBet": 500,
     "hot": "fire",
     "tag": null,
-    "img": "https://slotcatalog.com/userfiles/image/game_logos/66-spins.jpg",
+    "img": "",
     "link": "",
     "clicks": 0
   },
@@ -3332,7 +3332,7 @@
     "maxBet": 500,
     "hot": null,
     "tag": null,
-    "img": "https://slotcatalog.com/userfiles/image/game_logos/lucky-8.jpg",
+    "img": "",
     "link": "",
     "clicks": 0
   },
@@ -3348,7 +3348,7 @@
     "maxBet": 500,
     "hot": null,
     "tag": null,
-    "img": "https://slotcatalog.com/userfiles/image/game_logos/wild-depths.jpg",
+    "img": "",
     "link": "",
     "clicks": 0
   },
@@ -3364,7 +3364,7 @@
     "maxBet": 500,
     "hot": null,
     "tag": null,
-    "img": "https://slotcatalog.com/userfiles/image/game_logos/atlantis-megaways.jpg",
+    "img": "",
     "link": "",
     "clicks": 0
   },
@@ -3380,7 +3380,7 @@
     "maxBet": 500,
     "hot": "fire",
     "tag": null,
-    "img": "https://slotcatalog.com/userfiles/image/game_logos/butterfly-staxx.jpg",
+    "img": "",
     "link": "",
     "clicks": 0
   },
@@ -3396,7 +3396,7 @@
     "maxBet": 500,
     "hot": "fire",
     "tag": null,
-    "img": "https://slotcatalog.com/userfiles/image/game_logos/dragon-kingdom.jpg",
+    "img": "",
     "link": "",
     "clicks": 0
   },
@@ -3412,7 +3412,7 @@
     "maxBet": 500,
     "hot": null,
     "tag": null,
-    "img": "https://slotcatalog.com/userfiles/image/game_logos/wild-beach-party.jpg",
+    "img": "",
     "link": "",
     "clicks": 0
   },
@@ -3428,7 +3428,7 @@
     "maxBet": 500,
     "hot": null,
     "tag": null,
-    "img": "https://slotcatalog.com/userfiles/image/game_logos/gates-of-aztec.jpg",
+    "img": "",
     "link": "",
     "clicks": 0
   },
@@ -3444,7 +3444,7 @@
     "maxBet": 500,
     "hot": null,
     "tag": null,
-    "img": "https://slotcatalog.com/userfiles/image/game_logos/terror-of-the-deep-sea.jpg",
+    "img": "",
     "link": "",
     "clicks": 0
   },
@@ -3460,7 +3460,7 @@
     "maxBet": 500,
     "hot": null,
     "tag": null,
-    "img": "https://slotcatalog.com/userfiles/image/game_logos/lamp-of-destiny.jpg",
+    "img": "",
     "link": "",
     "clicks": 0
   },
@@ -3476,7 +3476,7 @@
     "maxBet": 500,
     "hot": "fire",
     "tag": "Tigrinho",
-    "img": "https://slotcatalog.com/userfiles/image/game_logos/fortune-tiger.jpg",
+    "img": "https://www.pg-demo.com/game-icon/rectangle/fortune-tiger.png",
     "link": "",
     "clicks": 0
   },
@@ -3492,7 +3492,7 @@
     "maxBet": 500,
     "hot": "fire",
     "tag": "Touro",
-    "img": "https://slotcatalog.com/userfiles/image/game_logos/fortune-ox.jpg",
+    "img": "https://www.pg-demo.com/game-icon/rectangle/fortune-ox.png",
     "link": "",
     "clicks": 0
   },
@@ -3508,7 +3508,7 @@
     "maxBet": 500,
     "hot": "fire",
     "tag": null,
-    "img": "https://slotcatalog.com/userfiles/image/game_logos/fortune-rabbit.jpg",
+    "img": "https://www.pg-demo.com/game-icon/rectangle/fortune-rabbit.png",
     "link": "",
     "clicks": 0
   },
@@ -3524,7 +3524,7 @@
     "maxBet": 500,
     "hot": "fire",
     "tag": null,
-    "img": "https://slotcatalog.com/userfiles/image/game_logos/fortune-mouse.jpg",
+    "img": "https://www.pg-demo.com/game-icon/rectangle/fortune-mouse.png",
     "link": "",
     "clicks": 0
   },
@@ -3540,7 +3540,7 @@
     "maxBet": 500,
     "hot": null,
     "tag": null,
-    "img": "https://slotcatalog.com/userfiles/image/game_logos/fortune-dragon.jpg",
+    "img": "https://www.pg-demo.com/game-icon/rectangle/fortune-dragon.png",
     "link": "",
     "clicks": 0
   },
@@ -3556,7 +3556,7 @@
     "maxBet": 500,
     "hot": null,
     "tag": "NOVO",
-    "img": "https://slotcatalog.com/userfiles/image/game_logos/fortune-snake.jpg",
+    "img": "https://www.pg-demo.com/game-icon/rectangle/fortune-snake.png",
     "link": "",
     "clicks": 0
   },
@@ -3572,7 +3572,7 @@
     "maxBet": 500,
     "hot": null,
     "tag": null,
-    "img": "https://slotcatalog.com/userfiles/image/game_logos/fortune-rooster.jpg",
+    "img": "",
     "link": "",
     "clicks": 0
   },
@@ -3588,7 +3588,7 @@
     "maxBet": 500,
     "hot": "fire",
     "tag": null,
-    "img": "https://slotcatalog.com/userfiles/image/game_logos/ganesha-fortune.jpg",
+    "img": "https://www.pg-demo.com/game-icon/rectangle/ganesha-fortune.png",
     "link": "",
     "clicks": 0
   },
@@ -3604,7 +3604,7 @@
     "maxBet": 500,
     "hot": "fire",
     "tag": null,
-    "img": "https://slotcatalog.com/userfiles/image/game_logos/ganesha-gold.jpg",
+    "img": "https://www.pg-demo.com/game-icon/rectangle/ganesha-gold.png",
     "link": "",
     "clicks": 0
   },
@@ -3620,7 +3620,7 @@
     "maxBet": 500,
     "hot": null,
     "tag": null,
-    "img": "https://slotcatalog.com/userfiles/image/game_logos/mahjong-ways.jpg",
+    "img": "https://www.pg-demo.com/game-icon/rectangle/mahjong-ways.png",
     "link": "",
     "clicks": 0
   },
@@ -3636,7 +3636,7 @@
     "maxBet": 500,
     "hot": "fire",
     "tag": null,
-    "img": "https://slotcatalog.com/userfiles/image/game_logos/mahjong-ways-2.jpg",
+    "img": "https://www.pg-demo.com/game-icon/rectangle/mahjong-ways-2.png",
     "link": "",
     "clicks": 0
   },
@@ -3652,7 +3652,7 @@
     "maxBet": 500,
     "hot": null,
     "tag": "NOVO",
-    "img": "https://slotcatalog.com/userfiles/image/game_logos/mahjong-ways-3.jpg",
+    "img": "",
     "link": "",
     "clicks": 0
   },
@@ -3668,7 +3668,7 @@
     "maxBet": 500,
     "hot": "fire",
     "tag": null,
-    "img": "https://slotcatalog.com/userfiles/image/game_logos/dragon-hatch.jpg",
+    "img": "https://www.pg-demo.com/game-icon/rectangle/dragon-hatch.png",
     "link": "",
     "clicks": 0
   },
@@ -3684,7 +3684,7 @@
     "maxBet": 500,
     "hot": null,
     "tag": null,
-    "img": "https://slotcatalog.com/userfiles/image/game_logos/dragon-hatch-2.jpg",
+    "img": "https://www.pg-demo.com/game-icon/rectangle/dragon-hatch-2.png",
     "link": "",
     "clicks": 0
   },
@@ -3700,7 +3700,7 @@
     "maxBet": 500,
     "hot": null,
     "tag": null,
-    "img": "https://slotcatalog.com/userfiles/image/game_logos/dragon-tiger-luck.jpg",
+    "img": "",
     "link": "",
     "clicks": 0
   },
@@ -3716,7 +3716,7 @@
     "maxBet": 500,
     "hot": "fire",
     "tag": null,
-    "img": "https://slotcatalog.com/userfiles/image/game_logos/lucky-neko.jpg",
+    "img": "https://www.pg-demo.com/game-icon/rectangle/lucky-neko.png",
     "link": "",
     "clicks": 0
   },
@@ -3732,7 +3732,7 @@
     "maxBet": 500,
     "hot": null,
     "tag": null,
-    "img": "https://slotcatalog.com/userfiles/image/game_logos/caishens-cash.jpg",
+    "img": "",
     "link": "",
     "clicks": 0
   },
@@ -3748,7 +3748,7 @@
     "maxBet": 500,
     "hot": null,
     "tag": null,
-    "img": "https://slotcatalog.com/userfiles/image/game_logos/wild-bandito.jpg",
+    "img": "https://www.pg-demo.com/game-icon/rectangle/wild-bandito.png",
     "link": "",
     "clicks": 0
   },
@@ -3764,7 +3764,7 @@
     "maxBet": 500,
     "hot": "fire",
     "tag": null,
-    "img": "https://slotcatalog.com/userfiles/image/game_logos/bikini-paradise.jpg",
+    "img": "https://www.pg-demo.com/game-icon/rectangle/bikini-paradise.png",
     "link": "",
     "clicks": 0
   },
@@ -3780,7 +3780,7 @@
     "maxBet": 500,
     "hot": "fire",
     "tag": null,
-    "img": "https://slotcatalog.com/userfiles/image/game_logos/candy-bonanza.jpg",
+    "img": "https://www.pg-demo.com/game-icon/rectangle/candy-bonanza.png",
     "link": "",
     "clicks": 0
   },
@@ -3796,7 +3796,7 @@
     "maxBet": 500,
     "hot": null,
     "tag": null,
-    "img": "https://slotcatalog.com/userfiles/image/game_logos/candy-burst.jpg",
+    "img": "https://www.pg-demo.com/game-icon/rectangle/candy-burst.png",
     "link": "",
     "clicks": 0
   },
@@ -3812,7 +3812,7 @@
     "maxBet": 500,
     "hot": "fire",
     "tag": null,
-    "img": "https://slotcatalog.com/userfiles/image/game_logos/cocktail-nights.jpg",
+    "img": "https://www.pg-demo.com/game-icon/rectangle/cocktail-nights.png",
     "link": "",
     "clicks": 0
   },
@@ -3828,7 +3828,7 @@
     "maxBet": 500,
     "hot": null,
     "tag": null,
-    "img": "https://slotcatalog.com/userfiles/image/game_logos/emoji-riches.jpg",
+    "img": "https://www.pg-demo.com/game-icon/rectangle/emoji-riches.png",
     "link": "",
     "clicks": 0
   },
@@ -3844,7 +3844,7 @@
     "maxBet": 500,
     "hot": "fire",
     "tag": null,
-    "img": "https://slotcatalog.com/userfiles/image/game_logos/leprechaun-riches.jpg",
+    "img": "https://www.pg-demo.com/game-icon/rectangle/leprechaun-riches.png",
     "link": "",
     "clicks": 0
   },
@@ -3860,7 +3860,7 @@
     "maxBet": 500,
     "hot": "fire",
     "tag": null,
-    "img": "https://slotcatalog.com/userfiles/image/game_logos/prosperity-fortune-tree.jpg",
+    "img": "https://www.pg-demo.com/game-icon/rectangle/prosperity-fortune-tree.png",
     "link": "",
     "clicks": 0
   },
@@ -3876,7 +3876,7 @@
     "maxBet": 500,
     "hot": null,
     "tag": null,
-    "img": "https://slotcatalog.com/userfiles/image/game_logos/ways-of-the-qilin.jpg",
+    "img": "https://www.pg-demo.com/game-icon/rectangle/ways-of-the-qilin.png",
     "link": "",
     "clicks": 0
   },
@@ -3892,7 +3892,7 @@
     "maxBet": 500,
     "hot": "fire",
     "tag": null,
-    "img": "https://slotcatalog.com/userfiles/image/game_logos/legend-of-perseus.jpg",
+    "img": "https://www.pg-demo.com/game-icon/rectangle/legend-of-perseus.png",
     "link": "",
     "clicks": 0
   },
@@ -3908,7 +3908,7 @@
     "maxBet": 500,
     "hot": null,
     "tag": null,
-    "img": "https://slotcatalog.com/userfiles/image/game_logos/midas-fortune.jpg",
+    "img": "https://www.pg-demo.com/game-icon/rectangle/midas-fortune.png",
     "link": "",
     "clicks": 0
   },
@@ -3924,7 +3924,7 @@
     "maxBet": 500,
     "hot": "fire",
     "tag": null,
-    "img": "https://slotcatalog.com/userfiles/image/game_logos/opera-dynasty.jpg",
+    "img": "",
     "link": "",
     "clicks": 0
   },
@@ -3940,7 +3940,7 @@
     "maxBet": 500,
     "hot": null,
     "tag": null,
-    "img": "https://slotcatalog.com/userfiles/image/game_logos/thai-river-wonders.jpg",
+    "img": "https://www.pg-demo.com/game-icon/rectangle/thai-river-wonders.png",
     "link": "",
     "clicks": 0
   },
@@ -3956,7 +3956,7 @@
     "maxBet": 500,
     "hot": null,
     "tag": null,
-    "img": "https://slotcatalog.com/userfiles/image/game_logos/muay-thai-champion.jpg",
+    "img": "https://www.pg-demo.com/game-icon/rectangle/muay-thai-champion.png",
     "link": "",
     "clicks": 0
   },
@@ -3972,7 +3972,7 @@
     "maxBet": 500,
     "hot": null,
     "tag": null,
-    "img": "https://slotcatalog.com/userfiles/image/game_logos/legendary-monkey-king.jpg",
+    "img": "https://www.pg-demo.com/game-icon/rectangle/legendary-monkey-king.png",
     "link": "",
     "clicks": 0
   },
@@ -3988,7 +3988,7 @@
     "maxBet": 500,
     "hot": null,
     "tag": null,
-    "img": "https://slotcatalog.com/userfiles/image/game_logos/legend-of-the-monkey-king.jpg",
+    "img": "",
     "link": "",
     "clicks": 0
   },
@@ -4004,7 +4004,7 @@
     "maxBet": 500,
     "hot": null,
     "tag": null,
-    "img": "https://slotcatalog.com/userfiles/image/game_logos/flirting-scholar.jpg",
+    "img": "",
     "link": "",
     "clicks": 0
   },
@@ -4020,7 +4020,7 @@
     "maxBet": 500,
     "hot": null,
     "tag": null,
-    "img": "https://slotcatalog.com/userfiles/image/game_logos/jewels-of-prosperity.jpg",
+    "img": "",
     "link": "",
     "clicks": 0
   },
@@ -4036,7 +4036,7 @@
     "maxBet": 500,
     "hot": null,
     "tag": null,
-    "img": "https://slotcatalog.com/userfiles/image/game_logos/rave-party-fever.jpg",
+    "img": "https://www.pg-demo.com/game-icon/rectangle/rave-party-fever.png",
     "link": "",
     "clicks": 0
   },
@@ -4052,7 +4052,7 @@
     "maxBet": 500,
     "hot": null,
     "tag": null,
-    "img": "https://slotcatalog.com/userfiles/image/game_logos/graffiti-rush.jpg",
+    "img": "",
     "link": "",
     "clicks": 0
   },
@@ -4068,7 +4068,7 @@
     "maxBet": 500,
     "hot": null,
     "tag": null,
-    "img": "https://slotcatalog.com/userfiles/image/game_logos/songkran-splash.jpg",
+    "img": "",
     "link": "",
     "clicks": 0
   },
@@ -4084,7 +4084,7 @@
     "maxBet": 500,
     "hot": null,
     "tag": null,
-    "img": "https://slotcatalog.com/userfiles/image/game_logos/chicky-run.jpg",
+    "img": "",
     "link": "",
     "clicks": 0
   },
@@ -4100,7 +4100,7 @@
     "maxBet": 500,
     "hot": null,
     "tag": null,
-    "img": "https://slotcatalog.com/userfiles/image/game_logos/three-crazy-piggies.jpg",
+    "img": "",
     "link": "",
     "clicks": 0
   },
@@ -4116,7 +4116,7 @@
     "maxBet": 500,
     "hot": null,
     "tag": null,
-    "img": "https://slotcatalog.com/userfiles/image/game_logos/anubis-wrath.jpg",
+    "img": "",
     "link": "",
     "clicks": 0
   },
@@ -4132,7 +4132,7 @@
     "maxBet": 500,
     "hot": null,
     "tag": null,
-    "img": "https://slotcatalog.com/userfiles/image/game_logos/majestic-treasures.jpg",
+    "img": "",
     "link": "",
     "clicks": 0
   },
@@ -4148,7 +4148,7 @@
     "maxBet": 500,
     "hot": "fire",
     "tag": null,
-    "img": "https://slotcatalog.com/userfiles/image/game_logos/galactic-gems.jpg",
+    "img": "",
     "link": "",
     "clicks": 0
   },
@@ -4164,7 +4164,7 @@
     "maxBet": 500,
     "hot": null,
     "tag": "BR",
-    "img": "https://slotcatalog.com/userfiles/image/game_logos/rio-fantasia.jpg",
+    "img": "",
     "link": "",
     "clicks": 0
   },
@@ -4180,7 +4180,7 @@
     "maxBet": 500,
     "hot": null,
     "tag": "BR",
-    "img": "https://slotcatalog.com/userfiles/image/game_logos/futebol-fever.jpg",
+    "img": "",
     "link": "",
     "clicks": 0
   },
@@ -4196,7 +4196,7 @@
     "maxBet": 500,
     "hot": null,
     "tag": null,
-    "img": "https://slotcatalog.com/userfiles/image/game_logos/piggy-gold.jpg",
+    "img": "",
     "link": "",
     "clicks": 0
   },
@@ -4212,7 +4212,7 @@
     "maxBet": 500,
     "hot": null,
     "tag": null,
-    "img": "https://slotcatalog.com/userfiles/image/game_logos/buffalo-win.jpg",
+    "img": "",
     "link": "",
     "clicks": 0
   },
@@ -4228,7 +4228,7 @@
     "maxBet": 500,
     "hot": "fire",
     "tag": null,
-    "img": "https://slotcatalog.com/userfiles/image/game_logos/bakery-bonanza.jpg",
+    "img": "",
     "link": "",
     "clicks": 0
   },
@@ -4244,7 +4244,7 @@
     "maxBet": 500,
     "hot": null,
     "tag": null,
-    "img": "https://slotcatalog.com/userfiles/image/game_logos/crypto-gold.jpg",
+    "img": "",
     "link": "",
     "clicks": 0
   },
@@ -4260,7 +4260,7 @@
     "maxBet": 500,
     "hot": "fire",
     "tag": null,
-    "img": "https://slotcatalog.com/userfiles/image/game_logos/destiny-of-sun-and-moon.jpg",
+    "img": "",
     "link": "",
     "clicks": 0
   },
@@ -4276,7 +4276,7 @@
     "maxBet": 500,
     "hot": "fire",
     "tag": null,
-    "img": "https://slotcatalog.com/userfiles/image/game_logos/double-fortune.jpg",
+    "img": "",
     "link": "",
     "clicks": 0
   },
@@ -4292,7 +4292,7 @@
     "maxBet": 500,
     "hot": null,
     "tag": null,
-    "img": "https://slotcatalog.com/userfiles/image/game_logos/dreams-of-macau.jpg",
+    "img": "",
     "link": "",
     "clicks": 0
   },
@@ -4308,7 +4308,7 @@
     "maxBet": 500,
     "hot": null,
     "tag": null,
-    "img": "https://slotcatalog.com/userfiles/image/game_logos/egypts-book-of-mystery.jpg",
+    "img": "",
     "link": "",
     "clicks": 0
   },
@@ -4324,7 +4324,7 @@
     "maxBet": 500,
     "hot": "fire",
     "tag": null,
-    "img": "https://slotcatalog.com/userfiles/image/game_logos/fairy-wonders.jpg",
+    "img": "",
     "link": "",
     "clicks": 0
   },
@@ -4340,7 +4340,7 @@
     "maxBet": 500,
     "hot": null,
     "tag": null,
-    "img": "https://slotcatalog.com/userfiles/image/game_logos/fortune-gods.jpg",
+    "img": "",
     "link": "",
     "clicks": 0
   },
@@ -4356,7 +4356,7 @@
     "maxBet": 500,
     "hot": "fire",
     "tag": null,
-    "img": "https://slotcatalog.com/userfiles/image/game_logos/garuda-gems.jpg",
+    "img": "",
     "link": "",
     "clicks": 0
   },
@@ -4372,7 +4372,7 @@
     "maxBet": 500,
     "hot": null,
     "tag": null,
-    "img": "https://slotcatalog.com/userfiles/image/game_logos/gem-saviour-conquest.jpg",
+    "img": "",
     "link": "",
     "clicks": 0
   },
@@ -4388,7 +4388,7 @@
     "maxBet": 500,
     "hot": null,
     "tag": null,
-    "img": "https://slotcatalog.com/userfiles/image/game_logos/gem-saviour-sword.jpg",
+    "img": "",
     "link": "",
     "clicks": 0
   },
@@ -4404,7 +4404,7 @@
     "maxBet": 500,
     "hot": null,
     "tag": null,
-    "img": "https://slotcatalog.com/userfiles/image/game_logos/genies-3-wishes.jpg",
+    "img": "",
     "link": "",
     "clicks": 0
   },
@@ -4420,7 +4420,7 @@
     "maxBet": 500,
     "hot": null,
     "tag": null,
-    "img": "https://slotcatalog.com/userfiles/image/game_logos/heist-stakes.jpg",
+    "img": "",
     "link": "",
     "clicks": 0
   },
@@ -4436,7 +4436,7 @@
     "maxBet": 500,
     "hot": null,
     "tag": null,
-    "img": "https://slotcatalog.com/userfiles/image/game_logos/hip-hop-panda.jpg",
+    "img": "",
     "link": "",
     "clicks": 0
   },
@@ -4452,7 +4452,7 @@
     "maxBet": 500,
     "hot": null,
     "tag": null,
-    "img": "https://slotcatalog.com/userfiles/image/game_logos/honey-trap-of-diao-chan.jpg",
+    "img": "",
     "link": "",
     "clicks": 0
   },
@@ -4468,7 +4468,7 @@
     "maxBet": 500,
     "hot": null,
     "tag": null,
-    "img": "https://slotcatalog.com/userfiles/image/game_logos/jewel-race.jpg",
+    "img": "",
     "link": "",
     "clicks": 0
   },
@@ -4484,7 +4484,7 @@
     "maxBet": 500,
     "hot": null,
     "tag": null,
-    "img": "https://slotcatalog.com/userfiles/image/game_logos/jewels-of-egypt.jpg",
+    "img": "",
     "link": "",
     "clicks": 0
   },
@@ -4500,7 +4500,7 @@
     "maxBet": 500,
     "hot": null,
     "tag": null,
-    "img": "https://slotcatalog.com/userfiles/image/game_logos/journey-to-the-wealth.jpg",
+    "img": "",
     "link": "",
     "clicks": 0
   },
@@ -4516,7 +4516,7 @@
     "maxBet": 500,
     "hot": null,
     "tag": null,
-    "img": "https://slotcatalog.com/userfiles/image/game_logos/jungle-delight.jpg",
+    "img": "",
     "link": "",
     "clicks": 0
   },
@@ -4532,7 +4532,7 @@
     "maxBet": 500,
     "hot": null,
     "tag": null,
-    "img": "https://slotcatalog.com/userfiles/image/game_logos/legend-of-hou-yi.jpg",
+    "img": "",
     "link": "",
     "clicks": 0
   },
@@ -4548,7 +4548,7 @@
     "maxBet": 500,
     "hot": "fire",
     "tag": null,
-    "img": "https://slotcatalog.com/userfiles/image/game_logos/medusa.jpg",
+    "img": "",
     "link": "",
     "clicks": 0
   },
@@ -4564,7 +4564,7 @@
     "maxBet": 500,
     "hot": "fire",
     "tag": null,
-    "img": "https://slotcatalog.com/userfiles/image/game_logos/medusa-ii.jpg",
+    "img": "",
     "link": "",
     "clicks": 0
   },
@@ -4580,7 +4580,7 @@
     "maxBet": 500,
     "hot": null,
     "tag": null,
-    "img": "https://slotcatalog.com/userfiles/image/game_logos/medusa-3.jpg",
+    "img": "",
     "link": "",
     "clicks": 0
   },
@@ -4596,7 +4596,7 @@
     "maxBet": 500,
     "hot": "fire",
     "tag": null,
-    "img": "https://slotcatalog.com/userfiles/image/game_logos/mr-hallow-win.jpg",
+    "img": "",
     "link": "",
     "clicks": 0
   },
@@ -4612,7 +4612,7 @@
     "maxBet": 500,
     "hot": null,
     "tag": null,
-    "img": "https://slotcatalog.com/userfiles/image/game_logos/mythical-treasure.jpg",
+    "img": "",
     "link": "",
     "clicks": 0
   },
@@ -4628,7 +4628,7 @@
     "maxBet": 500,
     "hot": null,
     "tag": null,
-    "img": "https://slotcatalog.com/userfiles/image/game_logos/opera-queen.jpg",
+    "img": "",
     "link": "",
     "clicks": 0
   },
@@ -4644,7 +4644,7 @@
     "maxBet": 500,
     "hot": null,
     "tag": null,
-    "img": "https://slotcatalog.com/userfiles/image/game_logos/phoenix-rises.jpg",
+    "img": "",
     "link": "",
     "clicks": 0
   },
@@ -4660,7 +4660,7 @@
     "maxBet": 500,
     "hot": null,
     "tag": null,
-    "img": "https://slotcatalog.com/userfiles/image/game_logos/plushie-frenzy.jpg",
+    "img": "",
     "link": "",
     "clicks": 0
   },
@@ -4676,7 +4676,7 @@
     "maxBet": 500,
     "hot": null,
     "tag": null,
-    "img": "https://slotcatalog.com/userfiles/image/game_logos/queen-of-bounty.jpg",
+    "img": "",
     "link": "",
     "clicks": 0
   },
@@ -4692,7 +4692,7 @@
     "maxBet": 500,
     "hot": null,
     "tag": null,
-    "img": "https://slotcatalog.com/userfiles/image/game_logos/reel-love.jpg",
+    "img": "",
     "link": "",
     "clicks": 0
   },
@@ -4708,7 +4708,7 @@
     "maxBet": 500,
     "hot": null,
     "tag": null,
-    "img": "https://slotcatalog.com/userfiles/image/game_logos/santas-gift-rush.jpg",
+    "img": "",
     "link": "",
     "clicks": 0
   },
@@ -4724,7 +4724,7 @@
     "maxBet": 500,
     "hot": null,
     "tag": null,
-    "img": "https://slotcatalog.com/userfiles/image/game_logos/secrets-of-cleopatra.jpg",
+    "img": "",
     "link": "",
     "clicks": 0
   },
@@ -4740,7 +4740,7 @@
     "maxBet": 500,
     "hot": null,
     "tag": null,
-    "img": "https://slotcatalog.com/userfiles/image/game_logos/shaolin-soccer.jpg",
+    "img": "",
     "link": "",
     "clicks": 0
   },
@@ -4756,7 +4756,7 @@
     "maxBet": 500,
     "hot": "fire",
     "tag": null,
-    "img": "https://slotcatalog.com/userfiles/image/game_logos/speed-winner.jpg",
+    "img": "",
     "link": "",
     "clicks": 0
   },
@@ -4772,7 +4772,7 @@
     "maxBet": 500,
     "hot": "fire",
     "tag": null,
-    "img": "https://slotcatalog.com/userfiles/image/game_logos/spirited-wonders.jpg",
+    "img": "",
     "link": "",
     "clicks": 0
   },
@@ -4788,7 +4788,7 @@
     "maxBet": 500,
     "hot": null,
     "tag": null,
-    "img": "https://slotcatalog.com/userfiles/image/game_logos/supermarket-spree.jpg",
+    "img": "",
     "link": "",
     "clicks": 0
   },
@@ -4804,7 +4804,7 @@
     "maxBet": 500,
     "hot": "fire",
     "tag": null,
-    "img": "https://slotcatalog.com/userfiles/image/game_logos/the-great-icescape.jpg",
+    "img": "",
     "link": "",
     "clicks": 0
   },
@@ -4820,7 +4820,7 @@
     "maxBet": 500,
     "hot": "fire",
     "tag": null,
-    "img": "https://slotcatalog.com/userfiles/image/game_logos/tree-of-fortune.jpg",
+    "img": "",
     "link": "",
     "clicks": 0
   },
@@ -4836,7 +4836,7 @@
     "maxBet": 500,
     "hot": "fire",
     "tag": null,
-    "img": "https://slotcatalog.com/userfiles/image/game_logos/win-win-won.jpg",
+    "img": "",
     "link": "",
     "clicks": 0
   },
@@ -4852,7 +4852,7 @@
     "maxBet": 500,
     "hot": "fire",
     "tag": null,
-    "img": "https://slotcatalog.com/userfiles/image/game_logos/wizdom-wonders.jpg",
+    "img": "",
     "link": "",
     "clicks": 0
   },
@@ -4868,7 +4868,7 @@
     "maxBet": 500,
     "hot": null,
     "tag": null,
-    "img": "https://slotcatalog.com/userfiles/image/game_logos/wonder-lion.jpg",
+    "img": "",
     "link": "",
     "clicks": 0
   },
@@ -4884,7 +4884,7 @@
     "maxBet": 500,
     "hot": null,
     "tag": null,
-    "img": "https://slotcatalog.com/userfiles/image/game_logos/yi-sheng-prayer.jpg",
+    "img": "",
     "link": "",
     "clicks": 0
   },
@@ -4900,7 +4900,7 @@
     "maxBet": 500,
     "hot": "fire",
     "tag": null,
-    "img": "https://slotcatalog.com/userfiles/image/game_logos/ninja-raccoon-frenzy.jpg",
+    "img": "",
     "link": "",
     "clicks": 0
   },
@@ -4916,7 +4916,7 @@
     "maxBet": 500,
     "hot": null,
     "tag": null,
-    "img": "https://slotcatalog.com/userfiles/image/game_logos/wild-coaster.jpg",
+    "img": "",
     "link": "",
     "clicks": 0
   },
@@ -4932,7 +4932,7 @@
     "maxBet": 500,
     "hot": null,
     "tag": null,
-    "img": "https://slotcatalog.com/userfiles/image/game_logos/empress-regnant.jpg",
+    "img": "",
     "link": "",
     "clicks": 0
   },
@@ -4948,7 +4948,7 @@
     "maxBet": 500,
     "hot": null,
     "tag": null,
-    "img": "https://slotcatalog.com/userfiles/image/game_logos/cash-mania.jpg",
+    "img": "",
     "link": "",
     "clicks": 0
   },
@@ -4964,7 +4964,7 @@
     "maxBet": 500,
     "hot": "fire",
     "tag": null,
-    "img": "https://slotcatalog.com/userfiles/image/game_logos/prosperity-lion.jpg",
+    "img": "",
     "link": "",
     "clicks": 0
   },
@@ -4980,7 +4980,7 @@
     "maxBet": 500,
     "hot": null,
     "tag": null,
-    "img": "https://slotcatalog.com/userfiles/image/game_logos/jurassic-kingdom.jpg",
+    "img": "",
     "link": "",
     "clicks": 0
   },
@@ -4996,7 +4996,7 @@
     "maxBet": 500,
     "hot": "fire",
     "tag": null,
-    "img": "https://slotcatalog.com/userfiles/image/game_logos/vampires-charm.jpg",
+    "img": "",
     "link": "",
     "clicks": 0
   },
@@ -5012,7 +5012,7 @@
     "maxBet": 500,
     "hot": "fire",
     "tag": null,
-    "img": "https://slotcatalog.com/userfiles/image/game_logos/queen-of-wands.jpg",
+    "img": "",
     "link": "",
     "clicks": 0
   },
@@ -5028,7 +5028,7 @@
     "maxBet": 500,
     "hot": null,
     "tag": null,
-    "img": "https://slotcatalog.com/userfiles/image/game_logos/duo-fu-duo-cai-jin-qian-wa.jpg",
+    "img": "",
     "link": "",
     "clicks": 0
   },
@@ -5044,7 +5044,7 @@
     "maxBet": 500,
     "hot": null,
     "tag": null,
-    "img": "https://slotcatalog.com/userfiles/image/game_logos/wild-fireworks.jpg",
+    "img": "",
     "link": "",
     "clicks": 0
   },
@@ -5060,7 +5060,7 @@
     "maxBet": 500,
     "hot": null,
     "tag": null,
-    "img": "https://slotcatalog.com/userfiles/image/game_logos/circus-delight.jpg",
+    "img": "",
     "link": "",
     "clicks": 0
   },
@@ -5076,7 +5076,7 @@
     "maxBet": 500,
     "hot": null,
     "tag": null,
-    "img": "https://slotcatalog.com/userfiles/image/game_logos/jack-frosts-winter.jpg",
+    "img": "",
     "link": "",
     "clicks": 0
   },
@@ -5092,7 +5092,7 @@
     "maxBet": 500,
     "hot": null,
     "tag": null,
-    "img": "https://slotcatalog.com/userfiles/image/game_logos/heist-for-the-gold.jpg",
+    "img": "",
     "link": "",
     "clicks": 0
   },
@@ -5108,7 +5108,7 @@
     "maxBet": 500,
     "hot": "fire",
     "tag": null,
-    "img": "https://slotcatalog.com/userfiles/image/game_logos/pi-ata-wins.jpg",
+    "img": "",
     "link": "",
     "clicks": 0
   },
@@ -5124,7 +5124,7 @@
     "maxBet": 500,
     "hot": null,
     "tag": null,
-    "img": "https://slotcatalog.com/userfiles/image/game_logos/jack-the-giant-hunter.jpg",
+    "img": "",
     "link": "",
     "clicks": 0
   },
@@ -5140,7 +5140,7 @@
     "maxBet": 500,
     "hot": null,
     "tag": null,
-    "img": "https://slotcatalog.com/userfiles/image/game_logos/ancient-fortunes-aztec.jpg",
+    "img": "",
     "link": "",
     "clicks": 0
   },
@@ -5156,7 +5156,7 @@
     "maxBet": 500,
     "hot": "fire",
     "tag": null,
-    "img": "https://slotcatalog.com/userfiles/image/game_logos/crystal-of-aztec.jpg",
+    "img": "",
     "link": "",
     "clicks": 0
   },
@@ -5172,7 +5172,7 @@
     "maxBet": 500,
     "hot": null,
     "tag": null,
-    "img": "https://slotcatalog.com/userfiles/image/game_logos/goldbeard.jpg",
+    "img": "",
     "link": "",
     "clicks": 0
   },
@@ -5188,7 +5188,7 @@
     "maxBet": 500,
     "hot": null,
     "tag": null,
-    "img": "https://slotcatalog.com/userfiles/image/game_logos/royal-banquet.jpg",
+    "img": "",
     "link": "",
     "clicks": 0
   },
@@ -5204,7 +5204,7 @@
     "maxBet": 500,
     "hot": null,
     "tag": null,
-    "img": "https://slotcatalog.com/userfiles/image/game_logos/cleo-queen-of-egypt.jpg",
+    "img": "",
     "link": "",
     "clicks": 0
   },
@@ -5220,7 +5220,7 @@
     "maxBet": 500,
     "hot": "fire",
     "tag": null,
-    "img": "https://slotcatalog.com/userfiles/image/game_logos/agent-cash.jpg",
+    "img": "",
     "link": "",
     "clicks": 0
   },
@@ -5236,7 +5236,7 @@
     "maxBet": 500,
     "hot": null,
     "tag": null,
-    "img": "https://slotcatalog.com/userfiles/image/game_logos/coyote-cash.jpg",
+    "img": "",
     "link": "",
     "clicks": 0
   },
@@ -5252,7 +5252,7 @@
     "maxBet": 500,
     "hot": null,
     "tag": null,
-    "img": "https://slotcatalog.com/userfiles/image/game_logos/enchanted-garden.jpg",
+    "img": "",
     "link": "",
     "clicks": 0
   },
@@ -5268,7 +5268,7 @@
     "maxBet": 500,
     "hot": null,
     "tag": null,
-    "img": "https://slotcatalog.com/userfiles/image/game_logos/fire-and-ice.jpg",
+    "img": "",
     "link": "",
     "clicks": 0
   },
@@ -5284,7 +5284,7 @@
     "maxBet": 500,
     "hot": null,
     "tag": null,
-    "img": "https://slotcatalog.com/userfiles/image/game_logos/mermaid-queen.jpg",
+    "img": "",
     "link": "",
     "clicks": 0
   },
@@ -5300,7 +5300,7 @@
     "maxBet": 500,
     "hot": null,
     "tag": "BR",
-    "img": "https://slotcatalog.com/userfiles/image/game_logos/samba-sunset.jpg",
+    "img": "",
     "link": "",
     "clicks": 0
   },
@@ -5316,7 +5316,7 @@
     "maxBet": 500,
     "hot": "fire",
     "tag": null,
-    "img": "https://slotcatalog.com/userfiles/image/game_logos/bangkok-nights.jpg",
+    "img": "",
     "link": "",
     "clicks": 0
   },
@@ -5332,7 +5332,7 @@
     "maxBet": 500,
     "hot": null,
     "tag": null,
-    "img": "https://slotcatalog.com/userfiles/image/game_logos/diamond-dragon.jpg",
+    "img": "",
     "link": "",
     "clicks": 0
   },
@@ -5348,7 +5348,7 @@
     "maxBet": 500,
     "hot": "fire",
     "tag": null,
-    "img": "https://slotcatalog.com/userfiles/image/game_logos/frozen-queen.jpg",
+    "img": "",
     "link": "",
     "clicks": 0
   },
@@ -5364,7 +5364,7 @@
     "maxBet": 500,
     "hot": null,
     "tag": null,
-    "img": "https://slotcatalog.com/userfiles/image/game_logos/ocean-treasure.jpg",
+    "img": "",
     "link": "",
     "clicks": 0
   },
@@ -5380,7 +5380,7 @@
     "maxBet": 500,
     "hot": null,
     "tag": null,
-    "img": "https://slotcatalog.com/userfiles/image/game_logos/bulls-and-bears.jpg",
+    "img": "",
     "link": "",
     "clicks": 0
   },
@@ -5396,7 +5396,7 @@
     "maxBet": 500,
     "hot": null,
     "tag": null,
-    "img": "https://slotcatalog.com/userfiles/image/game_logos/lucky-last.jpg",
+    "img": "",
     "link": "",
     "clicks": 0
   },
@@ -5412,7 +5412,7 @@
     "maxBet": 500,
     "hot": null,
     "tag": null,
-    "img": "https://slotcatalog.com/userfiles/image/game_logos/wild-west-gold-mine.jpg",
+    "img": "",
     "link": "",
     "clicks": 0
   },
@@ -5428,7 +5428,7 @@
     "maxBet": 500,
     "hot": "fire",
     "tag": null,
-    "img": "https://slotcatalog.com/userfiles/image/game_logos/paradise-reels.jpg",
+    "img": "",
     "link": "",
     "clicks": 0
   },
@@ -5444,7 +5444,7 @@
     "maxBet": 500,
     "hot": null,
     "tag": null,
-    "img": "https://slotcatalog.com/userfiles/image/game_logos/reel-crime-bank-heist.jpg",
+    "img": "",
     "link": "",
     "clicks": 0
   },
@@ -5460,7 +5460,7 @@
     "maxBet": 500,
     "hot": null,
     "tag": null,
-    "img": "https://slotcatalog.com/userfiles/image/game_logos/arabian-tales.jpg",
+    "img": "",
     "link": "",
     "clicks": 0
   },
@@ -5476,7 +5476,7 @@
     "maxBet": 500,
     "hot": "fire",
     "tag": null,
-    "img": "https://slotcatalog.com/userfiles/image/game_logos/dolphin-cash.jpg",
+    "img": "",
     "link": "",
     "clicks": 0
   },
@@ -5492,7 +5492,7 @@
     "maxBet": 500,
     "hot": null,
     "tag": null,
-    "img": "https://slotcatalog.com/userfiles/image/game_logos/mamma-mia.jpg",
+    "img": "",
     "link": "",
     "clicks": 0
   },
@@ -5508,7 +5508,7 @@
     "maxBet": 500,
     "hot": "fire",
     "tag": null,
-    "img": "https://slotcatalog.com/userfiles/image/game_logos/good-fellas.jpg",
+    "img": "",
     "link": "",
     "clicks": 0
   },
@@ -5524,7 +5524,7 @@
     "maxBet": 500,
     "hot": null,
     "tag": null,
-    "img": "https://slotcatalog.com/userfiles/image/game_logos/lucky-shamrock.jpg",
+    "img": "",
     "link": "",
     "clicks": 0
   },
@@ -5540,7 +5540,7 @@
     "maxBet": 500,
     "hot": "fire",
     "tag": null,
-    "img": "https://slotcatalog.com/userfiles/image/game_logos/aztec-secrets.jpg",
+    "img": "",
     "link": "",
     "clicks": 0
   },
@@ -5556,7 +5556,7 @@
     "maxBet": 500,
     "hot": null,
     "tag": null,
-    "img": "https://slotcatalog.com/userfiles/image/game_logos/kung-fu-monkey.jpg",
+    "img": "",
     "link": "",
     "clicks": 0
   },
@@ -5572,7 +5572,7 @@
     "maxBet": 500,
     "hot": null,
     "tag": null,
-    "img": "https://slotcatalog.com/userfiles/image/game_logos/panda-panda.jpg",
+    "img": "",
     "link": "",
     "clicks": 0
   },
@@ -5588,7 +5588,7 @@
     "maxBet": 500,
     "hot": null,
     "tag": null,
-    "img": "https://slotcatalog.com/userfiles/image/game_logos/treasure-hunter.jpg",
+    "img": "",
     "link": "",
     "clicks": 0
   },
@@ -5604,7 +5604,7 @@
     "maxBet": 500,
     "hot": "fire",
     "tag": null,
-    "img": "https://slotcatalog.com/userfiles/image/game_logos/king-kong-cash.jpg",
+    "img": "",
     "link": "",
     "clicks": 0
   },
@@ -5620,7 +5620,7 @@
     "maxBet": 500,
     "hot": null,
     "tag": null,
-    "img": "https://slotcatalog.com/userfiles/image/game_logos/reel-riches.jpg",
+    "img": "",
     "link": "",
     "clicks": 0
   },
@@ -5636,7 +5636,7 @@
     "maxBet": 500,
     "hot": null,
     "tag": null,
-    "img": "https://slotcatalog.com/userfiles/image/game_logos/vegas-nights.jpg",
+    "img": "",
     "link": "",
     "clicks": 0
   },
@@ -5652,7 +5652,7 @@
     "maxBet": 500,
     "hot": null,
     "tag": null,
-    "img": "https://slotcatalog.com/userfiles/image/game_logos/volcano-riches.jpg",
+    "img": "",
     "link": "",
     "clicks": 0
   },
@@ -5668,7 +5668,7 @@
     "maxBet": 500,
     "hot": null,
     "tag": null,
-    "img": "https://slotcatalog.com/userfiles/image/game_logos/tweety-house.jpg",
+    "img": "",
     "link": "",
     "clicks": 0
   },
@@ -5684,7 +5684,7 @@
     "maxBet": 500,
     "hot": null,
     "tag": null,
-    "img": "https://slotcatalog.com/userfiles/image/game_logos/pirate-pays-megaways.jpg",
+    "img": "",
     "link": "",
     "clicks": 0
   },
@@ -5700,7 +5700,7 @@
     "maxBet": 500,
     "hot": null,
     "tag": null,
-    "img": "https://slotcatalog.com/userfiles/image/game_logos/mustang-trail.jpg",
+    "img": "",
     "link": "",
     "clicks": 0
   },
@@ -5716,7 +5716,7 @@
     "maxBet": 500,
     "hot": "fire",
     "tag": null,
-    "img": "https://slotcatalog.com/userfiles/image/game_logos/mariachi-megaways.jpg",
+    "img": "",
     "link": "",
     "clicks": 0
   },
@@ -5732,7 +5732,7 @@
     "maxBet": 500,
     "hot": "fire",
     "tag": null,
-    "img": "https://slotcatalog.com/userfiles/image/game_logos/dragon-of-the-eastern-sea.jpg",
+    "img": "",
     "link": "",
     "clicks": 0
   },
@@ -5748,7 +5748,7 @@
     "maxBet": 500,
     "hot": null,
     "tag": null,
-    "img": "https://slotcatalog.com/userfiles/image/game_logos/patricks-magic-field.jpg",
+    "img": "",
     "link": "",
     "clicks": 0
   },
@@ -5764,7 +5764,7 @@
     "maxBet": 500,
     "hot": null,
     "tag": null,
-    "img": "https://slotcatalog.com/userfiles/image/game_logos/chilli-heat.jpg",
+    "img": "",
     "link": "",
     "clicks": 0
   },
@@ -5780,7 +5780,7 @@
     "maxBet": 500,
     "hot": null,
     "tag": null,
-    "img": "https://slotcatalog.com/userfiles/image/game_logos/chicago-gold.jpg",
+    "img": "",
     "link": "",
     "clicks": 0
   },
@@ -5796,7 +5796,7 @@
     "maxBet": 500,
     "hot": null,
     "tag": null,
-    "img": "https://slotcatalog.com/userfiles/image/game_logos/money-money-money.jpg",
+    "img": "",
     "link": "",
     "clicks": 0
   },
@@ -5812,7 +5812,7 @@
     "maxBet": 500,
     "hot": null,
     "tag": null,
-    "img": "https://slotcatalog.com/userfiles/image/game_logos/cash-club.jpg",
+    "img": "",
     "link": "",
     "clicks": 0
   },
@@ -5828,7 +5828,7 @@
     "maxBet": 500,
     "hot": null,
     "tag": null,
-    "img": "https://slotcatalog.com/userfiles/image/game_logos/gems-bonanza.jpg",
+    "img": "",
     "link": "",
     "clicks": 0
   },
@@ -5844,7 +5844,7 @@
     "maxBet": 500,
     "hot": null,
     "tag": null,
-    "img": "https://slotcatalog.com/userfiles/image/game_logos/pixel-samurai.jpg",
+    "img": "",
     "link": "",
     "clicks": 0
   },
@@ -5860,7 +5860,7 @@
     "maxBet": 500,
     "hot": null,
     "tag": null,
-    "img": "https://slotcatalog.com/userfiles/image/game_logos/gingerbread-joy.jpg",
+    "img": "",
     "link": "",
     "clicks": 0
   },
@@ -5876,7 +5876,7 @@
     "maxBet": 500,
     "hot": "fire",
     "tag": null,
-    "img": "https://slotcatalog.com/userfiles/image/game_logos/emerald-king.jpg",
+    "img": "",
     "link": "",
     "clicks": 0
   },
@@ -5892,7 +5892,7 @@
     "maxBet": 500,
     "hot": null,
     "tag": null,
-    "img": "https://slotcatalog.com/userfiles/image/game_logos/empress-secrets.jpg",
+    "img": "",
     "link": "",
     "clicks": 0
   },
@@ -5908,7 +5908,7 @@
     "maxBet": 500,
     "hot": null,
     "tag": null,
-    "img": "https://slotcatalog.com/userfiles/image/game_logos/ox-king-gold.jpg",
+    "img": "",
     "link": "",
     "clicks": 0
   },
@@ -5924,7 +5924,7 @@
     "maxBet": 500,
     "hot": "fire",
     "tag": null,
-    "img": "https://slotcatalog.com/userfiles/image/game_logos/goldfish-supercash.jpg",
+    "img": "",
     "link": "",
     "clicks": 0
   },
@@ -5940,7 +5940,7 @@
     "maxBet": 500,
     "hot": null,
     "tag": null,
-    "img": "https://slotcatalog.com/userfiles/image/game_logos/lucky-cat.jpg",
+    "img": "",
     "link": "",
     "clicks": 0
   },
@@ -5956,7 +5956,7 @@
     "maxBet": 500,
     "hot": null,
     "tag": null,
-    "img": "https://slotcatalog.com/userfiles/image/game_logos/pollen-party.jpg",
+    "img": "",
     "link": "",
     "clicks": 0
   },
@@ -5972,7 +5972,7 @@
     "maxBet": 500,
     "hot": null,
     "tag": null,
-    "img": "https://slotcatalog.com/userfiles/image/game_logos/sword-of-ares.jpg",
+    "img": "",
     "link": "",
     "clicks": 0
   },
@@ -5988,7 +5988,7 @@
     "maxBet": 500,
     "hot": null,
     "tag": null,
-    "img": "https://slotcatalog.com/userfiles/image/game_logos/dragon-rising.jpg",
+    "img": "",
     "link": "",
     "clicks": 0
   },
@@ -6004,7 +6004,7 @@
     "maxBet": 500,
     "hot": null,
     "tag": null,
-    "img": "https://slotcatalog.com/userfiles/image/game_logos/frozen-fortunes.jpg",
+    "img": "",
     "link": "",
     "clicks": 0
   },
@@ -6020,7 +6020,7 @@
     "maxBet": 500,
     "hot": "fire",
     "tag": null,
-    "img": "https://slotcatalog.com/userfiles/image/game_logos/christmas-village.jpg",
+    "img": "",
     "link": "",
     "clicks": 0
   },
@@ -6036,7 +6036,7 @@
     "maxBet": 500,
     "hot": "fire",
     "tag": null,
-    "img": "https://slotcatalog.com/userfiles/image/game_logos/wins-of-ptah.jpg",
+    "img": "",
     "link": "",
     "clicks": 0
   },
@@ -6052,7 +6052,7 @@
     "maxBet": 500,
     "hot": null,
     "tag": null,
-    "img": "https://slotcatalog.com/userfiles/image/game_logos/fruit-super-nova.jpg",
+    "img": "",
     "link": "",
     "clicks": 0
   },
@@ -6068,7 +6068,7 @@
     "maxBet": 500,
     "hot": null,
     "tag": null,
-    "img": "https://slotcatalog.com/userfiles/image/game_logos/greatest-catch-bonanza.jpg",
+    "img": "https://www.pragmaticplay.com/wp-content/uploads/2024/10/The-Greatest-Catch-Bonanza_339x180_EN.png",
     "link": "",
     "clicks": 0
   },
@@ -6084,7 +6084,7 @@
     "maxBet": 500,
     "hot": null,
     "tag": null,
-    "img": "https://slotcatalog.com/userfiles/image/game_logos/extra-chili-megaways.jpg",
+    "img": "",
     "link": "",
     "clicks": 0
   },
@@ -6100,7 +6100,7 @@
     "maxBet": 500,
     "hot": null,
     "tag": null,
-    "img": "https://slotcatalog.com/userfiles/image/game_logos/wolf-street.jpg",
+    "img": "",
     "link": "",
     "clicks": 0
   },
@@ -6116,7 +6116,7 @@
     "maxBet": 500,
     "hot": null,
     "tag": null,
-    "img": "https://slotcatalog.com/userfiles/image/game_logos/mochimon.jpg",
+    "img": "",
     "link": "",
     "clicks": 0
   },
@@ -6132,7 +6132,7 @@
     "maxBet": 500,
     "hot": null,
     "tag": null,
-    "img": "https://slotcatalog.com/userfiles/image/game_logos/inca-gold.jpg",
+    "img": "",
     "link": "",
     "clicks": 0
   },
@@ -6148,7 +6148,7 @@
     "maxBet": 500,
     "hot": null,
     "tag": null,
-    "img": "https://slotcatalog.com/userfiles/image/game_logos/pyramid-king.jpg",
+    "img": "",
     "link": "",
     "clicks": 0
   },
@@ -6164,7 +6164,7 @@
     "maxBet": 500,
     "hot": null,
     "tag": null,
-    "img": "https://slotcatalog.com/userfiles/image/game_logos/vikings-go-berzerk.jpg",
+    "img": "",
     "link": "",
     "clicks": 0
   },
@@ -6180,7 +6180,7 @@
     "maxBet": 500,
     "hot": null,
     "tag": null,
-    "img": "https://slotcatalog.com/userfiles/image/game_logos/wild-spin-deluxe.jpg",
+    "img": "",
     "link": "",
     "clicks": 0
   },
@@ -6196,7 +6196,7 @@
     "maxBet": 500,
     "hot": null,
     "tag": null,
-    "img": "https://slotcatalog.com/userfiles/image/game_logos/pharaoh-king.jpg",
+    "img": "",
     "link": "",
     "clicks": 0
   },
@@ -6212,7 +6212,7 @@
     "maxBet": 500,
     "hot": null,
     "tag": null,
-    "img": "https://slotcatalog.com/userfiles/image/game_logos/safari-wilds.jpg",
+    "img": "",
     "link": "",
     "clicks": 0
   },
@@ -6228,7 +6228,7 @@
     "maxBet": 500,
     "hot": null,
     "tag": null,
-    "img": "https://slotcatalog.com/userfiles/image/game_logos/neon-city.jpg",
+    "img": "",
     "link": "",
     "clicks": 0
   },
@@ -6244,7 +6244,7 @@
     "maxBet": 500,
     "hot": null,
     "tag": null,
-    "img": "https://slotcatalog.com/userfiles/image/game_logos/diamond-deco.jpg",
+    "img": "",
     "link": "",
     "clicks": 0
   },
@@ -6260,7 +6260,7 @@
     "maxBet": 500,
     "hot": null,
     "tag": null,
-    "img": "https://slotcatalog.com/userfiles/image/game_logos/mafia-mayhem.jpg",
+    "img": "",
     "link": "",
     "clicks": 0
   },
@@ -6276,7 +6276,7 @@
     "maxBet": 500,
     "hot": null,
     "tag": null,
-    "img": "https://slotcatalog.com/userfiles/image/game_logos/pool-sharks.jpg",
+    "img": "",
     "link": "",
     "clicks": 0
   },
@@ -6292,7 +6292,7 @@
     "maxBet": 500,
     "hot": "fire",
     "tag": null,
-    "img": "https://slotcatalog.com/userfiles/image/game_logos/zombie-outbreak.jpg",
+    "img": "",
     "link": "",
     "clicks": 0
   },
@@ -6308,7 +6308,7 @@
     "maxBet": 500,
     "hot": null,
     "tag": null,
-    "img": "https://slotcatalog.com/userfiles/image/game_logos/ultimate-striker.jpg",
+    "img": "",
     "link": "",
     "clicks": 0
   },
@@ -6324,7 +6324,7 @@
     "maxBet": 500,
     "hot": null,
     "tag": null,
-    "img": "https://slotcatalog.com/userfiles/image/game_logos/rooster-rumble.jpg",
+    "img": "",
     "link": "",
     "clicks": 0
   },
@@ -6340,7 +6340,7 @@
     "maxBet": 500,
     "hot": null,
     "tag": null,
-    "img": "https://slotcatalog.com/userfiles/image/game_logos/symbols-of-egypt.jpg",
+    "img": "",
     "link": "",
     "clicks": 0
   },
@@ -6356,7 +6356,7 @@
     "maxBet": 500,
     "hot": "fire",
     "tag": null,
-    "img": "https://slotcatalog.com/userfiles/image/game_logos/tsai-shens-gift.jpg",
+    "img": "",
     "link": "",
     "clicks": 0
   },
@@ -6372,7 +6372,7 @@
     "maxBet": 500,
     "hot": null,
     "tag": null,
-    "img": "https://slotcatalog.com/userfiles/image/game_logos/rooster-rise-rich.jpg",
+    "img": "",
     "link": "",
     "clicks": 0
   },
@@ -6388,7 +6388,7 @@
     "maxBet": 500,
     "hot": null,
     "tag": null,
-    "img": "https://slotcatalog.com/userfiles/image/game_logos/ganesha-wins.jpg",
+    "img": "",
     "link": "",
     "clicks": 0
   },
@@ -6404,7 +6404,7 @@
     "maxBet": 500,
     "hot": null,
     "tag": null,
-    "img": "https://slotcatalog.com/userfiles/image/game_logos/dance-of-masks.jpg",
+    "img": "",
     "link": "",
     "clicks": 0
   },
@@ -6420,7 +6420,7 @@
     "maxBet": 500,
     "hot": null,
     "tag": null,
-    "img": "https://slotcatalog.com/userfiles/image/game_logos/pearl-of-anahita.jpg",
+    "img": "",
     "link": "",
     "clicks": 0
   },
@@ -6436,7 +6436,7 @@
     "maxBet": 500,
     "hot": "fire",
     "tag": null,
-    "img": "https://slotcatalog.com/userfiles/image/game_logos/queen-of-wands-deluxe.jpg",
+    "img": "",
     "link": "",
     "clicks": 0
   },
@@ -6452,7 +6452,7 @@
     "maxBet": 500,
     "hot": "fire",
     "tag": null,
-    "img": "https://slotcatalog.com/userfiles/image/game_logos/midnight-romance.jpg",
+    "img": "",
     "link": "",
     "clicks": 0
   },
@@ -6468,7 +6468,7 @@
     "maxBet": 500,
     "hot": null,
     "tag": null,
-    "img": "https://slotcatalog.com/userfiles/image/game_logos/vegas-night-life.jpg",
+    "img": "",
     "link": "",
     "clicks": 0
   },
@@ -6484,7 +6484,7 @@
     "maxBet": 500,
     "hot": null,
     "tag": null,
-    "img": "https://slotcatalog.com/userfiles/image/game_logos/flirting-scholar-pro.jpg",
+    "img": "",
     "link": "",
     "clicks": 0
   },
@@ -6500,7 +6500,7 @@
     "maxBet": 500,
     "hot": "fire",
     "tag": null,
-    "img": "https://slotcatalog.com/userfiles/image/game_logos/lucky-piggy.jpg",
+    "img": "",
     "link": "",
     "clicks": 0
   },
@@ -6516,7 +6516,7 @@
     "maxBet": 500,
     "hot": null,
     "tag": null,
-    "img": "https://slotcatalog.com/userfiles/image/game_logos/heroes-tales.jpg",
+    "img": "",
     "link": "",
     "clicks": 0
   },
@@ -6532,7 +6532,7 @@
     "maxBet": 500,
     "hot": null,
     "tag": null,
-    "img": "https://slotcatalog.com/userfiles/image/game_logos/ocean-mystery.jpg",
+    "img": "",
     "link": "",
     "clicks": 0
   },
@@ -6548,7 +6548,7 @@
     "maxBet": 500,
     "hot": null,
     "tag": null,
-    "img": "https://slotcatalog.com/userfiles/image/game_logos/flash-cash.jpg",
+    "img": "",
     "link": "",
     "clicks": 0
   },
@@ -6564,7 +6564,7 @@
     "maxBet": 500,
     "hot": null,
     "tag": null,
-    "img": "https://slotcatalog.com/userfiles/image/game_logos/street-dancer.jpg",
+    "img": "",
     "link": "",
     "clicks": 0
   },
@@ -6580,7 +6580,7 @@
     "maxBet": 500,
     "hot": null,
     "tag": null,
-    "img": "https://slotcatalog.com/userfiles/image/game_logos/chinese-dragon.jpg",
+    "img": "",
     "link": "",
     "clicks": 0
   },
@@ -6596,7 +6596,7 @@
     "maxBet": 500,
     "hot": null,
     "tag": null,
-    "img": "https://slotcatalog.com/userfiles/image/game_logos/crypto-bonanza.jpg",
+    "img": "",
     "link": "",
     "clicks": 0
   },
@@ -6612,7 +6612,7 @@
     "maxBet": 500,
     "hot": null,
     "tag": null,
-    "img": "https://slotcatalog.com/userfiles/image/game_logos/wonder-of-spring.jpg",
+    "img": "",
     "link": "",
     "clicks": 0
   },
@@ -6628,7 +6628,7 @@
     "maxBet": 500,
     "hot": null,
     "tag": null,
-    "img": "https://slotcatalog.com/userfiles/image/game_logos/starlight-prosperity.jpg",
+    "img": "",
     "link": "",
     "clicks": 0
   },
@@ -6644,7 +6644,7 @@
     "maxBet": 500,
     "hot": null,
     "tag": null,
-    "img": "https://slotcatalog.com/userfiles/image/game_logos/lunar-new-year.jpg",
+    "img": "",
     "link": "",
     "clicks": 0
   },
@@ -6660,7 +6660,7 @@
     "maxBet": 500,
     "hot": "fire",
     "tag": null,
-    "img": "https://slotcatalog.com/userfiles/image/game_logos/fortune-festival.jpg",
+    "img": "",
     "link": "",
     "clicks": 0
   },
@@ -6676,7 +6676,7 @@
     "maxBet": 500,
     "hot": null,
     "tag": null,
-    "img": "https://slotcatalog.com/userfiles/image/game_logos/wild-spin.jpg",
+    "img": "",
     "link": "",
     "clicks": 0
   },
@@ -6692,7 +6692,7 @@
     "maxBet": 500,
     "hot": null,
     "tag": null,
-    "img": "https://slotcatalog.com/userfiles/image/game_logos/battleground-royale.jpg",
+    "img": "",
     "link": "",
     "clicks": 0
   },
@@ -6708,7 +6708,7 @@
     "maxBet": 500,
     "hot": "fire",
     "tag": null,
-    "img": "https://slotcatalog.com/userfiles/image/game_logos/dragon-legend.jpg",
+    "img": "",
     "link": "",
     "clicks": 0
   },
@@ -6724,7 +6724,7 @@
     "maxBet": 500,
     "hot": null,
     "tag": null,
-    "img": "https://slotcatalog.com/userfiles/image/game_logos/pandoras-vault.jpg",
+    "img": "",
     "link": "",
     "clicks": 0
   },
@@ -6740,7 +6740,7 @@
     "maxBet": 500,
     "hot": null,
     "tag": null,
-    "img": "https://slotcatalog.com/userfiles/image/game_logos/jokers-wealth.jpg",
+    "img": "",
     "link": "",
     "clicks": 0
   },
@@ -6756,7 +6756,7 @@
     "maxBet": 500,
     "hot": "fire",
     "tag": null,
-    "img": "https://slotcatalog.com/userfiles/image/game_logos/octagon-gem.jpg",
+    "img": "",
     "link": "",
     "clicks": 0
   },
@@ -6772,7 +6772,7 @@
     "maxBet": 500,
     "hot": null,
     "tag": null,
-    "img": "https://slotcatalog.com/userfiles/image/game_logos/journey-to-the-west.jpg",
+    "img": "",
     "link": "",
     "clicks": 0
   },
@@ -6788,7 +6788,7 @@
     "maxBet": 500,
     "hot": null,
     "tag": null,
-    "img": "https://slotcatalog.com/userfiles/image/game_logos/fu-wang.jpg",
+    "img": "",
     "link": "",
     "clicks": 0
   },
@@ -6804,7 +6804,7 @@
     "maxBet": 500,
     "hot": null,
     "tag": null,
-    "img": "https://slotcatalog.com/userfiles/image/game_logos/cai-shen-gold.jpg",
+    "img": "",
     "link": "",
     "clicks": 0
   },
@@ -6820,7 +6820,7 @@
     "maxBet": 500,
     "hot": "fire",
     "tag": null,
-    "img": "https://slotcatalog.com/userfiles/image/game_logos/secret-forest.jpg",
+    "img": "",
     "link": "",
     "clicks": 0
   },
@@ -6836,7 +6836,7 @@
     "maxBet": 500,
     "hot": null,
     "tag": null,
-    "img": "https://slotcatalog.com/userfiles/image/game_logos/emperors-favour.jpg",
+    "img": "",
     "link": "",
     "clicks": 0
   },
@@ -6852,7 +6852,7 @@
     "maxBet": 500,
     "hot": null,
     "tag": null,
-    "img": "https://slotcatalog.com/userfiles/image/game_logos/jungle-adventure.jpg",
+    "img": "",
     "link": "",
     "clicks": 0
   },
@@ -6868,7 +6868,7 @@
     "maxBet": 500,
     "hot": null,
     "tag": null,
-    "img": "https://slotcatalog.com/userfiles/image/game_logos/ocean-voyage.jpg",
+    "img": "",
     "link": "",
     "clicks": 0
   },
@@ -6884,7 +6884,7 @@
     "maxBet": 500,
     "hot": null,
     "tag": null,
-    "img": "https://slotcatalog.com/userfiles/image/game_logos/diamond-rush.jpg",
+    "img": "",
     "link": "",
     "clicks": 0
   },
@@ -6900,7 +6900,7 @@
     "maxBet": 500,
     "hot": null,
     "tag": null,
-    "img": "https://slotcatalog.com/userfiles/image/game_logos/fortune-coin.jpg",
+    "img": "",
     "link": "",
     "clicks": 0
   },
@@ -6916,7 +6916,7 @@
     "maxBet": 500,
     "hot": null,
     "tag": null,
-    "img": "https://slotcatalog.com/userfiles/image/game_logos/rich-genie.jpg",
+    "img": "",
     "link": "",
     "clicks": 0
   },
@@ -6932,7 +6932,7 @@
     "maxBet": 500,
     "hot": null,
     "tag": null,
-    "img": "https://slotcatalog.com/userfiles/image/game_logos/lost-treasure.jpg",
+    "img": "",
     "link": "",
     "clicks": 0
   },
@@ -6948,7 +6948,7 @@
     "maxBet": 500,
     "hot": "fire",
     "tag": null,
-    "img": "https://slotcatalog.com/userfiles/image/game_logos/spicy-meatballs.jpg",
+    "img": "",
     "link": "",
     "clicks": 0
   },
@@ -6964,7 +6964,7 @@
     "maxBet": 500,
     "hot": null,
     "tag": null,
-    "img": "https://slotcatalog.com/userfiles/image/game_logos/street-noodles.jpg",
+    "img": "",
     "link": "",
     "clicks": 0
   },
@@ -6980,7 +6980,7 @@
     "maxBet": 500,
     "hot": "fire",
     "tag": null,
-    "img": "https://slotcatalog.com/userfiles/image/game_logos/bubble-bubble.jpg",
+    "img": "",
     "link": "",
     "clicks": 0
   },
@@ -6996,7 +6996,7 @@
     "maxBet": 500,
     "hot": "fire",
     "tag": null,
-    "img": "https://slotcatalog.com/userfiles/image/game_logos/count-spectacular.jpg",
+    "img": "",
     "link": "",
     "clicks": 0
   },
@@ -7012,7 +7012,7 @@
     "maxBet": 500,
     "hot": "fire",
     "tag": null,
-    "img": "https://slotcatalog.com/userfiles/image/game_logos/texan-tycoon.jpg",
+    "img": "",
     "link": "",
     "clicks": 0
   },
@@ -7028,7 +7028,7 @@
     "maxBet": 500,
     "hot": null,
     "tag": null,
-    "img": "https://slotcatalog.com/userfiles/image/game_logos/mr-vegas.jpg",
+    "img": "",
     "link": "",
     "clicks": 0
   },
@@ -7044,7 +7044,7 @@
     "maxBet": 500,
     "hot": null,
     "tag": null,
-    "img": "https://slotcatalog.com/userfiles/image/game_logos/football-rules.jpg",
+    "img": "",
     "link": "",
     "clicks": 0
   },
@@ -7060,7 +7060,7 @@
     "maxBet": 500,
     "hot": null,
     "tag": null,
-    "img": "https://slotcatalog.com/userfiles/image/game_logos/paradise-dreams.jpg",
+    "img": "",
     "link": "",
     "clicks": 0
   },
@@ -7076,7 +7076,7 @@
     "maxBet": 500,
     "hot": null,
     "tag": null,
-    "img": "https://slotcatalog.com/userfiles/image/game_logos/stardust.jpg",
+    "img": "",
     "link": "",
     "clicks": 0
   },
@@ -7092,7 +7092,7 @@
     "maxBet": 500,
     "hot": null,
     "tag": null,
-    "img": "https://slotcatalog.com/userfiles/image/game_logos/magic-fairy.jpg",
+    "img": "",
     "link": "",
     "clicks": 0
   },
@@ -7108,7 +7108,7 @@
     "maxBet": 500,
     "hot": "fire",
     "tag": null,
-    "img": "https://slotcatalog.com/userfiles/image/game_logos/treasure-tomb.jpg",
+    "img": "",
     "link": "",
     "clicks": 0
   },
@@ -7124,7 +7124,7 @@
     "maxBet": 500,
     "hot": null,
     "tag": null,
-    "img": "https://slotcatalog.com/userfiles/image/game_logos/crazy-critters.jpg",
+    "img": "",
     "link": "",
     "clicks": 0
   }
