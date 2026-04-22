@@ -7136,18 +7136,30 @@
    */
   const FALLBACK_CDNS = {
     pragmatic: [
+      // CDN 1: slotcatalog (indexa por nome)
       (code, name) => `https://slotcatalog.com/userfiles/image/game_logos/${slugify(name)}.jpg`,
-      (code, name) => `https://demogamesfree.pragmaticplay.net/gs2c/common/images/games/200/${code || ''}.png`,
-      (code, name) => `https://cdn.pragmaticplay.com/games/${slugify(name)}.png`,
+      // CDN 2: demo gratuita oficial da Pragmatic
+      (code, name) => `https://demogamesfree.pragmaticplay.net/gs2c/common/images/games/200/${code || slugify(name)}.png`,
+      // CDN 3: subdomínio alternativo demo
+      (code, name) => `https://demogamesfree.pragmaticplay.net/gs2c/common/images/games/square/200/${code || slugify(name)}.png`,
+      // CDN 4: website oficial (padrão do wp-content)
+      (code, name) => `https://www.pragmaticplay.com/wp-content/uploads/${slugify(name).replace(/-/g,'-')}.png`,
+      // CDN 5: casino.guru (review site com imagens)
+      (code, name) => `https://cdn1.casino.guru/fit-in/200x200/pragmatic-play/games/${slugify(name)}.webp`,
+      // CDN 6: casino.org
+      (code, name) => `https://www.casino.org/app/uploads/${slugify(name)}.png`,
     ],
     pgsoft: [
       (code, name) => `https://slotcatalog.com/userfiles/image/game_logos/${slugify(name)}.jpg`,
-      (code, name) => `https://m.pg-demo.com/game-icon/${code || ''}.png`,
-      (code, name) => `https://img.pgdemo.io/game-icon/${slugify(name)}.png`,
+      (code, name) => `https://m.pg-demo.com/game-icon/${code || slugify(name)}.png`,
+      (code, name) => `https://www.pgsoft.com/game-icons/${slugify(name)}.png`,
+      (code, name) => `https://cdn1.casino.guru/fit-in/200x200/pg-soft/games/${slugify(name)}.webp`,
+      (code, name) => `https://asiagaming.ag/game-icons/${slugify(name)}.png`,
     ],
     wg: [
       (code, name) => `https://slotcatalog.com/userfiles/image/game_logos/${slugify(name)}.jpg`,
-      (code, name) => `https://wgcasino1.co.uk/games/${slugify(name)}.png`,
+      (code, name) => `https://wgcasino1.co.uk/images/games/${slugify(name)}.png`,
+      (code, name) => `https://cdn1.casino.guru/fit-in/200x200/wgs-technology/games/${slugify(name)}.webp`,
     ],
   };
 
@@ -7209,24 +7221,79 @@
 
   function generateFallbackThumbnail(game){
     const c = THEME_COLORS[game.theme] || ['#7C3AED','#F472B6','#FBBF24'];
-    const svg = `<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 339 180' preserveAspectRatio='xMidYMid slice'>
-      <defs>
-        <radialGradient id='g1' cx='30%' cy='30%' r='80%'>
-          <stop offset='0%' stop-color='${c[2]}'/>
-          <stop offset='55%' stop-color='${c[1]}'/>
-          <stop offset='100%' stop-color='${c[0]}'/>
-        </radialGradient>
-        <linearGradient id='shine' x1='0%' y1='0%' x2='100%' y2='100%'>
-          <stop offset='0%' stop-color='white' stop-opacity='0.25'/>
-          <stop offset='100%' stop-color='white' stop-opacity='0'/>
-        </linearGradient>
-      </defs>
-      <rect width='339' height='180' fill='url(#g1)'/>
-      <rect width='339' height='90' fill='url(#shine)'/>
-      <text x='169.5' y='105' font-size='72' text-anchor='middle' dominant-baseline='middle'>${game.emoji || '🎰'}</text>
-      <text x='169.5' y='165' font-family='Arial,sans-serif' font-size='12' font-weight='bold' fill='white' text-anchor='middle' opacity='0.9'>${(game.name || '').slice(0,32)}</text>
-    </svg>`;
+    const providerName = game.provider === 'pgsoft' ? 'PG SOFT'
+                       : game.provider === 'pragmatic' ? 'PRAGMATIC'
+                       : game.provider === 'wg' ? 'WG CASINO'
+                       : (game.provider || '').toUpperCase();
+    const nm = (game.name || '').toUpperCase();
+    // Divide o nome em até 2 linhas se for muito grande
+    let line1 = nm, line2 = '';
+    if (nm.length > 14) {
+      const words = nm.split(' ');
+      let l1 = '', l2 = '';
+      for (const w of words) {
+        if ((l1 + ' ' + w).trim().length <= 14) l1 = (l1 + ' ' + w).trim();
+        else l2 = (l2 + ' ' + w).trim();
+      }
+      line1 = l1 || nm.slice(0, 14);
+      line2 = l2 || (nm.length > 14 ? nm.slice(14) : '');
+      if (line2.length > 16) line2 = line2.slice(0, 14) + '…';
+    }
+    const emoji = game.emoji || '🎰';
+    const svg = `<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 400' preserveAspectRatio='xMidYMid meet'>
+  <defs>
+    <radialGradient id='bg${game.id}' cx='50%' cy='35%' r='80%'>
+      <stop offset='0%' stop-color='${c[2]}' stop-opacity='0.95'/>
+      <stop offset='45%' stop-color='${c[1]}'/>
+      <stop offset='100%' stop-color='${c[0]}'/>
+    </radialGradient>
+    <linearGradient id='sh${game.id}' x1='0%' y1='0%' x2='0%' y2='100%'>
+      <stop offset='0%' stop-color='white' stop-opacity='0.4'/>
+      <stop offset='45%' stop-color='white' stop-opacity='0.08'/>
+      <stop offset='100%' stop-color='white' stop-opacity='0'/>
+    </linearGradient>
+    <radialGradient id='gl${game.id}' cx='50%' cy='42%' r='45%'>
+      <stop offset='0%' stop-color='white' stop-opacity='0.25'/>
+      <stop offset='70%' stop-color='white' stop-opacity='0'/>
+    </radialGradient>
+    <filter id='sh2${game.id}' x='-20%' y='-20%' width='140%' height='140%'>
+      <feGaussianBlur stdDeviation='3'/>
+    </filter>
+  </defs>
+  <!-- fundo principal -->
+  <rect width='400' height='400' rx='0' fill='url(#bg${game.id})'/>
+  <!-- reflexo no topo -->
+  <rect width='400' height='220' fill='url(#sh${game.id})'/>
+  <!-- brilho central -->
+  <rect width='400' height='400' fill='url(#gl${game.id})'/>
+  <!-- decoração: circulos sutis nos cantos -->
+  <circle cx='60' cy='60' r='4' fill='white' opacity='0.3'/>
+  <circle cx='340' cy='70' r='3' fill='white' opacity='0.25'/>
+  <circle cx='350' cy='330' r='5' fill='white' opacity='0.2'/>
+  <circle cx='50' cy='340' r='3' fill='white' opacity='0.25'/>
+  <!-- provider badge topo -->
+  <rect x='18' y='18' width='${providerName.length * 9 + 20}' height='24' rx='12' fill='black' fill-opacity='0.3'/>
+  <text x='${18 + (providerName.length * 9 + 20) / 2}' y='34' font-family='Arial, Helvetica, sans-serif' font-size='11' font-weight='900' fill='white' text-anchor='middle' letter-spacing='1.5'>${providerName}</text>
+  <!-- emoji (sombra + principal) -->
+  <text x='200' y='205' font-size='140' text-anchor='middle' dominant-baseline='middle' opacity='0.35' filter='url(#sh2${game.id})'>${emoji}</text>
+  <text x='200' y='200' font-size='140' text-anchor='middle' dominant-baseline='middle'>${emoji}</text>
+  <!-- nome do jogo (2 linhas se necessário) -->
+  <rect x='0' y='295' width='400' height='105' fill='black' fill-opacity='0.45'/>
+  <text x='200' y='${line2 ? 330 : 345}' font-family='Arial Black, Arial, sans-serif' font-size='${line1.length > 12 ? 22 : 26}' font-weight='900' fill='white' text-anchor='middle' letter-spacing='0.5'>${escapeXml(line1)}</text>
+  ${line2 ? `<text x='200' y='362' font-family='Arial Black, Arial, sans-serif' font-size='22' font-weight='900' fill='white' text-anchor='middle' letter-spacing='0.5'>${escapeXml(line2)}</text>` : ''}
+  <!-- RTP na parte de baixo -->
+  <text x='200' y='${line2 ? 385 : 375}' font-family='Arial, sans-serif' font-size='12' font-weight='700' fill='${c[2]}' text-anchor='middle' letter-spacing='1'>★ RTP ${game.rtp || game.dist || 96}% ★</text>
+</svg>`;
     return 'data:image/svg+xml;charset=utf-8,' + encodeURIComponent(svg);
+  }
+
+  function escapeXml(str){
+    return String(str||'')
+      .replace(/&/g, '&amp;')
+      .replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;')
+      .replace(/"/g, '&quot;')
+      .replace(/'/g, '&#39;');
   }
 
   window.SlotMestreCatalog = {
@@ -7236,13 +7303,51 @@
     },
 
     /**
-     * Retorna a URL da imagem do jogo, com fallback automático.
+     * Retorna a URL da imagem do jogo.
+     * Estratégia: começa mostrando o SVG bonito imediatamente (zero latência),
+     * e o installImgFallback tenta fazer upgrade para imagens oficiais em segundo plano.
+     * Se o usuário colou uma URL customizada no admin, usa ela direto.
      * @param {object} game
-     * @returns {string} URL principal
+     * @returns {string} URL da imagem (data URI ou http)
      */
     getImageUrl: function(game){
-      if (game.img) return game.img;
+      // Usuário colou uma URL customizada → respeita
+      if (game.img && game.img.trim() && !game.img.includes('slotcatalog.com')) {
+        return game.img;
+      }
+      // Default: SVG bonito instantâneo (será possivelmente substituído por CDN oficial)
       return generateFallbackThumbnail(game);
+    },
+
+    /**
+     * Instala tentativa de upgrade da imagem para CDN oficial,
+     * mantendo o SVG visível enquanto tenta em background.
+     * Uso: <img src="SVG_URL"> + installImgFallback(img, game)
+     */
+    tryUpgradeToOfficial: function(imgEl, game){
+      if (!imgEl || !game || !game.provider) return;
+      const chain = FALLBACK_CDNS[game.provider] || [];
+      if (!chain.length) return;
+      const codeHint = slugify(game.name);
+      let idx = 0;
+
+      const attempt = () => {
+        if (idx >= chain.length) return; // desistiu — fica com o SVG
+        const candidateUrl = chain[idx](codeHint, game.name);
+        idx++;
+
+        // Tenta carregar em background (novo Image não anexado ao DOM)
+        const probe = new Image();
+        probe.onload = () => {
+          if (probe.naturalWidth > 10 && imgEl.isConnected) {
+            imgEl.src = candidateUrl;
+          }
+        };
+        probe.onerror = attempt; // tenta a próxima
+        probe.src = candidateUrl;
+      };
+
+      attempt();
     },
 
     /**
@@ -7253,17 +7358,39 @@
       if (!imgEl || !game) return;
       const provider = game.provider;
       const chain = FALLBACK_CDNS[provider] || [];
-      let attempt = 0;
+      let attempt = 0; // o src inicial é chain[0], então primeiro erro vai pro chain[1]
       const codeHint = slugify(game.name);
+      let done = false;
 
-      imgEl.addEventListener('error', function handler(){
+      const tryNext = () => {
+        if (done) return;
         attempt++;
-        if (attempt < chain.length){
-          imgEl.src = chain[attempt](codeHint, game.name);
+        if (attempt < chain.length) {
+          try {
+            imgEl.src = chain[attempt](codeHint, game.name);
+          } catch (e) {
+            tryNext();
+          }
         } else {
-          // Último recurso: SVG gerado
+          done = true;
           imgEl.onerror = null;
           imgEl.src = generateFallbackThumbnail(game);
+        }
+      };
+
+      imgEl.addEventListener('error', tryNext);
+
+      // Timeout de segurança: se a imagem não carregar em 6s, pula para o próximo
+      // (evita travar com URLs que demoram muito ou nunca retornam)
+      let timeoutId = setTimeout(function checkLoad(){
+        if (done) return;
+        if (!imgEl.complete || imgEl.naturalWidth === 0) tryNext();
+      }, 6000);
+
+      imgEl.addEventListener('load', () => {
+        if (imgEl.naturalWidth > 10) {
+          done = true;
+          clearTimeout(timeoutId);
         }
       });
     },
