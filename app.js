@@ -41,15 +41,24 @@ function load(key, fallback = null) {
 
 function getGames() {
   let g = load(STORAGE_KEYS.GAMES, null);
-  if (!g || !g.length) {
+  const wasCleared = localStorage.getItem('sm_catalog_cleared') === '1';
+
+  if (!g) {
+    // Primeira visita (nunca salvou) → carrega catálogo padrão
     g = window.SlotMestreCatalog.buildFullCatalog();
-    // Limpa URLs externas que sabemos que falham (slotcatalog)
+    g.forEach(game => {
+      if (game.img && game.img.includes('slotcatalog.com')) game.img = '';
+    });
+    store(STORAGE_KEYS.GAMES, g);
+  } else if (!g.length && !wasCleared) {
+    // Array vazio mas não foi zerado propositalmente → recarrega
+    g = window.SlotMestreCatalog.buildFullCatalog();
     g.forEach(game => {
       if (game.img && game.img.includes('slotcatalog.com')) game.img = '';
     });
     store(STORAGE_KEYS.GAMES, g);
   } else {
-    // Migração silenciosa: limpa URLs quebradas de storage antigo
+    // Migração silenciosa: limpa URLs quebradas
     let dirty = false;
     g.forEach(game => {
       if (game.img && game.img.includes('slotcatalog.com')) {
@@ -63,6 +72,9 @@ function getGames() {
 }
 function saveGames(g) {
   store(STORAGE_KEYS.GAMES, g);
+  // Marca se foi zerado propositalmente, pra não auto-restaurar
+  if (!g.length) localStorage.setItem('sm_catalog_cleared', '1');
+  else localStorage.removeItem('sm_catalog_cleared');
   try { window.dispatchEvent(new CustomEvent('sm:gamesUpdated')); } catch {}
 }
 function getSocial() { return load(STORAGE_KEYS.SOCIAL, DEFAULT_SOCIAL); }
@@ -380,7 +392,18 @@ function renderCards(filter = 'all', search = '') {
   });
 
   if (!list.length) {
-    grid.innerHTML = `<div class="cards-empty"><div class="empty-icon">🎀</div><div>Nenhum jogo encontrado.</div></div>`;
+    const isEmptyCatalog = games.length === 0;
+    if (isEmptyCatalog) {
+      grid.innerHTML = `<div class="cards-empty" style="grid-column: 1 / -1; text-align: center; padding: 60px 20px;">
+        <div class="empty-icon" style="font-size: 3.5rem; margin-bottom: 16px;">📦</div>
+        <div style="font-size: 1.2rem; font-weight: 600; color: #E5E7EB; margin-bottom: 8px;">Catálogo vazio</div>
+        <div style="color: #94A3B8; font-size: 0.9rem; max-width: 360px; margin: 0 auto;">
+          Acesse o <strong>painel admin → Configurações → URLs de Imagens em Massa</strong> e use <strong>"🎁 Aplicar + Criar Faltantes"</strong> para popular o catálogo.
+        </div>
+      </div>`;
+    } else {
+      grid.innerHTML = `<div class="cards-empty"><div class="empty-icon">🎀</div><div>Nenhum jogo encontrado.</div></div>`;
+    }
     updateLastUpdated();
     return;
   }
@@ -1539,6 +1562,19 @@ function renderSettingsPage() {
       </div>
     </div>
 
+    <div class="admin-panel" style="border: 2px dashed rgba(239, 68, 68, 0.4); background: linear-gradient(135deg, rgba(239,68,68,0.06), rgba(236,72,153,0.06));">
+      <h3>🧹 Começar do Zero (Catálogo Limpo)</h3>
+      <p class="panel-sub">Se você quer <strong>zerar o catálogo atual</strong> e montar um novo populando com o script de extração + "Aplicar + Criar Faltantes", use esta opção. Útil quando o catálogo padrão não bate com o que você tem disponível.</p>
+      <div class="actions-row">
+        <button class="btn-save btn-danger" id="btnClearCatalog">💣 Zerar TODOS os Jogos</button>
+        <button class="btn-save btn-secondary" id="btnClearCatalogBackup">💾 Zerar (com Backup)</button>
+      </div>
+      <div id="clearCatalogMsg" style="display:none; padding: 10px; border-radius: 8px; font-size: 0.9rem; margin-top: 10px;"></div>
+      <p class="panel-sub" style="margin-top: 12px; font-size: 0.82rem; opacity: 0.8;">
+        ⚠️ Depois de zerar: vá no painel <strong>"URLs de Imagens em Massa"</strong> abaixo, cole os dados do script do concorrente e clique em <strong>"🎁 Aplicar + Criar Faltantes"</strong>. Os jogos novos serão criados com provider/emoji/tema detectados automaticamente.
+      </p>
+    </div>
+
     <div class="admin-panel">
       <h3>🖼️ URLs de Imagens em Massa</h3>
       <p class="panel-sub">Cole aqui no formato <code>Nome do Jogo | URL</code> (uma por linha) para aplicar em vários jogos de uma só vez. Jogos não listados ficam com o visual padrão.</p>
@@ -1548,6 +1584,7 @@ function renderSettingsPage() {
           style="font-family: monospace; font-size: 0.85rem; min-height: 200px;"></textarea>
         <div class="actions-row">
           <button class="btn-save" id="btnBulkImgApply">✨ Aplicar URLs</button>
+          <button class="btn-save" id="btnBulkImgApplyCreate" style="background: linear-gradient(135deg, #8B5CF6, #EC4899);">🎁 Aplicar + Criar Faltantes</button>
           <button class="btn-save btn-secondary" id="btnBulkImgExport">📤 Exportar URLs Atuais</button>
           <button class="btn-save btn-secondary" id="btnBulkImgClear">🗑️ Limpar Todas as URLs</button>
         </div>
@@ -1670,15 +1707,58 @@ function renderSettingsPage() {
     el.style.border = `1px solid ${color === 'green' ? '#22c55e' : color === 'red' ? '#ef4444' : '#475569'}`;
   };
 
+  // Normaliza nomes para casar jogos mesmo com variações:
+  // "Fortune Tiger PG" ≈ "fortune tiger" ≈ "FORTUNE-TIGER" ≈ "Fortune  Tiger (Slot)"
+  const normalizeName = (s) => {
+    return String(s || '')
+      .toLowerCase()
+      .normalize('NFD').replace(/[\u0300-\u036f]/g, '')     // remove acentos
+      .replace(/[™®©]/g, '')                                  // remove símbolos de marca
+      .replace(/\b(pg|pragmatic|pragmatic play|slot|slots|demo|by|the|pg soft|pgsoft|wgs|wg casino)\b/gi, '') // remove palavras genéricas
+      .replace(/\([^)]*\)/g, '')                              // remove conteúdo entre parênteses
+      .replace(/[^a-z0-9]+/g, ' ')                            // troca não-alfanumérico por espaço
+      .replace(/\s+/g, ' ')                                   // colapsa espaços
+      .trim();
+  };
+
   const parseBulk = (text) => {
     const map = {};
     text.split('\n').forEach(line => {
       const parts = line.split('|').map(s => s.trim());
       if (parts.length >= 2 && parts[0] && parts[1]) {
-        map[parts[0].toLowerCase()] = parts[1];
+        const key = normalizeName(parts[0]);
+        if (key) map[key] = { original: parts[0], url: parts[1] };
       }
     });
     return map;
+  };
+
+  // Busca fuzzy: tenta achar um jogo no catálogo cujo nome normalizado
+  // bata parcialmente com o nome vindo do bulk
+  const findGameByFuzzyName = (games, normalizedBulkName) => {
+    // 1. Match exato normalizado
+    let found = games.find(g => normalizeName(g.name) === normalizedBulkName);
+    if (found) return found;
+
+    // 2. Nome do catálogo contido no do bulk (ex: "Fortune Tiger" em "Fortune Tiger PG")
+    found = games.find(g => {
+      const gn = normalizeName(g.name);
+      return gn.length >= 5 && normalizedBulkName.includes(gn);
+    });
+    if (found) return found;
+
+    // 3. Nome do bulk contido no do catálogo (ex: "Tiger" em "Fortune Tiger")
+    //    — só se o do bulk tiver pelo menos 2 palavras pra evitar falsos positivos
+    const words = normalizedBulkName.split(' ').filter(w => w.length > 2);
+    if (words.length >= 2) {
+      found = games.find(g => {
+        const gn = normalizeName(g.name);
+        return gn.length >= 5 && gn.includes(normalizedBulkName);
+      });
+      if (found) return found;
+    }
+
+    return null;
   };
 
   document.getElementById('btnBulkImgApply')?.addEventListener('click', () => {
@@ -1686,22 +1766,175 @@ function renderSettingsPage() {
     if (!text) return bulkMsg('bulkImgMsg', '⚠️ Cole ao menos uma linha no formato: Nome | URL', 'red');
     const map = parseBulk(text);
     const games = getGames();
-    let matched = 0, notFound = [];
-    games.forEach(g => {
-      if (map[g.name.toLowerCase()]) {
-        g.img = map[g.name.toLowerCase()];
+    let matched = 0;
+    const notFound = [];
+    const matchedDetails = [];
+    const usedGameIds = new Set();
+
+    Object.entries(map).forEach(([normKey, data]) => {
+      const g = findGameByFuzzyName(games.filter(g => !usedGameIds.has(g.id)), normKey);
+      if (g) {
+        g.img = data.url;
+        usedGameIds.add(g.id);
         matched++;
+        if (matchedDetails.length < 5) matchedDetails.push(`"${data.original}" → "${g.name}"`);
+      } else {
+        notFound.push(data.original);
       }
     });
-    // Jogos do bulk que não estão no catálogo
-    Object.keys(map).forEach(name => {
-      if (!games.some(g => g.name.toLowerCase() === name)) notFound.push(name);
-    });
+
     saveGames(games);
-    let msg = `✅ ${matched} jogo(s) atualizado(s) com sucesso.`;
-    if (notFound.length) msg += ` ⚠️ ${notFound.length} não encontrado(s): ${notFound.slice(0,3).join(', ')}${notFound.length > 3 ? '...' : ''}`;
+
+    let msg = `✅ ${matched} imagem(ns) aplicada(s) com sucesso.`;
+    if (matchedDetails.length > 0) {
+      msg += ` Ex: ${matchedDetails.slice(0,3).join(' · ')}`;
+    }
+    if (notFound.length > 0) {
+      msg += ` ⚠️ ${notFound.length} não encontrado(s): ${notFound.slice(0,5).join(', ')}${notFound.length > 5 ? '...' : ''}`;
+    }
     bulkMsg('bulkImgMsg', msg, matched > 0 ? 'green' : 'red');
     renderCardsConfig();
+  });
+
+  // ========= 🎁 Aplicar + Criar jogos que não existem no catálogo =========
+  document.getElementById('btnBulkImgApplyCreate')?.addEventListener('click', () => {
+    const text = document.getElementById('bulkImgInput').value.trim();
+    if (!text) return bulkMsg('bulkImgMsg', '⚠️ Cole ao menos uma linha no formato: Nome | URL', 'red');
+
+    const map = parseBulk(text);
+    const games = getGames();
+    let matched = 0, created = 0;
+    const createdNames = [];
+    const usedGameIds = new Set();
+
+    // Função que infere o provider a partir do nome e da URL da imagem
+    const inferProvider = (name, imgUrl) => {
+      const u = (imgUrl || '').toLowerCase();
+      const n = (name || '').toLowerCase();
+
+      if (u.includes('pg-soft') || u.includes('pgsoft') || u.includes('/pg/') ||
+          u.includes('pocketgames') || n.includes(' pg')) return 'pgsoft';
+      if (u.includes('pragmatic') || u.includes('/pp/')) return 'pragmatic';
+      if (u.includes('wgs') || u.includes('wg-casino') || u.includes('wgcasino')) return 'wg';
+
+      // Heurística pelo nome — jogos típicos PG Soft
+      if (n.includes('fortune ') || n.includes('mahjong') || n.includes('ganesha') ||
+          n.includes('lucky neko') || n.includes('wild bandito') || n.includes('caishen')) {
+        return 'pgsoft';
+      }
+      // Heurística Pragmatic
+      if (n.includes('gates of olympus') || n.includes('sweet bonanza') ||
+          n.includes('sugar rush') || n.includes('big bass') || n.includes('starlight') ||
+          n.includes('dog house') || n.includes('wolf gold') || n.includes('wild west')) {
+        return 'pragmatic';
+      }
+
+      // Default mais seguro: pgsoft (concorrente da imagem era PG Soft)
+      return 'pgsoft';
+    };
+
+    // Infere emoji a partir do nome do jogo (heurística leve)
+    const inferEmoji = (name) => {
+      const n = (name || '').toLowerCase();
+      const map = [
+        [['tiger','tigre'], '🐯'], [['ox','touro','bull'], '🐂'],
+        [['rabbit','coelho'], '🐰'], [['mouse','ratinho','rato'], '🐭'],
+        [['dragon','dragão'], '🐉'], [['snake','serpente','cobra'], '🐍'],
+        [['rooster','galo','chicken'], '🐓'], [['panda'], '🐼'],
+        [['neko','cat','gato'], '🐱'], [['monkey','macaco'], '🐵'],
+        [['lion','leão'], '🦁'], [['wolf','lobo'], '🐺'],
+        [['olympus','zeus','god'], '⚡'], [['sweet','candy','sugar','bonanza'], '🍭'],
+        [['egypt','egito','pharaoh','cleo'], '🏺'], [['pirate','pirata'], '🏴‍☠️'],
+        [['ocean','sea','mar','fish'], '🌊'], [['fortune','luck'], '🍀'],
+        [['ninja','samurai'], '⚔️'], [['western','cowboy','wild west'], '🤠'],
+        [['fruit','fruta'], '🍉'], [['flower','flor','bloom'], '🌸'],
+        [['star','estrela','princess'], '✨'], [['gold','dourado'], '🪙'],
+        [['gem','jewel','diamond'], '💎'], [['robot','cyber'], '🤖'],
+        [['fire','fogo','phoenix'], '🔥'], [['ice','snow','neve','frozen'], '❄️'],
+        [['bikini','paradise','beach'], '🏝️'], [['football','soccer'], '⚽'],
+        [['mahjong'], '🀄'], [['ganesha','india'], '🐘'],
+        [['scholar','book','livro'], '📚'], [['mask','mascara'], '🎭'],
+        [['warrior','battle'], '🛡️'], [['genie','arabian','aladdin'], '🧞'],
+        [['mummy','tomb'], '⚰️'], [['magic','witch'], '🪄'],
+      ];
+      for (const [kws, emoji] of map) {
+        if (kws.some(k => n.includes(k))) return emoji;
+      }
+      return '🎰';
+    };
+
+    // Infere theme a partir do nome
+    const inferTheme = (name) => {
+      const n = (name || '').toLowerCase();
+      if (n.includes('tiger') || n.includes('ox') || n.includes('mahjong') || n.includes('qilin') ||
+          n.includes('fortune') || n.includes('neko') || n.includes('panda') || n.includes('dragon') ||
+          n.includes('caishen')) return 'chinese';
+      if (n.includes('olympus') || n.includes('zeus') || n.includes('perseus') || n.includes('hades')) return 'greek';
+      if (n.includes('sweet') || n.includes('candy') || n.includes('sugar') || n.includes('bonanza')) return 'candy';
+      if (n.includes('egypt') || n.includes('cleo') || n.includes('ra') || n.includes('pharaoh')) return 'egypt';
+      if (n.includes('pirate') || n.includes('kraken')) return 'pirate';
+      if (n.includes('fish') || n.includes('bass') || n.includes('ocean')) return 'fishing';
+      if (n.includes('ninja') || n.includes('samurai') || n.includes('thai') || n.includes('muay')) return 'asian';
+      if (n.includes('buffalo') || n.includes('wolf') || n.includes('west') || n.includes('cowboy')) return 'western';
+      if (n.includes('fruit') || n.includes('cherry') || n.includes('watermelon')) return 'fruit';
+      if (n.includes('aztec') || n.includes('inca')) return 'aztec';
+      if (n.includes('space') || n.includes('galactic') || n.includes('cosmic')) return 'space';
+      if (n.includes('flower') || n.includes('bikini') || n.includes('paradise')) return 'flower';
+      if (n.includes('gold') || n.includes('jewel') || n.includes('diamond')) return 'luxury';
+      return 'fantasy';
+    };
+
+    // 1. Primeiro aplica nos que casam
+    Object.entries(map).forEach(([normKey, data]) => {
+      const g = findGameByFuzzyName(games.filter(g => !usedGameIds.has(g.id)), normKey);
+      if (g) {
+        g.img = data.url;
+        usedGameIds.add(g.id);
+        matched++;
+      } else {
+        // 2. Cria novo jogo no catálogo
+        const provider = inferProvider(data.original, data.url);
+        const emoji = inferEmoji(data.original);
+        const theme = inferTheme(data.original);
+        const nextId = Math.max(...games.map(g => g.id), 0) + 1;
+
+        // Distribui 1 dos 6 links de afiliado
+        const linkIdx = (nextId - 1) % AFFILIATE_LINKS.length;
+
+        const novo = {
+          id: nextId,
+          name: data.original,
+          provider,
+          emoji,
+          theme,
+          dist: 96,
+          rtp: 96.5,
+          minBet: 0.20,
+          maxBet: 500,
+          hot: Math.random() > 0.7 ? 'fire' : null,
+          tag: null,
+          img: data.url,
+          link: AFFILIATE_LINKS[linkIdx],
+          clicks: 0
+        };
+        games.push(novo);
+        created++;
+        if (createdNames.length < 5) createdNames.push(data.original);
+      }
+    });
+
+    saveGames(games);
+
+    let msg = `✅ ${matched} jogo(s) atualizado(s) · 🆕 ${created} jogo(s) criado(s)`;
+    if (createdNames.length > 0) {
+      msg += ` · Novos: ${createdNames.join(', ')}${created > 5 ? '...' : ''}`;
+    }
+    if (created > 0) {
+      msg += ` 💡 Os novos jogos ficam no final do catálogo. Você pode reordenar ou ajustar provider/RTP no "Gerenciar Jogos".`;
+    }
+    bulkMsg('bulkImgMsg', msg, (matched > 0 || created > 0) ? 'green' : 'red');
+    renderCardsConfig();
+    if (typeof renderDashboard === 'function') renderDashboard();
   });
 
   document.getElementById('btnBulkImgExport')?.addEventListener('click', () => {
@@ -1729,19 +1962,24 @@ function renderSettingsPage() {
     if (!text) return bulkMsg('bulkLinkMsg', '⚠️ Cole ao menos uma linha no formato: Nome | Link', 'red');
     const map = parseBulk(text);
     const games = getGames();
-    let matched = 0, notFound = [];
-    games.forEach(g => {
-      if (map[g.name.toLowerCase()]) {
-        g.link = map[g.name.toLowerCase()];
+    let matched = 0;
+    const notFound = [];
+    const usedGameIds = new Set();
+
+    Object.entries(map).forEach(([normKey, data]) => {
+      const g = findGameByFuzzyName(games.filter(g => !usedGameIds.has(g.id)), normKey);
+      if (g) {
+        g.link = data.url;
+        usedGameIds.add(g.id);
         matched++;
+      } else {
+        notFound.push(data.original);
       }
     });
-    Object.keys(map).forEach(name => {
-      if (!games.some(g => g.name.toLowerCase() === name)) notFound.push(name);
-    });
+
     saveGames(games);
     let msg = `✅ ${matched} link(s) aplicado(s) com sucesso.`;
-    if (notFound.length) msg += ` ⚠️ ${notFound.length} não encontrado(s): ${notFound.slice(0,3).join(', ')}${notFound.length > 3 ? '...' : ''}`;
+    if (notFound.length) msg += ` ⚠️ ${notFound.length} não encontrado(s): ${notFound.slice(0,5).join(', ')}${notFound.length > 5 ? '...' : ''}`;
     bulkMsg('bulkLinkMsg', msg, matched > 0 ? 'green' : 'red');
     renderCardsConfig();
   });
@@ -1754,6 +1992,63 @@ function renderSettingsPage() {
       .join('\n');
     document.getElementById('bulkLinkInput').value = lines || '(Nenhum jogo tem link real ainda)';
     bulkMsg('bulkLinkMsg', `📋 ${lines.split('\n').length} link(s) exportado(s) no campo acima.`, 'green');
+  });
+
+  // ========= 💣 Zerar catálogo (começar do zero) =========
+  const clearCatalogMsg = (txt, color) => {
+    const el = document.getElementById('clearCatalogMsg');
+    if (!el) return;
+    el.textContent = txt;
+    el.style.display = 'block';
+    el.style.background = color === 'green' ? 'rgba(34,197,94,0.15)' : color === 'red' ? 'rgba(239,68,68,0.15)' : 'rgba(148,163,184,0.15)';
+    el.style.color = color === 'green' ? '#4ADE80' : color === 'red' ? '#F87171' : '#CBD5E1';
+    el.style.border = `1px solid ${color === 'green' ? '#22c55e' : color === 'red' ? '#ef4444' : '#475569'}`;
+  };
+
+  document.getElementById('btnClearCatalog')?.addEventListener('click', () => {
+    const games = getGames();
+    const total = games.length;
+    if (!confirm(`Zerar o catálogo vai apagar TODOS os ${total} jogos atuais.\n\nVocê vai começar do ZERO e depois usa "Aplicar + Criar Faltantes" para popular com os jogos do concorrente.\n\nTem certeza?`)) return;
+    if (!confirm(`Última confirmação: apagar ${total} jogos. Esta ação é IRREVERSÍVEL (exceto se você exportou backup antes).\n\nContinuar?`)) return;
+
+    saveGames([]); // array vazio
+    clearCatalogMsg(`💣 Catálogo zerado! ${total} jogos removidos. Agora cole os dados do concorrente em "URLs de Imagens em Massa" e clique em "🎁 Aplicar + Criar Faltantes".`, 'green');
+    renderCardsConfig();
+    if (typeof renderDashboard === 'function') renderDashboard();
+  });
+
+  document.getElementById('btnClearCatalogBackup')?.addEventListener('click', () => {
+    const games = getGames();
+    const total = games.length;
+    if (total === 0) {
+      clearCatalogMsg('O catálogo já está vazio.', 'red');
+      return;
+    }
+    if (!confirm(`Isso vai BAIXAR um backup JSON dos ${total} jogos atuais e depois zerar o catálogo. Continuar?`)) return;
+
+    // Gera e baixa backup
+    const backup = {
+      version: APP_VERSION,
+      exportedAt: new Date().toISOString(),
+      reason: 'backup-before-clear',
+      games: games,
+      social: getSocial(),
+    };
+    const blob = new Blob([JSON.stringify(backup, null, 2)], { type: 'application/json' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = `slotmestre-backup-antes-de-zerar-${Date.now()}.json`;
+    a.click();
+    URL.revokeObjectURL(url);
+
+    // Aguarda um pouco pro download começar
+    setTimeout(() => {
+      saveGames([]);
+      clearCatalogMsg(`💾 Backup baixado + 💣 catálogo zerado (${total} jogos). Para restaurar depois: Configurações → "Importar Backup" (ou cole o JSON manualmente).`, 'green');
+      renderCardsConfig();
+      if (typeof renderDashboard === 'function') renderDashboard();
+    }, 400);
   });
 
   document.getElementById('btnResetAll')?.addEventListener('click', () => {
