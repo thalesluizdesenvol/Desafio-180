@@ -6,7 +6,7 @@
 
 const APP_VERSION = '3.0.0';
 const STORAGE_KEYS = {
-  GAMES:    'sm_games_v5',
+  GAMES:    'sm_games_v7',
   SOCIAL:   'sm_social_v3',
   CLICKS:   'sm_clicks_v3',
   SESSION:  'sm_admin_session',
@@ -771,22 +771,42 @@ function refreshAllCardValues(animate) {
 }
 
 /* ============================================
-   LINKS DE TESTE — preenche jogos sem link com um placeholder
+   LINKS DE AFILIADO — distribuição dinâmica
+   Cada jogo é associado consistentemente a um dos links da lista.
+   Quando o usuário entrar, cada card aponta para uma casa diferente,
+   balanceando o tráfego entre todas as afiliadas.
    ============================================ */
+const AFFILIATE_LINKS = [
+  'https://www.fy-fanta.com/?id=223975751',
+  'https://hms-tiradentesday.bet/?invite_code=8be79469',
+  'https://coroa-gghhpg.com/?id=405842843',
+  'https://www.onebra77.com/?source_code=TWMWECDNJ2X',
+  'https://br.mt-antilope.com/home?inviteCode=VEU6ZR',
+  'https://kk-judy777.vip/?id=649076826&currency=BRL&type=2'
+];
+
 function assignTestLinks() {
   const games = getGames();
   let changed = false;
-  const testLinks = [
-    'https://www.example.com/demo/slot-1',
-    'https://www.example.com/demo/slot-2',
-    'https://www.example.com/demo/slot-3',
-  ];
+
+  // Lista de URLs que são consideradas "placeholder" e devem ser substituídas
+  const isPlaceholder = (link) => {
+    if (!link || !link.trim()) return true;
+    return link.includes('example.com') ||
+           link.includes('/demo/slot-') ||
+           link.trim() === '#';
+  };
+
   games.forEach((g, i) => {
-    if (!g.link || !g.link.trim()) {
-      g.link = testLinks[i % testLinks.length];
+    if (isPlaceholder(g.link)) {
+      // Distribuição determinística: cada jogo sempre pega o mesmo link
+      // (baseado no id), mantendo a rotação entre as 6 casas
+      const linkIndex = (g.id - 1) % AFFILIATE_LINKS.length;
+      g.link = AFFILIATE_LINKS[linkIndex];
       changed = true;
     }
   });
+
   if (changed) saveGames(games);
 }
 
