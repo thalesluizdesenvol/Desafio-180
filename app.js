@@ -6,7 +6,7 @@
 
 const APP_VERSION = '3.0.0';
 const STORAGE_KEYS = {
-  GAMES:    'sm_games_v4',
+  GAMES:    'sm_games_v5',
   SOCIAL:   'sm_social_v3',
   CLICKS:   'sm_clicks_v3',
   SESSION:  'sm_admin_session',
@@ -1520,6 +1520,37 @@ function renderSettingsPage() {
     </div>
 
     <div class="admin-panel">
+      <h3>🖼️ URLs de Imagens em Massa</h3>
+      <p class="panel-sub">Cole aqui no formato <code>Nome do Jogo | URL</code> (uma por linha) para aplicar em vários jogos de uma só vez. Jogos não listados ficam com o visual padrão.</p>
+      <div class="form-stack">
+        <textarea id="bulkImgInput" class="form-input" rows="12"
+          placeholder="Fortune Tiger | https://site.com/imagens/fortune-tiger.png&#10;Gates of Olympus | https://site.com/imagens/gates-of-olympus.png&#10;Sweet Bonanza | https://site.com/imagens/sweet-bonanza.png"
+          style="font-family: monospace; font-size: 0.85rem; min-height: 200px;"></textarea>
+        <div class="actions-row">
+          <button class="btn-save" id="btnBulkImgApply">✨ Aplicar URLs</button>
+          <button class="btn-save btn-secondary" id="btnBulkImgExport">📤 Exportar URLs Atuais</button>
+          <button class="btn-save btn-secondary" id="btnBulkImgClear">🗑️ Limpar Todas as URLs</button>
+        </div>
+        <div id="bulkImgMsg" style="display:none; padding: 10px; border-radius: 8px; font-size: 0.9rem;"></div>
+      </div>
+    </div>
+
+    <div class="admin-panel">
+      <h3>🔗 Links em Massa</h3>
+      <p class="panel-sub">Mesmo formato: <code>Nome do Jogo | Link</code> (uma por linha). Útil quando você tem seus links de afiliado em planilha.</p>
+      <div class="form-stack">
+        <textarea id="bulkLinkInput" class="form-input" rows="10"
+          placeholder="Fortune Tiger | https://casa-aposta.com/ref/SEU_ID/fortune-tiger&#10;Gates of Olympus | https://casa-aposta.com/ref/SEU_ID/gates-olympus"
+          style="font-family: monospace; font-size: 0.85rem; min-height: 180px;"></textarea>
+        <div class="actions-row">
+          <button class="btn-save" id="btnBulkLinkApply">🔗 Aplicar Links</button>
+          <button class="btn-save btn-secondary" id="btnBulkLinkExport">📤 Exportar Links Atuais</button>
+        </div>
+        <div id="bulkLinkMsg" style="display:none; padding: 10px; border-radius: 8px; font-size: 0.9rem;"></div>
+      </div>
+    </div>
+
+    <div class="admin-panel">
       <h3>ℹ️ Informações</h3>
       <div class="info-grid">
         <div class="info-item"><span>Versão</span><strong>${APP_VERSION}</strong></div>
@@ -1606,6 +1637,103 @@ function renderSettingsPage() {
     };
     reader.readAsText(file);
     this.value = '';
+  });
+
+  // ========= URLs em Massa =========
+  const bulkMsg = (id, txt, color) => {
+    const el = document.getElementById(id);
+    if (!el) return;
+    el.textContent = txt;
+    el.style.display = 'block';
+    el.style.background = color === 'green' ? 'rgba(34,197,94,0.15)' : color === 'red' ? 'rgba(239,68,68,0.15)' : 'rgba(148,163,184,0.15)';
+    el.style.color = color === 'green' ? '#4ADE80' : color === 'red' ? '#F87171' : '#CBD5E1';
+    el.style.border = `1px solid ${color === 'green' ? '#22c55e' : color === 'red' ? '#ef4444' : '#475569'}`;
+  };
+
+  const parseBulk = (text) => {
+    const map = {};
+    text.split('\n').forEach(line => {
+      const parts = line.split('|').map(s => s.trim());
+      if (parts.length >= 2 && parts[0] && parts[1]) {
+        map[parts[0].toLowerCase()] = parts[1];
+      }
+    });
+    return map;
+  };
+
+  document.getElementById('btnBulkImgApply')?.addEventListener('click', () => {
+    const text = document.getElementById('bulkImgInput').value.trim();
+    if (!text) return bulkMsg('bulkImgMsg', '⚠️ Cole ao menos uma linha no formato: Nome | URL', 'red');
+    const map = parseBulk(text);
+    const games = getGames();
+    let matched = 0, notFound = [];
+    games.forEach(g => {
+      if (map[g.name.toLowerCase()]) {
+        g.img = map[g.name.toLowerCase()];
+        matched++;
+      }
+    });
+    // Jogos do bulk que não estão no catálogo
+    Object.keys(map).forEach(name => {
+      if (!games.some(g => g.name.toLowerCase() === name)) notFound.push(name);
+    });
+    saveGames(games);
+    let msg = `✅ ${matched} jogo(s) atualizado(s) com sucesso.`;
+    if (notFound.length) msg += ` ⚠️ ${notFound.length} não encontrado(s): ${notFound.slice(0,3).join(', ')}${notFound.length > 3 ? '...' : ''}`;
+    bulkMsg('bulkImgMsg', msg, matched > 0 ? 'green' : 'red');
+    renderCardsConfig();
+  });
+
+  document.getElementById('btnBulkImgExport')?.addEventListener('click', () => {
+    const games = getGames();
+    const lines = games
+      .filter(g => g.img && g.img.trim())
+      .map(g => `${g.name} | ${g.img}`)
+      .join('\n');
+    document.getElementById('bulkImgInput').value = lines || '(Nenhum jogo tem URL customizada ainda)';
+    bulkMsg('bulkImgMsg', `📋 ${lines.split('\n').length} URL(s) exportada(s) no campo acima.`, 'green');
+  });
+
+  document.getElementById('btnBulkImgClear')?.addEventListener('click', () => {
+    if (!confirm('Remover TODAS as URLs de imagem? Os cards voltarão ao visual padrão (SVG).')) return;
+    const games = getGames();
+    games.forEach(g => g.img = '');
+    saveGames(games);
+    bulkMsg('bulkImgMsg', `🧹 Todas as URLs foram removidas. ${games.length} jogos voltaram ao visual padrão.`, 'green');
+    renderCardsConfig();
+  });
+
+  // ========= Links em Massa =========
+  document.getElementById('btnBulkLinkApply')?.addEventListener('click', () => {
+    const text = document.getElementById('bulkLinkInput').value.trim();
+    if (!text) return bulkMsg('bulkLinkMsg', '⚠️ Cole ao menos uma linha no formato: Nome | Link', 'red');
+    const map = parseBulk(text);
+    const games = getGames();
+    let matched = 0, notFound = [];
+    games.forEach(g => {
+      if (map[g.name.toLowerCase()]) {
+        g.link = map[g.name.toLowerCase()];
+        matched++;
+      }
+    });
+    Object.keys(map).forEach(name => {
+      if (!games.some(g => g.name.toLowerCase() === name)) notFound.push(name);
+    });
+    saveGames(games);
+    let msg = `✅ ${matched} link(s) aplicado(s) com sucesso.`;
+    if (notFound.length) msg += ` ⚠️ ${notFound.length} não encontrado(s): ${notFound.slice(0,3).join(', ')}${notFound.length > 3 ? '...' : ''}`;
+    bulkMsg('bulkLinkMsg', msg, matched > 0 ? 'green' : 'red');
+    renderCardsConfig();
+  });
+
+  document.getElementById('btnBulkLinkExport')?.addEventListener('click', () => {
+    const games = getGames();
+    const lines = games
+      .filter(g => g.link && g.link.trim() && !g.link.includes('example.com'))
+      .map(g => `${g.name} | ${g.link}`)
+      .join('\n');
+    document.getElementById('bulkLinkInput').value = lines || '(Nenhum jogo tem link real ainda)';
+    bulkMsg('bulkLinkMsg', `📋 ${lines.split('\n').length} link(s) exportado(s) no campo acima.`, 'green');
   });
 
   document.getElementById('btnResetAll')?.addEventListener('click', () => {
