@@ -2257,3 +2257,288 @@ body {
   .hero-visual-frame { height: 340px; }
   .emoji-float.e3 { font-size: 4rem; }
 }
+
+/* ========================================================
+   CARD V2 — LAYOUT COMPACTO (estilo print 1)
+   RTP topo · Thumb · Provider · Nome · Barras · Bet Box · CTA
+   ======================================================== */
+
+.cards-grid {
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 18px;
+}
+
+.game-card-v2 {
+  background: linear-gradient(180deg, rgba(26,11,46,0.95) 0%, rgba(19,7,35,0.98) 100%);
+  border: 1px solid rgba(196, 181, 253, 0.15);
+  border-radius: 18px;
+  padding: 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.3), inset 0 1px 0 rgba(255,255,255,0.04);
+  transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+  animation: cardFadeIn 0.5s ease backwards;
+}
+.game-card-v2:hover {
+  transform: translateY(-4px);
+  border-color: rgba(244, 114, 182, 0.35);
+  box-shadow: 0 16px 40px rgba(244, 114, 182, 0.18), inset 0 1px 0 rgba(255,255,255,0.06);
+}
+@keyframes cardFadeIn {
+  from { opacity: 0; transform: translateY(12px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* Top row: RTP + badge Quente */
+.gcv2-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 8px;
+}
+.gcv2-rtp-badge {
+  background: rgba(0,0,0,0.45);
+  border: 1px solid rgba(255,255,255,0.08);
+  padding: 6px 12px;
+  border-radius: 10px;
+  font-family: 'Rajdhani', sans-serif;
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: #E5E7EB;
+  letter-spacing: 0.02em;
+}
+.gcv2-rtp-badge strong {
+  color: #fff;
+  font-weight: 700;
+  margin-left: 2px;
+}
+.gcv2-hot-badge {
+  background: linear-gradient(135deg, rgba(251,146,60,0.22), rgba(239,68,68,0.22));
+  border: 1px solid rgba(251,146,60,0.45);
+  color: #FB923C;
+  padding: 6px 12px;
+  border-radius: 10px;
+  font-family: 'Rajdhani', sans-serif;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+.gcv2-hot-badge.gcv2-hot-neutral {
+  background: linear-gradient(135deg, rgba(167,139,250,0.22), rgba(244,114,182,0.22));
+  border-color: rgba(167,139,250,0.4);
+  color: #C4B5FD;
+}
+
+/* Thumb — centralizada, quadrada 100x100 */
+.gcv2-thumb-wrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 130px;
+  padding: 2px 0;
+  border-radius: 14px;
+  overflow: hidden;
+  background: rgba(0,0,0,0.25);
+}
+.gcv2-thumb {
+  width: 130px;
+  height: 130px;
+  object-fit: cover;
+  border-radius: 14px;
+  filter: drop-shadow(0 4px 12px rgba(0,0,0,0.4));
+  transition: transform 0.3s ease;
+}
+.game-card-v2:hover .gcv2-thumb { transform: scale(1.05); }
+
+/* Provider row */
+.gcv2-provider {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-family: 'Rajdhani', sans-serif;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  color: #A78BFA;
+}
+.gcv2-provider-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+/* Title */
+.gcv2-title {
+  font-family: 'Playfair Display', serif;
+  font-weight: 700;
+  font-size: 1.35rem;
+  line-height: 1.15;
+  color: #fff;
+  margin: -4px 0 4px;
+  letter-spacing: -0.01em;
+}
+
+/* Bars */
+.gcv2-bars {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.gcv2-bar-row { display: flex; flex-direction: column; gap: 5px; }
+.gcv2-bar-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-family: 'Rajdhani', sans-serif;
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: #CBD5E1;
+}
+.gcv2-bar-head strong {
+  color: #fff;
+  font-weight: 700;
+  font-size: 0.85rem;
+}
+.gcv2-bar {
+  height: 5px;
+  background: rgba(255,255,255,0.06);
+  border-radius: 3px;
+  overflow: hidden;
+  position: relative;
+}
+.gcv2-bar-fill {
+  height: 100%;
+  border-radius: 3px;
+  transition: width 0.9s cubic-bezier(0.34, 1.56, 0.64, 1);
+  box-shadow: 0 0 8px currentColor;
+}
+.gcv2-bar-green  { background: linear-gradient(90deg, #22C55E, #4ADE80); color: rgba(34,197,94,0.4); }
+.gcv2-bar-purple { background: linear-gradient(90deg, #A78BFA, #C4B5FD); color: rgba(167,139,250,0.4); }
+.gcv2-bar-red    { background: linear-gradient(90deg, #F43F5E, #FB7185); color: rgba(244,63,94,0.4); }
+.gcv2-bar-refresh { animation: barPulse 0.8s ease; }
+@keyframes barPulse {
+  0%   { filter: brightness(1); }
+  50%  { filter: brightness(1.4) saturate(1.2); }
+  100% { filter: brightness(1); }
+}
+
+/* Bet Box */
+.gcv2-bet-box {
+  background: rgba(0,0,0,0.35);
+  border: 1px solid rgba(255,255,255,0.06);
+  border-radius: 12px;
+  padding: 10px 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+.gcv2-bet-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 4px;
+  padding-bottom: 6px;
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+}
+.gcv2-bet-title {
+  font-family: 'Rajdhani', sans-serif;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  color: #FBBF24;
+}
+.gcv2-bet-timer {
+  font-family: 'Rajdhani', sans-serif;
+  font-size: 0.72rem;
+  color: #94A3B8;
+  font-weight: 600;
+}
+.gcv2-bet-timer span { font-variant-numeric: tabular-nums; }
+.gcv2-bet-row {
+  display: flex;
+  justify-content: space-between;
+  font-family: 'Rajdhani', sans-serif;
+  font-size: 0.82rem;
+}
+.gcv2-bet-row span {
+  color: #94A3B8;
+  font-weight: 500;
+  min-width: 32px;
+}
+.gcv2-bet-row strong {
+  color: #E5E7EB;
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+}
+.gcv2-bet-row.gcv2-bet-mp strong {
+  color: #FBBF24;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+}
+
+/* Action buttons */
+.gcv2-actions {
+  display: flex;
+  gap: 8px;
+  margin-top: 2px;
+}
+.gcv2-btn-play {
+  flex: 1;
+  background: linear-gradient(135deg, #A78BFA 0%, #C084FC 100%);
+  color: #fff;
+  border: none;
+  border-radius: 12px;
+  padding: 12px 14px;
+  font-family: 'Rajdhani', sans-serif;
+  font-weight: 700;
+  font-size: 0.95rem;
+  letter-spacing: 0.03em;
+  text-decoration: none;
+  text-align: center;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, filter 0.2s ease;
+  box-shadow: 0 6px 16px rgba(167,139,250,0.35);
+}
+.gcv2-btn-play:hover {
+  transform: translateY(-1px);
+  filter: brightness(1.1);
+  box-shadow: 0 10px 22px rgba(167,139,250,0.5);
+}
+.gcv2-btn-play.no-link {
+  background: rgba(255,255,255,0.08);
+  color: #94A3B8;
+  box-shadow: none;
+  cursor: not-allowed;
+}
+.gcv2-btn-play.no-link:hover { transform: none; filter: none; }
+.gcv2-btn-copy {
+  width: 44px;
+  background: rgba(167,139,250,0.12);
+  border: 1px solid rgba(167,139,250,0.3);
+  border-radius: 12px;
+  color: #C4B5FD;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s, color 0.2s;
+}
+.gcv2-btn-copy:hover { background: rgba(167,139,250,0.22); color: #fff; }
+.gcv2-btn-copy svg { width: 18px; height: 18px; }
+
+/* Responsivo: cards um pouco menores em telas médias */
+@media (max-width: 768px) {
+  .cards-grid { grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 14px; }
+  .gcv2-title { font-size: 1.2rem; }
+  .gcv2-thumb-wrap { height: 115px; }
+  .gcv2-thumb { width: 115px; height: 115px; }
+}
+@media (max-width: 440px) {
+  .cards-grid { grid-template-columns: 1fr; }
+}
