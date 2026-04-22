@@ -234,23 +234,112 @@ function resolveThumbnail(game) {
 }
 
 /**
- * Instala handler de fallback em cascata em uma <img> recém-renderizada.
- * Quando a URL principal falha (CDN fora, imagem removida, etc), tenta a próxima
- * e, no último recurso, gera thumbnail SVG local.
+ * Estratégia: imagem começa como SVG bonito (instantâneo).
+ * Em background, tenta buscar a imagem oficial em múltiplos CDNs —
+ * se conseguir, substitui; senão, mantém o SVG visível para o usuário.
+ * Resultado: TODO card sempre tem imagem, nunca fica quebrado.
  */
 function attachImgFallback(imgEl, game) {
   if (!imgEl || !game) return;
-  if (window.SlotMestreCatalog?.installImgFallback) {
+
+  // Se a URL atual já é customizada (colada pelo usuário no admin),
+  // instala fallback tradicional em caso de erro.
+  const currentSrc = imgEl.src || imgEl.getAttribute('src') || '';
+  const isCustom = currentSrc && !currentSrc.startsWith('data:image/svg') && !currentSrc.includes('slotcatalog.com');
+
+  if (isCustom && window.SlotMestreCatalog?.installImgFallback) {
     window.SlotMestreCatalog.installImgFallback(imgEl, game);
-  } else {
-    // Fallback ultra simples
-    imgEl.onerror = () => {
-      imgEl.onerror = null;
-      imgEl.src = window.SlotMestreCatalog.generateThumbnail(game);
-    };
+    return;
+  }
+
+  // Caso padrão: SVG já está visível → tenta fazer upgrade para CDN oficial em background
+  if (window.SlotMestreCatalog?.tryUpgradeToOfficial) {
+    window.SlotMestreCatalog.tryUpgradeToOfficial(imgEl, game);
   }
 }
 
+/* ============================================
+   VALORES DINÂMICOS POR JOGO (ciclo de 5 minutos)
+   ============================================ */
+const DYNAMIC_CYCLE_MS = 5 * 60 * 1000; // 5 minutos
+
+/**
+ * Gera um "seed" inteiro pseudo-aleatório a partir de (gameId + slotDeTempo).
+ * A mesma combinação sempre produz os mesmos valores,
+ * garantindo que dentro da mesma janela de 5min todos os usuários vejam
+ * os mesmos valores e tudo mude junto quando a janela troca.
+ */
+function hashSeed(gameId, slotNum) {
+  let h = (gameId * 2654435761) ^ (slotNum * 40503);
+  h = (h ^ (h >>> 13)) * 1274126177;
+  return Math.abs(h ^ (h >>> 16));
+}
+
+function seededRand(seed, offset) {
+  const x = Math.sin(seed + offset * 97) * 10000;
+  return x - Math.floor(x);
+}
+
+/**
+ * Calcula os valores dinâmicos do jogo para o slot atual de 5min.
+ * Cada jogo tem sua própria baseline influenciada pelo seu RTP real.
+ */
+function computeDynamicValues(game) {
+  const slotNum = Math.floor(Date.now() / DYNAMIC_CYCLE_MS);
+  const seed = hashSeed(game.id, slotNum);
+
+  // Aposta Padrão: 70-96% (jogos "hot" tendem a aparecer alto)
+  const boost = game.hot === 'fire' ? 10 : 0;
+  const padrao = Math.round(70 + seededRand(seed, 1) * 22 + boost * seededRand(seed, 7));
+  const padraoFinal = Math.min(96, padrao);
+
+  // Aposta Mínima: 55-90%
+  const minima = Math.round(55 + seededRand(seed, 2) * 30 + boost * 0.5);
+  const minimaFinal = Math.min(92, minima);
+
+  // RTP exibido: oscila em torno do RTP real do jogo (±2%)
+  const rtpBase = game.rtp || game.dist || 96;
+  const rtpOsc = (seededRand(seed, 3) - 0.5) * 4; // -2 a +2
+  const rtpShown = Math.max(85, Math.min(99, Math.round(rtpBase + rtpOsc)));
+
+  // Bet sugerida (valores em R$)
+  const pdLow  = Number((5 + seededRand(seed, 4) * 4).toFixed(2));    // 5-9
+  const pdHigh = Number((pdLow * (1.15 + seededRand(seed, 5) * 0.15)).toFixed(2));
+  const miLow  = Number((0.40 + seededRand(seed, 6) * 0.30).toFixed(2));
+  const miHigh = Number((miLow * (1.7 + seededRand(seed, 7) * 0.6)).toFixed(2));
+  const mbcLow = Number((pdHigh * (1.4 + seededRand(seed, 8) * 0.3)).toFixed(2));
+  const mbcHigh = Number((mbcLow * (1.3 + seededRand(seed, 9) * 0.3)).toFixed(2));
+
+  // Multiplicadores pagos (MP): números de 1 a 9, 3-5 sorteados, ordenados
+  const digits = [];
+  for (let i = 0; i < 9; i++) {
+    if (seededRand(seed, 20 + i) > 0.55) digits.push(i + 1);
+  }
+  while (digits.length < 3) digits.push(1 + Math.floor(seededRand(seed, 30 + digits.length) * 9));
+  const mp = [...new Set(digits)].sort((a, b) => a - b).slice(0, 5).join(',');
+
+  // Timer: minutos restantes até o próximo ciclo (regressivo)
+  const elapsed = Date.now() % DYNAMIC_CYCLE_MS;
+  const remaining = DYNAMIC_CYCLE_MS - elapsed;
+  const mins = Math.floor(remaining / 60000);
+  const secs = Math.floor((remaining % 60000) / 1000);
+  const timer = `${mins}:${String(secs).padStart(2, '0')}`;
+
+  return {
+    padrao: padraoFinal,
+    minima: minimaFinal,
+    rtp: rtpShown,
+    pd: `R$${pdLow.toFixed(2).replace('.', ',')} a R$${pdHigh.toFixed(2).replace('.', ',')}`,
+    mi: `R$${miLow.toFixed(2).replace('.', ',')} a R$${miHigh.toFixed(2).replace('.', ',')}`,
+    mbc: `R$${mbcLow.toFixed(2).replace('.', ',')} a R$${mbcHigh.toFixed(2).replace('.', ',')}`,
+    mp,
+    timer
+  };
+}
+
+/* ============================================
+   RENDER CARDS (INDEX) — layout compacto novo
+   ============================================ */
 function renderCards(filter = 'all', search = '') {
   const grid = document.getElementById('cardsGrid');
   if (!grid) return;
@@ -280,53 +369,81 @@ function renderCards(filter = 'all', search = '') {
   grid.innerHTML = '';
   list.forEach((g, i) => {
     const card = document.createElement('article');
-    card.className = 'game-card';
+    card.className = 'game-card-v2';
     card.style.animationDelay = `${Math.min(i * 0.03, 0.5)}s`;
     card.dataset.provider = g.provider;
+    card.dataset.gameId = g.id;
 
     const hasLink = g.link && g.link.trim() && g.link.trim() !== '#';
     const href = hasLink ? g.link : '#';
     const thumb = resolveThumbnail(g);
     const prov = PROVIDER_META[g.provider] || { name: g.provider, color:'#C084FC' };
+    const d = computeDynamicValues(g);
 
     card.innerHTML = `
-      <div class="card-img-wrap">
-        <img src="${sanitize(thumb)}" alt="${sanitize(g.name)}" class="card-img" loading="lazy">
-        <div class="card-hot ${g.hot}">${g.hot === 'fire' ? '🔥 HOT' : '✨ Novo'}</div>
-        ${g.tag ? `<div class="card-tag">${sanitize(g.tag)}</div>` : ''}
-        <div class="card-rtp">RTP ${g.dist}%</div>
-        <div class="card-overlay">
-          <a href="${hasLink ? sanitize(href) : '#'}"
-             class="overlay-play${hasLink ? '' : ' no-link'}"
-             ${hasLink ? 'target="_blank" rel="noopener noreferrer"' : ''}
-             data-game-id="${g.id}">
-            ${hasLink ? '▶ Jogar Agora' : '⚙ Sem Link'}
-          </a>
+      <div class="gcv2-top">
+        <div class="gcv2-rtp-badge">RTP: <strong>${d.rtp}%</strong></div>
+        ${g.hot === 'fire'
+          ? '<div class="gcv2-hot-badge">🔥 QUENTE</div>'
+          : '<div class="gcv2-hot-badge gcv2-hot-neutral">✨ NOVO</div>'}
+      </div>
+
+      <div class="gcv2-thumb-wrap">
+        <img src="${sanitize(thumb)}" alt="${sanitize(g.name)}" class="gcv2-thumb" loading="lazy">
+      </div>
+
+      <div class="gcv2-provider">
+        <span class="gcv2-provider-dot" style="background:${prov.color}"></span>
+        <span class="gcv2-provider-name">${sanitize(prov.name.toUpperCase())}</span>
+      </div>
+
+      <h3 class="gcv2-title">${sanitize(g.name)}</h3>
+
+      <div class="gcv2-bars">
+        <div class="gcv2-bar-row">
+          <div class="gcv2-bar-head">
+            <span>Aposta Padrão</span>
+            <strong data-v="padrao">${d.padrao}%</strong>
+          </div>
+          <div class="gcv2-bar"><div class="gcv2-bar-fill gcv2-bar-green" data-v="padrao-bar" style="width:${d.padrao}%"></div></div>
+        </div>
+        <div class="gcv2-bar-row">
+          <div class="gcv2-bar-head">
+            <span>Aposta Mínima</span>
+            <strong data-v="minima">${d.minima}%</strong>
+          </div>
+          <div class="gcv2-bar"><div class="gcv2-bar-fill gcv2-bar-purple" data-v="minima-bar" style="width:${d.minima}%"></div></div>
+        </div>
+        <div class="gcv2-bar-row">
+          <div class="gcv2-bar-head">
+            <span>RTP</span>
+            <strong data-v="rtp">${d.rtp}%</strong>
+          </div>
+          <div class="gcv2-bar"><div class="gcv2-bar-fill gcv2-bar-red" data-v="rtp-bar" style="width:${d.rtp}%"></div></div>
         </div>
       </div>
-      <div class="card-body">
-        <div class="card-provider">
-          <span class="provider-dot" style="background:${prov.color}"></span>
-          <span class="provider-name">${sanitize(prov.name)}</span>
+
+      <div class="gcv2-bet-box">
+        <div class="gcv2-bet-header">
+          <span class="gcv2-bet-title">⚡ BET SUGERIDA</span>
+          <span class="gcv2-bet-timer">🕐 <span data-v="timer">${d.timer}</span></span>
         </div>
-        <h3 class="card-title">${sanitize(g.name)}</h3>
-        <div class="card-stats">
-          <div class="stat-item">
-            <span class="stat-label">RTP</span>
-            <span class="stat-value">${g.dist}%</span>
-          </div>
-          <div class="stat-item">
-            <span class="stat-label">Volatilidade</span>
-            <span class="stat-value">${g.hot === 'fire' ? 'Alta' : 'Média'}</span>
-          </div>
-        </div>
+        <div class="gcv2-bet-row"><span>PD:</span><strong data-v="pd">${d.pd}</strong></div>
+        <div class="gcv2-bet-row"><span>Mi:</span><strong data-v="mi">${d.mi}</strong></div>
+        <div class="gcv2-bet-row"><span>Mbc:</span><strong data-v="mbc">${d.mbc}</strong></div>
+        <div class="gcv2-bet-row gcv2-bet-mp"><span>MP:</span><strong data-v="mp">${d.mp}</strong></div>
+      </div>
+
+      <div class="gcv2-actions">
         <a href="${hasLink ? sanitize(href) : '#'}"
-           class="card-cta${hasLink ? '' : ' no-link'}"
+           class="gcv2-btn-play${hasLink ? '' : ' no-link'}"
            ${hasLink ? 'target="_blank" rel="noopener noreferrer"' : ''}
            data-game-id="${g.id}">
-          ${hasLink ? 'Jogar Agora' : 'Em breve'}
-          ${hasLink ? '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 5l7 7-7 7"/></svg>' : ''}
+          ▶ ${hasLink ? 'JOGAR AGORA' : 'EM BREVE'}
         </a>
+        <button class="gcv2-btn-copy" title="Copiar link do jogo" data-copy-id="${g.id}">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+        </button>
       </div>
     `;
 
@@ -337,8 +454,18 @@ function renderCards(filter = 'all', search = '') {
       });
     });
 
+    card.querySelector('[data-copy-id]')?.addEventListener('click', async () => {
+      if (!hasLink) { showToast('Este jogo ainda não tem link configurado', 'info'); return; }
+      try {
+        await navigator.clipboard.writeText(href);
+        showToast('Link copiado! 💖', 'success');
+      } catch {
+        showToast('Não foi possível copiar', 'error');
+      }
+    });
+
     // Fallback automático de imagem: CDN principal → CDN alternativo → SVG local
-    const imgEl = card.querySelector('.card-img');
+    const imgEl = card.querySelector('.gcv2-thumb');
     if (imgEl) attachImgFallback(imgEl, g);
 
     grid.appendChild(card);
@@ -517,9 +644,11 @@ function initMain() {
   initHeader();
   applySocialLinks();
   renderTicker();
+  assignTestLinks();      // links de placeholder para teste
   renderCards();
   initFilters();
   initAgeGate();
+  startDynamicCycle();    // atualiza valores dos cards em tempo real
 
   window.addEventListener('sm:gamesUpdated', () => {
     const f = document.querySelector('.tab.active')?.dataset.filter || 'all';
@@ -539,6 +668,107 @@ function initMain() {
 
   // Refresh ticker every minute
   setInterval(renderTicker, 60000);
+}
+
+/* ============================================
+   CICLO DINÂMICO — atualiza valores dos cards
+   (tick do timer a cada 1s, rerender do grid a cada 5min)
+   ============================================ */
+function startDynamicCycle() {
+  let lastSlot = Math.floor(Date.now() / DYNAMIC_CYCLE_MS);
+
+  // Tick a cada 1 segundo: atualiza apenas o timer (leve, sem rerender)
+  setInterval(() => {
+    const currentSlot = Math.floor(Date.now() / DYNAMIC_CYCLE_MS);
+
+    if (currentSlot !== lastSlot) {
+      // Entrou em um novo ciclo de 5min — atualiza TODOS os valores com animação
+      lastSlot = currentSlot;
+      refreshAllCardValues(true);
+    } else {
+      // Mesmo ciclo — só atualiza o timer regressivo em cada card
+      refreshAllCardTimers();
+    }
+  }, 1000);
+}
+
+/**
+ * Atualiza apenas o texto do timer em cada card (chamado a cada segundo)
+ */
+function refreshAllCardTimers() {
+  const elapsed = Date.now() % DYNAMIC_CYCLE_MS;
+  const remaining = DYNAMIC_CYCLE_MS - elapsed;
+  const mins = Math.floor(remaining / 60000);
+  const secs = Math.floor((remaining % 60000) / 1000);
+  const timer = `${mins}:${String(secs).padStart(2, '0')}`;
+
+  document.querySelectorAll('.game-card-v2 [data-v="timer"]').forEach(el => {
+    el.textContent = timer;
+  });
+}
+
+/**
+ * Recalcula e atualiza todos os valores dinâmicos de cada card,
+ * com animação nas barras. Chamado a cada troca de ciclo (5min).
+ */
+function refreshAllCardValues(animate) {
+  const games = getGames();
+  document.querySelectorAll('.game-card-v2').forEach(card => {
+    const id = parseInt(card.dataset.gameId, 10);
+    const g = games.find(x => x.id === id);
+    if (!g) return;
+    const d = computeDynamicValues(g);
+
+    // Textos
+    const set = (sel, v) => { const el = card.querySelector(`[data-v="${sel}"]`); if (el) el.textContent = v; };
+    set('padrao', `${d.padrao}%`);
+    set('minima', `${d.minima}%`);
+    set('rtp', `${d.rtp}%`);
+    set('pd', d.pd);
+    set('mi', d.mi);
+    set('mbc', d.mbc);
+    set('mp', d.mp);
+    set('timer', d.timer);
+
+    // Barras (com transição CSS)
+    const setBar = (sel, pct) => {
+      const el = card.querySelector(`[data-v="${sel}"]`);
+      if (!el) return;
+      if (animate) el.classList.add('gcv2-bar-refresh');
+      el.style.width = `${pct}%`;
+      if (animate) setTimeout(() => el.classList.remove('gcv2-bar-refresh'), 800);
+    };
+    setBar('padrao-bar', d.padrao);
+    setBar('minima-bar', d.minima);
+    setBar('rtp-bar', d.rtp);
+
+    // Atualiza também o badge de RTP topo
+    const rtpTop = card.querySelector('.gcv2-rtp-badge strong');
+    if (rtpTop) rtpTop.textContent = `${d.rtp}%`;
+  });
+
+  // Atualiza o timestamp global na grid
+  updateLastUpdated();
+}
+
+/* ============================================
+   LINKS DE TESTE — preenche jogos sem link com um placeholder
+   ============================================ */
+function assignTestLinks() {
+  const games = getGames();
+  let changed = false;
+  const testLinks = [
+    'https://www.example.com/demo/slot-1',
+    'https://www.example.com/demo/slot-2',
+    'https://www.example.com/demo/slot-3',
+  ];
+  games.forEach((g, i) => {
+    if (!g.link || !g.link.trim()) {
+      g.link = testLinks[i % testLinks.length];
+      changed = true;
+    }
+  });
+  if (changed) saveGames(games);
 }
 
 if (document.getElementById('cardsGrid')) {
