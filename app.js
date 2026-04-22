@@ -606,10 +606,19 @@ function renderCards(filter = 'all', search = '') {
   }
 
   grid.innerHTML = '';
+  // PERFORMANCE: usa DocumentFragment para fazer apenas 1 reflow, não N
+  const fragment = document.createDocumentFragment();
+  const imgFallbackQueue = []; // defere attachImgFallback para depois do paint
+
   list.forEach((g, i) => {
     const card = document.createElement('article');
     card.className = 'game-card-v2';
-    card.style.animationDelay = `${Math.min(i * 0.03, 0.5)}s`;
+    // Só anima os primeiros 30 cards (o resto não precisa — content-visibility cuida)
+    if (i < 30) {
+      card.style.animationDelay = `${i * 0.025}s`;
+    } else {
+      card.style.animation = 'none';
+    }
     card.dataset.provider = g.provider;
     card.dataset.gameId = g.id;
 
@@ -703,12 +712,37 @@ function renderCards(filter = 'all', search = '') {
       }
     });
 
-    // Fallback automático de imagem: CDN principal → CDN alternativo → SVG local
+    // Fallback automático de imagem: defere para após o paint (não bloqueia render)
     const imgEl = card.querySelector('.gcv2-thumb');
-    if (imgEl) attachImgFallback(imgEl, g);
+    if (imgEl) imgFallbackQueue.push([imgEl, g]);
 
-    grid.appendChild(card);
+    fragment.appendChild(card);
   });
+
+  // 1 único appendChild = 1 único reflow (vs 445 antes)
+  grid.appendChild(fragment);
+
+  // Processa fallbacks de imagem em idle time, fora do critical path
+  if (imgFallbackQueue.length) {
+    const processFallbacks = (deadline) => {
+      while (imgFallbackQueue.length && (!deadline || deadline.timeRemaining() > 2)) {
+        const [el, gm] = imgFallbackQueue.shift();
+        try { attachImgFallback(el, gm); } catch {}
+      }
+      if (imgFallbackQueue.length) {
+        if (window.requestIdleCallback) {
+          requestIdleCallback(processFallbacks, { timeout: 1000 });
+        } else {
+          setTimeout(() => processFallbacks(), 50);
+        }
+      }
+    };
+    if (window.requestIdleCallback) {
+      requestIdleCallback(processFallbacks, { timeout: 500 });
+    } else {
+      setTimeout(() => processFallbacks(), 16);
+    }
+  }
 
   updateLastUpdated();
 }
@@ -757,7 +791,7 @@ function initFilters() {
       t = setTimeout(() => {
         const s = getState();
         renderCards(s.filter, s.search);
-      }, 200);
+      }, 300);
     });
   }
 }
@@ -782,19 +816,19 @@ function showToast(msg, type = 'default') {
    AGE GATE
    ============================================ */
 function initAgeGate() {
-  if (sessionStorage.getItem('sm_age_ok')) {
-    if (!sessionStorage.getItem('sm_tg_shown')) setTimeout(initTelegramModal, 1500);
-    return;
-  }
+  // AGE GATE APARECE SEMPRE — não usa sessionStorage
+  // (exigência legal: confirmação a cada visita ao site de apostas)
   const overlay = document.getElementById('ageGate');
   if (!overlay) return;
   overlay.classList.add('show');
 
   document.getElementById('ageYes')?.addEventListener('click', () => {
-    sessionStorage.setItem('sm_age_ok', '1');
     overlay.classList.add('hide');
     setTimeout(() => { overlay.style.display = 'none'; }, 500);
-    setTimeout(initTelegramModal, 800);
+    // Só mostra Telegram se ainda não mostrou nesta sessão
+    if (!sessionStorage.getItem('sm_tg_shown')) {
+      setTimeout(initTelegramModal, 900);
+    }
   });
 
   document.getElementById('ageNo')?.addEventListener('click', () => {
@@ -915,20 +949,65 @@ function initMain() {
    ============================================ */
 function startDynamicCycle() {
   let lastSlot = Math.floor(Date.now() / DYNAMIC_CYCLE_MS);
+  let timerNodes = []; // cache dos nós de timer (evita querySelectorAll 1x/seg)
+  let intervalId = null;
 
-  // Tick a cada 1 segundo: atualiza apenas o timer (leve, sem rerender)
-  setInterval(() => {
+  // Invalida cache quando jogos são atualizados
+  window.addEventListener('sm:gamesUpdated', () => { timerNodes = []; });
+
+  const rebuildCache = () => {
+    timerNodes = Array.from(document.querySelectorAll('.game-card-v2 [data-v="timer"]'));
+  };
+
+  const tick = () => {
     const currentSlot = Math.floor(Date.now() / DYNAMIC_CYCLE_MS);
 
     if (currentSlot !== lastSlot) {
-      // Entrou em um novo ciclo de 5min — atualiza TODOS os valores com animação
       lastSlot = currentSlot;
       refreshAllCardValues(true);
+      timerNodes = [];
     } else {
-      // Mesmo ciclo — só atualiza o timer regressivo em cada card
-      refreshAllCardTimers();
+      if (timerNodes.length === 0) rebuildCache();
+      if (timerNodes.length === 0) return;
+
+      const elapsed = Date.now() % DYNAMIC_CYCLE_MS;
+      const remaining = DYNAMIC_CYCLE_MS - elapsed;
+      const mins = Math.floor(remaining / 60000);
+      const secs = Math.floor((remaining % 60000) / 1000);
+      const timer = `${mins}:${String(secs).padStart(2, '0')}`;
+
+      requestAnimationFrame(() => {
+        for (let i = 0; i < timerNodes.length; i++) {
+          const el = timerNodes[i];
+          if (el && el.isConnected && el.textContent !== timer) {
+            el.textContent = timer;
+          }
+        }
+      });
     }
-  }, 1000);
+  };
+
+  const start = () => {
+    if (intervalId) return;
+    intervalId = setInterval(tick, 1000);
+  };
+  const stop = () => {
+    if (!intervalId) return;
+    clearInterval(intervalId);
+    intervalId = null;
+  };
+
+  // Pausa quando aba não está visível (economia significativa de CPU/bateria)
+  document.addEventListener('visibilitychange', () => {
+    if (document.hidden) stop();
+    else {
+      timerNodes = []; // força rebuild
+      tick(); // atualização imediata
+      start();
+    }
+  });
+
+  start();
 }
 
 /**
