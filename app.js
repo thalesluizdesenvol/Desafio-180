@@ -424,13 +424,62 @@ function renderTicker() {
 /* ============================================
    CARDS GRID (INDEX)
    ============================================ */
+/**
+ * Domínios que sabemos que bloqueiam hotlinking — automaticamente passam por proxy.
+ * O proxy remove headers problemáticos (referer, origin) e re-serve a imagem
+ * como se viesse de um domínio neutro.
+ */
+const HOTLINK_BLOCKED_DOMAINS = [
+  'rainhadoslot.com.br',
+  'graficodosslots.com.br',
+  'casinoscores.com',
+  'slotcatalog.com',
+  'slotsjudge.com',
+  'casino.org'
+];
+
+/**
+ * Lista de proxies em ordem de preferência.
+ * Estes serviços servem como "ponte" pra contornar bloqueios de hotlinking.
+ * Se um falhar, tenta o próximo via fallback.
+ */
+const IMAGE_PROXIES = [
+  (url) => `https://images.weserv.nl/?url=${encodeURIComponent(url.replace(/^https?:\/\//, ''))}&w=340&h=180&fit=cover&output=webp`,
+  (url) => `https://wsrv.nl/?url=${encodeURIComponent(url.replace(/^https?:\/\//, ''))}&w=340&h=180&fit=cover`,
+  (url) => `https://cdn.statically.io/img/${url.replace(/^https?:\/\//, '').replace(/^www\./, '')}?w=340&h=180&f=webp`,
+];
+
+function shouldUseProxy(url) {
+  if (!url || typeof url !== 'string') return false;
+  if (url.startsWith('data:')) return false;
+  // Evita proxy-em-proxy
+  if (url.includes('images.weserv.nl') || url.includes('wsrv.nl') || url.includes('statically.io')) return false;
+  const lower = url.toLowerCase();
+  return HOTLINK_BLOCKED_DOMAINS.some(d => lower.includes(d));
+}
+
+function applyProxy(url, proxyIndex = 0) {
+  if (proxyIndex >= IMAGE_PROXIES.length) return url;
+  try {
+    return IMAGE_PROXIES[proxyIndex](url);
+  } catch {
+    return url;
+  }
+}
+
 function resolveThumbnail(game) {
   // URLs conhecidas como não-funcionais → ignora e usa o SVG
   const brokenCDNs = ['slotcatalog.com'];
-  const isBroken = game.img && brokenCDNs.some(cdn => game.img.includes(cdn));
+  const isBroken = false; // desabilitado, agora passamos via proxy
 
   // Se o usuário definiu URL customizada no admin (e não é uma URL quebrada), usa ela
-  if (game.img && game.img.trim() && !isBroken) return game.img;
+  if (game.img && game.img.trim() && !isBroken) {
+    // Se a URL é de um domínio que bloqueia hotlink, aplica proxy
+    if (shouldUseProxy(game.img)) {
+      return applyProxy(game.img, 0);
+    }
+    return game.img;
+  }
 
   // Caso contrário, delega para o catálogo (que retorna SVG instantaneamente)
   if (window.SlotMestreCatalog?.getImageUrl) {
@@ -448,34 +497,46 @@ function resolveThumbnail(game) {
 function attachImgFallback(imgEl, game) {
   if (!imgEl || !game) return;
 
-  const currentSrc = imgEl.src || imgEl.getAttribute('src') || '';
-  const isCustom = currentSrc && !currentSrc.startsWith('data:image/svg') && !currentSrc.includes('slotcatalog.com');
+  const originalUrl = game.img || '';
+  const isProxied = shouldUseProxy(originalUrl);
 
-  if (isCustom) {
-    // URL customizada (admin/bulk) — em caso de erro, vai DIRETO para o SVG.
-    // Não adianta tentar CDNs inventados porque o usuário já escolheu uma URL específica.
-    // Isso resolve o problema de bloqueio por referer/hotlinking.
+  if (originalUrl && !originalUrl.startsWith('data:')) {
+    // URL customizada — se falhar, tenta outros proxies antes do SVG
+    let proxyAttempt = isProxied ? 0 : -1; // -1 = direto, 0,1,2 = proxies
     let fallenBack = false;
-    const fallbackToSVG = () => {
+
+    const tryNext = () => {
       if (fallenBack) return;
-      fallenBack = true;
-      try {
+      proxyAttempt++;
+
+      // Se já tentou o direto e todos os proxies, cai no SVG
+      if (proxyAttempt >= IMAGE_PROXIES.length) {
+        fallenBack = true;
         imgEl.onerror = null;
-        if (window.SlotMestreCatalog?.generateThumbnail) {
-          imgEl.src = window.SlotMestreCatalog.generateThumbnail(game);
-        }
-      } catch {}
+        try {
+          if (window.SlotMestreCatalog?.generateThumbnail) {
+            imgEl.src = window.SlotMestreCatalog.generateThumbnail(game);
+          }
+        } catch {}
+        return;
+      }
+
+      // Tenta com o próximo proxy
+      try {
+        imgEl.src = applyProxy(originalUrl, proxyAttempt);
+      } catch {
+        tryNext();
+      }
     };
 
-    imgEl.addEventListener('error', fallbackToSVG, { once: true });
+    imgEl.addEventListener('error', tryNext);
 
-    // Verifica se já carregou (caso tenha vindo do cache com erro)
-    // ou se naturalWidth é 0 depois de 8s (hotlinking bloqueado silenciosamente)
+    // Timeout de segurança: 7s (se não carregou, pula pro próximo)
     setTimeout(() => {
-      if (!imgEl.complete || imgEl.naturalWidth === 0) {
-        fallbackToSVG();
+      if (!fallenBack && (!imgEl.complete || imgEl.naturalWidth === 0)) {
+        tryNext();
       }
-    }, 8000);
+    }, 7000);
 
     return;
   }
@@ -637,7 +698,7 @@ function renderCards(filter = 'all', search = '') {
       </div>
 
       <div class="gcv2-thumb-wrap">
-        <img src="${sanitize(thumb)}" alt="${sanitize(g.name)}" class="gcv2-thumb" loading="lazy" referrerpolicy="no-referrer" crossorigin="anonymous">
+        <img src="${sanitize(thumb)}" alt="${sanitize(g.name)}" class="gcv2-thumb" loading="lazy" referrerpolicy="no-referrer">
       </div>
 
       <div class="gcv2-provider">
