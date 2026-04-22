@@ -7311,11 +7311,11 @@
      * @returns {string} URL da imagem (data URI ou http)
      */
     getImageUrl: function(game){
-      // Usuário colou uma URL customizada → respeita
-      if (game.img && game.img.trim() && !game.img.includes('slotcatalog.com')) {
-        return game.img;
+      // URL do admin sempre vence, qualquer que seja.
+      if (game.img && typeof game.img === 'string' && game.img.trim() && !game.img.startsWith('data:')) {
+        return game.img.trim();
       }
-      // Default: SVG bonito instantâneo (será possivelmente substituído por CDN oficial)
+      // Default: SVG bonito instantâneo.
       return generateFallbackThumbnail(game);
     },
 
