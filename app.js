@@ -468,80 +468,54 @@ function applyProxy(url, proxyIndex = 0) {
 }
 
 function resolveThumbnail(game) {
-  // URLs conhecidas como não-funcionais → ignora e usa o SVG
-  const brokenCDNs = ['slotcatalog.com'];
-  const isBroken = false; // desabilitado, agora passamos via proxy
-
-  // Se o usuário definiu URL customizada no admin (e não é uma URL quebrada), usa ela
-  if (game.img && game.img.trim() && !isBroken) {
-    // Se a URL é de um domínio que bloqueia hotlink, aplica proxy
-    if (shouldUseProxy(game.img)) {
-      return applyProxy(game.img, 0);
-    }
+  // Se o usuário definiu URL customizada no admin, usa ela direto.
+  // Simples assim — igual ao admin faz.
+  if (game.img && game.img.trim() && !game.img.startsWith('data:')) {
     return game.img;
   }
 
   // Caso contrário, delega para o catálogo (que retorna SVG instantaneamente)
   if (window.SlotMestreCatalog?.getImageUrl) {
-    return window.SlotMestreCatalog.getImageUrl({ ...game, img: isBroken ? '' : game.img });
+    return window.SlotMestreCatalog.getImageUrl(game);
   }
   return window.SlotMestreCatalog.generateThumbnail(game);
 }
 
 /**
- * Estratégia: imagem começa como SVG bonito (instantâneo).
- * Em background, tenta buscar a imagem oficial em múltiplos CDNs —
- * se conseguir, substitui; senão, mantém o SVG visível para o usuário.
- * Resultado: TODO card sempre tem imagem, nunca fica quebrado.
+ * Se a URL customizada falhar, cai no SVG bonito.
+ * Simples e direto — sem proxies.
  */
 function attachImgFallback(imgEl, game) {
   if (!imgEl || !game) return;
 
   const originalUrl = game.img || '';
-  const isProxied = shouldUseProxy(originalUrl);
 
   if (originalUrl && !originalUrl.startsWith('data:')) {
-    // URL customizada — se falhar, tenta outros proxies antes do SVG
-    let proxyAttempt = isProxied ? 0 : -1; // -1 = direto, 0,1,2 = proxies
     let fallenBack = false;
-
-    const tryNext = () => {
+    const fallbackToSVG = () => {
       if (fallenBack) return;
-      proxyAttempt++;
-
-      // Se já tentou o direto e todos os proxies, cai no SVG
-      if (proxyAttempt >= IMAGE_PROXIES.length) {
-        fallenBack = true;
-        imgEl.onerror = null;
-        try {
-          if (window.SlotMestreCatalog?.generateThumbnail) {
-            imgEl.src = window.SlotMestreCatalog.generateThumbnail(game);
-          }
-        } catch {}
-        return;
-      }
-
-      // Tenta com o próximo proxy
+      fallenBack = true;
       try {
-        imgEl.src = applyProxy(originalUrl, proxyAttempt);
-      } catch {
-        tryNext();
-      }
+        imgEl.onerror = null;
+        if (window.SlotMestreCatalog?.generateThumbnail) {
+          imgEl.src = window.SlotMestreCatalog.generateThumbnail(game);
+        }
+      } catch {}
     };
 
-    imgEl.addEventListener('error', tryNext);
+    imgEl.addEventListener('error', fallbackToSVG, { once: true });
 
-    // Timeout de segurança: 7s (se não carregou, pula pro próximo)
+    // Verifica se já carregou após 8s (caso tenha sido bloqueado silenciosamente)
     setTimeout(() => {
-      if (!fallenBack && (!imgEl.complete || imgEl.naturalWidth === 0)) {
-        tryNext();
+      if (!fallenBack && imgEl.isConnected && (!imgEl.complete || imgEl.naturalWidth === 0)) {
+        fallbackToSVG();
       }
-    }, 7000);
+    }, 8000);
 
     return;
   }
 
-  // Caso padrão: SVG já está visível → tenta fazer upgrade para CDN oficial em background
+  // Sem URL customizada: tenta upgrade para CDN oficial (código legado)
   if (window.SlotMestreCatalog?.tryUpgradeToOfficial) {
     window.SlotMestreCatalog.tryUpgradeToOfficial(imgEl, game);
   }
