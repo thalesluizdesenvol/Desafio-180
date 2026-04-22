@@ -12,12 +12,59 @@ const STORAGE_KEYS = {
   SESSION:  'sm_admin_session',
   ATTEMPTS: 'sm_login_attempts',
   LOCKOUT:  'sm_lockout_until',
-  CREDS:    'sm_admin_creds',
+  CREDS:    'sm_admin_creds',        // mantido p/ compatibilidade
+  USERS:    'sm_users_v1',            // novo: lista de perfis
 };
 
 const MAX_LOGIN_ATTEMPTS = 5;
 const LOCKOUT_DURATION_MS = 15 * 60 * 1000;
 const SESSION_DURATION_MS = 4 * 60 * 60 * 1000;
+
+// ============ SISTEMA DE PERMISSÕES ============
+const ROLES = {
+  super_admin: {
+    label: '👑 Super Admin',
+    description: 'Acesso total. Pode gerenciar usuários, zerar catálogo, tudo.',
+    color: '#F59E0B',
+    permissions: [
+      'manage_users',      // criar/editar/deletar outros usuários
+      'clear_catalog',     // zerar catálogo todo
+      'bulk_edit',         // bulk URLs/links em massa
+      'edit_games',        // editar jogos
+      'delete_games',      // deletar jogos
+      'edit_social',       // links sociais
+      'edit_settings',     // configurações gerais
+      'export_data',       // export/import backup
+      'view_all'           // ver todas as páginas
+    ]
+  },
+  editor: {
+    label: '✏️ Editor',
+    description: 'Pode editar jogos e configurações, mas não mexe em usuários nem zera o catálogo.',
+    color: '#3B82F6',
+    permissions: [
+      'bulk_edit',
+      'edit_games',
+      'edit_social',
+      'view_all'
+    ]
+  },
+  viewer: {
+    label: '👁️ Visualizador',
+    description: 'Apenas vê dashboards e insights. Não edita nada.',
+    color: '#10B981',
+    permissions: [
+      'view_all'
+    ]
+  }
+};
+
+function hasPermission(user, perm) {
+  if (!user || !user.role) return false;
+  const role = ROLES[user.role];
+  if (!role) return false;
+  return role.permissions.includes(perm);
+}
 
 const PROVIDER_META = {
   pgsoft:    { name:'PG Soft',        color:'#E11D48', dot:'#E11D48' },
@@ -109,7 +156,10 @@ function getSession() {
     return s;
   } catch { return null; }
 }
-function clearSession() { sessionStorage.removeItem(STORAGE_KEYS.SESSION); }
+function clearSession() {
+  sessionStorage.removeItem(STORAGE_KEYS.SESSION);
+  clearCurrentUser();
+}
 function isLoggedIn() { return getSession() !== null; }
 function refreshSession() {
   const s = getSession();
@@ -142,18 +192,143 @@ const DEFAULT_CREDS = { user:'admin', pass:'slotmestre2026' };
 function getAdminCreds() { return load(STORAGE_KEYS.CREDS, DEFAULT_CREDS); }
 function saveAdminCreds(user, passHash) { store(STORAGE_KEYS.CREDS, { user, passHash }); }
 
-async function verifyLogin(user, pass) {
+/* ============================================
+   SISTEMA DE USUÁRIOS MÚLTIPLOS
+   ============================================ */
+
+// Usuário root — sempre existe, nunca pode ser deletado
+const ROOT_USERNAME = 'admin';
+
+function getUsers() {
+  let users = load(STORAGE_KEYS.USERS, null);
+
+  if (!users || !users.length) {
+    // Primeira instalação ou migração da versão antiga:
+    // Cria o usuário root "admin" com a senha padrão
+    users = [{
+      id: 1,
+      username: ROOT_USERNAME,
+      passHash: null,  // será hasheada no primeiro login
+      role: 'super_admin',
+      isRoot: true,    // nunca pode ser deletado
+      createdAt: Date.now(),
+      lastLogin: null
+    }];
+
+    // Se tinha credenciais antigas no sistema single-user, migra
+    const oldCreds = load(STORAGE_KEYS.CREDS, null);
+    if (oldCreds && oldCreds.passHash) {
+      users[0].username = oldCreds.user || ROOT_USERNAME;
+      users[0].passHash = oldCreds.passHash;
+    }
+
+    store(STORAGE_KEYS.USERS, users);
+  }
+
+  // Garantia: sempre deve existir pelo menos 1 super_admin root
+  const hasRoot = users.some(u => u.isRoot && u.role === 'super_admin');
+  if (!hasRoot) {
+    users.unshift({
+      id: Math.max(...users.map(u => u.id || 0), 0) + 1,
+      username: ROOT_USERNAME,
+      passHash: null,
+      role: 'super_admin',
+      isRoot: true,
+      createdAt: Date.now(),
+      lastLogin: null
+    });
+    store(STORAGE_KEYS.USERS, users);
+  }
+
+  return users;
+}
+
+function saveUsers(users) {
+  store(STORAGE_KEYS.USERS, users);
+}
+
+function findUserByUsername(username) {
+  const users = getUsers();
+  return users.find(u => u.username.toLowerCase() === String(username || '').toLowerCase());
+}
+
+async function verifyLogin(usernameInput, passInput) {
+  const user = findUserByUsername(usernameInput);
+  if (!user) {
+    // Fallback para sistema antigo (compatibilidade)
+    return await verifyLoginLegacy(usernameInput, passInput);
+  }
+
+  // Se usuário root nunca fez login, compara com senha padrão
+  if (user.isRoot && !user.passHash) {
+    if (passInput === DEFAULT_CREDS.pass) {
+      // Hasheia a senha no primeiro login
+      user.passHash = await hashString(passInput);
+      user.lastLogin = Date.now();
+      const users = getUsers();
+      const idx = users.findIndex(u => u.id === user.id);
+      if (idx >= 0) { users[idx] = user; saveUsers(users); }
+      setCurrentUser(user);
+      return true;
+    }
+    return false;
+  }
+
+  // Login normal: compara hash
+  if (!user.passHash) return false;
+  const h = await hashString(passInput);
+  if (h === user.passHash) {
+    user.lastLogin = Date.now();
+    const users = getUsers();
+    const idx = users.findIndex(u => u.id === user.id);
+    if (idx >= 0) { users[idx] = user; saveUsers(users); }
+    setCurrentUser(user);
+    return true;
+  }
+  return false;
+}
+
+// Fallback para o sistema antigo (caso alguém tenha storage pré-migração)
+async function verifyLoginLegacy(user, pass) {
   const c = getAdminCreds();
   if (c.passHash) {
     const h = await hashString(pass);
-    return user === c.user && h === c.passHash;
+    const ok = user === c.user && h === c.passHash;
+    if (ok) {
+      setCurrentUser({ id: 1, username: user, role: 'super_admin', isRoot: true });
+    }
+    return ok;
   }
   const ok = user === (c.user || DEFAULT_CREDS.user) && pass === (c.pass || DEFAULT_CREDS.pass);
   if (ok) {
     const h = await hashString(pass);
     saveAdminCreds(user, h);
+    setCurrentUser({ id: 1, username: user, role: 'super_admin', isRoot: true });
   }
   return ok;
+}
+
+// Rastreia qual usuário está logado na sessão atual
+function setCurrentUser(user) {
+  const minimal = {
+    id: user.id,
+    username: user.username,
+    role: user.role,
+    isRoot: !!user.isRoot
+  };
+  sessionStorage.setItem('sm_current_user', JSON.stringify(minimal));
+}
+
+function getCurrentUser() {
+  try {
+    const raw = sessionStorage.getItem('sm_current_user');
+    if (!raw) return null;
+    return JSON.parse(raw);
+  } catch { return null; }
+}
+
+function clearCurrentUser() {
+  sessionStorage.removeItem('sm_current_user');
 }
 
 function sanitize(str) {
@@ -273,13 +448,35 @@ function resolveThumbnail(game) {
 function attachImgFallback(imgEl, game) {
   if (!imgEl || !game) return;
 
-  // Se a URL atual já é customizada (colada pelo usuário no admin),
-  // instala fallback tradicional em caso de erro.
   const currentSrc = imgEl.src || imgEl.getAttribute('src') || '';
   const isCustom = currentSrc && !currentSrc.startsWith('data:image/svg') && !currentSrc.includes('slotcatalog.com');
 
-  if (isCustom && window.SlotMestreCatalog?.installImgFallback) {
-    window.SlotMestreCatalog.installImgFallback(imgEl, game);
+  if (isCustom) {
+    // URL customizada (admin/bulk) — em caso de erro, vai DIRETO para o SVG.
+    // Não adianta tentar CDNs inventados porque o usuário já escolheu uma URL específica.
+    // Isso resolve o problema de bloqueio por referer/hotlinking.
+    let fallenBack = false;
+    const fallbackToSVG = () => {
+      if (fallenBack) return;
+      fallenBack = true;
+      try {
+        imgEl.onerror = null;
+        if (window.SlotMestreCatalog?.generateThumbnail) {
+          imgEl.src = window.SlotMestreCatalog.generateThumbnail(game);
+        }
+      } catch {}
+    };
+
+    imgEl.addEventListener('error', fallbackToSVG, { once: true });
+
+    // Verifica se já carregou (caso tenha vindo do cache com erro)
+    // ou se naturalWidth é 0 depois de 8s (hotlinking bloqueado silenciosamente)
+    setTimeout(() => {
+      if (!imgEl.complete || imgEl.naturalWidth === 0) {
+        fallbackToSVG();
+      }
+    }, 8000);
+
     return;
   }
 
@@ -431,7 +628,7 @@ function renderCards(filter = 'all', search = '') {
       </div>
 
       <div class="gcv2-thumb-wrap">
-        <img src="${sanitize(thumb)}" alt="${sanitize(g.name)}" class="gcv2-thumb" loading="lazy">
+        <img src="${sanitize(thumb)}" alt="${sanitize(g.name)}" class="gcv2-thumb" loading="lazy" referrerpolicy="no-referrer" crossorigin="anonymous">
       </div>
 
       <div class="gcv2-provider">
@@ -1349,7 +1546,7 @@ function renderCardsConfig() {
     return `
       <div class="card-config-item" data-id="${g.id}">
         <div class="card-config-thumb-wrap">
-          <img src="${sanitize(thumb)}" class="card-config-thumb" alt="">
+          <img src="${sanitize(thumb)}" class="card-config-thumb" alt="" referrerpolicy="no-referrer">
         </div>
         <div class="card-config-body">
           <div class="card-config-top">
@@ -1509,12 +1706,125 @@ window.restoreCatalog = function() {
 /* ============================================
    SETTINGS
    ============================================ */
+/* ============================================
+   UI DE GERENCIAMENTO DE USUÁRIOS
+   ============================================ */
+
+function renderCurrentUserCard() {
+  const user = getCurrentUser();
+  if (!user) return '';
+  const role = ROLES[user.role] || { label: '❓ Sem perfil', color: '#94A3B8' };
+  return `
+    <div class="admin-panel" style="background: linear-gradient(135deg, rgba(139,92,246,0.08), rgba(236,72,153,0.05)); border-left: 4px solid ${role.color};">
+      <h3>👤 Sua Sessão</h3>
+      <div style="display: flex; align-items: center; gap: 16px; flex-wrap: wrap;">
+        <div style="font-size: 1.1rem; font-weight: 600; color: #F1F5F9;">
+          ${sanitize(user.username)}
+          ${user.isRoot ? '<span style="font-size:0.7rem; background: #EAB308; color: #422006; padding: 2px 8px; border-radius: 4px; margin-left: 6px;">ROOT</span>' : ''}
+        </div>
+        <div style="background: ${role.color}22; color: ${role.color}; padding: 4px 12px; border-radius: 999px; font-size: 0.82rem; font-weight: 600; border: 1px solid ${role.color}44;">
+          ${role.label}
+        </div>
+      </div>
+    </div>
+  `;
+}
+
+function renderUsersPanel() {
+  const users = getUsers();
+  const current = getCurrentUser();
+
+  const userRows = users.map(u => {
+    const role = ROLES[u.role] || { label: '?', color: '#94A3B8' };
+    const isMe = current && current.id === u.id;
+    const lastLogin = u.lastLogin ? new Date(u.lastLogin).toLocaleString('pt-BR') : 'Nunca';
+    return `
+      <div style="display: grid; grid-template-columns: 1fr auto auto auto; gap: 10px; align-items: center; padding: 10px 12px; background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.05); border-radius: 8px; margin-bottom: 8px;">
+        <div>
+          <div style="font-weight: 600; color: #F1F5F9;">
+            ${sanitize(u.username)}
+            ${u.isRoot ? '<span style="font-size:0.7rem; background: #EAB308; color: #422006; padding: 1px 6px; border-radius: 4px; margin-left: 4px;">ROOT</span>' : ''}
+            ${isMe ? '<span style="font-size:0.7rem; background: #22c55e33; color: #4ADE80; padding: 1px 6px; border-radius: 4px; margin-left: 4px;">VOCÊ</span>' : ''}
+          </div>
+          <div style="font-size: 0.78rem; color: #94A3B8; margin-top: 2px;">Último login: ${lastLogin}</div>
+        </div>
+        <div style="background: ${role.color}22; color: ${role.color}; padding: 4px 10px; border-radius: 999px; font-size: 0.78rem; font-weight: 600; border: 1px solid ${role.color}44;">
+          ${role.label}
+        </div>
+        <button class="btn-save btn-secondary" style="padding: 6px 12px; font-size: 0.82rem;" data-edituser="${u.id}">✏️ Editar</button>
+        ${u.isRoot ? `<div style="font-size: 0.75rem; color: #94A3B8; padding: 6px 12px;">🔒 Protegido</div>` :
+          `<button class="btn-save btn-danger" style="padding: 6px 12px; font-size: 0.82rem;" data-deleteuser="${u.id}">🗑️</button>`}
+      </div>
+    `;
+  }).join('');
+
+  return `
+    <div class="admin-panel">
+      <h3>👥 Usuários & Perfis</h3>
+      <p class="panel-sub">Gerencie quem tem acesso ao painel e com qual nível de permissão.</p>
+
+      <div style="margin-bottom: 16px;">
+        ${userRows}
+      </div>
+
+      <details style="margin-bottom: 12px;">
+        <summary style="cursor: pointer; color: #A78BFA; font-weight: 600; padding: 8px 0;">➕ Criar novo usuário</summary>
+        <div class="form-stack" style="margin-top: 12px; padding: 14px; background: rgba(139,92,246,0.05); border-radius: 8px;">
+          <div class="form-group">
+            <label class="form-label">Nome de usuário</label>
+            <input class="form-input" id="newUsername" type="text" placeholder="ex: maria">
+          </div>
+          <div class="form-group">
+            <label class="form-label">Senha inicial (mínimo 8 caracteres)</label>
+            <input class="form-input" id="newUserPass" type="password" placeholder="Senha temporária">
+          </div>
+          <div class="form-group">
+            <label class="form-label">Perfil</label>
+            <select class="form-input" id="newUserRole">
+              <option value="editor">✏️ Editor — edita jogos, não mexe em usuários</option>
+              <option value="viewer">👁️ Visualizador — só vê dashboards</option>
+              <option value="super_admin">👑 Super Admin — acesso total</option>
+            </select>
+          </div>
+          <div class="actions-row">
+            <button class="btn-save" id="btnCreateUser">➕ Criar Usuário</button>
+          </div>
+          <div id="newUserMsg" style="display:none; padding: 10px; border-radius: 8px; font-size: 0.9rem;"></div>
+        </div>
+      </details>
+
+      <details>
+        <summary style="cursor: pointer; color: #94A3B8; font-weight: 600; padding: 8px 0; font-size: 0.88rem;">ℹ️ Sobre os perfis</summary>
+        <div style="margin-top: 10px; padding: 14px; background: rgba(255,255,255,0.02); border-radius: 8px; font-size: 0.85rem; line-height: 1.6;">
+          <div style="margin-bottom: 10px;">
+            <strong style="color: #F59E0B;">👑 Super Admin</strong>: ${ROLES.super_admin.description}
+          </div>
+          <div style="margin-bottom: 10px;">
+            <strong style="color: #3B82F6;">✏️ Editor</strong>: ${ROLES.editor.description}
+          </div>
+          <div>
+            <strong style="color: #10B981;">👁️ Visualizador</strong>: ${ROLES.viewer.description}
+          </div>
+          <div style="margin-top: 14px; padding: 10px; background: rgba(234,179,8,0.1); border-left: 3px solid #EAB308; border-radius: 4px;">
+            🛡️ <strong>O usuário "admin" (root) nunca pode ser deletado</strong> — isso garante que você sempre terá acesso ao painel, mesmo se outros usuários forem removidos.
+          </div>
+        </div>
+      </details>
+    </div>
+  `;
+}
+
 function renderSettingsPage() {
   const el = document.getElementById('settingsPageContent');
   if (!el) return;
   const games = getGames();
+  const currentUser = getCurrentUser();
+  const canManageUsers = hasPermission(currentUser, 'manage_users');
 
   el.innerHTML = `
+    ${renderCurrentUserCard()}
+    ${canManageUsers ? renderUsersPanel() : ''}
+
     <div class="admin-panel">
       <h3>🔐 Segurança</h3>
       <p class="panel-sub">Altere suas credenciais de acesso ao painel administrativo</p>
@@ -1616,8 +1926,14 @@ function renderSettingsPage() {
         <div class="info-item"><span>PG Soft</span><strong>${games.filter(g=>g.provider==='pgsoft').length}</strong></div>
         <div class="info-item"><span>Pragmatic Play</span><strong>${games.filter(g=>g.provider==='pragmatic').length}</strong></div>
         <div class="info-item"><span>WG Casino</span><strong>${games.filter(g=>g.provider==='wg').length}</strong></div>
+        <div class="info-item"><span>Com imagem oficial</span><strong>${games.filter(g => g.img && g.img.trim() && !g.img.startsWith('data:')).length}</strong></div>
+        <div class="info-item"><span>Sem imagem (usam SVG)</span><strong>${games.filter(g => !g.img || !g.img.trim() || g.img.startsWith('data:')).length}</strong></div>
         <div class="info-item"><span>Tamanho em Storage</span><strong>${getStorageSize()} KB</strong></div>
       </div>
+      <div class="actions-row" style="margin-top: 14px;">
+        <button class="btn-save btn-secondary" id="btnTestImages">🧪 Testar se as URLs das imagens funcionam</button>
+      </div>
+      <div id="testImagesResult" style="display:none; padding: 14px; border-radius: 8px; margin-top: 12px; background: rgba(148,163,184,0.05); border: 1px solid rgba(148,163,184,0.2); font-size: 0.85rem; max-height: 400px; overflow-y: auto;"></div>
     </div>
   `;
 
@@ -2082,6 +2398,89 @@ function renderSettingsPage() {
       renderCardsConfig();
       if (typeof renderDashboard === 'function') renderDashboard();
     }, 400);
+  });
+
+  // ========= 🧪 Testar URLs de imagem =========
+  document.getElementById('btnTestImages')?.addEventListener('click', async () => {
+    const result = document.getElementById('testImagesResult');
+    if (!result) return;
+    const games = getGames();
+    const withImg = games.filter(g => g.img && g.img.trim() && !g.img.startsWith('data:'));
+
+    if (withImg.length === 0) {
+      result.style.display = 'block';
+      result.innerHTML = '<div style="color: #F87171;">⚠️ Nenhum jogo tem URL de imagem customizada para testar.</div>';
+      return;
+    }
+
+    result.style.display = 'block';
+    result.innerHTML = `<div style="color: #A78BFA;">🧪 Testando ${withImg.length} imagens... (pode demorar alguns segundos)</div>`;
+
+    const testSingle = (game) => new Promise(resolve => {
+      const img = new Image();
+      img.referrerPolicy = 'no-referrer';
+      const timeout = setTimeout(() => {
+        resolve({ game, status: 'timeout' });
+      }, 7000);
+      img.onload = () => {
+        clearTimeout(timeout);
+        resolve({ game, status: img.naturalWidth > 10 ? 'ok' : 'zero-size' });
+      };
+      img.onerror = () => {
+        clearTimeout(timeout);
+        resolve({ game, status: 'error' });
+      };
+      img.src = game.img;
+    });
+
+    // Testa em paralelo, em lotes de 10
+    const results = [];
+    const batchSize = 10;
+    for (let i = 0; i < withImg.length; i += batchSize) {
+      const batch = withImg.slice(i, i + batchSize);
+      const batchResults = await Promise.all(batch.map(testSingle));
+      results.push(...batchResults);
+      result.innerHTML = `<div style="color: #A78BFA;">🧪 Testando ${i + batchSize}/${withImg.length}...</div>`;
+    }
+
+    const ok = results.filter(r => r.status === 'ok');
+    const errors = results.filter(r => r.status !== 'ok');
+
+    let html = `
+      <div style="margin-bottom: 12px;">
+        <div style="font-weight: 600; color: #4ADE80; margin-bottom: 4px;">✅ ${ok.length} URLs funcionam corretamente</div>
+        ${errors.length > 0 ? `<div style="font-weight: 600; color: #F87171;">❌ ${errors.length} URLs com problema</div>` : ''}
+      </div>
+    `;
+
+    if (errors.length > 0) {
+      html += '<details><summary style="cursor: pointer; color: #F87171; font-weight: 600; padding: 6px 0;">Ver jogos com problema</summary><div style="max-height: 300px; overflow-y: auto; margin-top: 8px;">';
+      errors.forEach(r => {
+        const reason = {
+          error: '❌ Erro (provavelmente bloqueio de hotlink ou 404)',
+          timeout: '⏱️ Timeout (servidor demorou muito)',
+          'zero-size': '📭 Carregou vazio (0x0)'
+        }[r.status];
+        html += `<div style="padding: 6px 0; border-bottom: 1px solid rgba(255,255,255,0.05); font-size: 0.8rem;">
+          <strong>${sanitize(r.game.name)}</strong> — <span style="color:#F87171;">${reason}</span><br>
+          <span style="color: #94A3B8; font-family: monospace; font-size: 0.72rem;">${sanitize(r.game.img.slice(0, 90))}${r.game.img.length > 90 ? '...' : ''}</span>
+        </div>`;
+      });
+      html += '</div></details>';
+      html += `<div style="margin-top: 12px; padding: 10px; background: rgba(239,68,68,0.1); border-left: 3px solid #ef4444; border-radius: 4px; font-size: 0.82rem;">
+        💡 <strong>Possíveis causas:</strong><br>
+        1. O concorrente ativou <strong>bloqueio de hotlinking</strong> (bloqueia imagens quando acessadas de outro site).<br>
+        2. A URL não existe mais (404).<br>
+        3. Servidor do concorrente está fora do ar.<br><br>
+        <strong>Solução:</strong> Baixar as imagens funcionais e hospedar no seu próprio servidor. Ou extrair de outro site (Stake, Betano, Pragmatic oficial).
+      </div>`;
+    } else {
+      html += `<div style="margin-top: 10px; padding: 10px; background: rgba(34,197,94,0.1); border-left: 3px solid #22c55e; border-radius: 4px; font-size: 0.85rem;">
+        🎉 Todas as ${ok.length} URLs estão funcionando! Se mesmo assim não aparecem no site, tente <strong>Ctrl+Shift+R</strong> para limpar o cache.
+      </div>`;
+    }
+
+    result.innerHTML = html;
   });
 
   document.getElementById('btnResetAll')?.addEventListener('click', () => {
