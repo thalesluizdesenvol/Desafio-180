@@ -468,57 +468,44 @@ function applyProxy(url, proxyIndex = 0) {
 }
 
 function resolveThumbnail(game) {
-  // Se o usuário definiu URL customizada no admin, usa ela direto.
-  // Simples assim — igual ao admin faz.
-  if (game.img && game.img.trim() && !game.img.startsWith('data:')) {
-    return game.img;
+  // REGRA PRINCIPAL: se o usuário definiu URL customizada no admin, USA ELA.
+  // Sem proxies, sem upgrades, sem mágica. É a URL do admin, ponto.
+  if (game.img && typeof game.img === 'string' && game.img.trim() && !game.img.startsWith('data:')) {
+    return game.img.trim();
   }
 
-  // Caso contrário, delega para o catálogo (que retorna SVG instantaneamente)
-  if (window.SlotMestreCatalog?.getImageUrl) {
-    return window.SlotMestreCatalog.getImageUrl(game);
+  // Sem URL no admin: SVG gerado como último recurso (não bloqueia render).
+  if (window.SlotMestreCatalog?.generateThumbnail) {
+    return window.SlotMestreCatalog.generateThumbnail(game);
   }
-  return window.SlotMestreCatalog.generateThumbnail(game);
+  return '';
 }
 
 /**
- * Se a URL customizada falhar, cai no SVG bonito.
- * Simples e direto — sem proxies.
+ * Se a URL do admin falhar de verdade (onerror do browser), cai no SVG.
+ * Sem timeout artificial, sem proxies, sem upgrade para CDN oficial —
+ * a URL do admin é respeitada e o browser tem tempo ilimitado para carregá-la.
  */
 function attachImgFallback(imgEl, game) {
   if (!imgEl || !game) return;
 
-  const originalUrl = game.img || '';
+  const originalUrl = (game.img || '').trim();
 
+  // Tem URL do admin → só instala fallback para SVG em caso de erro REAL do browser.
+  // Nada de timeout, nada de upgrade, nada de substituição automática.
   if (originalUrl && !originalUrl.startsWith('data:')) {
-    let fallenBack = false;
-    const fallbackToSVG = () => {
-      if (fallenBack) return;
-      fallenBack = true;
+    imgEl.addEventListener('error', () => {
       try {
         imgEl.onerror = null;
         if (window.SlotMestreCatalog?.generateThumbnail) {
           imgEl.src = window.SlotMestreCatalog.generateThumbnail(game);
         }
       } catch {}
-    };
-
-    imgEl.addEventListener('error', fallbackToSVG, { once: true });
-
-    // Verifica se já carregou após 8s (caso tenha sido bloqueado silenciosamente)
-    setTimeout(() => {
-      if (!fallenBack && imgEl.isConnected && (!imgEl.complete || imgEl.naturalWidth === 0)) {
-        fallbackToSVG();
-      }
-    }, 8000);
-
+    }, { once: true });
     return;
   }
 
-  // Sem URL customizada: tenta upgrade para CDN oficial (código legado)
-  if (window.SlotMestreCatalog?.tryUpgradeToOfficial) {
-    window.SlotMestreCatalog.tryUpgradeToOfficial(imgEl, game);
-  }
+  // Sem URL do admin: o src já é SVG gerado (via resolveThumbnail), nada a fazer.
 }
 
 /* ============================================
@@ -672,7 +659,7 @@ function renderCards(filter = 'all', search = '') {
       </div>
 
       <div class="gcv2-thumb-wrap">
-        <img src="${sanitize(thumb)}" alt="${sanitize(g.name)}" class="gcv2-thumb" loading="lazy" referrerpolicy="no-referrer">
+        <img src="${sanitize(thumb)}" alt="${sanitize(g.name)}" class="gcv2-thumb" loading="lazy">
       </div>
 
       <div class="gcv2-provider">
@@ -1660,7 +1647,7 @@ function renderCardsConfig() {
     return `
       <div class="card-config-item" data-id="${g.id}">
         <div class="card-config-thumb-wrap">
-          <img src="${sanitize(thumb)}" class="card-config-thumb" alt="" referrerpolicy="no-referrer">
+          <img src="${sanitize(thumb)}" class="card-config-thumb" alt="">
         </div>
         <div class="card-config-body">
           <div class="card-config-top">
