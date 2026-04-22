@@ -233,38 +233,73 @@
 
 <!-- ============ AGE GATE ============ -->
 <div id="ageGate" class="age-gate">
+  <div class="age-gate-backdrop"></div>
   <div class="age-gate-box">
+    <div class="age-gate-glow"></div>
     <div class="age-gate-icon">🔞</div>
-    <h2 class="age-gate-title">Verificação de Idade</h2>
-    <p class="age-gate-sub">Este site contém conteúdo de apostas.<br>Você precisa ter <strong>18 anos ou mais</strong>.</p>
-    <div class="age-gate-warning">⚠️ O jogo pode criar dependência. Jogue com responsabilidade.</div>
-    <div class="age-gate-btns">
-      <button id="ageYes" class="age-btn-yes">✅ Sim, tenho 18 anos ou mais</button>
-      <button id="ageNo" class="age-btn-no">❌ Não, sou menor de idade</button>
+    <div class="age-gate-badge">VERIFICAÇÃO OBRIGATÓRIA</div>
+    <h2 class="age-gate-title">Você é maior de idade?</h2>
+    <p class="age-gate-sub">Este site contém conteúdo sobre apostas online.<br>O acesso é permitido apenas para pessoas com <strong>18 anos ou mais</strong>.</p>
+    <div class="age-gate-warning">
+      <span class="age-warn-icon">⚠️</span>
+      <span>O jogo pode criar dependência. <strong>Jogue com responsabilidade.</strong></span>
     </div>
-    <p class="age-gate-footer">Ao confirmar, você declara ter idade legal para jogar.</p>
+    <div class="age-gate-btns">
+      <button id="ageYes" class="age-btn-yes">
+        <span>✅</span>
+        <span>Sim, tenho 18 anos ou mais</span>
+      </button>
+      <button id="ageNo" class="age-btn-no">Não, sou menor de idade</button>
+    </div>
+    <p class="age-gate-footer">Ao confirmar, você declara ter idade legal para jogar e concorda com os termos de uso.</p>
   </div>
 </div>
 
 <!-- ============ TELEGRAM MODAL ============ -->
 <div id="tgModal" class="tg-modal" style="display:none">
   <div class="tg-modal-box">
-    <button id="tgModalClose" class="tg-modal-close">✕</button>
-    <div class="tg-modal-icon">✈️</div>
-    <h3 class="tg-modal-title">Entre no Nosso Grupo!</h3>
-    <p class="tg-modal-sub">Receba <strong>dicas exclusivas</strong> e alertas de jogos quentes ✨</p>
+    <button id="tgModalClose" class="tg-modal-close" aria-label="Fechar">✕</button>
+
+    <div class="tg-modal-hero">
+      <div class="tg-modal-glow"></div>
+      <div class="tg-modal-plane">✈️</div>
+      <div class="tg-modal-sparkles">
+        <span>✨</span><span>💎</span><span>🎰</span><span>💰</span><span>⭐</span>
+      </div>
+    </div>
+
+    <div class="tg-modal-badge">🔥 EXCLUSIVO VIP</div>
+    <h3 class="tg-modal-title">Entre no Grupo VIP!</h3>
+    <p class="tg-modal-sub">Mais de <strong>10.000 jogadores</strong> recebendo dicas diárias dos melhores horários ✨</p>
+
     <ul class="tg-modal-perks">
-      <li>💎 Análises diárias dos melhores jogos</li>
-      <li>💰 Alertas de jackpots e RTPs altos</li>
-      <li>🎁 Bônus e promoções exclusivas</li>
-      <li>🌸 Dicas em tempo real</li>
+      <li><span class="tg-perk-icon">💎</span><div class="tg-perk-text"><strong>Análises diárias</strong><span>Os melhores jogos do dia</span></div></li>
+      <li><span class="tg-perk-icon">🔥</span><div class="tg-perk-text"><strong>Alertas de jogos quentes</strong><span>Notificação em tempo real</span></div></li>
+      <li><span class="tg-perk-icon">🎁</span><div class="tg-perk-text"><strong>Bônus e promoções</strong><span>Exclusivos para membros</span></div></li>
+      <li><span class="tg-perk-icon">💰</span><div class="tg-perk-text"><strong>Dicas de apostas</strong><span>Do iniciante ao profissional</span></div></li>
     </ul>
-    <a id="tgModalLink" href="#" class="tg-modal-btn" target="_blank" rel="noopener">✈️ Entrar no Grupo Agora</a>
-    <button class="tg-modal-skip" id="tgModalSkip">Agora não</button>
+
+    <a id="tgModalLink" href="#" class="tg-modal-btn" target="_blank" rel="noopener">
+      <span class="tg-btn-icon">✈️</span>
+      <span class="tg-btn-text">Entrar no Grupo Agora</span>
+      <span class="tg-btn-arrow">→</span>
+    </a>
+
+    <div class="tg-modal-social-proof">
+      <div class="tg-avatars">
+        <span style="background: linear-gradient(135deg, #F472B6, #EC4899)">M</span>
+        <span style="background: linear-gradient(135deg, #A78BFA, #8B5CF6)">L</span>
+        <span style="background: linear-gradient(135deg, #FBBF24, #F59E0B)">R</span>
+        <span style="background: linear-gradient(135deg, #34D399, #10B981)">J</span>
+      </div>
+      <span class="tg-proof-text"><strong>+2.340</strong> entraram nesta semana</span>
+    </div>
+
+    <button class="tg-modal-skip" id="tgModalSkip">Continuar sem entrar</button>
   </div>
 </div>
 
-<script src="catalog.js"></script>
-<script src="app.js"></script>
+<script src="catalog.js" defer></script>
+<script src="app.js" defer></script>
 </body>
 </html>
