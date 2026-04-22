@@ -2595,18 +2595,18 @@ body {
    ======================================================== */
 
 .cards-grid {
-  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-  gap: 18px;
+  grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
+  gap: 14px;
 }
 
 .game-card-v2 {
   background: linear-gradient(180deg, rgba(26,11,46,0.95) 0%, rgba(19,7,35,0.98) 100%);
   border: 1px solid rgba(196, 181, 253, 0.15);
-  border-radius: 18px;
-  padding: 14px;
+  border-radius: 16px;
+  padding: 10px;
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: 8px;
   position: relative;
   overflow: hidden;
   box-shadow: 0 8px 24px rgba(0,0,0,0.3), inset 0 1px 0 rgba(255,255,255,0.04);
@@ -2614,7 +2614,7 @@ body {
   animation: cardFadeIn 0.5s ease backwards;
   /* PERFORMANCE: só renderiza cards visíveis na viewport */
   content-visibility: auto;
-  contain-intrinsic-size: 0 460px;
+  contain-intrinsic-size: 0 380px;
   /* Hints pra GPU */
   transform: translateZ(0);
   backface-visibility: hidden;
@@ -2633,14 +2633,14 @@ body {
 /* Top row: RTP + badge Quente — flutua sobre o banner */
 .gcv2-top {
   position: absolute;
-  top: 10px;
-  left: 10px;
-  right: 10px;
+  top: 8px;
+  left: 8px;
+  right: 8px;
   z-index: 2;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  gap: 8px;
+  gap: 6px;
   pointer-events: none;
 }
 .gcv2-top > * { pointer-events: auto; }
@@ -2649,10 +2649,10 @@ body {
   backdrop-filter: blur(6px);
   -webkit-backdrop-filter: blur(6px);
   border: 1px solid rgba(255,255,255,0.12);
-  padding: 6px 12px;
-  border-radius: 10px;
+  padding: 4px 8px;
+  border-radius: 8px;
   font-family: 'Rajdhani', sans-serif;
-  font-size: 0.78rem;
+  font-size: 0.68rem;
   font-weight: 600;
   color: #E5E7EB;
   letter-spacing: 0.02em;
@@ -2668,12 +2668,12 @@ body {
   -webkit-backdrop-filter: blur(6px);
   border: 1px solid rgba(251,146,60,0.55);
   color: #FFB87A;
-  padding: 6px 12px;
-  border-radius: 10px;
+  padding: 4px 8px;
+  border-radius: 8px;
   font-family: 'Rajdhani', sans-serif;
-  font-size: 0.72rem;
+  font-size: 0.62rem;
   font-weight: 700;
-  letter-spacing: 0.08em;
+  letter-spacing: 0.06em;
   text-transform: uppercase;
   white-space: nowrap;
 }
@@ -2686,10 +2686,10 @@ body {
 /* Thumb — banner largura total */
 .gcv2-thumb-wrap {
   display: block;
-  width: calc(100% + 28px);
-  margin: -14px -14px 0;
+  width: calc(100% + 20px);
+  margin: -10px -10px 0;
   aspect-ratio: 16 / 10;
-  border-radius: 18px 18px 0 0;
+  border-radius: 16px 16px 0 0;
   overflow: hidden;
   background: linear-gradient(135deg, #2a1048 0%, #1a0b2e 100%);
   position: relative;
@@ -2710,16 +2710,16 @@ body {
 .gcv2-provider {
   display: flex;
   align-items: center;
-  gap: 6px;
+  gap: 5px;
   font-family: 'Rajdhani', sans-serif;
-  font-size: 0.72rem;
+  font-size: 0.65rem;
   font-weight: 700;
-  letter-spacing: 0.12em;
+  letter-spacing: 0.1em;
   color: #A78BFA;
 }
 .gcv2-provider-dot {
-  width: 7px;
-  height: 7px;
+  width: 6px;
+  height: 6px;
   border-radius: 50%;
   display: inline-block;
 }
@@ -2728,10 +2728,10 @@ body {
 .gcv2-title {
   font-family: 'Playfair Display', serif;
   font-weight: 700;
-  font-size: 1.35rem;
+  font-size: 1.05rem;
   line-height: 1.15;
   color: #fff;
-  margin: -4px 0 4px;
+  margin: -2px 0 2px;
   letter-spacing: -0.01em;
 }
 
@@ -2739,25 +2739,25 @@ body {
 .gcv2-bars {
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: 5px;
 }
-.gcv2-bar-row { display: flex; flex-direction: column; gap: 5px; }
+.gcv2-bar-row { display: flex; flex-direction: column; gap: 3px; }
 .gcv2-bar-head {
   display: flex;
   justify-content: space-between;
   align-items: center;
   font-family: 'Rajdhani', sans-serif;
-  font-size: 0.8rem;
+  font-size: 0.72rem;
   font-weight: 500;
   color: #CBD5E1;
 }
 .gcv2-bar-head strong {
   color: #fff;
   font-weight: 700;
-  font-size: 0.85rem;
+  font-size: 0.78rem;
 }
 .gcv2-bar {
-  height: 5px;
+  height: 4px;
   background: rgba(255,255,255,0.06);
   border-radius: 3px;
   overflow: hidden;
@@ -2783,30 +2783,30 @@ body {
 .gcv2-bet-box {
   background: rgba(0,0,0,0.35);
   border: 1px solid rgba(255,255,255,0.06);
-  border-radius: 12px;
-  padding: 10px 12px;
+  border-radius: 10px;
+  padding: 7px 9px;
   display: flex;
   flex-direction: column;
-  gap: 5px;
+  gap: 3px;
 }
 .gcv2-bet-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 4px;
-  padding-bottom: 6px;
+  margin-bottom: 2px;
+  padding-bottom: 4px;
   border-bottom: 1px solid rgba(255,255,255,0.06);
 }
 .gcv2-bet-title {
   font-family: 'Rajdhani', sans-serif;
-  font-size: 0.72rem;
+  font-size: 0.68rem;
   font-weight: 700;
-  letter-spacing: 0.12em;
+  letter-spacing: 0.1em;
   color: #FBBF24;
 }
 .gcv2-bet-timer {
   font-family: 'Rajdhani', sans-serif;
-  font-size: 0.72rem;
+  font-size: 0.68rem;
   color: #94A3B8;
   font-weight: 600;
 }
@@ -2815,12 +2815,12 @@ body {
   display: flex;
   justify-content: space-between;
   font-family: 'Rajdhani', sans-serif;
-  font-size: 0.82rem;
+  font-size: 0.74rem;
 }
 .gcv2-bet-row span {
   color: #94A3B8;
   font-weight: 500;
-  min-width: 32px;
+  min-width: 28px;
 }
 .gcv2-bet-row strong {
   color: #E5E7EB;
@@ -2836,7 +2836,7 @@ body {
 /* Action buttons */
 .gcv2-actions {
   display: flex;
-  gap: 8px;
+  gap: 6px;
   margin-top: 2px;
 }
 .gcv2-btn-play {
@@ -2844,11 +2844,11 @@ body {
   background: linear-gradient(135deg, #A78BFA 0%, #C084FC 100%);
   color: #fff;
   border: none;
-  border-radius: 12px;
-  padding: 12px 14px;
+  border-radius: 10px;
+  padding: 9px 10px;
   font-family: 'Rajdhani', sans-serif;
   font-weight: 700;
-  font-size: 0.95rem;
+  font-size: 0.85rem;
   letter-spacing: 0.03em;
   text-decoration: none;
   text-align: center;
@@ -2869,10 +2869,10 @@ body {
 }
 .gcv2-btn-play.no-link:hover { transform: none; filter: none; }
 .gcv2-btn-copy {
-  width: 44px;
+  width: 36px;
   background: rgba(167,139,250,0.12);
   border: 1px solid rgba(167,139,250,0.3);
-  border-radius: 12px;
+  border-radius: 10px;
   color: #C4B5FD;
   cursor: pointer;
   display: flex;
@@ -2881,12 +2881,12 @@ body {
   transition: background 0.2s, color 0.2s;
 }
 .gcv2-btn-copy:hover { background: rgba(167,139,250,0.22); color: #fff; }
-.gcv2-btn-copy svg { width: 18px; height: 18px; }
+.gcv2-btn-copy svg { width: 15px; height: 15px; }
 
 /* Responsivo: cards um pouco menores em telas médias */
 @media (max-width: 768px) {
-  .cards-grid { grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 14px; }
-  .gcv2-title { font-size: 1.2rem; }
+  .cards-grid { grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 10px; }
+  .gcv2-title { font-size: 0.95rem; }
 }
 @media (max-width: 440px) {
   .cards-grid { grid-template-columns: 1fr; }
