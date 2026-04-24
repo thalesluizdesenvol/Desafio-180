@@ -583,11 +583,11 @@ function computeDynamicValues(game) {
   const rtpOsc = (seededRand(seed, 3) - 0.5) * 4; // -2 a +2
   const rtpShown = Math.max(85, Math.min(99, Math.round(rtpBase + rtpOsc)));
 
-  // Bet sugerida (valores em R$)
-  const pdLow  = Number((5 + seededRand(seed, 4) * 4).toFixed(2));    // 5-9
+  // Bet sugerida (valores em R$) — escala reduzida
+  const pdLow  = Number((1.50 + seededRand(seed, 4) * 1.00).toFixed(2));   // 1,50 - 2,50
   const pdHigh = Number((pdLow * (1.15 + seededRand(seed, 5) * 0.15)).toFixed(2));
-  const miLow  = Number((0.40 + seededRand(seed, 6) * 0.30).toFixed(2));
-  const miHigh = Number((miLow * (1.7 + seededRand(seed, 7) * 0.6)).toFixed(2));
+  const miLow  = Number((0.20 + seededRand(seed, 6) * 0.15).toFixed(2));   // 0,20 - 0,35
+  const miHigh = Number((miLow * (1.4 + seededRand(seed, 7) * 0.5)).toFixed(2));
   const mbcLow = Number((pdHigh * (1.4 + seededRand(seed, 8) * 0.3)).toFixed(2));
   const mbcHigh = Number((mbcLow * (1.3 + seededRand(seed, 9) * 0.3)).toFixed(2));
 
