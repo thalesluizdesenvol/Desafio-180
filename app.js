@@ -68,9 +68,9 @@ function hasPermission(user, perm) {
 }
 
 const PROVIDER_META = {
-  pgsoft:    { name:'PG Soft',        color:'#E11D48', dot:'#E11D48' },
-  pragmatic: { name:'Pragmatic Play', color:'#F59E0B', dot:'#F59E0B' },
-  wg:        { name:'WG Casino',      color:'#8B5CF6', dot:'#8B5CF6' },
+  pgsoft:    { name:'PG Soft',         color:'#E11D48', dot:'#E11D48' },
+  pragmatic: { name:'Pragmatic Play',  color:'#F59E0B', dot:'#F59E0B' },
+  evolution: { name:'Evolution Gaming',color:'#8B5CF6', dot:'#8B5CF6' },
 };
 
 const DEFAULT_SOCIAL = { ig:'#', tg:'#', wa:'#' };
@@ -583,13 +583,14 @@ function computeDynamicValues(game) {
   const rtpOsc = (seededRand(seed, 3) - 0.5) * 4; // -2 a +2
   const rtpShown = Math.max(85, Math.min(99, Math.round(rtpBase + rtpOsc)));
 
-  // Bet sugerida (valores em R$) — escala reduzida
-  const pdLow  = Number((1.50 + seededRand(seed, 4) * 1.00).toFixed(2));   // 1,50 - 2,50
-  const pdHigh = Number((pdLow * (1.15 + seededRand(seed, 5) * 0.15)).toFixed(2));
-  const miLow  = Number((0.20 + seededRand(seed, 6) * 0.15).toFixed(2));   // 0,20 - 0,35
-  const miHigh = Number((miLow * (1.4 + seededRand(seed, 7) * 0.5)).toFixed(2));
-  const mbcLow = Number((pdHigh * (1.4 + seededRand(seed, 8) * 0.3)).toFixed(2));
-  const mbcHigh = Number((mbcLow * (1.3 + seededRand(seed, 9) * 0.3)).toFixed(2));
+  // Bet sugerida (valores em R$) — VALORES FIXOS
+  // Mi: 0,40/0,50 · PD: 1,00/1,20 · Mbc: 4,00/4,50
+  const pdLow  = 1.00;
+  const pdHigh = 1.20;
+  const miLow  = 0.40;
+  const miHigh = 0.50;
+  const mbcLow = 4.00;
+  const mbcHigh = 4.50;
 
   // Multiplicadores pagos (MP): números de 1 a 9, 3-5 sorteados, ordenados
   const digits = [];
@@ -808,6 +809,14 @@ function updateLastUpdated() {
   if (hero) hero.textContent = t.slice(0,5);
 }
 
+/* ============================================
+   TRACKING DE CLICKS
+   ----------------------------------------------
+   Nota: hoje os cliques ficam no localStorage do VISITANTE, então o
+   admin só vê o que o próprio admin clicou. Para agregar clicks de
+   todos os visitantes é preciso um backend/API. Próximo passo na
+   roadmap — até lá, o tracking segue local.
+   ============================================ */
 function trackClick(gameId) {
   const games = getGames();
   const g = games.find(x => x.id === gameId);
