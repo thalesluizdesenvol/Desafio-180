@@ -585,14 +585,16 @@ function computeDynamicValues(game) {
   const rtpOsc = (seededRand(seed, 3) - 0.5) * 4; // -2 a +2
   const rtpShown = Math.max(85, Math.min(99, Math.round(rtpBase + rtpOsc)));
 
-  // Bet sugerida (valores em R$) — VALORES FIXOS
+  // Bet sugerida (valores em R$) — sorteia entre os 2 valores de cada par.
   // Mi: 0,40/0,50 · PD: 1,00/1,20 · Mbc: 4,00/4,50
-  const pdLow  = 1.00;
-  const pdHigh = 1.20;
-  const miLow  = 0.40;
-  const miHigh = 0.50;
-  const mbcLow = 4.00;
-  const mbcHigh = 4.50;
+  // Determinístico por seed (jogo + janela de 5min) → todos os visitantes veem
+  // os mesmos valores dentro da mesma janela; os números "giram" a cada ciclo.
+  const miVal  = seededRand(seed, 10) < 0.5 ? 0.40 : 0.50;
+  const pdVal  = seededRand(seed, 11) < 0.5 ? 1.00 : 1.20;
+  const mbcVal = seededRand(seed, 12) < 0.5 ? 4.00 : 4.50;
+  const miLow = miVal, miHigh = miVal;
+  const pdLow = pdVal, pdHigh = pdVal;
+  const mbcLow = mbcVal, mbcHigh = mbcVal;
 
   // Multiplicadores pagos (MP): números de 1 a 9, 3-5 sorteados, ordenados
   const digits = [];
@@ -609,13 +611,20 @@ function computeDynamicValues(game) {
   const secs = Math.floor((remaining % 60000) / 1000);
   const timer = `${mins}:${String(secs).padStart(2, '0')}`;
 
+  const fmtBet = (lo, hi) => {
+    const sLo = lo.toFixed(2).replace('.', ',');
+    if (lo === hi) return `R$${sLo}`;
+    const sHi = hi.toFixed(2).replace('.', ',');
+    return `R$${sLo} a R$${sHi}`;
+  };
+
   return {
     padrao: padraoFinal,
     minima: minimaFinal,
     rtp: rtpShown,
-    pd: `R$${pdLow.toFixed(2).replace('.', ',')} a R$${pdHigh.toFixed(2).replace('.', ',')}`,
-    mi: `R$${miLow.toFixed(2).replace('.', ',')} a R$${miHigh.toFixed(2).replace('.', ',')}`,
-    mbc: `R$${mbcLow.toFixed(2).replace('.', ',')} a R$${mbcHigh.toFixed(2).replace('.', ',')}`,
+    pd: fmtBet(pdLow, pdHigh),
+    mi: fmtBet(miLow, miHigh),
+    mbc: fmtBet(mbcLow, mbcHigh),
     mp,
     timer
   };
