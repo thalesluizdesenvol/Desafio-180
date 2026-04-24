@@ -4,10 +4,11 @@
    ============================================ */
 'use strict';
 
-const APP_VERSION = '3.0.0';
+const APP_VERSION = '3.1.0';
 const STORAGE_KEYS = {
-  GAMES:    'sm_games_v8',            // v8: catálogo embutido com URLs reais
-  GAMES_V7: 'sm_games_v7',            // legado — usado só para migração
+  GAMES:    'sm_games_v9',            // v9: + Pragmatic + Evolution (ex-WG), bets fixas
+  GAMES_V8: 'sm_games_v8',            // legado — preserva links customizados
+  GAMES_V7: 'sm_games_v7',            // legado mais antigo
   SOCIAL:   'sm_social_v3',
   CLICKS:   'sm_clicks_v3',
   SESSION:  'sm_admin_session',
@@ -97,9 +98,10 @@ function getGames() {
   const wasCleared = localStorage.getItem('sm_catalog_cleared') === '1';
 
   if (!g) {
-    // Primeira visita OU migração do v7.
-    // Se houver um sm_games_v7 antigo, preservamos clicks e link customizados.
-    const legacy = load(STORAGE_KEYS.GAMES_V7, null);
+    // Primeira visita OU migração de v8/v7.
+    // Preserva links customizados e clicks do storage mais recente disponível.
+    const legacy = load(STORAGE_KEYS.GAMES_V8, null)
+                || load(STORAGE_KEYS.GAMES_V7, null);
     g = window.SlotMestreCatalog.buildFullCatalog();
 
     if (legacy && Array.isArray(legacy) && legacy.length) {
@@ -111,7 +113,7 @@ function getGames() {
         const old = legacyById[game.id];
         if (old) {
           // Herda apenas link customizado e clicks acumulados;
-          // img, name, theme, etc vêm SEMPRE do novo catálogo.
+          // img, name, theme, provider, etc vêm SEMPRE do novo catálogo.
           if (old.link && typeof old.link === 'string' && old.link.trim()) {
             game.link = old.link;
           }
