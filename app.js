@@ -6,7 +6,8 @@
 
 const APP_VERSION = '3.0.0';
 const STORAGE_KEYS = {
-  GAMES:    'sm_games_v7',
+  GAMES:    'sm_games_v8',            // v8: catálogo embutido com URLs reais
+  GAMES_V7: 'sm_games_v7',            // legado — usado só para migração
   SOCIAL:   'sm_social_v3',
   CLICKS:   'sm_clicks_v3',
   SESSION:  'sm_admin_session',
@@ -86,13 +87,41 @@ function load(key, fallback = null) {
   catch { return fallback; }
 }
 
+// IDs removidos da v4: selos de regulamentação (95-99) e passos iOS (735, 736).
+// Se por algum motivo esses itens ainda estiverem salvos no storage
+// (ex.: alguém com v8 antigo antes desta release), purgamos.
+const REMOVED_GAME_IDS = new Set([95, 96, 97, 98, 99, 735, 736]);
+
 function getGames() {
   let g = load(STORAGE_KEYS.GAMES, null);
   const wasCleared = localStorage.getItem('sm_catalog_cleared') === '1';
 
   if (!g) {
-    // Primeira visita (nunca salvou) → carrega catálogo padrão
+    // Primeira visita OU migração do v7.
+    // Se houver um sm_games_v7 antigo, preservamos clicks e link customizados.
+    const legacy = load(STORAGE_KEYS.GAMES_V7, null);
     g = window.SlotMestreCatalog.buildFullCatalog();
+
+    if (legacy && Array.isArray(legacy) && legacy.length) {
+      // Indexa o catálogo antigo por id para lookup O(1)
+      const legacyById = {};
+      legacy.forEach(item => { if (item && item.id != null) legacyById[item.id] = item; });
+
+      g.forEach(game => {
+        const old = legacyById[game.id];
+        if (old) {
+          // Herda apenas link customizado e clicks acumulados;
+          // img, name, theme, etc vêm SEMPRE do novo catálogo.
+          if (old.link && typeof old.link === 'string' && old.link.trim()) {
+            game.link = old.link;
+          }
+          if (typeof old.clicks === 'number' && old.clicks > 0) {
+            game.clicks = old.clicks;
+          }
+        }
+      });
+    }
+
     g.forEach(game => {
       if (game.img && game.img.includes('slotcatalog.com')) game.img = '';
     });
@@ -105,8 +134,10 @@ function getGames() {
     });
     store(STORAGE_KEYS.GAMES, g);
   } else {
-    // Migração silenciosa: limpa URLs quebradas
-    let dirty = false;
+    // Migração silenciosa: limpa URLs quebradas E purga IDs removidos
+    const before = g.length;
+    g = g.filter(game => !REMOVED_GAME_IDS.has(game && game.id));
+    let dirty = g.length !== before;
     g.forEach(game => {
       if (game.img && game.img.includes('slotcatalog.com')) {
         game.img = '';
