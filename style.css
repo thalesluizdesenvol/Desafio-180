@@ -2932,3 +2932,242 @@ body {
   .gcv2-title { font-size: 0.78rem; }
   .gcv2-bet-row { font-size: 0.6rem; }
 }
+
+/* ============================================
+   PLATAFORMAS INDICADAS — grid interativa estilo "onde jogar"
+   ============================================ */
+.platforms-section {
+  padding-top: 40px;
+  padding-bottom: 40px;
+}
+
+.platforms-header {
+  margin-bottom: 32px;
+}
+
+/* Grid 3 colunas, 7 cards (3+1 destaque+3) num layout 3x3 */
+.platforms-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 14px;
+  max-width: 780px;
+  margin: 0 auto;
+}
+
+.platform-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 20px 14px 18px;
+  min-height: 140px;
+  background: linear-gradient(180deg, rgba(60, 28, 110, 0.5) 0%, rgba(45, 21, 82, 0.6) 100%);
+  border: 1.5px solid rgba(196, 181, 253, 0.18);
+  border-radius: 18px;
+  text-decoration: none;
+  color: inherit;
+  overflow: hidden;
+  transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1),
+              border-color 0.3s ease,
+              box-shadow 0.3s ease;
+  cursor: pointer;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.25), inset 0 1px 0 rgba(255, 255, 255, 0.05);
+}
+
+/* Brilho rotativo no hover */
+.platform-card::before {
+  content: '';
+  position: absolute;
+  inset: -2px;
+  background: conic-gradient(
+    from 0deg,
+    transparent 0deg,
+    rgba(244, 114, 182, 0.5) 60deg,
+    rgba(167, 139, 250, 0.5) 120deg,
+    transparent 180deg,
+    rgba(251, 191, 36, 0.3) 300deg,
+    transparent 360deg
+  );
+  border-radius: 20px;
+  opacity: 0;
+  z-index: -1;
+  transition: opacity 0.4s ease;
+  animation: platformRotate 4s linear infinite;
+  animation-play-state: paused;
+}
+
+@keyframes platformRotate {
+  to { transform: rotate(360deg); }
+}
+
+.platform-card:hover {
+  transform: translateY(-6px) scale(1.02);
+  border-color: rgba(244, 114, 182, 0.5);
+  box-shadow: 0 18px 40px rgba(244, 114, 182, 0.25),
+              inset 0 1px 0 rgba(255, 255, 255, 0.1);
+}
+
+.platform-card:hover::before {
+  opacity: 1;
+  animation-play-state: running;
+}
+
+/* Badge superior */
+.platform-badge {
+  position: absolute;
+  top: 8px;
+  left: 8px;
+  font-family: 'Rajdhani', sans-serif;
+  font-size: 0.6rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  padding: 3px 8px;
+  border-radius: 6px;
+  background: linear-gradient(135deg, #A78BFA, #C084FC);
+  color: #fff;
+  box-shadow: 0 2px 6px rgba(167, 139, 250, 0.4);
+  text-transform: uppercase;
+  z-index: 1;
+}
+
+.platform-badge-hot {
+  background: linear-gradient(135deg, #F43F5E, #FB923C);
+  box-shadow: 0 2px 6px rgba(244, 63, 94, 0.45);
+}
+
+/* Ícone gigante */
+.platform-icon {
+  font-size: 2.8rem;
+  line-height: 1;
+  margin-top: 6px;
+  filter: drop-shadow(0 4px 12px rgba(244, 114, 182, 0.35));
+  transition: transform 0.3s ease;
+}
+
+.platform-card:hover .platform-icon {
+  transform: scale(1.15) rotate(-6deg);
+}
+
+.platform-name {
+  font-family: 'Playfair Display', serif;
+  font-weight: 700;
+  font-size: 1.05rem;
+  color: #fff;
+  text-align: center;
+  line-height: 1.1;
+  letter-spacing: -0.01em;
+}
+
+.platform-tag {
+  font-family: 'Rajdhani', sans-serif;
+  font-size: 0.7rem;
+  font-weight: 600;
+  color: #C4B5FD;
+  text-align: center;
+  letter-spacing: 0.04em;
+  opacity: 0.85;
+}
+
+/* ====== CARD CENTRAL DESTACADO ====== */
+.platform-center {
+  background: linear-gradient(135deg, #7C3AED 0%, #DB2777 55%, #F59E0B 100%);
+  border: none;
+  box-shadow: 0 10px 30px rgba(167, 139, 250, 0.45),
+              0 0 60px rgba(244, 114, 182, 0.25),
+              inset 0 1px 0 rgba(255, 255, 255, 0.2);
+}
+
+.platform-center::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 30% 20%,
+              rgba(255, 255, 255, 0.25) 0%,
+              transparent 50%);
+  pointer-events: none;
+}
+
+.platform-center:hover {
+  transform: translateY(-8px) scale(1.05);
+  box-shadow: 0 22px 50px rgba(167, 139, 250, 0.6),
+              0 0 80px rgba(244, 114, 182, 0.4);
+}
+
+.platform-center-inner {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+}
+
+.platform-center-icon {
+  font-size: 2.4rem;
+  filter: drop-shadow(0 4px 10px rgba(0, 0, 0, 0.3));
+  animation: centerIconPulse 2.5s ease-in-out infinite;
+}
+
+@keyframes centerIconPulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.12); }
+}
+
+.platform-center-brand {
+  font-family: 'Playfair Display', serif;
+  font-weight: 900;
+  font-size: 1.3rem;
+  color: #fff;
+  letter-spacing: -0.02em;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+  line-height: 1;
+  margin-top: 2px;
+}
+
+.platform-center-tag {
+  font-family: 'Rajdhani', sans-serif;
+  font-size: 0.7rem;
+  font-weight: 800;
+  letter-spacing: 0.15em;
+  color: rgba(255, 255, 255, 0.95);
+  padding: 4px 10px;
+  border-radius: 100px;
+  background: rgba(0, 0, 0, 0.25);
+  backdrop-filter: blur(8px);
+  margin-top: 4px;
+}
+
+/* ====== MOBILE ====== */
+@media (max-width: 520px) {
+  .platforms-section {
+    padding-top: 28px;
+    padding-bottom: 28px;
+  }
+  .platforms-grid {
+    gap: 10px;
+  }
+  .platform-card {
+    padding: 14px 8px 12px;
+    min-height: 115px;
+    border-radius: 14px;
+  }
+  .platform-icon { font-size: 2.2rem; margin-top: 4px; }
+  .platform-name { font-size: 0.82rem; }
+  .platform-tag { font-size: 0.58rem; }
+  .platform-badge { font-size: 0.52rem; padding: 2px 6px; top: 6px; left: 6px; }
+  .platform-center-icon { font-size: 1.9rem; }
+  .platform-center-brand { font-size: 1rem; }
+  .platform-center-tag { font-size: 0.58rem; padding: 3px 8px; }
+}
+
+@media (max-width: 360px) {
+  .platforms-grid { gap: 7px; }
+  .platform-card { padding: 12px 6px 10px; min-height: 105px; }
+  .platform-icon { font-size: 1.9rem; }
+  .platform-name { font-size: 0.74rem; }
+}
