@@ -26,6 +26,7 @@
     <nav class="nav-links" id="navLinks">
       <a href="#jogos" class="nav-link">Jogos</a>
       <a href="#plataformas" class="nav-link">Plataformas</a>
+      <a href="#provedores" class="nav-link">Provedores</a>
       <a href="#sobre" class="nav-link">Sobre</a>
     </nav>
 
@@ -200,6 +201,21 @@
   </div>
 </section>
 
+<!-- ============ PROVEDORES PARCEIROS ============ -->
+<section class="section providers-section" id="provedores">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-eyebrow">🏆 PROVEDORES PARCEIROS</div>
+      <h2 class="section-title">Os Estúdios por Trás dos Jogos</h2>
+      <p class="section-sub">Trabalhamos com os melhores estúdios do mundo — cada um com seu estilo, mecânicas e jackpots ✨</p>
+    </div>
+
+    <div class="providers-grid" id="providersGrid">
+      <!-- Renderizado por renderProvidersGrid() em app.js a partir do storage -->
+    </div>
+  </div>
+</section>
+
 <!-- ============ JOGOS ============ -->
 <section class="section" id="jogos">
   <div class="container">
@@ -222,10 +238,7 @@
     </div>
 
     <div class="filter-tabs" id="filterTabs">
-      <button class="tab active" data-filter="all">Todos<div class="tab-active-bar"></div></button>
-      <button class="tab" data-filter="pgsoft">PG Soft<div class="tab-active-bar"></div></button>
-      <button class="tab" data-filter="pragmatic">Pragmatic<div class="tab-active-bar"></div></button>
-      <button class="tab" data-filter="evolution">Evolution<div class="tab-active-bar"></div></button>
+      <!-- Renderizado dinamicamente por renderFilterTabs() em app.js -->
     </div>
 
     <div class="cards-grid" id="cardsGrid"></div>
