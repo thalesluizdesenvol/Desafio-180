@@ -16,6 +16,7 @@ const STORAGE_KEYS = {
   LOCKOUT:  'sm_lockout_until',
   CREDS:    'sm_admin_creds',        // mantido p/ compatibilidade
   USERS:    'sm_users_v1',            // novo: lista de perfis
+  PROVIDERS:'sm_providers_v1',        // provedores parceiros (CRUD via admin)
 };
 
 const MAX_LOGIN_ATTEMPTS = 5;
@@ -30,6 +31,7 @@ const ROLES = {
     color: '#F59E0B',
     permissions: [
       'manage_users',      // criar/editar/deletar outros usuários
+      'manage_providers',  // gerenciar provedores parceiros
       'clear_catalog',     // zerar catálogo todo
       'bulk_edit',         // bulk URLs/links em massa
       'edit_games',        // editar jogos
@@ -48,6 +50,7 @@ const ROLES = {
       'bulk_edit',
       'edit_games',
       'edit_social',
+      'manage_providers',
       'view_all'
     ]
   },
@@ -68,11 +71,57 @@ function hasPermission(user, perm) {
   return role.permissions.includes(perm);
 }
 
-const PROVIDER_META = {
-  pgsoft:    { name:'PG Soft',         color:'#E11D48', dot:'#E11D48' },
-  pragmatic: { name:'Pragmatic Play',  color:'#F59E0B', dot:'#F59E0B' },
-  evolution: { name:'Evolution Gaming',color:'#8B5CF6', dot:'#8B5CF6' },
-};
+/* ============================================
+   PROVEDORES PARCEIROS
+   Estrutura completa por provedor — CRUD via admin.
+   `key` é a chave usada nos jogos (g.provider) e
+   nos filtros do site público.
+   ============================================ */
+const DEFAULT_PROVIDERS = [
+  { key:'pgsoft',    name:'PG Soft',          color:'#E11D48', colorAccent:'#FB7185', tagline:'Slots & Live',     enabled:true,
+    logoSvg:`<svg viewBox="0 0 120 60" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="lg-pgsoft" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#FB7185"/><stop offset="100%" stop-color="#E11D48"/></linearGradient></defs><text x="60" y="38" text-anchor="middle" font-family="Arial Black, sans-serif" font-weight="900" font-size="28" fill="url(#lg-pgsoft)" letter-spacing="-1">PG</text><text x="60" y="52" text-anchor="middle" font-family="Arial, sans-serif" font-weight="700" font-size="9" fill="#FBCFE8" letter-spacing="3">SOFT</text></svg>` },
+  { key:'pragmatic', name:'Pragmatic Play',   color:'#F59E0B', colorAccent:'#FBBF24', tagline:'Slots Premiados',  enabled:true,
+    logoSvg:`<svg viewBox="0 0 120 60" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="lg-pragmatic" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#FBBF24"/><stop offset="100%" stop-color="#D97706"/></linearGradient></defs><text x="60" y="32" text-anchor="middle" font-family="Arial Black, sans-serif" font-weight="900" font-size="14" fill="url(#lg-pragmatic)" letter-spacing="-0.5">PRAGMATIC</text><text x="60" y="48" text-anchor="middle" font-family="Arial, sans-serif" font-weight="700" font-size="11" fill="#FDE68A" letter-spacing="4">PLAY</text></svg>` },
+  { key:'evolution', name:'Evolution Gaming', color:'#8B5CF6', colorAccent:'#C4B5FD', tagline:'Live Casino',      enabled:true,
+    logoSvg:`<svg viewBox="0 0 120 60" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="lg-evolution" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#C4B5FD"/><stop offset="100%" stop-color="#7C3AED"/></linearGradient></defs><text x="60" y="34" text-anchor="middle" font-family="Arial Black, sans-serif" font-weight="900" font-size="15" fill="url(#lg-evolution)" letter-spacing="-0.5">EVOLUTION</text><text x="60" y="48" text-anchor="middle" font-family="Arial, sans-serif" font-weight="700" font-size="9" fill="#C4B5FD" letter-spacing="3">GAMING</text></svg>` },
+  { key:'cq9',       name:'CQ9 Gaming',       color:'#E53935', colorAccent:'#FF6B6B', tagline:'Slots Asiáticos',  enabled:true,
+    logoSvg:`<svg viewBox="0 0 120 60" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="lg-cq9" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#FF6B6B"/><stop offset="100%" stop-color="#C62828"/></linearGradient></defs><text x="60" y="38" text-anchor="middle" font-family="Arial Black, sans-serif" font-weight="900" font-size="26" fill="url(#lg-cq9)" letter-spacing="-1">CQ9</text><text x="60" y="52" text-anchor="middle" font-family="Arial, sans-serif" font-weight="700" font-size="8" fill="#FECACA" letter-spacing="3">GAMING</text></svg>` },
+  { key:'jili',      name:'JILI',             color:'#F57F17', colorAccent:'#FFD54F', tagline:'Slots Modernos',   enabled:true,
+    logoSvg:`<svg viewBox="0 0 120 60" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="lg-jili" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#FFD54F"/><stop offset="100%" stop-color="#F57F17"/></linearGradient></defs><text x="60" y="40" text-anchor="middle" font-family="Arial Black, sans-serif" font-weight="900" font-size="30" fill="url(#lg-jili)" letter-spacing="2">JILI</text><text x="60" y="52" text-anchor="middle" font-family="Arial, sans-serif" font-weight="600" font-size="8" fill="#FEF3C7" letter-spacing="2">GAMES</text></svg>` },
+  { key:'fc',        name:'FC Games',         color:'#EF4444', colorAccent:'#F87171', tagline:'Slots & Pesca',    enabled:true,
+    logoSvg:`<svg viewBox="0 0 120 60" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="lg-fc" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#F87171"/><stop offset="100%" stop-color="#B91C1C"/></linearGradient></defs><text x="60" y="40" text-anchor="middle" font-family="Arial Black, sans-serif" font-weight="900" font-size="32" fill="url(#lg-fc)" letter-spacing="0">FC</text><text x="60" y="52" text-anchor="middle" font-family="Arial, sans-serif" font-weight="700" font-size="8" fill="#FECACA" letter-spacing="3">GAMING</text></svg>` },
+  { key:'jdb',       name:'JDB Gaming',       color:'#1E88E5', colorAccent:'#42A5F5', tagline:'Slots & Arcade',   enabled:true,
+    logoSvg:`<svg viewBox="0 0 120 60" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="lg-jdb" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#42A5F5"/><stop offset="100%" stop-color="#0D47A1"/></linearGradient></defs><text x="60" y="40" text-anchor="middle" font-family="Arial Black, sans-serif" font-weight="900" font-size="30" fill="url(#lg-jdb)" letter-spacing="0">JDB</text><text x="60" y="52" text-anchor="middle" font-family="Arial, sans-serif" font-weight="700" font-size="8" fill="#BFDBFE" letter-spacing="3">GAMING</text></svg>` },
+  { key:'mg',        name:'Microgaming',      color:'#FBBF24', colorAccent:'#FCD34D', tagline:'Pioneiro Mundial', enabled:true,
+    logoSvg:`<svg viewBox="0 0 120 60" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="lg-mg" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#FCD34D"/><stop offset="100%" stop-color="#B45309"/></linearGradient></defs><text x="60" y="36" text-anchor="middle" font-family="Arial Black, sans-serif" font-weight="900" font-size="22" fill="url(#lg-mg)" letter-spacing="-1">MG</text><text x="60" y="51" text-anchor="middle" font-family="Arial, sans-serif" font-weight="700" font-size="9" fill="#FEF3C7" letter-spacing="2">MICROGAMING</text></svg>` },
+  { key:'nolimit',   name:'NoLimit City',     color:'#10B981', colorAccent:'#34D399', tagline:'Slots Disruptivos',enabled:true,
+    logoSvg:`<svg viewBox="0 0 120 60" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="lg-nolimit" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#34D399"/><stop offset="100%" stop-color="#047857"/></linearGradient></defs><text x="60" y="32" text-anchor="middle" font-family="Arial Black, sans-serif" font-weight="900" font-size="13" fill="url(#lg-nolimit)" letter-spacing="0">NOLIMIT</text><text x="60" y="48" text-anchor="middle" font-family="Arial, sans-serif" font-weight="800" font-size="11" fill="#A7F3D0" letter-spacing="3">CITY</text></svg>` },
+  { key:'bgaming',   name:'BGaming',          color:'#A78BFA', colorAccent:'#C4B5FD', tagline:'Provably Fair',    enabled:true,
+    logoSvg:`<svg viewBox="0 0 120 60" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="lg-bgaming" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#C4B5FD"/><stop offset="100%" stop-color="#6D28D9"/></linearGradient></defs><text x="60" y="40" text-anchor="middle" font-family="Arial Black, sans-serif" font-weight="900" font-size="22" fill="url(#lg-bgaming)" letter-spacing="-0.5">BGAMING</text><text x="60" y="52" text-anchor="middle" font-family="Arial, sans-serif" font-weight="600" font-size="7" fill="#DDD6FE" letter-spacing="3">PROVABLY FAIR</text></svg>` },
+  { key:'avatarux',  name:'AvatarUX',         color:'#F472B6', colorAccent:'#FBCFE8', tagline:'PopWins™',         enabled:true,
+    logoSvg:`<svg viewBox="0 0 120 60" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="lg-avatarux" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#FBCFE8"/><stop offset="100%" stop-color="#DB2777"/></linearGradient></defs><text x="60" y="40" text-anchor="middle" font-family="Arial Black, sans-serif" font-weight="900" font-size="20" fill="url(#lg-avatarux)" letter-spacing="-0.5">AVATARUX</text><text x="60" y="52" text-anchor="middle" font-family="Arial, sans-serif" font-weight="700" font-size="7" fill="#FBCFE8" letter-spacing="3">POPWINS™</text></svg>` },
+  { key:'popiplay',  name:'PopiPlay',         color:'#06B6D4', colorAccent:'#67E8F9', tagline:'Slots Inovadores', enabled:true,
+    logoSvg:`<svg viewBox="0 0 120 60" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="lg-popiplay" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#67E8F9"/><stop offset="100%" stop-color="#0E7490"/></linearGradient></defs><text x="60" y="40" text-anchor="middle" font-family="Arial Black, sans-serif" font-weight="900" font-size="22" fill="url(#lg-popiplay)" letter-spacing="-0.5">POPIPLAY</text><text x="60" y="52" text-anchor="middle" font-family="Arial, sans-serif" font-weight="600" font-size="8" fill="#A5F3FC" letter-spacing="3">SLOTS</text></svg>` },
+  { key:'cg',        name:'CG Slots',         color:'#FBBF24', colorAccent:'#FCD34D', tagline:'Estilo Asiático',  enabled:true,
+    logoSvg:`<svg viewBox="0 0 120 60" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="lg-cg" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#FCD34D"/><stop offset="100%" stop-color="#92400E"/></linearGradient></defs><text x="60" y="38" text-anchor="middle" font-family="Arial Black, sans-serif" font-weight="900" font-size="26" fill="url(#lg-cg)" letter-spacing="-1">CG</text><text x="60" y="52" text-anchor="middle" font-family="Arial, sans-serif" font-weight="700" font-size="8" fill="#FEF3C7" letter-spacing="3">SLOTS</text></svg>` },
+  { key:'rich',      name:'Rich Slots',       color:'#D97706', colorAccent:'#FBBF24', tagline:'Tesouros & Riquezas', enabled:true,
+    logoSvg:`<svg viewBox="0 0 120 60" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="lg-rich" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#FBBF24"/><stop offset="100%" stop-color="#92400E"/></linearGradient></defs><text x="60" y="40" text-anchor="middle" font-family="Arial Black, sans-serif" font-weight="900" font-size="24" fill="url(#lg-rich)" letter-spacing="-0.5">RICH</text><text x="60" y="52" text-anchor="middle" font-family="Arial, sans-serif" font-weight="700" font-size="8" fill="#FEF3C7" letter-spacing="3">SLOTS</text></svg>` },
+  { key:'cp',        name:'CP Slots',         color:'#A78BFA', colorAccent:'#C4B5FD', tagline:'Aventuras Mágicas',enabled:true,
+    logoSvg:`<svg viewBox="0 0 120 60" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="lg-cp" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#C4B5FD"/><stop offset="100%" stop-color="#5B21B6"/></linearGradient></defs><text x="60" y="38" text-anchor="middle" font-family="Arial Black, sans-serif" font-weight="900" font-size="26" fill="url(#lg-cp)" letter-spacing="-1">CP</text><text x="60" y="52" text-anchor="middle" font-family="Arial, sans-serif" font-weight="700" font-size="8" fill="#DDD6FE" letter-spacing="3">SLOTS</text></svg>` },
+];
+
+/* PROVIDER_META é uma view derivada — montada SEMPRE a partir do storage.
+   Mantém compatibilidade com todo o código existente que usa PROVIDER_META[g.provider].
+   Atualiza automaticamente após qualquer mudança nos provedores. */
+let PROVIDER_META = {};
+function rebuildProviderMeta() {
+  const list = getProviders();
+  PROVIDER_META = {};
+  list.forEach(p => {
+    PROVIDER_META[p.key] = { name: p.name, color: p.color, dot: p.color };
+  });
+  return PROVIDER_META;
+}
 
 const DEFAULT_SOCIAL = { ig:'#', tg:'#', wa:'#' };
 
@@ -159,6 +208,42 @@ function saveGames(g) {
 }
 function getSocial() { return load(STORAGE_KEYS.SOCIAL, DEFAULT_SOCIAL); }
 function saveSocial(s){ store(STORAGE_KEYS.SOCIAL, s); }
+
+/* ============================================
+   PROVIDERS — CRUD via storage
+   ============================================ */
+function getProviders() {
+  let list = load(STORAGE_KEYS.PROVIDERS, null);
+  if (!Array.isArray(list) || !list.length) {
+    // Primeira visita: clona os defaults para o storage
+    list = DEFAULT_PROVIDERS.map(p => ({ ...p }));
+    store(STORAGE_KEYS.PROVIDERS, list);
+  } else {
+    // Garante shape mínimo (caso tenha vindo de versão anterior)
+    list = list.map(p => ({
+      key: p.key,
+      name: p.name || p.key,
+      color: p.color || '#F472B6',
+      colorAccent: p.colorAccent || p.color || '#FBCFE8',
+      tagline: p.tagline || '',
+      logoSvg: p.logoSvg || '',
+      enabled: p.enabled !== false,
+    }));
+  }
+  return list;
+}
+function saveProviders(list) {
+  store(STORAGE_KEYS.PROVIDERS, list);
+  rebuildProviderMeta();
+  try { window.dispatchEvent(new CustomEvent('sm:providersUpdated')); } catch {}
+}
+function restoreDefaultProviders() {
+  const list = DEFAULT_PROVIDERS.map(p => ({ ...p }));
+  saveProviders(list);
+  return list;
+}
+// Inicializa PROVIDER_META imediatamente (lê o storage ou cria os defaults)
+rebuildProviderMeta();
 
 /* ============================================
    SECURITY
@@ -452,6 +537,47 @@ function renderTicker() {
   const sep = '<span class="ticker-sep">✦</span>';
   const line = items.join(sep);
   wrap.innerHTML = `<span class="ticker-content">${line}${sep}${line}${sep}</span>`;
+}
+
+/* ============================================
+   PROVEDORES — render no site público
+   Renderiza só os enabled, na ordem do storage.
+   ============================================ */
+function renderProvidersGrid() {
+  const grid = document.getElementById('providersGrid');
+  if (!grid) return;
+  const list = getProviders().filter(p => p.enabled !== false);
+  if (!list.length) {
+    grid.innerHTML = `<div class="providers-empty">Nenhum provedor ativo no momento.</div>`;
+    return;
+  }
+  grid.innerHTML = list.map(p => `
+    <div class="provider-card" data-provider="${sanitize(p.key)}"
+         style="--prov-color:${sanitize(p.color)}; --prov-color-2:${sanitize(p.colorAccent || p.color)};">
+      <div class="provider-logo">${p.logoSvg || defaultProviderLogo(p)}</div>
+      <div class="provider-name">${sanitize(p.name)}</div>
+      ${p.tagline ? `<div class="provider-meta">${sanitize(p.tagline)}</div>` : ''}
+    </div>
+  `).join('');
+}
+
+/* Logo fallback quando o provedor não tem SVG cadastrado:
+   gera uma marca tipográfica com as iniciais do nome. */
+function defaultProviderLogo(p) {
+  const initials = (p.name || p.key || '?')
+    .replace(/[^a-zA-ZÀ-ÿ0-9 ]/g,'')
+    .split(/\s+/).filter(Boolean)
+    .slice(0, 2)
+    .map(w => w[0].toUpperCase()).join('') || '?';
+  const gradId = `lg-fb-${(p.key||'x').replace(/[^a-z0-9]/gi,'')}`;
+  return `<svg viewBox="0 0 120 60" xmlns="http://www.w3.org/2000/svg">
+    <defs><linearGradient id="${gradId}" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="${p.colorAccent || p.color}"/>
+      <stop offset="100%" stop-color="${p.color}"/>
+    </linearGradient></defs>
+    <text x="60" y="40" text-anchor="middle" font-family="Arial Black, sans-serif"
+          font-weight="900" font-size="28" fill="url(#${gradId})" letter-spacing="-1">${sanitize(initials)}</text>
+  </svg>`;
 }
 
 /* ============================================
@@ -840,24 +966,63 @@ function trackClick(gameId) {
 /* ============================================
    FILTER / SORT
    ============================================ */
+/* ============================================
+   FILTER TABS — DINÂMICO (site público)
+   Mostra "Todos" + provedores que têm pelo menos 1 jogo,
+   ordenados por popularidade (mais jogos primeiro).
+   ============================================ */
+function renderFilterTabs(activeFilter = 'all') {
+  const wrap = document.getElementById('filterTabs');
+  if (!wrap) return;
+  const games = getGames();
+  const providers = getProviders().filter(p => p.enabled !== false);
+
+  // Conta jogos por provedor
+  const counts = {};
+  providers.forEach(p => { counts[p.key] = games.filter(g => g.provider === p.key).length; });
+
+  // Lista provedores com jogos, ordenados por quantidade desc
+  const visible = providers
+    .filter(p => counts[p.key] > 0)
+    .sort((a, b) => counts[b.key] - counts[a.key]);
+
+  // "Todos" sempre primeiro
+  const tabs = [
+    `<button class="tab ${activeFilter === 'all' ? 'active' : ''}" data-filter="all">Todos<div class="tab-active-bar"></div></button>`,
+    ...visible.map(p =>
+      `<button class="tab ${activeFilter === p.key ? 'active' : ''}" data-filter="${sanitize(p.key)}">${sanitize(p.name)}<div class="tab-active-bar"></div></button>`
+    )
+  ];
+
+  wrap.innerHTML = tabs.join('');
+}
+
 function initFilters() {
-  const tabs = document.querySelectorAll('.tab');
+  // Renderiza os tabs primeiro (caso ainda não tenha sido renderizado)
+  renderFilterTabs();
+
+  const wrap = document.getElementById('filterTabs');
   const getState = () => ({
-    filter: document.querySelector('.tab.active')?.dataset.filter || 'all',
+    filter: wrap?.querySelector('.tab.active')?.dataset.filter || 'all',
     search: document.getElementById('gameSearch')?.value.trim() || '',
   });
 
-  tabs.forEach(tab => {
-    tab.addEventListener('click', () => {
-      tabs.forEach(t => t.classList.remove('active'));
+  // Delegação de eventos no container — funciona mesmo quando os tabs são re-renderizados
+  if (wrap && !wrap.dataset.bound) {
+    wrap.dataset.bound = '1';
+    wrap.addEventListener('click', e => {
+      const tab = e.target.closest('.tab');
+      if (!tab) return;
+      wrap.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
       tab.classList.add('active');
       const s = getState();
       renderCards(tab.dataset.filter, s.search);
     });
-  });
+  }
 
   const search = document.getElementById('gameSearch');
-  if (search) {
+  if (search && !search.dataset.bound) {
+    search.dataset.bound = '1';
     let t;
     search.addEventListener('input', () => {
       clearTimeout(t);
@@ -990,6 +1155,7 @@ function initMain() {
   initHeader();
   applySocialLinks();
   renderTicker();
+  renderProvidersGrid();
   assignTestLinks();      // links de placeholder para teste
   renderCards();
   initFilters();
@@ -999,8 +1165,17 @@ function initMain() {
   window.addEventListener('sm:gamesUpdated', () => {
     const f = document.querySelector('.tab.active')?.dataset.filter || 'all';
     const q = document.getElementById('gameSearch')?.value.trim() || '';
+    renderFilterTabs(f);    // re-renderiza filtros (contagens podem ter mudado)
     renderCards(f, q);
     renderTicker();
+  });
+
+  window.addEventListener('sm:providersUpdated', () => {
+    const f = document.querySelector('.tab.active')?.dataset.filter || 'all';
+    const q = document.getElementById('gameSearch')?.value.trim() || '';
+    renderProvidersGrid();
+    renderFilterTabs(f);    // se um provedor foi removido/desativado, some do filtro
+    renderCards(f, q);      // re-renderiza cards (badge de provedor pode ter mudado de cor/nome)
   });
 
   // Counters
@@ -1305,21 +1480,23 @@ function showAdminPage(page) {
   if (sideEl) sideEl.classList.add('active');
 
   const titles = {
-    dashboard: 'Painel Geral',
-    insights:  'Insights Avançados',
-    jogos:     'Gerenciar Jogos',
-    social:    'Links Sociais',
-    settings:  'Configurações',
+    dashboard:  'Painel Geral',
+    insights:   'Insights Avançados',
+    jogos:      'Gerenciar Jogos',
+    provedores: 'Provedores Parceiros',
+    social:     'Links Sociais',
+    settings:   'Configurações',
   };
   const t = document.getElementById('pageTitle');
   if (t) t.textContent = titles[page] || page;
 
   switch (page) {
-    case 'dashboard': renderDashboard(); break;
-    case 'insights':  renderInsightsPage(); break;
-    case 'jogos':     renderCardsConfig(); break;
-    case 'social':    renderSocialConfig(); break;
-    case 'settings':  renderSettingsPage(); break;
+    case 'dashboard':  renderDashboard(); break;
+    case 'insights':   renderInsightsPage(); break;
+    case 'jogos':      renderCardsConfig(); break;
+    case 'provedores': renderProvidersAdmin(); break;
+    case 'social':     renderSocialConfig(); break;
+    case 'settings':   renderSettingsPage(); break;
   }
 }
 window.showAdminPage = showAdminPage;
@@ -1434,8 +1611,14 @@ function renderTopGamesTable() {
 
 function renderProviderChart() {
   const games = getGames();
-  const byProv = { pgsoft:0, pragmatic:0, wg:0 };
-  const clicksByProv = { pgsoft:0, pragmatic:0, wg:0 };
+  const el = document.getElementById('providerChart');
+  if (!el) return;
+
+  // Conta jogos e cliques por provedor — agora dinâmico, vem do storage de provedores
+  const providers = getProviders();
+  const byProv = {};
+  const clicksByProv = {};
+  providers.forEach(p => { byProv[p.key] = 0; clicksByProv[p.key] = 0; });
   games.forEach(g => {
     if (byProv.hasOwnProperty(g.provider)) {
       byProv[g.provider]++;
@@ -1443,24 +1626,31 @@ function renderProviderChart() {
     }
   });
 
-  const el = document.getElementById('providerChart');
-  if (!el) return;
+  // Mostra apenas provedores que têm pelo menos 1 jogo (mantém o gráfico limpo)
+  const withGames = Object.entries(byProv).filter(([,n]) => n > 0);
+  if (!withGames.length) {
+    el.innerHTML = '<div class="empty">Nenhum jogo cadastrado ainda.</div>';
+    return;
+  }
+
   const total = games.length || 1;
-  el.innerHTML = Object.entries(byProv).map(([p,n]) => {
-    const pct = Math.round((n / total) * 100);
-    const m = PROVIDER_META[p];
-    return `
-      <div class="donut-item">
-        <div class="donut-head">
-          <span class="donut-dot" style="background:${m.color}"></span>
-          <span class="donut-name">${m.name}</span>
-          <span class="donut-count">${n} jogos</span>
+  el.innerHTML = withGames
+    .sort((a,b) => b[1] - a[1])      // ordena por quantidade desc
+    .map(([p,n]) => {
+      const pct = Math.round((n / total) * 100);
+      const m = PROVIDER_META[p] || { name: p, color: '#F472B6' };
+      return `
+        <div class="donut-item">
+          <div class="donut-head">
+            <span class="donut-dot" style="background:${m.color}"></span>
+            <span class="donut-name">${sanitize(m.name)}</span>
+            <span class="donut-count">${n} ${n === 1 ? 'jogo' : 'jogos'}</span>
+          </div>
+          <div class="donut-track"><div class="donut-fill" style="width:${pct}%;background:linear-gradient(90deg, ${m.color}, ${m.color}dd)"></div></div>
+          <div class="donut-meta">${clicksByProv[p]} cliques · ${pct}% do catálogo</div>
         </div>
-        <div class="donut-track"><div class="donut-fill" style="width:${pct}%;background:linear-gradient(90deg, ${m.color}, ${m.color}dd)"></div></div>
-        <div class="donut-meta">${clicksByProv[p]} cliques · ${pct}% do catálogo</div>
-      </div>
-    `;
-  }).join('');
+      `;
+    }).join('');
 }
 
 function renderHotRanking() {
@@ -1597,6 +1787,275 @@ function renderInsightsPage() {
 /* ============================================
    SOCIAL CONFIG
    ============================================ */
+/* ============================================
+   PROVIDERS ADMIN — CRUD de Provedores Parceiros
+   ============================================ */
+function renderProvidersAdmin() {
+  const el = document.getElementById('providersAdminContent');
+  if (!el) return;
+  const list = getProviders();
+  const games = getGames();
+  const enabled = list.filter(p => p.enabled !== false).length;
+
+  el.innerHTML = `
+    <div class="admin-panel">
+      <h3>🏆 Provedores Parceiros</h3>
+      <p class="panel-desc">
+        Gerencie os estúdios que aparecem na seção <strong>"Provedores Parceiros"</strong> do site.
+        Os provedores aqui também alimentam os filtros de jogos. Alterações são salvas automaticamente.
+      </p>
+      <div class="providers-summary">
+        <div class="prov-stat"><span>Total</span><strong>${list.length}</strong></div>
+        <div class="prov-stat"><span>Ativos</span><strong>${enabled}</strong></div>
+        <div class="prov-stat"><span>Ocultos</span><strong>${list.length - enabled}</strong></div>
+      </div>
+
+      <div id="providersList" class="providers-admin-list"></div>
+
+      <div class="panel-actions-footer">
+        <button class="btn-save" id="btnAddProvider">➕ Adicionar Provedor</button>
+        <button class="btn-save btn-secondary" id="btnRestoreProviders">♻️ Restaurar Lista Padrão</button>
+      </div>
+    </div>
+  `;
+
+  renderProvidersList();
+
+  document.getElementById('btnAddProvider')?.addEventListener('click', addNewProvider);
+  document.getElementById('btnRestoreProviders')?.addEventListener('click', () => {
+    if (!confirm('Restaurar a lista padrão? Isto vai sobrescrever todas as suas customizações de provedores. Os jogos não serão afetados.')) return;
+    restoreDefaultProviders();
+    renderProvidersAdmin();
+    showToast('Lista de provedores restaurada.', 'success');
+  });
+}
+
+function renderProvidersList() {
+  const wrap = document.getElementById('providersList');
+  if (!wrap) return;
+  const list = getProviders();
+  const games = getGames();
+
+  if (!list.length) {
+    wrap.innerHTML = `<div class="empty-state">Nenhum provedor cadastrado. Clique em "Adicionar Provedor" para começar.</div>`;
+    return;
+  }
+
+  wrap.innerHTML = list.map((p, idx) => {
+    const gameCount = games.filter(g => g.provider === p.key).length;
+    const isEnabled = p.enabled !== false;
+    return `
+      <div class="provider-row ${isEnabled ? '' : 'disabled'}" data-idx="${idx}">
+        <div class="prov-row-handle" title="Reordenar">
+          <button class="prov-move" data-dir="up" title="Subir" ${idx === 0 ? 'disabled' : ''}>▲</button>
+          <button class="prov-move" data-dir="down" title="Descer" ${idx === list.length - 1 ? 'disabled' : ''}>▼</button>
+        </div>
+
+        <div class="prov-row-preview" style="--prov-color:${sanitize(p.color)}; --prov-color-2:${sanitize(p.colorAccent || p.color)};">
+          <div class="prov-row-logo">${p.logoSvg || defaultProviderLogo(p)}</div>
+        </div>
+
+        <div class="prov-row-fields">
+          <div class="field-group">
+            <label>Nome</label>
+            <input type="text" class="form-input f-prov-name" value="${sanitize(p.name)}" placeholder="Ex: PG Soft">
+          </div>
+          <div class="field-group">
+            <label>Chave técnica</label>
+            <input type="text" class="form-input f-prov-key" value="${sanitize(p.key)}" placeholder="ex: pgsoft" pattern="[a-z0-9_-]+" title="Apenas minúsculas, números, _ e -">
+          </div>
+          <div class="field-group">
+            <label>Tagline</label>
+            <input type="text" class="form-input f-prov-tagline" value="${sanitize(p.tagline || '')}" placeholder="Ex: Slots & Live">
+          </div>
+          <div class="field-group field-color">
+            <label>Cor principal</label>
+            <div class="color-input-row">
+              <input type="color" class="f-prov-color" value="${sanitize(p.color)}">
+              <input type="text" class="form-input f-prov-color-hex" value="${sanitize(p.color)}" maxlength="7">
+            </div>
+          </div>
+          <div class="field-group field-color">
+            <label>Cor de acento</label>
+            <div class="color-input-row">
+              <input type="color" class="f-prov-color2" value="${sanitize(p.colorAccent || p.color)}">
+              <input type="text" class="form-input f-prov-color2-hex" value="${sanitize(p.colorAccent || p.color)}" maxlength="7">
+            </div>
+          </div>
+          <div class="field-group field-svg">
+            <label>Logo SVG <span class="field-hint">(opcional — vazio = iniciais)</span></label>
+            <textarea class="form-input f-prov-svg" rows="2" placeholder='<svg viewBox="0 0 120 60">...</svg>'>${sanitize(p.logoSvg || '')}</textarea>
+          </div>
+        </div>
+
+        <div class="prov-row-meta">
+          <div class="prov-game-count">
+            <strong>${gameCount}</strong>
+            <span>${gameCount === 1 ? 'jogo' : 'jogos'}</span>
+          </div>
+          <label class="prov-toggle">
+            <input type="checkbox" class="f-prov-enabled" ${isEnabled ? 'checked' : ''}>
+            <span class="prov-toggle-label">${isEnabled ? 'Visível' : 'Oculto'}</span>
+          </label>
+          <button class="btn-delete-prov" title="Remover provedor"
+                  ${gameCount > 0 ? 'disabled data-reason="has-games"' : ''}>
+            🗑️
+          </button>
+        </div>
+      </div>
+    `;
+  }).join('');
+
+  // Bindings — uso delegação de eventos
+  wrap.querySelectorAll('.provider-row').forEach(row => {
+    const idx = +row.dataset.idx;
+
+    // Auto-save em todos os inputs
+    row.querySelectorAll('input, textarea').forEach(input => {
+      input.addEventListener('change', () => saveProviderRow(idx, row));
+      if (input.type === 'text' || input.tagName === 'TEXTAREA') {
+        let t;
+        input.addEventListener('input', () => {
+          clearTimeout(t);
+          t = setTimeout(() => saveProviderRow(idx, row), 400);
+        });
+      }
+    });
+
+    // Sync color picker <-> hex input
+    const cp1 = row.querySelector('.f-prov-color');
+    const cphex1 = row.querySelector('.f-prov-color-hex');
+    cp1?.addEventListener('input', () => { cphex1.value = cp1.value.toUpperCase(); });
+    cphex1?.addEventListener('input', () => {
+      if (/^#[0-9a-fA-F]{6}$/.test(cphex1.value)) cp1.value = cphex1.value;
+    });
+    const cp2 = row.querySelector('.f-prov-color2');
+    const cphex2 = row.querySelector('.f-prov-color2-hex');
+    cp2?.addEventListener('input', () => { cphex2.value = cp2.value.toUpperCase(); });
+    cphex2?.addEventListener('input', () => {
+      if (/^#[0-9a-fA-F]{6}$/.test(cphex2.value)) cp2.value = cphex2.value;
+    });
+
+    // Reordenar
+    row.querySelectorAll('.prov-move').forEach(btn => {
+      btn.addEventListener('click', () => moveProvider(idx, btn.dataset.dir));
+    });
+
+    // Deletar
+    row.querySelector('.btn-delete-prov')?.addEventListener('click', e => {
+      const btn = e.currentTarget;
+      if (btn.disabled) {
+        showToast('Este provedor tem jogos vinculados. Mova ou exclua os jogos antes de remover o provedor.', 'error');
+        return;
+      }
+      deleteProvider(idx);
+    });
+  });
+}
+
+function saveProviderRow(idx, rowEl) {
+  const list = getProviders();
+  if (!list[idx]) return;
+  const oldKey = list[idx].key;
+  const newKey = rowEl.querySelector('.f-prov-key').value.trim().toLowerCase().replace(/[^a-z0-9_-]/g,'');
+  if (!newKey) {
+    showToast('A chave técnica não pode ficar vazia.', 'error');
+    return;
+  }
+  // Garante chave única
+  if (newKey !== oldKey && list.some((p,i) => i !== idx && p.key === newKey)) {
+    showToast(`Já existe outro provedor com a chave "${newKey}".`, 'error');
+    rowEl.querySelector('.f-prov-key').value = oldKey;
+    return;
+  }
+  const updated = {
+    key: newKey,
+    name: rowEl.querySelector('.f-prov-name').value.trim() || newKey,
+    tagline: rowEl.querySelector('.f-prov-tagline').value.trim(),
+    color: rowEl.querySelector('.f-prov-color-hex').value.trim() || '#F472B6',
+    colorAccent: rowEl.querySelector('.f-prov-color2-hex').value.trim() || '#FBCFE8',
+    logoSvg: rowEl.querySelector('.f-prov-svg').value.trim(),
+    enabled: rowEl.querySelector('.f-prov-enabled').checked,
+  };
+  list[idx] = updated;
+  saveProviders(list);
+
+  // Se a chave mudou, atualiza os jogos vinculados (manter integridade referencial)
+  if (newKey !== oldKey) {
+    const games = getGames();
+    let touched = 0;
+    games.forEach(g => { if (g.provider === oldKey) { g.provider = newKey; touched++; } });
+    if (touched) {
+      saveGames(games);
+      showToast(`Chave atualizada. ${touched} jogo(s) realocados para "${newKey}".`, 'success');
+    }
+  }
+
+  // Re-renderiza só o preview daquela linha (não a lista toda — não perde foco)
+  const previewEl = rowEl.querySelector('.prov-row-preview');
+  const logoEl = rowEl.querySelector('.prov-row-logo');
+  if (previewEl) {
+    previewEl.style.setProperty('--prov-color', updated.color);
+    previewEl.style.setProperty('--prov-color-2', updated.colorAccent);
+  }
+  if (logoEl) {
+    logoEl.innerHTML = updated.logoSvg || defaultProviderLogo(updated);
+  }
+  rowEl.classList.toggle('disabled', !updated.enabled);
+  const tgLabel = rowEl.querySelector('.prov-toggle-label');
+  if (tgLabel) tgLabel.textContent = updated.enabled ? 'Visível' : 'Oculto';
+}
+
+function moveProvider(idx, dir) {
+  const list = getProviders();
+  const targetIdx = dir === 'up' ? idx - 1 : idx + 1;
+  if (targetIdx < 0 || targetIdx >= list.length) return;
+  [list[idx], list[targetIdx]] = [list[targetIdx], list[idx]];
+  saveProviders(list);
+  renderProvidersList();
+}
+
+function deleteProvider(idx) {
+  const list = getProviders();
+  if (!list[idx]) return;
+  const p = list[idx];
+  if (!confirm(`Remover o provedor "${p.name}"? Esta ação não pode ser desfeita.`)) return;
+  list.splice(idx, 1);
+  saveProviders(list);
+  renderProvidersAdmin();
+  showToast(`Provedor "${p.name}" removido.`, 'success');
+}
+
+function addNewProvider() {
+  const list = getProviders();
+  // Gera uma chave única
+  let i = 1;
+  let key = `provider${i}`;
+  while (list.some(p => p.key === key)) { i++; key = `provider${i}`; }
+  list.push({
+    key,
+    name: 'Novo Provedor',
+    tagline: '',
+    color: '#F472B6',
+    colorAccent: '#FBCFE8',
+    logoSvg: '',
+    enabled: true,
+  });
+  saveProviders(list);
+  renderProvidersAdmin();
+  showToast('Provedor adicionado. Edite os campos abaixo.', 'success');
+  // Foca no nome do novo provedor
+  setTimeout(() => {
+    const rows = document.querySelectorAll('.provider-row');
+    const last = rows[rows.length - 1];
+    last?.querySelector('.f-prov-name')?.focus();
+    last?.scrollIntoView({ behavior: 'smooth', block: 'center' });
+  }, 100);
+}
+
+/* ============================================
+   SOCIAL LINKS CONFIG
+   ============================================ */
 function renderSocialConfig() {
   const s = getSocial();
   const el = document.getElementById('socialConfigForm');
@@ -1659,15 +2118,21 @@ function renderCardsConfig() {
   if (headerEl) {
     const counts = { all: games.length };
     Object.keys(PROVIDER_META).forEach(p => { counts[p] = games.filter(g => g.provider === p).length; });
+
+    // Constrói chips dinamicamente — só mostra provedores que têm jogos
+    // (mantém a barra limpa quando há 15+ provedores cadastrados)
+    const chipsHtml = [
+      `<button class="chip ${cardsFilterProvider==='all'?'active':''}" data-p="all">Todos <span>${counts.all}</span></button>`,
+      ...Object.entries(PROVIDER_META)
+        .filter(([k]) => counts[k] > 0)
+        .sort((a,b) => counts[b[0]] - counts[a[0]])
+        .map(([k, m]) => `<button class="chip ${cardsFilterProvider===k?'active':''}" data-p="${sanitize(k)}">${sanitize(m.name)} <span>${counts[k]}</span></button>`)
+    ].join('');
+
     headerEl.innerHTML = `
       <div class="config-filters">
         <input type="text" id="cardsSearch" class="form-input" placeholder="🔍 Buscar jogo..." value="${sanitize(cardsSearchQuery)}">
-        <div class="filter-chips">
-          <button class="chip ${cardsFilterProvider==='all'?'active':''}" data-p="all">Todos <span>${counts.all}</span></button>
-          <button class="chip ${cardsFilterProvider==='pgsoft'?'active':''}" data-p="pgsoft">PG Soft <span>${counts.pgsoft||0}</span></button>
-          <button class="chip ${cardsFilterProvider==='pragmatic'?'active':''}" data-p="pragmatic">Pragmatic <span>${counts.pragmatic||0}</span></button>
-          <button class="chip ${cardsFilterProvider==='wg'?'active':''}" data-p="wg">WG Casino <span>${counts.wg||0}</span></button>
-        </div>
+        <div class="filter-chips">${chipsHtml}</div>
       </div>
     `;
     headerEl.querySelectorAll('.chip').forEach(c => c.addEventListener('click', () => {
@@ -2075,9 +2540,16 @@ function renderSettingsPage() {
       <div class="info-grid">
         <div class="info-item"><span>Versão</span><strong>${APP_VERSION}</strong></div>
         <div class="info-item"><span>Total de Jogos</span><strong>${games.length}</strong></div>
-        <div class="info-item"><span>PG Soft</span><strong>${games.filter(g=>g.provider==='pgsoft').length}</strong></div>
-        <div class="info-item"><span>Pragmatic Play</span><strong>${games.filter(g=>g.provider==='pragmatic').length}</strong></div>
-        <div class="info-item"><span>WG Casino</span><strong>${games.filter(g=>g.provider==='wg').length}</strong></div>
+        <div class="info-item"><span>Provedores Ativos</span><strong>${getProviders().filter(p => p.enabled !== false).length}</strong></div>
+        ${(() => {
+          // Lista dinâmica: top 4 provedores com mais jogos (ou todos com >0 jogos, o que for menor)
+          const counts = Object.entries(PROVIDER_META)
+            .map(([k, m]) => ({ k, name: m.name, n: games.filter(g => g.provider === k).length }))
+            .filter(p => p.n > 0)
+            .sort((a, b) => b.n - a.n)
+            .slice(0, 4);
+          return counts.map(p => `<div class="info-item"><span>${sanitize(p.name)}</span><strong>${p.n}</strong></div>`).join('');
+        })()}
         <div class="info-item"><span>Com imagem oficial</span><strong>${games.filter(g => g.img && g.img.trim() && !g.img.startsWith('data:')).length}</strong></div>
         <div class="info-item"><span>Sem imagem (usam SVG)</span><strong>${games.filter(g => !g.img || !g.img.trim() || g.img.startsWith('data:')).length}</strong></div>
         <div class="info-item"><span>Tamanho em Storage</span><strong>${getStorageSize()} KB</strong></div>
