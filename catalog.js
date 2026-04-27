@@ -90,7 +90,7 @@
   {
     "id": 12,
     "name": "Live - Spaceman",
-    "provider": "pragmatic",
+    "provider": "pgsoft",
     "emoji": "🎰",
     "theme": "space",
     "dist": 96,
@@ -250,7 +250,7 @@
   {
     "id": 22,
     "name": "Lucky Piggy",
-    "provider": "pragmatic",
+    "provider": "pgsoft",
     "emoji": "🍀",
     "theme": "fantasy",
     "dist": 96,
@@ -826,7 +826,7 @@
   {
     "id": 58,
     "name": "Cash Mania",
-    "provider": "pragmatic",
+    "provider": "pgsoft",
     "emoji": "🎰",
     "theme": "fantasy",
     "dist": 96,
@@ -1210,7 +1210,7 @@
   {
     "id": 82,
     "name": "Forge of Wealth",
-    "provider": "pragmatic",
+    "provider": "pgsoft",
     "emoji": "🎰",
     "theme": "fantasy",
     "dist": 96,
@@ -1418,7 +1418,7 @@
   {
     "id": 100,
     "name": "Roleta Brasileira",
-    "provider": "pragmatic",
+    "provider": "pgsoft",
     "emoji": "🎰",
     "theme": "egypt",
     "dist": 96,
@@ -1434,7 +1434,7 @@
   {
     "id": 101,
     "name": "Master Joker",
-    "provider": "pragmatic",
+    "provider": "pgsoft",
     "emoji": "🎰",
     "theme": "fantasy",
     "dist": 96,
@@ -1498,7 +1498,7 @@
   {
     "id": 105,
     "name": "Super 7s",
-    "provider": "pragmatic",
+    "provider": "pgsoft",
     "emoji": "🎰",
     "theme": "fantasy",
     "dist": 96,
@@ -1578,7 +1578,7 @@
   {
     "id": 110,
     "name": "Live - Mega Wheel",
-    "provider": "pragmatic",
+    "provider": "pgsoft",
     "emoji": "🎰",
     "theme": "fantasy",
     "dist": 96,
@@ -1594,7 +1594,7 @@
   {
     "id": 111,
     "name": "Speed Roulette 1",
-    "provider": "pragmatic",
+    "provider": "pgsoft",
     "emoji": "🎰",
     "theme": "fantasy",
     "dist": 96,
@@ -1642,7 +1642,7 @@
   {
     "id": 114,
     "name": "Fire 88",
-    "provider": "pragmatic",
+    "provider": "pgsoft",
     "emoji": "🔥",
     "theme": "fantasy",
     "dist": 96,
@@ -1658,7 +1658,7 @@
   {
     "id": 115,
     "name": "888 Gold",
-    "provider": "pragmatic",
+    "provider": "pgsoft",
     "emoji": "🪙",
     "theme": "luxury",
     "dist": 96,
@@ -1706,7 +1706,7 @@
   {
     "id": 118,
     "name": "Mega Roleta",
-    "provider": "pragmatic",
+    "provider": "pgsoft",
     "emoji": "🎰",
     "theme": "fantasy",
     "dist": 96,
@@ -1770,7 +1770,7 @@
   {
     "id": 122,
     "name": "Auto-Roulette 1",
-    "provider": "pragmatic",
+    "provider": "pgsoft",
     "emoji": "🎰",
     "theme": "fantasy",
     "dist": 96,
@@ -1866,7 +1866,7 @@
   {
     "id": 128,
     "name": "Super X",
-    "provider": "pragmatic",
+    "provider": "pgsoft",
     "emoji": "🎰",
     "theme": "fantasy",
     "dist": 96,
@@ -1882,7 +1882,7 @@
   {
     "id": 129,
     "name": "Cowboys Gold",
-    "provider": "pragmatic",
+    "provider": "pgsoft",
     "emoji": "🤠",
     "theme": "western",
     "dist": 96,
@@ -1898,7 +1898,7 @@
   {
     "id": 130,
     "name": "Tree of Riches",
-    "provider": "pragmatic",
+    "provider": "pgsoft",
     "emoji": "🎰",
     "theme": "fantasy",
     "dist": 96,
@@ -1946,7 +1946,7 @@
   {
     "id": 133,
     "name": "Dice City",
-    "provider": "pragmatic",
+    "provider": "pgsoft",
     "emoji": "❄️",
     "theme": "fantasy",
     "dist": 96,
@@ -1962,7 +1962,7 @@
   {
     "id": 134,
     "name": "Live - Dragon Tiger",
-    "provider": "pragmatic",
+    "provider": "pgsoft",
     "emoji": "🐯",
     "theme": "chinese",
     "dist": 96,
@@ -2042,7 +2042,7 @@
   {
     "id": 139,
     "name": "Black Bull",
-    "provider": "pragmatic",
+    "provider": "pgsoft",
     "emoji": "🐂",
     "theme": "fantasy",
     "dist": 96,
@@ -2090,7 +2090,7 @@
   {
     "id": 142,
     "name": "Triple Tigers",
-    "provider": "pragmatic",
+    "provider": "pgsoft",
     "emoji": "🐯",
     "theme": "chinese",
     "dist": 96,
@@ -2106,7 +2106,7 @@
   {
     "id": 143,
     "name": "Roulette 1 - Azure",
-    "provider": "pragmatic",
+    "provider": "pgsoft",
     "emoji": "🎰",
     "theme": "fantasy",
     "dist": 96,
@@ -2122,7 +2122,7 @@
   {
     "id": 144,
     "name": "Queenie",
-    "provider": "pragmatic",
+    "provider": "pgsoft",
     "emoji": "🎰",
     "theme": "fantasy",
     "dist": 96,
@@ -2186,7 +2186,7 @@
   {
     "id": 148,
     "name": "Greek Gods",
-    "provider": "pragmatic",
+    "provider": "pgsoft",
     "emoji": "⚡",
     "theme": "fantasy",
     "dist": 96,
@@ -2218,7 +2218,7 @@
   {
     "id": 150,
     "name": "7 Piggies",
-    "provider": "pragmatic",
+    "provider": "pgsoft",
     "emoji": "🎰",
     "theme": "fantasy",
     "dist": 96,
@@ -2234,7 +2234,7 @@
   {
     "id": 151,
     "name": "Rainbow Gold",
-    "provider": "pragmatic",
+    "provider": "pgsoft",
     "emoji": "🪙",
     "theme": "egypt",
     "dist": 96,
@@ -2266,7 +2266,7 @@
   {
     "id": 153,
     "name": "Floating Dragon",
-    "provider": "pgsoft",
+    "provider": "pragmatic",
     "emoji": "🐉",
     "theme": "chinese",
     "dist": 96,
@@ -2282,7 +2282,7 @@
   {
     "id": 154,
     "name": "Super Joker",
-    "provider": "pragmatic",
+    "provider": "pgsoft",
     "emoji": "🎰",
     "theme": "fantasy",
     "dist": 96,
@@ -2314,7 +2314,7 @@
   {
     "id": 156,
     "name": "Roulette 7 - Italian",
-    "provider": "pragmatic",
+    "provider": "pgsoft",
     "emoji": "🎰",
     "theme": "fantasy",
     "dist": 96,
@@ -2330,7 +2330,7 @@
   {
     "id": 157,
     "name": "Elemental Gems Megaways",
-    "provider": "pragmatic",
+    "provider": "pgsoft",
     "emoji": "💎",
     "theme": "fantasy",
     "dist": 96,
@@ -2346,7 +2346,7 @@
   {
     "id": 158,
     "name": "Amazing Money Machine",
-    "provider": "pragmatic",
+    "provider": "pgsoft",
     "emoji": "🎰",
     "theme": "fantasy",
     "dist": 96,
@@ -2378,7 +2378,7 @@
   {
     "id": 160,
     "name": "Zeus vs Hades - Gods of War",
-    "provider": "pragmatic",
+    "provider": "pgsoft",
     "emoji": "⚡",
     "theme": "greek",
     "dist": 96,
@@ -2410,7 +2410,7 @@
   {
     "id": 162,
     "name": "Master Chen's Fortune",
-    "provider": "pragmatic",
+    "provider": "pgsoft",
     "emoji": "🍀",
     "theme": "chinese",
     "dist": 96,
@@ -2426,7 +2426,7 @@
   {
     "id": 163,
     "name": "Cash Bonanza",
-    "provider": "pragmatic",
+    "provider": "pgsoft",
     "emoji": "🍭",
     "theme": "candy",
     "dist": 96,
@@ -2442,7 +2442,7 @@
   {
     "id": 164,
     "name": "Extra Juicy Megaways",
-    "provider": "pragmatic",
+    "provider": "pgsoft",
     "emoji": "🎰",
     "theme": "egypt",
     "dist": 96,
@@ -2458,7 +2458,7 @@
   {
     "id": 165,
     "name": "Jeitinho Brasileiro",
-    "provider": "pragmatic",
+    "provider": "pgsoft",
     "emoji": "🎰",
     "theme": "egypt",
     "dist": 96,
@@ -2490,7 +2490,7 @@
   {
     "id": 167,
     "name": "Juicy Fruits",
-    "provider": "pragmatic",
+    "provider": "pgsoft",
     "emoji": "🍉",
     "theme": "fruit",
     "dist": 96,
@@ -2634,7 +2634,7 @@
   {
     "id": 176,
     "name": "Crystal Caverns Megaways",
-    "provider": "pragmatic",
+    "provider": "pgsoft",
     "emoji": "🎰",
     "theme": "fantasy",
     "dist": 96,
@@ -2666,7 +2666,7 @@
   {
     "id": 178,
     "name": "Fortune of Giza",
-    "provider": "pgsoft",
+    "provider": "pragmatic",
     "emoji": "🍀",
     "theme": "chinese",
     "dist": 96,
@@ -2746,7 +2746,7 @@
   {
     "id": 183,
     "name": "Lucky Lightning",
-    "provider": "pragmatic",
+    "provider": "pgsoft",
     "emoji": "🍀",
     "theme": "fantasy",
     "dist": 96,
@@ -2810,7 +2810,7 @@
   {
     "id": 187,
     "name": "Cleocatra",
-    "provider": "pgsoft",
+    "provider": "pragmatic",
     "emoji": "🐱",
     "theme": "egypt",
     "dist": 96,
@@ -2874,7 +2874,7 @@
   {
     "id": 191,
     "name": "Roulette 3 - Macao",
-    "provider": "pragmatic",
+    "provider": "pgsoft",
     "emoji": "🎰",
     "theme": "fantasy",
     "dist": 96,
@@ -2890,7 +2890,7 @@
   {
     "id": 192,
     "name": "Hot Chilli",
-    "provider": "pragmatic",
+    "provider": "pgsoft",
     "emoji": "🎰",
     "theme": "fantasy",
     "dist": 96,
@@ -2906,7 +2906,7 @@
   {
     "id": 193,
     "name": "Live - Speed Roulette 2",
-    "provider": "pragmatic",
+    "provider": "pgsoft",
     "emoji": "🎰",
     "theme": "fantasy",
     "dist": 96,
@@ -2938,7 +2938,7 @@
   {
     "id": 195,
     "name": "PIZZA PIZZA PIZZA",
-    "provider": "pragmatic",
+    "provider": "pgsoft",
     "emoji": "🎰",
     "theme": "fantasy",
     "dist": 96,
@@ -2954,7 +2954,7 @@
   {
     "id": 196,
     "name": "Live - Speed Baccarat 12",
-    "provider": "pragmatic",
+    "provider": "pgsoft",
     "emoji": "🎰",
     "theme": "egypt",
     "dist": 96,
@@ -2970,7 +2970,7 @@
   {
     "id": 197,
     "name": "Drill That Gold",
-    "provider": "pragmatic",
+    "provider": "pgsoft",
     "emoji": "🪙",
     "theme": "luxury",
     "dist": 96,
@@ -2986,7 +2986,7 @@
   {
     "id": 198,
     "name": "High Flyer",
-    "provider": "pragmatic",
+    "provider": "pgsoft",
     "emoji": "🎰",
     "theme": "fantasy",
     "dist": 96,
@@ -3002,7 +3002,7 @@
   {
     "id": 199,
     "name": "Live - ONE Blackjack 2 - Ruby",
-    "provider": "pragmatic",
+    "provider": "pgsoft",
     "emoji": "🎰",
     "theme": "fantasy",
     "dist": 96,
@@ -3018,7 +3018,7 @@
   {
     "id": 200,
     "name": "Christmas Carol Megaways",
-    "provider": "pragmatic",
+    "provider": "pgsoft",
     "emoji": "🎰",
     "theme": "fantasy",
     "dist": 96,
@@ -3034,7 +3034,7 @@
   {
     "id": 201,
     "name": "Fire Portals",
-    "provider": "pragmatic",
+    "provider": "pgsoft",
     "emoji": "🔥",
     "theme": "fantasy",
     "dist": 96,
@@ -3066,7 +3066,7 @@
   {
     "id": 203,
     "name": "Chicken Drop",
-    "provider": "pragmatic",
+    "provider": "pgsoft",
     "emoji": "🐓",
     "theme": "fantasy",
     "dist": 96,
@@ -3082,7 +3082,7 @@
   {
     "id": 204,
     "name": "Tic Tac Take",
-    "provider": "pragmatic",
+    "provider": "pgsoft",
     "emoji": "🎰",
     "theme": "fantasy",
     "dist": 96,
@@ -3130,7 +3130,7 @@
   {
     "id": 207,
     "name": "Clover Gold",
-    "provider": "pragmatic",
+    "provider": "pgsoft",
     "emoji": "🪙",
     "theme": "luxury",
     "dist": 96,
@@ -3146,7 +3146,7 @@
   {
     "id": 208,
     "name": "Live - Roulette 14 - Spanish",
-    "provider": "pragmatic",
+    "provider": "pgsoft",
     "emoji": "🎰",
     "theme": "fantasy",
     "dist": 96,
@@ -3354,7 +3354,7 @@
   {
     "id": 221,
     "name": "Treasure Horse",
-    "provider": "pragmatic",
+    "provider": "pgsoft",
     "emoji": "🎰",
     "theme": "fantasy",
     "dist": 96,
@@ -3370,7 +3370,7 @@
   {
     "id": 222,
     "name": "SicBo",
-    "provider": "pragmatic",
+    "provider": "pgsoft",
     "emoji": "🎰",
     "theme": "fantasy",
     "dist": 96,
@@ -3434,7 +3434,7 @@
   {
     "id": 226,
     "name": "Blackjack 11",
-    "provider": "pragmatic",
+    "provider": "pgsoft",
     "emoji": "🎰",
     "theme": "fantasy",
     "dist": 96,
@@ -3450,7 +3450,7 @@
   {
     "id": 227,
     "name": "Cash Patrol",
-    "provider": "pragmatic",
+    "provider": "pgsoft",
     "emoji": "🎰",
     "theme": "fantasy",
     "dist": 96,
@@ -3578,7 +3578,7 @@
   {
     "id": 235,
     "name": "Fishin’ Reels",
-    "provider": "pragmatic",
+    "provider": "pgsoft",
     "emoji": "🌊",
     "theme": "fishing",
     "dist": 96,
@@ -3610,7 +3610,7 @@
   {
     "id": 237,
     "name": "Auto Mega Roulette",
-    "provider": "pragmatic",
+    "provider": "pgsoft",
     "emoji": "🎰",
     "theme": "fantasy",
     "dist": 96,
@@ -3626,7 +3626,7 @@
   {
     "id": 238,
     "name": "Sugar Supreme Powernudge",
-    "provider": "pragmatic",
+    "provider": "pgsoft",
     "emoji": "🍭",
     "theme": "candy",
     "dist": 96,
@@ -3722,7 +3722,7 @@
   {
     "id": 244,
     "name": "Drago - Jewels of Fortune",
-    "provider": "pgsoft",
+    "provider": "pragmatic",
     "emoji": "🍀",
     "theme": "chinese",
     "dist": 96,
@@ -3738,7 +3738,7 @@
   {
     "id": 245,
     "name": "Asgard",
-    "provider": "pragmatic",
+    "provider": "pgsoft",
     "emoji": "🎰",
     "theme": "fantasy",
     "dist": 96,
@@ -3754,7 +3754,7 @@
   {
     "id": 246,
     "name": "Blackjack 12",
-    "provider": "pragmatic",
+    "provider": "pgsoft",
     "emoji": "🎰",
     "theme": "fantasy",
     "dist": 96,
@@ -3770,7 +3770,7 @@
   {
     "id": 247,
     "name": "Eye of Cleopatra",
-    "provider": "pragmatic",
+    "provider": "pgsoft",
     "emoji": "🏺",
     "theme": "egypt",
     "dist": 96,
@@ -3834,7 +3834,7 @@
   {
     "id": 251,
     "name": "Ultra Burn",
-    "provider": "pragmatic",
+    "provider": "pgsoft",
     "emoji": "🎰",
     "theme": "egypt",
     "dist": 96,
@@ -3850,7 +3850,7 @@
   {
     "id": 252,
     "name": "Treasure Wild",
-    "provider": "pragmatic",
+    "provider": "pgsoft",
     "emoji": "🎰",
     "theme": "fantasy",
     "dist": 96,
@@ -3914,7 +3914,7 @@
   {
     "id": 256,
     "name": "Blackjack 14",
-    "provider": "pragmatic",
+    "provider": "pgsoft",
     "emoji": "🎰",
     "theme": "fantasy",
     "dist": 96,
@@ -3962,7 +3962,7 @@
   {
     "id": 259,
     "name": "Club Tropicana",
-    "provider": "pragmatic",
+    "provider": "pgsoft",
     "emoji": "🎰",
     "theme": "fantasy",
     "dist": 96,
@@ -3978,7 +3978,7 @@
   {
     "id": 260,
     "name": "Medusa's Stone",
-    "provider": "pragmatic",
+    "provider": "pgsoft",
     "emoji": "🎰",
     "theme": "fantasy",
     "dist": 96,
@@ -4026,7 +4026,7 @@
   {
     "id": 263,
     "name": "8 Dragons",
-    "provider": "pragmatic",
+    "provider": "pgsoft",
     "emoji": "🐉",
     "theme": "chinese",
     "dist": 96,
@@ -4042,7 +4042,7 @@
   {
     "id": 264,
     "name": "Piggy Bank Bills",
-    "provider": "pragmatic",
+    "provider": "pgsoft",
     "emoji": "🎰",
     "theme": "fantasy",
     "dist": 96,
@@ -4074,7 +4074,7 @@
   {
     "id": 266,
     "name": "Big Juan",
-    "provider": "pragmatic",
+    "provider": "pgsoft",
     "emoji": "🎰",
     "theme": "fantasy",
     "dist": 96,
@@ -4106,7 +4106,7 @@
   {
     "id": 268,
     "name": "Wild Hop & Drop",
-    "provider": "pragmatic",
+    "provider": "pgsoft",
     "emoji": "🎰",
     "theme": "fantasy",
     "dist": 96,
@@ -4138,7 +4138,7 @@
   {
     "id": 270,
     "name": "Chase For Glory",
-    "provider": "pragmatic",
+    "provider": "pgsoft",
     "emoji": "🎰",
     "theme": "fantasy",
     "dist": 96,
@@ -4154,7 +4154,7 @@
   {
     "id": 271,
     "name": "Roulette 4 - Russian",
-    "provider": "pragmatic",
+    "provider": "pgsoft",
     "emoji": "🎰",
     "theme": "fantasy",
     "dist": 96,
@@ -4170,7 +4170,7 @@
   {
     "id": 272,
     "name": "Honey Honey Honey",
-    "provider": "pragmatic",
+    "provider": "pgsoft",
     "emoji": "🎰",
     "theme": "fantasy",
     "dist": 96,
@@ -4186,7 +4186,7 @@
   {
     "id": 273,
     "name": "Live - Mega Sic Bo",
-    "provider": "pragmatic",
+    "provider": "pgsoft",
     "emoji": "🎰",
     "theme": "fantasy",
     "dist": 96,
@@ -4202,7 +4202,7 @@
   {
     "id": 274,
     "name": "Fire Hot 5",
-    "provider": "pragmatic",
+    "provider": "pgsoft",
     "emoji": "🔥",
     "theme": "fantasy",
     "dist": 96,
@@ -4218,7 +4218,7 @@
   {
     "id": 275,
     "name": "Bomb Bonanza",
-    "provider": "pragmatic",
+    "provider": "pgsoft",
     "emoji": "🍭",
     "theme": "candy",
     "dist": 96,
@@ -4250,7 +4250,7 @@
   {
     "id": 277,
     "name": "Candy Blitz",
-    "provider": "pragmatic",
+    "provider": "pgsoft",
     "emoji": "🍭",
     "theme": "candy",
     "dist": 96,
@@ -4282,7 +4282,7 @@
   {
     "id": 279,
     "name": "Fire Stampede",
-    "provider": "pragmatic",
+    "provider": "pgsoft",
     "emoji": "🔥",
     "theme": "fantasy",
     "dist": 96,
@@ -4298,7 +4298,7 @@
   {
     "id": 280,
     "name": "Santa's Wonderland",
-    "provider": "pragmatic",
+    "provider": "pgsoft",
     "emoji": "🎰",
     "theme": "fantasy",
     "dist": 96,
@@ -4330,7 +4330,7 @@
   {
     "id": 282,
     "name": "Live - No Comm Speed Baccarat 1",
-    "provider": "pragmatic",
+    "provider": "pgsoft",
     "emoji": "🎰",
     "theme": "egypt",
     "dist": 96,
@@ -4346,7 +4346,7 @@
   {
     "id": 283,
     "name": "Magician's Secrets",
-    "provider": "pragmatic",
+    "provider": "pgsoft",
     "emoji": "🪄",
     "theme": "fantasy",
     "dist": 96,
@@ -4362,7 +4362,7 @@
   {
     "id": 284,
     "name": "Book of Tut",
-    "provider": "pragmatic",
+    "provider": "pgsoft",
     "emoji": "📚",
     "theme": "fantasy",
     "dist": 96,
@@ -4394,7 +4394,7 @@
   {
     "id": 286,
     "name": "Dragon Hot Hold & Spin",
-    "provider": "pragmatic",
+    "provider": "pgsoft",
     "emoji": "🐉",
     "theme": "chinese",
     "dist": 96,
@@ -4410,7 +4410,7 @@
   {
     "id": 287,
     "name": "Lucky 6 Roulette",
-    "provider": "pragmatic",
+    "provider": "pgsoft",
     "emoji": "🍀",
     "theme": "fantasy",
     "dist": 96,
@@ -4442,7 +4442,7 @@
   {
     "id": 289,
     "name": "Rock Vegas Mega Hold & Spin",
-    "provider": "pragmatic",
+    "provider": "pgsoft",
     "emoji": "🎰",
     "theme": "fantasy",
     "dist": 96,
@@ -4458,7 +4458,7 @@
   {
     "id": 290,
     "name": "The Magic Cauldron – Enchanted Brew",
-    "provider": "pragmatic",
+    "provider": "pgsoft",
     "emoji": "🪄",
     "theme": "fantasy",
     "dist": 96,
@@ -4474,7 +4474,7 @@
   {
     "id": 291,
     "name": "Emerald King Rainbow Road",
-    "provider": "pragmatic",
+    "provider": "pgsoft",
     "emoji": "🎰",
     "theme": "egypt",
     "dist": 96,
@@ -4522,7 +4522,7 @@
   {
     "id": 294,
     "name": "Pyramid King",
-    "provider": "pragmatic",
+    "provider": "pgsoft",
     "emoji": "🎰",
     "theme": "egypt",
     "dist": 96,
@@ -4538,7 +4538,7 @@
   {
     "id": 295,
     "name": "Egyptian Fortunes",
-    "provider": "pragmatic",
+    "provider": "pgsoft",
     "emoji": "🏺",
     "theme": "chinese",
     "dist": 96,
@@ -4554,7 +4554,7 @@
   {
     "id": 296,
     "name": "Congo Cash",
-    "provider": "pragmatic",
+    "provider": "pgsoft",
     "emoji": "🎰",
     "theme": "fantasy",
     "dist": 96,
@@ -4570,7 +4570,7 @@
   {
     "id": 297,
     "name": "Wild Beach Party",
-    "provider": "pragmatic",
+    "provider": "pgsoft",
     "emoji": "🏝️",
     "theme": "fantasy",
     "dist": 96,
@@ -4586,7 +4586,7 @@
   {
     "id": 298,
     "name": "Temujin Treasures",
-    "provider": "pragmatic",
+    "provider": "pgsoft",
     "emoji": "🎰",
     "theme": "fantasy",
     "dist": 96,
@@ -4602,7 +4602,7 @@
   {
     "id": 299,
     "name": "Tropical Tiki",
-    "provider": "pragmatic",
+    "provider": "pgsoft",
     "emoji": "🎰",
     "theme": "fantasy",
     "dist": 96,
@@ -4618,7 +4618,7 @@
   {
     "id": 300,
     "name": "Fat Panda",
-    "provider": "pragmatic",
+    "provider": "pgsoft",
     "emoji": "🐼",
     "theme": "chinese",
     "dist": 96,
@@ -4634,7 +4634,7 @@
   {
     "id": 301,
     "name": "Castle of Fire",
-    "provider": "pragmatic",
+    "provider": "pgsoft",
     "emoji": "🔥",
     "theme": "fantasy",
     "dist": 96,
@@ -4650,7 +4650,7 @@
   {
     "id": 302,
     "name": "Live - Blackjack 53 - Ruby",
-    "provider": "pragmatic",
+    "provider": "pgsoft",
     "emoji": "🎰",
     "theme": "fantasy",
     "dist": 96,
@@ -4666,7 +4666,7 @@
   {
     "id": 303,
     "name": "Monster Superlanche",
-    "provider": "pragmatic",
+    "provider": "pgsoft",
     "emoji": "🎰",
     "theme": "fantasy",
     "dist": 96,
@@ -4682,7 +4682,7 @@
   {
     "id": 304,
     "name": "Fury of Odin Megaways",
-    "provider": "pragmatic",
+    "provider": "pgsoft",
     "emoji": "🎰",
     "theme": "fantasy",
     "dist": 96,
@@ -4698,7 +4698,7 @@
   {
     "id": 305,
     "name": "Curse of the Werewolf Megaways",
-    "provider": "pragmatic",
+    "provider": "pgsoft",
     "emoji": "🐺",
     "theme": "western",
     "dist": 96,
@@ -4714,7 +4714,7 @@
   {
     "id": 306,
     "name": "Baccarat 5",
-    "provider": "pragmatic",
+    "provider": "pgsoft",
     "emoji": "🎰",
     "theme": "egypt",
     "dist": 96,
@@ -4746,7 +4746,7 @@
   {
     "id": 308,
     "name": "Monkey Madness",
-    "provider": "pragmatic",
+    "provider": "pgsoft",
     "emoji": "🐵",
     "theme": "fantasy",
     "dist": 96,
@@ -4762,7 +4762,7 @@
   {
     "id": 309,
     "name": "Wild Depths",
-    "provider": "pragmatic",
+    "provider": "pgsoft",
     "emoji": "🎰",
     "theme": "fantasy",
     "dist": 96,
@@ -4778,7 +4778,7 @@
   {
     "id": 310,
     "name": "Fiesta Fortune",
-    "provider": "pragmatic",
+    "provider": "pgsoft",
     "emoji": "🍀",
     "theme": "chinese",
     "dist": 96,
@@ -4810,7 +4810,7 @@
   {
     "id": 312,
     "name": "Power of Merlin Megaways",
-    "provider": "pragmatic",
+    "provider": "pgsoft",
     "emoji": "🎰",
     "theme": "fantasy",
     "dist": 96,
@@ -4826,7 +4826,7 @@
   {
     "id": 313,
     "name": "Mega Baccarat",
-    "provider": "pragmatic",
+    "provider": "pgsoft",
     "emoji": "🎰",
     "theme": "egypt",
     "dist": 96,
@@ -4858,7 +4858,7 @@
   {
     "id": 315,
     "name": "Magic Money Maze",
-    "provider": "pragmatic",
+    "provider": "pgsoft",
     "emoji": "🪄",
     "theme": "fantasy",
     "dist": 96,
@@ -4874,7 +4874,7 @@
   {
     "id": 316,
     "name": "Empty the Bank",
-    "provider": "pragmatic",
+    "provider": "pgsoft",
     "emoji": "🎰",
     "theme": "fantasy",
     "dist": 96,
@@ -4890,7 +4890,7 @@
   {
     "id": 317,
     "name": "Book of Golden Sands",
-    "provider": "pragmatic",
+    "provider": "pgsoft",
     "emoji": "🪙",
     "theme": "luxury",
     "dist": 96,
@@ -4906,7 +4906,7 @@
   {
     "id": 318,
     "name": "Forging Wilds",
-    "provider": "pragmatic",
+    "provider": "pgsoft",
     "emoji": "🎰",
     "theme": "fantasy",
     "dist": 96,
@@ -4922,7 +4922,7 @@
   {
     "id": 319,
     "name": "The Ultimate 5",
-    "provider": "pragmatic",
+    "provider": "pgsoft",
     "emoji": "🎰",
     "theme": "fantasy",
     "dist": 96,
@@ -4938,7 +4938,7 @@
   {
     "id": 320,
     "name": "Zombie Carnival",
-    "provider": "pragmatic",
+    "provider": "pgsoft",
     "emoji": "🎰",
     "theme": "fantasy",
     "dist": 96,
@@ -4954,7 +4954,7 @@
   {
     "id": 321,
     "name": "Hot Pepper",
-    "provider": "pragmatic",
+    "provider": "pgsoft",
     "emoji": "🎰",
     "theme": "fantasy",
     "dist": 96,
@@ -4970,7 +4970,7 @@
   {
     "id": 322,
     "name": "Mustang Trail",
-    "provider": "pragmatic",
+    "provider": "pgsoft",
     "emoji": "🎰",
     "theme": "egypt",
     "dist": 96,
@@ -4986,7 +4986,7 @@
   {
     "id": 323,
     "name": "Mysterious Egypt",
-    "provider": "pragmatic",
+    "provider": "pgsoft",
     "emoji": "🏺",
     "theme": "egypt",
     "dist": 96,
@@ -5002,7 +5002,7 @@
   {
     "id": 324,
     "name": "Queen of Gods",
-    "provider": "pragmatic",
+    "provider": "pgsoft",
     "emoji": "⚡",
     "theme": "fantasy",
     "dist": 96,
@@ -5034,7 +5034,7 @@
   {
     "id": 326,
     "name": "Spin & Score Megaways",
-    "provider": "pragmatic",
+    "provider": "pgsoft",
     "emoji": "🎰",
     "theme": "fantasy",
     "dist": 96,
@@ -5050,7 +5050,7 @@
   {
     "id": 327,
     "name": "Gorilla Mayhem",
-    "provider": "pragmatic",
+    "provider": "pgsoft",
     "emoji": "🎰",
     "theme": "fantasy",
     "dist": 96,
@@ -5066,7 +5066,7 @@
   {
     "id": 328,
     "name": "Blackjack 19 - Azure",
-    "provider": "pragmatic",
+    "provider": "pgsoft",
     "emoji": "🎰",
     "theme": "fantasy",
     "dist": 96,
@@ -5082,7 +5082,7 @@
   {
     "id": 329,
     "name": "Blackjack 30 - Azure",
-    "provider": "pragmatic",
+    "provider": "pgsoft",
     "emoji": "🎰",
     "theme": "fantasy",
     "dist": 96,
@@ -5098,7 +5098,7 @@
   {
     "id": 330,
     "name": "Wheel O’ Gold",
-    "provider": "pragmatic",
+    "provider": "pgsoft",
     "emoji": "🪙",
     "theme": "luxury",
     "dist": 96,
@@ -5130,7 +5130,7 @@
   {
     "id": 332,
     "name": "Day of Dead",
-    "provider": "pragmatic",
+    "provider": "pgsoft",
     "emoji": "🎰",
     "theme": "fantasy",
     "dist": 96,
@@ -5146,7 +5146,7 @@
   {
     "id": 333,
     "name": "Candy Jar Clusters",
-    "provider": "pragmatic",
+    "provider": "pgsoft",
     "emoji": "🍭",
     "theme": "candy",
     "dist": 96,
@@ -5162,7 +5162,7 @@
   {
     "id": 334,
     "name": "Hot Safari",
-    "provider": "pragmatic",
+    "provider": "pgsoft",
     "emoji": "🎰",
     "theme": "fantasy",
     "dist": 96,
@@ -5178,7 +5178,7 @@
   {
     "id": 335,
     "name": "Ancient Egypt Classic",
-    "provider": "pragmatic",
+    "provider": "pgsoft",
     "emoji": "🏺",
     "theme": "egypt",
     "dist": 96,
@@ -5194,7 +5194,7 @@
   {
     "id": 336,
     "name": "6 Jokers",
-    "provider": "pragmatic",
+    "provider": "pgsoft",
     "emoji": "🎰",
     "theme": "fantasy",
     "dist": 96,
@@ -5210,7 +5210,7 @@
   {
     "id": 337,
     "name": "Joker’s Jewels Cash",
-    "provider": "pragmatic",
+    "provider": "pgsoft",
     "emoji": "💎",
     "theme": "luxury",
     "dist": 96,
@@ -5242,7 +5242,7 @@
   {
     "id": 339,
     "name": "Twilight Princess",
-    "provider": "pragmatic",
+    "provider": "pgsoft",
     "emoji": "✨",
     "theme": "fantasy",
     "dist": 96,
@@ -5258,7 +5258,7 @@
   {
     "id": 340,
     "name": "Greedy Wolf",
-    "provider": "pragmatic",
+    "provider": "pgsoft",
     "emoji": "🐺",
     "theme": "western",
     "dist": 96,
@@ -5274,7 +5274,7 @@
   {
     "id": 341,
     "name": "Aztec Powernudge",
-    "provider": "pragmatic",
+    "provider": "pgsoft",
     "emoji": "🎰",
     "theme": "aztec",
     "dist": 96,
@@ -5290,7 +5290,7 @@
   {
     "id": 342,
     "name": "Heart of Cleopatra",
-    "provider": "pragmatic",
+    "provider": "pgsoft",
     "emoji": "🏺",
     "theme": "egypt",
     "dist": 96,
@@ -5306,7 +5306,7 @@
   {
     "id": 343,
     "name": "Aztec Blaze",
-    "provider": "pragmatic",
+    "provider": "pgsoft",
     "emoji": "🎰",
     "theme": "aztec",
     "dist": 96,
@@ -5322,7 +5322,7 @@
   {
     "id": 344,
     "name": "Santa",
-    "provider": "pragmatic",
+    "provider": "pgsoft",
     "emoji": "🎰",
     "theme": "fantasy",
     "dist": 96,
@@ -5338,7 +5338,7 @@
   {
     "id": 345,
     "name": "Live - Fortune 6 Baccarat",
-    "provider": "pragmatic",
+    "provider": "pgsoft",
     "emoji": "🍀",
     "theme": "chinese",
     "dist": 96,
@@ -5354,7 +5354,7 @@
   {
     "id": 346,
     "name": "Live - Blackjack 52 - Ruby",
-    "provider": "pragmatic",
+    "provider": "pgsoft",
     "emoji": "🎰",
     "theme": "fantasy",
     "dist": 96,
@@ -5370,7 +5370,7 @@
   {
     "id": 347,
     "name": "Hercules Son of Zeus",
-    "provider": "pragmatic",
+    "provider": "pgsoft",
     "emoji": "⚡",
     "theme": "greek",
     "dist": 96,
@@ -5386,7 +5386,7 @@
   {
     "id": 348,
     "name": "Sweet Kingdom",
-    "provider": "pragmatic",
+    "provider": "pgsoft",
     "emoji": "🍭",
     "theme": "candy",
     "dist": 96,
@@ -5402,7 +5402,7 @@
   {
     "id": 349,
     "name": "Big Burger Load it up with Xtra Cheese",
-    "provider": "pragmatic",
+    "provider": "pgsoft",
     "emoji": "🎰",
     "theme": "egypt",
     "dist": 96,
@@ -5418,7 +5418,7 @@
   {
     "id": 350,
     "name": "Ding Dong Christmas Bells",
-    "provider": "pragmatic",
+    "provider": "pgsoft",
     "emoji": "🎰",
     "theme": "fantasy",
     "dist": 96,
@@ -5434,7 +5434,7 @@
   {
     "id": 351,
     "name": "Striking Hot 5",
-    "provider": "pragmatic",
+    "provider": "pgsoft",
     "emoji": "🎰",
     "theme": "fantasy",
     "dist": 96,
@@ -5450,7 +5450,7 @@
   {
     "id": 352,
     "name": "Voodoo Magic",
-    "provider": "pragmatic",
+    "provider": "pgsoft",
     "emoji": "🪄",
     "theme": "fantasy",
     "dist": 96,
@@ -5466,7 +5466,7 @@
   {
     "id": 353,
     "name": "Live - Speed Baccarat 10",
-    "provider": "pragmatic",
+    "provider": "pgsoft",
     "emoji": "🎰",
     "theme": "egypt",
     "dist": 96,
@@ -5482,7 +5482,7 @@
   {
     "id": 354,
     "name": "Pirate Gold Deluxe",
-    "provider": "pragmatic",
+    "provider": "pgsoft",
     "emoji": "🏴‍☠️",
     "theme": "egypt",
     "dist": 96,
@@ -5498,7 +5498,7 @@
   {
     "id": 355,
     "name": "Baccarat 1",
-    "provider": "pragmatic",
+    "provider": "pgsoft",
     "emoji": "🎰",
     "theme": "egypt",
     "dist": 96,
@@ -5530,7 +5530,7 @@
   {
     "id": 357,
     "name": "Wild Walker",
-    "provider": "pragmatic",
+    "provider": "pgsoft",
     "emoji": "🎰",
     "theme": "fantasy",
     "dist": 96,
@@ -5546,7 +5546,7 @@
   {
     "id": 358,
     "name": "Peppe’s Pepperoni Pizza Plaza",
-    "provider": "pragmatic",
+    "provider": "pgsoft",
     "emoji": "🎰",
     "theme": "fantasy",
     "dist": 96,
@@ -5578,7 +5578,7 @@
   {
     "id": 360,
     "name": "Star Pirates Code",
-    "provider": "pragmatic",
+    "provider": "pgsoft",
     "emoji": "🏴‍☠️",
     "theme": "egypt",
     "dist": 96,
@@ -5594,7 +5594,7 @@
   {
     "id": 361,
     "name": "Dynamite Diggin Doug",
-    "provider": "pragmatic",
+    "provider": "pgsoft",
     "emoji": "🎰",
     "theme": "fantasy",
     "dist": 96,
@@ -5610,7 +5610,7 @@
   {
     "id": 362,
     "name": "Strawberry Cocktail",
-    "provider": "pragmatic",
+    "provider": "pgsoft",
     "emoji": "🎰",
     "theme": "egypt",
     "dist": 96,
@@ -5626,7 +5626,7 @@
   {
     "id": 363,
     "name": "Sweet Craze",
-    "provider": "pragmatic",
+    "provider": "pgsoft",
     "emoji": "🍭",
     "theme": "candy",
     "dist": 96,
@@ -5642,7 +5642,7 @@
   {
     "id": 364,
     "name": "Heroic Spins",
-    "provider": "pragmatic",
+    "provider": "pgsoft",
     "emoji": "🎰",
     "theme": "fantasy",
     "dist": 96,
@@ -5658,7 +5658,7 @@
   {
     "id": 365,
     "name": "Chicken Chase",
-    "provider": "pragmatic",
+    "provider": "pgsoft",
     "emoji": "🐓",
     "theme": "fantasy",
     "dist": 96,
@@ -5690,7 +5690,7 @@
   {
     "id": 367,
     "name": "Live - Blackjack 57 - Azure",
-    "provider": "pragmatic",
+    "provider": "pgsoft",
     "emoji": "🎰",
     "theme": "fantasy",
     "dist": 96,
@@ -5706,7 +5706,7 @@
   {
     "id": 368,
     "name": "Mysterious",
-    "provider": "pragmatic",
+    "provider": "pgsoft",
     "emoji": "🎰",
     "theme": "fantasy",
     "dist": 96,
@@ -5722,7 +5722,7 @@
   {
     "id": 369,
     "name": "Yum Yum Powerways",
-    "provider": "pragmatic",
+    "provider": "pgsoft",
     "emoji": "🎰",
     "theme": "fantasy",
     "dist": 96,
@@ -5738,7 +5738,7 @@
   {
     "id": 370,
     "name": "Towering Fortunes",
-    "provider": "pragmatic",
+    "provider": "pgsoft",
     "emoji": "🍀",
     "theme": "chinese",
     "dist": 96,
@@ -5754,7 +5754,7 @@
   {
     "id": 371,
     "name": "Pompeii Megareels Megaways",
-    "provider": "pragmatic",
+    "provider": "pgsoft",
     "emoji": "🎰",
     "theme": "fantasy",
     "dist": 96,
@@ -5770,7 +5770,7 @@
   {
     "id": 372,
     "name": "Nile Fortune",
-    "provider": "pragmatic",
+    "provider": "pgsoft",
     "emoji": "🍀",
     "theme": "chinese",
     "dist": 96,
@@ -5786,7 +5786,7 @@
   {
     "id": 373,
     "name": "Good Luck & Good Fortune",
-    "provider": "pragmatic",
+    "provider": "pgsoft",
     "emoji": "🍀",
     "theme": "chinese",
     "dist": 96,
@@ -5802,7 +5802,7 @@
   {
     "id": 374,
     "name": "Samurai Code",
-    "provider": "pragmatic",
+    "provider": "pgsoft",
     "emoji": "⚔️",
     "theme": "egypt",
     "dist": 96,
@@ -5818,7 +5818,7 @@
   {
     "id": 375,
     "name": "John Hunter And The Mayan Gods",
-    "provider": "pragmatic",
+    "provider": "pgsoft",
     "emoji": "⚡",
     "theme": "fantasy",
     "dist": 96,
@@ -5834,7 +5834,7 @@
   {
     "id": 376,
     "name": "Mining Rush",
-    "provider": "pragmatic",
+    "provider": "pgsoft",
     "emoji": "🎰",
     "theme": "fantasy",
     "dist": 96,
@@ -5850,7 +5850,7 @@
   {
     "id": 377,
     "name": "Zeus vs Typhon",
-    "provider": "pragmatic",
+    "provider": "pgsoft",
     "emoji": "⚡",
     "theme": "greek",
     "dist": 96,
@@ -5866,7 +5866,7 @@
   {
     "id": 378,
     "name": "Pixie Wings",
-    "provider": "pragmatic",
+    "provider": "pgsoft",
     "emoji": "🎰",
     "theme": "fantasy",
     "dist": 96,
@@ -5882,7 +5882,7 @@
   {
     "id": 379,
     "name": "Live - Blackjack 54 - Ruby",
-    "provider": "pragmatic",
+    "provider": "pgsoft",
     "emoji": "🎰",
     "theme": "fantasy",
     "dist": 96,
@@ -5898,7 +5898,7 @@
   {
     "id": 380,
     "name": "Sweet Rush Bonanza",
-    "provider": "pragmatic",
+    "provider": "pgsoft",
     "emoji": "🍭",
     "theme": "candy",
     "dist": 96,
@@ -5914,7 +5914,7 @@
   {
     "id": 381,
     "name": "Shield Of Sparta",
-    "provider": "pragmatic",
+    "provider": "pgsoft",
     "emoji": "🎰",
     "theme": "fantasy",
     "dist": 96,
@@ -5930,7 +5930,7 @@
   {
     "id": 382,
     "name": "Blackjack 44 - Ruby",
-    "provider": "pragmatic",
+    "provider": "pgsoft",
     "emoji": "🎰",
     "theme": "fantasy",
     "dist": 96,
@@ -5946,7 +5946,7 @@
   {
     "id": 383,
     "name": "Blackjack 15",
-    "provider": "pragmatic",
+    "provider": "pgsoft",
     "emoji": "🎰",
     "theme": "fantasy",
     "dist": 96,
@@ -5962,7 +5962,7 @@
   {
     "id": 384,
     "name": "Live - Baccarat 8",
-    "provider": "pragmatic",
+    "provider": "pgsoft",
     "emoji": "🎰",
     "theme": "egypt",
     "dist": 96,
@@ -5978,7 +5978,7 @@
   {
     "id": 385,
     "name": "The Big Dawgs",
-    "provider": "pragmatic",
+    "provider": "pgsoft",
     "emoji": "🎰",
     "theme": "fantasy",
     "dist": 96,
@@ -5994,7 +5994,7 @@
   {
     "id": 386,
     "name": "Piggy Bankers",
-    "provider": "pragmatic",
+    "provider": "pgsoft",
     "emoji": "🎰",
     "theme": "fantasy",
     "dist": 96,
@@ -6010,7 +6010,7 @@
   {
     "id": 387,
     "name": "Reel Banks",
-    "provider": "pragmatic",
+    "provider": "pgsoft",
     "emoji": "🎰",
     "theme": "fantasy",
     "dist": 96,
@@ -6026,7 +6026,7 @@
   {
     "id": 388,
     "name": "Tiny Toads",
-    "provider": "pragmatic",
+    "provider": "pgsoft",
     "emoji": "🎰",
     "theme": "fantasy",
     "dist": 96,
@@ -6042,7 +6042,7 @@
   {
     "id": 389,
     "name": "Cash Surge",
-    "provider": "pragmatic",
+    "provider": "pgsoft",
     "emoji": "🎰",
     "theme": "fantasy",
     "dist": 96,
@@ -6058,7 +6058,7 @@
   {
     "id": 390,
     "name": "Live - Baccarat 7",
-    "provider": "pragmatic",
+    "provider": "pgsoft",
     "emoji": "🎰",
     "theme": "egypt",
     "dist": 96,
@@ -6074,7 +6074,7 @@
   {
     "id": 391,
     "name": "Mystic Chief",
-    "provider": "pragmatic",
+    "provider": "pgsoft",
     "emoji": "🎰",
     "theme": "fantasy",
     "dist": 96,
@@ -6090,7 +6090,7 @@
   {
     "id": 392,
     "name": "Year Of The Dragon King",
-    "provider": "pragmatic",
+    "provider": "pgsoft",
     "emoji": "🐉",
     "theme": "chinese",
     "dist": 96,
@@ -6106,7 +6106,7 @@
   {
     "id": 393,
     "name": "Devilicious",
-    "provider": "pragmatic",
+    "provider": "pgsoft",
     "emoji": "🎰",
     "theme": "fantasy",
     "dist": 96,
@@ -6122,7 +6122,7 @@
   {
     "id": 394,
     "name": "Greedy Fortune Pig",
-    "provider": "pragmatic",
+    "provider": "pgsoft",
     "emoji": "🍀",
     "theme": "chinese",
     "dist": 96,
@@ -6138,7 +6138,7 @@
   {
     "id": 395,
     "name": "Fruity Treats",
-    "provider": "pragmatic",
+    "provider": "pgsoft",
     "emoji": "🍉",
     "theme": "fruit",
     "dist": 96,
@@ -6154,7 +6154,7 @@
   {
     "id": 396,
     "name": "Odds On Winner",
-    "provider": "pragmatic",
+    "provider": "pgsoft",
     "emoji": "🎰",
     "theme": "fantasy",
     "dist": 96,
@@ -6170,7 +6170,7 @@
   {
     "id": 397,
     "name": "Super Gummy Strike",
-    "provider": "pragmatic",
+    "provider": "pgsoft",
     "emoji": "🎰",
     "theme": "fantasy",
     "dist": 96,
@@ -6186,7 +6186,7 @@
   {
     "id": 398,
     "name": "Floating Dragon New Year Festival Ultra Megaways Hold & Spin",
-    "provider": "pragmatic",
+    "provider": "pgsoft",
     "emoji": "🐉",
     "theme": "chinese",
     "dist": 96,
@@ -6202,7 +6202,7 @@
   {
     "id": 399,
     "name": "Bow of Artemis",
-    "provider": "pragmatic",
+    "provider": "pgsoft",
     "emoji": "🎰",
     "theme": "fantasy",
     "dist": 96,
@@ -6218,7 +6218,7 @@
   {
     "id": 400,
     "name": "Buffalo King Untamed Megaways",
-    "provider": "pragmatic",
+    "provider": "pgsoft",
     "emoji": "🎰",
     "theme": "western",
     "dist": 96,
@@ -6234,7 +6234,7 @@
   {
     "id": 401,
     "name": "Wealthy Frog",
-    "provider": "pragmatic",
+    "provider": "pgsoft",
     "emoji": "🎰",
     "theme": "fantasy",
     "dist": 96,
@@ -6250,7 +6250,7 @@
   {
     "id": 402,
     "name": "Blackjack 16",
-    "provider": "pragmatic",
+    "provider": "pgsoft",
     "emoji": "🎰",
     "theme": "fantasy",
     "dist": 96,
@@ -6266,7 +6266,7 @@
   {
     "id": 403,
     "name": "Down the Rails",
-    "provider": "pragmatic",
+    "provider": "pgsoft",
     "emoji": "🎰",
     "theme": "egypt",
     "dist": 96,
@@ -6282,7 +6282,7 @@
   {
     "id": 404,
     "name": "Pot of Fortune",
-    "provider": "pragmatic",
+    "provider": "pgsoft",
     "emoji": "🍀",
     "theme": "chinese",
     "dist": 96,
@@ -6298,7 +6298,7 @@
   {
     "id": 405,
     "name": "Snakes and Ladders Megadice",
-    "provider": "pragmatic",
+    "provider": "pgsoft",
     "emoji": "🐍",
     "theme": "fantasy",
     "dist": 96,
@@ -6314,7 +6314,7 @@
   {
     "id": 406,
     "name": "Crank it Up",
-    "provider": "pragmatic",
+    "provider": "pgsoft",
     "emoji": "🎰",
     "theme": "egypt",
     "dist": 96,
@@ -6330,7 +6330,7 @@
   {
     "id": 407,
     "name": "Live - Speed Baccarat 7",
-    "provider": "pragmatic",
+    "provider": "pgsoft",
     "emoji": "🎰",
     "theme": "egypt",
     "dist": 96,
@@ -6346,7 +6346,7 @@
   {
     "id": 408,
     "name": "Blackjack 51 - Ruby",
-    "provider": "pragmatic",
+    "provider": "pgsoft",
     "emoji": "🎰",
     "theme": "fantasy",
     "dist": 96,
@@ -6362,7 +6362,7 @@
   {
     "id": 409,
     "name": "Gravity Bonanza",
-    "provider": "pragmatic",
+    "provider": "pgsoft",
     "emoji": "🍭",
     "theme": "candy",
     "dist": 96,
@@ -6378,7 +6378,7 @@
   {
     "id": 410,
     "name": "Sleeping Dragon",
-    "provider": "pragmatic",
+    "provider": "pgsoft",
     "emoji": "🐉",
     "theme": "chinese",
     "dist": 96,
@@ -6394,7 +6394,7 @@
   {
     "id": 411,
     "name": "Smugglers Cove",
-    "provider": "pragmatic",
+    "provider": "pgsoft",
     "emoji": "🎰",
     "theme": "fantasy",
     "dist": 96,
@@ -6410,7 +6410,7 @@
   {
     "id": 412,
     "name": "Live - Speed Baccarat 15",
-    "provider": "pragmatic",
+    "provider": "pgsoft",
     "emoji": "🎰",
     "theme": "egypt",
     "dist": 96,
@@ -6426,7 +6426,7 @@
   {
     "id": 413,
     "name": "Sky Bounty",
-    "provider": "pragmatic",
+    "provider": "pgsoft",
     "emoji": "🎰",
     "theme": "fantasy",
     "dist": 96,
@@ -6442,7 +6442,7 @@
   {
     "id": 414,
     "name": "Book of Monsters",
-    "provider": "pragmatic",
+    "provider": "pgsoft",
     "emoji": "📚",
     "theme": "fantasy",
     "dist": 96,
@@ -6458,7 +6458,7 @@
   {
     "id": 415,
     "name": "Live - Blackjack 60 - Azure",
-    "provider": "pragmatic",
+    "provider": "pgsoft",
     "emoji": "🎰",
     "theme": "fantasy",
     "dist": 96,
@@ -6474,7 +6474,7 @@
   {
     "id": 416,
     "name": "Blazing Wilds Megaways",
-    "provider": "pragmatic",
+    "provider": "pgsoft",
     "emoji": "🎰",
     "theme": "fantasy",
     "dist": 96,
@@ -6490,7 +6490,7 @@
   {
     "id": 417,
     "name": "Live - Blackjack 56 - Ruby",
-    "provider": "pragmatic",
+    "provider": "pgsoft",
     "emoji": "🎰",
     "theme": "fantasy",
     "dist": 96,
@@ -6506,7 +6506,7 @@
   {
     "id": 418,
     "name": "Triple Pot Gold",
-    "provider": "pragmatic",
+    "provider": "pgsoft",
     "emoji": "🪙",
     "theme": "luxury",
     "dist": 96,
@@ -6538,7 +6538,7 @@
   {
     "id": 420,
     "name": "Spell Master",
-    "provider": "pragmatic",
+    "provider": "pgsoft",
     "emoji": "🎰",
     "theme": "fantasy",
     "dist": 96,
@@ -6554,7 +6554,7 @@
   {
     "id": 421,
     "name": "Fortunes of Aztec",
-    "provider": "pragmatic",
+    "provider": "pgsoft",
     "emoji": "🍀",
     "theme": "chinese",
     "dist": 96,
@@ -6570,7 +6570,7 @@
   {
     "id": 422,
     "name": "Mummy’s Jewels",
-    "provider": "pragmatic",
+    "provider": "pgsoft",
     "emoji": "💎",
     "theme": "luxury",
     "dist": 96,
@@ -6586,7 +6586,7 @@
   {
     "id": 423,
     "name": "5 Frozen Charms Megaways",
-    "provider": "pragmatic",
+    "provider": "pgsoft",
     "emoji": "❄️",
     "theme": "fantasy",
     "dist": 96,
@@ -6602,7 +6602,7 @@
   {
     "id": 424,
     "name": "Fish Eye",
-    "provider": "pragmatic",
+    "provider": "pgsoft",
     "emoji": "🌊",
     "theme": "fishing",
     "dist": 96,
@@ -6618,7 +6618,7 @@
   {
     "id": 425,
     "name": "Zombie School Megaways™",
-    "provider": "pragmatic",
+    "provider": "pgsoft",
     "emoji": "🎰",
     "theme": "fantasy",
     "dist": 96,
@@ -6634,7 +6634,7 @@
   {
     "id": 426,
     "name": "Mega Sic Bac",
-    "provider": "pragmatic",
+    "provider": "pgsoft",
     "emoji": "🎰",
     "theme": "fantasy",
     "dist": 96,
@@ -6650,7 +6650,7 @@
   {
     "id": 427,
     "name": "Blade & Fangs",
-    "provider": "pragmatic",
+    "provider": "pgsoft",
     "emoji": "🎰",
     "theme": "fantasy",
     "dist": 96,
@@ -6666,7 +6666,7 @@
   {
     "id": 428,
     "name": "Blackjack 32 - Azure",
-    "provider": "pragmatic",
+    "provider": "pgsoft",
     "emoji": "🎰",
     "theme": "fantasy",
     "dist": 96,
@@ -6682,7 +6682,7 @@
   {
     "id": 429,
     "name": "Witch Heart Megaways",
-    "provider": "pragmatic",
+    "provider": "pgsoft",
     "emoji": "🪄",
     "theme": "fantasy",
     "dist": 96,
@@ -6698,7 +6698,7 @@
   {
     "id": 430,
     "name": "Beware The Deep Megaways",
-    "provider": "pragmatic",
+    "provider": "pgsoft",
     "emoji": "🎰",
     "theme": "fantasy",
     "dist": 96,
@@ -6714,7 +6714,7 @@
   {
     "id": 431,
     "name": "Live - Speed Baccarat 8",
-    "provider": "pragmatic",
+    "provider": "pgsoft",
     "emoji": "🎰",
     "theme": "egypt",
     "dist": 96,
@@ -6730,7 +6730,7 @@
   {
     "id": 432,
     "name": "Live - SPEED BLACKJACK 7 RUBY",
-    "provider": "pragmatic",
+    "provider": "pgsoft",
     "emoji": "🎰",
     "theme": "fantasy",
     "dist": 96,
@@ -6746,7 +6746,7 @@
   {
     "id": 433,
     "name": "Dragon Gold 88",
-    "provider": "pragmatic",
+    "provider": "pgsoft",
     "emoji": "🐉",
     "theme": "chinese",
     "dist": 96,
@@ -6762,7 +6762,7 @@
   {
     "id": 434,
     "name": "Bandit Megaways",
-    "provider": "pragmatic",
+    "provider": "pgsoft",
     "emoji": "🎰",
     "theme": "fantasy",
     "dist": 96,
@@ -6778,7 +6778,7 @@
   {
     "id": 435,
     "name": "Wild Celebrity Bus Megaways",
-    "provider": "pragmatic",
+    "provider": "pgsoft",
     "emoji": "🎰",
     "theme": "fantasy",
     "dist": 96,
@@ -6794,7 +6794,7 @@
   {
     "id": 436,
     "name": "Dragon King Hot Pots",
-    "provider": "pragmatic",
+    "provider": "pgsoft",
     "emoji": "🐉",
     "theme": "chinese",
     "dist": 96,
@@ -6826,7 +6826,7 @@
   {
     "id": 438,
     "name": "Live - Blackjack 55 - Ruby",
-    "provider": "pragmatic",
+    "provider": "pgsoft",
     "emoji": "🎰",
     "theme": "fantasy",
     "dist": 96,
@@ -6842,7 +6842,7 @@
   {
     "id": 439,
     "name": "Baccarat 2",
-    "provider": "pragmatic",
+    "provider": "pgsoft",
     "emoji": "🎰",
     "theme": "egypt",
     "dist": 96,
@@ -6858,7 +6858,7 @@
   {
     "id": 440,
     "name": "Cyclops Smash",
-    "provider": "pragmatic",
+    "provider": "pgsoft",
     "emoji": "🎰",
     "theme": "fantasy",
     "dist": 96,
@@ -6874,7 +6874,7 @@
   {
     "id": 441,
     "name": "Infective Wild",
-    "provider": "pragmatic",
+    "provider": "pgsoft",
     "emoji": "🎰",
     "theme": "fantasy",
     "dist": 96,
@@ -6890,7 +6890,7 @@
   {
     "id": 442,
     "name": "Ice Lobster",
-    "provider": "pragmatic",
+    "provider": "pgsoft",
     "emoji": "❄️",
     "theme": "fantasy",
     "dist": 96,
@@ -6922,7 +6922,7 @@
   {
     "id": 444,
     "name": "Blackjack 72 - Ruby",
-    "provider": "pragmatic",
+    "provider": "pgsoft",
     "emoji": "🎰",
     "theme": "fantasy",
     "dist": 96,
@@ -6938,7 +6938,7 @@
   {
     "id": 445,
     "name": "Eye of Spartacus",
-    "provider": "pragmatic",
+    "provider": "pgsoft",
     "emoji": "🎰",
     "theme": "fantasy",
     "dist": 96,
@@ -6954,7 +6954,7 @@
   {
     "id": 446,
     "name": "Aztec Smash",
-    "provider": "pragmatic",
+    "provider": "pgsoft",
     "emoji": "🎰",
     "theme": "aztec",
     "dist": 96,
@@ -6970,7 +6970,7 @@
   {
     "id": 447,
     "name": "Mighty Munching Melons",
-    "provider": "pragmatic",
+    "provider": "pgsoft",
     "emoji": "🎰",
     "theme": "fantasy",
     "dist": 96,
@@ -6986,7 +6986,7 @@
   {
     "id": 448,
     "name": "Wild Wild Joker",
-    "provider": "pragmatic",
+    "provider": "pgsoft",
     "emoji": "🎰",
     "theme": "fantasy",
     "dist": 96,
@@ -7002,7 +7002,7 @@
   {
     "id": 449,
     "name": "Santa's Xmas Rush",
-    "provider": "pragmatic",
+    "provider": "pgsoft",
     "emoji": "🎰",
     "theme": "fantasy",
     "dist": 96,
@@ -7018,7 +7018,7 @@
   {
     "id": 450,
     "name": "Olympus Wins",
-    "provider": "pragmatic",
+    "provider": "pgsoft",
     "emoji": "⚡",
     "theme": "greek",
     "dist": 96,
@@ -7034,7 +7034,7 @@
   {
     "id": 451,
     "name": "Wildies",
-    "provider": "pragmatic",
+    "provider": "pgsoft",
     "emoji": "🎰",
     "theme": "fantasy",
     "dist": 96,
@@ -7050,7 +7050,7 @@
   {
     "id": 452,
     "name": "Live - Speed Baccarat 9",
-    "provider": "pragmatic",
+    "provider": "pgsoft",
     "emoji": "🎰",
     "theme": "egypt",
     "dist": 96,
@@ -7066,7 +7066,7 @@
   {
     "id": 453,
     "name": "Money Stacks Megaways",
-    "provider": "pragmatic",
+    "provider": "pgsoft",
     "emoji": "🎰",
     "theme": "fantasy",
     "dist": 96,
@@ -7082,7 +7082,7 @@
   {
     "id": 454,
     "name": "Loki's Riches",
-    "provider": "pragmatic",
+    "provider": "pgsoft",
     "emoji": "🎰",
     "theme": "fantasy",
     "dist": 96,
@@ -7098,7 +7098,7 @@
   {
     "id": 455,
     "name": "Tundra's Fortune",
-    "provider": "pragmatic",
+    "provider": "pgsoft",
     "emoji": "🍀",
     "theme": "chinese",
     "dist": 96,
@@ -7114,7 +7114,7 @@
   {
     "id": 456,
     "name": "Money Time",
-    "provider": "pragmatic",
+    "provider": "pgsoft",
     "emoji": "🎰",
     "theme": "fantasy",
     "dist": 96,
@@ -7130,7 +7130,7 @@
   {
     "id": 457,
     "name": "The Money Men Megaways",
-    "provider": "pragmatic",
+    "provider": "pgsoft",
     "emoji": "🎰",
     "theme": "fantasy",
     "dist": 96,
@@ -7146,7 +7146,7 @@
   {
     "id": 458,
     "name": "Hellvis Wild",
-    "provider": "pragmatic",
+    "provider": "pgsoft",
     "emoji": "🎰",
     "theme": "fantasy",
     "dist": 96,
@@ -7162,7 +7162,7 @@
   {
     "id": 459,
     "name": "Revenge of Loki Megaways",
-    "provider": "pragmatic",
+    "provider": "pgsoft",
     "emoji": "🎰",
     "theme": "fantasy",
     "dist": 96,
@@ -7178,7 +7178,7 @@
   {
     "id": 460,
     "name": "Jumbo Safari",
-    "provider": "pragmatic",
+    "provider": "pgsoft",
     "emoji": "🎰",
     "theme": "fantasy",
     "dist": 96,
@@ -7194,7 +7194,7 @@
   {
     "id": 461,
     "name": "Live - Super 8 Baccarat",
-    "provider": "pragmatic",
+    "provider": "pgsoft",
     "emoji": "🎰",
     "theme": "egypt",
     "dist": 96,
@@ -7226,7 +7226,7 @@
   {
     "id": 463,
     "name": "Barnyard Megahays Megaways",
-    "provider": "pragmatic",
+    "provider": "pgsoft",
     "emoji": "🎰",
     "theme": "fantasy",
     "dist": 96,
@@ -7242,7 +7242,7 @@
   {
     "id": 464,
     "name": "Lucky’s Wild Pub",
-    "provider": "pragmatic",
+    "provider": "pgsoft",
     "emoji": "🍀",
     "theme": "fantasy",
     "dist": 96,
@@ -7258,7 +7258,7 @@
   {
     "id": 465,
     "name": "Rise of Pyramids",
-    "provider": "pragmatic",
+    "provider": "pgsoft",
     "emoji": "🎰",
     "theme": "egypt",
     "dist": 96,
@@ -7290,7 +7290,7 @@
   {
     "id": 467,
     "name": "Live - Speed Baccarat 11",
-    "provider": "pragmatic",
+    "provider": "pgsoft",
     "emoji": "🎰",
     "theme": "egypt",
     "dist": 96,
@@ -7306,7 +7306,7 @@
   {
     "id": 468,
     "name": "Blackjack 21 - Azure",
-    "provider": "pragmatic",
+    "provider": "pgsoft",
     "emoji": "🎰",
     "theme": "fantasy",
     "dist": 96,
@@ -7322,7 +7322,7 @@
   {
     "id": 469,
     "name": "Timber Stacks",
-    "provider": "pragmatic",
+    "provider": "pgsoft",
     "emoji": "🎰",
     "theme": "fantasy",
     "dist": 96,
@@ -7338,7 +7338,7 @@
   {
     "id": 470,
     "name": "Live - Speed Baccarat 14",
-    "provider": "pragmatic",
+    "provider": "pgsoft",
     "emoji": "🎰",
     "theme": "egypt",
     "dist": 96,
@@ -7370,7 +7370,7 @@
   {
     "id": 472,
     "name": "Blackjack 1 - Azure",
-    "provider": "pragmatic",
+    "provider": "pgsoft",
     "emoji": "🎰",
     "theme": "fantasy",
     "dist": 96,
@@ -7386,7 +7386,7 @@
   {
     "id": 473,
     "name": "Ripe Rewards",
-    "provider": "pragmatic",
+    "provider": "pgsoft",
     "emoji": "🎰",
     "theme": "fantasy",
     "dist": 96,
@@ -7402,7 +7402,7 @@
   {
     "id": 474,
     "name": "The Wild Gang",
-    "provider": "pragmatic",
+    "provider": "pgsoft",
     "emoji": "🎰",
     "theme": "fantasy",
     "dist": 96,
@@ -7418,7 +7418,7 @@
   {
     "id": 475,
     "name": "Blackjack 7 - Azure",
-    "provider": "pragmatic",
+    "provider": "pgsoft",
     "emoji": "🎰",
     "theme": "fantasy",
     "dist": 96,
@@ -7434,7 +7434,7 @@
   {
     "id": 476,
     "name": "Frozen Tropics",
-    "provider": "pragmatic",
+    "provider": "pgsoft",
     "emoji": "❄️",
     "theme": "fantasy",
     "dist": 96,
@@ -7450,7 +7450,7 @@
   {
     "id": 477,
     "name": "Irish Crown",
-    "provider": "pragmatic",
+    "provider": "pgsoft",
     "emoji": "🎰",
     "theme": "fantasy",
     "dist": 96,
@@ -7466,7 +7466,7 @@
   {
     "id": 478,
     "name": "Bee Keeper",
-    "provider": "pragmatic",
+    "provider": "pgsoft",
     "emoji": "🎰",
     "theme": "fantasy",
     "dist": 96,
@@ -7482,7 +7482,7 @@
   {
     "id": 479,
     "name": "Blitz Super Wheel",
-    "provider": "pragmatic",
+    "provider": "pgsoft",
     "emoji": "🎰",
     "theme": "fantasy",
     "dist": 96,
@@ -7498,7 +7498,7 @@
   {
     "id": 480,
     "name": "Finger Lick’n Free Spins",
-    "provider": "pragmatic",
+    "provider": "pgsoft",
     "emoji": "🎰",
     "theme": "fantasy",
     "dist": 96,
@@ -7514,7 +7514,7 @@
   {
     "id": 481,
     "name": "Live - Speed Baccarat 6",
-    "provider": "pragmatic",
+    "provider": "pgsoft",
     "emoji": "🎰",
     "theme": "egypt",
     "dist": 96,
@@ -7530,7 +7530,7 @@
   {
     "id": 482,
     "name": "Blackjack 1 Brasileiro",
-    "provider": "pragmatic",
+    "provider": "pgsoft",
     "emoji": "🎰",
     "theme": "egypt",
     "dist": 96,
@@ -7546,7 +7546,7 @@
   {
     "id": 483,
     "name": "Waves of Poseidon",
-    "provider": "pragmatic",
+    "provider": "pgsoft",
     "emoji": "🎰",
     "theme": "fantasy",
     "dist": 96,
@@ -7562,7 +7562,7 @@
   {
     "id": 484,
     "name": "Blackjack 6 - Azure",
-    "provider": "pragmatic",
+    "provider": "pgsoft",
     "emoji": "🎰",
     "theme": "fantasy",
     "dist": 96,
@@ -7594,7 +7594,7 @@
   {
     "id": 486,
     "name": "Dwarf & Dragon",
-    "provider": "pragmatic",
+    "provider": "pgsoft",
     "emoji": "🐉",
     "theme": "chinese",
     "dist": 96,
@@ -7626,7 +7626,7 @@
   {
     "id": 488,
     "name": "Rocket Blast Megaways",
-    "provider": "pragmatic",
+    "provider": "pgsoft",
     "emoji": "🎰",
     "theme": "fantasy",
     "dist": 96,
@@ -7674,7 +7674,7 @@
   {
     "id": 491,
     "name": "Blackjack 3 - Azure",
-    "provider": "pragmatic",
+    "provider": "pgsoft",
     "emoji": "🎰",
     "theme": "fantasy",
     "dist": 96,
@@ -7690,7 +7690,7 @@
   {
     "id": 492,
     "name": "Mammoth Gold Megaways",
-    "provider": "pragmatic",
+    "provider": "pgsoft",
     "emoji": "🪙",
     "theme": "luxury",
     "dist": 96,
@@ -7706,7 +7706,7 @@
   {
     "id": 493,
     "name": "Bigger Bass Splash",
-    "provider": "pragmatic",
+    "provider": "pgsoft",
     "emoji": "🎰",
     "theme": "fishing",
     "dist": 96,
@@ -7722,7 +7722,7 @@
   {
     "id": 494,
     "name": "Gold Oasis",
-    "provider": "pragmatic",
+    "provider": "pgsoft",
     "emoji": "🪙",
     "theme": "luxury",
     "dist": 96,
@@ -7738,7 +7738,7 @@
   {
     "id": 495,
     "name": "Raging Waterfall Megaways",
-    "provider": "pragmatic",
+    "provider": "pgsoft",
     "emoji": "🎰",
     "theme": "egypt",
     "dist": 96,
@@ -7754,7 +7754,7 @@
   {
     "id": 496,
     "name": "The Alter Ego",
-    "provider": "pragmatic",
+    "provider": "pgsoft",
     "emoji": "🎰",
     "theme": "fantasy",
     "dist": 96,
@@ -7770,7 +7770,7 @@
   {
     "id": 497,
     "name": "Blackjack 42 - Ruby",
-    "provider": "pragmatic",
+    "provider": "pgsoft",
     "emoji": "🎰",
     "theme": "fantasy",
     "dist": 96,
@@ -7786,7 +7786,7 @@
   {
     "id": 498,
     "name": "Blackjack 25 - Azure",
-    "provider": "pragmatic",
+    "provider": "pgsoft",
     "emoji": "🎰",
     "theme": "fantasy",
     "dist": 96,
@@ -7802,7 +7802,7 @@
   {
     "id": 499,
     "name": "Majestic Express – Gold Run",
-    "provider": "pragmatic",
+    "provider": "pgsoft",
     "emoji": "🪙",
     "theme": "luxury",
     "dist": 96,
@@ -7818,7 +7818,7 @@
   {
     "id": 500,
     "name": "Live - SPEED BLACKJACK 9 RUBY",
-    "provider": "pragmatic",
+    "provider": "pgsoft",
     "emoji": "🎰",
     "theme": "fantasy",
     "dist": 96,
@@ -7834,7 +7834,7 @@
   {
     "id": 501,
     "name": "Dino Drop",
-    "provider": "pragmatic",
+    "provider": "pgsoft",
     "emoji": "🎰",
     "theme": "fantasy",
     "dist": 96,
@@ -7850,7 +7850,7 @@
   {
     "id": 502,
     "name": "Ice Mints",
-    "provider": "pragmatic",
+    "provider": "pgsoft",
     "emoji": "❄️",
     "theme": "fantasy",
     "dist": 96,
@@ -7866,7 +7866,7 @@
   {
     "id": 503,
     "name": "Pig Farm",
-    "provider": "pragmatic",
+    "provider": "pgsoft",
     "emoji": "🎰",
     "theme": "fantasy",
     "dist": 96,
@@ -7898,7 +7898,7 @@
   {
     "id": 505,
     "name": "Blackjack 9 - Azure",
-    "provider": "pragmatic",
+    "provider": "pgsoft",
     "emoji": "🎰",
     "theme": "fantasy",
     "dist": 96,
@@ -7914,7 +7914,7 @@
   {
     "id": 506,
     "name": "Resurrecting Riches",
-    "provider": "pragmatic",
+    "provider": "pgsoft",
     "emoji": "🎰",
     "theme": "fantasy",
     "dist": 96,
@@ -7930,7 +7930,7 @@
   {
     "id": 507,
     "name": "Ancient Island Megaways",
-    "provider": "pragmatic",
+    "provider": "pgsoft",
     "emoji": "🎰",
     "theme": "fantasy",
     "dist": 96,
@@ -7946,7 +7946,7 @@
   {
     "id": 508,
     "name": "Chests of Cai Shen 2",
-    "provider": "pragmatic",
+    "provider": "pgsoft",
     "emoji": "🎰",
     "theme": "fantasy",
     "dist": 96,
@@ -7978,7 +7978,7 @@
   {
     "id": 510,
     "name": "Bigger Barn House Bonanza",
-    "provider": "pragmatic",
+    "provider": "pgsoft",
     "emoji": "🍭",
     "theme": "candy",
     "dist": 96,
@@ -7994,7 +7994,7 @@
   {
     "id": 511,
     "name": "Blackjack 2 - Azure",
-    "provider": "pragmatic",
+    "provider": "pgsoft",
     "emoji": "🎰",
     "theme": "fantasy",
     "dist": 96,
@@ -8026,7 +8026,7 @@
   {
     "id": 513,
     "name": "Fortune Roulette",
-    "provider": "pragmatic",
+    "provider": "pgsoft",
     "emoji": "🍀",
     "theme": "chinese",
     "dist": 96,
@@ -8042,7 +8042,7 @@
   {
     "id": 514,
     "name": "Chilli Heat Spicy Spins",
-    "provider": "pragmatic",
+    "provider": "pgsoft",
     "emoji": "🎰",
     "theme": "fantasy",
     "dist": 96,
@@ -8058,7 +8058,7 @@
   {
     "id": 515,
     "name": "Blackjack 10 - Azure",
-    "provider": "pragmatic",
+    "provider": "pgsoft",
     "emoji": "🎰",
     "theme": "fantasy",
     "dist": 96,
@@ -8074,7 +8074,7 @@
   {
     "id": 516,
     "name": "Blackjack 20 - Azure",
-    "provider": "pragmatic",
+    "provider": "pgsoft",
     "emoji": "🎰",
     "theme": "fantasy",
     "dist": 96,
@@ -8106,7 +8106,7 @@
   {
     "id": 518,
     "name": "Live - Blackjack 63 - Azure",
-    "provider": "pragmatic",
+    "provider": "pgsoft",
     "emoji": "🎰",
     "theme": "fantasy",
     "dist": 96,
@@ -8138,7 +8138,7 @@
   {
     "id": 520,
     "name": "Lava Balls",
-    "provider": "pragmatic",
+    "provider": "pgsoft",
     "emoji": "🎰",
     "theme": "fantasy",
     "dist": 96,
@@ -8154,7 +8154,7 @@
   {
     "id": 521,
     "name": "Live - Blackjack 62 - Azure",
-    "provider": "pragmatic",
+    "provider": "pgsoft",
     "emoji": "🎰",
     "theme": "fantasy",
     "dist": 96,
@@ -8170,7 +8170,7 @@
   {
     "id": 522,
     "name": "Blackjack 2 Brasileiro",
-    "provider": "pragmatic",
+    "provider": "pgsoft",
     "emoji": "🎰",
     "theme": "egypt",
     "dist": 96,
@@ -8186,7 +8186,7 @@
   {
     "id": 523,
     "name": "Blackjack 4 - Azure",
-    "provider": "pragmatic",
+    "provider": "pgsoft",
     "emoji": "🎰",
     "theme": "fantasy",
     "dist": 96,
@@ -8202,7 +8202,7 @@
   {
     "id": 524,
     "name": "Wisdom of Athena 1000 Xmas",
-    "provider": "pragmatic",
+    "provider": "pgsoft",
     "emoji": "🎰",
     "theme": "fantasy",
     "dist": 96,
@@ -8250,7 +8250,7 @@
   {
     "id": 527,
     "name": "Blackjack 17 - Azure",
-    "provider": "pragmatic",
+    "provider": "pgsoft",
     "emoji": "🎰",
     "theme": "fantasy",
     "dist": 96,
@@ -8266,7 +8266,7 @@
   {
     "id": 528,
     "name": "Blackjack 18 - Azure",
-    "provider": "pragmatic",
+    "provider": "pgsoft",
     "emoji": "🎰",
     "theme": "fantasy",
     "dist": 96,
@@ -8298,7 +8298,7 @@
   {
     "id": 530,
     "name": "Blackjack 22 - Azure",
-    "provider": "pragmatic",
+    "provider": "pgsoft",
     "emoji": "🎰",
     "theme": "fantasy",
     "dist": 96,
@@ -8314,7 +8314,7 @@
   {
     "id": 531,
     "name": "VIP Blackjack 1 - Ruby",
-    "provider": "pragmatic",
+    "provider": "pgsoft",
     "emoji": "🎰",
     "theme": "fantasy",
     "dist": 96,
@@ -8394,7 +8394,7 @@
   {
     "id": 536,
     "name": "Live - Blackjack 65 - Ruby",
-    "provider": "pragmatic",
+    "provider": "pgsoft",
     "emoji": "🎰",
     "theme": "fantasy",
     "dist": 96,
@@ -8458,7 +8458,7 @@
   {
     "id": 540,
     "name": "Blackjack 50 - Ruby",
-    "provider": "pragmatic",
+    "provider": "pgsoft",
     "emoji": "🎰",
     "theme": "fantasy",
     "dist": 96,
@@ -8490,7 +8490,7 @@
   {
     "id": 542,
     "name": "Blackjack 48 - Ruby",
-    "provider": "pragmatic",
+    "provider": "pgsoft",
     "emoji": "🎰",
     "theme": "fantasy",
     "dist": 96,
@@ -8522,7 +8522,7 @@
   {
     "id": 544,
     "name": "Blackjack 71 - Ruby",
-    "provider": "pragmatic",
+    "provider": "pgsoft",
     "emoji": "🎰",
     "theme": "fantasy",
     "dist": 96,
@@ -8538,7 +8538,7 @@
   {
     "id": 545,
     "name": "Blackjack 5 - Azure",
-    "provider": "pragmatic",
+    "provider": "pgsoft",
     "emoji": "🎰",
     "theme": "fantasy",
     "dist": 96,
@@ -8554,7 +8554,7 @@
   {
     "id": 546,
     "name": "Blackjack 29 - Azure",
-    "provider": "pragmatic",
+    "provider": "pgsoft",
     "emoji": "🎰",
     "theme": "fantasy",
     "dist": 96,
@@ -8586,7 +8586,7 @@
   {
     "id": 548,
     "name": "Blackjack 27 - Azure",
-    "provider": "pragmatic",
+    "provider": "pgsoft",
     "emoji": "🎰",
     "theme": "fantasy",
     "dist": 96,
@@ -8602,7 +8602,7 @@
   {
     "id": 549,
     "name": "Blackjack 49 - Ruby",
-    "provider": "pragmatic",
+    "provider": "pgsoft",
     "emoji": "🎰",
     "theme": "fantasy",
     "dist": 96,
@@ -8618,7 +8618,7 @@
   {
     "id": 550,
     "name": "Blackjack 23 - Azure",
-    "provider": "pragmatic",
+    "provider": "pgsoft",
     "emoji": "🎰",
     "theme": "fantasy",
     "dist": 96,
@@ -8634,7 +8634,7 @@
   {
     "id": 551,
     "name": "VIP Blackjack 2 - Ruby",
-    "provider": "pragmatic",
+    "provider": "pgsoft",
     "emoji": "🎰",
     "theme": "fantasy",
     "dist": 96,
@@ -8682,7 +8682,7 @@
   {
     "id": 554,
     "name": "Blackjack 28 - Azure",
-    "provider": "pragmatic",
+    "provider": "pgsoft",
     "emoji": "🎰",
     "theme": "fantasy",
     "dist": 96,
@@ -8714,7 +8714,7 @@
   {
     "id": 556,
     "name": "Live - Blackjack 61 - Azure",
-    "provider": "pragmatic",
+    "provider": "pgsoft",
     "emoji": "🎰",
     "theme": "fantasy",
     "dist": 96,
@@ -8730,7 +8730,7 @@
   {
     "id": 557,
     "name": "Blackjack 24 - Azure",
-    "provider": "pragmatic",
+    "provider": "pgsoft",
     "emoji": "🎰",
     "theme": "fantasy",
     "dist": 96,
@@ -8746,7 +8746,7 @@
   {
     "id": 558,
     "name": "Blackjack 41 - Ruby",
-    "provider": "pragmatic",
+    "provider": "pgsoft",
     "emoji": "🎰",
     "theme": "fantasy",
     "dist": 96,
@@ -8794,7 +8794,7 @@
   {
     "id": 561,
     "name": "Blackjack 45 - Ruby",
-    "provider": "pragmatic",
+    "provider": "pgsoft",
     "emoji": "🎰",
     "theme": "fantasy",
     "dist": 96,
@@ -8810,7 +8810,7 @@
   {
     "id": 562,
     "name": "Blackjack 47 - Ruby",
-    "provider": "pragmatic",
+    "provider": "pgsoft",
     "emoji": "🎰",
     "theme": "fantasy",
     "dist": 96,
@@ -8826,7 +8826,7 @@
   {
     "id": 563,
     "name": "Blackjack 26 - Azure",
-    "provider": "pragmatic",
+    "provider": "pgsoft",
     "emoji": "🎰",
     "theme": "fantasy",
     "dist": 96,
@@ -8842,7 +8842,7 @@
   {
     "id": 564,
     "name": "VIP Blackjack 5 - Ruby",
-    "provider": "pragmatic",
+    "provider": "pgsoft",
     "emoji": "🎰",
     "theme": "fantasy",
     "dist": 96,
@@ -8858,7 +8858,7 @@
   {
     "id": 565,
     "name": "Blackjack 43 - Ruby",
-    "provider": "pragmatic",
+    "provider": "pgsoft",
     "emoji": "🎰",
     "theme": "fantasy",
     "dist": 96,
@@ -8874,7 +8874,7 @@
   {
     "id": 566,
     "name": "Live - Blackjack 58 - Azure",
-    "provider": "pragmatic",
+    "provider": "pgsoft",
     "emoji": "🎰",
     "theme": "fantasy",
     "dist": 96,
@@ -8890,7 +8890,7 @@
   {
     "id": 567,
     "name": "VIP Blackjack 4 - Ruby",
-    "provider": "pragmatic",
+    "provider": "pgsoft",
     "emoji": "🎰",
     "theme": "fantasy",
     "dist": 96,
@@ -8906,7 +8906,7 @@
   {
     "id": 568,
     "name": "Live - SPEED BLACKJACK 8 RUBY",
-    "provider": "pragmatic",
+    "provider": "pgsoft",
     "emoji": "🎰",
     "theme": "fantasy",
     "dist": 96,
@@ -8938,7 +8938,7 @@
   {
     "id": 570,
     "name": "Blackjack 31 - Azure",
-    "provider": "pragmatic",
+    "provider": "pgsoft",
     "emoji": "🎰",
     "theme": "fantasy",
     "dist": 96,
@@ -8954,7 +8954,7 @@
   {
     "id": 571,
     "name": "Brazilian ONE Blackjack",
-    "provider": "pragmatic",
+    "provider": "pgsoft",
     "emoji": "🎰",
     "theme": "egypt",
     "dist": 96,
@@ -8986,7 +8986,7 @@
   {
     "id": 573,
     "name": "VIP Blackjack 3 - Ruby",
-    "provider": "pragmatic",
+    "provider": "pgsoft",
     "emoji": "🎰",
     "theme": "fantasy",
     "dist": 96,
@@ -9018,7 +9018,7 @@
   {
     "id": 575,
     "name": "Blackjack 37 - Ruby",
-    "provider": "pragmatic",
+    "provider": "pgsoft",
     "emoji": "🎰",
     "theme": "fantasy",
     "dist": 96,
@@ -9050,7 +9050,7 @@
   {
     "id": 577,
     "name": "Treasure Island",
-    "provider": "pragmatic",
+    "provider": "pgsoft",
     "emoji": "🎰",
     "theme": "fantasy",
     "dist": 96,
@@ -9082,7 +9082,7 @@
   {
     "id": 579,
     "name": "Blackjack 40 - Ruby",
-    "provider": "pragmatic",
+    "provider": "pgsoft",
     "emoji": "🎰",
     "theme": "fantasy",
     "dist": 96,
@@ -9098,7 +9098,7 @@
   {
     "id": 580,
     "name": "Blackjack 79 - Emerald",
-    "provider": "pragmatic",
+    "provider": "pgsoft",
     "emoji": "🎰",
     "theme": "egypt",
     "dist": 96,
@@ -9130,7 +9130,7 @@
   {
     "id": 582,
     "name": "Blackjack 73 - Ruby",
-    "provider": "pragmatic",
+    "provider": "pgsoft",
     "emoji": "🎰",
     "theme": "fantasy",
     "dist": 96,
@@ -9146,7 +9146,7 @@
   {
     "id": 583,
     "name": "Blackjack 39 - Ruby",
-    "provider": "pragmatic",
+    "provider": "pgsoft",
     "emoji": "🎰",
     "theme": "fantasy",
     "dist": 96,
@@ -9162,7 +9162,7 @@
   {
     "id": 584,
     "name": "Blackjack 80 - Emerald",
-    "provider": "pragmatic",
+    "provider": "pgsoft",
     "emoji": "🎰",
     "theme": "egypt",
     "dist": 96,
@@ -9178,7 +9178,7 @@
   {
     "id": 585,
     "name": "Live - SPEED BLACKJACK 10 RUBY",
-    "provider": "pragmatic",
+    "provider": "pgsoft",
     "emoji": "🎰",
     "theme": "fantasy",
     "dist": 96,
@@ -9194,7 +9194,7 @@
   {
     "id": 586,
     "name": "Blackjack 38 - Ruby",
-    "provider": "pragmatic",
+    "provider": "pgsoft",
     "emoji": "🎰",
     "theme": "fantasy",
     "dist": 96,
@@ -9226,7 +9226,7 @@
   {
     "id": 588,
     "name": "Blackjack 46 - Ruby",
-    "provider": "pragmatic",
+    "provider": "pgsoft",
     "emoji": "🎰",
     "theme": "fantasy",
     "dist": 96,
@@ -9242,7 +9242,7 @@
   {
     "id": 589,
     "name": "Blackjack 81 - Emerald",
-    "provider": "pragmatic",
+    "provider": "pgsoft",
     "emoji": "🎰",
     "theme": "egypt",
     "dist": 96,
@@ -9258,7 +9258,7 @@
   {
     "id": 590,
     "name": "Live - Turkish ONE BLACKJACK",
-    "provider": "pragmatic",
+    "provider": "pgsoft",
     "emoji": "🎰",
     "theme": "fantasy",
     "dist": 96,
@@ -9274,7 +9274,7 @@
   {
     "id": 591,
     "name": "Blackjack 74 - Ruby",
-    "provider": "pragmatic",
+    "provider": "pgsoft",
     "emoji": "🎰",
     "theme": "fantasy",
     "dist": 96,
@@ -9386,7 +9386,7 @@
   {
     "id": 598,
     "name": "Wild Wild Riches Returns",
-    "provider": "pragmatic",
+    "provider": "pgsoft",
     "emoji": "🎰",
     "theme": "fantasy",
     "dist": 96,
@@ -9418,7 +9418,7 @@
   {
     "id": 600,
     "name": "Live - Blackjack 59 - Azure",
-    "provider": "pragmatic",
+    "provider": "pgsoft",
     "emoji": "🎰",
     "theme": "fantasy",
     "dist": 96,
@@ -9626,7 +9626,7 @@
   {
     "id": 613,
     "name": "Cash Elevator",
-    "provider": "pragmatic",
+    "provider": "pgsoft",
     "emoji": "🎰",
     "theme": "fantasy",
     "dist": 96,
@@ -9658,7 +9658,7 @@
   {
     "id": 615,
     "name": "Live - Blackjack 64 - Ruby",
-    "provider": "pragmatic",
+    "provider": "pgsoft",
     "emoji": "🎰",
     "theme": "fantasy",
     "dist": 96,
@@ -9674,7 +9674,7 @@
   {
     "id": 616,
     "name": "Live - SPEED BLACKJACK 6 RUBY",
-    "provider": "pragmatic",
+    "provider": "pgsoft",
     "emoji": "🎰",
     "theme": "fantasy",
     "dist": 96,
@@ -9706,7 +9706,7 @@
   {
     "id": 618,
     "name": "Live - Blackjack 66 - Ruby",
-    "provider": "pragmatic",
+    "provider": "pgsoft",
     "emoji": "🎰",
     "theme": "fantasy",
     "dist": 96,
@@ -9722,7 +9722,7 @@
   {
     "id": 619,
     "name": "Live - Blackjack 70 - Ruby",
-    "provider": "pragmatic",
+    "provider": "pgsoft",
     "emoji": "🎰",
     "theme": "fantasy",
     "dist": 96,
@@ -9754,7 +9754,7 @@
   {
     "id": 621,
     "name": "John Hunter and Galileo’s Secrets",
-    "provider": "pragmatic",
+    "provider": "pgsoft",
     "emoji": "🎰",
     "theme": "fantasy",
     "dist": 96,
@@ -9866,7 +9866,7 @@
   {
     "id": 628,
     "name": "Privé Lounge Roulette",
-    "provider": "pragmatic",
+    "provider": "pgsoft",
     "emoji": "🎰",
     "theme": "fantasy",
     "dist": 96,
@@ -9898,7 +9898,7 @@
   {
     "id": 630,
     "name": "Casino Hold’em",
-    "provider": "evolution",
+    "provider": "pgsoft",
     "emoji": "🎰",
     "theme": "fantasy",
     "dist": 96,
@@ -9914,7 +9914,7 @@
   {
     "id": 631,
     "name": "Blackjack Brasileiro 5",
-    "provider": "pragmatic",
+    "provider": "pgsoft",
     "emoji": "🎰",
     "theme": "egypt",
     "dist": 96,
@@ -9930,7 +9930,7 @@
   {
     "id": 632,
     "name": "Blackjack Brasileiro 8",
-    "provider": "pragmatic",
+    "provider": "pgsoft",
     "emoji": "🎰",
     "theme": "egypt",
     "dist": 96,
@@ -9946,7 +9946,7 @@
   {
     "id": 633,
     "name": "Blackjack Brasileiro 7",
-    "provider": "pragmatic",
+    "provider": "pgsoft",
     "emoji": "🎰",
     "theme": "egypt",
     "dist": 96,
@@ -9962,7 +9962,7 @@
   {
     "id": 634,
     "name": "Blackjack Brasileiro 4",
-    "provider": "pragmatic",
+    "provider": "pgsoft",
     "emoji": "🎰",
     "theme": "egypt",
     "dist": 96,
@@ -9978,7 +9978,7 @@
   {
     "id": 635,
     "name": "Blackjack Brasileiro 9",
-    "provider": "pragmatic",
+    "provider": "pgsoft",
     "emoji": "🎰",
     "theme": "egypt",
     "dist": 96,
@@ -10010,7 +10010,7 @@
   {
     "id": 637,
     "name": "Emerald King – Wheel of Wealth",
-    "provider": "pragmatic",
+    "provider": "pgsoft",
     "emoji": "🎰",
     "theme": "egypt",
     "dist": 96,
@@ -10186,7 +10186,7 @@
   {
     "id": 648,
     "name": "Chicken+",
-    "provider": "pragmatic",
+    "provider": "pgsoft",
     "emoji": "🐓",
     "theme": "fantasy",
     "dist": 96,
@@ -10218,7 +10218,7 @@
   {
     "id": 650,
     "name": "Crystal Roulette",
-    "provider": "pragmatic",
+    "provider": "pgsoft",
     "emoji": "🎰",
     "theme": "fantasy",
     "dist": 96,
@@ -10234,7 +10234,7 @@
   {
     "id": 651,
     "name": "Spire+",
-    "provider": "pragmatic",
+    "provider": "pgsoft",
     "emoji": "🎰",
     "theme": "fantasy",
     "dist": 96,
@@ -10250,7 +10250,7 @@
   {
     "id": 652,
     "name": "Mines+",
-    "provider": "pragmatic",
+    "provider": "pgsoft",
     "emoji": "🎰",
     "theme": "fantasy",
     "dist": 96,
@@ -11946,7 +11946,7 @@
   {
     "id": 758,
     "name": "Cleocatra",
-    "provider": "pgsoft",
+    "provider": "pragmatic",
     "emoji": "🐱",
     "theme": "egypt",
     "dist": 96,
@@ -12058,7 +12058,7 @@
   {
     "id": 765,
     "name": "Phoenix Forge",
-    "provider": "pgsoft",
+    "provider": "pragmatic",
     "emoji": "🔥",
     "theme": "fantasy",
     "dist": 96,
@@ -12390,663 +12390,8 @@
     "img": "",
     "link": "https://kk-judy777.vip/?id=649076826&currency=BRL&type=2",
     "clicks": 0
-  },
-  {
-    "id": 786,
-    "name": "Crazy Time",
-    "provider": "evolution",
-    "emoji": "🎡",
-    "theme": "party",
-    "dist": 96,
-    "rtp": 96.5,
-    "minBet": 0.2,
-    "maxBet": 500,
-    "hot": null,
-    "tag": null,
-    "img": "",
-    "link": "https://www.fy-fanta.com/?id=223975751",
-    "clicks": 0
-  },
-  {
-    "id": 787,
-    "name": "Monopoly Live",
-    "provider": "evolution",
-    "emoji": "🎲",
-    "theme": "classic",
-    "dist": 96,
-    "rtp": 96.5,
-    "minBet": 0.2,
-    "maxBet": 500,
-    "hot": null,
-    "tag": null,
-    "img": "",
-    "link": "https://hms-tiradentesday.bet/?invite_code=8be79469",
-    "clicks": 0
-  },
-  {
-    "id": 788,
-    "name": "Monopoly Big Baller",
-    "provider": "evolution",
-    "emoji": "🎲",
-    "theme": "classic",
-    "dist": 96,
-    "rtp": 96.5,
-    "minBet": 0.2,
-    "maxBet": 500,
-    "hot": null,
-    "tag": null,
-    "img": "",
-    "link": "https://coroa-gghhpg.com/?id=405842843",
-    "clicks": 0
-  },
-  {
-    "id": 789,
-    "name": "Mega Ball",
-    "provider": "evolution",
-    "emoji": "🎱",
-    "theme": "fantasy",
-    "dist": 96,
-    "rtp": 96.5,
-    "minBet": 0.2,
-    "maxBet": 500,
-    "hot": null,
-    "tag": null,
-    "img": "",
-    "link": "https://www.onebra77.com/?source_code=TWMWECDNJ2X",
-    "clicks": 0
-  },
-  {
-    "id": 790,
-    "name": "Deal or No Deal Live",
-    "provider": "evolution",
-    "emoji": "💼",
-    "theme": "fantasy",
-    "dist": 96,
-    "rtp": 96.5,
-    "minBet": 0.2,
-    "maxBet": 500,
-    "hot": "fire",
-    "tag": null,
-    "img": "",
-    "link": "https://br.mt-antilope.com/home?inviteCode=VEU6ZR",
-    "clicks": 0
-  },
-  {
-    "id": 791,
-    "name": "Dream Catcher",
-    "provider": "evolution",
-    "emoji": "🎡",
-    "theme": "fantasy",
-    "dist": 96,
-    "rtp": 96.5,
-    "minBet": 0.2,
-    "maxBet": 500,
-    "hot": null,
-    "tag": null,
-    "img": "",
-    "link": "https://kk-judy777.vip/?id=649076826&currency=BRL&type=2",
-    "clicks": 0
-  },
-  {
-    "id": 792,
-    "name": "Funky Time",
-    "provider": "evolution",
-    "emoji": "🕺",
-    "theme": "party",
-    "dist": 96,
-    "rtp": 96.5,
-    "minBet": 0.2,
-    "maxBet": 500,
-    "hot": null,
-    "tag": null,
-    "img": "",
-    "link": "https://www.fy-fanta.com/?id=223975751",
-    "clicks": 0
-  },
-  {
-    "id": 793,
-    "name": "Crazy Coin Flip",
-    "provider": "evolution",
-    "emoji": "🪙",
-    "theme": "fantasy",
-    "dist": 96,
-    "rtp": 96.5,
-    "minBet": 0.2,
-    "maxBet": 500,
-    "hot": null,
-    "tag": null,
-    "img": "",
-    "link": "https://hms-tiradentesday.bet/?invite_code=8be79469",
-    "clicks": 0
-  },
-  {
-    "id": 794,
-    "name": "Lightning Roulette",
-    "provider": "evolution",
-    "emoji": "⚡",
-    "theme": "classic",
-    "dist": 96,
-    "rtp": 96.5,
-    "minBet": 0.2,
-    "maxBet": 500,
-    "hot": null,
-    "tag": null,
-    "img": "",
-    "link": "https://coroa-gghhpg.com/?id=405842843",
-    "clicks": 0
-  },
-  {
-    "id": 795,
-    "name": "XXXtreme Lightning Roulette",
-    "provider": "evolution",
-    "emoji": "⚡",
-    "theme": "classic",
-    "dist": 96,
-    "rtp": 96.5,
-    "minBet": 0.2,
-    "maxBet": 500,
-    "hot": "fire",
-    "tag": null,
-    "img": "",
-    "link": "https://www.onebra77.com/?source_code=TWMWECDNJ2X",
-    "clicks": 0
-  },
-  {
-    "id": 796,
-    "name": "Immersive Roulette",
-    "provider": "evolution",
-    "emoji": "🎰",
-    "theme": "luxury",
-    "dist": 96,
-    "rtp": 96.5,
-    "minBet": 0.2,
-    "maxBet": 500,
-    "hot": null,
-    "tag": null,
-    "img": "",
-    "link": "https://br.mt-antilope.com/home?inviteCode=VEU6ZR",
-    "clicks": 0
-  },
-  {
-    "id": 797,
-    "name": "Speed Roulette",
-    "provider": "evolution",
-    "emoji": "🎰",
-    "theme": "classic",
-    "dist": 96,
-    "rtp": 96.5,
-    "minBet": 0.2,
-    "maxBet": 500,
-    "hot": null,
-    "tag": null,
-    "img": "",
-    "link": "https://kk-judy777.vip/?id=649076826&currency=BRL&type=2",
-    "clicks": 0
-  },
-  {
-    "id": 798,
-    "name": "Auto Lightning Roulette",
-    "provider": "evolution",
-    "emoji": "⚡",
-    "theme": "classic",
-    "dist": 96,
-    "rtp": 96.5,
-    "minBet": 0.2,
-    "maxBet": 500,
-    "hot": null,
-    "tag": null,
-    "img": "",
-    "link": "https://www.fy-fanta.com/?id=223975751",
-    "clicks": 0
-  },
-  {
-    "id": 799,
-    "name": "Double Ball Roulette",
-    "provider": "evolution",
-    "emoji": "🎰",
-    "theme": "classic",
-    "dist": 96,
-    "rtp": 96.5,
-    "minBet": 0.2,
-    "maxBet": 500,
-    "hot": null,
-    "tag": null,
-    "img": "",
-    "link": "https://hms-tiradentesday.bet/?invite_code=8be79469",
-    "clicks": 0
-  },
-  {
-    "id": 800,
-    "name": "Lightning Dice",
-    "provider": "evolution",
-    "emoji": "🎲",
-    "theme": "classic",
-    "dist": 96,
-    "rtp": 96.5,
-    "minBet": 0.2,
-    "maxBet": 500,
-    "hot": "fire",
-    "tag": null,
-    "img": "",
-    "link": "https://coroa-gghhpg.com/?id=405842843",
-    "clicks": 0
-  },
-  {
-    "id": 801,
-    "name": "Lightning Blackjack",
-    "provider": "evolution",
-    "emoji": "⚡",
-    "theme": "classic",
-    "dist": 96,
-    "rtp": 96.5,
-    "minBet": 0.2,
-    "maxBet": 500,
-    "hot": null,
-    "tag": null,
-    "img": "",
-    "link": "https://www.onebra77.com/?source_code=TWMWECDNJ2X",
-    "clicks": 0
-  },
-  {
-    "id": 802,
-    "name": "Power Blackjack",
-    "provider": "evolution",
-    "emoji": "🃏",
-    "theme": "classic",
-    "dist": 96,
-    "rtp": 96.5,
-    "minBet": 0.2,
-    "maxBet": 500,
-    "hot": null,
-    "tag": null,
-    "img": "",
-    "link": "https://br.mt-antilope.com/home?inviteCode=VEU6ZR",
-    "clicks": 0
-  },
-  {
-    "id": 803,
-    "name": "Infinite Blackjack",
-    "provider": "evolution",
-    "emoji": "🃏",
-    "theme": "classic",
-    "dist": 96,
-    "rtp": 96.5,
-    "minBet": 0.2,
-    "maxBet": 500,
-    "hot": null,
-    "tag": null,
-    "img": "",
-    "link": "https://kk-judy777.vip/?id=649076826&currency=BRL&type=2",
-    "clicks": 0
-  },
-  {
-    "id": 804,
-    "name": "Free Bet Blackjack",
-    "provider": "evolution",
-    "emoji": "🃏",
-    "theme": "classic",
-    "dist": 96,
-    "rtp": 96.5,
-    "minBet": 0.2,
-    "maxBet": 500,
-    "hot": null,
-    "tag": null,
-    "img": "",
-    "link": "https://www.fy-fanta.com/?id=223975751",
-    "clicks": 0
-  },
-  {
-    "id": 805,
-    "name": "Speed Blackjack",
-    "provider": "evolution",
-    "emoji": "🃏",
-    "theme": "classic",
-    "dist": 96,
-    "rtp": 96.5,
-    "minBet": 0.2,
-    "maxBet": 500,
-    "hot": "fire",
-    "tag": null,
-    "img": "",
-    "link": "https://hms-tiradentesday.bet/?invite_code=8be79469",
-    "clicks": 0
-  },
-  {
-    "id": 806,
-    "name": "Lightning Baccarat",
-    "provider": "evolution",
-    "emoji": "⚡",
-    "theme": "classic",
-    "dist": 96,
-    "rtp": 96.5,
-    "minBet": 0.2,
-    "maxBet": 500,
-    "hot": null,
-    "tag": null,
-    "img": "",
-    "link": "https://coroa-gghhpg.com/?id=405842843",
-    "clicks": 0
-  },
-  {
-    "id": 807,
-    "name": "Speed Baccarat",
-    "provider": "evolution",
-    "emoji": "🃏",
-    "theme": "classic",
-    "dist": 96,
-    "rtp": 96.5,
-    "minBet": 0.2,
-    "maxBet": 500,
-    "hot": null,
-    "tag": null,
-    "img": "",
-    "link": "https://www.onebra77.com/?source_code=TWMWECDNJ2X",
-    "clicks": 0
-  },
-  {
-    "id": 808,
-    "name": "Baccarat Squeeze",
-    "provider": "evolution",
-    "emoji": "🃏",
-    "theme": "luxury",
-    "dist": 96,
-    "rtp": 96.5,
-    "minBet": 0.2,
-    "maxBet": 500,
-    "hot": null,
-    "tag": null,
-    "img": "",
-    "link": "https://br.mt-antilope.com/home?inviteCode=VEU6ZR",
-    "clicks": 0
-  },
-  {
-    "id": 809,
-    "name": "No Commission Baccarat",
-    "provider": "evolution",
-    "emoji": "🃏",
-    "theme": "classic",
-    "dist": 96,
-    "rtp": 96.5,
-    "minBet": 0.2,
-    "maxBet": 500,
-    "hot": null,
-    "tag": null,
-    "img": "",
-    "link": "https://kk-judy777.vip/?id=649076826&currency=BRL&type=2",
-    "clicks": 0
-  },
-  {
-    "id": 810,
-    "name": "Dragon Tiger",
-    "provider": "evolution",
-    "emoji": "🐯",
-    "theme": "asian",
-    "dist": 96,
-    "rtp": 96.5,
-    "minBet": 0.2,
-    "maxBet": 500,
-    "hot": "fire",
-    "tag": null,
-    "img": "",
-    "link": "https://www.fy-fanta.com/?id=223975751",
-    "clicks": 0
-  },
-  {
-    "id": 811,
-    "name": "Craps",
-    "provider": "evolution",
-    "emoji": "🎲",
-    "theme": "classic",
-    "dist": 96,
-    "rtp": 96.5,
-    "minBet": 0.2,
-    "maxBet": 500,
-    "hot": null,
-    "tag": null,
-    "img": "",
-    "link": "https://hms-tiradentesday.bet/?invite_code=8be79469",
-    "clicks": 0
-  },
-  {
-    "id": 812,
-    "name": "Side Bet City",
-    "provider": "evolution",
-    "emoji": "🃏",
-    "theme": "classic",
-    "dist": 96,
-    "rtp": 96.5,
-    "minBet": 0.2,
-    "maxBet": 500,
-    "hot": null,
-    "tag": null,
-    "img": "",
-    "link": "https://coroa-gghhpg.com/?id=405842843",
-    "clicks": 0
-  },
-  {
-    "id": 813,
-    "name": "Caribbean Stud Poker",
-    "provider": "evolution",
-    "emoji": "🃏",
-    "theme": "classic",
-    "dist": 96,
-    "rtp": 96.5,
-    "minBet": 0.2,
-    "maxBet": 500,
-    "hot": null,
-    "tag": null,
-    "img": "",
-    "link": "https://www.onebra77.com/?source_code=TWMWECDNJ2X",
-    "clicks": 0
-  },
-  {
-    "id": 814,
-    "name": "Three Card Poker",
-    "provider": "evolution",
-    "emoji": "🃏",
-    "theme": "classic",
-    "dist": 96,
-    "rtp": 96.5,
-    "minBet": 0.2,
-    "maxBet": 500,
-    "hot": null,
-    "tag": null,
-    "img": "",
-    "link": "https://br.mt-antilope.com/home?inviteCode=VEU6ZR",
-    "clicks": 0
-  },
-  {
-    "id": 815,
-    "name": "Texas Hold'em Bonus Poker",
-    "provider": "evolution",
-    "emoji": "🃏",
-    "theme": "classic",
-    "dist": 96,
-    "rtp": 96.5,
-    "minBet": 0.2,
-    "maxBet": 500,
-    "hot": "fire",
-    "tag": null,
-    "img": "",
-    "link": "https://kk-judy777.vip/?id=649076826&currency=BRL&type=2",
-    "clicks": 0
-  },
-  {
-    "id": 816,
-    "name": "Ultimate Texas Hold'em",
-    "provider": "evolution",
-    "emoji": "🃏",
-    "theme": "classic",
-    "dist": 96,
-    "rtp": 96.5,
-    "minBet": 0.2,
-    "maxBet": 500,
-    "hot": null,
-    "tag": null,
-    "img": "",
-    "link": "https://www.fy-fanta.com/?id=223975751",
-    "clicks": 0
-  },
-  {
-    "id": 817,
-    "name": "Casino Hold'em",
-    "provider": "evolution",
-    "emoji": "🃏",
-    "theme": "classic",
-    "dist": 96,
-    "rtp": 96.5,
-    "minBet": 0.2,
-    "maxBet": 500,
-    "hot": null,
-    "tag": null,
-    "img": "",
-    "link": "https://hms-tiradentesday.bet/?invite_code=8be79469",
-    "clicks": 0
-  },
-  {
-    "id": 818,
-    "name": "Fan Tan",
-    "provider": "evolution",
-    "emoji": "🎰",
-    "theme": "asian",
-    "dist": 96,
-    "rtp": 96.5,
-    "minBet": 0.2,
-    "maxBet": 500,
-    "hot": null,
-    "tag": null,
-    "img": "",
-    "link": "https://coroa-gghhpg.com/?id=405842843",
-    "clicks": 0
-  },
-  {
-    "id": 819,
-    "name": "Cash or Crash",
-    "provider": "evolution",
-    "emoji": "💰",
-    "theme": "fantasy",
-    "dist": 96,
-    "rtp": 96.5,
-    "minBet": 0.2,
-    "maxBet": 500,
-    "hot": null,
-    "tag": null,
-    "img": "",
-    "link": "https://www.onebra77.com/?source_code=TWMWECDNJ2X",
-    "clicks": 0
-  },
-  {
-    "id": 820,
-    "name": "Gonzo's Treasure Hunt",
-    "provider": "evolution",
-    "emoji": "🗺️",
-    "theme": "aztec",
-    "dist": 96,
-    "rtp": 96.5,
-    "minBet": 0.2,
-    "maxBet": 500,
-    "hot": "fire",
-    "tag": null,
-    "img": "",
-    "link": "https://br.mt-antilope.com/home?inviteCode=VEU6ZR",
-    "clicks": 0
-  },
-  {
-    "id": 821,
-    "name": "Gonzo's Treasure Map",
-    "provider": "evolution",
-    "emoji": "🗺️",
-    "theme": "aztec",
-    "dist": 96,
-    "rtp": 96.5,
-    "minBet": 0.2,
-    "maxBet": 500,
-    "hot": null,
-    "tag": null,
-    "img": "",
-    "link": "https://kk-judy777.vip/?id=649076826&currency=BRL&type=2",
-    "clicks": 0
-  },
-  {
-    "id": 822,
-    "name": "Red Door Roulette",
-    "provider": "evolution",
-    "emoji": "🚪",
-    "theme": "classic",
-    "dist": 96,
-    "rtp": 96.5,
-    "minBet": 0.2,
-    "maxBet": 500,
-    "hot": null,
-    "tag": null,
-    "img": "",
-    "link": "https://www.fy-fanta.com/?id=223975751",
-    "clicks": 0
-  },
-  {
-    "id": 823,
-    "name": "Salon Privé Blackjack",
-    "provider": "evolution",
-    "emoji": "🃏",
-    "theme": "luxury",
-    "dist": 96,
-    "rtp": 96.5,
-    "minBet": 0.2,
-    "maxBet": 500,
-    "hot": null,
-    "tag": null,
-    "img": "",
-    "link": "https://hms-tiradentesday.bet/?invite_code=8be79469",
-    "clicks": 0
-  },
-  {
-    "id": 824,
-    "name": "VIP Roulette",
-    "provider": "evolution",
-    "emoji": "🎰",
-    "theme": "luxury",
-    "dist": 96,
-    "rtp": 96.5,
-    "minBet": 0.2,
-    "maxBet": 500,
-    "hot": null,
-    "tag": null,
-    "img": "",
-    "link": "https://coroa-gghhpg.com/?id=405842843",
-    "clicks": 0
-  },
-  {
-    "id": 825,
-    "name": "Portuguese Roulette",
-    "provider": "evolution",
-    "emoji": "🎰",
-    "theme": "classic",
-    "dist": 96,
-    "rtp": 96.5,
-    "minBet": 0.2,
-    "maxBet": 500,
-    "hot": "fire",
-    "tag": null,
-    "img": "",
-    "link": "https://www.onebra77.com/?source_code=TWMWECDNJ2X",
-    "clicks": 0
-  },
-  {
-    "id": 826,
-    "name": "Brazilian Roulette",
-    "provider": "evolution",
-    "emoji": "🎰",
-    "theme": "brazil",
-    "dist": 96,
-    "rtp": 96.5,
-    "minBet": 0.2,
-    "maxBet": 500,
-    "hot": null,
-    "tag": null,
-    "img": "",
-    "link": "https://br.mt-antilope.com/home?inviteCode=VEU6ZR",
-    "clicks": 0
   }
+  
   ];
 
   const THEME_COLORS = {
