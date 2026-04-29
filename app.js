@@ -864,7 +864,7 @@ function renderCards(filter = 'all', search = '') {
 
       <div class="gcv2-bet-box">
         <div class="gcv2-bet-header">
-          <span class="gcv2-bet-title">⚡ BET SUGERIDA</span>
+          <span class="gcv2-bet-title">⚡ BET</span>
           <span class="gcv2-bet-timer">🕐 <span data-v="timer">${d.timer}</span></span>
         </div>
         <div class="gcv2-bet-row"><span>PD:</span><strong data-v="pd">${d.pd}</strong></div>
@@ -878,7 +878,7 @@ function renderCards(filter = 'all', search = '') {
            class="gcv2-btn-play${hasLink ? '' : ' no-link'}"
            ${hasLink ? 'target="_blank" rel="noopener noreferrer"' : ''}
            data-game-id="${g.id}">
-          ▶ ${hasLink ? 'JOGAR AGORA' : 'EM BREVE'}
+          ▶ ${hasLink ? 'JOGAR' : 'EM BREVE'}
         </a>
         <button class="gcv2-btn-copy" title="Copiar link do jogo" data-copy-id="${g.id}">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
