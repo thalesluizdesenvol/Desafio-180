@@ -2392,7 +2392,7 @@ body {
   .stat-div { height:30px; }
 
   .section { padding:70px 18px 50px; }
-  .cards-grid { grid-template-columns:repeat(auto-fill, minmax(180px, 1fr)); gap:14px; }
+  .cards-grid { grid-template-columns:repeat(auto-fill, minmax(144px, 1fr)); gap:10px; }
   .card-body { padding:14px; gap:10px; }
   .card-title { font-size:1rem; }
 
@@ -2608,26 +2608,26 @@ body {
    ======================================================== */
 
 .cards-grid {
-  grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
-  gap: 14px;
+  grid-template-columns: repeat(auto-fill, minmax(132px, 1fr));
+  gap: 10px;
 }
 
 .game-card-v2 {
   background: linear-gradient(180deg, rgba(26,11,46,0.95) 0%, rgba(19,7,35,0.98) 100%);
   border: 1px solid rgba(196, 181, 253, 0.15);
-  border-radius: 16px;
-  padding: 10px;
+  border-radius: 10px;
+  padding: 6px;
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: 5px;
   position: relative;
   overflow: hidden;
-  box-shadow: 0 8px 24px rgba(0,0,0,0.3), inset 0 1px 0 rgba(255,255,255,0.04);
+  box-shadow: 0 4px 14px rgba(0,0,0,0.3), inset 0 1px 0 rgba(255,255,255,0.04);
   transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
   animation: cardFadeIn 0.5s ease backwards;
   /* PERFORMANCE: só renderiza cards visíveis na viewport */
   content-visibility: auto;
-  contain-intrinsic-size: 0 380px;
+  contain-intrinsic-size: 0 280px;
   /* Hints pra GPU */
   transform: translateZ(0);
   backface-visibility: hidden;
@@ -2646,14 +2646,14 @@ body {
 /* Top row: RTP + badge Quente — flutua sobre o banner */
 .gcv2-top {
   position: absolute;
-  top: 8px;
-  left: 8px;
-  right: 8px;
+  top: 5px;
+  left: 5px;
+  right: 5px;
   z-index: 2;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  gap: 6px;
+  gap: 4px;
   pointer-events: none;
 }
 .gcv2-top > * { pointer-events: auto; }
@@ -2662,10 +2662,10 @@ body {
   backdrop-filter: blur(6px);
   -webkit-backdrop-filter: blur(6px);
   border: 1px solid rgba(255,255,255,0.12);
-  padding: 4px 8px;
-  border-radius: 8px;
+  padding: 2px 6px;
+  border-radius: 5px;
   font-family: 'Rajdhani', sans-serif;
-  font-size: 0.68rem;
+  font-size: 0.56rem;
   font-weight: 600;
   color: #E5E7EB;
   letter-spacing: 0.02em;
@@ -2681,12 +2681,12 @@ body {
   -webkit-backdrop-filter: blur(6px);
   border: 1px solid rgba(251,146,60,0.55);
   color: #FFB87A;
-  padding: 4px 8px;
-  border-radius: 8px;
+  padding: 2px 6px;
+  border-radius: 5px;
   font-family: 'Rajdhani', sans-serif;
-  font-size: 0.62rem;
+  font-size: 0.5rem;
   font-weight: 700;
-  letter-spacing: 0.06em;
+  letter-spacing: 0.05em;
   text-transform: uppercase;
   white-space: nowrap;
 }
@@ -2699,10 +2699,10 @@ body {
 /* Thumb — banner largura total */
 .gcv2-thumb-wrap {
   display: block;
-  width: calc(100% + 20px);
-  margin: -10px -10px 0;
-  aspect-ratio: 16 / 10;
-  border-radius: 16px 16px 0 0;
+  width: calc(100% + 12px);
+  margin: -6px -6px 0;
+  aspect-ratio: 16 / 9;
+  border-radius: 10px 10px 0 0;
   overflow: hidden;
   background: linear-gradient(135deg, #2a1048 0%, #1a0b2e 100%);
   position: relative;
@@ -2723,16 +2723,16 @@ body {
 .gcv2-provider {
   display: flex;
   align-items: center;
-  gap: 5px;
+  gap: 4px;
   font-family: 'Rajdhani', sans-serif;
-  font-size: 0.65rem;
+  font-size: 0.52rem;
   font-weight: 700;
-  letter-spacing: 0.1em;
+  letter-spacing: 0.08em;
   color: #A78BFA;
 }
 .gcv2-provider-dot {
-  width: 6px;
-  height: 6px;
+  width: 4px;
+  height: 4px;
   border-radius: 50%;
   display: inline-block;
 }
@@ -2741,36 +2741,41 @@ body {
 .gcv2-title {
   font-family: 'Playfair Display', serif;
   font-weight: 700;
-  font-size: 1.05rem;
-  line-height: 1.15;
+  font-size: 0.82rem;
+  line-height: 1.1;
   color: #fff;
-  margin: -2px 0 2px;
+  margin: -2px 0 0;
   letter-spacing: -0.01em;
+  /* Limita a 1 linha em cards estreitos para preservar altura previsível */
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
 }
 
 /* Bars */
 .gcv2-bars {
   display: flex;
   flex-direction: column;
-  gap: 5px;
+  gap: 3px;
 }
-.gcv2-bar-row { display: flex; flex-direction: column; gap: 3px; }
+.gcv2-bar-row { display: flex; flex-direction: column; gap: 2px; }
 .gcv2-bar-head {
   display: flex;
   justify-content: space-between;
   align-items: center;
   font-family: 'Rajdhani', sans-serif;
-  font-size: 0.72rem;
+  font-size: 0.58rem;
   font-weight: 500;
   color: #CBD5E1;
 }
 .gcv2-bar-head strong {
   color: #fff;
   font-weight: 700;
-  font-size: 0.78rem;
+  font-size: 0.62rem;
 }
 .gcv2-bar {
-  height: 4px;
+  height: 3px;
   background: rgba(255,255,255,0.06);
   border-radius: 3px;
   overflow: hidden;
@@ -2796,44 +2801,47 @@ body {
 .gcv2-bet-box {
   background: rgba(0,0,0,0.35);
   border: 1px solid rgba(255,255,255,0.06);
-  border-radius: 10px;
-  padding: 7px 9px;
+  border-radius: 6px;
+  padding: 5px 6px;
   display: flex;
   flex-direction: column;
-  gap: 3px;
+  gap: 1px;
 }
 .gcv2-bet-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 2px;
-  padding-bottom: 4px;
+  margin-bottom: 1px;
+  padding-bottom: 3px;
   border-bottom: 1px solid rgba(255,255,255,0.06);
 }
 .gcv2-bet-title {
   font-family: 'Rajdhani', sans-serif;
-  font-size: 0.68rem;
+  font-size: 0.54rem;
   font-weight: 700;
-  letter-spacing: 0.1em;
+  letter-spacing: 0.06em;
   color: #FBBF24;
+  white-space: nowrap;
 }
 .gcv2-bet-timer {
   font-family: 'Rajdhani', sans-serif;
-  font-size: 0.68rem;
+  font-size: 0.54rem;
   color: #94A3B8;
   font-weight: 600;
+  white-space: nowrap;
 }
 .gcv2-bet-timer span { font-variant-numeric: tabular-nums; }
 .gcv2-bet-row {
   display: flex;
   justify-content: space-between;
   font-family: 'Rajdhani', sans-serif;
-  font-size: 0.74rem;
+  font-size: 0.6rem;
+  line-height: 1.3;
 }
 .gcv2-bet-row span {
   color: #94A3B8;
   font-weight: 500;
-  min-width: 28px;
+  min-width: 20px;
 }
 .gcv2-bet-row strong {
   color: #E5E7EB;
@@ -2843,36 +2851,37 @@ body {
 .gcv2-bet-row.gcv2-bet-mp strong {
   color: #FBBF24;
   font-weight: 700;
-  letter-spacing: 0.08em;
+  letter-spacing: 0.06em;
 }
 
 /* Action buttons */
 .gcv2-actions {
   display: flex;
-  gap: 6px;
-  margin-top: 2px;
+  gap: 4px;
+  margin-top: 1px;
 }
 .gcv2-btn-play {
   flex: 1;
   background: linear-gradient(135deg, #A78BFA 0%, #C084FC 100%);
   color: #fff;
   border: none;
-  border-radius: 10px;
-  padding: 9px 10px;
+  border-radius: 6px;
+  padding: 6px 6px;
   font-family: 'Rajdhani', sans-serif;
   font-weight: 700;
-  font-size: 0.85rem;
-  letter-spacing: 0.03em;
+  font-size: 0.68rem;
+  letter-spacing: 0.02em;
   text-decoration: none;
   text-align: center;
   cursor: pointer;
+  white-space: nowrap;
   transition: transform 0.2s ease, box-shadow 0.2s ease, filter 0.2s ease;
-  box-shadow: 0 6px 16px rgba(167,139,250,0.35);
+  box-shadow: 0 3px 10px rgba(167,139,250,0.35);
 }
 .gcv2-btn-play:hover {
   transform: translateY(-1px);
   filter: brightness(1.1);
-  box-shadow: 0 10px 22px rgba(167,139,250,0.5);
+  box-shadow: 0 6px 14px rgba(167,139,250,0.5);
 }
 .gcv2-btn-play.no-link {
   background: rgba(255,255,255,0.08);
@@ -2882,10 +2891,10 @@ body {
 }
 .gcv2-btn-play.no-link:hover { transform: none; filter: none; }
 .gcv2-btn-copy {
-  width: 36px;
+  width: 26px;
   background: rgba(167,139,250,0.12);
   border: 1px solid rgba(167,139,250,0.3);
-  border-radius: 10px;
+  border-radius: 6px;
   color: #C4B5FD;
   cursor: pointer;
   display: flex;
@@ -2894,12 +2903,17 @@ body {
   transition: background 0.2s, color 0.2s;
 }
 .gcv2-btn-copy:hover { background: rgba(167,139,250,0.22); color: #fff; }
-.gcv2-btn-copy svg { width: 15px; height: 15px; }
+.gcv2-btn-copy svg { width: 11px; height: 11px; }
 
-/* Responsivo: cards um pouco menores em telas médias */
+/* Tablet: 7-8 cards por linha */
+@media (max-width: 1024px) {
+  .cards-grid { grid-template-columns: repeat(auto-fill, minmax(124px, 1fr)); gap: 8px; }
+}
+
+/* Médio: 5-6 cards por linha */
 @media (max-width: 768px) {
-  .cards-grid { grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 10px; }
-  .gcv2-title { font-size: 0.92rem; }
+  .cards-grid { grid-template-columns: repeat(auto-fill, minmax(120px, 1fr)); gap: 8px; }
+  .gcv2-title { font-size: 0.78rem; }
 }
 
 /* Mobile: 2 colunas compactas (ao invés de 1 card gigante por linha) */
