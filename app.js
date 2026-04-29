@@ -668,14 +668,14 @@ function attachImgFallback(imgEl, game) {
 }
 
 /* ============================================
-   VALORES DINÂMICOS POR JOGO (ciclo de 5 minutos)
+   VALORES DINÂMICOS POR JOGO (ciclo de 1 minuto)
    ============================================ */
-const DYNAMIC_CYCLE_MS = 5 * 60 * 1000; // 5 minutos
+const DYNAMIC_CYCLE_MS = 60 * 1000; // 1 minuto
 
 /**
  * Gera um "seed" inteiro pseudo-aleatório a partir de (gameId + slotDeTempo).
  * A mesma combinação sempre produz os mesmos valores,
- * garantindo que dentro da mesma janela de 5min todos os usuários vejam
+ * garantindo que dentro da mesma janela de 1min todos os usuários vejam
  * os mesmos valores e tudo mude junto quando a janela troca.
  */
 function hashSeed(gameId, slotNum) {
@@ -690,39 +690,68 @@ function seededRand(seed, offset) {
 }
 
 /**
- * Calcula os valores dinâmicos do jogo para o slot atual de 5min.
+ * Define a cor da barra com base no valor (% de 0 a 100).
+ *  >= 70 → verde   (bom)
+ *  >= 40 → amarelo (mediano)
+ *   <  40 → vermelho (ruim)
+ */
+function statusByValue(v) {
+  if (v >= 70) return 'green';
+  if (v >= 40) return 'yellow';
+  return 'red';
+}
+
+/**
+ * Calcula os valores dinâmicos do jogo para o slot atual de 1min.
  * Cada jogo tem sua própria baseline influenciada pelo seu RTP real.
+ *
+ * Faixas amplas (10-99%) para gerar variação realista verde / amarelo / vermelho,
+ * inspirada em sites como Rainha do Slot.
  */
 function computeDynamicValues(game) {
   const slotNum = Math.floor(Date.now() / DYNAMIC_CYCLE_MS);
   const seed = hashSeed(game.id, slotNum);
 
-  // Aposta Padrão: 70-96% (jogos "hot" tendem a aparecer alto)
-  const boost = game.hot === 'fire' ? 10 : 0;
-  const padrao = Math.round(70 + seededRand(seed, 1) * 22 + boost * seededRand(seed, 7));
-  const padraoFinal = Math.min(96, padrao);
+  // Boost para jogos "hot" — tendem a aparecer mais altos (mais verdes)
+  const boost = game.hot === 'fire' ? 15 : 0;
 
-  // Aposta Mínima: 55-90%
-  const minima = Math.round(55 + seededRand(seed, 2) * 30 + boost * 0.5);
-  const minimaFinal = Math.min(92, minima);
+  // Aposta Padrão: 25-99% (faixa ampla, com viés positivo nos hot)
+  const padraoRaw = Math.round(25 + seededRand(seed, 1) * 70 + boost * seededRand(seed, 7));
+  const padraoFinal = Math.max(15, Math.min(99, padraoRaw));
 
-  // RTP exibido: oscila em torno do RTP real do jogo (±2%)
+  // Aposta Mínima: 10-95% (independente da padrão, mais variação)
+  const minimaRaw = Math.round(10 + seededRand(seed, 2) * 85 + boost * 0.6);
+  const minimaFinal = Math.max(8, Math.min(95, minimaRaw));
+
+  // Aposta Máxima: 15-95% (mais uma barra independente, igual à Rainha do Slot)
+  const maximaRaw = Math.round(15 + seededRand(seed, 4) * 80 + boost * 0.5);
+  const maximaFinal = Math.max(12, Math.min(95, maximaRaw));
+
+  // Distribuição (mostrada sobre o thumb) — geralmente alta (90-99%)
+  const distRaw = Math.round(90 + seededRand(seed, 5) * 9);
+  const distFinal = Math.max(88, Math.min(99, distRaw));
+
+  // RTP exibido (continua disponível para o tooltip / dados internos)
   const rtpBase = game.rtp || game.dist || 96;
-  const rtpOsc = (seededRand(seed, 3) - 0.5) * 4; // -2 a +2
+  const rtpOsc = (seededRand(seed, 3) - 0.5) * 6;
   const rtpShown = Math.max(85, Math.min(99, Math.round(rtpBase + rtpOsc)));
 
-  // Bet sugerida (valores em R$) — sorteia entre os 2 valores de cada par.
-  // Mi: 0,40/0,50 · PD: 1,00/1,20 · Mbc: 4,00/4,50
-  // Determinístico por seed (jogo + janela de 5min) → todos os visitantes veem
-  // os mesmos valores dentro da mesma janela; os números "giram" a cada ciclo.
-  const miVal  = seededRand(seed, 10) < 0.5 ? 0.40 : 0.50;
-  const pdVal  = seededRand(seed, 11) < 0.5 ? 1.00 : 1.20;
-  const mbcVal = seededRand(seed, 12) < 0.5 ? 4.00 : 4.50;
-  const miLow = miVal, miHigh = miVal;
-  const pdLow = pdVal, pdHigh = pdVal;
-  const mbcLow = mbcVal, mbcHigh = mbcVal;
+  // ============================================================
+  // APOSTAS SUGERIDAS — estilo Rainha do Slot
+  // 2 dicas: BET BÔNUS (Nº rodada + valor) e BET CONEXÃO (Nº + valor)
+  // Determinístico por seed → todos veem o mesmo na mesma janela.
+  // ============================================================
+  // BET BÔNUS: número da rodada (1-12) e valor da aposta (R$ 0,40-3,00)
+  const bonusRound = 1 + Math.floor(seededRand(seed, 50) * 12);
+  const bonusValues = [0.40, 0.50, 0.80, 1.00, 1.20, 1.50, 2.00, 2.50, 3.00];
+  const bonusValue = bonusValues[Math.floor(seededRand(seed, 51) * bonusValues.length)];
 
-  // Multiplicadores pagos (MP): números de 1 a 9, 3-5 sorteados, ordenados
+  // BET CONEXÃO: número da rodada (1-15) e valor maior (R$ 1,50-5,00)
+  const conexaoRound = 1 + Math.floor(seededRand(seed, 52) * 15);
+  const conexaoValues = [1.50, 2.00, 2.50, 3.00, 3.60, 4.00, 4.50, 5.00];
+  const conexaoValue = conexaoValues[Math.floor(seededRand(seed, 53) * conexaoValues.length)];
+
+  // Multiplicadores pagos (mantido para compatibilidade — usado em outros lugares)
   const digits = [];
   for (let i = 0; i < 9; i++) {
     if (seededRand(seed, 20 + i) > 0.55) digits.push(i + 1);
@@ -730,27 +759,37 @@ function computeDynamicValues(game) {
   while (digits.length < 3) digits.push(1 + Math.floor(seededRand(seed, 30 + digits.length) * 9));
   const mp = [...new Set(digits)].sort((a, b) => a - b).slice(0, 5).join(',');
 
-  // Timer: minutos restantes até o próximo ciclo (regressivo)
+  // Timer: tempo restante até o próximo ciclo
   const elapsed = Date.now() % DYNAMIC_CYCLE_MS;
   const remaining = DYNAMIC_CYCLE_MS - elapsed;
   const mins = Math.floor(remaining / 60000);
   const secs = Math.floor((remaining % 60000) / 1000);
   const timer = `${mins}:${String(secs).padStart(2, '0')}`;
 
-  const fmtBet = (lo, hi) => {
-    const sLo = lo.toFixed(2).replace('.', ',');
-    if (lo === hi) return `R$${sLo}`;
-    const sHi = hi.toFixed(2).replace('.', ',');
-    return `R$${sLo} a R$${sHi}`;
-  };
+  const fmtBRL = v => v.toFixed(2).replace('.', ',');
 
   return {
+    // Métricas das barras (com cor)
     padrao: padraoFinal,
     minima: minimaFinal,
+    maxima: maximaFinal,
+    padraoStatus: statusByValue(padraoFinal),
+    minimaStatus: statusByValue(minimaFinal),
+    maximaStatus: statusByValue(maximaFinal),
+    // Distribuição (sobre o thumb)
+    dist: distFinal,
+    // RTP (mantido para compatibilidade interna)
     rtp: rtpShown,
-    pd: fmtBet(pdLow, pdHigh),
-    mi: fmtBet(miLow, miHigh),
-    mbc: fmtBet(mbcLow, mbcHigh),
+    rtpStatus: statusByValue(rtpShown),
+    // Bets sugeridas (Rainha do Slot)
+    bonusRound,
+    bonusValue: fmtBRL(bonusValue),
+    conexaoRound,
+    conexaoValue: fmtBRL(conexaoValue),
+    // Compatibilidade com versão antiga
+    pd: `R$${fmtBRL(bonusValue)}`,
+    mi: `R$${fmtBRL(bonusValue)}`,
+    mbc: `R$${fmtBRL(conexaoValue)}`,
     mp,
     timer
   };
@@ -820,57 +859,56 @@ function renderCards(filter = 'all', search = '') {
     const d = computeDynamicValues(g);
 
     card.innerHTML = `
-      <div class="gcv2-top">
-        <div class="gcv2-rtp-badge">RTP: <strong>${d.rtp}%</strong></div>
+      <div class="gcv2-thumb-wrap">
+        <img src="${sanitize(thumb)}" alt="${sanitize(g.name)}" class="gcv2-thumb" loading="lazy">
+        <div class="gcv2-fav-btn" title="Favoritar">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
+          </svg>
+        </div>
         ${g.hot === 'fire'
           ? '<div class="gcv2-hot-badge">🔥 QUENTE</div>'
           : '<div class="gcv2-hot-badge gcv2-hot-neutral">✨ NOVO</div>'}
+        <div class="gcv2-dist-overlay">
+          Distribuição: <strong data-v="dist">${d.dist}%</strong>
+        </div>
       </div>
 
-      <div class="gcv2-thumb-wrap">
-        <img src="${sanitize(thumb)}" alt="${sanitize(g.name)}" class="gcv2-thumb" loading="lazy">
+      <div class="gcv2-info-row">
+        <div class="gcv2-info-icon">
+          <span class="gcv2-info-prov-tag" style="background:${prov.color}">${sanitize((prov.name || g.provider).slice(0,2).toUpperCase())}</span>
+        </div>
+        <h3 class="gcv2-title">${sanitize(g.name)}</h3>
       </div>
-
-      <div class="gcv2-provider">
-        <span class="gcv2-provider-dot" style="background:${prov.color}"></span>
-        <span class="gcv2-provider-name">${sanitize(prov.name.toUpperCase())}</span>
-      </div>
-
-      <h3 class="gcv2-title">${sanitize(g.name)}</h3>
 
       <div class="gcv2-bars">
         <div class="gcv2-bar-row">
-          <div class="gcv2-bar-head">
-            <span>Aposta Padrão</span>
-            <strong data-v="padrao">${d.padrao}%</strong>
-          </div>
-          <div class="gcv2-bar"><div class="gcv2-bar-fill gcv2-bar-green" data-v="padrao-bar" style="width:${d.padrao}%"></div></div>
+          <div class="gcv2-bar-label">Aposta Padrão: <strong data-v="padrao">${d.padrao}%</strong></div>
+          <div class="gcv2-bar"><div class="gcv2-bar-fill gcv2-bar-${d.padraoStatus}" data-v="padrao-bar" style="width:${d.padrao}%"></div></div>
         </div>
         <div class="gcv2-bar-row">
-          <div class="gcv2-bar-head">
-            <span>Aposta Mínima</span>
-            <strong data-v="minima">${d.minima}%</strong>
-          </div>
-          <div class="gcv2-bar"><div class="gcv2-bar-fill gcv2-bar-purple" data-v="minima-bar" style="width:${d.minima}%"></div></div>
+          <div class="gcv2-bar-label">Aposta Mínima: <strong data-v="minima">${d.minima}%</strong></div>
+          <div class="gcv2-bar"><div class="gcv2-bar-fill gcv2-bar-${d.minimaStatus}" data-v="minima-bar" style="width:${d.minima}%"></div></div>
         </div>
         <div class="gcv2-bar-row">
-          <div class="gcv2-bar-head">
-            <span>RTP</span>
-            <strong data-v="rtp">${d.rtp}%</strong>
-          </div>
-          <div class="gcv2-bar"><div class="gcv2-bar-fill gcv2-bar-red" data-v="rtp-bar" style="width:${d.rtp}%"></div></div>
+          <div class="gcv2-bar-label">Aposta Máxima: <strong data-v="maxima">${d.maxima}%</strong></div>
+          <div class="gcv2-bar"><div class="gcv2-bar-fill gcv2-bar-${d.maximaStatus}" data-v="maxima-bar" style="width:${d.maxima}%"></div></div>
         </div>
       </div>
 
       <div class="gcv2-bet-box">
-        <div class="gcv2-bet-header">
-          <span class="gcv2-bet-title">⚡ BET</span>
+        <div class="gcv2-bet-title-row">
+          <span class="gcv2-bet-title">APOSTAS SUGERIDAS</span>
           <span class="gcv2-bet-timer">🕐 <span data-v="timer">${d.timer}</span></span>
         </div>
-        <div class="gcv2-bet-row"><span>PD:</span><strong data-v="pd">${d.pd}</strong></div>
-        <div class="gcv2-bet-row"><span>Mi:</span><strong data-v="mi">${d.mi}</strong></div>
-        <div class="gcv2-bet-row"><span>Mbc:</span><strong data-v="mbc">${d.mbc}</strong></div>
-        <div class="gcv2-bet-row gcv2-bet-mp"><span>MP:</span><strong data-v="mp">${d.mp}</strong></div>
+        <div class="gcv2-bet-row">
+          <span class="gcv2-bet-label"><strong data-v="bonus-round">${d.bonusRound}</strong>° BET BÔNUS</span>
+          <span class="gcv2-bet-chip" data-v="bonus-value">${d.bonusValue}</span>
+        </div>
+        <div class="gcv2-bet-row">
+          <span class="gcv2-bet-label"><strong data-v="conexao-round">${d.conexaoRound}</strong>° BET CONEXÃO</span>
+          <span class="gcv2-bet-chip" data-v="conexao-value">${d.conexaoValue}</span>
+        </div>
       </div>
 
       <div class="gcv2-actions">
@@ -878,7 +916,7 @@ function renderCards(filter = 'all', search = '') {
            class="gcv2-btn-play${hasLink ? '' : ' no-link'}"
            ${hasLink ? 'target="_blank" rel="noopener noreferrer"' : ''}
            data-game-id="${g.id}">
-          ▶ ${hasLink ? 'JOGAR' : 'EM BREVE'}
+          ${hasLink ? 'JOGAR' : 'EM BREVE'}
         </a>
         <button class="gcv2-btn-copy" title="Copiar link do jogo" data-copy-id="${g.id}">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
@@ -1193,7 +1231,7 @@ function initMain() {
 
 /* ============================================
    CICLO DINÂMICO — atualiza valores dos cards
-   (tick do timer a cada 1s, rerender do grid a cada 5min)
+   (tick do timer a cada 1s, rerender do grid a cada 1min)
    ============================================ */
 function startDynamicCycle() {
   let lastSlot = Math.floor(Date.now() / DYNAMIC_CYCLE_MS);
@@ -1275,7 +1313,9 @@ function refreshAllCardTimers() {
 
 /**
  * Recalcula e atualiza todos os valores dinâmicos de cada card,
- * com animação nas barras. Chamado a cada troca de ciclo (5min).
+ * com animação nas barras. Chamado a cada troca de ciclo (1min).
+ * Também atualiza a COR de cada barra conforme o novo valor:
+ *  >=70 verde · >=40 amarelo · <40 vermelho
  */
 function refreshAllCardValues(animate) {
   const games = getGames();
@@ -1289,28 +1329,38 @@ function refreshAllCardValues(animate) {
     const set = (sel, v) => { const el = card.querySelector(`[data-v="${sel}"]`); if (el) el.textContent = v; };
     set('padrao', `${d.padrao}%`);
     set('minima', `${d.minima}%`);
+    set('maxima', `${d.maxima}%`);
+    set('dist', `${d.dist}%`);
+    set('bonus-round', d.bonusRound);
+    set('bonus-value', d.bonusValue);
+    set('conexao-round', d.conexaoRound);
+    set('conexao-value', d.conexaoValue);
+    set('timer', d.timer);
+    // Compatibilidade
     set('rtp', `${d.rtp}%`);
     set('pd', d.pd);
     set('mi', d.mi);
     set('mbc', d.mbc);
     set('mp', d.mp);
-    set('timer', d.timer);
 
-    // Barras (com transição CSS)
-    const setBar = (sel, pct) => {
+    // Barras (com transição CSS) — atualiza largura E cor
+    const setBar = (sel, pct, status) => {
       const el = card.querySelector(`[data-v="${sel}"]`);
       if (!el) return;
+      // troca a classe de cor (remove as 3 possíveis, aplica a nova)
+      el.classList.remove('gcv2-bar-green', 'gcv2-bar-yellow', 'gcv2-bar-red',
+                          // mantém compatibilidade com classes antigas
+                          'gcv2-bar-purple');
+      el.classList.add(`gcv2-bar-${status}`);
       if (animate) el.classList.add('gcv2-bar-refresh');
       el.style.width = `${pct}%`;
       if (animate) setTimeout(() => el.classList.remove('gcv2-bar-refresh'), 800);
     };
-    setBar('padrao-bar', d.padrao);
-    setBar('minima-bar', d.minima);
-    setBar('rtp-bar', d.rtp);
-
-    // Atualiza também o badge de RTP topo
-    const rtpTop = card.querySelector('.gcv2-rtp-badge strong');
-    if (rtpTop) rtpTop.textContent = `${d.rtp}%`;
+    setBar('padrao-bar', d.padrao, d.padraoStatus);
+    setBar('minima-bar', d.minima, d.minimaStatus);
+    setBar('maxima-bar', d.maxima, d.maximaStatus);
+    // Compatibilidade — caso ainda exista o RTP-bar em algum card antigo
+    setBar('rtp-bar', d.rtp, d.rtpStatus);
   });
 
   // Atualiza o timestamp global na grid
