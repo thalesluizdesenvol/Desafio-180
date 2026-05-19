@@ -10449,7 +10449,8 @@
     {"id":971,"name":"Banana Rock","provider":"playngo","emoji":"🍌","theme":"jungle","dist":96,"rtp":96.5,"minBet":0.2,"maxBet":100,"hot":null,"tag":null,"img":"","link":"https://www.fy-fanta.com/?id=223975751","clicks":0},
     {"id":972,"name":"Hugo Goal","provider":"playngo","emoji":"⚽","theme":"sports","dist":96,"rtp":96.3,"minBet":0.1,"maxBet":100,"hot":null,"tag":null,"img":"","link":"https://hms-tiradentesday.bet/?invite_code=8be79469","clicks":0},
     {"id":973,"name":"Beast of Wealth","provider":"playngo","emoji":"🎰","theme":"fantasy","dist":96,"rtp":96.2,"minBet":0.2,"maxBet":100,"hot":null,"tag":null,"img":"","link":"https://coroa-gghhpg.com/?id=405842843","clicks":0},
-    {"id":974,"name":"Inferno Star","provider":"playngo","emoji":"🔥","theme":"classic","dist":96,"rtp":96.34,"minBet":0.1,"maxBet":100,"hot":null,"tag":null,"img":"","link":"https://www.onebra77.com/?source_code=TWMWECDNJ2X","clicks":0}];
+    {"id":974,"name":"Inferno Star","provider":"playngo","emoji":"🔥","theme":"classic","dist":96,"rtp":96.34,"minBet":0.1,"maxBet":100,"hot":null,"tag":null,"img":"","link":"https://www.onebra77.com/?source_code=TWMWECDNJ2X","clicks":0}
+  ];
   const THEME_COLORS = {
     chinese:   ['#DC2626','#F59E0B','#FBBF24'],
     fantasy:   ['#7C3AED','#C084FC','#F472B6'],
