@@ -9911,37 +9911,8 @@
       "img": "",
       "link": "https://br.mt-antilope.com/home?inviteCode=VEU6ZR",
       "clicks": 0
-    }
-  ];
-/* ============================================================
-   ADIÇÃO EVOLUTION — colar dentro do array CATALOG existente
-   IDs a partir de 800 (sem conflito com seu catálogo até 784)
-   Links rotacionando entre os 6 afiliados que você já usa
-   Imagens: reusando hashes Cloudflare que já existem no catálogo
-            quando há match temático; img:"" cai no SVG fallback
-   ============================================================ */
+    },
 
-/* ===== CORREÇÕES NO CATÁLOGO ATUAL =====
-   Antes de adicionar os novos, corrigir 2 classificações erradas:
-
-   id: 12 "Live - Spaceman"
-     ANTES: provider: "evolution"
-     DEPOIS: provider: "pragmatic"   ← Spaceman é Pragmatic Play
-
-   id: 287 "Lucky 6 Roulette"
-     ANTES: provider: "evolution"
-     DEPOIS: provider: "playtech"    ← Lucky 6 Roulette é Playtech
-
-   Se você não tem o provider "playtech" mapeado em outros lugares
-   do sistema (THEME_COLORS, FALLBACK_CDNS, filtros do site),
-   troca por "evolution" mesmo e marca como pendência — mas o
-   correto técnico é playtech.
-*/
-
-
-/* ===== NOVOS JOGOS EVOLUTION ===== */
-
-  // ----- GAME SHOWS (carro-chefe da Evolution no BR) -----
   {
     "id": 800,
     "name": "Crazy Time",
@@ -10413,7 +10384,7 @@
     "img": "",
     "link": "https://br.mt-antilope.com/home?inviteCode=VEU6ZR",
     "clicks": 0
-  }
+  }];
   const THEME_COLORS = {
     chinese:   ['#DC2626','#F59E0B','#FBBF24'],
     fantasy:   ['#7C3AED','#C084FC','#F472B6'],
