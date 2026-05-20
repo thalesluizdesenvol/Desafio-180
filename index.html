@@ -59,7 +59,7 @@
       <span class="title-line title-gradient">Ganhe.</span>
       <span class="title-line">Brilhe.</span>
     </h1>
-    <p class="hero-sub">Os slots mais charmosos, com as melhores distribuições. Curadoria cuidadosa de PG Soft, Pragmatic Play e Evolution Gaming — tudo que faz sucesso no Brasil, em um só lugar.</p>
+    <p class="hero-sub">Os slots mais charmosos, com as melhores distribuições. Curadoria dos top provedores — PG Soft, Pragmatic, Evolution, Hacksaw e Nolimit City reunidos em um só lugar.</p>
 
     <div class="hero-update-row">
       <span class="hero-update-dot"></span>
@@ -138,76 +138,109 @@
 </div>
 
 <!-- ============ PLATAFORMAS INDICADAS ============ -->
+<!--
+  Notas de UX (refatoração):
+  - Removido o card central "SlotMestre" — autocitação dentro de uma seção
+    de plataformas parceiras quebra hierarquia e confunde o usuário.
+  - Removidas badges NOVO/TOP/TURBO/VIP — sistema sem critério visual claro
+    transforma tudo em destaque (= nada vira destaque).
+  - Mantido APENAS o badge "🔥 Em alta" como sinal único de destaque,
+    aplicado por classe `is-hot` no card.
+  - Emojis trocados por placeholders de logo (.platform-logo-placeholder).
+    SUBSTITUIR por <img src="assets/logos/casas/{slug}.svg"> assim que
+    você tiver as logos reais das casas.
+  - Adicionado disclaimer de afiliação no final da seção (transparência
+    legal + ganho de confiança do usuário).
+-->
 <section class="section platforms-section" id="plataformas">
   <div class="container">
     <div class="section-header platforms-header">
       <div class="section-eyebrow">⭐ PLATAFORMAS INDICADAS</div>
       <h2 class="section-title">Onde Jogar</h2>
-      <p class="section-sub">As casas de apostas que recomendamos — pague pix, saque rápido, bônus de boas-vindas 💎</p>
+      <p class="section-sub">As casas de apostas que recomendamos — Pix instantâneo, saque rápido e bônus de boas-vindas.</p>
     </div>
 
     <div class="platforms-grid">
       <a class="platform-card" href="https://www.fy-fanta.com/?id=223975751" target="_blank" rel="noopener noreferrer" data-platform="fanta">
-        <span class="platform-badge">NOVO</span>
-        <div class="platform-icon">🎰</div>
-        <div class="platform-name">Fanta Bet</div>
-        <div class="platform-tag">Bônus de boas-vindas</div>
+        <div class="platform-logo-wrap">
+          <!-- TODO: trocar por <img src="assets/logos/casas/fanta.svg" alt="Logo Fanta Bet" class="platform-logo"> -->
+          <div class="platform-logo-placeholder">Fanta Bet</div>
+        </div>
+        <div class="platform-benefit">Bônus de boas-vindas</div>
+        <div class="platform-microcopy">Pix instantâneo</div>
       </a>
 
-      <a class="platform-card" href="https://hms-tiradentesday.bet/?invite_code=8be79469" target="_blank" rel="noopener noreferrer" data-platform="tiradentes">
-        <span class="platform-badge platform-badge-hot">🔥 QUENTE</span>
-        <div class="platform-icon">🏆</div>
-        <div class="platform-name">Tiradentes</div>
-        <div class="platform-tag">Saque via Pix</div>
+      <a class="platform-card is-hot" href="https://hms-tiradentesday.bet/?invite_code=8be79469" target="_blank" rel="noopener noreferrer" data-platform="tiradentes">
+        <span class="platform-badge-hot">🔥 Em alta</span>
+        <div class="platform-logo-wrap">
+          <!-- TODO: trocar por <img src="assets/logos/casas/tiradentes.svg" alt="Logo Tiradentes" class="platform-logo"> -->
+          <div class="platform-logo-placeholder">Tiradentes</div>
+        </div>
+        <div class="platform-benefit">Saque via Pix</div>
+        <div class="platform-microcopy">Liberação em minutos</div>
       </a>
 
       <a class="platform-card" href="https://coroa-gghhpg.com/?id=405842843" target="_blank" rel="noopener noreferrer" data-platform="coroa">
-        <span class="platform-badge">TOP</span>
-        <div class="platform-icon">👑</div>
-        <div class="platform-name">Coroa Premium</div>
-        <div class="platform-tag">Prêmios diários</div>
+        <div class="platform-logo-wrap">
+          <!-- TODO: trocar por <img src="assets/logos/casas/coroa.svg" alt="Logo Coroa Premium" class="platform-logo"> -->
+          <div class="platform-logo-placeholder">Coroa Premium</div>
+        </div>
+        <div class="platform-benefit">Prêmios diários</div>
+        <div class="platform-microcopy">Cashback em derrotas</div>
       </a>
 
       <a class="platform-card" href="https://www.onebra77.com/?source_code=TWMWECDNJ2X" target="_blank" rel="noopener noreferrer" data-platform="onebra">
-        <span class="platform-badge">TURBO</span>
-        <div class="platform-icon">⚡</div>
-        <div class="platform-name">OneBra77</div>
-        <div class="platform-tag">Saque em 5 min</div>
-      </a>
-
-      <!-- CARD CENTRAL DESTACADO -->
-      <a class="platform-card platform-center" href="#jogos" data-platform="featured">
-        <div class="platform-center-inner">
-          <div class="platform-center-icon">🎰</div>
-          <div class="platform-center-brand">SlotMestre</div>
-          <div class="platform-center-tag">VER JOGOS</div>
+        <div class="platform-logo-wrap">
+          <!-- TODO: trocar por <img src="assets/logos/casas/onebra77.svg" alt="Logo OneBra77" class="platform-logo"> -->
+          <div class="platform-logo-placeholder">OneBra77</div>
         </div>
+        <div class="platform-benefit">Saque em 5 min</div>
+        <div class="platform-microcopy">Sem limite mínimo</div>
       </a>
 
       <a class="platform-card" href="https://br.mt-antilope.com/home?inviteCode=VEU6ZR" target="_blank" rel="noopener noreferrer" data-platform="antilope">
-        <span class="platform-badge">VIP</span>
-        <div class="platform-icon">🦌</div>
-        <div class="platform-name">Antilope BR</div>
-        <div class="platform-tag">Alto RTP</div>
+        <div class="platform-logo-wrap">
+          <!-- TODO: trocar por <img src="assets/logos/casas/antilope.svg" alt="Logo Antilope BR" class="platform-logo"> -->
+          <div class="platform-logo-placeholder">Antilope BR</div>
+        </div>
+        <div class="platform-benefit">Alto RTP</div>
+        <div class="platform-microcopy">Jogos com 97%+ de retorno</div>
       </a>
 
       <a class="platform-card" href="https://kk-judy777.vip/?id=649076826&currency=BRL&type=2" target="_blank" rel="noopener noreferrer" data-platform="judy">
-        <span class="platform-badge platform-badge-hot">🔥 QUENTE</span>
-        <div class="platform-icon">🎲</div>
-        <div class="platform-name">Judy 777</div>
-        <div class="platform-tag">Giros grátis</div>
+        <div class="platform-logo-wrap">
+          <!-- TODO: trocar por <img src="assets/logos/casas/judy777.svg" alt="Logo Judy 777" class="platform-logo"> -->
+          <div class="platform-logo-placeholder">Judy 777</div>
+        </div>
+        <div class="platform-benefit">Giros grátis</div>
+        <div class="platform-microcopy">No cadastro, sem depósito</div>
       </a>
     </div>
+
+    <p class="platforms-disclaimer">
+      💡 Links de parceria. A SlotMestre recebe comissão sem custo adicional para você. Nossa curadoria é independente.
+    </p>
   </div>
 </section>
 
 <!-- ============ PROVEDORES PARCEIROS ============ -->
+<!--
+  Notas de UX (refatoração):
+  - Esta seção depende de renderProvidersGrid() em app.js para popular o grid.
+  - O JS atual mostra TODOS os providers cadastrados, mesmo os sem nenhum jogo.
+    Isso é publicidade falsa: exibimos provedores que o usuário não vai encontrar
+    no catálogo. AJUSTE NECESSÁRIO EM app.js (renderProvidersGrid):
+      filter(p => p.enabled !== false && games.some(g => g.provider === p.key))
+  - Sugestão adicional: substituir os logoSvg (que hoje são apenas tipografia
+    estilizada em SVG) por arquivos SVG/PNG das logos oficiais dos provedores.
+    Hoje os "logos" não são reconhecíveis e parecem placeholder.
+-->
 <section class="section providers-section" id="provedores">
   <div class="container">
     <div class="section-header">
-      <div class="section-eyebrow">🏆 PROVEDORES PARCEIROS</div>
+      <div class="section-eyebrow">🏆 NOSSOS PROVEDORES</div>
       <h2 class="section-title">Os Estúdios por Trás dos Jogos</h2>
-      <p class="section-sub">Trabalhamos com os melhores estúdios do mundo — cada um com seu estilo, mecânicas e jackpots ✨</p>
+      <p class="section-sub">Os melhores estúdios do mundo reunidos no nosso catálogo. Toque para ver os jogos de cada um.</p>
     </div>
 
     <div class="providers-grid" id="providersGrid">
@@ -256,7 +289,7 @@
     <div class="features-grid">
       <div class="feature-card"><div class="feature-icon">🌸</div><div class="feature-title">Design Cuidadoso</div><div class="feature-desc">Cada detalhe pensado para ser bonito, leve e intuitivo.</div></div>
       <div class="feature-card"><div class="feature-icon">💎</div><div class="feature-title">Curadoria Premium</div><div class="feature-desc">Apenas os jogos com melhores RTPs e as maiores distribuições.</div></div>
-      <div class="feature-card"><div class="feature-icon">🏆</div><div class="feature-title">Top Provedores</div><div class="feature-desc">PG Soft, Pragmatic Play e Evolution Gaming reunidos em um só lugar.</div></div>
+      <div class="feature-card"><div class="feature-icon">🏆</div><div class="feature-title">Top Provedores</div><div class="feature-desc">Os principais estúdios do mundo reunidos em um só catálogo.</div></div>
       <div class="feature-card"><div class="feature-icon">💬</div><div class="feature-title">Suporte 24/7</div><div class="feature-desc">Atendimento via Telegram, disponível a qualquer hora.</div></div>
     </div>
   </div>
