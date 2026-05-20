@@ -543,22 +543,68 @@ function renderTicker() {
    PROVEDORES — render no site público
    Renderiza só os enabled, na ordem do storage.
    ============================================ */
+/* ============================================
+   PROVEDORES — render no site público
+   Refatorado:
+   - Só mostra providers que TÊM pelo menos 1 jogo (evita publicidade falsa)
+   - Substitui tagline inconsistente por contador real de jogos
+   - Card clicável: ao clicar, filtra a seção #jogos pelo provider e rola até lá
+   - Ordena por quantidade de jogos (mais jogos primeiro)
+   ============================================ */
 function renderProvidersGrid() {
   const grid = document.getElementById('providersGrid');
   if (!grid) return;
-  const list = getProviders().filter(p => p.enabled !== false);
+
+  const allProviders = getProviders().filter(p => p.enabled !== false);
+  const games = getGames();
+
+  // Conta jogos por provider key
+  const gameCountByKey = {};
+  games.forEach(g => {
+    if (g && g.provider) {
+      gameCountByKey[g.provider] = (gameCountByKey[g.provider] || 0) + 1;
+    }
+  });
+
+  // Mantém apenas providers com >= 1 jogo, ordenados por contagem desc
+  const list = allProviders
+    .filter(p => (gameCountByKey[p.key] || 0) > 0)
+    .sort((a, b) => (gameCountByKey[b.key] || 0) - (gameCountByKey[a.key] || 0));
+
   if (!list.length) {
-    grid.innerHTML = `<div class="providers-empty">Nenhum provedor ativo no momento.</div>`;
+    grid.innerHTML = `<div class="providers-empty">Nenhum provedor com jogos disponíveis.</div>`;
     return;
   }
-  grid.innerHTML = list.map(p => `
-    <div class="provider-card" data-provider="${sanitize(p.key)}"
-         style="--prov-color:${sanitize(p.color)}; --prov-color-2:${sanitize(p.colorAccent || p.color)};">
-      <div class="provider-logo">${p.logoSvg || defaultProviderLogo(p)}</div>
-      <div class="provider-name">${sanitize(p.name)}</div>
-      ${p.tagline ? `<div class="provider-meta">${sanitize(p.tagline)}</div>` : ''}
-    </div>
-  `).join('');
+
+  grid.innerHTML = list.map(p => {
+    const count = gameCountByKey[p.key] || 0;
+    const countLabel = count === 1 ? '1 jogo' : `${count} jogos`;
+    return `
+      <div class="provider-card" data-provider="${sanitize(p.key)}"
+           style="--prov-color:${sanitize(p.color)}; --prov-color-2:${sanitize(p.colorAccent || p.color)};">
+        <div class="provider-logo">${p.logoSvg || defaultProviderLogo(p)}</div>
+        <div class="provider-count">${countLabel}</div>
+      </div>
+    `;
+  }).join('');
+
+  // Card clicável: filtra a seção #jogos pelo provider e faz scroll suave até lá
+  grid.querySelectorAll('.provider-card').forEach(card => {
+    card.addEventListener('click', () => {
+      const key = card.dataset.provider;
+      if (!key) return;
+
+      // Aplica filtro nas tabs (se a tab existir)
+      const tab = document.querySelector(`.tab[data-filter="${key}"]`);
+      if (tab) tab.click();
+
+      // Scroll suave até a seção de jogos
+      const jogosSection = document.getElementById('jogos');
+      if (jogosSection) {
+        jogosSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    });
+  });
 }
 
 /* Logo fallback quando o provedor não tem SVG cadastrado:
