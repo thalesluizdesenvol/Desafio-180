@@ -3042,7 +3042,11 @@ body {
 }
 
 /* ============================================
-   PLATAFORMAS INDICADAS — grid interativa estilo "onde jogar"
+   PLATAFORMAS INDICADAS — "Onde Jogar"
+   Refatorado: foco em reconhecimento da marca + benefício claro.
+   - Sem emojis substituindo logos (logos vão em .platform-logo)
+   - Sistema de badge único: .is-hot mostra "🔥 Em alta"
+   - Cards mais limpos, hierarquia clara: logo > benefício > microcopy
    ============================================ */
 .platforms-section {
   padding-top: 40px;
@@ -3050,15 +3054,16 @@ body {
 }
 
 .platforms-header {
-  margin-bottom: 32px;
+  margin-bottom: 36px;
 }
 
-/* Grid 3 colunas, 7 cards (3+1 destaque+3) num layout 3x3 */
+/* Grid responsivo: 3 cols desktop, 2 cols tablet, 1 col mobile.
+   max-width maior pra acomodar conteúdo mais rico nos cards. */
 .platforms-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 14px;
-  max-width: 780px;
+  gap: 18px;
+  max-width: 960px;
   margin: 0 auto;
 }
 
@@ -3067,11 +3072,13 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  gap: 6px;
-  padding: 20px 14px 18px;
-  min-height: 140px;
-  background: linear-gradient(180deg, rgba(60, 28, 110, 0.5) 0%, rgba(45, 21, 82, 0.6) 100%);
+  justify-content: flex-start;
+  gap: 14px;
+  padding: 24px 18px 22px;
+  min-height: 180px;
+  background: linear-gradient(180deg,
+    rgba(60, 28, 110, 0.55) 0%,
+    rgba(45, 21, 82, 0.7) 100%);
   border: 1.5px solid rgba(196, 181, 253, 0.18);
   border-radius: 18px;
   text-decoration: none;
@@ -3083,10 +3090,11 @@ body {
   cursor: pointer;
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
-  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.25), inset 0 1px 0 rgba(255, 255, 255, 0.05);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.25),
+              inset 0 1px 0 rgba(255, 255, 255, 0.05);
 }
 
-/* Brilho rotativo no hover */
+/* Brilho rotativo no hover (mantido — efeito agrada na seção premium) */
 .platform-card::before {
   content: '';
   position: absolute;
@@ -3124,130 +3132,123 @@ body {
   animation-play-state: running;
 }
 
-/* Badge superior */
-.platform-badge {
+/* ====== Badge único: "Em alta" ====== */
+.platform-badge-hot {
   position: absolute;
-  top: 8px;
-  left: 8px;
+  top: 10px;
+  right: 10px;
   font-family: 'Rajdhani', sans-serif;
-  font-size: 0.6rem;
+  font-size: 0.62rem;
   font-weight: 800;
   letter-spacing: 0.08em;
-  padding: 3px 8px;
-  border-radius: 6px;
-  background: linear-gradient(135deg, #A78BFA, #C084FC);
-  color: #fff;
-  box-shadow: 0 2px 6px rgba(167, 139, 250, 0.4);
-  text-transform: uppercase;
-  z-index: 1;
-}
-
-.platform-badge-hot {
+  padding: 4px 9px;
+  border-radius: 100px;
   background: linear-gradient(135deg, #F43F5E, #FB923C);
-  box-shadow: 0 2px 6px rgba(244, 63, 94, 0.45);
+  color: #fff;
+  box-shadow: 0 2px 8px rgba(244, 63, 94, 0.5);
+  text-transform: uppercase;
+  z-index: 2;
+  white-space: nowrap;
 }
 
-/* Ícone gigante */
-.platform-icon {
-  font-size: 2.8rem;
-  line-height: 1;
-  margin-top: 6px;
-  filter: drop-shadow(0 4px 12px rgba(244, 114, 182, 0.35));
+/* Glow extra no card "em alta" pra reforçar destaque */
+.platform-card.is-hot {
+  border-color: rgba(251, 146, 60, 0.4);
+  box-shadow: 0 6px 20px rgba(244, 63, 94, 0.18),
+              inset 0 1px 0 rgba(255, 255, 255, 0.05);
+}
+
+/* ====== Logo da casa de apostas ====== */
+.platform-logo-wrap {
+  width: 100%;
+  height: 56px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.3));
   transition: transform 0.3s ease;
 }
 
-.platform-card:hover .platform-icon {
-  transform: scale(1.15) rotate(-6deg);
+.platform-card:hover .platform-logo-wrap {
+  transform: scale(1.06);
 }
 
-.platform-name {
+.platform-logo {
+  max-width: 100%;
+  max-height: 56px;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+}
+
+/* Placeholder de logo enquanto não temos os SVGs reais.
+   Usa tipografia premium com tratamento que NÃO se confunde com logo real. */
+.platform-logo-placeholder {
   font-family: 'Playfair Display', serif;
   font-weight: 700;
-  font-size: 1.05rem;
+  font-size: 1.25rem;
   color: #fff;
   text-align: center;
-  line-height: 1.1;
   letter-spacing: -0.01em;
+  line-height: 1.1;
+  padding: 8px 4px;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px dashed rgba(196, 181, 253, 0.18);
+  width: 100%;
 }
 
-.platform-tag {
+/* ====== Hierarquia de texto: benefício > microcopy ====== */
+.platform-benefit {
   font-family: 'Rajdhani', sans-serif;
-  font-size: 0.7rem;
-  font-weight: 600;
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: #FDE68A;
+  text-align: center;
+  letter-spacing: 0.02em;
+  line-height: 1.2;
+  margin-top: 4px;
+}
+
+.platform-microcopy {
+  font-family: 'Exo 2', sans-serif;
+  font-size: 0.75rem;
+  font-weight: 400;
   color: #C4B5FD;
   text-align: center;
-  letter-spacing: 0.04em;
-  opacity: 0.85;
+  letter-spacing: 0.01em;
+  opacity: 0.75;
+  line-height: 1.3;
 }
 
-/* ====== CARD CENTRAL DESTACADO ====== */
-.platform-center {
-  background: linear-gradient(135deg, #7C3AED 0%, #DB2777 55%, #F59E0B 100%);
-  border: none;
-  box-shadow: 0 10px 30px rgba(167, 139, 250, 0.45),
-              0 0 60px rgba(244, 114, 182, 0.25),
-              inset 0 1px 0 rgba(255, 255, 255, 0.2);
+/* ====== Disclaimer de afiliação ====== */
+.platforms-disclaimer {
+  margin-top: 28px;
+  text-align: center;
+  font-family: 'Exo 2', sans-serif;
+  font-size: 0.78rem;
+  font-weight: 400;
+  color: #C4B5FD;
+  opacity: 0.55;
+  letter-spacing: 0.01em;
+  max-width: 580px;
+  margin-left: auto;
+  margin-right: auto;
+  line-height: 1.5;
 }
 
-.platform-center::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: radial-gradient(circle at 30% 20%,
-              rgba(255, 255, 255, 0.25) 0%,
-              transparent 50%);
-  pointer-events: none;
-}
-
-.platform-center:hover {
-  transform: translateY(-8px) scale(1.05);
-  box-shadow: 0 22px 50px rgba(167, 139, 250, 0.6),
-              0 0 80px rgba(244, 114, 182, 0.4);
-}
-
-.platform-center-inner {
-  position: relative;
-  z-index: 1;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 4px;
-}
-
-.platform-center-icon {
-  font-size: 2.4rem;
-  filter: drop-shadow(0 4px 10px rgba(0, 0, 0, 0.3));
-  animation: centerIconPulse 2.5s ease-in-out infinite;
-}
-
-@keyframes centerIconPulse {
-  0%, 100% { transform: scale(1); }
-  50% { transform: scale(1.12); }
-}
-
-.platform-center-brand {
-  font-family: 'Playfair Display', serif;
-  font-weight: 900;
-  font-size: 1.3rem;
-  color: #fff;
-  letter-spacing: -0.02em;
-  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
-  line-height: 1;
-  margin-top: 2px;
-}
-
-.platform-center-tag {
-  font-family: 'Rajdhani', sans-serif;
-  font-size: 0.7rem;
-  font-weight: 800;
-  letter-spacing: 0.15em;
-  color: rgba(255, 255, 255, 0.95);
-  padding: 4px 10px;
-  border-radius: 100px;
-  background: rgba(0, 0, 0, 0.25);
-  backdrop-filter: blur(8px);
-  margin-top: 4px;
+/* ====== TABLET ====== */
+@media (max-width: 880px) {
+  .platforms-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 14px;
+  }
+  .platform-card {
+    min-height: 165px;
+    padding: 20px 14px 18px;
+  }
+  .platform-logo-wrap { height: 48px; }
+  .platform-logo-placeholder { font-size: 1.1rem; }
 }
 
 /* ====== MOBILE ====== */
@@ -3257,29 +3258,55 @@ body {
     padding-bottom: 28px;
   }
   .platforms-grid {
+    grid-template-columns: repeat(2, 1fr);
     gap: 10px;
   }
   .platform-card {
-    padding: 14px 8px 12px;
-    min-height: 115px;
+    padding: 16px 10px 14px;
+    min-height: 150px;
     border-radius: 14px;
+    gap: 10px;
   }
-  .platform-icon { font-size: 2.2rem; margin-top: 4px; }
-  .platform-name { font-size: 0.82rem; }
-  .platform-tag { font-size: 0.58rem; }
-  .platform-badge { font-size: 0.52rem; padding: 2px 6px; top: 6px; left: 6px; }
-  .platform-center-icon { font-size: 1.9rem; }
-  .platform-center-brand { font-size: 1rem; }
-  .platform-center-tag { font-size: 0.58rem; padding: 3px 8px; }
+  .platform-logo-wrap { height: 42px; }
+  .platform-logo-placeholder {
+    font-size: 0.95rem;
+    padding: 6px 4px;
+  }
+  .platform-benefit { font-size: 0.82rem; }
+  .platform-microcopy { font-size: 0.68rem; }
+  .platform-badge-hot {
+    font-size: 0.55rem;
+    padding: 3px 7px;
+    top: 8px;
+    right: 8px;
+  }
+  .platforms-disclaimer {
+    font-size: 0.72rem;
+    margin-top: 22px;
+  }
 }
 
-@media (max-width: 360px) {
-  .platforms-grid { gap: 7px; }
-  .platform-card { padding: 12px 6px 10px; min-height: 105px; }
-  .platform-icon { font-size: 1.9rem; }
-  .platform-name { font-size: 0.74rem; }
+@media (max-width: 380px) {
+  .platforms-grid {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+  .platform-card {
+    min-height: 130px;
+    flex-direction: row;
+    text-align: left;
+    align-items: center;
+    padding: 14px 14px;
+  }
+  .platform-logo-wrap {
+    width: 70px;
+    height: 50px;
+    flex-shrink: 0;
+  }
+  .platform-card > div:not(.platform-logo-wrap) {
+    text-align: left;
+  }
 }
-
 /* ============================================
    PROVEDORES PARCEIROS
    Grid de cards com logo SVG estilizado por provedor.
@@ -3306,9 +3333,11 @@ body {
 
 .providers-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  /* 5 colunas no desktop fica simétrico com 5 providers ativos.
+     auto-fit + minmax garante que cresce/decresce naturalmente se mudar a quantidade. */
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
   gap: 16px;
-  max-width: 1200px;
+  max-width: 1100px;
   margin: 0 auto;
 }
 
@@ -3441,6 +3470,38 @@ body {
 .provider-card:hover .provider-meta {
   color: var(--prov-color-2);
   border-color: var(--prov-color);
+}
+
+/* Contador de jogos do provedor — sugestão de upgrade junto com app.js.
+   Use no lugar de .provider-meta quando você atualizar o renderProvidersGrid()
+   pra mostrar a quantidade de jogos em vez de tagline. */
+.provider-count {
+  position: relative;
+  z-index: 1;
+  font-family: 'Rajdhani', sans-serif;
+  font-weight: 600;
+  font-size: 0.78rem;
+  color: var(--prov-color-2);
+  text-align: center;
+  letter-spacing: 0.02em;
+  padding: 4px 12px;
+  background: rgba(0, 0, 0, 0.3);
+  border-radius: 100px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  transition: color 0.3s ease, border-color 0.3s ease;
+  cursor: pointer;
+}
+
+.provider-card:hover .provider-count {
+  color: #fff;
+  border-color: var(--prov-color);
+}
+
+/* Estado quando o provedor não tem jogos — não deveria nem aparecer,
+   mas se aparecer (fallback), aplicamos opacidade pra deixar claro. */
+.provider-card.is-empty {
+  opacity: 0.4;
+  pointer-events: none;
 }
 
 /* ====== TABLET ====== */
