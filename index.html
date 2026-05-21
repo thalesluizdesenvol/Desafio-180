@@ -157,18 +157,11 @@
 
 <!-- ============ PLATAFORMAS INDICADAS ============ -->
 <!--
-  Notas de UX (refatoração):
-  - Removido o card central "SlotMestre" — autocitação dentro de uma seção
-    de plataformas parceiras quebra hierarquia e confunde o usuário.
-  - Removidas badges NOVO/TOP/TURBO/VIP — sistema sem critério visual claro
-    transforma tudo em destaque (= nada vira destaque).
-  - Mantido APENAS o badge "🔥 Em alta" como sinal único de destaque,
-    aplicado por classe `is-hot` no card.
-  - Emojis trocados por placeholders de logo (.platform-logo-placeholder).
-    SUBSTITUIR por <img src="assets/logos/casas/{slug}.svg"> assim que
-    você tiver as logos reais das casas.
-  - Adicionado disclaimer de afiliação no final da seção (transparência
-    legal + ganho de confiança do usuário).
+  v3 — Refatoração:
+  Os 6 cards são agora renderizados por renderPlatforms() em app.js, lendo
+  do storage sm_platforms_v1 (CRUD via admin → página Plataformas).
+  Isso permite que você edite imagem, benefício, link de afiliado, badge
+  "Em alta" e ordem de cada plataforma sem mexer no HTML.
 -->
 <section class="section platforms-section" id="plataformas">
   <div class="container">
@@ -178,61 +171,8 @@
       <p class="section-sub">As casas de apostas que recomendamos — Pix instantâneo, saque rápido e bônus de boas-vindas.</p>
     </div>
 
-    <div class="platforms-grid">
-      <a class="platform-card" href="https://www.fy-fanta.com/?id=223975751" target="_blank" rel="noopener noreferrer" data-platform="fanta">
-        <div class="platform-logo-wrap">
-          <!-- TODO: trocar por <img src="assets/logos/casas/fanta.svg" alt="Logo Fanta Bet" class="platform-logo"> -->
-          <div class="platform-logo-placeholder">Fanta Bet</div>
-        </div>
-        <div class="platform-benefit">Bônus de boas-vindas</div>
-        <div class="platform-microcopy">Pix instantâneo</div>
-      </a>
-
-      <a class="platform-card is-hot" href="https://hms-tiradentesday.bet/?invite_code=8be79469" target="_blank" rel="noopener noreferrer" data-platform="tiradentes">
-        <span class="platform-badge-hot">🔥 Em alta</span>
-        <div class="platform-logo-wrap">
-          <!-- TODO: trocar por <img src="assets/logos/casas/tiradentes.svg" alt="Logo Tiradentes" class="platform-logo"> -->
-          <div class="platform-logo-placeholder">Tiradentes</div>
-        </div>
-        <div class="platform-benefit">Saque via Pix</div>
-        <div class="platform-microcopy">Liberação em minutos</div>
-      </a>
-
-      <a class="platform-card" href="https://coroa-gghhpg.com/?id=405842843" target="_blank" rel="noopener noreferrer" data-platform="coroa">
-        <div class="platform-logo-wrap">
-          <!-- TODO: trocar por <img src="assets/logos/casas/coroa.svg" alt="Logo Coroa Premium" class="platform-logo"> -->
-          <div class="platform-logo-placeholder">Coroa Premium</div>
-        </div>
-        <div class="platform-benefit">Prêmios diários</div>
-        <div class="platform-microcopy">Cashback em derrotas</div>
-      </a>
-
-      <a class="platform-card" href="https://www.onebra77.com/?source_code=TWMWECDNJ2X" target="_blank" rel="noopener noreferrer" data-platform="onebra">
-        <div class="platform-logo-wrap">
-          <!-- TODO: trocar por <img src="assets/logos/casas/onebra77.svg" alt="Logo OneBra77" class="platform-logo"> -->
-          <div class="platform-logo-placeholder">OneBra77</div>
-        </div>
-        <div class="platform-benefit">Saque em 5 min</div>
-        <div class="platform-microcopy">Sem limite mínimo</div>
-      </a>
-
-      <a class="platform-card" href="https://br.mt-antilope.com/home?inviteCode=VEU6ZR" target="_blank" rel="noopener noreferrer" data-platform="antilope">
-        <div class="platform-logo-wrap">
-          <!-- TODO: trocar por <img src="assets/logos/casas/antilope.svg" alt="Logo Antilope BR" class="platform-logo"> -->
-          <div class="platform-logo-placeholder">Antilope BR</div>
-        </div>
-        <div class="platform-benefit">Alto RTP</div>
-        <div class="platform-microcopy">Jogos com 97%+ de retorno</div>
-      </a>
-
-      <a class="platform-card" href="https://kk-judy777.vip/?id=649076826&currency=BRL&type=2" target="_blank" rel="noopener noreferrer" data-platform="judy">
-        <div class="platform-logo-wrap">
-          <!-- TODO: trocar por <img src="assets/logos/casas/judy777.svg" alt="Logo Judy 777" class="platform-logo"> -->
-          <div class="platform-logo-placeholder">Judy 777</div>
-        </div>
-        <div class="platform-benefit">Giros grátis</div>
-        <div class="platform-microcopy">No cadastro, sem depósito</div>
-      </a>
+    <div class="platforms-grid" id="platformsGrid">
+      <!-- Renderizado por renderPlatforms() em app.js a partir do storage -->
     </div>
 
     <p class="platforms-disclaimer">
