@@ -17,7 +17,29 @@ const STORAGE_KEYS = {
   CREDS:    'sm_admin_creds',        // mantido p/ compatibilidade
   USERS:    'sm_users_v1',            // novo: lista de perfis
   PROVIDERS:'sm_providers_v1',        // provedores parceiros (CRUD via admin)
+  CATALOG_VERSION: 'sm_catalog_version', // versão do catalog.js que o usuário tem hoje
 };
+
+/**
+ * Versão do catálogo público distribuído via catalog.js.
+ * Use window.SlotMestreCatalog.PUBLISHED_VERSION quando disponível.
+ * Quando esse valor mudar (você fizer um novo deploy com catalog.js atualizado),
+ * o site força recarga do catálogo pra TODOS os visitantes — inclusive os que
+ * já têm localStorage. Sem isso, quem visitou o site uma vez fica preso no
+ * estado antigo pra sempre.
+ *
+ * Comportamento:
+ * - Visitante NUNCA visitou: carrega catalog.js (comportamento atual)
+ * - Visitante já visitou MAS catalog.js tem PUBLISHED_VERSION nova: recarrega
+ * - Admin (rota /admin.html): NUNCA é afetado por isso, suas edições locais ficam intactas
+ */
+function getPublishedCatalogVersion() {
+  return (window.SlotMestreCatalog && window.SlotMestreCatalog.PUBLISHED_VERSION) || null;
+}
+
+function isAdminPage() {
+  return /admin\.html$/i.test(location.pathname);
+}
 
 const MAX_LOGIN_ATTEMPTS = 5;
 const LOCKOUT_DURATION_MS = 15 * 60 * 1000;
@@ -146,6 +168,43 @@ function getGames() {
   let g = load(STORAGE_KEYS.GAMES, null);
   const wasCleared = localStorage.getItem('sm_catalog_cleared') === '1';
 
+  // ============ AUTO-REFRESH DO CATÁLOGO PÚBLICO ============
+  // Se houver versão publicada nova no catalog.js (deploy novo) E o visitante
+  // NÃO for o admin (admin edita localmente, não pode ser sobrescrito), forçamos
+  // a recarga do catálogo. Isso garante que todo mundo veja a versão mais nova
+  // depois do deploy, em vez de ficar preso no localStorage antigo.
+  const publishedVersion = getPublishedCatalogVersion();
+  const localVersion = localStorage.getItem(STORAGE_KEYS.CATALOG_VERSION);
+  const hasNewerVersion = publishedVersion && publishedVersion !== localVersion;
+
+  if (hasNewerVersion && !isAdminPage() && g && g.length) {
+    // Site público: recarrega do catalog.js mais novo
+    // Preserva apenas clicks acumulados (analytics local)
+    const oldClicksById = {};
+    g.forEach(item => {
+      if (item && item.id != null && typeof item.clicks === 'number' && item.clicks > 0) {
+        oldClicksById[item.id] = item.clicks;
+      }
+    });
+
+    g = window.SlotMestreCatalog.buildFullCatalog();
+    g.forEach(game => {
+      if (oldClicksById[game.id] !== undefined) {
+        game.clicks = oldClicksById[game.id];
+      }
+    });
+
+    store(STORAGE_KEYS.GAMES, g);
+    localStorage.setItem(STORAGE_KEYS.CATALOG_VERSION, publishedVersion);
+
+    // Atualiza também os providers se o catalog publicar
+    if (window.SlotMestreCatalog.PUBLISHED_PROVIDERS) {
+      saveProviders(window.SlotMestreCatalog.PUBLISHED_PROVIDERS);
+    }
+    return g;
+  }
+  // ============ FIM AUTO-REFRESH ============
+
   if (!g) {
     // Primeira visita OU migração de v8/v7.
     // Preserva links customizados e clicks do storage mais recente disponível.
@@ -177,6 +236,19 @@ function getGames() {
       if (game.img && game.img.includes('slotcatalog.com')) game.img = '';
     });
     store(STORAGE_KEYS.GAMES, g);
+
+    // Registra a versão do catálogo
+    if (publishedVersion) {
+      localStorage.setItem(STORAGE_KEYS.CATALOG_VERSION, publishedVersion);
+    }
+
+    // Carrega providers publicados se existirem
+    if (window.SlotMestreCatalog && window.SlotMestreCatalog.PUBLISHED_PROVIDERS) {
+      const existingProviders = load(STORAGE_KEYS.PROVIDERS, null);
+      if (!existingProviders) {
+        saveProviders(window.SlotMestreCatalog.PUBLISHED_PROVIDERS);
+      }
+    }
   } else if (!g.length && !wasCleared) {
     // Array vazio mas não foi zerado propositalmente → recarrega
     g = window.SlotMestreCatalog.buildFullCatalog();
@@ -2704,6 +2776,7 @@ function renderSettingsPage() {
       version: APP_VERSION,
       exportedAt: new Date().toISOString(),
       games: getGames(),
+      providers: getProviders(),
       social: getSocial(),
     };
     const blob = new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' });
@@ -2711,7 +2784,7 @@ function renderSettingsPage() {
     const a = document.createElement('a');
     a.href = url; a.download = `slotmestre-backup-${Date.now()}.json`;
     a.click(); URL.revokeObjectURL(url);
-    showToast('Backup exportado!', 'success');
+    showToast('Backup exportado (games + providers + social)!', 'success');
   });
 
   document.getElementById('importFile')?.addEventListener('change', function() {
@@ -2722,6 +2795,7 @@ function renderSettingsPage() {
       try {
         const data = JSON.parse(e.target.result);
         if (data.games) saveGames(data.games);
+        if (data.providers) saveProviders(data.providers);
         if (data.social) saveSocial(data.social);
         showToast('Dados importados!', 'success');
         renderDashboard();
@@ -3101,6 +3175,7 @@ function renderSettingsPage() {
       exportedAt: new Date().toISOString(),
       reason: 'backup-before-clear',
       games: games,
+      providers: getProviders(),
       social: getSocial(),
     };
     const blob = new Blob([JSON.stringify(backup, null, 2)], { type: 'application/json' });
