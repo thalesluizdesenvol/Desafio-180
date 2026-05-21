@@ -808,6 +808,15 @@ function seededRand(seed, offset) {
 }
 
 /**
+ * Formata bet sugerida do catálogo v2 em pt-BR (R$ X,YZ).
+ * Se o jogo não tem o campo (catálogo antigo), usa fallback.
+ */
+function fmtBetSuggested(value, fallback) {
+  const n = typeof value === 'number' ? value : (typeof fallback === 'number' ? fallback : 0);
+  return n.toFixed(2).replace('.', ',');
+}
+
+/**
  * Define a cor da barra com base no valor (% de 0 a 100).
  *  >= 70 → verde   (bom)
  *  >= 40 → amarelo (mediano)
@@ -823,8 +832,11 @@ function statusByValue(v) {
  * Calcula os valores dinâmicos do jogo para o slot atual de 1min.
  * Cada jogo tem sua própria baseline influenciada pelo seu RTP real.
  *
- * Faixas amplas (10-99%) para gerar variação realista verde / amarelo / vermelho,
- * inspirada em sites como Rainha do Slot.
+ * v2 (2026-05-21):
+ * - Distribuição agora vem direto de game.dist (catalog v2: 82-98)
+ * - Bets sugeridas usam os novos campos game.betPadrao/betMinima/betMaximaMin/Max
+ * - Apenas as 3 barras superiores (padrao/minima/maxima) continuam dinâmicas
+ *   por slot de tempo, pra dar movimento visual nos cards.
  */
 function computeDynamicValues(game) {
   const slotNum = Math.floor(Date.now() / DYNAMIC_CYCLE_MS);
@@ -845,9 +857,11 @@ function computeDynamicValues(game) {
   const maximaRaw = Math.round(15 + seededRand(seed, 4) * 80 + boost * 0.5);
   const maximaFinal = Math.max(12, Math.min(95, maximaRaw));
 
-  // Distribuição (mostrada sobre o thumb) — geralmente alta (90-99%)
-  const distRaw = Math.round(90 + seededRand(seed, 5) * 9);
-  const distFinal = Math.max(88, Math.min(99, distRaw));
+  // Distribuição vem direto de game.dist (catálogo v2 já tem variação 82-98)
+  // Fallback: 90+random pra catálogos antigos que não tenham .dist setado.
+  const distFinal = game.dist
+    ? Math.max(82, Math.min(98, Math.round(game.dist)))
+    : Math.max(88, Math.min(99, Math.round(90 + seededRand(seed, 5) * 9)));
 
   // RTP exibido (continua disponível para o tooltip / dados internos)
   const rtpBase = game.rtp || game.dist || 96;
@@ -915,6 +929,7 @@ function computeDynamicValues(game) {
 
 /* ============================================
    RENDER CARDS (INDEX) — layout compacto novo
+   v2: aplica também o quick filter (hot / topdist / theme)
    ============================================ */
 function renderCards(filter = 'all', search = '') {
   const grid = document.getElementById('cardsGrid');
@@ -922,13 +937,27 @@ function renderCards(filter = 'all', search = '') {
 
   const games = getGames();
   let list = filter === 'all' ? games : games.filter(g => g.provider === filter);
+
+  // ===== QUICK FILTER (linha 2) =====
+  const quick = window.__smActiveQuick || 'none';
+  if (quick === 'hot') {
+    list = list.filter(g => g.hot === 'fire');
+  } else if (quick === 'topdist') {
+    // Não filtra, só ordena depois (mais alto primeiro)
+    list = [...list].sort((a, b) => (b.dist || 0) - (a.dist || 0));
+  } else if (quick.startsWith('theme:')) {
+    const themeKey = quick.slice(6);
+    list = list.filter(g => g.theme === themeKey);
+  }
+
+  // ===== SEARCH =====
   if (search) {
     const q = search.toLowerCase();
     list = list.filter(g => g.name.toLowerCase().includes(q) || (PROVIDER_META[g.provider]?.name || '').toLowerCase().includes(q));
   }
 
-  // atualizar contadores nas tabs
-  document.querySelectorAll('.tab').forEach(tab => {
+  // atualizar contadores nas tabs de provider (linha 1)
+  document.querySelectorAll('.filter-row-providers .tab').forEach(tab => {
     const f = tab.dataset.filter;
     const count = f === 'all' ? games.length : games.filter(g => g.provider === f).length;
     const base = tab.dataset.originalName || tab.childNodes[0]?.textContent.trim() || '';
@@ -1029,6 +1058,14 @@ function renderCards(filter = 'all', search = '') {
         </div>
       </div>
 
+      <!-- Bet sugerida em R$ (PD / MI / MX) — v2: usa valores por jogo do catálogo -->
+      <div class="gcv2-bet-suggested">
+        <div class="gcv2-bet-suggested-title">Bet sugerida:</div>
+        <div class="gcv2-bet-suggested-row"><span>PD:</span> <strong>R$${fmtBetSuggested(g.betPadrao, 2.80)}</strong></div>
+        <div class="gcv2-bet-suggested-row"><span>MI:</span> <strong>R$${fmtBetSuggested(g.betMinima, 0.40)}</strong></div>
+        <div class="gcv2-bet-suggested-row"><span>MX:</span> <strong>R$${fmtBetSuggested(g.betMaximaMin, 4.00)} a R$${fmtBetSuggested(g.betMaximaMax, 12.00)}</strong></div>
+      </div>
+
       <div class="gcv2-actions">
         <a href="${hasLink ? sanitize(href) : '#'}"
            class="gcv2-btn-play${hasLink ? '' : ' no-link'}"
@@ -1124,9 +1161,23 @@ function trackClick(gameId) {
    ============================================ */
 /* ============================================
    FILTER TABS — DINÂMICO (site público)
-   Mostra "Todos" + provedores que têm pelo menos 1 jogo,
-   ordenados por popularidade (mais jogos primeiro).
+   v2: Duas linhas de filtros
+     Linha 1 (providers): Todos + provedores com jogos
+     Linha 2 (quick filters): 🔥 Quentes / 📊 Top Distribuição / 🎨 Tema dropdown
+   Estado: window.__smActiveFilter (provider) + window.__smActiveQuick (quick)
    ============================================ */
+
+// Temas que aparecem no dropdown (top 6 mais populares no catálogo).
+// O label é o que o usuário vê; a key bate com game.theme no catálogo.
+const QUICK_THEMES = [
+  { key: 'chinese',  label: '🐉 Oriental' },
+  { key: 'egypt',    label: '🐫 Egito' },
+  { key: 'fantasy',  label: '🧙 Fantasia' },
+  { key: 'fruits',   label: '🍒 Frutas' },
+  { key: 'animals',  label: '🐾 Animais' },
+  { key: 'mythology',label: '⚡ Mitologia' },
+];
+
 function renderFilterTabs(activeFilter = 'all') {
   const wrap = document.getElementById('filterTabs');
   if (!wrap) return;
@@ -1142,15 +1193,54 @@ function renderFilterTabs(activeFilter = 'all') {
     .filter(p => counts[p.key] > 0)
     .sort((a, b) => counts[b.key] - counts[a.key]);
 
-  // "Todos" sempre primeiro
-  const tabs = [
+  // ===== Linha 1: PROVIDERS =====
+  const providerTabs = [
     `<button class="tab ${activeFilter === 'all' ? 'active' : ''}" data-filter="all">Todos<div class="tab-active-bar"></div></button>`,
     ...visible.map(p =>
       `<button class="tab ${activeFilter === p.key ? 'active' : ''}" data-filter="${sanitize(p.key)}">${sanitize(p.name)}<div class="tab-active-bar"></div></button>`
     )
-  ];
+  ].join('');
 
-  wrap.innerHTML = tabs.join('');
+  // ===== Linha 2: QUICK FILTERS =====
+  const activeQuick = window.__smActiveQuick || 'none';
+  // Verifica quais temas têm pelo menos 1 jogo (não mostra opção sem jogo)
+  const themesWithGames = QUICK_THEMES.filter(t =>
+    games.some(g => g.theme === t.key)
+  );
+
+  const quickTabs = `
+    <button class="qfilter ${activeQuick === 'hot' ? 'active' : ''}" data-quick="hot" title="Apenas jogos quentes">
+      🔥 Quentes
+    </button>
+    <button class="qfilter ${activeQuick === 'topdist' ? 'active' : ''}" data-quick="topdist" title="Maior distribuição primeiro">
+      📊 Top Distribuição
+    </button>
+    ${themesWithGames.length ? `
+      <div class="qfilter-dropdown">
+        <button class="qfilter ${activeQuick.startsWith('theme:') ? 'active' : ''}" data-quick-toggle="theme">
+          🎨 Por Tema ${activeQuick.startsWith('theme:') ? `· ${(QUICK_THEMES.find(t => t.key === activeQuick.slice(6))?.label.replace(/^[^ ]+ /,'') || '')}` : '▾'}
+        </button>
+        <div class="qfilter-dropdown-menu" data-dropdown="theme">
+          ${themesWithGames.map(t => `
+            <button class="qfilter-dropdown-item ${activeQuick === 'theme:' + t.key ? 'active' : ''}" data-quick="theme:${sanitize(t.key)}">
+              ${t.label}
+            </button>
+          `).join('')}
+        </div>
+      </div>
+    ` : ''}
+    ${activeQuick !== 'none' ? `
+      <button class="qfilter qfilter-clear" data-quick="none" title="Limpar filtros rápidos">
+        ✕ Limpar
+      </button>
+    ` : ''}
+  `;
+
+  // Render: 2 rows dentro do container
+  wrap.innerHTML = `
+    <div class="filter-row filter-row-providers">${providerTabs}</div>
+    <div class="filter-row filter-row-quick">${quickTabs}</div>
+  `;
 }
 
 function initFilters() {
@@ -1161,18 +1251,52 @@ function initFilters() {
   const getState = () => ({
     filter: wrap?.querySelector('.tab.active')?.dataset.filter || 'all',
     search: document.getElementById('gameSearch')?.value.trim() || '',
+    quick: window.__smActiveQuick || 'none',
   });
 
-  // Delegação de eventos no container — funciona mesmo quando os tabs são re-renderizados
+  // ===== Delegação de eventos no container =====
+  // Cobre tanto as tabs de provider quanto os quick filters.
   if (wrap && !wrap.dataset.bound) {
     wrap.dataset.bound = '1';
+
     wrap.addEventListener('click', e => {
+      // 1) Click em quick filter (toggle do dropdown de tema)
+      const toggle = e.target.closest('[data-quick-toggle]');
+      if (toggle) {
+        const which = toggle.dataset.quickToggle;
+        const menu = wrap.querySelector(`[data-dropdown="${which}"]`);
+        if (menu) menu.classList.toggle('open');
+        return;
+      }
+
+      // 2) Click em quick filter (botão ou item de dropdown)
+      const qbtn = e.target.closest('[data-quick]');
+      if (qbtn) {
+        const newQuick = qbtn.dataset.quick;
+        window.__smActiveQuick = newQuick;
+        // Fecha dropdowns abertos
+        wrap.querySelectorAll('.qfilter-dropdown-menu.open').forEach(m => m.classList.remove('open'));
+        // Re-render dos tabs (pra atualizar estado visual) + re-render dos cards
+        const s = getState();
+        renderFilterTabs(s.filter);
+        renderCards(s.filter, s.search);
+        return;
+      }
+
+      // 3) Click em tab de provider
       const tab = e.target.closest('.tab');
       if (!tab) return;
       wrap.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
       tab.classList.add('active');
       const s = getState();
       renderCards(tab.dataset.filter, s.search);
+    });
+
+    // Click fora fecha dropdowns
+    document.addEventListener('click', e => {
+      if (!e.target.closest('.qfilter-dropdown')) {
+        wrap.querySelectorAll('.qfilter-dropdown-menu.open').forEach(m => m.classList.remove('open'));
+      }
     });
   }
 
@@ -1311,6 +1435,7 @@ function initMain() {
   initHeader();
   applySocialLinks();
   renderTicker();
+  renderHeroConstellation();  // v2: constelação de providers no hero
   renderProvidersGrid();
   assignTestLinks();      // links de placeholder para teste
   renderCards();
@@ -1321,7 +1446,8 @@ function initMain() {
   window.addEventListener('sm:gamesUpdated', () => {
     const f = document.querySelector('.tab.active')?.dataset.filter || 'all';
     const q = document.getElementById('gameSearch')?.value.trim() || '';
-    renderFilterTabs(f);    // re-renderiza filtros (contagens podem ter mudado)
+    renderHeroConstellation();
+    renderFilterTabs(f);
     renderCards(f, q);
     renderTicker();
   });
@@ -1329,9 +1455,10 @@ function initMain() {
   window.addEventListener('sm:providersUpdated', () => {
     const f = document.querySelector('.tab.active')?.dataset.filter || 'all';
     const q = document.getElementById('gameSearch')?.value.trim() || '';
+    renderHeroConstellation();
     renderProvidersGrid();
-    renderFilterTabs(f);    // se um provedor foi removido/desativado, some do filtro
-    renderCards(f, q);      // re-renderiza cards (badge de provedor pode ter mudado de cor/nome)
+    renderFilterTabs(f);
+    renderCards(f, q);
   });
 
   // Counters
@@ -1345,6 +1472,74 @@ function initMain() {
 
   // Refresh ticker every minute
   setInterval(renderTicker, 60000);
+}
+
+/* ============================================
+   HERO CONSTELLATION — Provedores ao redor do core SlotMestre
+   v2: substituiu a "Os Estúdios por Trás dos Jogos" embaixo da página.
+   Renderiza 5 orbes em volta do core central, cada um com a logo do provider,
+   nome, e contagem de jogos. Clicar no orb leva direto pra seção #jogos
+   com o filtro daquele provider já aplicado.
+   ============================================ */
+function renderHeroConstellation() {
+  const wrap = document.getElementById('heroConstellation');
+  if (!wrap) return;
+  const orbits = wrap.querySelector('.hc-orbits');
+  if (!orbits) return;
+
+  const games = getGames();
+  const allProviders = getProviders().filter(p => p.enabled !== false);
+
+  const counts = {};
+  games.forEach(g => { if (g && g.provider) counts[g.provider] = (counts[g.provider] || 0) + 1; });
+
+  // Apenas providers com jogos, ordenados por quantidade
+  const list = allProviders
+    .filter(p => (counts[p.key] || 0) > 0)
+    .sort((a, b) => (counts[b.key] || 0) - (counts[a.key] || 0))
+    .slice(0, 5);
+
+  if (!list.length) {
+    orbits.innerHTML = '';
+    return;
+  }
+
+  // Distribui os orbes em ângulos uniformes (360 / N).
+  // Começa em -90 (topo) e gira no sentido horário.
+  const N = list.length;
+  const angleStep = 360 / N;
+  const startAngle = -90;
+
+  orbits.innerHTML = list.map((p, i) => {
+    const angle = startAngle + i * angleStep;
+    const count = counts[p.key] || 0;
+    const countLabel = count === 1 ? '1 jogo' : `${count} jogos`;
+    return `
+      <button type="button" class="hc-orb"
+              data-provider="${sanitize(p.key)}"
+              style="--orb-angle: ${angle}deg; --orb-color: ${sanitize(p.color)}; --orb-color-2: ${sanitize(p.colorAccent || p.color)};"
+              title="${sanitize(p.name)} — ${countLabel}">
+        <div class="hc-orb-inner">
+          <div class="hc-orb-logo">${p.logoSvg || ''}</div>
+          <div class="hc-orb-count">${countLabel}</div>
+        </div>
+      </button>
+    `;
+  }).join('');
+
+  // Clicar no orb leva pra #jogos com o filtro aplicado
+  orbits.querySelectorAll('.hc-orb').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const key = btn.dataset.provider;
+      if (!key) return;
+      // Aplica filtro de provider
+      const tab = document.querySelector(`.filter-row-providers .tab[data-filter="${key}"]`);
+      if (tab) tab.click();
+      // Scroll suave pra seção jogos
+      const sec = document.getElementById('jogos');
+      if (sec) sec.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
+  });
 }
 
 /* ============================================
