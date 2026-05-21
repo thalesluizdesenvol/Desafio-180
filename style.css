@@ -4385,3 +4385,102 @@ body {
     font-size: 0.62rem;
   }
 }
+
+/* ============================================================
+   ADMIN — Upload de logo (Providers + Plataformas)
+   ============================================================ */
+.logo-upload-row {
+  display: flex;
+  gap: 8px;
+  align-items: stretch;
+}
+.logo-upload-row .form-input {
+  flex: 1;
+  min-width: 0;
+}
+.btn-file-upload {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 9px 12px;
+  background: linear-gradient(135deg, #6D28D9, #4C1D95);
+  border: 1px solid rgba(196, 181, 253, 0.3);
+  border-radius: 8px;
+  color: #fff;
+  font-family: 'Rajdhani', sans-serif;
+  font-weight: 600;
+  font-size: 0.78rem;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: all 0.2s ease;
+}
+.btn-file-upload:hover {
+  background: linear-gradient(135deg, #7C3AED, #5B21B6);
+  transform: translateY(-1px);
+}
+.btn-clear-logo,
+.btn-clear-plat-logo {
+  padding: 0 12px;
+  background: rgba(239, 68, 68, 0.15);
+  border: 1px solid rgba(239, 68, 68, 0.3);
+  border-radius: 8px;
+  color: #FCA5A5;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+.btn-clear-logo:hover,
+.btn-clear-plat-logo:hover {
+  background: rgba(239, 68, 68, 0.25);
+  color: #fff;
+}
+.logo-preview {
+  margin-top: 8px;
+  padding: 10px;
+  background: rgba(0, 0, 0, 0.25);
+  border: 1px dashed rgba(196, 181, 253, 0.2);
+  border-radius: 8px;
+  text-align: center;
+}
+.logo-preview img {
+  max-width: 100%;
+  max-height: 80px;
+  object-fit: contain;
+}
+
+/* ============================================================
+   ADMIN — Página Plataformas (reaproveita estilos de providers
+   com pequenos ajustes pra incluir o badge "Em alta" no preview)
+   ============================================================ */
+.platform-row .platform-row-preview {
+  position: relative;
+  /* Reaproveita .prov-row-preview mas sem gradient de cor (plataformas não
+     têm cor própria como providers) */
+  background: linear-gradient(180deg,
+    rgba(60, 28, 110, 0.45),
+    rgba(45, 21, 82, 0.65));
+  border: 1px solid rgba(196, 181, 253, 0.18);
+}
+
+.rotation-info {
+  margin: 16px 0;
+  padding: 14px 18px;
+  background: rgba(99, 102, 241, 0.1);
+  border-left: 3px solid rgba(139, 92, 246, 0.6);
+  border-radius: 8px;
+  font-family: 'Exo 2', sans-serif;
+  font-size: 0.85rem;
+  color: #C4B5FD;
+  line-height: 1.6;
+}
+.rotation-info strong {
+  color: #F0ABFC;
+  display: block;
+  margin-bottom: 4px;
+  font-size: 0.9rem;
+}
+.rotation-info em {
+  font-style: normal;
+  color: #FBCFE8;
+  font-weight: 600;
+}
