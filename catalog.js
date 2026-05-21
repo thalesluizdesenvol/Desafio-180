@@ -1,28 +1,23 @@
 /* ============================================================
-   SLOTMESTRE — CATÁLOGO PÚBLICO
-   Publicado: 2026-05-21.001
+   SLOTMESTRE - CATALOGO PUBLICO
+   Publicado: 2026-05-21.002
    Total: 722 jogos
-   Providers ativos: evolution, hacksaw, nolimit, pgsoft, pragmatic
+   Providers: evolution, hacksaw, nolimit, pgsoft, pragmatic
 
-   IMPORTANTE — Versionamento:
-   PUBLISHED_VERSION abaixo controla quando o catálogo é re-puxado pelo site.
-   Quando você fizer um novo deploy com mudanças no catalogo:
-   1. Atualize PUBLISHED_VERSION (qualquer string nova, ex: 2026-05-22.001)
-   2. Atualize CATALOG e PUBLISHED_PROVIDERS abaixo
-   3. Commit + deploy
-   Todos os visitantes (não-admin) vao receber a versao nova automaticamente
-   no proximo F5, sem precisar limpar cache.
+   v2 (2026-05-21.002):
+   - Distribuicao variada 82-98 por cento (era fixa em 95-99)
+   - Bets sugeridas individuais por jogo (betPadrao, betMinima, betMaximaMin/Max)
+   - Valores deterministicos por ID (mesmo jogo = mesmos numeros sempre)
 
-   Como atualizar este arquivo:
-   1. No admin -> Configuracoes -> Exportar Backup (baixa o JSON)
-   2. Gerar novo catalog.js a partir do JSON exportado
-   3. Substituir este arquivo + atualizar PUBLISHED_VERSION + deploy
+   Versionamento:
+   Quando alterar o catalogo, incremente PUBLISHED_VERSION abaixo.
+   Visitantes (nao-admin) recebem refresh automatico no proximo F5.
    ============================================================ */
 
 (function(){
   'use strict';
 
-  const PUBLISHED_VERSION = "2026-05-21.001";
+  const PUBLISHED_VERSION = "2026-05-21.002";
 
   const CATALOG = [
   {
@@ -31,7 +26,7 @@
     "provider": "pgsoft",
     "emoji": "🐍",
     "theme": "chinese",
-    "dist": 96,
+    "dist": 93,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -39,7 +34,12 @@
     "tag": null,
     "img": "https://www.rainhadoslot.com.br/static/image/games/pg-soft/50.webp",
     "link": "https://www.fy-fanta.com/?id=223975751",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 2.86,
+    "betMinima": 0.65,
+    "betMaxima": 6.23,
+    "betMaximaMin": 4.53,
+    "betMaximaMax": 12.72
   },
   {
     "id": 8,
@@ -47,7 +47,7 @@
     "provider": "pgsoft",
     "emoji": "🐯",
     "theme": "chinese",
-    "dist": 96,
+    "dist": 98,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -55,7 +55,12 @@
     "tag": null,
     "img": "https://www.rainhadoslot.com.br/static/image/games/pg-soft/22.webp",
     "link": "https://hms-tiradentesday.bet/?invite_code=8be79469",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 3.24,
+    "betMinima": 0.25,
+    "betMaxima": 14.99,
+    "betMaximaMin": 5.97,
+    "betMaximaMax": 12.66
   },
   {
     "id": 9,
@@ -63,7 +68,7 @@
     "provider": "pgsoft",
     "emoji": "🐂",
     "theme": "chinese",
-    "dist": 96,
+    "dist": 89,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -71,7 +76,12 @@
     "tag": null,
     "img": "https://www.rainhadoslot.com.br/static/image/games/pg-soft/24.webp",
     "link": "https://coroa-gghhpg.com/?id=405842843",
-    "clicks": 1
+    "clicks": 1,
+    "betPadrao": 2.02,
+    "betMinima": 0.23,
+    "betMaxima": 8.56,
+    "betMaximaMin": 5.37,
+    "betMaximaMax": 14.23
   },
   {
     "id": 10,
@@ -79,7 +89,7 @@
     "provider": "pgsoft",
     "emoji": "🐭",
     "theme": "chinese",
-    "dist": 96,
+    "dist": 97,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -87,7 +97,12 @@
     "tag": null,
     "img": "https://www.rainhadoslot.com.br/static/image/games/pg-soft/23.webp",
     "link": "https://www.onebra77.com/?source_code=TWMWECDNJ2X",
-    "clicks": 0
+    "clicks": 1,
+    "betPadrao": 2.56,
+    "betMinima": 0.74,
+    "betMaxima": 14.29,
+    "betMaximaMin": 4.26,
+    "betMaximaMax": 11.87
   },
   {
     "id": 11,
@@ -103,7 +118,12 @@
     "tag": null,
     "img": "https://imagedelivery.net/BgH9d8bzsn4n0yijn4h7IQ/854119bf-1af1-493a-56ba-2114a5554d00/public",
     "link": "https://br.mt-antilope.com/home?inviteCode=VEU6ZR",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 2.51,
+    "betMinima": 0.53,
+    "betMaxima": 9.19,
+    "betMaximaMin": 5.77,
+    "betMaximaMax": 12.21
   },
   {
     "id": 12,
@@ -111,7 +131,7 @@
     "provider": "evolution",
     "emoji": "🎰",
     "theme": "space",
-    "dist": 96,
+    "dist": 94,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -119,7 +139,12 @@
     "tag": null,
     "img": "https://imagedelivery.net/BgH9d8bzsn4n0yijn4h7IQ/053705d2-b33f-4b8e-7612-ad404dba1800/public",
     "link": "https://kk-judy777.vip/?id=649076826&currency=BRL&type=2",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 2.82,
+    "betMinima": 0.32,
+    "betMaxima": 10.96,
+    "betMaximaMin": 4.77,
+    "betMaximaMax": 15.86
   },
   {
     "id": 13,
@@ -127,7 +152,7 @@
     "provider": "pgsoft",
     "emoji": "🐰",
     "theme": "chinese",
-    "dist": 96,
+    "dist": 92,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -135,7 +160,12 @@
     "tag": null,
     "img": "https://www.rainhadoslot.com.br/static/image/games/pg-soft/26.webp",
     "link": "https://www.fy-fanta.com/?id=223975751",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 3.24,
+    "betMinima": 0.26,
+    "betMaxima": 14.7,
+    "betMaximaMin": 5.37,
+    "betMaximaMax": 14.24
   },
   {
     "id": 14,
@@ -143,7 +173,7 @@
     "provider": "pgsoft",
     "emoji": "🐉",
     "theme": "chinese",
-    "dist": 96,
+    "dist": 88,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -151,7 +181,12 @@
     "tag": null,
     "img": "https://www.rainhadoslot.com.br/static/image/games/pg-soft/13.webp",
     "link": "https://hms-tiradentesday.bet/?invite_code=8be79469",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 2.54,
+    "betMinima": 0.38,
+    "betMaxima": 12.14,
+    "betMaximaMin": 4.35,
+    "betMaximaMax": 13.73
   },
   {
     "id": 15,
@@ -159,7 +194,7 @@
     "provider": "pgsoft",
     "emoji": "🍀",
     "theme": "chinese",
-    "dist": 96,
+    "dist": 93,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -167,7 +202,12 @@
     "tag": null,
     "img": "https://www.rainhadoslot.com.br/static/image/games/pg-soft/29.webp",
     "link": "https://coroa-gghhpg.com/?id=405842843",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 2.92,
+    "betMinima": 0.24,
+    "betMaxima": 10.28,
+    "betMaximaMin": 5.53,
+    "betMaximaMax": 17.65
   },
   {
     "id": 16,
@@ -175,7 +215,7 @@
     "provider": "pgsoft",
     "emoji": "🎰",
     "theme": "fantasy",
-    "dist": 96,
+    "dist": 95,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -183,7 +223,12 @@
     "tag": null,
     "img": "https://www.rainhadoslot.com.br/static/image/games/pg-soft/54.webp",
     "link": "https://www.onebra77.com/?source_code=TWMWECDNJ2X",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 2.78,
+    "betMinima": 0.37,
+    "betMaxima": 11.47,
+    "betMaximaMin": 4.77,
+    "betMaximaMax": 14.18
   },
   {
     "id": 17,
@@ -191,7 +236,7 @@
     "provider": "pgsoft",
     "emoji": "❄️",
     "theme": "fantasy",
-    "dist": 96,
+    "dist": 87,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -199,7 +244,12 @@
     "tag": null,
     "img": "https://www.rainhadoslot.com.br/static/image/games/pg-soft/31.webp",
     "link": "https://br.mt-antilope.com/home?inviteCode=VEU6ZR",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 2.74,
+    "betMinima": 0.5,
+    "betMaxima": 11.1,
+    "betMaximaMin": 5.76,
+    "betMaximaMax": 16.69
   },
   {
     "id": 18,
@@ -207,7 +257,7 @@
     "provider": "pgsoft",
     "emoji": "🐱",
     "theme": "chinese",
-    "dist": 96,
+    "dist": 92,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -215,7 +265,12 @@
     "tag": null,
     "img": "https://www.rainhadoslot.com.br/static/image/games/pg-soft/28.webp",
     "link": "https://kk-judy777.vip/?id=649076826&currency=BRL&type=2",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 2.9,
+    "betMinima": 0.36,
+    "betMaxima": 4.63,
+    "betMaximaMin": 4.44,
+    "betMaximaMax": 12.34
   },
   {
     "id": 19,
@@ -223,7 +278,7 @@
     "provider": "pgsoft",
     "emoji": "🎰",
     "theme": "fantasy",
-    "dist": 96,
+    "dist": 93,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -231,7 +286,12 @@
     "tag": null,
     "img": "https://www.rainhadoslot.com.br/static/image/games/pg-soft/21.webp",
     "link": "https://www.fy-fanta.com/?id=223975751",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 2.38,
+    "betMinima": 0.71,
+    "betMaxima": 13.97,
+    "betMaximaMin": 4.78,
+    "betMaximaMax": 14.24
   },
   {
     "id": 20,
@@ -247,7 +307,12 @@
     "tag": null,
     "img": "https://www.rainhadoslot.com.br/static/image/games/pg-soft/11.webp",
     "link": "https://hms-tiradentesday.bet/?invite_code=8be79469",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 3.18,
+    "betMinima": 0.52,
+    "betMaxima": 11.92,
+    "betMaximaMin": 4.8,
+    "betMaximaMax": 10.96
   },
   {
     "id": 21,
@@ -255,7 +320,7 @@
     "provider": "evolution",
     "emoji": "🐯",
     "theme": "chinese",
-    "dist": 96,
+    "dist": 97,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -263,7 +328,12 @@
     "tag": null,
     "img": "https://games.evolution.com/wp-content/uploads/2023/02/dragon_tiger_web_imagery_1000x563_2023_01_02-400x225.jpg",
     "link": "https://coroa-gghhpg.com/?id=405842843",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 2.67,
+    "betMinima": 0.37,
+    "betMaxima": 13.83,
+    "betMaximaMin": 5.56,
+    "betMaximaMax": 16.62
   },
   {
     "id": 22,
@@ -271,7 +341,7 @@
     "provider": "pgsoft",
     "emoji": "🍀",
     "theme": "fantasy",
-    "dist": 96,
+    "dist": 93,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -279,7 +349,12 @@
     "tag": null,
     "img": "https://www.rainhadoslot.com.br/static/image/games/pg-soft/25.webp",
     "link": "https://www.onebra77.com/?source_code=TWMWECDNJ2X",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 3.41,
+    "betMinima": 0.56,
+    "betMaxima": 13.84,
+    "betMaximaMin": 5.13,
+    "betMaximaMax": 15.47
   },
   {
     "id": 23,
@@ -287,7 +362,7 @@
     "provider": "pgsoft",
     "emoji": "🐺",
     "theme": "western",
-    "dist": 96,
+    "dist": 91,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -295,7 +370,12 @@
     "tag": null,
     "img": "https://www.rainhadoslot.com.br/static/image/games/pg-soft/138.webp",
     "link": "https://br.mt-antilope.com/home?inviteCode=VEU6ZR",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 3.3,
+    "betMinima": 0.33,
+    "betMaxima": 4.27,
+    "betMaximaMin": 5.18,
+    "betMaximaMax": 17.32
   },
   {
     "id": 24,
@@ -303,7 +383,7 @@
     "provider": "pgsoft",
     "emoji": "🎰",
     "theme": "fantasy",
-    "dist": 96,
+    "dist": 92,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -311,7 +391,12 @@
     "tag": null,
     "img": "https://www.rainhadoslot.com.br/static/image/games/pg-soft/89.webp",
     "link": "https://kk-judy777.vip/?id=649076826&currency=BRL&type=2",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 3.08,
+    "betMinima": 0.58,
+    "betMaxima": 10.24,
+    "betMaximaMin": 4.91,
+    "betMaximaMax": 12.13
   },
   {
     "id": 25,
@@ -319,7 +404,7 @@
     "provider": "pgsoft",
     "emoji": "🐉",
     "theme": "chinese",
-    "dist": 96,
+    "dist": 94,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -327,7 +412,12 @@
     "tag": null,
     "img": "https://www.rainhadoslot.com.br/static/image/games/pg-soft/51.webp",
     "link": "https://www.fy-fanta.com/?id=223975751",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 3.01,
+    "betMinima": 0.62,
+    "betMaxima": 11.96,
+    "betMaximaMin": 4.82,
+    "betMaximaMax": 13.85
   },
   {
     "id": 26,
@@ -335,7 +425,7 @@
     "provider": "pgsoft",
     "emoji": "🧞",
     "theme": "fantasy",
-    "dist": 96,
+    "dist": 97,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -343,7 +433,12 @@
     "tag": null,
     "img": "https://imagedelivery.net/BgH9d8bzsn4n0yijn4h7IQ/f1257db1-2d73-4b07-41c2-0020a095e800/public",
     "link": "https://hms-tiradentesday.bet/?invite_code=8be79469",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 3.12,
+    "betMinima": 0.47,
+    "betMaxima": 9.2,
+    "betMaximaMin": 5.45,
+    "betMaximaMax": 12.07
   },
   {
     "id": 27,
@@ -351,7 +446,7 @@
     "provider": "pgsoft",
     "emoji": "🍀",
     "theme": "chinese",
-    "dist": 96,
+    "dist": 95,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -359,7 +454,12 @@
     "tag": null,
     "img": "https://www.rainhadoslot.com.br/static/image/games/pg-soft/12.webp",
     "link": "https://coroa-gghhpg.com/?id=405842843",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 2.69,
+    "betMinima": 0.46,
+    "betMaxima": 12.81,
+    "betMaximaMin": 4.33,
+    "betMaximaMax": 17.21
   },
   {
     "id": 28,
@@ -367,7 +467,7 @@
     "provider": "pgsoft",
     "emoji": "🏝️",
     "theme": "egypt",
-    "dist": 96,
+    "dist": 83,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -375,7 +475,12 @@
     "tag": null,
     "img": "https://www.rainhadoslot.com.br/static/image/games/pg-soft/4.webp",
     "link": "https://www.onebra77.com/?source_code=TWMWECDNJ2X",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 2.62,
+    "betMinima": 0.46,
+    "betMaxima": 13.89,
+    "betMaximaMin": 5.31,
+    "betMaximaMax": 13.15
   },
   {
     "id": 29,
@@ -383,7 +488,7 @@
     "provider": "pgsoft",
     "emoji": "🎰",
     "theme": "chinese",
-    "dist": 96,
+    "dist": 92,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -391,7 +496,12 @@
     "tag": null,
     "img": "https://www.rainhadoslot.com.br/static/image/games/pg-soft/112.webp",
     "link": "https://br.mt-antilope.com/home?inviteCode=VEU6ZR",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 3.29,
+    "betMinima": 0.55,
+    "betMaxima": 8.09,
+    "betMaximaMin": 5.26,
+    "betMaximaMax": 17.59
   },
   {
     "id": 30,
@@ -399,7 +509,7 @@
     "provider": "pgsoft",
     "emoji": "🎰",
     "theme": "egypt",
-    "dist": 96,
+    "dist": 94,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -407,7 +517,12 @@
     "tag": null,
     "img": "https://www.rainhadoslot.com.br/static/image/games/pg-soft/58.webp",
     "link": "https://kk-judy777.vip/?id=649076826&currency=BRL&type=2",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 2.71,
+    "betMinima": 0.76,
+    "betMaxima": 5.95,
+    "betMaximaMin": 4.73,
+    "betMaximaMax": 10.99
   },
   {
     "id": 31,
@@ -423,7 +538,12 @@
     "tag": null,
     "img": "https://www.rainhadoslot.com.br/static/image/games/pg-soft/144.webp",
     "link": "https://www.fy-fanta.com/?id=223975751",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 3.46,
+    "betMinima": 0.7,
+    "betMaxima": 9.54,
+    "betMaximaMin": 4.63,
+    "betMaximaMax": 14.82
   },
   {
     "id": 32,
@@ -431,7 +551,7 @@
     "provider": "pgsoft",
     "emoji": "🌊",
     "theme": "egypt",
-    "dist": 96,
+    "dist": 97,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -439,7 +559,12 @@
     "tag": null,
     "img": "https://www.rainhadoslot.com.br/static/image/games/pg-soft/132.webp",
     "link": "https://hms-tiradentesday.bet/?invite_code=8be79469",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 2.09,
+    "betMinima": 0.37,
+    "betMaxima": 8.22,
+    "betMaximaMin": 4.46,
+    "betMaximaMax": 12.17
   },
   {
     "id": 33,
@@ -447,7 +572,7 @@
     "provider": "pgsoft",
     "emoji": "🎰",
     "theme": "fantasy",
-    "dist": 96,
+    "dist": 97,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -455,7 +580,12 @@
     "tag": null,
     "img": "https://www.rainhadoslot.com.br/static/image/games/pg-soft/36.webp",
     "link": "https://coroa-gghhpg.com/?id=405842843",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 2.24,
+    "betMinima": 0.53,
+    "betMaxima": 6.31,
+    "betMaximaMin": 5.76,
+    "betMaximaMax": 14.15
   },
   {
     "id": 34,
@@ -463,7 +593,7 @@
     "provider": "pgsoft",
     "emoji": "🎰",
     "theme": "fantasy",
-    "dist": 96,
+    "dist": 93,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -471,7 +601,12 @@
     "tag": null,
     "img": "https://www.rainhadoslot.com.br/static/image/games/pg-soft/113.webp",
     "link": "https://www.onebra77.com/?source_code=TWMWECDNJ2X",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 2.07,
+    "betMinima": 0.76,
+    "betMaxima": 8.03,
+    "betMaximaMin": 5.99,
+    "betMaximaMax": 12.7
   },
   {
     "id": 35,
@@ -487,7 +622,12 @@
     "tag": null,
     "img": "https://www.rainhadoslot.com.br/static/image/games/pg-soft/9.webp",
     "link": "https://br.mt-antilope.com/home?inviteCode=VEU6ZR",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 2.58,
+    "betMinima": 0.73,
+    "betMaxima": 6.99,
+    "betMaximaMin": 4.53,
+    "betMaximaMax": 11.41
   },
   {
     "id": 36,
@@ -495,7 +635,7 @@
     "provider": "pgsoft",
     "emoji": "🪙",
     "theme": "luxury",
-    "dist": 96,
+    "dist": 92,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -503,7 +643,12 @@
     "tag": null,
     "img": "https://www.rainhadoslot.com.br/static/image/games/pg-soft/131.webp",
     "link": "https://kk-judy777.vip/?id=649076826&currency=BRL&type=2",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 3.16,
+    "betMinima": 0.54,
+    "betMaxima": 11.08,
+    "betMaximaMin": 5.64,
+    "betMaximaMax": 16.22
   },
   {
     "id": 37,
@@ -511,7 +656,7 @@
     "provider": "pgsoft",
     "emoji": "🐼",
     "theme": "chinese",
-    "dist": 96,
+    "dist": 97,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -519,7 +664,12 @@
     "tag": null,
     "img": "https://www.rainhadoslot.com.br/static/image/games/pg-soft/108.webp",
     "link": "https://www.fy-fanta.com/?id=223975751",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 2.13,
+    "betMinima": 0.73,
+    "betMaxima": 4.73,
+    "betMaximaMin": 4.81,
+    "betMaximaMax": 10.85
   },
   {
     "id": 38,
@@ -535,7 +685,12 @@
     "tag": null,
     "img": "https://www.rainhadoslot.com.br/static/image/games/pg-soft/62.webp",
     "link": "https://hms-tiradentesday.bet/?invite_code=8be79469",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 2.36,
+    "betMinima": 0.74,
+    "betMaxima": 10.66,
+    "betMaximaMin": 4.26,
+    "betMaximaMax": 13.79
   },
   {
     "id": 39,
@@ -543,7 +698,7 @@
     "provider": "pgsoft",
     "emoji": "🀄",
     "theme": "chinese",
-    "dist": 96,
+    "dist": 97,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -551,7 +706,12 @@
     "tag": null,
     "img": "https://www.rainhadoslot.com.br/static/image/games/pg-soft/130.webp",
     "link": "https://coroa-gghhpg.com/?id=405842843",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 3.22,
+    "betMinima": 0.64,
+    "betMaxima": 12.77,
+    "betMaximaMin": 5.59,
+    "betMaximaMax": 13.85
   },
   {
     "id": 40,
@@ -559,7 +719,7 @@
     "provider": "pgsoft",
     "emoji": "🪙",
     "theme": "luxury",
-    "dist": 96,
+    "dist": 97,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -567,7 +727,12 @@
     "tag": null,
     "img": "https://www.rainhadoslot.com.br/static/image/games/pg-soft/119.webp",
     "link": "https://www.onebra77.com/?source_code=TWMWECDNJ2X",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 3.01,
+    "betMinima": 0.78,
+    "betMaxima": 13.79,
+    "betMaximaMin": 5.76,
+    "betMaximaMax": 11.59
   },
   {
     "id": 41,
@@ -575,7 +740,7 @@
     "provider": "pgsoft",
     "emoji": "🎰",
     "theme": "fantasy",
-    "dist": 96,
+    "dist": 94,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -583,7 +748,12 @@
     "tag": null,
     "img": "https://www.rainhadoslot.com.br/static/image/games/pg-soft/83.webp",
     "link": "https://br.mt-antilope.com/home?inviteCode=VEU6ZR",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 2.77,
+    "betMinima": 0.67,
+    "betMaxima": 7.01,
+    "betMaximaMin": 5.62,
+    "betMaximaMax": 16.17
   },
   {
     "id": 42,
@@ -591,7 +761,7 @@
     "provider": "pgsoft",
     "emoji": "⚽",
     "theme": "fantasy",
-    "dist": 96,
+    "dist": 98,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -599,7 +769,12 @@
     "tag": null,
     "img": "https://www.rainhadoslot.com.br/static/image/games/pg-soft/52.webp",
     "link": "https://kk-judy777.vip/?id=649076826&currency=BRL&type=2",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 3.0,
+    "betMinima": 0.78,
+    "betMaxima": 14.42,
+    "betMaximaMin": 4.06,
+    "betMaximaMax": 10.2
   },
   {
     "id": 43,
@@ -607,7 +782,7 @@
     "provider": "pgsoft",
     "emoji": "🎰",
     "theme": "fantasy",
-    "dist": 96,
+    "dist": 90,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -615,7 +790,12 @@
     "tag": null,
     "img": "https://www.rainhadoslot.com.br/static/image/games/pg-soft/7.webp",
     "link": "https://www.fy-fanta.com/?id=223975751",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 2.81,
+    "betMinima": 0.3,
+    "betMaxima": 7.13,
+    "betMaximaMin": 5.91,
+    "betMaximaMax": 13.26
   },
   {
     "id": 44,
@@ -623,7 +803,7 @@
     "provider": "pgsoft",
     "emoji": "🎰",
     "theme": "aztec",
-    "dist": 96,
+    "dist": 97,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -631,7 +811,12 @@
     "tag": null,
     "img": "https://www.rainhadoslot.com.br/static/image/games/pg-soft/96.webp",
     "link": "https://hms-tiradentesday.bet/?invite_code=8be79469",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 2.04,
+    "betMinima": 0.78,
+    "betMaxima": 11.27,
+    "betMaximaMin": 4.41,
+    "betMaximaMax": 15.39
   },
   {
     "id": 45,
@@ -647,7 +832,12 @@
     "tag": null,
     "img": "https://www.rainhadoslot.com.br/static/image/games/pg-soft/90.webp",
     "link": "https://coroa-gghhpg.com/?id=405842843",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 2.29,
+    "betMinima": 0.68,
+    "betMaxima": 4.65,
+    "betMaximaMin": 4.38,
+    "betMaximaMax": 17.76
   },
   {
     "id": 46,
@@ -655,7 +845,7 @@
     "provider": "pgsoft",
     "emoji": "🎰",
     "theme": "asian",
-    "dist": 96,
+    "dist": 86,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -663,7 +853,12 @@
     "tag": null,
     "img": "https://www.rainhadoslot.com.br/static/image/games/pg-soft/8.webp",
     "link": "https://www.onebra77.com/?source_code=TWMWECDNJ2X",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 3.19,
+    "betMinima": 0.55,
+    "betMaxima": 10.42,
+    "betMaximaMin": 4.03,
+    "betMaximaMax": 12.45
   },
   {
     "id": 47,
@@ -671,7 +866,7 @@
     "provider": "pgsoft",
     "emoji": "🎰",
     "theme": "greek",
-    "dist": 96,
+    "dist": 98,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -679,7 +874,12 @@
     "tag": null,
     "img": "https://www.rainhadoslot.com.br/static/image/games/pg-soft/61.webp",
     "link": "https://br.mt-antilope.com/home?inviteCode=VEU6ZR",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 2.98,
+    "betMinima": 0.28,
+    "betMaxima": 9.61,
+    "betMaximaMin": 5.75,
+    "betMaximaMax": 13.69
   },
   {
     "id": 48,
@@ -687,7 +887,7 @@
     "provider": "pgsoft",
     "emoji": "🔥",
     "theme": "fantasy",
-    "dist": 96,
+    "dist": 86,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -695,7 +895,12 @@
     "tag": null,
     "img": "https://www.rainhadoslot.com.br/static/image/games/pg-soft/60.webp",
     "link": "https://kk-judy777.vip/?id=649076826&currency=BRL&type=2",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 3.34,
+    "betMinima": 0.51,
+    "betMaxima": 8.71,
+    "betMaximaMin": 4.23,
+    "betMaximaMax": 10.7
   },
   {
     "id": 49,
@@ -703,7 +908,7 @@
     "provider": "pgsoft",
     "emoji": "🍀",
     "theme": "chinese",
-    "dist": 96,
+    "dist": 90,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -711,7 +916,12 @@
     "tag": null,
     "img": "https://www.rainhadoslot.com.br/static/image/games/pg-soft/43.webp",
     "link": "https://www.fy-fanta.com/?id=223975751",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 3.44,
+    "betMinima": 0.73,
+    "betMaxima": 12.75,
+    "betMaximaMin": 5.31,
+    "betMaximaMax": 14.7
   },
   {
     "id": 50,
@@ -719,7 +929,7 @@
     "provider": "pgsoft",
     "emoji": "🏺",
     "theme": "egypt",
-    "dist": 96,
+    "dist": 97,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -727,7 +937,12 @@
     "tag": null,
     "img": "https://www.rainhadoslot.com.br/static/image/games/pg-soft/97.webp",
     "link": "https://hms-tiradentesday.bet/?invite_code=8be79469",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 3.03,
+    "betMinima": 0.28,
+    "betMaxima": 4.64,
+    "betMaximaMin": 5.5,
+    "betMaximaMax": 16.15
   },
   {
     "id": 51,
@@ -735,7 +950,7 @@
     "provider": "pgsoft",
     "emoji": "🏺",
     "theme": "egypt",
-    "dist": 96,
+    "dist": 87,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -743,7 +958,12 @@
     "tag": null,
     "img": "https://www.rainhadoslot.com.br/static/image/games/pg-soft/117.webp",
     "link": "https://coroa-gghhpg.com/?id=405842843",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 2.42,
+    "betMinima": 0.72,
+    "betMaxima": 4.28,
+    "betMaximaMin": 5.46,
+    "betMaximaMax": 11.89
   },
   {
     "id": 52,
@@ -751,7 +971,7 @@
     "provider": "pgsoft",
     "emoji": "🎰",
     "theme": "fantasy",
-    "dist": 96,
+    "dist": 91,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -759,7 +979,12 @@
     "tag": null,
     "img": "https://www.rainhadoslot.com.br/static/image/games/pg-soft/38.webp",
     "link": "https://www.onebra77.com/?source_code=TWMWECDNJ2X",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 3.11,
+    "betMinima": 0.24,
+    "betMaxima": 11.02,
+    "betMaximaMin": 4.7,
+    "betMaximaMax": 17.4
   },
   {
     "id": 53,
@@ -767,7 +992,7 @@
     "provider": "pgsoft",
     "emoji": "🎰",
     "theme": "fantasy",
-    "dist": 96,
+    "dist": 95,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -775,7 +1000,12 @@
     "tag": null,
     "img": "https://www.rainhadoslot.com.br/static/image/games/pg-soft/120.webp",
     "link": "https://br.mt-antilope.com/home?inviteCode=VEU6ZR",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 2.19,
+    "betMinima": 0.39,
+    "betMaxima": 8.7,
+    "betMaximaMin": 4.77,
+    "betMaximaMax": 10.88
   },
   {
     "id": 54,
@@ -791,7 +1021,12 @@
     "tag": null,
     "img": "https://www.rainhadoslot.com.br/static/image/games/pg-soft/10.webp",
     "link": "https://kk-judy777.vip/?id=649076826&currency=BRL&type=2",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 2.42,
+    "betMinima": 0.62,
+    "betMaxima": 11.41,
+    "betMaximaMin": 4.43,
+    "betMaximaMax": 12.29
   },
   {
     "id": 55,
@@ -799,7 +1034,7 @@
     "provider": "pgsoft",
     "emoji": "🎰",
     "theme": "fantasy",
-    "dist": 96,
+    "dist": 93,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -807,7 +1042,12 @@
     "tag": null,
     "img": "https://www.rainhadoslot.com.br/static/image/games/pg-soft/80.webp",
     "link": "https://www.fy-fanta.com/?id=223975751",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 3.38,
+    "betMinima": 0.67,
+    "betMaxima": 14.42,
+    "betMaximaMin": 5.97,
+    "betMaximaMax": 14.13
   },
   {
     "id": 56,
@@ -815,7 +1055,7 @@
     "provider": "pgsoft",
     "emoji": "🐓",
     "theme": "fantasy",
-    "dist": 96,
+    "dist": 83,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -823,7 +1063,12 @@
     "tag": null,
     "img": "https://imagedelivery.net/BgH9d8bzsn4n0yijn4h7IQ/38324de2-eb5d-4279-5211-3a8a39b54300/public",
     "link": "https://hms-tiradentesday.bet/?invite_code=8be79469",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 2.71,
+    "betMinima": 0.43,
+    "betMaxima": 10.22,
+    "betMaximaMin": 4.55,
+    "betMaximaMax": 13.36
   },
   {
     "id": 57,
@@ -839,7 +1084,12 @@
     "tag": null,
     "img": "https://www.rainhadoslot.com.br/static/image/games/pg-soft/44.webp",
     "link": "https://coroa-gghhpg.com/?id=405842843",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 3.35,
+    "betMinima": 0.21,
+    "betMaxima": 8.12,
+    "betMaximaMin": 4.06,
+    "betMaximaMax": 12.37
   },
   {
     "id": 58,
@@ -847,7 +1097,7 @@
     "provider": "pgsoft",
     "emoji": "🎰",
     "theme": "fantasy",
-    "dist": 96,
+    "dist": 89,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -855,7 +1105,12 @@
     "tag": null,
     "img": "https://www.rainhadoslot.com.br/static/image/games/pg-soft/124.webp",
     "link": "https://www.onebra77.com/?source_code=TWMWECDNJ2X",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 3.07,
+    "betMinima": 0.78,
+    "betMaxima": 4.52,
+    "betMaximaMin": 5.28,
+    "betMaximaMax": 14.44
   },
   {
     "id": 59,
@@ -863,7 +1118,7 @@
     "provider": "pgsoft",
     "emoji": "🎰",
     "theme": "fantasy",
-    "dist": 96,
+    "dist": 92,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -871,7 +1126,12 @@
     "tag": null,
     "img": "https://www.rainhadoslot.com.br/static/image/games/pg-soft/34.webp",
     "link": "https://br.mt-antilope.com/home?inviteCode=VEU6ZR",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 3.21,
+    "betMinima": 0.76,
+    "betMaxima": 6.08,
+    "betMaximaMin": 4.73,
+    "betMaximaMax": 10.89
   },
   {
     "id": 60,
@@ -887,7 +1147,12 @@
     "tag": null,
     "img": "https://www.rainhadoslot.com.br/static/image/games/pg-soft/94.webp",
     "link": "https://kk-judy777.vip/?id=649076826&currency=BRL&type=2",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 2.82,
+    "betMinima": 0.26,
+    "betMaxima": 9.27,
+    "betMaximaMin": 4.14,
+    "betMaximaMax": 13.19
   },
   {
     "id": 61,
@@ -895,7 +1160,7 @@
     "provider": "pgsoft",
     "emoji": "🍭",
     "theme": "candy",
-    "dist": 96,
+    "dist": 86,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -903,7 +1168,12 @@
     "tag": null,
     "img": "https://www.rainhadoslot.com.br/static/image/games/pg-soft/40.webp",
     "link": "https://www.fy-fanta.com/?id=223975751",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 3.16,
+    "betMinima": 0.3,
+    "betMaxima": 13.54,
+    "betMaximaMin": 4.52,
+    "betMaximaMax": 17.52
   },
   {
     "id": 62,
@@ -911,7 +1181,7 @@
     "provider": "pgsoft",
     "emoji": "🎰",
     "theme": "fantasy",
-    "dist": 96,
+    "dist": 97,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -919,7 +1189,12 @@
     "tag": null,
     "img": "https://www.rainhadoslot.com.br/static/image/games/pg-soft/39.webp",
     "link": "https://hms-tiradentesday.bet/?invite_code=8be79469",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 2.48,
+    "betMinima": 0.54,
+    "betMaxima": 5.08,
+    "betMaximaMin": 4.24,
+    "betMaximaMax": 16.67
   },
   {
     "id": 63,
@@ -935,7 +1210,12 @@
     "tag": null,
     "img": "https://www.rainhadoslot.com.br/static/image/games/pg-soft/64.webp",
     "link": "https://coroa-gghhpg.com/?id=405842843",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 2.78,
+    "betMinima": 0.36,
+    "betMaxima": 11.72,
+    "betMaximaMin": 4.98,
+    "betMaximaMax": 11.19
   },
   {
     "id": 64,
@@ -943,7 +1223,7 @@
     "provider": "pgsoft",
     "emoji": "🎰",
     "theme": "fantasy",
-    "dist": 96,
+    "dist": 90,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -951,7 +1231,12 @@
     "tag": null,
     "img": "https://www.rainhadoslot.com.br/static/image/games/pg-soft/101.webp",
     "link": "https://www.onebra77.com/?source_code=TWMWECDNJ2X",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 3.23,
+    "betMinima": 0.34,
+    "betMaxima": 14.35,
+    "betMaximaMin": 4.13,
+    "betMaximaMax": 15.92
   },
   {
     "id": 65,
@@ -959,7 +1244,7 @@
     "provider": "pgsoft",
     "emoji": "🍀",
     "theme": "chinese",
-    "dist": 96,
+    "dist": 91,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -967,7 +1252,12 @@
     "tag": null,
     "img": "https://www.rainhadoslot.com.br/static/image/games/pg-soft/128.webp",
     "link": "https://br.mt-antilope.com/home?inviteCode=VEU6ZR",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 2.56,
+    "betMinima": 0.51,
+    "betMaxima": 6.82,
+    "betMaximaMin": 5.98,
+    "betMaximaMax": 13.47
   },
   {
     "id": 67,
@@ -975,7 +1265,7 @@
     "provider": "pgsoft",
     "emoji": "🎰",
     "theme": "fantasy",
-    "dist": 96,
+    "dist": 93,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -983,7 +1273,12 @@
     "tag": null,
     "img": "https://www.rainhadoslot.com.br/static/image/games/pg-soft/136.webp",
     "link": "https://www.fy-fanta.com/?id=223975751",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 2.74,
+    "betMinima": 0.26,
+    "betMaxima": 13.67,
+    "betMaximaMin": 5.15,
+    "betMaximaMax": 16.29
   },
   {
     "id": 68,
@@ -991,7 +1286,7 @@
     "provider": "pgsoft",
     "emoji": "🎰",
     "theme": "fantasy",
-    "dist": 96,
+    "dist": 93,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -999,7 +1294,12 @@
     "tag": null,
     "img": "https://www.rainhadoslot.com.br/static/image/games/pg-soft/91.webp",
     "link": "https://hms-tiradentesday.bet/?invite_code=8be79469",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 3.25,
+    "betMinima": 0.2,
+    "betMaxima": 14.02,
+    "betMaximaMin": 5.89,
+    "betMaximaMax": 14.55
   },
   {
     "id": 69,
@@ -1007,7 +1307,7 @@
     "provider": "pgsoft",
     "emoji": "🎰",
     "theme": "fantasy",
-    "dist": 96,
+    "dist": 95,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -1015,7 +1315,12 @@
     "tag": null,
     "img": "https://www.rainhadoslot.com.br/static/image/games/pg-soft/145.webp",
     "link": "https://coroa-gghhpg.com/?id=405842843",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 2.96,
+    "betMinima": 0.37,
+    "betMaxima": 4.82,
+    "betMaximaMin": 4.26,
+    "betMaximaMax": 14.1
   },
   {
     "id": 70,
@@ -1031,7 +1336,12 @@
     "tag": null,
     "img": "https://www.rainhadoslot.com.br/static/image/games/pg-soft/81.webp",
     "link": "https://www.onebra77.com/?source_code=TWMWECDNJ2X",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 2.35,
+    "betMinima": 0.73,
+    "betMaxima": 13.12,
+    "betMaximaMin": 5.34,
+    "betMaximaMax": 16.61
   },
   {
     "id": 71,
@@ -1039,7 +1349,7 @@
     "provider": "pgsoft",
     "emoji": "🎰",
     "theme": "fantasy",
-    "dist": 96,
+    "dist": 95,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -1047,7 +1357,12 @@
     "tag": null,
     "img": "https://www.rainhadoslot.com.br/static/image/games/pg-soft/77.webp",
     "link": "https://br.mt-antilope.com/home?inviteCode=VEU6ZR",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 3.22,
+    "betMinima": 0.28,
+    "betMaxima": 12.54,
+    "betMaximaMin": 5.37,
+    "betMaximaMax": 13.66
   },
   {
     "id": 72,
@@ -1055,7 +1370,7 @@
     "provider": "pgsoft",
     "emoji": "🎰",
     "theme": "fantasy",
-    "dist": 96,
+    "dist": 89,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -1063,7 +1378,12 @@
     "tag": null,
     "img": "https://www.rainhadoslot.com.br/static/image/games/pg-soft/125.webp",
     "link": "https://kk-judy777.vip/?id=649076826&currency=BRL&type=2",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 2.58,
+    "betMinima": 0.67,
+    "betMaxima": 4.67,
+    "betMaximaMin": 4.31,
+    "betMaximaMax": 16.52
   },
   {
     "id": 73,
@@ -1071,7 +1391,7 @@
     "provider": "pgsoft",
     "emoji": "🎰",
     "theme": "fantasy",
-    "dist": 96,
+    "dist": 94,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -1079,7 +1399,12 @@
     "tag": null,
     "img": "https://www.rainhadoslot.com.br/static/image/games/pg-soft/106.webp",
     "link": "https://www.fy-fanta.com/?id=223975751",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 2.8,
+    "betMinima": 0.76,
+    "betMaxima": 10.63,
+    "betMaximaMin": 5.89,
+    "betMaximaMax": 11.96
   },
   {
     "id": 74,
@@ -1087,7 +1412,7 @@
     "provider": "pgsoft",
     "emoji": "🎰",
     "theme": "fantasy",
-    "dist": 96,
+    "dist": 93,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -1095,7 +1420,12 @@
     "tag": null,
     "img": "https://www.rainhadoslot.com.br/static/image/games/pg-soft/72.webp",
     "link": "https://hms-tiradentesday.bet/?invite_code=8be79469",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 3.13,
+    "betMinima": 0.58,
+    "betMaxima": 4.6,
+    "betMaximaMin": 5.33,
+    "betMaximaMax": 11.88
   },
   {
     "id": 75,
@@ -1103,7 +1433,7 @@
     "provider": "pgsoft",
     "emoji": "🎰",
     "theme": "fantasy",
-    "dist": 96,
+    "dist": 89,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -1111,7 +1441,12 @@
     "tag": null,
     "img": "https://www.rainhadoslot.com.br/static/image/games/pg-soft/93.webp",
     "link": "https://coroa-gghhpg.com/?id=405842843",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 2.54,
+    "betMinima": 0.5,
+    "betMaxima": 11.25,
+    "betMaximaMin": 5.93,
+    "betMaximaMax": 15.12
   },
   {
     "id": 76,
@@ -1119,7 +1454,7 @@
     "provider": "pgsoft",
     "emoji": "🎰",
     "theme": "fantasy",
-    "dist": 96,
+    "dist": 94,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -1127,7 +1462,12 @@
     "tag": null,
     "img": "https://www.rainhadoslot.com.br/static/image/games/pg-soft/45.webp",
     "link": "https://www.onebra77.com/?source_code=TWMWECDNJ2X",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 2.55,
+    "betMinima": 0.35,
+    "betMaxima": 11.11,
+    "betMaximaMin": 5.18,
+    "betMaximaMax": 15.55
   },
   {
     "id": 77,
@@ -1135,7 +1475,7 @@
     "provider": "pgsoft",
     "emoji": "🎰",
     "theme": "fantasy",
-    "dist": 96,
+    "dist": 95,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -1143,7 +1483,12 @@
     "tag": null,
     "img": "https://www.rainhadoslot.com.br/static/image/games/pg-soft/118.webp",
     "link": "https://br.mt-antilope.com/home?inviteCode=VEU6ZR",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 2.92,
+    "betMinima": 0.74,
+    "betMaxima": 14.03,
+    "betMaximaMin": 5.88,
+    "betMaximaMax": 15.42
   },
   {
     "id": 78,
@@ -1151,7 +1496,7 @@
     "provider": "pgsoft",
     "emoji": "🎰",
     "theme": "fantasy",
-    "dist": 96,
+    "dist": 95,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -1159,7 +1504,12 @@
     "tag": null,
     "img": "https://www.rainhadoslot.com.br/static/image/games/pg-soft/74.webp",
     "link": "https://kk-judy777.vip/?id=649076826&currency=BRL&type=2",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 2.04,
+    "betMinima": 0.23,
+    "betMaxima": 8.53,
+    "betMaximaMin": 5.09,
+    "betMaximaMax": 14.68
   },
   {
     "id": 79,
@@ -1167,7 +1517,7 @@
     "provider": "pgsoft",
     "emoji": "🎰",
     "theme": "egypt",
-    "dist": 96,
+    "dist": 90,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -1175,7 +1525,12 @@
     "tag": null,
     "img": "https://www.rainhadoslot.com.br/static/image/games/pg-soft/146.webp",
     "link": "https://www.fy-fanta.com/?id=223975751",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 2.21,
+    "betMinima": 0.38,
+    "betMaxima": 13.68,
+    "betMaximaMin": 5.19,
+    "betMaximaMax": 14.73
   },
   {
     "id": 80,
@@ -1183,7 +1538,7 @@
     "provider": "pgsoft",
     "emoji": "🪙",
     "theme": "luxury",
-    "dist": 96,
+    "dist": 89,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -1191,7 +1546,12 @@
     "tag": null,
     "img": "https://www.rainhadoslot.com.br/static/image/games/pg-soft/78.webp",
     "link": "https://hms-tiradentesday.bet/?invite_code=8be79469",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 3.47,
+    "betMinima": 0.21,
+    "betMaxima": 4.96,
+    "betMaximaMin": 4.14,
+    "betMaximaMax": 13.25
   },
   {
     "id": 81,
@@ -1199,7 +1559,7 @@
     "provider": "pgsoft",
     "emoji": "🎰",
     "theme": "fantasy",
-    "dist": 96,
+    "dist": 90,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -1207,7 +1567,12 @@
     "tag": null,
     "img": "https://www.rainhadoslot.com.br/static/image/games/pg-soft/150.webp",
     "link": "https://coroa-gghhpg.com/?id=405842843",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 3.16,
+    "betMinima": 0.51,
+    "betMaxima": 9.34,
+    "betMaximaMin": 5.25,
+    "betMaximaMax": 14.72
   },
   {
     "id": 82,
@@ -1215,7 +1580,7 @@
     "provider": "pgsoft",
     "emoji": "🎰",
     "theme": "fantasy",
-    "dist": 96,
+    "dist": 92,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -1223,7 +1588,12 @@
     "tag": null,
     "img": "https://www.rainhadoslot.com.br/static/image/games/pg-soft/73.webp",
     "link": "https://www.onebra77.com/?source_code=TWMWECDNJ2X",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 2.34,
+    "betMinima": 0.66,
+    "betMaxima": 6.09,
+    "betMaximaMin": 4.66,
+    "betMaximaMax": 10.59
   },
   {
     "id": 83,
@@ -1231,7 +1601,7 @@
     "provider": "pgsoft",
     "emoji": "🎰",
     "theme": "fantasy",
-    "dist": 96,
+    "dist": 85,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -1239,7 +1609,12 @@
     "tag": null,
     "img": "https://imagedelivery.net/BgH9d8bzsn4n0yijn4h7IQ/90dd7ce8-09da-406e-c41d-1a5aa2646d00/public",
     "link": "https://br.mt-antilope.com/home?inviteCode=VEU6ZR",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 2.15,
+    "betMinima": 0.42,
+    "betMaxima": 13.37,
+    "betMaximaMin": 5.69,
+    "betMaximaMax": 17.98
   },
   {
     "id": 84,
@@ -1247,7 +1622,7 @@
     "provider": "pgsoft",
     "emoji": "🎰",
     "theme": "fantasy",
-    "dist": 96,
+    "dist": 85,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -1255,7 +1630,12 @@
     "tag": null,
     "img": "https://www.rainhadoslot.com.br/static/image/games/pg-soft/76.webp",
     "link": "https://kk-judy777.vip/?id=649076826&currency=BRL&type=2",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 2.56,
+    "betMinima": 0.5,
+    "betMaxima": 4.69,
+    "betMaximaMin": 5.63,
+    "betMaximaMax": 12.36
   },
   {
     "id": 85,
@@ -1263,7 +1643,7 @@
     "provider": "pgsoft",
     "emoji": "🎰",
     "theme": "fantasy",
-    "dist": 96,
+    "dist": 91,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -1271,7 +1651,12 @@
     "tag": null,
     "img": "https://www.rainhadoslot.com.br/static/image/games/pg-soft/180.webp",
     "link": "https://www.fy-fanta.com/?id=223975751",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 2.19,
+    "betMinima": 0.73,
+    "betMaxima": 7.5,
+    "betMaximaMin": 5.05,
+    "betMaximaMax": 11.29
   },
   {
     "id": 86,
@@ -1279,7 +1664,7 @@
     "provider": "pgsoft",
     "emoji": "🎰",
     "theme": "fantasy",
-    "dist": 96,
+    "dist": 92,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -1287,7 +1672,12 @@
     "tag": null,
     "img": "https://www.rainhadoslot.com.br/static/image/games/pg-soft/6.webp",
     "link": "https://hms-tiradentesday.bet/?invite_code=8be79469",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 2.02,
+    "betMinima": 0.3,
+    "betMaxima": 5.25,
+    "betMaximaMin": 5.53,
+    "betMaximaMax": 10.27
   },
   {
     "id": 87,
@@ -1295,7 +1685,7 @@
     "provider": "pgsoft",
     "emoji": "🍭",
     "theme": "candy",
-    "dist": 96,
+    "dist": 94,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -1303,7 +1693,12 @@
     "tag": null,
     "img": "https://www.rainhadoslot.com.br/static/image/games/pg-soft/121.webp",
     "link": "https://coroa-gghhpg.com/?id=405842843",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 2.17,
+    "betMinima": 0.39,
+    "betMaxima": 14.95,
+    "betMaximaMin": 4.48,
+    "betMaximaMax": 10.62
   },
   {
     "id": 88,
@@ -1311,7 +1706,7 @@
     "provider": "pgsoft",
     "emoji": "🎰",
     "theme": "fantasy",
-    "dist": 96,
+    "dist": 98,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -1319,7 +1714,12 @@
     "tag": null,
     "img": "https://www.rainhadoslot.com.br/static/image/games/pg-soft/147.webp",
     "link": "https://www.onebra77.com/?source_code=TWMWECDNJ2X",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 2.48,
+    "betMinima": 0.22,
+    "betMaxima": 10.12,
+    "betMaximaMin": 5.84,
+    "betMaximaMax": 14.14
   },
   {
     "id": 89,
@@ -1327,7 +1727,7 @@
     "provider": "pgsoft",
     "emoji": "🎰",
     "theme": "fantasy",
-    "dist": 96,
+    "dist": 94,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -1335,7 +1735,12 @@
     "tag": null,
     "img": "https://www.rainhadoslot.com.br/static/image/games/pg-soft/30.webp",
     "link": "https://br.mt-antilope.com/home?inviteCode=VEU6ZR",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 3.02,
+    "betMinima": 0.56,
+    "betMaxima": 9.11,
+    "betMaximaMin": 5.3,
+    "betMaximaMax": 17.01
   },
   {
     "id": 90,
@@ -1343,7 +1748,7 @@
     "provider": "pgsoft",
     "emoji": "🎰",
     "theme": "egypt",
-    "dist": 96,
+    "dist": 95,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -1351,7 +1756,12 @@
     "tag": null,
     "img": "https://www.rainhadoslot.com.br/static/image/games/pg-soft/32.webp",
     "link": "https://kk-judy777.vip/?id=649076826&currency=BRL&type=2",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 2.88,
+    "betMinima": 0.39,
+    "betMaxima": 9.09,
+    "betMaximaMin": 5.46,
+    "betMaximaMax": 16.0
   },
   {
     "id": 92,
@@ -1359,7 +1769,7 @@
     "provider": "pgsoft",
     "emoji": "🎰",
     "theme": "fantasy",
-    "dist": 96,
+    "dist": 92,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -1367,7 +1777,12 @@
     "tag": null,
     "img": "https://imagedelivery.net/BgH9d8bzsn4n0yijn4h7IQ/7c4b698c-1a26-4751-0042-96dc80ed7c00/public",
     "link": "https://hms-tiradentesday.bet/?invite_code=8be79469",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 2.66,
+    "betMinima": 0.35,
+    "betMaxima": 10.9,
+    "betMaximaMin": 5.65,
+    "betMaximaMax": 11.54
   },
   {
     "id": 93,
@@ -1383,7 +1798,12 @@
     "tag": null,
     "img": "https://imagedelivery.net/BgH9d8bzsn4n0yijn4h7IQ/0a02e52a-7210-4eb5-c0e3-225a45008c00/public",
     "link": "https://coroa-gghhpg.com/?id=405842843",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 3.43,
+    "betMinima": 0.42,
+    "betMaxima": 5.99,
+    "betMaximaMin": 4.96,
+    "betMaximaMax": 13.84
   },
   {
     "id": 94,
@@ -1391,7 +1811,7 @@
     "provider": "pgsoft",
     "emoji": "🎰",
     "theme": "fantasy",
-    "dist": 96,
+    "dist": 85,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -1399,7 +1819,12 @@
     "tag": null,
     "img": "https://www.rainhadoslot.com.br/static/image/games/pg-soft/48.webp",
     "link": "https://www.onebra77.com/?source_code=TWMWECDNJ2X",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 3.25,
+    "betMinima": 0.76,
+    "betMaxima": 10.88,
+    "betMaximaMin": 4.33,
+    "betMaximaMax": 13.58
   },
   {
     "id": 100,
@@ -1415,7 +1840,12 @@
     "tag": null,
     "img": "https://imagedelivery.net/BgH9d8bzsn4n0yijn4h7IQ/749079eb-e440-4abd-af41-dfac77267500/public",
     "link": "https://www.onebra77.com/?source_code=TWMWECDNJ2X",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 2.31,
+    "betMinima": 0.33,
+    "betMaxima": 4.02,
+    "betMaximaMin": 4.11,
+    "betMaximaMax": 10.95
   },
   {
     "id": 101,
@@ -1423,7 +1853,7 @@
     "provider": "pgsoft",
     "emoji": "🎰",
     "theme": "fantasy",
-    "dist": 96,
+    "dist": 87,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -1431,7 +1861,12 @@
     "tag": null,
     "img": "https://imagedelivery.net/BgH9d8bzsn4n0yijn4h7IQ/69aac84c-6e07-4936-baeb-6de639683800/public",
     "link": "https://br.mt-antilope.com/home?inviteCode=VEU6ZR",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 3.35,
+    "betMinima": 0.8,
+    "betMaxima": 12.19,
+    "betMaximaMin": 5.04,
+    "betMaximaMax": 10.7
   },
   {
     "id": 102,
@@ -1439,7 +1874,7 @@
     "provider": "pragmatic",
     "emoji": "💎",
     "theme": "luxury",
-    "dist": 96,
+    "dist": 98,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -1447,7 +1882,12 @@
     "tag": null,
     "img": "https://imagedelivery.net/BgH9d8bzsn4n0yijn4h7IQ/cec30daf-3e32-4cc1-8024-0279ee90f700/public",
     "link": "https://kk-judy777.vip/?id=649076826&currency=BRL&type=2",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 2.47,
+    "betMinima": 0.69,
+    "betMaxima": 11.14,
+    "betMaximaMin": 5.9,
+    "betMaximaMax": 12.59
   },
   {
     "id": 103,
@@ -1455,7 +1895,7 @@
     "provider": "pragmatic",
     "emoji": "💎",
     "theme": "luxury",
-    "dist": 96,
+    "dist": 94,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -1463,7 +1903,12 @@
     "tag": null,
     "img": "https://imagedelivery.net/BgH9d8bzsn4n0yijn4h7IQ/4297db25-a336-4d5a-aca7-5810ca07a400/public",
     "link": "https://www.fy-fanta.com/?id=223975751",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 3.43,
+    "betMinima": 0.26,
+    "betMaxima": 8.35,
+    "betMaximaMin": 5.04,
+    "betMaximaMax": 10.75
   },
   {
     "id": 104,
@@ -1471,7 +1916,7 @@
     "provider": "pragmatic",
     "emoji": "🍭",
     "theme": "candy",
-    "dist": 96,
+    "dist": 91,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -1479,7 +1924,12 @@
     "tag": null,
     "img": "https://imagedelivery.net/BgH9d8bzsn4n0yijn4h7IQ/75bac06a-906e-40f0-6ee3-9409883f3c00/public",
     "link": "https://hms-tiradentesday.bet/?invite_code=8be79469",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 2.46,
+    "betMinima": 0.43,
+    "betMaxima": 4.92,
+    "betMaximaMin": 4.53,
+    "betMaximaMax": 14.09
   },
   {
     "id": 105,
@@ -1487,7 +1937,7 @@
     "provider": "pragmatic",
     "emoji": "🎰",
     "theme": "fantasy",
-    "dist": 96,
+    "dist": 91,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -1495,7 +1945,12 @@
     "tag": null,
     "img": "https://imagedelivery.net/BgH9d8bzsn4n0yijn4h7IQ/2b235209-4221-4e33-ebda-a3118218a100/public",
     "link": "https://coroa-gghhpg.com/?id=405842843",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 3.42,
+    "betMinima": 0.44,
+    "betMaxima": 9.86,
+    "betMaximaMin": 4.85,
+    "betMaximaMax": 15.4
   },
   {
     "id": 106,
@@ -1503,7 +1958,7 @@
     "provider": "pragmatic",
     "emoji": "🍭",
     "theme": "candy",
-    "dist": 96,
+    "dist": 87,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -1511,7 +1966,12 @@
     "tag": null,
     "img": "https://imagedelivery.net/BgH9d8bzsn4n0yijn4h7IQ/b2f02965-0244-426d-9990-06c5eb73fd00/public",
     "link": "https://www.onebra77.com/?source_code=TWMWECDNJ2X",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 2.92,
+    "betMinima": 0.71,
+    "betMaxima": 10.85,
+    "betMaximaMin": 4.6,
+    "betMaximaMax": 10.41
   },
   {
     "id": 107,
@@ -1519,7 +1979,7 @@
     "provider": "pragmatic",
     "emoji": "🎰",
     "theme": "fishing",
-    "dist": 96,
+    "dist": 91,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -1527,7 +1987,12 @@
     "tag": null,
     "img": "https://imagedelivery.net/BgH9d8bzsn4n0yijn4h7IQ/cf61fb53-16da-4388-1b7e-1f38056ea600/public",
     "link": "https://br.mt-antilope.com/home?inviteCode=VEU6ZR",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 2.73,
+    "betMinima": 0.37,
+    "betMaxima": 10.5,
+    "betMaximaMin": 5.47,
+    "betMaximaMax": 10.83
   },
   {
     "id": 108,
@@ -1535,7 +2000,7 @@
     "provider": "pragmatic",
     "emoji": "🍉",
     "theme": "fruit",
-    "dist": 96,
+    "dist": 85,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -1543,7 +2008,12 @@
     "tag": null,
     "img": "https://imagedelivery.net/BgH9d8bzsn4n0yijn4h7IQ/fe66c21d-2c8a-46dc-5034-c90d683cc600/public",
     "link": "https://kk-judy777.vip/?id=649076826&currency=BRL&type=2",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 2.94,
+    "betMinima": 0.55,
+    "betMaxima": 11.77,
+    "betMaximaMin": 5.52,
+    "betMaximaMax": 11.51
   },
   {
     "id": 109,
@@ -1551,7 +2021,7 @@
     "provider": "pragmatic",
     "emoji": "🦁",
     "theme": "fantasy",
-    "dist": 96,
+    "dist": 94,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -1559,7 +2029,12 @@
     "tag": null,
     "img": "https://imagedelivery.net/BgH9d8bzsn4n0yijn4h7IQ/c7756f22-b461-4ff9-b800-ebb02bac3900/public",
     "link": "https://www.fy-fanta.com/?id=223975751",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 2.32,
+    "betMinima": 0.77,
+    "betMaxima": 8.12,
+    "betMaximaMin": 5.89,
+    "betMaximaMax": 15.78
   },
   {
     "id": 110,
@@ -1567,7 +2042,7 @@
     "provider": "evolution",
     "emoji": "🎰",
     "theme": "fantasy",
-    "dist": 96,
+    "dist": 94,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -1575,7 +2050,12 @@
     "tag": null,
     "img": "https://imagedelivery.net/BgH9d8bzsn4n0yijn4h7IQ/0f7dbe17-aaec-4e4c-6252-78ab8e58e300/public",
     "link": "https://hms-tiradentesday.bet/?invite_code=8be79469",
-    "clicks": 1
+    "clicks": 1,
+    "betPadrao": 3.22,
+    "betMinima": 0.33,
+    "betMaxima": 7.52,
+    "betMaximaMin": 4.46,
+    "betMaximaMax": 16.86
   },
   {
     "id": 112,
@@ -1583,7 +2063,7 @@
     "provider": "pragmatic",
     "emoji": "🔥",
     "theme": "fantasy",
-    "dist": 96,
+    "dist": 97,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -1591,7 +2071,12 @@
     "tag": null,
     "img": "https://imagedelivery.net/BgH9d8bzsn4n0yijn4h7IQ/0f7775f4-2105-4018-10c3-0e2204725100/public",
     "link": "https://www.onebra77.com/?source_code=TWMWECDNJ2X",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 2.72,
+    "betMinima": 0.33,
+    "betMaxima": 12.33,
+    "betMaximaMin": 4.14,
+    "betMaximaMax": 16.22
   },
   {
     "id": 113,
@@ -1599,7 +2084,7 @@
     "provider": "pragmatic",
     "emoji": "🍭",
     "theme": "candy",
-    "dist": 96,
+    "dist": 95,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -1607,7 +2092,12 @@
     "tag": null,
     "img": "https://imagedelivery.net/BgH9d8bzsn4n0yijn4h7IQ/4985fb1e-7cb9-4929-5897-d14058094600/public",
     "link": "https://br.mt-antilope.com/home?inviteCode=VEU6ZR",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 3.41,
+    "betMinima": 0.65,
+    "betMaxima": 11.87,
+    "betMaximaMin": 5.57,
+    "betMaximaMax": 12.33
   },
   {
     "id": 114,
@@ -1615,7 +2105,7 @@
     "provider": "pragmatic",
     "emoji": "🔥",
     "theme": "fantasy",
-    "dist": 96,
+    "dist": 88,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -1623,7 +2113,12 @@
     "tag": null,
     "img": "https://imagedelivery.net/BgH9d8bzsn4n0yijn4h7IQ/e820c936-c1fa-4402-5f02-ff9f771b8600/public",
     "link": "https://kk-judy777.vip/?id=649076826&currency=BRL&type=2",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 3.43,
+    "betMinima": 0.53,
+    "betMaxima": 8.91,
+    "betMaximaMin": 5.16,
+    "betMaximaMax": 14.57
   },
   {
     "id": 115,
@@ -1631,7 +2126,7 @@
     "provider": "pragmatic",
     "emoji": "🪙",
     "theme": "luxury",
-    "dist": 96,
+    "dist": 94,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -1639,7 +2134,12 @@
     "tag": null,
     "img": "https://imagedelivery.net/BgH9d8bzsn4n0yijn4h7IQ/dcee97b7-a42e-4991-e553-3dbb4e628f00/public",
     "link": "https://www.fy-fanta.com/?id=223975751",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 3.14,
+    "betMinima": 0.47,
+    "betMaxima": 11.47,
+    "betMaximaMin": 4.96,
+    "betMaximaMax": 16.65
   },
   {
     "id": 116,
@@ -1647,7 +2147,7 @@
     "provider": "pragmatic",
     "emoji": "🐉",
     "theme": "chinese",
-    "dist": 96,
+    "dist": 92,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -1655,7 +2155,12 @@
     "tag": null,
     "img": "https://imagedelivery.net/BgH9d8bzsn4n0yijn4h7IQ/9a501cff-eba9-4cbd-9f08-d45296d10800/public",
     "link": "https://hms-tiradentesday.bet/?invite_code=8be79469",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 2.12,
+    "betMinima": 0.51,
+    "betMaxima": 5.81,
+    "betMaximaMin": 5.07,
+    "betMaximaMax": 14.13
   },
   {
     "id": 117,
@@ -1663,7 +2168,7 @@
     "provider": "pgsoft",
     "emoji": "🪙",
     "theme": "luxury",
-    "dist": 96,
+    "dist": 97,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -1671,7 +2176,12 @@
     "tag": null,
     "img": "https://imagedelivery.net/BgH9d8bzsn4n0yijn4h7IQ/4a25c886-4117-458a-2ffd-609af9ff9700/public",
     "link": "https://coroa-gghhpg.com/?id=405842843",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 3.04,
+    "betMinima": 0.37,
+    "betMaxima": 5.81,
+    "betMaximaMin": 5.41,
+    "betMaximaMax": 16.37
   },
   {
     "id": 118,
@@ -1679,7 +2189,7 @@
     "provider": "evolution",
     "emoji": "🎰",
     "theme": "fantasy",
-    "dist": 96,
+    "dist": 87,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -1687,7 +2197,12 @@
     "tag": null,
     "img": "https://imagedelivery.net/BgH9d8bzsn4n0yijn4h7IQ/d1a0d12c-8ce3-4cf3-340d-080d5c740b00/public",
     "link": "https://www.onebra77.com/?source_code=TWMWECDNJ2X",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 2.06,
+    "betMinima": 0.77,
+    "betMaxima": 10.71,
+    "betMaximaMin": 4.46,
+    "betMaximaMax": 14.12
   },
   {
     "id": 119,
@@ -1695,7 +2210,7 @@
     "provider": "pragmatic",
     "emoji": "🍭",
     "theme": "candy",
-    "dist": 96,
+    "dist": 84,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -1703,7 +2218,12 @@
     "tag": null,
     "img": "https://imagedelivery.net/BgH9d8bzsn4n0yijn4h7IQ/2c20e129-f382-4128-633d-5f917a68d500/public",
     "link": "https://br.mt-antilope.com/home?inviteCode=VEU6ZR",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 3.47,
+    "betMinima": 0.33,
+    "betMaxima": 11.22,
+    "betMaximaMin": 5.42,
+    "betMaximaMax": 16.5
   },
   {
     "id": 120,
@@ -1711,7 +2231,7 @@
     "provider": "pragmatic",
     "emoji": "🍭",
     "theme": "candy",
-    "dist": 96,
+    "dist": 95,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -1719,7 +2239,12 @@
     "tag": null,
     "img": "https://imagedelivery.net/BgH9d8bzsn4n0yijn4h7IQ/42a80235-f670-4986-975c-f1bb51198d00/public",
     "link": "https://kk-judy777.vip/?id=649076826&currency=BRL&type=2",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 3.01,
+    "betMinima": 0.67,
+    "betMaxima": 4.95,
+    "betMaximaMin": 4.3,
+    "betMaximaMax": 14.04
   },
   {
     "id": 121,
@@ -1727,7 +2252,7 @@
     "provider": "pragmatic",
     "emoji": "🎰",
     "theme": "fantasy",
-    "dist": 96,
+    "dist": 93,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -1735,7 +2260,12 @@
     "tag": null,
     "img": "https://imagedelivery.net/BgH9d8bzsn4n0yijn4h7IQ/37df9f7f-51c9-47e8-f458-dc4b48c1b800/public",
     "link": "https://www.fy-fanta.com/?id=223975751",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 2.54,
+    "betMinima": 0.47,
+    "betMaxima": 10.61,
+    "betMaximaMin": 4.56,
+    "betMaximaMax": 13.02
   },
   {
     "id": 123,
@@ -1743,7 +2273,7 @@
     "provider": "pragmatic",
     "emoji": "🐺",
     "theme": "western",
-    "dist": 96,
+    "dist": 84,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -1751,7 +2281,12 @@
     "tag": null,
     "img": "https://imagedelivery.net/BgH9d8bzsn4n0yijn4h7IQ/f2c73f2c-b24e-4b65-da0e-2ff58d82a900/public",
     "link": "https://coroa-gghhpg.com/?id=405842843",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 2.78,
+    "betMinima": 0.53,
+    "betMaxima": 5.25,
+    "betMaximaMin": 4.14,
+    "betMaximaMax": 13.39
   },
   {
     "id": 124,
@@ -1759,7 +2294,7 @@
     "provider": "pragmatic",
     "emoji": "✨",
     "theme": "fantasy",
-    "dist": 96,
+    "dist": 84,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -1767,7 +2302,12 @@
     "tag": null,
     "img": "https://imagedelivery.net/BgH9d8bzsn4n0yijn4h7IQ/b66f5022-cdb6-4424-2a91-d08af2229600/public",
     "link": "https://www.onebra77.com/?source_code=TWMWECDNJ2X",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 3.11,
+    "betMinima": 0.73,
+    "betMaxima": 12.39,
+    "betMaximaMin": 4.08,
+    "betMaximaMax": 16.57
   },
   {
     "id": 125,
@@ -1775,7 +2315,7 @@
     "provider": "pragmatic",
     "emoji": "💎",
     "theme": "aztec",
-    "dist": 96,
+    "dist": 94,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -1783,7 +2323,12 @@
     "tag": null,
     "img": "https://imagedelivery.net/BgH9d8bzsn4n0yijn4h7IQ/6828243e-9c4b-4263-6422-3daafeebbd00/public",
     "link": "https://br.mt-antilope.com/home?inviteCode=VEU6ZR",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 2.76,
+    "betMinima": 0.67,
+    "betMaxima": 13.34,
+    "betMaximaMin": 5.72,
+    "betMaximaMax": 16.67
   },
   {
     "id": 126,
@@ -1791,7 +2336,7 @@
     "provider": "pragmatic",
     "emoji": "🎰",
     "theme": "western",
-    "dist": 96,
+    "dist": 87,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -1799,7 +2344,12 @@
     "tag": null,
     "img": "https://imagedelivery.net/BgH9d8bzsn4n0yijn4h7IQ/8cc4c324-3aa9-4c9e-32a6-6038c2c9e000/public",
     "link": "https://kk-judy777.vip/?id=649076826&currency=BRL&type=2",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 3.42,
+    "betMinima": 0.56,
+    "betMaxima": 9.37,
+    "betMaximaMin": 4.09,
+    "betMaximaMax": 15.63
   },
   {
     "id": 127,
@@ -1807,7 +2357,7 @@
     "provider": "pragmatic",
     "emoji": "🎰",
     "theme": "fantasy",
-    "dist": 96,
+    "dist": 94,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -1815,7 +2365,12 @@
     "tag": null,
     "img": "https://imagedelivery.net/BgH9d8bzsn4n0yijn4h7IQ/88005a6c-c0ee-4624-ad20-75938042ff00/public",
     "link": "https://www.fy-fanta.com/?id=223975751",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 2.54,
+    "betMinima": 0.31,
+    "betMaxima": 6.66,
+    "betMaximaMin": 4.2,
+    "betMaximaMax": 13.01
   },
   {
     "id": 128,
@@ -1823,7 +2378,7 @@
     "provider": "pragmatic",
     "emoji": "🎰",
     "theme": "fantasy",
-    "dist": 96,
+    "dist": 92,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -1831,7 +2386,12 @@
     "tag": null,
     "img": "https://imagedelivery.net/BgH9d8bzsn4n0yijn4h7IQ/f0f1e1ea-006b-41c8-6460-a21b6fc07b00/public",
     "link": "https://hms-tiradentesday.bet/?invite_code=8be79469",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 2.9,
+    "betMinima": 0.68,
+    "betMaxima": 12.33,
+    "betMaximaMin": 5.56,
+    "betMaximaMax": 12.15
   },
   {
     "id": 129,
@@ -1839,7 +2399,7 @@
     "provider": "pragmatic",
     "emoji": "🤠",
     "theme": "western",
-    "dist": 96,
+    "dist": 94,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -1847,7 +2407,12 @@
     "tag": null,
     "img": "https://imagedelivery.net/BgH9d8bzsn4n0yijn4h7IQ/d28eb39b-fdc3-46ca-9c44-98226b795300/public",
     "link": "https://coroa-gghhpg.com/?id=405842843",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 2.59,
+    "betMinima": 0.35,
+    "betMaxima": 11.15,
+    "betMaximaMin": 4.58,
+    "betMaximaMax": 10.27
   },
   {
     "id": 130,
@@ -1855,7 +2420,7 @@
     "provider": "pgsoft",
     "emoji": "🎰",
     "theme": "fantasy",
-    "dist": 96,
+    "dist": 88,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -1863,7 +2428,12 @@
     "tag": null,
     "img": "https://imagedelivery.net/BgH9d8bzsn4n0yijn4h7IQ/47221ffd-61cd-4302-2660-60bc3b928d00/public",
     "link": "https://www.onebra77.com/?source_code=TWMWECDNJ2X",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 2.46,
+    "betMinima": 0.56,
+    "betMaxima": 9.67,
+    "betMaximaMin": 5.77,
+    "betMaximaMax": 12.51
   },
   {
     "id": 131,
@@ -1871,7 +2441,7 @@
     "provider": "pragmatic",
     "emoji": "🐭",
     "theme": "fantasy",
-    "dist": 96,
+    "dist": 92,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -1879,7 +2449,12 @@
     "tag": null,
     "img": "https://imagedelivery.net/BgH9d8bzsn4n0yijn4h7IQ/fa4a32dc-ac0a-4be5-225d-37427ce3cd00/public",
     "link": "https://br.mt-antilope.com/home?inviteCode=VEU6ZR",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 2.39,
+    "betMinima": 0.29,
+    "betMaxima": 6.59,
+    "betMaximaMin": 4.84,
+    "betMaximaMax": 10.44
   },
   {
     "id": 132,
@@ -1887,7 +2462,7 @@
     "provider": "pragmatic",
     "emoji": "🎰",
     "theme": "fantasy",
-    "dist": 96,
+    "dist": 97,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -1895,7 +2470,12 @@
     "tag": null,
     "img": "https://imagedelivery.net/BgH9d8bzsn4n0yijn4h7IQ/8e27ea4a-20df-4133-cca1-9e9bfaab5700/public",
     "link": "https://kk-judy777.vip/?id=649076826&currency=BRL&type=2",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 2.19,
+    "betMinima": 0.72,
+    "betMaxima": 6.42,
+    "betMaximaMin": 5.74,
+    "betMaximaMax": 16.44
   },
   {
     "id": 133,
@@ -1903,7 +2483,7 @@
     "provider": "pragmatic",
     "emoji": "❄️",
     "theme": "fantasy",
-    "dist": 96,
+    "dist": 98,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -1911,7 +2491,12 @@
     "tag": null,
     "img": "https://imagedelivery.net/BgH9d8bzsn4n0yijn4h7IQ/f4c81723-06f3-4e03-bd0c-c75360fe3400/public",
     "link": "https://www.fy-fanta.com/?id=223975751",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 3.49,
+    "betMinima": 0.58,
+    "betMaxima": 12.66,
+    "betMaximaMin": 4.19,
+    "betMaximaMax": 11.64
   },
   {
     "id": 134,
@@ -1919,7 +2504,7 @@
     "provider": "evolution",
     "emoji": "🐯",
     "theme": "chinese",
-    "dist": 96,
+    "dist": 87,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -1927,7 +2512,12 @@
     "tag": null,
     "img": "https://imagedelivery.net/BgH9d8bzsn4n0yijn4h7IQ/b555e39a-5ac4-4d81-f7c6-98e5e14a0500/public",
     "link": "https://hms-tiradentesday.bet/?invite_code=8be79469",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 3.41,
+    "betMinima": 0.29,
+    "betMaxima": 14.56,
+    "betMaximaMin": 4.53,
+    "betMaximaMax": 13.78
   },
   {
     "id": 135,
@@ -1935,7 +2525,7 @@
     "provider": "pragmatic",
     "emoji": "🍭",
     "theme": "candy",
-    "dist": 96,
+    "dist": 91,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -1943,7 +2533,12 @@
     "tag": null,
     "img": "https://imagedelivery.net/BgH9d8bzsn4n0yijn4h7IQ/17a73da9-1c03-4fde-0a38-c7ac695df400/public",
     "link": "https://coroa-gghhpg.com/?id=405842843",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 2.82,
+    "betMinima": 0.6,
+    "betMaxima": 5.33,
+    "betMaximaMin": 5.48,
+    "betMaximaMax": 17.15
   },
   {
     "id": 136,
@@ -1951,7 +2546,7 @@
     "provider": "pragmatic",
     "emoji": "🎰",
     "theme": "fantasy",
-    "dist": 96,
+    "dist": 91,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -1959,7 +2554,12 @@
     "tag": null,
     "img": "https://imagedelivery.net/BgH9d8bzsn4n0yijn4h7IQ/1aba7b86-7ebc-4c4e-1715-779446cb8800/public",
     "link": "https://www.onebra77.com/?source_code=TWMWECDNJ2X",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 2.62,
+    "betMinima": 0.65,
+    "betMaxima": 6.95,
+    "betMaximaMin": 4.97,
+    "betMaximaMax": 11.16
   },
   {
     "id": 137,
@@ -1967,7 +2567,7 @@
     "provider": "pragmatic",
     "emoji": "🎰",
     "theme": "fantasy",
-    "dist": 96,
+    "dist": 90,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -1975,7 +2575,12 @@
     "tag": null,
     "img": "https://imagedelivery.net/BgH9d8bzsn4n0yijn4h7IQ/e5bcdbc2-1844-4342-3cc7-2904d788bf00/public",
     "link": "https://br.mt-antilope.com/home?inviteCode=VEU6ZR",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 3.45,
+    "betMinima": 0.34,
+    "betMaxima": 8.74,
+    "betMaximaMin": 4.19,
+    "betMaximaMax": 12.73
   },
   {
     "id": 138,
@@ -1983,7 +2588,7 @@
     "provider": "pragmatic",
     "emoji": "🪙",
     "theme": "luxury",
-    "dist": 96,
+    "dist": 94,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -1991,7 +2596,12 @@
     "tag": null,
     "img": "https://imagedelivery.net/BgH9d8bzsn4n0yijn4h7IQ/ee48d28d-833c-4ba0-13a6-67ee332ba500/public",
     "link": "https://kk-judy777.vip/?id=649076826&currency=BRL&type=2",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 3.02,
+    "betMinima": 0.36,
+    "betMaxima": 11.71,
+    "betMaximaMin": 4.13,
+    "betMaximaMax": 15.75
   },
   {
     "id": 139,
@@ -1999,7 +2609,7 @@
     "provider": "pragmatic",
     "emoji": "🐂",
     "theme": "fantasy",
-    "dist": 96,
+    "dist": 93,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -2007,7 +2617,12 @@
     "tag": null,
     "img": "https://imagedelivery.net/BgH9d8bzsn4n0yijn4h7IQ/07fa999c-3aee-4ba3-195b-93f97e19b100/public",
     "link": "https://www.fy-fanta.com/?id=223975751",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 3.14,
+    "betMinima": 0.51,
+    "betMaxima": 9.76,
+    "betMaximaMin": 5.89,
+    "betMaximaMax": 17.78
   },
   {
     "id": 140,
@@ -2015,7 +2630,7 @@
     "provider": "pragmatic",
     "emoji": "⚡",
     "theme": "greek",
-    "dist": 96,
+    "dist": 90,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -2023,7 +2638,12 @@
     "tag": null,
     "img": "https://imagedelivery.net/BgH9d8bzsn4n0yijn4h7IQ/50ddba36-ee7e-4916-58b9-88cc26a3db00/public",
     "link": "https://hms-tiradentesday.bet/?invite_code=8be79469",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 3.32,
+    "betMinima": 0.42,
+    "betMaxima": 8.72,
+    "betMaximaMin": 5.48,
+    "betMaximaMax": 11.63
   },
   {
     "id": 141,
@@ -2031,7 +2651,7 @@
     "provider": "pragmatic",
     "emoji": "🍭",
     "theme": "candy",
-    "dist": 96,
+    "dist": 92,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -2039,7 +2659,12 @@
     "tag": null,
     "img": "https://imagedelivery.net/BgH9d8bzsn4n0yijn4h7IQ/efc987c9-4095-4b5a-623a-deae224ccd00/public",
     "link": "https://coroa-gghhpg.com/?id=405842843",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 2.57,
+    "betMinima": 0.51,
+    "betMaxima": 6.59,
+    "betMaximaMin": 4.88,
+    "betMaximaMax": 12.23
   },
   {
     "id": 142,
@@ -2047,7 +2672,7 @@
     "provider": "pragmatic",
     "emoji": "🐯",
     "theme": "chinese",
-    "dist": 96,
+    "dist": 94,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -2055,7 +2680,12 @@
     "tag": null,
     "img": "https://imagedelivery.net/BgH9d8bzsn4n0yijn4h7IQ/bbe1d011-7f4a-425a-cadf-a6aaf5c31b00/public",
     "link": "https://www.onebra77.com/?source_code=TWMWECDNJ2X",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 3.22,
+    "betMinima": 0.61,
+    "betMaxima": 9.82,
+    "betMaximaMin": 4.18,
+    "betMaximaMax": 15.17
   },
   {
     "id": 144,
@@ -2063,7 +2693,7 @@
     "provider": "pragmatic",
     "emoji": "🎰",
     "theme": "fantasy",
-    "dist": 96,
+    "dist": 90,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -2071,7 +2701,12 @@
     "tag": null,
     "img": "https://imagedelivery.net/BgH9d8bzsn4n0yijn4h7IQ/0b119692-dfed-4f7e-4a2d-84e1b7062f00/public",
     "link": "https://kk-judy777.vip/?id=649076826&currency=BRL&type=2",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 2.34,
+    "betMinima": 0.24,
+    "betMaxima": 8.9,
+    "betMaximaMin": 5.85,
+    "betMaximaMax": 13.7
   },
   {
     "id": 145,
@@ -2079,7 +2714,7 @@
     "provider": "pragmatic",
     "emoji": "🤠",
     "theme": "western",
-    "dist": 96,
+    "dist": 94,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -2087,7 +2722,12 @@
     "tag": null,
     "img": "https://imagedelivery.net/BgH9d8bzsn4n0yijn4h7IQ/40892074-68e7-4a7c-1c3f-9c2c1fd70a00/public",
     "link": "https://www.fy-fanta.com/?id=223975751",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 3.49,
+    "betMinima": 0.49,
+    "betMaxima": 5.89,
+    "betMaximaMin": 5.66,
+    "betMaximaMax": 17.24
   },
   {
     "id": 146,
@@ -2095,7 +2735,7 @@
     "provider": "pragmatic",
     "emoji": "🎰",
     "theme": "fishing",
-    "dist": 96,
+    "dist": 91,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -2103,7 +2743,12 @@
     "tag": null,
     "img": "https://imagedelivery.net/BgH9d8bzsn4n0yijn4h7IQ/c2b1e123-1b1f-4395-96f3-2d1a58f85600/public",
     "link": "https://hms-tiradentesday.bet/?invite_code=8be79469",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 2.35,
+    "betMinima": 0.63,
+    "betMaxima": 13.67,
+    "betMaximaMin": 5.34,
+    "betMaximaMax": 10.94
   },
   {
     "id": 147,
@@ -2111,7 +2756,7 @@
     "provider": "pragmatic",
     "emoji": "🎰",
     "theme": "fantasy",
-    "dist": 96,
+    "dist": 91,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -2119,7 +2764,12 @@
     "tag": null,
     "img": "https://imagedelivery.net/BgH9d8bzsn4n0yijn4h7IQ/607e5390-b6d3-4a99-af47-cf8d751d5c00/public",
     "link": "https://coroa-gghhpg.com/?id=405842843",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 2.48,
+    "betMinima": 0.28,
+    "betMaxima": 7.68,
+    "betMaximaMin": 4.84,
+    "betMaximaMax": 10.92
   },
   {
     "id": 148,
@@ -2127,7 +2777,7 @@
     "provider": "pragmatic",
     "emoji": "⚡",
     "theme": "fantasy",
-    "dist": 96,
+    "dist": 89,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -2135,7 +2785,12 @@
     "tag": null,
     "img": "https://imagedelivery.net/BgH9d8bzsn4n0yijn4h7IQ/490d4de0-af0c-41db-45a5-1090cb4a5300/public",
     "link": "https://www.onebra77.com/?source_code=TWMWECDNJ2X",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 2.13,
+    "betMinima": 0.28,
+    "betMaxima": 11.14,
+    "betMaximaMin": 4.44,
+    "betMaximaMax": 15.58
   },
   {
     "id": 150,
@@ -2143,7 +2798,7 @@
     "provider": "pragmatic",
     "emoji": "🎰",
     "theme": "fantasy",
-    "dist": 96,
+    "dist": 87,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -2151,7 +2806,12 @@
     "tag": null,
     "img": "https://imagedelivery.net/BgH9d8bzsn4n0yijn4h7IQ/ee36653b-a483-4adf-68f5-27ab33b34900/public",
     "link": "https://kk-judy777.vip/?id=649076826&currency=BRL&type=2",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 2.35,
+    "betMinima": 0.66,
+    "betMaxima": 9.67,
+    "betMaximaMin": 4.26,
+    "betMaximaMax": 11.99
   },
   {
     "id": 151,
@@ -2159,7 +2819,7 @@
     "provider": "pgsoft",
     "emoji": "🪙",
     "theme": "egypt",
-    "dist": 96,
+    "dist": 93,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -2167,7 +2827,12 @@
     "tag": null,
     "img": "https://imagedelivery.net/BgH9d8bzsn4n0yijn4h7IQ/e147c93c-44be-4a01-f97e-08df417b2700/public",
     "link": "https://www.fy-fanta.com/?id=223975751",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 2.13,
+    "betMinima": 0.2,
+    "betMaxima": 9.31,
+    "betMaximaMin": 4.53,
+    "betMaximaMax": 14.01
   },
   {
     "id": 152,
@@ -2175,7 +2840,7 @@
     "provider": "pragmatic",
     "emoji": "🎰",
     "theme": "fantasy",
-    "dist": 96,
+    "dist": 97,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -2183,7 +2848,12 @@
     "tag": null,
     "img": "https://imagedelivery.net/BgH9d8bzsn4n0yijn4h7IQ/18bf9719-8230-4c15-8a60-91503e6cfa00/public",
     "link": "https://hms-tiradentesday.bet/?invite_code=8be79469",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 2.93,
+    "betMinima": 0.31,
+    "betMaxima": 8.07,
+    "betMaximaMin": 5.78,
+    "betMaximaMax": 10.88
   },
   {
     "id": 153,
@@ -2191,7 +2861,7 @@
     "provider": "pragmatic",
     "emoji": "🐉",
     "theme": "chinese",
-    "dist": 96,
+    "dist": 90,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -2199,7 +2869,12 @@
     "tag": null,
     "img": "https://imagedelivery.net/BgH9d8bzsn4n0yijn4h7IQ/3973dc25-e111-488a-ab60-23c915f86e00/public",
     "link": "https://coroa-gghhpg.com/?id=405842843",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 2.29,
+    "betMinima": 0.65,
+    "betMaxima": 13.66,
+    "betMaximaMin": 4.85,
+    "betMaximaMax": 11.08
   },
   {
     "id": 154,
@@ -2207,7 +2882,7 @@
     "provider": "pragmatic",
     "emoji": "🎰",
     "theme": "fantasy",
-    "dist": 96,
+    "dist": 92,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -2215,7 +2890,12 @@
     "tag": null,
     "img": "https://imagedelivery.net/BgH9d8bzsn4n0yijn4h7IQ/5ab5518a-3d00-4d16-8123-600c0cf5e300/public",
     "link": "https://www.onebra77.com/?source_code=TWMWECDNJ2X",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 2.11,
+    "betMinima": 0.37,
+    "betMaxima": 8.96,
+    "betMaximaMin": 4.36,
+    "betMaximaMax": 14.87
   },
   {
     "id": 155,
@@ -2223,7 +2903,7 @@
     "provider": "pragmatic",
     "emoji": "🍭",
     "theme": "candy",
-    "dist": 96,
+    "dist": 93,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -2231,7 +2911,12 @@
     "tag": null,
     "img": "https://imagedelivery.net/BgH9d8bzsn4n0yijn4h7IQ/5ec2bbd5-88d2-45e6-9729-2d73e786a700/public",
     "link": "https://br.mt-antilope.com/home?inviteCode=VEU6ZR",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 3.27,
+    "betMinima": 0.29,
+    "betMaxima": 8.98,
+    "betMaximaMin": 4.17,
+    "betMaximaMax": 15.14
   },
   {
     "id": 157,
@@ -2239,7 +2924,7 @@
     "provider": "pragmatic",
     "emoji": "💎",
     "theme": "fantasy",
-    "dist": 96,
+    "dist": 98,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -2247,7 +2932,12 @@
     "tag": null,
     "img": "https://imagedelivery.net/BgH9d8bzsn4n0yijn4h7IQ/24e071b9-dfb8-4ea2-a896-214832203f00/public",
     "link": "https://www.fy-fanta.com/?id=223975751",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 2.44,
+    "betMinima": 0.6,
+    "betMaxima": 14.28,
+    "betMaximaMin": 5.33,
+    "betMaximaMax": 14.75
   },
   {
     "id": 158,
@@ -2255,7 +2945,7 @@
     "provider": "pragmatic",
     "emoji": "🎰",
     "theme": "fantasy",
-    "dist": 96,
+    "dist": 93,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -2263,7 +2953,12 @@
     "tag": null,
     "img": "https://imagedelivery.net/BgH9d8bzsn4n0yijn4h7IQ/00b663e4-fd79-4a48-0a28-6cb90ca51700/public",
     "link": "https://hms-tiradentesday.bet/?invite_code=8be79469",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 3.29,
+    "betMinima": 0.36,
+    "betMaxima": 8.36,
+    "betMaximaMin": 4.07,
+    "betMaximaMax": 12.54
   },
   {
     "id": 159,
@@ -2271,7 +2966,7 @@
     "provider": "pragmatic",
     "emoji": "🎰",
     "theme": "fantasy",
-    "dist": 96,
+    "dist": 91,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -2279,7 +2974,12 @@
     "tag": null,
     "img": "https://imagedelivery.net/BgH9d8bzsn4n0yijn4h7IQ/dbf5c29f-58c5-45b8-6a81-462da480a900/public",
     "link": "https://coroa-gghhpg.com/?id=405842843",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 2.52,
+    "betMinima": 0.35,
+    "betMaxima": 6.68,
+    "betMaximaMin": 5.39,
+    "betMaximaMax": 14.53
   },
   {
     "id": 160,
@@ -2287,7 +2987,7 @@
     "provider": "pragmatic",
     "emoji": "⚡",
     "theme": "greek",
-    "dist": 96,
+    "dist": 85,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -2295,7 +2995,12 @@
     "tag": null,
     "img": "https://imagedelivery.net/BgH9d8bzsn4n0yijn4h7IQ/424e3597-0bdc-49c4-4ff2-2512dbca3c00/public",
     "link": "https://www.onebra77.com/?source_code=TWMWECDNJ2X",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 3.07,
+    "betMinima": 0.52,
+    "betMaxima": 10.41,
+    "betMaximaMin": 5.35,
+    "betMaximaMax": 12.81
   },
   {
     "id": 161,
@@ -2303,7 +3008,7 @@
     "provider": "pragmatic",
     "emoji": "🎰",
     "theme": "fantasy",
-    "dist": 96,
+    "dist": 92,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -2311,7 +3016,12 @@
     "tag": null,
     "img": "https://imagedelivery.net/BgH9d8bzsn4n0yijn4h7IQ/98dbcfda-bb65-4f95-028b-baf34ffa5000/public",
     "link": "https://br.mt-antilope.com/home?inviteCode=VEU6ZR",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 2.4,
+    "betMinima": 0.57,
+    "betMaxima": 6.07,
+    "betMaximaMin": 5.35,
+    "betMaximaMax": 14.16
   },
   {
     "id": 162,
@@ -2319,7 +3029,7 @@
     "provider": "pragmatic",
     "emoji": "🍀",
     "theme": "chinese",
-    "dist": 96,
+    "dist": 85,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -2327,7 +3037,12 @@
     "tag": null,
     "img": "https://imagedelivery.net/BgH9d8bzsn4n0yijn4h7IQ/366d9a88-8e3c-49df-dae4-f8c9ad536c00/public",
     "link": "https://kk-judy777.vip/?id=649076826&currency=BRL&type=2",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 2.86,
+    "betMinima": 0.6,
+    "betMaxima": 7.02,
+    "betMaximaMin": 5.57,
+    "betMaximaMax": 15.72
   },
   {
     "id": 163,
@@ -2335,7 +3050,7 @@
     "provider": "pragmatic",
     "emoji": "🍭",
     "theme": "candy",
-    "dist": 96,
+    "dist": 88,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -2343,7 +3058,12 @@
     "tag": null,
     "img": "https://imagedelivery.net/BgH9d8bzsn4n0yijn4h7IQ/dafe6566-aba5-4d66-777f-a8d068a09a00/public",
     "link": "https://www.fy-fanta.com/?id=223975751",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 2.4,
+    "betMinima": 0.76,
+    "betMaxima": 11.55,
+    "betMaximaMin": 5.16,
+    "betMaximaMax": 15.29
   },
   {
     "id": 164,
@@ -2351,7 +3071,7 @@
     "provider": "pragmatic",
     "emoji": "🎰",
     "theme": "egypt",
-    "dist": 96,
+    "dist": 95,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -2359,7 +3079,12 @@
     "tag": null,
     "img": "https://imagedelivery.net/BgH9d8bzsn4n0yijn4h7IQ/7d4b84e4-65aa-46a8-3190-cfe2493ea000/public",
     "link": "https://hms-tiradentesday.bet/?invite_code=8be79469",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 2.01,
+    "betMinima": 0.47,
+    "betMaxima": 9.35,
+    "betMaximaMin": 5.9,
+    "betMaximaMax": 16.48
   },
   {
     "id": 166,
@@ -2367,7 +3092,7 @@
     "provider": "pragmatic",
     "emoji": "🎰",
     "theme": "egypt",
-    "dist": 96,
+    "dist": 98,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -2375,7 +3100,12 @@
     "tag": null,
     "img": "https://imagedelivery.net/BgH9d8bzsn4n0yijn4h7IQ/4e731c82-c41f-4d6d-106f-7cc563f1ac00/public",
     "link": "https://www.onebra77.com/?source_code=TWMWECDNJ2X",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 2.57,
+    "betMinima": 0.39,
+    "betMaxima": 10.05,
+    "betMaximaMin": 5.88,
+    "betMaximaMax": 16.17
   },
   {
     "id": 167,
@@ -2383,7 +3113,7 @@
     "provider": "pragmatic",
     "emoji": "🍉",
     "theme": "fruit",
-    "dist": 96,
+    "dist": 95,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -2391,7 +3121,12 @@
     "tag": null,
     "img": "https://imagedelivery.net/BgH9d8bzsn4n0yijn4h7IQ/a7333d9e-e550-4799-747a-5f034dcd9900/public",
     "link": "https://br.mt-antilope.com/home?inviteCode=VEU6ZR",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 2.24,
+    "betMinima": 0.31,
+    "betMaxima": 10.18,
+    "betMaximaMin": 5.99,
+    "betMaximaMax": 10.15
   },
   {
     "id": 169,
@@ -2399,7 +3134,7 @@
     "provider": "pragmatic",
     "emoji": "🎰",
     "theme": "fantasy",
-    "dist": 96,
+    "dist": 91,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -2407,7 +3142,12 @@
     "tag": null,
     "img": "https://imagedelivery.net/BgH9d8bzsn4n0yijn4h7IQ/4fb748d6-519d-4e57-113e-9728adab6c00/public",
     "link": "https://www.fy-fanta.com/?id=223975751",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 2.48,
+    "betMinima": 0.37,
+    "betMaxima": 11.25,
+    "betMaximaMin": 5.87,
+    "betMaximaMax": 13.1
   },
   {
     "id": 170,
@@ -2423,7 +3163,12 @@
     "tag": null,
     "img": "https://imagedelivery.net/BgH9d8bzsn4n0yijn4h7IQ/c26188cd-bff5-4c1e-46c9-54def99aa400/public",
     "link": "https://hms-tiradentesday.bet/?invite_code=8be79469",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 3.04,
+    "betMinima": 0.25,
+    "betMaxima": 8.05,
+    "betMaximaMin": 4.61,
+    "betMaximaMax": 16.49
   },
   {
     "id": 171,
@@ -2431,7 +3176,7 @@
     "provider": "pragmatic",
     "emoji": "🎰",
     "theme": "space",
-    "dist": 96,
+    "dist": 93,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -2439,7 +3184,12 @@
     "tag": null,
     "img": "https://imagedelivery.net/BgH9d8bzsn4n0yijn4h7IQ/3353eeca-3f83-4bf2-17f9-5726354c4300/public",
     "link": "https://coroa-gghhpg.com/?id=405842843",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 2.58,
+    "betMinima": 0.55,
+    "betMaxima": 14.88,
+    "betMaximaMin": 4.78,
+    "betMaximaMax": 16.27
   },
   {
     "id": 172,
@@ -2447,7 +3197,7 @@
     "provider": "pragmatic",
     "emoji": "🐱",
     "theme": "fishing",
-    "dist": 96,
+    "dist": 95,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -2455,7 +3205,12 @@
     "tag": null,
     "img": "https://imagedelivery.net/BgH9d8bzsn4n0yijn4h7IQ/31e7e0a2-b45c-4f94-b4e8-46a62e4c0100/public",
     "link": "https://www.onebra77.com/?source_code=TWMWECDNJ2X",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 2.56,
+    "betMinima": 0.4,
+    "betMaxima": 8.88,
+    "betMaximaMin": 4.8,
+    "betMaximaMax": 10.78
   },
   {
     "id": 173,
@@ -2463,7 +3218,7 @@
     "provider": "pragmatic",
     "emoji": "🎰",
     "theme": "fantasy",
-    "dist": 96,
+    "dist": 90,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -2471,7 +3226,12 @@
     "tag": null,
     "img": "https://imagedelivery.net/BgH9d8bzsn4n0yijn4h7IQ/0cb5a49f-741b-4024-8d85-63328e657300/public",
     "link": "https://br.mt-antilope.com/home?inviteCode=VEU6ZR",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 3.29,
+    "betMinima": 0.2,
+    "betMaxima": 12.3,
+    "betMaximaMin": 4.45,
+    "betMaximaMax": 13.64
   },
   {
     "id": 174,
@@ -2479,7 +3239,7 @@
     "provider": "pragmatic",
     "emoji": "🎰",
     "theme": "fantasy",
-    "dist": 96,
+    "dist": 83,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -2487,7 +3247,12 @@
     "tag": null,
     "img": "https://imagedelivery.net/BgH9d8bzsn4n0yijn4h7IQ/228b9736-0e3e-4cf7-c631-0fdd39c36400/public",
     "link": "https://kk-judy777.vip/?id=649076826&currency=BRL&type=2",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 2.56,
+    "betMinima": 0.56,
+    "betMaxima": 8.7,
+    "betMaximaMin": 5.88,
+    "betMaximaMax": 12.31
   },
   {
     "id": 175,
@@ -2495,7 +3260,7 @@
     "provider": "pragmatic",
     "emoji": "🎰",
     "theme": "fantasy",
-    "dist": 96,
+    "dist": 95,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -2503,7 +3268,12 @@
     "tag": null,
     "img": "https://imagedelivery.net/BgH9d8bzsn4n0yijn4h7IQ/4d04ac72-e50f-4140-953a-190995532300/public",
     "link": "https://www.fy-fanta.com/?id=223975751",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 2.83,
+    "betMinima": 0.58,
+    "betMaxima": 14.74,
+    "betMaximaMin": 5.41,
+    "betMaximaMax": 17.58
   },
   {
     "id": 176,
@@ -2511,7 +3281,7 @@
     "provider": "pragmatic",
     "emoji": "🎰",
     "theme": "fantasy",
-    "dist": 96,
+    "dist": 91,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -2519,7 +3289,12 @@
     "tag": null,
     "img": "https://imagedelivery.net/BgH9d8bzsn4n0yijn4h7IQ/6b933d4f-7e83-4e13-3858-475b96033800/public",
     "link": "https://hms-tiradentesday.bet/?invite_code=8be79469",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 2.36,
+    "betMinima": 0.43,
+    "betMaxima": 7.07,
+    "betMaximaMin": 5.18,
+    "betMaximaMax": 14.4
   },
   {
     "id": 178,
@@ -2527,7 +3302,7 @@
     "provider": "pragmatic",
     "emoji": "🍀",
     "theme": "chinese",
-    "dist": 96,
+    "dist": 87,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -2535,7 +3310,12 @@
     "tag": null,
     "img": "https://imagedelivery.net/BgH9d8bzsn4n0yijn4h7IQ/e55a2b36-0cf0-4a0a-17e0-a12402119300/public",
     "link": "https://www.onebra77.com/?source_code=TWMWECDNJ2X",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 2.09,
+    "betMinima": 0.34,
+    "betMaxima": 7.11,
+    "betMaximaMin": 4.53,
+    "betMaximaMax": 15.23
   },
   {
     "id": 179,
@@ -2543,7 +3323,7 @@
     "provider": "pragmatic",
     "emoji": "🎰",
     "theme": "fantasy",
-    "dist": 96,
+    "dist": 82,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -2551,7 +3331,12 @@
     "tag": null,
     "img": "https://imagedelivery.net/BgH9d8bzsn4n0yijn4h7IQ/e47c69db-2bf7-4c5c-1243-b3db5a1b8500/public",
     "link": "https://br.mt-antilope.com/home?inviteCode=VEU6ZR",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 3.5,
+    "betMinima": 0.6,
+    "betMaxima": 14.82,
+    "betMaximaMin": 4.52,
+    "betMaximaMax": 10.78
   },
   {
     "id": 180,
@@ -2559,7 +3344,7 @@
     "provider": "pragmatic",
     "emoji": "🍀",
     "theme": "chinese",
-    "dist": 96,
+    "dist": 92,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -2567,7 +3352,12 @@
     "tag": null,
     "img": "https://imagedelivery.net/BgH9d8bzsn4n0yijn4h7IQ/fb5a87b1-63de-4274-122a-bb5319cdd100/public",
     "link": "https://kk-judy777.vip/?id=649076826&currency=BRL&type=2",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 2.64,
+    "betMinima": 0.73,
+    "betMaxima": 12.98,
+    "betMaximaMin": 5.07,
+    "betMaximaMax": 15.99
   },
   {
     "id": 181,
@@ -2575,7 +3365,7 @@
     "provider": "pgsoft",
     "emoji": "🎰",
     "theme": "chinese",
-    "dist": 96,
+    "dist": 97,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -2583,7 +3373,12 @@
     "tag": null,
     "img": "https://imagedelivery.net/BgH9d8bzsn4n0yijn4h7IQ/f4285d03-c3d7-4d3c-d670-e957f016e300/public",
     "link": "https://www.fy-fanta.com/?id=223975751",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 2.04,
+    "betMinima": 0.45,
+    "betMaxima": 4.59,
+    "betMaximaMin": 4.41,
+    "betMaximaMax": 15.91
   },
   {
     "id": 183,
@@ -2591,7 +3386,7 @@
     "provider": "pragmatic",
     "emoji": "🍀",
     "theme": "fantasy",
-    "dist": 96,
+    "dist": 82,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -2599,7 +3394,12 @@
     "tag": null,
     "img": "https://imagedelivery.net/BgH9d8bzsn4n0yijn4h7IQ/78937323-319e-4162-b9ee-6c383c625000/public",
     "link": "https://coroa-gghhpg.com/?id=405842843",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 2.49,
+    "betMinima": 0.8,
+    "betMaxima": 12.76,
+    "betMaximaMin": 4.15,
+    "betMaximaMax": 11.69
   },
   {
     "id": 184,
@@ -2607,7 +3407,7 @@
     "provider": "pragmatic",
     "emoji": "🍀",
     "theme": "chinese",
-    "dist": 96,
+    "dist": 85,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -2615,7 +3415,12 @@
     "tag": null,
     "img": "https://imagedelivery.net/BgH9d8bzsn4n0yijn4h7IQ/41bdc8e7-2c14-4266-c538-ca841a356c00/public",
     "link": "https://www.onebra77.com/?source_code=TWMWECDNJ2X",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 2.45,
+    "betMinima": 0.65,
+    "betMaxima": 6.55,
+    "betMaximaMin": 5.5,
+    "betMaximaMax": 11.18
   },
   {
     "id": 185,
@@ -2623,7 +3428,7 @@
     "provider": "pragmatic",
     "emoji": "🎰",
     "theme": "fishing",
-    "dist": 96,
+    "dist": 97,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -2631,7 +3436,12 @@
     "tag": null,
     "img": "https://imagedelivery.net/BgH9d8bzsn4n0yijn4h7IQ/ce9ceaa6-9f80-4c71-a5cc-c702ae581f00/public",
     "link": "https://br.mt-antilope.com/home?inviteCode=VEU6ZR",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 3.35,
+    "betMinima": 0.7,
+    "betMaxima": 8.73,
+    "betMaximaMin": 5.12,
+    "betMaximaMax": 10.33
   },
   {
     "id": 186,
@@ -2639,7 +3449,7 @@
     "provider": "pragmatic",
     "emoji": "🌊",
     "theme": "fishing",
-    "dist": 96,
+    "dist": 91,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -2647,7 +3457,12 @@
     "tag": null,
     "img": "https://imagedelivery.net/BgH9d8bzsn4n0yijn4h7IQ/2217111a-50fb-45d8-5463-4ad60112bc00/public",
     "link": "https://kk-judy777.vip/?id=649076826&currency=BRL&type=2",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 3.38,
+    "betMinima": 0.49,
+    "betMaxima": 5.02,
+    "betMaximaMin": 4.85,
+    "betMaximaMax": 12.11
   },
   {
     "id": 187,
@@ -2655,7 +3470,7 @@
     "provider": "pragmatic",
     "emoji": "🐱",
     "theme": "egypt",
-    "dist": 96,
+    "dist": 95,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -2663,7 +3478,12 @@
     "tag": null,
     "img": "https://imagedelivery.net/BgH9d8bzsn4n0yijn4h7IQ/81a82008-958a-4232-f0cd-e7209e9c6b00/public",
     "link": "https://www.fy-fanta.com/?id=223975751",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 2.96,
+    "betMinima": 0.65,
+    "betMaxima": 5.71,
+    "betMaximaMin": 5.06,
+    "betMaximaMax": 16.07
   },
   {
     "id": 188,
@@ -2671,7 +3491,7 @@
     "provider": "pragmatic",
     "emoji": "🎰",
     "theme": "fantasy",
-    "dist": 96,
+    "dist": 84,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -2679,7 +3499,12 @@
     "tag": null,
     "img": "https://imagedelivery.net/BgH9d8bzsn4n0yijn4h7IQ/7ea2798e-bce4-47ae-a05d-a06f9ed63200/public",
     "link": "https://hms-tiradentesday.bet/?invite_code=8be79469",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 3.48,
+    "betMinima": 0.43,
+    "betMaxima": 13.1,
+    "betMaximaMin": 4.57,
+    "betMaximaMax": 12.28
   },
   {
     "id": 189,
@@ -2687,7 +3512,7 @@
     "provider": "pgsoft",
     "emoji": "🪙",
     "theme": "luxury",
-    "dist": 96,
+    "dist": 98,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -2695,7 +3520,12 @@
     "tag": null,
     "img": "https://imagedelivery.net/BgH9d8bzsn4n0yijn4h7IQ/679a1895-8eb8-4852-be00-d63749b43600/public",
     "link": "https://coroa-gghhpg.com/?id=405842843",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 3.29,
+    "betMinima": 0.49,
+    "betMaxima": 14.74,
+    "betMaximaMin": 4.74,
+    "betMaximaMax": 13.72
   },
   {
     "id": 190,
@@ -2703,7 +3533,7 @@
     "provider": "pragmatic",
     "emoji": "🪙",
     "theme": "fishing",
-    "dist": 96,
+    "dist": 97,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -2711,7 +3541,12 @@
     "tag": null,
     "img": "https://imagedelivery.net/BgH9d8bzsn4n0yijn4h7IQ/4af58acf-f673-45ef-408d-f53ee5953000/public",
     "link": "https://www.onebra77.com/?source_code=TWMWECDNJ2X",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 2.25,
+    "betMinima": 0.72,
+    "betMaxima": 10.12,
+    "betMaximaMin": 5.24,
+    "betMaximaMax": 10.95
   },
   {
     "id": 192,
@@ -2719,7 +3554,7 @@
     "provider": "pragmatic",
     "emoji": "🎰",
     "theme": "fantasy",
-    "dist": 96,
+    "dist": 93,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -2727,7 +3562,12 @@
     "tag": null,
     "img": "https://imagedelivery.net/BgH9d8bzsn4n0yijn4h7IQ/8bf6b75c-2784-42a5-f4e1-bb9973391800/public",
     "link": "https://kk-judy777.vip/?id=649076826&currency=BRL&type=2",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 2.17,
+    "betMinima": 0.38,
+    "betMaxima": 7.56,
+    "betMaximaMin": 4.26,
+    "betMaximaMax": 12.08
   },
   {
     "id": 194,
@@ -2735,7 +3575,7 @@
     "provider": "pragmatic",
     "emoji": "🎰",
     "theme": "fantasy",
-    "dist": 96,
+    "dist": 91,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -2743,7 +3583,12 @@
     "tag": null,
     "img": "https://imagedelivery.net/BgH9d8bzsn4n0yijn4h7IQ/79728b26-e788-4120-c964-b786320e7100/public",
     "link": "https://hms-tiradentesday.bet/?invite_code=8be79469",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 2.62,
+    "betMinima": 0.67,
+    "betMaxima": 12.27,
+    "betMaximaMin": 4.5,
+    "betMaximaMax": 15.4
   },
   {
     "id": 195,
@@ -2759,7 +3604,12 @@
     "tag": null,
     "img": "https://imagedelivery.net/BgH9d8bzsn4n0yijn4h7IQ/77b7e140-a975-4650-ac4c-1d51aae84000/public",
     "link": "https://coroa-gghhpg.com/?id=405842843",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 2.98,
+    "betMinima": 0.74,
+    "betMaxima": 4.5,
+    "betMaximaMin": 4.69,
+    "betMaximaMax": 12.17
   },
   {
     "id": 197,
@@ -2767,7 +3617,7 @@
     "provider": "pragmatic",
     "emoji": "🪙",
     "theme": "luxury",
-    "dist": 96,
+    "dist": 93,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -2775,7 +3625,12 @@
     "tag": null,
     "img": "https://imagedelivery.net/BgH9d8bzsn4n0yijn4h7IQ/079d9f75-e12c-4df2-886e-ee7b13419900/public",
     "link": "https://br.mt-antilope.com/home?inviteCode=VEU6ZR",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 3.45,
+    "betMinima": 0.62,
+    "betMaxima": 10.91,
+    "betMaximaMin": 4.35,
+    "betMaximaMax": 17.67
   },
   {
     "id": 198,
@@ -2783,7 +3638,7 @@
     "provider": "pragmatic",
     "emoji": "🎰",
     "theme": "fantasy",
-    "dist": 96,
+    "dist": 97,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -2791,7 +3646,12 @@
     "tag": null,
     "img": "https://imagedelivery.net/BgH9d8bzsn4n0yijn4h7IQ/3dc68fdd-7321-4510-ad70-ceb842466c00/public",
     "link": "https://kk-judy777.vip/?id=649076826&currency=BRL&type=2",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 3.26,
+    "betMinima": 0.53,
+    "betMaxima": 13.4,
+    "betMaximaMin": 4.87,
+    "betMaximaMax": 12.71
   },
   {
     "id": 200,
@@ -2799,7 +3659,7 @@
     "provider": "pragmatic",
     "emoji": "🎰",
     "theme": "fantasy",
-    "dist": 96,
+    "dist": 97,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -2807,7 +3667,12 @@
     "tag": null,
     "img": "https://imagedelivery.net/BgH9d8bzsn4n0yijn4h7IQ/64ef627f-a9ac-4e30-7253-11e0eed51400/public",
     "link": "https://hms-tiradentesday.bet/?invite_code=8be79469",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 2.93,
+    "betMinima": 0.77,
+    "betMaxima": 8.84,
+    "betMaximaMin": 5.24,
+    "betMaximaMax": 14.67
   },
   {
     "id": 201,
@@ -2815,7 +3680,7 @@
     "provider": "pragmatic",
     "emoji": "🔥",
     "theme": "fantasy",
-    "dist": 96,
+    "dist": 83,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -2823,7 +3688,12 @@
     "tag": null,
     "img": "https://imagedelivery.net/BgH9d8bzsn4n0yijn4h7IQ/1abf197a-0086-45c3-7213-97825d1cab00/public",
     "link": "https://coroa-gghhpg.com/?id=405842843",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 3.22,
+    "betMinima": 0.26,
+    "betMaxima": 7.51,
+    "betMaximaMin": 5.73,
+    "betMaximaMax": 15.43
   },
   {
     "id": 202,
@@ -2831,7 +3701,7 @@
     "provider": "pragmatic",
     "emoji": "🎰",
     "theme": "fishing",
-    "dist": 96,
+    "dist": 93,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -2839,7 +3709,12 @@
     "tag": null,
     "img": "https://imagedelivery.net/BgH9d8bzsn4n0yijn4h7IQ/ad5465c3-7faf-45f9-6b1b-c0f207d96500/public",
     "link": "https://www.onebra77.com/?source_code=TWMWECDNJ2X",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 2.49,
+    "betMinima": 0.26,
+    "betMaxima": 10.25,
+    "betMaximaMin": 4.47,
+    "betMaximaMax": 16.27
   },
   {
     "id": 203,
@@ -2847,7 +3722,7 @@
     "provider": "pragmatic",
     "emoji": "🐓",
     "theme": "fantasy",
-    "dist": 96,
+    "dist": 90,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -2855,7 +3730,12 @@
     "tag": null,
     "img": "https://imagedelivery.net/BgH9d8bzsn4n0yijn4h7IQ/786c3738-e8a2-49ab-101b-9a4d42847200/public",
     "link": "https://br.mt-antilope.com/home?inviteCode=VEU6ZR",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 2.08,
+    "betMinima": 0.59,
+    "betMaxima": 11.54,
+    "betMaximaMin": 4.35,
+    "betMaximaMax": 14.6
   },
   {
     "id": 204,
@@ -2871,7 +3751,12 @@
     "tag": null,
     "img": "https://imagedelivery.net/BgH9d8bzsn4n0yijn4h7IQ/0f570336-cf24-4937-b121-a7e388e6ce00/public",
     "link": "https://kk-judy777.vip/?id=649076826&currency=BRL&type=2",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 3.38,
+    "betMinima": 0.63,
+    "betMaxima": 13.24,
+    "betMaximaMin": 4.66,
+    "betMaximaMax": 11.64
   },
   {
     "id": 205,
@@ -2879,7 +3764,7 @@
     "provider": "pragmatic",
     "emoji": "🎰",
     "theme": "fishing",
-    "dist": 96,
+    "dist": 97,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -2887,7 +3772,12 @@
     "tag": null,
     "img": "https://imagedelivery.net/BgH9d8bzsn4n0yijn4h7IQ/c28b5188-4d33-4e40-89d6-8ff3b3a64300/public",
     "link": "https://www.fy-fanta.com/?id=223975751",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 2.72,
+    "betMinima": 0.77,
+    "betMaxima": 8.86,
+    "betMaximaMin": 4.56,
+    "betMaximaMax": 12.88
   },
   {
     "id": 206,
@@ -2895,7 +3785,7 @@
     "provider": "pragmatic",
     "emoji": "🐱",
     "theme": "greek",
-    "dist": 96,
+    "dist": 83,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -2903,7 +3793,12 @@
     "tag": null,
     "img": "https://imagedelivery.net/BgH9d8bzsn4n0yijn4h7IQ/4aa5aa08-61c6-47b1-0c88-1e5411f5f300/public",
     "link": "https://hms-tiradentesday.bet/?invite_code=8be79469",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 2.94,
+    "betMinima": 0.43,
+    "betMaxima": 5.3,
+    "betMaximaMin": 5.83,
+    "betMaximaMax": 12.13
   },
   {
     "id": 207,
@@ -2911,7 +3806,7 @@
     "provider": "pragmatic",
     "emoji": "🪙",
     "theme": "luxury",
-    "dist": 96,
+    "dist": 86,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -2919,7 +3814,12 @@
     "tag": null,
     "img": "https://imagedelivery.net/BgH9d8bzsn4n0yijn4h7IQ/09750ce4-ba74-4973-9c19-db69cf555800/public",
     "link": "https://coroa-gghhpg.com/?id=405842843",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 3.04,
+    "betMinima": 0.58,
+    "betMaxima": 4.64,
+    "betMaximaMin": 5.59,
+    "betMaximaMax": 12.68
   },
   {
     "id": 209,
@@ -2927,7 +3827,7 @@
     "provider": "pragmatic",
     "emoji": "🔥",
     "theme": "fantasy",
-    "dist": 96,
+    "dist": 83,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -2935,7 +3835,12 @@
     "tag": null,
     "img": "https://imagedelivery.net/BgH9d8bzsn4n0yijn4h7IQ/8de4b2c5-aed0-4068-d74f-ccf9b6e11300/public",
     "link": "https://br.mt-antilope.com/home?inviteCode=VEU6ZR",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 2.05,
+    "betMinima": 0.77,
+    "betMaxima": 6.49,
+    "betMaximaMin": 4.96,
+    "betMaximaMax": 11.98
   },
   {
     "id": 210,
@@ -2943,7 +3848,7 @@
     "provider": "pragmatic",
     "emoji": "🎰",
     "theme": "fantasy",
-    "dist": 96,
+    "dist": 97,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -2951,7 +3856,12 @@
     "tag": null,
     "img": "https://imagedelivery.net/BgH9d8bzsn4n0yijn4h7IQ/5b5af29a-bd15-4c06-c7d5-76b492023d00/public",
     "link": "https://kk-judy777.vip/?id=649076826&currency=BRL&type=2",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 2.96,
+    "betMinima": 0.45,
+    "betMaxima": 13.73,
+    "betMaximaMin": 4.26,
+    "betMaximaMax": 12.39
   },
   {
     "id": 211,
@@ -2959,7 +3869,7 @@
     "provider": "pragmatic",
     "emoji": "🎰",
     "theme": "fishing",
-    "dist": 96,
+    "dist": 97,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -2967,7 +3877,12 @@
     "tag": null,
     "img": "https://imagedelivery.net/BgH9d8bzsn4n0yijn4h7IQ/42d9260a-aaf4-4659-47ee-409c63773400/public",
     "link": "https://www.fy-fanta.com/?id=223975751",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 2.44,
+    "betMinima": 0.4,
+    "betMaxima": 5.2,
+    "betMaximaMin": 5.17,
+    "betMaximaMax": 15.83
   },
   {
     "id": 212,
@@ -2975,7 +3890,7 @@
     "provider": "pragmatic",
     "emoji": "🎰",
     "theme": "fantasy",
-    "dist": 96,
+    "dist": 98,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -2983,7 +3898,12 @@
     "tag": null,
     "img": "https://imagedelivery.net/BgH9d8bzsn4n0yijn4h7IQ/159ef862-ab2f-4731-5978-5114b68ae900/public",
     "link": "https://hms-tiradentesday.bet/?invite_code=8be79469",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 3.1,
+    "betMinima": 0.55,
+    "betMaxima": 4.39,
+    "betMaximaMin": 4.02,
+    "betMaximaMax": 14.47
   },
   {
     "id": 213,
@@ -2991,7 +3911,7 @@
     "provider": "pragmatic",
     "emoji": "🎰",
     "theme": "egypt",
-    "dist": 96,
+    "dist": 93,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -2999,7 +3919,12 @@
     "tag": null,
     "img": "https://imagedelivery.net/BgH9d8bzsn4n0yijn4h7IQ/f31bbef4-4b43-461e-d0b8-e32eb135a400/public",
     "link": "https://coroa-gghhpg.com/?id=405842843",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 2.88,
+    "betMinima": 0.72,
+    "betMaxima": 7.9,
+    "betMaximaMin": 5.75,
+    "betMaximaMax": 13.04
   },
   {
     "id": 214,
@@ -3007,7 +3932,7 @@
     "provider": "pragmatic",
     "emoji": "🎰",
     "theme": "fantasy",
-    "dist": 96,
+    "dist": 89,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -3015,7 +3940,12 @@
     "tag": null,
     "img": "https://imagedelivery.net/BgH9d8bzsn4n0yijn4h7IQ/8d026c3d-3e8d-45bd-4b9c-05a43ebe4200/public",
     "link": "https://www.onebra77.com/?source_code=TWMWECDNJ2X",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 2.77,
+    "betMinima": 0.44,
+    "betMaxima": 11.92,
+    "betMaximaMin": 5.8,
+    "betMaximaMax": 17.96
   },
   {
     "id": 215,
@@ -3023,7 +3953,7 @@
     "provider": "pragmatic",
     "emoji": "🎰",
     "theme": "fishing",
-    "dist": 96,
+    "dist": 92,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -3031,7 +3961,12 @@
     "tag": null,
     "img": "https://imagedelivery.net/BgH9d8bzsn4n0yijn4h7IQ/5f30df16-555a-46a4-e1ca-93239f977000/public",
     "link": "https://br.mt-antilope.com/home?inviteCode=VEU6ZR",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 2.47,
+    "betMinima": 0.33,
+    "betMaxima": 12.9,
+    "betMaximaMin": 5.19,
+    "betMaximaMax": 11.87
   },
   {
     "id": 216,
@@ -3039,7 +3974,7 @@
     "provider": "pragmatic",
     "emoji": "🏴‍☠️",
     "theme": "egypt",
-    "dist": 96,
+    "dist": 90,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -3047,7 +3982,12 @@
     "tag": null,
     "img": "https://imagedelivery.net/BgH9d8bzsn4n0yijn4h7IQ/90823680-3339-410f-ef8a-6d132fba1100/public",
     "link": "https://kk-judy777.vip/?id=649076826&currency=BRL&type=2",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 3.36,
+    "betMinima": 0.77,
+    "betMaxima": 9.06,
+    "betMaximaMin": 4.53,
+    "betMaximaMax": 11.47
   },
   {
     "id": 217,
@@ -3055,7 +3995,7 @@
     "provider": "pgsoft",
     "emoji": "🐉",
     "theme": "chinese",
-    "dist": 96,
+    "dist": 91,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -3063,7 +4003,12 @@
     "tag": null,
     "img": "https://imagedelivery.net/BgH9d8bzsn4n0yijn4h7IQ/8f79d54c-78f0-4576-59ad-4ebaed23a400/public",
     "link": "https://www.fy-fanta.com/?id=223975751",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 3.19,
+    "betMinima": 0.54,
+    "betMaxima": 12.3,
+    "betMaximaMin": 4.85,
+    "betMaximaMax": 14.27
   },
   {
     "id": 218,
@@ -3071,7 +4016,7 @@
     "provider": "pragmatic",
     "emoji": "🧞",
     "theme": "fantasy",
-    "dist": 96,
+    "dist": 90,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -3079,7 +4024,12 @@
     "tag": null,
     "img": "https://imagedelivery.net/BgH9d8bzsn4n0yijn4h7IQ/4030ebf1-bcbd-475c-8191-b802ef194e00/public",
     "link": "https://hms-tiradentesday.bet/?invite_code=8be79469",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 3.23,
+    "betMinima": 0.65,
+    "betMaxima": 8.35,
+    "betMaximaMin": 5.0,
+    "betMaximaMax": 15.78
   },
   {
     "id": 219,
@@ -3087,7 +4037,7 @@
     "provider": "pragmatic",
     "emoji": "⚰️",
     "theme": "egypt",
-    "dist": 96,
+    "dist": 97,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -3095,7 +4045,12 @@
     "tag": null,
     "img": "https://imagedelivery.net/BgH9d8bzsn4n0yijn4h7IQ/6a5beb8e-8499-4233-5ac9-47dd046ba200/public",
     "link": "https://coroa-gghhpg.com/?id=405842843",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 2.18,
+    "betMinima": 0.48,
+    "betMaxima": 8.6,
+    "betMaximaMin": 4.71,
+    "betMaximaMax": 12.89
   },
   {
     "id": 220,
@@ -3111,7 +4066,12 @@
     "tag": null,
     "img": "https://imagedelivery.net/BgH9d8bzsn4n0yijn4h7IQ/e6219eaf-f01e-406d-8f3d-4948e9170c00/public",
     "link": "https://www.onebra77.com/?source_code=TWMWECDNJ2X",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 2.89,
+    "betMinima": 0.49,
+    "betMaxima": 13.81,
+    "betMaximaMin": 4.5,
+    "betMaximaMax": 16.86
   },
   {
     "id": 221,
@@ -3119,7 +4079,7 @@
     "provider": "pragmatic",
     "emoji": "🎰",
     "theme": "fantasy",
-    "dist": 96,
+    "dist": 82,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -3127,7 +4087,12 @@
     "tag": null,
     "img": "https://imagedelivery.net/BgH9d8bzsn4n0yijn4h7IQ/d757d2f5-f500-449d-039e-6a49f73ed600/public",
     "link": "https://br.mt-antilope.com/home?inviteCode=VEU6ZR",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 2.61,
+    "betMinima": 0.77,
+    "betMaxima": 5.73,
+    "betMaximaMin": 5.37,
+    "betMaximaMax": 10.53
   },
   {
     "id": 223,
@@ -3135,7 +4100,7 @@
     "provider": "pragmatic",
     "emoji": "🎰",
     "theme": "fantasy",
-    "dist": 96,
+    "dist": 94,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -3143,7 +4108,12 @@
     "tag": null,
     "img": "https://imagedelivery.net/BgH9d8bzsn4n0yijn4h7IQ/fda5aa52-f50a-48d0-e359-ee3def0ba500/public",
     "link": "https://www.fy-fanta.com/?id=223975751",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 3.18,
+    "betMinima": 0.56,
+    "betMaxima": 13.22,
+    "betMaximaMin": 5.63,
+    "betMaximaMax": 11.86
   },
   {
     "id": 224,
@@ -3151,7 +4121,7 @@
     "provider": "pragmatic",
     "emoji": "🐼",
     "theme": "chinese",
-    "dist": 96,
+    "dist": 97,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -3159,7 +4129,12 @@
     "tag": null,
     "img": "https://imagedelivery.net/BgH9d8bzsn4n0yijn4h7IQ/98dc25c3-af12-4281-f50d-c13f4dbe9400/public",
     "link": "https://hms-tiradentesday.bet/?invite_code=8be79469",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 2.84,
+    "betMinima": 0.28,
+    "betMaxima": 4.7,
+    "betMaximaMin": 4.46,
+    "betMaximaMax": 15.21
   },
   {
     "id": 225,
@@ -3175,7 +4150,12 @@
     "tag": null,
     "img": "https://imagedelivery.net/BgH9d8bzsn4n0yijn4h7IQ/55fe01df-c2b3-4150-983c-e67f68cba100/public",
     "link": "https://coroa-gghhpg.com/?id=405842843",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 2.47,
+    "betMinima": 0.67,
+    "betMaxima": 7.24,
+    "betMaximaMin": 4.52,
+    "betMaximaMax": 13.74
   },
   {
     "id": 227,
@@ -3183,7 +4163,7 @@
     "provider": "pragmatic",
     "emoji": "🎰",
     "theme": "fantasy",
-    "dist": 96,
+    "dist": 97,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -3191,7 +4171,12 @@
     "tag": null,
     "img": "https://imagedelivery.net/BgH9d8bzsn4n0yijn4h7IQ/7f179966-a83c-422a-cd5c-2c6e078b7300/public",
     "link": "https://br.mt-antilope.com/home?inviteCode=VEU6ZR",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 2.82,
+    "betMinima": 0.23,
+    "betMaxima": 12.72,
+    "betMaximaMin": 5.97,
+    "betMaximaMax": 11.47
   },
   {
     "id": 228,
@@ -3199,7 +4184,7 @@
     "provider": "pragmatic",
     "emoji": "🐉",
     "theme": "chinese",
-    "dist": 96,
+    "dist": 91,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -3207,7 +4192,12 @@
     "tag": null,
     "img": "https://imagedelivery.net/BgH9d8bzsn4n0yijn4h7IQ/6f80b99a-b1ed-43e1-9a99-c50892588700/public",
     "link": "https://kk-judy777.vip/?id=649076826&currency=BRL&type=2",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 3.36,
+    "betMinima": 0.59,
+    "betMaxima": 11.73,
+    "betMaximaMin": 5.39,
+    "betMaximaMax": 10.66
   },
   {
     "id": 229,
@@ -3215,7 +4205,7 @@
     "provider": "pragmatic",
     "emoji": "🎰",
     "theme": "fantasy",
-    "dist": 96,
+    "dist": 88,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -3223,7 +4213,12 @@
     "tag": null,
     "img": "https://imagedelivery.net/BgH9d8bzsn4n0yijn4h7IQ/2f699640-d149-4b13-e633-15768ba97100/public",
     "link": "https://www.fy-fanta.com/?id=223975751",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 3.15,
+    "betMinima": 0.7,
+    "betMaxima": 7.03,
+    "betMaximaMin": 4.53,
+    "betMaximaMax": 12.89
   },
   {
     "id": 231,
@@ -3231,7 +4226,7 @@
     "provider": "pragmatic",
     "emoji": "🎰",
     "theme": "greek",
-    "dist": 96,
+    "dist": 89,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -3239,7 +4234,12 @@
     "tag": null,
     "img": "https://imagedelivery.net/BgH9d8bzsn4n0yijn4h7IQ/f49be0ce-ea89-4919-be6b-efe3d020c500/public",
     "link": "https://coroa-gghhpg.com/?id=405842843",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 2.39,
+    "betMinima": 0.61,
+    "betMaxima": 6.7,
+    "betMaximaMin": 5.15,
+    "betMaximaMax": 14.55
   },
   {
     "id": 232,
@@ -3247,7 +4247,7 @@
     "provider": "pragmatic",
     "emoji": "🎰",
     "theme": "fantasy",
-    "dist": 96,
+    "dist": 86,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -3255,7 +4255,12 @@
     "tag": null,
     "img": "https://imagedelivery.net/BgH9d8bzsn4n0yijn4h7IQ/a1fdcb3e-64b9-4f7b-7490-e96a06a3b200/public",
     "link": "https://www.onebra77.com/?source_code=TWMWECDNJ2X",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 2.92,
+    "betMinima": 0.47,
+    "betMaxima": 5.82,
+    "betMaximaMin": 5.83,
+    "betMaximaMax": 10.51
   },
   {
     "id": 233,
@@ -3263,7 +4268,7 @@
     "provider": "pragmatic",
     "emoji": "⚡",
     "theme": "greek",
-    "dist": 96,
+    "dist": 91,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -3271,7 +4276,12 @@
     "tag": null,
     "img": "https://imagedelivery.net/BgH9d8bzsn4n0yijn4h7IQ/d061a7e1-a387-4911-078e-c1801f26ac00/public",
     "link": "https://br.mt-antilope.com/home?inviteCode=VEU6ZR",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 2.92,
+    "betMinima": 0.25,
+    "betMaxima": 11.66,
+    "betMaximaMin": 4.52,
+    "betMaximaMax": 12.43
   },
   {
     "id": 234,
@@ -3279,7 +4289,7 @@
     "provider": "pragmatic",
     "emoji": "🦁",
     "theme": "fantasy",
-    "dist": 96,
+    "dist": 92,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -3287,7 +4297,12 @@
     "tag": null,
     "img": "https://imagedelivery.net/BgH9d8bzsn4n0yijn4h7IQ/54724613-26f4-4293-c254-70ea5fa32200/public",
     "link": "https://kk-judy777.vip/?id=649076826&currency=BRL&type=2",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 2.68,
+    "betMinima": 0.77,
+    "betMaxima": 11.43,
+    "betMaximaMin": 5.59,
+    "betMaximaMax": 17.3
   },
   {
     "id": 235,
@@ -3295,7 +4310,7 @@
     "provider": "pragmatic",
     "emoji": "🌊",
     "theme": "fishing",
-    "dist": 96,
+    "dist": 88,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -3303,7 +4318,12 @@
     "tag": null,
     "img": "https://imagedelivery.net/BgH9d8bzsn4n0yijn4h7IQ/0ef24bca-582b-4851-d091-61c5939f5900/public",
     "link": "https://www.fy-fanta.com/?id=223975751",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 3.32,
+    "betMinima": 0.79,
+    "betMaxima": 11.74,
+    "betMaximaMin": 4.92,
+    "betMaximaMax": 13.67
   },
   {
     "id": 236,
@@ -3311,7 +4331,7 @@
     "provider": "pgsoft",
     "emoji": "🪙",
     "theme": "chinese",
-    "dist": 96,
+    "dist": 87,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -3319,7 +4339,12 @@
     "tag": null,
     "img": "https://imagedelivery.net/BgH9d8bzsn4n0yijn4h7IQ/59c5f633-8b4d-45de-b685-f6fb35699800/public",
     "link": "https://hms-tiradentesday.bet/?invite_code=8be79469",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 3.47,
+    "betMinima": 0.32,
+    "betMaxima": 7.75,
+    "betMaximaMin": 5.55,
+    "betMaximaMax": 14.06
   },
   {
     "id": 238,
@@ -3327,7 +4352,7 @@
     "provider": "pragmatic",
     "emoji": "🍭",
     "theme": "candy",
-    "dist": 96,
+    "dist": 90,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -3335,7 +4360,12 @@
     "tag": null,
     "img": "https://imagedelivery.net/BgH9d8bzsn4n0yijn4h7IQ/e54bb1d4-0491-49c9-9362-927f72a27e00/public",
     "link": "https://www.onebra77.com/?source_code=TWMWECDNJ2X",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 3.21,
+    "betMinima": 0.64,
+    "betMaxima": 13.3,
+    "betMaximaMin": 4.68,
+    "betMaximaMax": 10.33
   },
   {
     "id": 239,
@@ -3351,7 +4381,12 @@
     "tag": null,
     "img": "https://imagedelivery.net/BgH9d8bzsn4n0yijn4h7IQ/e3e357d0-a706-4b08-78a1-d7d2fd45ee00/public",
     "link": "https://br.mt-antilope.com/home?inviteCode=VEU6ZR",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 3.0,
+    "betMinima": 0.66,
+    "betMaxima": 13.78,
+    "betMaximaMin": 4.21,
+    "betMaximaMax": 10.04
   },
   {
     "id": 240,
@@ -3359,7 +4394,7 @@
     "provider": "pragmatic",
     "emoji": "🍭",
     "theme": "candy",
-    "dist": 96,
+    "dist": 92,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -3367,7 +4402,12 @@
     "tag": null,
     "img": "https://imagedelivery.net/BgH9d8bzsn4n0yijn4h7IQ/1cab7d36-7387-4eb2-e516-ed60b72c6000/public",
     "link": "https://kk-judy777.vip/?id=649076826&currency=BRL&type=2",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 3.27,
+    "betMinima": 0.79,
+    "betMaxima": 10.55,
+    "betMaximaMin": 4.06,
+    "betMaximaMax": 12.22
   },
   {
     "id": 241,
@@ -3383,7 +4423,12 @@
     "tag": null,
     "img": "https://imagedelivery.net/BgH9d8bzsn4n0yijn4h7IQ/0416fe38-46bc-4181-a98b-f3d4323bc500/public",
     "link": "https://www.fy-fanta.com/?id=223975751",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 2.44,
+    "betMinima": 0.39,
+    "betMaxima": 4.58,
+    "betMaximaMin": 5.96,
+    "betMaximaMax": 14.99
   },
   {
     "id": 242,
@@ -3391,7 +4436,7 @@
     "provider": "pragmatic",
     "emoji": "🍭",
     "theme": "candy",
-    "dist": 96,
+    "dist": 93,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -3399,7 +4444,12 @@
     "tag": null,
     "img": "https://imagedelivery.net/BgH9d8bzsn4n0yijn4h7IQ/68f0b97c-b509-4af3-860c-6577d4130b00/public",
     "link": "https://hms-tiradentesday.bet/?invite_code=8be79469",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 2.84,
+    "betMinima": 0.48,
+    "betMaxima": 6.81,
+    "betMaximaMin": 5.85,
+    "betMaximaMax": 16.27
   },
   {
     "id": 244,
@@ -3415,7 +4465,12 @@
     "tag": null,
     "img": "https://imagedelivery.net/BgH9d8bzsn4n0yijn4h7IQ/a195786d-e2fb-429c-e70e-2cee13e24a00/public",
     "link": "https://www.onebra77.com/?source_code=TWMWECDNJ2X",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 2.55,
+    "betMinima": 0.74,
+    "betMaxima": 13.4,
+    "betMaximaMin": 4.28,
+    "betMaximaMax": 10.98
   },
   {
     "id": 245,
@@ -3423,7 +4478,7 @@
     "provider": "pragmatic",
     "emoji": "🎰",
     "theme": "fantasy",
-    "dist": 96,
+    "dist": 92,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -3431,7 +4486,12 @@
     "tag": null,
     "img": "https://imagedelivery.net/BgH9d8bzsn4n0yijn4h7IQ/e56d1c32-7b0e-49d4-ad15-d10309079100/public",
     "link": "https://br.mt-antilope.com/home?inviteCode=VEU6ZR",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 2.81,
+    "betMinima": 0.5,
+    "betMaxima": 13.86,
+    "betMaximaMin": 5.13,
+    "betMaximaMax": 10.21
   },
   {
     "id": 247,
@@ -3439,7 +4499,7 @@
     "provider": "pragmatic",
     "emoji": "🏺",
     "theme": "egypt",
-    "dist": 96,
+    "dist": 82,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -3447,7 +4507,12 @@
     "tag": null,
     "img": "https://imagedelivery.net/BgH9d8bzsn4n0yijn4h7IQ/823e13b2-679c-4c4b-358f-a0a88bf14b00/public",
     "link": "https://www.fy-fanta.com/?id=223975751",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 2.15,
+    "betMinima": 0.3,
+    "betMaxima": 14.7,
+    "betMaximaMin": 4.29,
+    "betMaximaMax": 15.79
   },
   {
     "id": 248,
@@ -3455,7 +4520,7 @@
     "provider": "pragmatic",
     "emoji": "🍀",
     "theme": "chinese",
-    "dist": 96,
+    "dist": 95,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -3463,7 +4528,12 @@
     "tag": null,
     "img": "https://imagedelivery.net/BgH9d8bzsn4n0yijn4h7IQ/99016549-e28b-49ce-b2dd-7b35bddc4600/public",
     "link": "https://hms-tiradentesday.bet/?invite_code=8be79469",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 3.12,
+    "betMinima": 0.52,
+    "betMaxima": 9.07,
+    "betMaximaMin": 5.71,
+    "betMaximaMax": 12.0
   },
   {
     "id": 249,
@@ -3471,7 +4541,7 @@
     "provider": "pragmatic",
     "emoji": "🤠",
     "theme": "western",
-    "dist": 96,
+    "dist": 90,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -3479,7 +4549,12 @@
     "tag": null,
     "img": "https://imagedelivery.net/BgH9d8bzsn4n0yijn4h7IQ/1605e167-a805-40df-bc57-e795529ab100/public",
     "link": "https://coroa-gghhpg.com/?id=405842843",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 3.2,
+    "betMinima": 0.54,
+    "betMaxima": 14.74,
+    "betMaximaMin": 4.82,
+    "betMaximaMax": 14.13
   },
   {
     "id": 250,
@@ -3487,7 +4562,7 @@
     "provider": "pragmatic",
     "emoji": "🔥",
     "theme": "fantasy",
-    "dist": 96,
+    "dist": 88,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -3495,7 +4570,12 @@
     "tag": null,
     "img": "https://imagedelivery.net/BgH9d8bzsn4n0yijn4h7IQ/51d12d42-826e-42da-80c5-9b05fde2d700/public",
     "link": "https://www.onebra77.com/?source_code=TWMWECDNJ2X",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 2.3,
+    "betMinima": 0.52,
+    "betMaxima": 7.33,
+    "betMaximaMin": 4.48,
+    "betMaximaMax": 17.22
   },
   {
     "id": 251,
@@ -3503,7 +4583,7 @@
     "provider": "pragmatic",
     "emoji": "🎰",
     "theme": "egypt",
-    "dist": 96,
+    "dist": 90,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -3511,7 +4591,12 @@
     "tag": null,
     "img": "https://imagedelivery.net/BgH9d8bzsn4n0yijn4h7IQ/e12c2c15-1c67-4433-77fc-e714a8952d00/public",
     "link": "https://br.mt-antilope.com/home?inviteCode=VEU6ZR",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 3.35,
+    "betMinima": 0.56,
+    "betMaxima": 6.19,
+    "betMaximaMin": 4.87,
+    "betMaximaMax": 11.65
   },
   {
     "id": 252,
@@ -3519,7 +4604,7 @@
     "provider": "pragmatic",
     "emoji": "🎰",
     "theme": "fantasy",
-    "dist": 96,
+    "dist": 97,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -3527,7 +4612,12 @@
     "tag": null,
     "img": "https://imagedelivery.net/BgH9d8bzsn4n0yijn4h7IQ/76d3af09-71cc-4de5-6890-f9b317cd2300/public",
     "link": "https://kk-judy777.vip/?id=649076826&currency=BRL&type=2",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 3.36,
+    "betMinima": 0.28,
+    "betMaxima": 8.49,
+    "betMaximaMin": 5.31,
+    "betMaximaMax": 13.59
   },
   {
     "id": 253,
@@ -3535,7 +4625,7 @@
     "provider": "pragmatic",
     "emoji": "🎰",
     "theme": "fantasy",
-    "dist": 96,
+    "dist": 92,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -3543,7 +4633,12 @@
     "tag": null,
     "img": "https://imagedelivery.net/BgH9d8bzsn4n0yijn4h7IQ/e08d611a-acaa-40d2-4d95-6e39990e7f00/public",
     "link": "https://www.fy-fanta.com/?id=223975751",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 2.47,
+    "betMinima": 0.31,
+    "betMaxima": 4.62,
+    "betMaximaMin": 4.17,
+    "betMaximaMax": 10.25
   },
   {
     "id": 254,
@@ -3551,7 +4646,7 @@
     "provider": "pragmatic",
     "emoji": "🎰",
     "theme": "fantasy",
-    "dist": 96,
+    "dist": 89,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -3559,7 +4654,12 @@
     "tag": null,
     "img": "https://imagedelivery.net/BgH9d8bzsn4n0yijn4h7IQ/b2acb190-2303-4516-ad5e-7e01b6f9bc00/public",
     "link": "https://hms-tiradentesday.bet/?invite_code=8be79469",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 3.3,
+    "betMinima": 0.78,
+    "betMaxima": 13.4,
+    "betMaximaMin": 5.25,
+    "betMaximaMax": 10.29
   },
   {
     "id": 255,
@@ -3567,7 +4667,7 @@
     "provider": "pragmatic",
     "emoji": "⚡",
     "theme": "greek",
-    "dist": 96,
+    "dist": 90,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -3575,7 +4675,12 @@
     "tag": null,
     "img": "https://imagedelivery.net/BgH9d8bzsn4n0yijn4h7IQ/09fa690c-3827-4c91-9078-191ee7fe6000/public",
     "link": "https://coroa-gghhpg.com/?id=405842843",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 3.29,
+    "betMinima": 0.71,
+    "betMaxima": 10.75,
+    "betMaximaMin": 4.92,
+    "betMaximaMax": 13.27
   },
   {
     "id": 257,
@@ -3583,7 +4688,7 @@
     "provider": "pragmatic",
     "emoji": "🎰",
     "theme": "fantasy",
-    "dist": 96,
+    "dist": 85,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -3591,7 +4696,12 @@
     "tag": null,
     "img": "https://imagedelivery.net/BgH9d8bzsn4n0yijn4h7IQ/c78de118-7347-4c9c-be62-019bff345800/public",
     "link": "https://br.mt-antilope.com/home?inviteCode=VEU6ZR",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 2.83,
+    "betMinima": 0.63,
+    "betMaxima": 12.64,
+    "betMaximaMin": 4.0,
+    "betMaximaMax": 15.73
   },
   {
     "id": 258,
@@ -3599,7 +4709,7 @@
     "provider": "pragmatic",
     "emoji": "🎰",
     "theme": "egypt",
-    "dist": 96,
+    "dist": 94,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -3607,7 +4717,12 @@
     "tag": null,
     "img": "https://imagedelivery.net/BgH9d8bzsn4n0yijn4h7IQ/9fe73c70-d77d-448b-f9e8-304c631ea300/public",
     "link": "https://kk-judy777.vip/?id=649076826&currency=BRL&type=2",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 2.29,
+    "betMinima": 0.77,
+    "betMaxima": 9.17,
+    "betMaximaMin": 4.42,
+    "betMaximaMax": 10.88
   },
   {
     "id": 259,
@@ -3615,7 +4730,7 @@
     "provider": "pragmatic",
     "emoji": "🎰",
     "theme": "fantasy",
-    "dist": 96,
+    "dist": 94,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -3623,7 +4738,12 @@
     "tag": null,
     "img": "https://imagedelivery.net/BgH9d8bzsn4n0yijn4h7IQ/e1c62719-b4fb-4ff7-4cc2-8bb40d93e300/public",
     "link": "https://www.fy-fanta.com/?id=223975751",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 2.75,
+    "betMinima": 0.48,
+    "betMaxima": 4.66,
+    "betMaximaMin": 4.57,
+    "betMaximaMax": 17.38
   },
   {
     "id": 260,
@@ -3631,7 +4751,7 @@
     "provider": "pgsoft",
     "emoji": "🎰",
     "theme": "fantasy",
-    "dist": 96,
+    "dist": 90,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -3639,7 +4759,12 @@
     "tag": null,
     "img": "https://imagedelivery.net/BgH9d8bzsn4n0yijn4h7IQ/6f53b64a-e897-41fc-d866-d7f4a6cbe800/public",
     "link": "https://hms-tiradentesday.bet/?invite_code=8be79469",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 2.06,
+    "betMinima": 0.28,
+    "betMaxima": 7.06,
+    "betMaximaMin": 4.5,
+    "betMaximaMax": 10.55
   },
   {
     "id": 261,
@@ -3647,7 +4772,7 @@
     "provider": "pgsoft",
     "emoji": "🍀",
     "theme": "fantasy",
-    "dist": 96,
+    "dist": 97,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -3655,7 +4780,12 @@
     "tag": null,
     "img": "https://imagedelivery.net/BgH9d8bzsn4n0yijn4h7IQ/6a6f106a-ccd0-4731-a108-cf057dded800/public",
     "link": "https://coroa-gghhpg.com/?id=405842843",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 3.36,
+    "betMinima": 0.51,
+    "betMaxima": 11.28,
+    "betMaximaMin": 4.47,
+    "betMaximaMax": 16.81
   },
   {
     "id": 262,
@@ -3663,7 +4793,7 @@
     "provider": "pragmatic",
     "emoji": "🐵",
     "theme": "fantasy",
-    "dist": 96,
+    "dist": 85,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -3671,7 +4801,12 @@
     "tag": null,
     "img": "https://imagedelivery.net/BgH9d8bzsn4n0yijn4h7IQ/3923d1bd-b287-489a-b23e-05fa82590e00/public",
     "link": "https://www.onebra77.com/?source_code=TWMWECDNJ2X",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 2.11,
+    "betMinima": 0.35,
+    "betMaxima": 8.77,
+    "betMaximaMin": 5.22,
+    "betMaximaMax": 10.82
   },
   {
     "id": 263,
@@ -3679,7 +4814,7 @@
     "provider": "pragmatic",
     "emoji": "🐉",
     "theme": "chinese",
-    "dist": 96,
+    "dist": 87,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -3687,7 +4822,12 @@
     "tag": null,
     "img": "https://imagedelivery.net/BgH9d8bzsn4n0yijn4h7IQ/bafd1bae-ce5c-40a8-ca6b-7c1ed96d7300/public",
     "link": "https://br.mt-antilope.com/home?inviteCode=VEU6ZR",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 3.46,
+    "betMinima": 0.53,
+    "betMaxima": 7.86,
+    "betMaximaMin": 4.56,
+    "betMaximaMax": 15.7
   },
   {
     "id": 264,
@@ -3695,7 +4835,7 @@
     "provider": "pragmatic",
     "emoji": "🎰",
     "theme": "fantasy",
-    "dist": 96,
+    "dist": 92,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -3703,7 +4843,12 @@
     "tag": null,
     "img": "https://imagedelivery.net/BgH9d8bzsn4n0yijn4h7IQ/6926f8ee-213f-4542-ae74-d9cddad45100/public",
     "link": "https://kk-judy777.vip/?id=649076826&currency=BRL&type=2",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 3.15,
+    "betMinima": 0.64,
+    "betMaxima": 10.14,
+    "betMaximaMin": 5.24,
+    "betMaximaMax": 13.57
   },
   {
     "id": 265,
@@ -3711,7 +4856,7 @@
     "provider": "pragmatic",
     "emoji": "🍭",
     "theme": "candy",
-    "dist": 96,
+    "dist": 97,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -3719,7 +4864,12 @@
     "tag": null,
     "img": "https://imagedelivery.net/BgH9d8bzsn4n0yijn4h7IQ/81d21eb2-07d1-4364-29f1-a21884cc9d00/public",
     "link": "https://www.fy-fanta.com/?id=223975751",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 2.74,
+    "betMinima": 0.59,
+    "betMaxima": 14.41,
+    "betMaximaMin": 4.43,
+    "betMaximaMax": 16.21
   },
   {
     "id": 266,
@@ -3727,7 +4877,7 @@
     "provider": "pragmatic",
     "emoji": "🎰",
     "theme": "fantasy",
-    "dist": 96,
+    "dist": 97,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -3735,7 +4885,12 @@
     "tag": null,
     "img": "https://imagedelivery.net/BgH9d8bzsn4n0yijn4h7IQ/6ff826be-e63a-41da-2df8-98296cfdad00/public",
     "link": "https://hms-tiradentesday.bet/?invite_code=8be79469",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 2.56,
+    "betMinima": 0.57,
+    "betMaxima": 13.01,
+    "betMaximaMin": 5.26,
+    "betMaximaMax": 16.79
   },
   {
     "id": 267,
@@ -3743,7 +4898,7 @@
     "provider": "pragmatic",
     "emoji": "⚡",
     "theme": "greek",
-    "dist": 96,
+    "dist": 94,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -3751,7 +4906,12 @@
     "tag": null,
     "img": "https://imagedelivery.net/BgH9d8bzsn4n0yijn4h7IQ/07d7ee0f-db15-4f49-35f0-8d689c30ea00/public",
     "link": "https://coroa-gghhpg.com/?id=405842843",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 2.72,
+    "betMinima": 0.53,
+    "betMaxima": 11.25,
+    "betMaximaMin": 4.13,
+    "betMaximaMax": 11.85
   },
   {
     "id": 268,
@@ -3759,7 +4919,7 @@
     "provider": "pragmatic",
     "emoji": "🎰",
     "theme": "fantasy",
-    "dist": 96,
+    "dist": 90,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -3767,7 +4927,12 @@
     "tag": null,
     "img": "https://imagedelivery.net/BgH9d8bzsn4n0yijn4h7IQ/aba7962a-e534-4f10-773c-677ea2ef1700/public",
     "link": "https://www.onebra77.com/?source_code=TWMWECDNJ2X",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 3.08,
+    "betMinima": 0.45,
+    "betMaxima": 13.6,
+    "betMaximaMin": 4.94,
+    "betMaximaMax": 10.61
   },
   {
     "id": 269,
@@ -3775,7 +4940,7 @@
     "provider": "pragmatic",
     "emoji": "🎰",
     "theme": "fantasy",
-    "dist": 96,
+    "dist": 93,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -3783,7 +4948,12 @@
     "tag": null,
     "img": "https://imagedelivery.net/BgH9d8bzsn4n0yijn4h7IQ/00e23e30-565c-4e0f-9837-d88a1b513000/public",
     "link": "https://br.mt-antilope.com/home?inviteCode=VEU6ZR",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 2.96,
+    "betMinima": 0.44,
+    "betMaxima": 4.76,
+    "betMaximaMin": 5.01,
+    "betMaximaMax": 10.46
   },
   {
     "id": 270,
@@ -3791,7 +4961,7 @@
     "provider": "pragmatic",
     "emoji": "🎰",
     "theme": "fantasy",
-    "dist": 96,
+    "dist": 95,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -3799,7 +4969,12 @@
     "tag": null,
     "img": "https://imagedelivery.net/BgH9d8bzsn4n0yijn4h7IQ/f9dea855-28a4-4084-6cb1-092b0040ac00/public",
     "link": "https://kk-judy777.vip/?id=649076826&currency=BRL&type=2",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 3.07,
+    "betMinima": 0.38,
+    "betMaxima": 13.39,
+    "betMaximaMin": 5.45,
+    "betMaximaMax": 17.94
   },
   {
     "id": 272,
@@ -3807,7 +4982,7 @@
     "provider": "pragmatic",
     "emoji": "🎰",
     "theme": "fantasy",
-    "dist": 96,
+    "dist": 87,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -3815,7 +4990,12 @@
     "tag": null,
     "img": "https://imagedelivery.net/BgH9d8bzsn4n0yijn4h7IQ/ea635603-79c4-4e03-0078-005a82a3fb00/public",
     "link": "https://hms-tiradentesday.bet/?invite_code=8be79469",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 2.28,
+    "betMinima": 0.67,
+    "betMaxima": 6.11,
+    "betMaximaMin": 4.03,
+    "betMaximaMax": 15.09
   },
   {
     "id": 273,
@@ -3823,7 +5003,7 @@
     "provider": "evolution",
     "emoji": "🎰",
     "theme": "fantasy",
-    "dist": 96,
+    "dist": 97,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -3831,7 +5011,12 @@
     "tag": null,
     "img": "https://imagedelivery.net/BgH9d8bzsn4n0yijn4h7IQ/4c818477-b1c2-4a4f-0d38-d303bcf14f00/public",
     "link": "https://coroa-gghhpg.com/?id=405842843",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 2.69,
+    "betMinima": 0.65,
+    "betMaxima": 6.02,
+    "betMaximaMin": 5.69,
+    "betMaximaMax": 11.32
   },
   {
     "id": 274,
@@ -3839,7 +5024,7 @@
     "provider": "pragmatic",
     "emoji": "🔥",
     "theme": "fantasy",
-    "dist": 96,
+    "dist": 95,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -3847,7 +5032,12 @@
     "tag": null,
     "img": "https://imagedelivery.net/BgH9d8bzsn4n0yijn4h7IQ/2cc5610d-607b-457b-864f-d5045bb93200/public",
     "link": "https://www.onebra77.com/?source_code=TWMWECDNJ2X",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 2.89,
+    "betMinima": 0.45,
+    "betMaxima": 8.32,
+    "betMaximaMin": 5.01,
+    "betMaximaMax": 17.85
   },
   {
     "id": 275,
@@ -3855,7 +5045,7 @@
     "provider": "pgsoft",
     "emoji": "🍭",
     "theme": "candy",
-    "dist": 96,
+    "dist": 95,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -3863,7 +5053,12 @@
     "tag": null,
     "img": "https://imagedelivery.net/BgH9d8bzsn4n0yijn4h7IQ/6cf8fe3e-8261-4325-adb3-651700c6e200/public",
     "link": "https://br.mt-antilope.com/home?inviteCode=VEU6ZR",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 2.69,
+    "betMinima": 0.45,
+    "betMaxima": 14.14,
+    "betMaximaMin": 4.44,
+    "betMaximaMax": 17.41
   },
   {
     "id": 276,
@@ -3871,7 +5066,7 @@
     "provider": "pragmatic",
     "emoji": "🍭",
     "theme": "candy",
-    "dist": 96,
+    "dist": 85,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -3879,7 +5074,12 @@
     "tag": null,
     "img": "https://imagedelivery.net/BgH9d8bzsn4n0yijn4h7IQ/a267b89f-018d-4078-4e2a-9ca3053f0900/public",
     "link": "https://kk-judy777.vip/?id=649076826&currency=BRL&type=2",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 2.82,
+    "betMinima": 0.51,
+    "betMaxima": 11.76,
+    "betMaximaMin": 4.54,
+    "betMaximaMax": 17.58
   },
   {
     "id": 277,
@@ -3887,7 +5087,7 @@
     "provider": "pgsoft",
     "emoji": "🍭",
     "theme": "candy",
-    "dist": 96,
+    "dist": 97,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -3895,7 +5095,12 @@
     "tag": null,
     "img": "https://imagedelivery.net/BgH9d8bzsn4n0yijn4h7IQ/6042e10d-64f9-4ed6-52dd-e09857837a00/public",
     "link": "https://www.fy-fanta.com/?id=223975751",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 2.65,
+    "betMinima": 0.32,
+    "betMaxima": 8.96,
+    "betMaximaMin": 6.0,
+    "betMaximaMax": 13.69
   },
   {
     "id": 278,
@@ -3903,7 +5108,7 @@
     "provider": "pragmatic",
     "emoji": "🐉",
     "theme": "chinese",
-    "dist": 96,
+    "dist": 90,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -3911,7 +5116,12 @@
     "tag": null,
     "img": "https://imagedelivery.net/BgH9d8bzsn4n0yijn4h7IQ/613b4788-275e-48ce-b758-f59d2f26c900/public",
     "link": "https://hms-tiradentesday.bet/?invite_code=8be79469",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 2.07,
+    "betMinima": 0.67,
+    "betMaxima": 4.17,
+    "betMaximaMin": 5.18,
+    "betMaximaMax": 11.52
   },
   {
     "id": 279,
@@ -3919,7 +5129,7 @@
     "provider": "pragmatic",
     "emoji": "🔥",
     "theme": "fantasy",
-    "dist": 96,
+    "dist": 98,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -3927,7 +5137,12 @@
     "tag": null,
     "img": "https://imagedelivery.net/BgH9d8bzsn4n0yijn4h7IQ/738ecea5-b0e0-4fe9-35a0-d95acb0a8a00/public",
     "link": "https://coroa-gghhpg.com/?id=405842843",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 2.43,
+    "betMinima": 0.49,
+    "betMaxima": 8.28,
+    "betMaximaMin": 4.91,
+    "betMaximaMax": 15.52
   },
   {
     "id": 280,
@@ -3943,7 +5158,12 @@
     "tag": null,
     "img": "https://imagedelivery.net/BgH9d8bzsn4n0yijn4h7IQ/83ec0db9-8797-4c52-48bd-7ccd90a3ed00/public",
     "link": "https://www.onebra77.com/?source_code=TWMWECDNJ2X",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 2.73,
+    "betMinima": 0.71,
+    "betMaxima": 12.67,
+    "betMaximaMin": 5.81,
+    "betMaximaMax": 10.96
   },
   {
     "id": 281,
@@ -3951,7 +5171,7 @@
     "provider": "pragmatic",
     "emoji": "🔥",
     "theme": "fantasy",
-    "dist": 96,
+    "dist": 92,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -3959,7 +5179,12 @@
     "tag": null,
     "img": "https://imagedelivery.net/BgH9d8bzsn4n0yijn4h7IQ/e85f8491-19e6-415a-e5ef-eb6536f9b700/public",
     "link": "https://br.mt-antilope.com/home?inviteCode=VEU6ZR",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 3.27,
+    "betMinima": 0.3,
+    "betMaxima": 5.87,
+    "betMaximaMin": 5.99,
+    "betMaximaMax": 15.6
   },
   {
     "id": 283,
@@ -3967,7 +5192,7 @@
     "provider": "pragmatic",
     "emoji": "🪄",
     "theme": "fantasy",
-    "dist": 96,
+    "dist": 94,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -3975,7 +5200,12 @@
     "tag": null,
     "img": "https://imagedelivery.net/BgH9d8bzsn4n0yijn4h7IQ/87c27f91-98bf-464d-7666-7339eca2b700/public",
     "link": "https://www.fy-fanta.com/?id=223975751",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 2.59,
+    "betMinima": 0.76,
+    "betMaxima": 7.99,
+    "betMaximaMin": 4.14,
+    "betMaximaMax": 10.31
   },
   {
     "id": 284,
@@ -3983,7 +5213,7 @@
     "provider": "pragmatic",
     "emoji": "📚",
     "theme": "fantasy",
-    "dist": 96,
+    "dist": 89,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -3991,7 +5221,12 @@
     "tag": null,
     "img": "https://imagedelivery.net/BgH9d8bzsn4n0yijn4h7IQ/fce79dc1-ccd4-4a92-9081-4bc1acb40300/public",
     "link": "https://hms-tiradentesday.bet/?invite_code=8be79469",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 2.16,
+    "betMinima": 0.65,
+    "betMaxima": 8.47,
+    "betMaximaMin": 5.22,
+    "betMaximaMax": 17.92
   },
   {
     "id": 285,
@@ -3999,7 +5234,7 @@
     "provider": "pragmatic",
     "emoji": "🐂",
     "theme": "chinese",
-    "dist": 96,
+    "dist": 95,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -4007,7 +5242,12 @@
     "tag": null,
     "img": "https://imagedelivery.net/BgH9d8bzsn4n0yijn4h7IQ/83bbdd3e-4bec-4859-925a-860a5c1fc600/public",
     "link": "https://coroa-gghhpg.com/?id=405842843",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 2.19,
+    "betMinima": 0.54,
+    "betMaxima": 6.22,
+    "betMaximaMin": 5.87,
+    "betMaximaMax": 16.59
   },
   {
     "id": 286,
@@ -4015,7 +5255,7 @@
     "provider": "pragmatic",
     "emoji": "🐉",
     "theme": "chinese",
-    "dist": 96,
+    "dist": 90,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -4023,7 +5263,12 @@
     "tag": null,
     "img": "https://imagedelivery.net/BgH9d8bzsn4n0yijn4h7IQ/841baee6-58ff-40df-5ebf-447bcf8a2d00/public",
     "link": "https://www.onebra77.com/?source_code=TWMWECDNJ2X",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 2.61,
+    "betMinima": 0.6,
+    "betMaxima": 7.43,
+    "betMaximaMin": 5.72,
+    "betMaximaMax": 10.62
   },
   {
     "id": 287,
@@ -4031,7 +5276,7 @@
     "provider": "evolution",
     "emoji": "🍀",
     "theme": "fantasy",
-    "dist": 96,
+    "dist": 90,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -4039,7 +5284,12 @@
     "tag": null,
     "img": "https://imagedelivery.net/BgH9d8bzsn4n0yijn4h7IQ/e3e2a6e5-2682-4b53-8490-04472eccf400/public",
     "link": "https://br.mt-antilope.com/home?inviteCode=VEU6ZR",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 2.93,
+    "betMinima": 0.6,
+    "betMaxima": 11.61,
+    "betMaximaMin": 4.22,
+    "betMaximaMax": 15.59
   },
   {
     "id": 288,
@@ -4047,7 +5297,7 @@
     "provider": "pragmatic",
     "emoji": "🐱",
     "theme": "candy",
-    "dist": 96,
+    "dist": 83,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -4055,7 +5305,12 @@
     "tag": null,
     "img": "https://imagedelivery.net/BgH9d8bzsn4n0yijn4h7IQ/3a2b87ee-5c60-426d-add5-4a3abde77100/public",
     "link": "https://kk-judy777.vip/?id=649076826&currency=BRL&type=2",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 2.29,
+    "betMinima": 0.65,
+    "betMaxima": 5.11,
+    "betMaximaMin": 5.64,
+    "betMaximaMax": 17.77
   },
   {
     "id": 289,
@@ -4063,7 +5318,7 @@
     "provider": "pragmatic",
     "emoji": "🎰",
     "theme": "fantasy",
-    "dist": 96,
+    "dist": 91,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -4071,7 +5326,12 @@
     "tag": null,
     "img": "https://imagedelivery.net/BgH9d8bzsn4n0yijn4h7IQ/e41b8bb8-060d-4490-9f35-9e6cd0183400/public",
     "link": "https://www.fy-fanta.com/?id=223975751",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 2.53,
+    "betMinima": 0.6,
+    "betMaxima": 5.08,
+    "betMaximaMin": 4.89,
+    "betMaximaMax": 15.29
   },
   {
     "id": 290,
@@ -4079,7 +5339,7 @@
     "provider": "pragmatic",
     "emoji": "🪄",
     "theme": "fantasy",
-    "dist": 96,
+    "dist": 93,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -4087,7 +5347,12 @@
     "tag": null,
     "img": "https://imagedelivery.net/BgH9d8bzsn4n0yijn4h7IQ/a6a438f2-463b-4608-f8f6-b81d6b1d7300/public",
     "link": "https://hms-tiradentesday.bet/?invite_code=8be79469",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 2.84,
+    "betMinima": 0.26,
+    "betMaxima": 4.34,
+    "betMaximaMin": 5.6,
+    "betMaximaMax": 12.36
   },
   {
     "id": 291,
@@ -4095,7 +5360,7 @@
     "provider": "pragmatic",
     "emoji": "🎰",
     "theme": "egypt",
-    "dist": 96,
+    "dist": 95,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -4103,7 +5368,12 @@
     "tag": null,
     "img": "https://imagedelivery.net/BgH9d8bzsn4n0yijn4h7IQ/d28024f8-71a4-4c50-3ca2-2b896bcdeb00/public",
     "link": "https://coroa-gghhpg.com/?id=405842843",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 2.74,
+    "betMinima": 0.5,
+    "betMaxima": 4.79,
+    "betMaximaMin": 4.54,
+    "betMaximaMax": 10.31
   },
   {
     "id": 293,
@@ -4111,7 +5381,7 @@
     "provider": "pragmatic",
     "emoji": "🦁",
     "theme": "fantasy",
-    "dist": 96,
+    "dist": 91,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -4119,7 +5389,12 @@
     "tag": null,
     "img": "https://imagedelivery.net/BgH9d8bzsn4n0yijn4h7IQ/59e77413-039e-4492-be70-4566a4b76800/public",
     "link": "https://br.mt-antilope.com/home?inviteCode=VEU6ZR",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 2.81,
+    "betMinima": 0.33,
+    "betMaxima": 12.91,
+    "betMaximaMin": 5.81,
+    "betMaximaMax": 17.2
   },
   {
     "id": 294,
@@ -4135,7 +5410,12 @@
     "tag": null,
     "img": "https://imagedelivery.net/BgH9d8bzsn4n0yijn4h7IQ/fea27040-21f7-47ae-369c-c22ccc096d00/public",
     "link": "https://kk-judy777.vip/?id=649076826&currency=BRL&type=2",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 2.47,
+    "betMinima": 0.68,
+    "betMaxima": 4.53,
+    "betMaximaMin": 4.29,
+    "betMaximaMax": 17.73
   },
   {
     "id": 295,
@@ -4143,7 +5423,7 @@
     "provider": "pragmatic",
     "emoji": "🏺",
     "theme": "chinese",
-    "dist": 96,
+    "dist": 82,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -4151,7 +5431,12 @@
     "tag": null,
     "img": "https://imagedelivery.net/BgH9d8bzsn4n0yijn4h7IQ/5c8b28db-1d8d-462b-cf3e-6336a71a1200/public",
     "link": "https://www.fy-fanta.com/?id=223975751",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 2.37,
+    "betMinima": 0.79,
+    "betMaxima": 9.05,
+    "betMaximaMin": 5.44,
+    "betMaximaMax": 16.15
   },
   {
     "id": 296,
@@ -4159,7 +5444,7 @@
     "provider": "pragmatic",
     "emoji": "🎰",
     "theme": "fantasy",
-    "dist": 96,
+    "dist": 90,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -4167,7 +5452,12 @@
     "tag": null,
     "img": "https://imagedelivery.net/BgH9d8bzsn4n0yijn4h7IQ/a40cdb5f-adfa-4f92-7134-52056e5d4800/public",
     "link": "https://hms-tiradentesday.bet/?invite_code=8be79469",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 3.11,
+    "betMinima": 0.22,
+    "betMaxima": 9.78,
+    "betMaximaMin": 5.98,
+    "betMaximaMax": 12.96
   },
   {
     "id": 297,
@@ -4175,7 +5465,7 @@
     "provider": "pragmatic",
     "emoji": "🏝️",
     "theme": "fantasy",
-    "dist": 96,
+    "dist": 89,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -4183,7 +5473,12 @@
     "tag": null,
     "img": "https://imagedelivery.net/BgH9d8bzsn4n0yijn4h7IQ/c3c790fd-43a7-4e44-80f2-a0c4773dd000/public",
     "link": "https://coroa-gghhpg.com/?id=405842843",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 3.44,
+    "betMinima": 0.7,
+    "betMaxima": 6.44,
+    "betMaximaMin": 5.09,
+    "betMaximaMax": 10.46
   },
   {
     "id": 298,
@@ -4191,7 +5486,7 @@
     "provider": "pragmatic",
     "emoji": "🎰",
     "theme": "fantasy",
-    "dist": 96,
+    "dist": 90,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -4199,7 +5494,12 @@
     "tag": null,
     "img": "https://imagedelivery.net/BgH9d8bzsn4n0yijn4h7IQ/d88b9b02-4110-40d5-e38e-69e0dff25000/public",
     "link": "https://www.onebra77.com/?source_code=TWMWECDNJ2X",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 2.23,
+    "betMinima": 0.42,
+    "betMaxima": 9.63,
+    "betMaximaMin": 4.16,
+    "betMaximaMax": 14.23
   },
   {
     "id": 299,
@@ -4207,7 +5507,7 @@
     "provider": "pragmatic",
     "emoji": "🎰",
     "theme": "fantasy",
-    "dist": 96,
+    "dist": 94,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -4215,7 +5515,12 @@
     "tag": null,
     "img": "https://imagedelivery.net/BgH9d8bzsn4n0yijn4h7IQ/a5630892-3795-46ba-bb79-a08f90571200/public",
     "link": "https://br.mt-antilope.com/home?inviteCode=VEU6ZR",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 2.07,
+    "betMinima": 0.36,
+    "betMaxima": 13.51,
+    "betMaximaMin": 4.64,
+    "betMaximaMax": 14.5
   },
   {
     "id": 300,
@@ -4223,7 +5528,7 @@
     "provider": "pragmatic",
     "emoji": "🐼",
     "theme": "chinese",
-    "dist": 96,
+    "dist": 98,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -4231,7 +5536,12 @@
     "tag": null,
     "img": "https://imagedelivery.net/BgH9d8bzsn4n0yijn4h7IQ/cea3a1ba-5591-45e4-e54e-00c99a529100/public",
     "link": "https://kk-judy777.vip/?id=649076826&currency=BRL&type=2",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 2.86,
+    "betMinima": 0.58,
+    "betMaxima": 10.06,
+    "betMaximaMin": 4.79,
+    "betMaximaMax": 10.75
   },
   {
     "id": 301,
@@ -4239,7 +5549,7 @@
     "provider": "pragmatic",
     "emoji": "🔥",
     "theme": "fantasy",
-    "dist": 96,
+    "dist": 85,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -4247,7 +5557,12 @@
     "tag": null,
     "img": "https://imagedelivery.net/BgH9d8bzsn4n0yijn4h7IQ/5db11262-f8ce-4975-f3b4-877db5792600/public",
     "link": "https://www.fy-fanta.com/?id=223975751",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 2.39,
+    "betMinima": 0.39,
+    "betMaxima": 13.86,
+    "betMaximaMin": 5.63,
+    "betMaximaMax": 13.8
   },
   {
     "id": 303,
@@ -4255,7 +5570,7 @@
     "provider": "pragmatic",
     "emoji": "🎰",
     "theme": "fantasy",
-    "dist": 96,
+    "dist": 91,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -4263,7 +5578,12 @@
     "tag": null,
     "img": "https://imagedelivery.net/BgH9d8bzsn4n0yijn4h7IQ/50e40eaf-28a3-4116-62e9-7a3bd30bbc00/public",
     "link": "https://coroa-gghhpg.com/?id=405842843",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 2.65,
+    "betMinima": 0.61,
+    "betMaxima": 12.51,
+    "betMaximaMin": 5.66,
+    "betMaximaMax": 11.17
   },
   {
     "id": 304,
@@ -4271,7 +5591,7 @@
     "provider": "pragmatic",
     "emoji": "🎰",
     "theme": "fantasy",
-    "dist": 96,
+    "dist": 94,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -4279,7 +5599,12 @@
     "tag": null,
     "img": "https://imagedelivery.net/BgH9d8bzsn4n0yijn4h7IQ/6b7a230e-3ce3-4ed7-88c2-31c363342e00/public",
     "link": "https://www.onebra77.com/?source_code=TWMWECDNJ2X",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 3.2,
+    "betMinima": 0.29,
+    "betMaxima": 14.68,
+    "betMaximaMin": 4.26,
+    "betMaximaMax": 14.15
   },
   {
     "id": 305,
@@ -4287,7 +5612,7 @@
     "provider": "pragmatic",
     "emoji": "🐺",
     "theme": "western",
-    "dist": 96,
+    "dist": 97,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -4295,7 +5620,12 @@
     "tag": null,
     "img": "https://imagedelivery.net/BgH9d8bzsn4n0yijn4h7IQ/f9646273-3012-4f6e-d955-9ef2725d6100/public",
     "link": "https://br.mt-antilope.com/home?inviteCode=VEU6ZR",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 2.04,
+    "betMinima": 0.31,
+    "betMaxima": 14.93,
+    "betMaximaMin": 5.71,
+    "betMaximaMax": 17.73
   },
   {
     "id": 307,
@@ -4303,7 +5633,7 @@
     "provider": "pragmatic",
     "emoji": "🍭",
     "theme": "candy",
-    "dist": 96,
+    "dist": 85,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -4311,7 +5641,12 @@
     "tag": null,
     "img": "https://imagedelivery.net/BgH9d8bzsn4n0yijn4h7IQ/dd852846-05dd-4153-0106-8a5b1bf92400/public",
     "link": "https://www.fy-fanta.com/?id=223975751",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 3.0,
+    "betMinima": 0.59,
+    "betMaxima": 7.35,
+    "betMaximaMin": 4.32,
+    "betMaximaMax": 15.97
   },
   {
     "id": 308,
@@ -4319,7 +5654,7 @@
     "provider": "pragmatic",
     "emoji": "🐵",
     "theme": "fantasy",
-    "dist": 96,
+    "dist": 93,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -4327,7 +5662,12 @@
     "tag": null,
     "img": "https://imagedelivery.net/BgH9d8bzsn4n0yijn4h7IQ/17c6fcc0-0b43-4538-dd9a-a7f27bb9eb00/public",
     "link": "https://hms-tiradentesday.bet/?invite_code=8be79469",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 3.38,
+    "betMinima": 0.61,
+    "betMaxima": 9.8,
+    "betMaximaMin": 4.4,
+    "betMaximaMax": 13.66
   },
   {
     "id": 309,
@@ -4335,7 +5675,7 @@
     "provider": "pragmatic",
     "emoji": "🎰",
     "theme": "fantasy",
-    "dist": 96,
+    "dist": 97,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -4343,7 +5683,12 @@
     "tag": null,
     "img": "https://imagedelivery.net/BgH9d8bzsn4n0yijn4h7IQ/64519e78-17d6-4638-65f0-43aa59a29400/public",
     "link": "https://coroa-gghhpg.com/?id=405842843",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 2.28,
+    "betMinima": 0.41,
+    "betMaxima": 13.94,
+    "betMaximaMin": 4.67,
+    "betMaximaMax": 12.91
   },
   {
     "id": 310,
@@ -4351,7 +5696,7 @@
     "provider": "pragmatic",
     "emoji": "🍀",
     "theme": "chinese",
-    "dist": 96,
+    "dist": 97,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -4359,7 +5704,12 @@
     "tag": null,
     "img": "https://imagedelivery.net/BgH9d8bzsn4n0yijn4h7IQ/2f5b3383-75cf-414e-f581-a667e31e6500/public",
     "link": "https://www.onebra77.com/?source_code=TWMWECDNJ2X",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 2.79,
+    "betMinima": 0.61,
+    "betMaxima": 4.27,
+    "betMaximaMin": 5.23,
+    "betMaximaMax": 15.86
   },
   {
     "id": 311,
@@ -4367,7 +5717,7 @@
     "provider": "pragmatic",
     "emoji": "🎰",
     "theme": "fantasy",
-    "dist": 96,
+    "dist": 82,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -4375,7 +5725,12 @@
     "tag": null,
     "img": "https://imagedelivery.net/BgH9d8bzsn4n0yijn4h7IQ/a6cc37e0-24ad-47d8-4ed3-fd68ec35f200/public",
     "link": "https://br.mt-antilope.com/home?inviteCode=VEU6ZR",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 2.4,
+    "betMinima": 0.47,
+    "betMaxima": 4.54,
+    "betMaximaMin": 5.7,
+    "betMaximaMax": 17.13
   },
   {
     "id": 312,
@@ -4383,7 +5738,7 @@
     "provider": "pragmatic",
     "emoji": "🎰",
     "theme": "fantasy",
-    "dist": 96,
+    "dist": 92,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -4391,7 +5746,12 @@
     "tag": null,
     "img": "https://imagedelivery.net/BgH9d8bzsn4n0yijn4h7IQ/3161a09a-0ab6-4df2-a4b0-058fa5e5c100/public",
     "link": "https://kk-judy777.vip/?id=649076826&currency=BRL&type=2",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 3.3,
+    "betMinima": 0.21,
+    "betMaxima": 11.14,
+    "betMaximaMin": 5.47,
+    "betMaximaMax": 12.65
   },
   {
     "id": 313,
@@ -4399,7 +5759,7 @@
     "provider": "evolution",
     "emoji": "🎰",
     "theme": "egypt",
-    "dist": 96,
+    "dist": 89,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -4407,7 +5767,12 @@
     "tag": null,
     "img": "https://imagedelivery.net/BgH9d8bzsn4n0yijn4h7IQ/0d1d98d3-6def-433f-8a68-ccaa052e3100/public",
     "link": "https://www.fy-fanta.com/?id=223975751",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 3.41,
+    "betMinima": 0.45,
+    "betMaxima": 4.56,
+    "betMaximaMin": 5.44,
+    "betMaximaMax": 17.46
   },
   {
     "id": 314,
@@ -4415,7 +5780,7 @@
     "provider": "pragmatic",
     "emoji": "🐉",
     "theme": "chinese",
-    "dist": 96,
+    "dist": 91,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -4423,7 +5788,12 @@
     "tag": null,
     "img": "https://imagedelivery.net/BgH9d8bzsn4n0yijn4h7IQ/65aae805-27a6-4741-16b7-e81f7cc8ff00/public",
     "link": "https://hms-tiradentesday.bet/?invite_code=8be79469",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 2.95,
+    "betMinima": 0.56,
+    "betMaxima": 8.9,
+    "betMaximaMin": 4.37,
+    "betMaximaMax": 16.93
   },
   {
     "id": 315,
@@ -4431,7 +5801,7 @@
     "provider": "pragmatic",
     "emoji": "🪄",
     "theme": "fantasy",
-    "dist": 96,
+    "dist": 85,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -4439,7 +5809,12 @@
     "tag": null,
     "img": "https://imagedelivery.net/BgH9d8bzsn4n0yijn4h7IQ/0f5e1943-f9d8-498c-3e06-b9bcad012200/public",
     "link": "https://coroa-gghhpg.com/?id=405842843",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 2.09,
+    "betMinima": 0.5,
+    "betMaxima": 5.15,
+    "betMaximaMin": 5.37,
+    "betMaximaMax": 11.99
   },
   {
     "id": 316,
@@ -4447,7 +5822,7 @@
     "provider": "pragmatic",
     "emoji": "🎰",
     "theme": "fantasy",
-    "dist": 96,
+    "dist": 94,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -4455,7 +5830,12 @@
     "tag": null,
     "img": "https://imagedelivery.net/BgH9d8bzsn4n0yijn4h7IQ/986770bd-938b-4c70-bb81-451eef91d800/public",
     "link": "https://www.onebra77.com/?source_code=TWMWECDNJ2X",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 2.44,
+    "betMinima": 0.35,
+    "betMaxima": 4.04,
+    "betMaximaMin": 5.78,
+    "betMaximaMax": 11.94
   },
   {
     "id": 317,
@@ -4463,7 +5843,7 @@
     "provider": "pragmatic",
     "emoji": "🪙",
     "theme": "luxury",
-    "dist": 96,
+    "dist": 95,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -4471,7 +5851,12 @@
     "tag": null,
     "img": "https://imagedelivery.net/BgH9d8bzsn4n0yijn4h7IQ/e0aded3f-e470-4e2d-6b93-3c03f91cbe00/public",
     "link": "https://br.mt-antilope.com/home?inviteCode=VEU6ZR",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 3.34,
+    "betMinima": 0.55,
+    "betMaxima": 9.38,
+    "betMaximaMin": 5.91,
+    "betMaximaMax": 17.96
   },
   {
     "id": 318,
@@ -4479,7 +5864,7 @@
     "provider": "pragmatic",
     "emoji": "🎰",
     "theme": "fantasy",
-    "dist": 96,
+    "dist": 93,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -4487,7 +5872,12 @@
     "tag": null,
     "img": "https://imagedelivery.net/BgH9d8bzsn4n0yijn4h7IQ/d45d38e2-68eb-4222-1823-825bdade5500/public",
     "link": "https://kk-judy777.vip/?id=649076826&currency=BRL&type=2",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 3.12,
+    "betMinima": 0.4,
+    "betMaxima": 7.75,
+    "betMaximaMin": 5.26,
+    "betMaximaMax": 16.56
   },
   {
     "id": 319,
@@ -4495,7 +5885,7 @@
     "provider": "pragmatic",
     "emoji": "🎰",
     "theme": "fantasy",
-    "dist": 96,
+    "dist": 97,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -4503,7 +5893,12 @@
     "tag": null,
     "img": "https://imagedelivery.net/BgH9d8bzsn4n0yijn4h7IQ/1e57328a-ae0f-4555-5a81-44ca53f6c000/public",
     "link": "https://www.fy-fanta.com/?id=223975751",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 2.03,
+    "betMinima": 0.48,
+    "betMaxima": 11.63,
+    "betMaximaMin": 5.04,
+    "betMaximaMax": 16.85
   },
   {
     "id": 320,
@@ -4511,7 +5906,7 @@
     "provider": "pragmatic",
     "emoji": "🎰",
     "theme": "fantasy",
-    "dist": 96,
+    "dist": 90,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -4519,7 +5914,12 @@
     "tag": null,
     "img": "https://imagedelivery.net/BgH9d8bzsn4n0yijn4h7IQ/a0613de4-07c8-49ba-bfc9-1378a702d500/public",
     "link": "https://hms-tiradentesday.bet/?invite_code=8be79469",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 2.35,
+    "betMinima": 0.67,
+    "betMaxima": 12.14,
+    "betMaximaMin": 4.79,
+    "betMaximaMax": 16.9
   },
   {
     "id": 321,
@@ -4527,7 +5927,7 @@
     "provider": "pragmatic",
     "emoji": "🎰",
     "theme": "fantasy",
-    "dist": 96,
+    "dist": 94,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -4535,7 +5935,12 @@
     "tag": null,
     "img": "https://imagedelivery.net/BgH9d8bzsn4n0yijn4h7IQ/f0728eb0-e4fa-414e-55ac-041a6a5e3100/public",
     "link": "https://coroa-gghhpg.com/?id=405842843",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 3.08,
+    "betMinima": 0.63,
+    "betMaxima": 12.3,
+    "betMaximaMin": 5.65,
+    "betMaximaMax": 10.9
   },
   {
     "id": 322,
@@ -4543,7 +5948,7 @@
     "provider": "pragmatic",
     "emoji": "🎰",
     "theme": "egypt",
-    "dist": 96,
+    "dist": 94,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -4551,7 +5956,12 @@
     "tag": null,
     "img": "https://imagedelivery.net/BgH9d8bzsn4n0yijn4h7IQ/cb1bfe19-ff92-455a-5942-6618f3086200/public",
     "link": "https://www.onebra77.com/?source_code=TWMWECDNJ2X",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 3.15,
+    "betMinima": 0.36,
+    "betMaxima": 8.59,
+    "betMaximaMin": 5.47,
+    "betMaximaMax": 17.33
   },
   {
     "id": 323,
@@ -4559,7 +5969,7 @@
     "provider": "pragmatic",
     "emoji": "🏺",
     "theme": "egypt",
-    "dist": 96,
+    "dist": 91,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -4567,7 +5977,12 @@
     "tag": null,
     "img": "https://imagedelivery.net/BgH9d8bzsn4n0yijn4h7IQ/29e65e34-f77b-48d4-9a9c-6bd8b79d1100/public",
     "link": "https://br.mt-antilope.com/home?inviteCode=VEU6ZR",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 2.51,
+    "betMinima": 0.28,
+    "betMaxima": 8.78,
+    "betMaximaMin": 4.02,
+    "betMaximaMax": 17.88
   },
   {
     "id": 324,
@@ -4575,7 +5990,7 @@
     "provider": "pragmatic",
     "emoji": "⚡",
     "theme": "fantasy",
-    "dist": 96,
+    "dist": 87,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -4583,7 +5998,12 @@
     "tag": null,
     "img": "https://imagedelivery.net/BgH9d8bzsn4n0yijn4h7IQ/5a1c5202-2117-4c71-e096-49c74df9b000/public",
     "link": "https://kk-judy777.vip/?id=649076826&currency=BRL&type=2",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 2.01,
+    "betMinima": 0.38,
+    "betMaxima": 14.17,
+    "betMaximaMin": 5.98,
+    "betMaximaMax": 16.05
   },
   {
     "id": 325,
@@ -4591,7 +6011,7 @@
     "provider": "pragmatic",
     "emoji": "🎰",
     "theme": "egypt",
-    "dist": 96,
+    "dist": 82,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -4599,7 +6019,12 @@
     "tag": null,
     "img": "https://imagedelivery.net/BgH9d8bzsn4n0yijn4h7IQ/7ccd980c-4be8-41bd-a868-d34914621a00/public",
     "link": "https://www.fy-fanta.com/?id=223975751",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 3.47,
+    "betMinima": 0.75,
+    "betMaxima": 14.68,
+    "betMaximaMin": 5.65,
+    "betMaximaMax": 15.63
   },
   {
     "id": 326,
@@ -4607,7 +6032,7 @@
     "provider": "pragmatic",
     "emoji": "🎰",
     "theme": "fantasy",
-    "dist": 96,
+    "dist": 97,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -4615,7 +6040,12 @@
     "tag": null,
     "img": "https://imagedelivery.net/BgH9d8bzsn4n0yijn4h7IQ/44b1e0b7-5474-4fda-ce10-e132ff973b00/public",
     "link": "https://hms-tiradentesday.bet/?invite_code=8be79469",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 2.21,
+    "betMinima": 0.4,
+    "betMaxima": 5.63,
+    "betMaximaMin": 4.14,
+    "betMaximaMax": 14.23
   },
   {
     "id": 327,
@@ -4623,7 +6053,7 @@
     "provider": "pragmatic",
     "emoji": "🎰",
     "theme": "fantasy",
-    "dist": 96,
+    "dist": 91,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -4631,7 +6061,12 @@
     "tag": null,
     "img": "https://imagedelivery.net/BgH9d8bzsn4n0yijn4h7IQ/cd7f520a-53ed-478c-5560-5f2cc1105600/public",
     "link": "https://coroa-gghhpg.com/?id=405842843",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 2.06,
+    "betMinima": 0.78,
+    "betMaxima": 12.08,
+    "betMaximaMin": 4.76,
+    "betMaximaMax": 13.1
   },
   {
     "id": 330,
@@ -4639,7 +6074,7 @@
     "provider": "pragmatic",
     "emoji": "🪙",
     "theme": "luxury",
-    "dist": 96,
+    "dist": 97,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -4647,7 +6082,12 @@
     "tag": null,
     "img": "https://imagedelivery.net/BgH9d8bzsn4n0yijn4h7IQ/03719e10-c990-495f-ef56-5be34867bc00/public",
     "link": "https://kk-judy777.vip/?id=649076826&currency=BRL&type=2",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 3.1,
+    "betMinima": 0.45,
+    "betMaxima": 11.21,
+    "betMaximaMin": 5.06,
+    "betMaximaMax": 17.3
   },
   {
     "id": 331,
@@ -4655,7 +6095,7 @@
     "provider": "pragmatic",
     "emoji": "🎰",
     "theme": "fantasy",
-    "dist": 96,
+    "dist": 87,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -4663,7 +6103,12 @@
     "tag": null,
     "img": "https://imagedelivery.net/BgH9d8bzsn4n0yijn4h7IQ/44b4220b-61c3-4c0f-68d2-79136c585300/public",
     "link": "https://www.fy-fanta.com/?id=223975751",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 3.24,
+    "betMinima": 0.71,
+    "betMaxima": 5.6,
+    "betMaximaMin": 4.95,
+    "betMaximaMax": 15.29
   },
   {
     "id": 332,
@@ -4671,7 +6116,7 @@
     "provider": "pragmatic",
     "emoji": "🎰",
     "theme": "fantasy",
-    "dist": 96,
+    "dist": 98,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -4679,7 +6124,12 @@
     "tag": null,
     "img": "https://imagedelivery.net/BgH9d8bzsn4n0yijn4h7IQ/0dcc5d42-f88f-44c3-28cb-d80382f7c900/public",
     "link": "https://hms-tiradentesday.bet/?invite_code=8be79469",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 2.78,
+    "betMinima": 0.48,
+    "betMaxima": 8.86,
+    "betMaximaMin": 4.6,
+    "betMaximaMax": 13.39
   },
   {
     "id": 333,
@@ -4687,7 +6137,7 @@
     "provider": "pragmatic",
     "emoji": "🍭",
     "theme": "candy",
-    "dist": 96,
+    "dist": 95,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -4695,7 +6145,12 @@
     "tag": null,
     "img": "https://imagedelivery.net/BgH9d8bzsn4n0yijn4h7IQ/dcd82da6-c586-4a55-d1e9-37220f135f00/public",
     "link": "https://coroa-gghhpg.com/?id=405842843",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 2.8,
+    "betMinima": 0.73,
+    "betMaxima": 14.13,
+    "betMaximaMin": 4.81,
+    "betMaximaMax": 10.2
   },
   {
     "id": 334,
@@ -4703,7 +6158,7 @@
     "provider": "pragmatic",
     "emoji": "🎰",
     "theme": "fantasy",
-    "dist": 96,
+    "dist": 93,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -4711,7 +6166,12 @@
     "tag": null,
     "img": "https://imagedelivery.net/BgH9d8bzsn4n0yijn4h7IQ/77e834fd-486d-4903-98d3-b6095cc23800/public",
     "link": "https://www.onebra77.com/?source_code=TWMWECDNJ2X",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 3.15,
+    "betMinima": 0.61,
+    "betMaxima": 9.67,
+    "betMaximaMin": 4.72,
+    "betMaximaMax": 14.3
   },
   {
     "id": 335,
@@ -4719,7 +6179,7 @@
     "provider": "pragmatic",
     "emoji": "🏺",
     "theme": "egypt",
-    "dist": 96,
+    "dist": 94,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -4727,7 +6187,12 @@
     "tag": null,
     "img": "https://imagedelivery.net/BgH9d8bzsn4n0yijn4h7IQ/85ae83d9-fa10-4177-fc8b-4728f41d1e00/public",
     "link": "https://br.mt-antilope.com/home?inviteCode=VEU6ZR",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 2.3,
+    "betMinima": 0.23,
+    "betMaxima": 9.88,
+    "betMaximaMin": 4.07,
+    "betMaximaMax": 14.57
   },
   {
     "id": 336,
@@ -4735,7 +6200,7 @@
     "provider": "pragmatic",
     "emoji": "🎰",
     "theme": "fantasy",
-    "dist": 96,
+    "dist": 91,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -4743,7 +6208,12 @@
     "tag": null,
     "img": "https://imagedelivery.net/BgH9d8bzsn4n0yijn4h7IQ/929a6040-16b2-4f7b-f055-2f31d0a35800/public",
     "link": "https://kk-judy777.vip/?id=649076826&currency=BRL&type=2",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 2.56,
+    "betMinima": 0.68,
+    "betMaxima": 6.67,
+    "betMaximaMin": 5.35,
+    "betMaximaMax": 11.29
   },
   {
     "id": 337,
@@ -4751,7 +6221,7 @@
     "provider": "pragmatic",
     "emoji": "💎",
     "theme": "luxury",
-    "dist": 96,
+    "dist": 89,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -4759,7 +6229,12 @@
     "tag": null,
     "img": "https://imagedelivery.net/BgH9d8bzsn4n0yijn4h7IQ/4e346ea1-d8e8-4d68-c079-cf57a8e87800/public",
     "link": "https://www.fy-fanta.com/?id=223975751",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 2.46,
+    "betMinima": 0.34,
+    "betMaxima": 6.17,
+    "betMaximaMin": 5.69,
+    "betMaximaMax": 12.08
   },
   {
     "id": 338,
@@ -4767,7 +6242,7 @@
     "provider": "pragmatic",
     "emoji": "🎰",
     "theme": "fishing",
-    "dist": 96,
+    "dist": 86,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -4775,7 +6250,12 @@
     "tag": null,
     "img": "https://imagedelivery.net/BgH9d8bzsn4n0yijn4h7IQ/92a03fce-04b1-4ae9-f346-668e2b1e9c00/public",
     "link": "https://hms-tiradentesday.bet/?invite_code=8be79469",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 2.78,
+    "betMinima": 0.41,
+    "betMaxima": 6.16,
+    "betMaximaMin": 4.45,
+    "betMaximaMax": 13.14
   },
   {
     "id": 339,
@@ -4783,7 +6263,7 @@
     "provider": "pragmatic",
     "emoji": "✨",
     "theme": "fantasy",
-    "dist": 96,
+    "dist": 92,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -4791,7 +6271,12 @@
     "tag": null,
     "img": "https://imagedelivery.net/BgH9d8bzsn4n0yijn4h7IQ/0a8884c9-58b3-4658-347e-49d017338e00/public",
     "link": "https://coroa-gghhpg.com/?id=405842843",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 3.35,
+    "betMinima": 0.77,
+    "betMaxima": 5.28,
+    "betMaximaMin": 4.66,
+    "betMaximaMax": 13.44
   },
   {
     "id": 340,
@@ -4799,7 +6284,7 @@
     "provider": "pragmatic",
     "emoji": "🐺",
     "theme": "western",
-    "dist": 96,
+    "dist": 87,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -4807,7 +6292,12 @@
     "tag": null,
     "img": "https://imagedelivery.net/BgH9d8bzsn4n0yijn4h7IQ/678666ce-a687-4d6b-3f41-f2ad1c56e800/public",
     "link": "https://www.onebra77.com/?source_code=TWMWECDNJ2X",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 3.27,
+    "betMinima": 0.48,
+    "betMaxima": 8.82,
+    "betMaximaMin": 5.3,
+    "betMaximaMax": 16.75
   },
   {
     "id": 341,
@@ -4815,7 +6305,7 @@
     "provider": "pragmatic",
     "emoji": "🎰",
     "theme": "aztec",
-    "dist": 96,
+    "dist": 91,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -4823,7 +6313,12 @@
     "tag": null,
     "img": "https://imagedelivery.net/BgH9d8bzsn4n0yijn4h7IQ/4128027f-2a63-481e-3fd8-32881dc24c00/public",
     "link": "https://br.mt-antilope.com/home?inviteCode=VEU6ZR",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 2.2,
+    "betMinima": 0.38,
+    "betMaxima": 11.48,
+    "betMaximaMin": 4.82,
+    "betMaximaMax": 10.66
   },
   {
     "id": 342,
@@ -4831,7 +6326,7 @@
     "provider": "pragmatic",
     "emoji": "🏺",
     "theme": "egypt",
-    "dist": 96,
+    "dist": 94,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -4839,7 +6334,12 @@
     "tag": null,
     "img": "https://imagedelivery.net/BgH9d8bzsn4n0yijn4h7IQ/9adfbc61-f36c-4734-23ef-a7290d0b6300/public",
     "link": "https://kk-judy777.vip/?id=649076826&currency=BRL&type=2",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 2.06,
+    "betMinima": 0.37,
+    "betMaxima": 14.51,
+    "betMaximaMin": 5.27,
+    "betMaximaMax": 13.79
   },
   {
     "id": 343,
@@ -4847,7 +6347,7 @@
     "provider": "pragmatic",
     "emoji": "🎰",
     "theme": "aztec",
-    "dist": 96,
+    "dist": 95,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -4855,7 +6355,12 @@
     "tag": null,
     "img": "https://imagedelivery.net/BgH9d8bzsn4n0yijn4h7IQ/20c83749-48cc-42a2-7b33-48cfeac33000/public",
     "link": "https://www.fy-fanta.com/?id=223975751",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 2.74,
+    "betMinima": 0.35,
+    "betMaxima": 5.87,
+    "betMaximaMin": 4.54,
+    "betMaximaMax": 12.01
   },
   {
     "id": 344,
@@ -4863,7 +6368,7 @@
     "provider": "pragmatic",
     "emoji": "🎰",
     "theme": "fantasy",
-    "dist": 96,
+    "dist": 84,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -4871,7 +6376,12 @@
     "tag": null,
     "img": "https://www-live.hacksawgaming.com/casino_thumbnails/1965.jpg",
     "link": "https://hms-tiradentesday.bet/?invite_code=8be79469",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 3.41,
+    "betMinima": 0.74,
+    "betMaxima": 11.67,
+    "betMaximaMin": 5.7,
+    "betMaximaMax": 15.36
   },
   {
     "id": 345,
@@ -4879,7 +6389,7 @@
     "provider": "evolution",
     "emoji": "🍀",
     "theme": "chinese",
-    "dist": 96,
+    "dist": 98,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -4887,7 +6397,12 @@
     "tag": null,
     "img": "https://imagedelivery.net/BgH9d8bzsn4n0yijn4h7IQ/eae9c734-0699-4583-130c-9cc0bdce7c00/public",
     "link": "https://coroa-gghhpg.com/?id=405842843",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 2.71,
+    "betMinima": 0.51,
+    "betMaxima": 5.94,
+    "betMaximaMin": 5.81,
+    "betMaximaMax": 17.27
   },
   {
     "id": 347,
@@ -4895,7 +6410,7 @@
     "provider": "pragmatic",
     "emoji": "⚡",
     "theme": "greek",
-    "dist": 96,
+    "dist": 97,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -4903,7 +6418,12 @@
     "tag": null,
     "img": "https://imagedelivery.net/BgH9d8bzsn4n0yijn4h7IQ/da9b1524-3e82-4fec-8ce9-12ac27df8c00/public",
     "link": "https://br.mt-antilope.com/home?inviteCode=VEU6ZR",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 2.76,
+    "betMinima": 0.28,
+    "betMaxima": 13.11,
+    "betMaximaMin": 4.91,
+    "betMaximaMax": 17.23
   },
   {
     "id": 348,
@@ -4911,7 +6431,7 @@
     "provider": "pragmatic",
     "emoji": "🍭",
     "theme": "candy",
-    "dist": 96,
+    "dist": 94,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -4919,7 +6439,12 @@
     "tag": null,
     "img": "https://imagedelivery.net/BgH9d8bzsn4n0yijn4h7IQ/71983d8e-2902-4bcb-62ff-1c50c3ba8b00/public",
     "link": "https://kk-judy777.vip/?id=649076826&currency=BRL&type=2",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 2.84,
+    "betMinima": 0.24,
+    "betMaxima": 9.47,
+    "betMaximaMin": 5.09,
+    "betMaximaMax": 14.8
   },
   {
     "id": 349,
@@ -4927,7 +6452,7 @@
     "provider": "pragmatic",
     "emoji": "🎰",
     "theme": "egypt",
-    "dist": 96,
+    "dist": 97,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -4935,7 +6460,12 @@
     "tag": null,
     "img": "https://imagedelivery.net/BgH9d8bzsn4n0yijn4h7IQ/daf4d4f4-1cb7-407d-a943-82541e8a8700/public",
     "link": "https://www.fy-fanta.com/?id=223975751",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 2.16,
+    "betMinima": 0.46,
+    "betMaxima": 6.74,
+    "betMaximaMin": 4.81,
+    "betMaximaMax": 10.57
   },
   {
     "id": 350,
@@ -4943,7 +6473,7 @@
     "provider": "pragmatic",
     "emoji": "🎰",
     "theme": "fantasy",
-    "dist": 96,
+    "dist": 83,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -4951,7 +6481,12 @@
     "tag": null,
     "img": "https://imagedelivery.net/BgH9d8bzsn4n0yijn4h7IQ/1fe908b0-bf1d-410f-843a-10cbbb645300/public",
     "link": "https://hms-tiradentesday.bet/?invite_code=8be79469",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 2.26,
+    "betMinima": 0.39,
+    "betMaxima": 12.11,
+    "betMaximaMin": 5.27,
+    "betMaximaMax": 16.34
   },
   {
     "id": 351,
@@ -4959,7 +6494,7 @@
     "provider": "pragmatic",
     "emoji": "🎰",
     "theme": "fantasy",
-    "dist": 96,
+    "dist": 89,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -4967,7 +6502,12 @@
     "tag": null,
     "img": "https://imagedelivery.net/BgH9d8bzsn4n0yijn4h7IQ/e1b41f2d-a7cc-4380-af30-f4d51fcbfa00/public",
     "link": "https://coroa-gghhpg.com/?id=405842843",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 2.56,
+    "betMinima": 0.79,
+    "betMaxima": 11.75,
+    "betMaximaMin": 5.93,
+    "betMaximaMax": 16.59
   },
   {
     "id": 352,
@@ -4975,7 +6515,7 @@
     "provider": "pragmatic",
     "emoji": "🪄",
     "theme": "fantasy",
-    "dist": 96,
+    "dist": 91,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -4983,7 +6523,12 @@
     "tag": null,
     "img": "https://imagedelivery.net/BgH9d8bzsn4n0yijn4h7IQ/6b530743-bbd9-4399-2979-376422d44800/public",
     "link": "https://www.onebra77.com/?source_code=TWMWECDNJ2X",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 2.21,
+    "betMinima": 0.63,
+    "betMaxima": 4.73,
+    "betMaximaMin": 4.99,
+    "betMaximaMax": 14.76
   },
   {
     "id": 354,
@@ -4991,7 +6536,7 @@
     "provider": "pragmatic",
     "emoji": "🏴‍☠️",
     "theme": "egypt",
-    "dist": 96,
+    "dist": 87,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -4999,7 +6544,12 @@
     "tag": null,
     "img": "https://imagedelivery.net/BgH9d8bzsn4n0yijn4h7IQ/03ccf87b-d481-41c3-edce-ad33cf1c7900/public",
     "link": "https://kk-judy777.vip/?id=649076826&currency=BRL&type=2",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 2.95,
+    "betMinima": 0.49,
+    "betMaxima": 7.91,
+    "betMaximaMin": 4.9,
+    "betMaximaMax": 15.33
   },
   {
     "id": 356,
@@ -5007,7 +6557,7 @@
     "provider": "pragmatic",
     "emoji": "✨",
     "theme": "fantasy",
-    "dist": 96,
+    "dist": 93,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -5015,7 +6565,12 @@
     "tag": null,
     "img": "https://imagedelivery.net/BgH9d8bzsn4n0yijn4h7IQ/3f97fe26-c279-4d20-521a-e46f74baed00/public",
     "link": "https://hms-tiradentesday.bet/?invite_code=8be79469",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 2.28,
+    "betMinima": 0.56,
+    "betMaxima": 9.52,
+    "betMaximaMin": 4.36,
+    "betMaximaMax": 16.28
   },
   {
     "id": 357,
@@ -5023,7 +6578,7 @@
     "provider": "pragmatic",
     "emoji": "🎰",
     "theme": "fantasy",
-    "dist": 96,
+    "dist": 98,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -5031,7 +6586,12 @@
     "tag": null,
     "img": "https://imagedelivery.net/BgH9d8bzsn4n0yijn4h7IQ/d4071965-3b7c-43cd-76f6-f85d956a7900/public",
     "link": "https://coroa-gghhpg.com/?id=405842843",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 2.4,
+    "betMinima": 0.32,
+    "betMaxima": 9.99,
+    "betMaximaMin": 5.66,
+    "betMaximaMax": 14.65
   },
   {
     "id": 358,
@@ -5039,7 +6599,7 @@
     "provider": "pragmatic",
     "emoji": "🎰",
     "theme": "fantasy",
-    "dist": 96,
+    "dist": 97,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -5047,7 +6607,12 @@
     "tag": null,
     "img": "https://imagedelivery.net/BgH9d8bzsn4n0yijn4h7IQ/3bc9664b-3639-4a07-f98a-f50cd0981100/public",
     "link": "https://www.onebra77.com/?source_code=TWMWECDNJ2X",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 2.59,
+    "betMinima": 0.57,
+    "betMaxima": 7.14,
+    "betMaximaMin": 5.77,
+    "betMaximaMax": 13.32
   },
   {
     "id": 359,
@@ -5063,7 +6628,12 @@
     "tag": null,
     "img": "https://imagedelivery.net/BgH9d8bzsn4n0yijn4h7IQ/b2bcdd25-65c8-4c4d-1344-cadee9d57900/public",
     "link": "https://br.mt-antilope.com/home?inviteCode=VEU6ZR",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 2.21,
+    "betMinima": 0.66,
+    "betMaxima": 7.31,
+    "betMaximaMin": 5.88,
+    "betMaximaMax": 11.92
   },
   {
     "id": 360,
@@ -5071,7 +6641,7 @@
     "provider": "pragmatic",
     "emoji": "🏴‍☠️",
     "theme": "egypt",
-    "dist": 96,
+    "dist": 95,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -5079,7 +6649,12 @@
     "tag": null,
     "img": "https://imagedelivery.net/BgH9d8bzsn4n0yijn4h7IQ/e0d2b1cf-b7f1-4d7e-3c71-718236c0f900/public",
     "link": "https://kk-judy777.vip/?id=649076826&currency=BRL&type=2",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 3.2,
+    "betMinima": 0.26,
+    "betMaxima": 8.8,
+    "betMaximaMin": 4.36,
+    "betMaximaMax": 17.93
   },
   {
     "id": 361,
@@ -5087,7 +6662,7 @@
     "provider": "pragmatic",
     "emoji": "🎰",
     "theme": "fantasy",
-    "dist": 96,
+    "dist": 94,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -5095,7 +6670,12 @@
     "tag": null,
     "img": "https://imagedelivery.net/BgH9d8bzsn4n0yijn4h7IQ/0f23b228-be90-4e2b-f587-aae1c74fc700/public",
     "link": "https://www.fy-fanta.com/?id=223975751",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 3.22,
+    "betMinima": 0.4,
+    "betMaxima": 4.5,
+    "betMaximaMin": 5.63,
+    "betMaximaMax": 16.17
   },
   {
     "id": 362,
@@ -5103,7 +6683,7 @@
     "provider": "pragmatic",
     "emoji": "🎰",
     "theme": "egypt",
-    "dist": 96,
+    "dist": 91,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -5111,7 +6691,12 @@
     "tag": null,
     "img": "https://imagedelivery.net/BgH9d8bzsn4n0yijn4h7IQ/f25c007d-413d-43b4-f885-aebb00b35b00/public",
     "link": "https://hms-tiradentesday.bet/?invite_code=8be79469",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 2.31,
+    "betMinima": 0.21,
+    "betMaxima": 9.08,
+    "betMaximaMin": 5.23,
+    "betMaximaMax": 10.21
   },
   {
     "id": 363,
@@ -5119,7 +6704,7 @@
     "provider": "pragmatic",
     "emoji": "🍭",
     "theme": "candy",
-    "dist": 96,
+    "dist": 90,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -5127,7 +6712,12 @@
     "tag": null,
     "img": "https://imagedelivery.net/BgH9d8bzsn4n0yijn4h7IQ/aa3a067a-534e-4e01-5bb7-783275a21300/public",
     "link": "https://coroa-gghhpg.com/?id=405842843",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 2.61,
+    "betMinima": 0.77,
+    "betMaxima": 11.46,
+    "betMaximaMin": 4.58,
+    "betMaximaMax": 16.62
   },
   {
     "id": 364,
@@ -5135,7 +6725,7 @@
     "provider": "pragmatic",
     "emoji": "🎰",
     "theme": "fantasy",
-    "dist": 96,
+    "dist": 83,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -5143,7 +6733,12 @@
     "tag": null,
     "img": "https://imagedelivery.net/BgH9d8bzsn4n0yijn4h7IQ/7c13e988-401a-432f-3280-8a9caed4ae00/public",
     "link": "https://www.onebra77.com/?source_code=TWMWECDNJ2X",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 3.42,
+    "betMinima": 0.58,
+    "betMaxima": 13.67,
+    "betMaximaMin": 4.09,
+    "betMaximaMax": 11.53
   },
   {
     "id": 365,
@@ -5151,7 +6746,7 @@
     "provider": "pragmatic",
     "emoji": "🐓",
     "theme": "fantasy",
-    "dist": 96,
+    "dist": 94,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -5159,7 +6754,12 @@
     "tag": null,
     "img": "https://imagedelivery.net/BgH9d8bzsn4n0yijn4h7IQ/b7aedda7-5acb-477f-9de5-0f501a24b300/public",
     "link": "https://br.mt-antilope.com/home?inviteCode=VEU6ZR",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 2.29,
+    "betMinima": 0.45,
+    "betMaxima": 6.62,
+    "betMaximaMin": 5.71,
+    "betMaximaMax": 11.74
   },
   {
     "id": 366,
@@ -5167,7 +6767,7 @@
     "provider": "pragmatic",
     "emoji": "🎰",
     "theme": "fantasy",
-    "dist": 96,
+    "dist": 95,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -5175,7 +6775,12 @@
     "tag": null,
     "img": "https://imagedelivery.net/BgH9d8bzsn4n0yijn4h7IQ/049e12ed-4756-47c2-bf8a-29747c17a900/public",
     "link": "https://kk-judy777.vip/?id=649076826&currency=BRL&type=2",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 2.92,
+    "betMinima": 0.73,
+    "betMaxima": 4.69,
+    "betMaximaMin": 4.27,
+    "betMaximaMax": 12.74
   },
   {
     "id": 368,
@@ -5183,7 +6788,7 @@
     "provider": "pragmatic",
     "emoji": "🎰",
     "theme": "fantasy",
-    "dist": 96,
+    "dist": 95,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -5191,7 +6796,12 @@
     "tag": null,
     "img": "https://imagedelivery.net/BgH9d8bzsn4n0yijn4h7IQ/f00e7222-ee99-4afb-ba9e-38564722d700/public",
     "link": "https://hms-tiradentesday.bet/?invite_code=8be79469",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 3.49,
+    "betMinima": 0.34,
+    "betMaxima": 14.48,
+    "betMaximaMin": 4.97,
+    "betMaximaMax": 12.32
   },
   {
     "id": 369,
@@ -5199,7 +6809,7 @@
     "provider": "pragmatic",
     "emoji": "🎰",
     "theme": "fantasy",
-    "dist": 96,
+    "dist": 88,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -5207,7 +6817,12 @@
     "tag": null,
     "img": "https://imagedelivery.net/BgH9d8bzsn4n0yijn4h7IQ/db085614-92aa-4d88-91b8-4ef581fdfc00/public",
     "link": "https://coroa-gghhpg.com/?id=405842843",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 2.9,
+    "betMinima": 0.44,
+    "betMaxima": 9.92,
+    "betMaximaMin": 4.69,
+    "betMaximaMax": 16.48
   },
   {
     "id": 370,
@@ -5215,7 +6830,7 @@
     "provider": "pragmatic",
     "emoji": "🍀",
     "theme": "chinese",
-    "dist": 96,
+    "dist": 85,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -5223,7 +6838,12 @@
     "tag": null,
     "img": "https://imagedelivery.net/BgH9d8bzsn4n0yijn4h7IQ/460d43f3-456b-49f3-7f8b-f4ebadac7700/public",
     "link": "https://www.onebra77.com/?source_code=TWMWECDNJ2X",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 3.39,
+    "betMinima": 0.54,
+    "betMaxima": 13.91,
+    "betMaximaMin": 5.76,
+    "betMaximaMax": 17.88
   },
   {
     "id": 371,
@@ -5231,7 +6851,7 @@
     "provider": "pragmatic",
     "emoji": "🎰",
     "theme": "fantasy",
-    "dist": 96,
+    "dist": 91,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -5239,7 +6859,12 @@
     "tag": null,
     "img": "https://imagedelivery.net/BgH9d8bzsn4n0yijn4h7IQ/8bb9ff60-e8ea-4707-7430-7492a20ba700/public",
     "link": "https://br.mt-antilope.com/home?inviteCode=VEU6ZR",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 2.03,
+    "betMinima": 0.8,
+    "betMaxima": 11.63,
+    "betMaximaMin": 5.54,
+    "betMaximaMax": 13.72
   },
   {
     "id": 372,
@@ -5247,7 +6872,7 @@
     "provider": "pragmatic",
     "emoji": "🍀",
     "theme": "chinese",
-    "dist": 96,
+    "dist": 86,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -5255,7 +6880,12 @@
     "tag": null,
     "img": "https://imagedelivery.net/BgH9d8bzsn4n0yijn4h7IQ/ea222af5-8123-484b-42b6-c035724e4000/public",
     "link": "https://kk-judy777.vip/?id=649076826&currency=BRL&type=2",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 2.76,
+    "betMinima": 0.27,
+    "betMaxima": 11.01,
+    "betMaximaMin": 5.72,
+    "betMaximaMax": 16.0
   },
   {
     "id": 373,
@@ -5263,7 +6893,7 @@
     "provider": "pragmatic",
     "emoji": "🍀",
     "theme": "chinese",
-    "dist": 96,
+    "dist": 97,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -5271,7 +6901,12 @@
     "tag": null,
     "img": "https://imagedelivery.net/BgH9d8bzsn4n0yijn4h7IQ/b7aed1d9-494c-469b-523e-eadbe676f500/public",
     "link": "https://www.fy-fanta.com/?id=223975751",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 2.06,
+    "betMinima": 0.78,
+    "betMaxima": 4.01,
+    "betMaximaMin": 5.72,
+    "betMaximaMax": 13.0
   },
   {
     "id": 374,
@@ -5279,7 +6914,7 @@
     "provider": "pragmatic",
     "emoji": "⚔️",
     "theme": "egypt",
-    "dist": 96,
+    "dist": 91,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -5287,7 +6922,12 @@
     "tag": null,
     "img": "https://imagedelivery.net/BgH9d8bzsn4n0yijn4h7IQ/71d316cd-7e1c-4255-0a41-45e22c8dca00/public",
     "link": "https://hms-tiradentesday.bet/?invite_code=8be79469",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 2.04,
+    "betMinima": 0.45,
+    "betMaxima": 5.48,
+    "betMaximaMin": 4.31,
+    "betMaximaMax": 10.59
   },
   {
     "id": 375,
@@ -5295,7 +6935,7 @@
     "provider": "pragmatic",
     "emoji": "⚡",
     "theme": "fantasy",
-    "dist": 96,
+    "dist": 97,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -5303,7 +6943,12 @@
     "tag": null,
     "img": "https://imagedelivery.net/BgH9d8bzsn4n0yijn4h7IQ/a27f7d45-7d33-48eb-1bfd-67b39f87d300/public",
     "link": "https://coroa-gghhpg.com/?id=405842843",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 2.87,
+    "betMinima": 0.48,
+    "betMaxima": 11.43,
+    "betMaximaMin": 4.6,
+    "betMaximaMax": 13.08
   },
   {
     "id": 376,
@@ -5311,7 +6956,7 @@
     "provider": "pragmatic",
     "emoji": "🎰",
     "theme": "fantasy",
-    "dist": 96,
+    "dist": 92,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -5319,7 +6964,12 @@
     "tag": null,
     "img": "https://imagedelivery.net/BgH9d8bzsn4n0yijn4h7IQ/98386dee-4c7a-4781-eaab-cf179844bd00/public",
     "link": "https://www.onebra77.com/?source_code=TWMWECDNJ2X",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 2.13,
+    "betMinima": 0.4,
+    "betMaxima": 9.75,
+    "betMaximaMin": 4.68,
+    "betMaximaMax": 13.94
   },
   {
     "id": 377,
@@ -5327,7 +6977,7 @@
     "provider": "pragmatic",
     "emoji": "⚡",
     "theme": "greek",
-    "dist": 96,
+    "dist": 94,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -5335,7 +6985,12 @@
     "tag": null,
     "img": "https://imagedelivery.net/BgH9d8bzsn4n0yijn4h7IQ/867ea517-e1d7-4533-1f46-3225649a1100/public",
     "link": "https://br.mt-antilope.com/home?inviteCode=VEU6ZR",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 3.24,
+    "betMinima": 0.24,
+    "betMaxima": 9.63,
+    "betMaximaMin": 5.8,
+    "betMaximaMax": 15.91
   },
   {
     "id": 378,
@@ -5351,7 +7006,12 @@
     "tag": null,
     "img": "https://imagedelivery.net/BgH9d8bzsn4n0yijn4h7IQ/23793617-cd3c-4dfc-4f81-eb4a716fcc00/public",
     "link": "https://kk-judy777.vip/?id=649076826&currency=BRL&type=2",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 2.5,
+    "betMinima": 0.68,
+    "betMaxima": 13.36,
+    "betMaximaMin": 4.7,
+    "betMaximaMax": 14.7
   },
   {
     "id": 380,
@@ -5359,7 +7019,7 @@
     "provider": "pragmatic",
     "emoji": "🍭",
     "theme": "candy",
-    "dist": 96,
+    "dist": 97,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -5367,7 +7027,12 @@
     "tag": null,
     "img": "https://imagedelivery.net/BgH9d8bzsn4n0yijn4h7IQ/0e2eb45d-bca2-4bb5-f8dd-5abe17afa800/public",
     "link": "https://hms-tiradentesday.bet/?invite_code=8be79469",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 3.08,
+    "betMinima": 0.5,
+    "betMaxima": 10.33,
+    "betMaximaMin": 5.23,
+    "betMaximaMax": 12.62
   },
   {
     "id": 381,
@@ -5375,7 +7040,7 @@
     "provider": "pragmatic",
     "emoji": "🎰",
     "theme": "fantasy",
-    "dist": 96,
+    "dist": 98,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -5383,7 +7048,12 @@
     "tag": null,
     "img": "https://imagedelivery.net/BgH9d8bzsn4n0yijn4h7IQ/4e8d8000-8834-4c22-071a-42089cd09100/public",
     "link": "https://coroa-gghhpg.com/?id=405842843",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 2.01,
+    "betMinima": 0.49,
+    "betMaxima": 8.49,
+    "betMaximaMin": 4.12,
+    "betMaximaMax": 10.67
   },
   {
     "id": 385,
@@ -5399,7 +7069,12 @@
     "tag": null,
     "img": "https://imagedelivery.net/BgH9d8bzsn4n0yijn4h7IQ/b06cdcd5-e9a5-44d9-b1ab-2a9aeba81d00/public",
     "link": "https://www.fy-fanta.com/?id=223975751",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 2.1,
+    "betMinima": 0.22,
+    "betMaxima": 6.14,
+    "betMaximaMin": 5.59,
+    "betMaximaMax": 13.32
   },
   {
     "id": 386,
@@ -5407,7 +7082,7 @@
     "provider": "pgsoft",
     "emoji": "🎰",
     "theme": "fantasy",
-    "dist": 96,
+    "dist": 97,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -5415,7 +7090,12 @@
     "tag": null,
     "img": "https://imagedelivery.net/BgH9d8bzsn4n0yijn4h7IQ/7bb3fbc1-96e2-48ab-65ed-b568887cf200/public",
     "link": "https://hms-tiradentesday.bet/?invite_code=8be79469",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 2.37,
+    "betMinima": 0.73,
+    "betMaxima": 6.81,
+    "betMaximaMin": 5.64,
+    "betMaximaMax": 17.38
   },
   {
     "id": 387,
@@ -5423,7 +7103,7 @@
     "provider": "pragmatic",
     "emoji": "🎰",
     "theme": "fantasy",
-    "dist": 96,
+    "dist": 92,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -5431,7 +7111,12 @@
     "tag": null,
     "img": "https://imagedelivery.net/BgH9d8bzsn4n0yijn4h7IQ/e90f2743-7e21-4608-af6a-ac5d25449d00/public",
     "link": "https://coroa-gghhpg.com/?id=405842843",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 3.31,
+    "betMinima": 0.4,
+    "betMaxima": 10.61,
+    "betMaximaMin": 5.08,
+    "betMaximaMax": 11.47
   },
   {
     "id": 388,
@@ -5439,7 +7124,7 @@
     "provider": "pragmatic",
     "emoji": "🎰",
     "theme": "fantasy",
-    "dist": 96,
+    "dist": 95,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -5447,7 +7132,12 @@
     "tag": null,
     "img": "https://imagedelivery.net/BgH9d8bzsn4n0yijn4h7IQ/9a499694-04bb-412a-3205-c7840b407600/public",
     "link": "https://www.onebra77.com/?source_code=TWMWECDNJ2X",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 2.05,
+    "betMinima": 0.56,
+    "betMaxima": 11.44,
+    "betMaximaMin": 4.32,
+    "betMaximaMax": 15.76
   },
   {
     "id": 389,
@@ -5455,7 +7145,7 @@
     "provider": "pragmatic",
     "emoji": "🎰",
     "theme": "fantasy",
-    "dist": 96,
+    "dist": 90,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -5463,7 +7153,12 @@
     "tag": null,
     "img": "https://imagedelivery.net/BgH9d8bzsn4n0yijn4h7IQ/cdd421bc-845c-499e-1c8a-ad404e254400/public",
     "link": "https://br.mt-antilope.com/home?inviteCode=VEU6ZR",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 2.66,
+    "betMinima": 0.23,
+    "betMaxima": 9.49,
+    "betMaximaMin": 4.99,
+    "betMaximaMax": 16.06
   },
   {
     "id": 391,
@@ -5471,7 +7166,7 @@
     "provider": "pragmatic",
     "emoji": "🎰",
     "theme": "fantasy",
-    "dist": 96,
+    "dist": 90,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -5479,7 +7174,12 @@
     "tag": null,
     "img": "https://imagedelivery.net/BgH9d8bzsn4n0yijn4h7IQ/f4946840-338e-43d0-ffc4-678008ac6700/public",
     "link": "https://www.fy-fanta.com/?id=223975751",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 2.34,
+    "betMinima": 0.77,
+    "betMaxima": 13.46,
+    "betMaximaMin": 4.69,
+    "betMaximaMax": 10.48
   },
   {
     "id": 392,
@@ -5487,7 +7187,7 @@
     "provider": "pragmatic",
     "emoji": "🐉",
     "theme": "chinese",
-    "dist": 96,
+    "dist": 86,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -5495,7 +7195,12 @@
     "tag": null,
     "img": "https://imagedelivery.net/BgH9d8bzsn4n0yijn4h7IQ/1b5581f1-7d69-4c4e-e778-ca6c3fea2d00/public",
     "link": "https://hms-tiradentesday.bet/?invite_code=8be79469",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 2.85,
+    "betMinima": 0.69,
+    "betMaxima": 4.71,
+    "betMaximaMin": 4.32,
+    "betMaximaMax": 16.95
   },
   {
     "id": 393,
@@ -5503,7 +7208,7 @@
     "provider": "pragmatic",
     "emoji": "🎰",
     "theme": "fantasy",
-    "dist": 96,
+    "dist": 91,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -5511,7 +7216,12 @@
     "tag": null,
     "img": "https://imagedelivery.net/BgH9d8bzsn4n0yijn4h7IQ/8c3050cc-a8b2-4b40-1c14-884425edca00/public",
     "link": "https://coroa-gghhpg.com/?id=405842843",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 2.1,
+    "betMinima": 0.2,
+    "betMaxima": 11.01,
+    "betMaximaMin": 5.18,
+    "betMaximaMax": 17.07
   },
   {
     "id": 394,
@@ -5527,7 +7237,12 @@
     "tag": null,
     "img": "https://imagedelivery.net/BgH9d8bzsn4n0yijn4h7IQ/ed67b21b-e33b-44ac-b6f0-3fbeb2411b00/public",
     "link": "https://www.onebra77.com/?source_code=TWMWECDNJ2X",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 3.22,
+    "betMinima": 0.39,
+    "betMaxima": 12.84,
+    "betMaximaMin": 4.8,
+    "betMaximaMax": 13.67
   },
   {
     "id": 395,
@@ -5535,7 +7250,7 @@
     "provider": "pragmatic",
     "emoji": "🍉",
     "theme": "fruit",
-    "dist": 96,
+    "dist": 84,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -5543,7 +7258,12 @@
     "tag": null,
     "img": "https://imagedelivery.net/BgH9d8bzsn4n0yijn4h7IQ/46bcf0f9-b214-472c-d0ba-73c82647d100/public",
     "link": "https://br.mt-antilope.com/home?inviteCode=VEU6ZR",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 2.91,
+    "betMinima": 0.77,
+    "betMaxima": 10.53,
+    "betMaximaMin": 4.63,
+    "betMaximaMax": 13.21
   },
   {
     "id": 396,
@@ -5551,7 +7271,7 @@
     "provider": "pragmatic",
     "emoji": "🎰",
     "theme": "fantasy",
-    "dist": 96,
+    "dist": 92,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -5559,7 +7279,12 @@
     "tag": null,
     "img": "https://imagedelivery.net/BgH9d8bzsn4n0yijn4h7IQ/3a2b87ee-5c60-426d-add5-4a3abde77100/public",
     "link": "https://kk-judy777.vip/?id=649076826&currency=BRL&type=2",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 2.95,
+    "betMinima": 0.5,
+    "betMaxima": 13.09,
+    "betMaximaMin": 5.58,
+    "betMaximaMax": 13.52
   },
   {
     "id": 397,
@@ -5567,7 +7292,7 @@
     "provider": "pragmatic",
     "emoji": "🎰",
     "theme": "fantasy",
-    "dist": 96,
+    "dist": 98,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -5575,7 +7300,12 @@
     "tag": null,
     "img": "https://imagedelivery.net/BgH9d8bzsn4n0yijn4h7IQ/0b9a1583-28df-4c5f-c00b-7e830f959200/public",
     "link": "https://www.fy-fanta.com/?id=223975751",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 2.48,
+    "betMinima": 0.68,
+    "betMaxima": 11.94,
+    "betMaximaMin": 4.85,
+    "betMaximaMax": 14.02
   },
   {
     "id": 398,
@@ -5583,7 +7313,7 @@
     "provider": "pragmatic",
     "emoji": "🐉",
     "theme": "chinese",
-    "dist": 96,
+    "dist": 82,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -5591,7 +7321,12 @@
     "tag": null,
     "img": "https://imagedelivery.net/BgH9d8bzsn4n0yijn4h7IQ/da857c17-e317-4090-461b-862c60521500/public",
     "link": "https://hms-tiradentesday.bet/?invite_code=8be79469",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 3.33,
+    "betMinima": 0.39,
+    "betMaxima": 14.76,
+    "betMaximaMin": 4.49,
+    "betMaximaMax": 16.18
   },
   {
     "id": 399,
@@ -5599,7 +7334,7 @@
     "provider": "pragmatic",
     "emoji": "🎰",
     "theme": "fantasy",
-    "dist": 96,
+    "dist": 91,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -5607,7 +7342,12 @@
     "tag": null,
     "img": "https://imagedelivery.net/BgH9d8bzsn4n0yijn4h7IQ/ed15e2b2-0843-4490-8102-18509c657300/public",
     "link": "https://coroa-gghhpg.com/?id=405842843",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 2.96,
+    "betMinima": 0.26,
+    "betMaxima": 10.94,
+    "betMaximaMin": 4.41,
+    "betMaximaMax": 14.6
   },
   {
     "id": 400,
@@ -5615,7 +7355,7 @@
     "provider": "pragmatic",
     "emoji": "🎰",
     "theme": "western",
-    "dist": 96,
+    "dist": 90,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -5623,7 +7363,12 @@
     "tag": null,
     "img": "https://imagedelivery.net/BgH9d8bzsn4n0yijn4h7IQ/df370d48-fc1d-47ad-e9eb-99fecf93d800/public",
     "link": "https://www.onebra77.com/?source_code=TWMWECDNJ2X",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 2.28,
+    "betMinima": 0.57,
+    "betMaxima": 4.08,
+    "betMaximaMin": 5.79,
+    "betMaximaMax": 14.64
   },
   {
     "id": 401,
@@ -5631,7 +7376,7 @@
     "provider": "pragmatic",
     "emoji": "🎰",
     "theme": "fantasy",
-    "dist": 96,
+    "dist": 93,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -5639,7 +7384,12 @@
     "tag": null,
     "img": "https://imagedelivery.net/BgH9d8bzsn4n0yijn4h7IQ/68301053-5be0-4eed-b04c-3639e2168600/public",
     "link": "https://br.mt-antilope.com/home?inviteCode=VEU6ZR",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 3.31,
+    "betMinima": 0.29,
+    "betMaxima": 8.75,
+    "betMaximaMin": 5.75,
+    "betMaximaMax": 12.79
   },
   {
     "id": 403,
@@ -5647,7 +7397,7 @@
     "provider": "pragmatic",
     "emoji": "🎰",
     "theme": "egypt",
-    "dist": 96,
+    "dist": 89,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -5655,7 +7405,12 @@
     "tag": null,
     "img": "https://imagedelivery.net/BgH9d8bzsn4n0yijn4h7IQ/3220b66b-d1f0-4988-7422-56e8e0d11b00/public",
     "link": "https://www.fy-fanta.com/?id=223975751",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 3.3,
+    "betMinima": 0.5,
+    "betMaxima": 11.31,
+    "betMaximaMin": 4.45,
+    "betMaximaMax": 11.17
   },
   {
     "id": 404,
@@ -5663,7 +7418,7 @@
     "provider": "pragmatic",
     "emoji": "🍀",
     "theme": "chinese",
-    "dist": 96,
+    "dist": 97,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -5671,7 +7426,12 @@
     "tag": null,
     "img": "https://imagedelivery.net/BgH9d8bzsn4n0yijn4h7IQ/1a770b11-4005-4d92-c0e2-07339b7ad500/public",
     "link": "https://hms-tiradentesday.bet/?invite_code=8be79469",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 3.01,
+    "betMinima": 0.32,
+    "betMaxima": 12.4,
+    "betMaximaMin": 4.58,
+    "betMaximaMax": 11.11
   },
   {
     "id": 405,
@@ -5679,7 +7439,7 @@
     "provider": "pragmatic",
     "emoji": "🐍",
     "theme": "fantasy",
-    "dist": 96,
+    "dist": 92,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -5687,7 +7447,12 @@
     "tag": null,
     "img": "https://imagedelivery.net/BgH9d8bzsn4n0yijn4h7IQ/617484f9-c767-4f80-ea75-0141cc695700/public",
     "link": "https://coroa-gghhpg.com/?id=405842843",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 2.33,
+    "betMinima": 0.46,
+    "betMaxima": 5.9,
+    "betMaximaMin": 5.14,
+    "betMaximaMax": 16.92
   },
   {
     "id": 406,
@@ -5695,7 +7460,7 @@
     "provider": "pragmatic",
     "emoji": "🎰",
     "theme": "egypt",
-    "dist": 96,
+    "dist": 92,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -5703,7 +7468,12 @@
     "tag": null,
     "img": "https://imagedelivery.net/BgH9d8bzsn4n0yijn4h7IQ/72d3ff36-0190-4752-77b5-dd4c0b7ad300/public",
     "link": "https://www.onebra77.com/?source_code=TWMWECDNJ2X",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 2.95,
+    "betMinima": 0.63,
+    "betMaxima": 6.92,
+    "betMaximaMin": 4.66,
+    "betMaximaMax": 15.98
   },
   {
     "id": 409,
@@ -5711,7 +7481,7 @@
     "provider": "pragmatic",
     "emoji": "🍭",
     "theme": "candy",
-    "dist": 96,
+    "dist": 90,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -5719,7 +7489,12 @@
     "tag": null,
     "img": "https://imagedelivery.net/BgH9d8bzsn4n0yijn4h7IQ/c934c61e-9a68-44f2-9fcf-ac6578789700/public",
     "link": "https://www.fy-fanta.com/?id=223975751",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 3.29,
+    "betMinima": 0.6,
+    "betMaxima": 8.1,
+    "betMaximaMin": 5.24,
+    "betMaximaMax": 10.34
   },
   {
     "id": 410,
@@ -5727,7 +7502,7 @@
     "provider": "pragmatic",
     "emoji": "🐉",
     "theme": "chinese",
-    "dist": 96,
+    "dist": 98,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -5735,7 +7510,12 @@
     "tag": null,
     "img": "https://imagedelivery.net/BgH9d8bzsn4n0yijn4h7IQ/808a8318-1a97-45d6-40a8-b64febdcb800/public",
     "link": "https://hms-tiradentesday.bet/?invite_code=8be79469",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 2.8,
+    "betMinima": 0.21,
+    "betMaxima": 10.3,
+    "betMaximaMin": 5.96,
+    "betMaximaMax": 15.39
   },
   {
     "id": 411,
@@ -5743,7 +7523,7 @@
     "provider": "pragmatic",
     "emoji": "🎰",
     "theme": "fantasy",
-    "dist": 96,
+    "dist": 88,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -5751,7 +7531,12 @@
     "tag": null,
     "img": "https://imagedelivery.net/BgH9d8bzsn4n0yijn4h7IQ/93fee227-c046-4b65-2200-73ccd7c7f400/public",
     "link": "https://coroa-gghhpg.com/?id=405842843",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 2.7,
+    "betMinima": 0.7,
+    "betMaxima": 9.55,
+    "betMaximaMin": 5.77,
+    "betMaximaMax": 10.93
   },
   {
     "id": 413,
@@ -5759,7 +7544,7 @@
     "provider": "pragmatic",
     "emoji": "🎰",
     "theme": "fantasy",
-    "dist": 96,
+    "dist": 83,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -5767,7 +7552,12 @@
     "tag": null,
     "img": "https://imagedelivery.net/BgH9d8bzsn4n0yijn4h7IQ/8db400b8-3e16-43a0-0627-e0496181db00/public",
     "link": "https://br.mt-antilope.com/home?inviteCode=VEU6ZR",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 2.76,
+    "betMinima": 0.55,
+    "betMaxima": 8.3,
+    "betMaximaMin": 4.89,
+    "betMaximaMax": 17.63
   },
   {
     "id": 414,
@@ -5775,7 +7565,7 @@
     "provider": "pragmatic",
     "emoji": "📚",
     "theme": "fantasy",
-    "dist": 96,
+    "dist": 84,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -5783,7 +7573,12 @@
     "tag": null,
     "img": "https://imagedelivery.net/BgH9d8bzsn4n0yijn4h7IQ/a2e32ec3-05ff-41f4-0596-cbe114853100/public",
     "link": "https://kk-judy777.vip/?id=649076826&currency=BRL&type=2",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 3.09,
+    "betMinima": 0.56,
+    "betMaxima": 9.49,
+    "betMaximaMin": 4.41,
+    "betMaximaMax": 14.44
   },
   {
     "id": 416,
@@ -5791,7 +7586,7 @@
     "provider": "pragmatic",
     "emoji": "🎰",
     "theme": "fantasy",
-    "dist": 96,
+    "dist": 93,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -5799,7 +7594,12 @@
     "tag": null,
     "img": "https://imagedelivery.net/BgH9d8bzsn4n0yijn4h7IQ/00b490d6-d514-4244-324a-cf0a10abbd00/public",
     "link": "https://hms-tiradentesday.bet/?invite_code=8be79469",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 3.15,
+    "betMinima": 0.5,
+    "betMaxima": 7.72,
+    "betMaximaMin": 5.84,
+    "betMaximaMax": 13.1
   },
   {
     "id": 418,
@@ -5807,7 +7607,7 @@
     "provider": "pragmatic",
     "emoji": "🪙",
     "theme": "luxury",
-    "dist": 96,
+    "dist": 85,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -5815,7 +7615,12 @@
     "tag": null,
     "img": "https://imagedelivery.net/BgH9d8bzsn4n0yijn4h7IQ/b9c07898-23ff-4f1d-aa3f-775e2a2f7800/public",
     "link": "https://www.onebra77.com/?source_code=TWMWECDNJ2X",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 2.23,
+    "betMinima": 0.49,
+    "betMaxima": 13.55,
+    "betMaximaMin": 5.36,
+    "betMaximaMax": 14.7
   },
   {
     "id": 419,
@@ -5823,7 +7628,7 @@
     "provider": "pragmatic",
     "emoji": "🐱",
     "theme": "fantasy",
-    "dist": 96,
+    "dist": 89,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -5831,7 +7636,12 @@
     "tag": null,
     "img": "https://imagedelivery.net/BgH9d8bzsn4n0yijn4h7IQ/b518f46f-0379-4d75-e21b-01d130e3b900/public",
     "link": "https://br.mt-antilope.com/home?inviteCode=VEU6ZR",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 2.04,
+    "betMinima": 0.45,
+    "betMaxima": 14.2,
+    "betMaximaMin": 4.92,
+    "betMaximaMax": 14.15
   },
   {
     "id": 420,
@@ -5839,7 +7649,7 @@
     "provider": "pragmatic",
     "emoji": "🎰",
     "theme": "fantasy",
-    "dist": 96,
+    "dist": 94,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -5847,7 +7657,12 @@
     "tag": null,
     "img": "https://imagedelivery.net/BgH9d8bzsn4n0yijn4h7IQ/425ae614-5ac1-46ab-17a5-4b99d86d6a00/public",
     "link": "https://kk-judy777.vip/?id=649076826&currency=BRL&type=2",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 3.29,
+    "betMinima": 0.62,
+    "betMaxima": 8.57,
+    "betMaximaMin": 5.13,
+    "betMaximaMax": 11.71
   },
   {
     "id": 421,
@@ -5855,7 +7670,7 @@
     "provider": "pragmatic",
     "emoji": "🍀",
     "theme": "chinese",
-    "dist": 96,
+    "dist": 87,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -5863,7 +7678,12 @@
     "tag": null,
     "img": "https://imagedelivery.net/BgH9d8bzsn4n0yijn4h7IQ/1b2c3c84-59e2-4113-9383-2031699fb700/public",
     "link": "https://www.fy-fanta.com/?id=223975751",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 2.88,
+    "betMinima": 0.8,
+    "betMaxima": 10.93,
+    "betMaximaMin": 4.41,
+    "betMaximaMax": 16.18
   },
   {
     "id": 422,
@@ -5871,7 +7691,7 @@
     "provider": "pragmatic",
     "emoji": "💎",
     "theme": "luxury",
-    "dist": 96,
+    "dist": 94,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -5879,7 +7699,12 @@
     "tag": null,
     "img": "https://imagedelivery.net/BgH9d8bzsn4n0yijn4h7IQ/f64ecc81-b6e3-4338-6086-97983e66a600/public",
     "link": "https://hms-tiradentesday.bet/?invite_code=8be79469",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 2.59,
+    "betMinima": 0.8,
+    "betMaxima": 14.14,
+    "betMaximaMin": 4.48,
+    "betMaximaMax": 17.69
   },
   {
     "id": 423,
@@ -5887,7 +7712,7 @@
     "provider": "pragmatic",
     "emoji": "❄️",
     "theme": "fantasy",
-    "dist": 96,
+    "dist": 94,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -5895,7 +7720,12 @@
     "tag": null,
     "img": "https://imagedelivery.net/BgH9d8bzsn4n0yijn4h7IQ/640fb0f4-e40c-4b46-ad40-cbe152d8f300/public",
     "link": "https://coroa-gghhpg.com/?id=405842843",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 3.23,
+    "betMinima": 0.7,
+    "betMaxima": 12.73,
+    "betMaximaMin": 5.0,
+    "betMaximaMax": 13.61
   },
   {
     "id": 424,
@@ -5903,7 +7733,7 @@
     "provider": "pragmatic",
     "emoji": "🌊",
     "theme": "fishing",
-    "dist": 96,
+    "dist": 88,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -5911,7 +7741,12 @@
     "tag": null,
     "img": "https://imagedelivery.net/BgH9d8bzsn4n0yijn4h7IQ/a814e196-c651-4b28-ac6b-7625d932b900/public",
     "link": "https://www.onebra77.com/?source_code=TWMWECDNJ2X",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 3.0,
+    "betMinima": 0.79,
+    "betMaxima": 10.8,
+    "betMaximaMin": 4.74,
+    "betMaximaMax": 17.39
   },
   {
     "id": 425,
@@ -5919,7 +7754,7 @@
     "provider": "pragmatic",
     "emoji": "🎰",
     "theme": "fantasy",
-    "dist": 96,
+    "dist": 91,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -5927,7 +7762,12 @@
     "tag": null,
     "img": "https://imagedelivery.net/BgH9d8bzsn4n0yijn4h7IQ/d307bf6c-ee24-4e92-d47c-b7648f6ef600/public",
     "link": "https://br.mt-antilope.com/home?inviteCode=VEU6ZR",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 2.09,
+    "betMinima": 0.33,
+    "betMaxima": 13.96,
+    "betMaximaMin": 4.5,
+    "betMaximaMax": 17.58
   },
   {
     "id": 426,
@@ -5935,7 +7775,7 @@
     "provider": "pragmatic",
     "emoji": "🎰",
     "theme": "fantasy",
-    "dist": 96,
+    "dist": 83,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -5943,7 +7783,12 @@
     "tag": null,
     "img": "https://imagedelivery.net/BgH9d8bzsn4n0yijn4h7IQ/e5b35bd1-4ce7-49db-be1a-2fdad1c4fe00/public",
     "link": "https://kk-judy777.vip/?id=649076826&currency=BRL&type=2",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 2.24,
+    "betMinima": 0.66,
+    "betMaxima": 4.17,
+    "betMaximaMin": 5.25,
+    "betMaximaMax": 12.48
   },
   {
     "id": 427,
@@ -5951,7 +7796,7 @@
     "provider": "pragmatic",
     "emoji": "🎰",
     "theme": "fantasy",
-    "dist": 96,
+    "dist": 90,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -5959,7 +7804,12 @@
     "tag": null,
     "img": "https://imagedelivery.net/BgH9d8bzsn4n0yijn4h7IQ/c7d62d6a-d6b3-4369-a588-75ad57821600/public",
     "link": "https://www.fy-fanta.com/?id=223975751",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 2.33,
+    "betMinima": 0.69,
+    "betMaxima": 7.45,
+    "betMaximaMin": 4.81,
+    "betMaximaMax": 11.12
   },
   {
     "id": 429,
@@ -5975,7 +7825,12 @@
     "tag": null,
     "img": "https://imagedelivery.net/BgH9d8bzsn4n0yijn4h7IQ/8c0b1ea9-3521-42f8-3527-c3e05d3f5e00/public",
     "link": "https://coroa-gghhpg.com/?id=405842843",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 3.04,
+    "betMinima": 0.46,
+    "betMaxima": 9.96,
+    "betMaximaMin": 4.64,
+    "betMaximaMax": 12.54
   },
   {
     "id": 430,
@@ -5983,7 +7838,7 @@
     "provider": "pragmatic",
     "emoji": "🎰",
     "theme": "fantasy",
-    "dist": 96,
+    "dist": 97,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -5991,7 +7846,12 @@
     "tag": null,
     "img": "https://imagedelivery.net/BgH9d8bzsn4n0yijn4h7IQ/c2fe9b81-495b-4969-7140-d9b7dbaafd00/public",
     "link": "https://www.onebra77.com/?source_code=TWMWECDNJ2X",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 3.05,
+    "betMinima": 0.71,
+    "betMaxima": 12.76,
+    "betMaximaMin": 4.04,
+    "betMaximaMax": 12.26
   },
   {
     "id": 433,
@@ -5999,7 +7859,7 @@
     "provider": "pragmatic",
     "emoji": "🐉",
     "theme": "chinese",
-    "dist": 96,
+    "dist": 84,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -6007,7 +7867,12 @@
     "tag": null,
     "img": "https://imagedelivery.net/BgH9d8bzsn4n0yijn4h7IQ/448a08fa-05fb-4669-0a51-ed822b9a4100/public",
     "link": "https://www.fy-fanta.com/?id=223975751",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 3.1,
+    "betMinima": 0.45,
+    "betMaxima": 9.14,
+    "betMaximaMin": 4.0,
+    "betMaximaMax": 11.01
   },
   {
     "id": 434,
@@ -6015,7 +7880,7 @@
     "provider": "pragmatic",
     "emoji": "🎰",
     "theme": "fantasy",
-    "dist": 96,
+    "dist": 94,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -6023,7 +7888,12 @@
     "tag": null,
     "img": "https://imagedelivery.net/BgH9d8bzsn4n0yijn4h7IQ/66bc7b9e-3d68-4c90-26f1-cd8944c58b00/public",
     "link": "https://hms-tiradentesday.bet/?invite_code=8be79469",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 2.82,
+    "betMinima": 0.33,
+    "betMaxima": 11.64,
+    "betMaximaMin": 5.9,
+    "betMaximaMax": 10.85
   },
   {
     "id": 435,
@@ -6031,7 +7901,7 @@
     "provider": "pragmatic",
     "emoji": "🎰",
     "theme": "fantasy",
-    "dist": 96,
+    "dist": 93,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -6039,7 +7909,12 @@
     "tag": null,
     "img": "https://imagedelivery.net/BgH9d8bzsn4n0yijn4h7IQ/6ff0697f-9055-49fe-2319-d778d7714b00/public",
     "link": "https://coroa-gghhpg.com/?id=405842843",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 3.19,
+    "betMinima": 0.63,
+    "betMaxima": 6.53,
+    "betMaximaMin": 4.53,
+    "betMaximaMax": 16.86
   },
   {
     "id": 436,
@@ -6047,7 +7922,7 @@
     "provider": "pragmatic",
     "emoji": "🐉",
     "theme": "chinese",
-    "dist": 96,
+    "dist": 97,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -6055,7 +7930,12 @@
     "tag": null,
     "img": "https://imagedelivery.net/BgH9d8bzsn4n0yijn4h7IQ/e9c46a9d-e269-4bee-d56f-d6096db71c00/public",
     "link": "https://www.onebra77.com/?source_code=TWMWECDNJ2X",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 2.4,
+    "betMinima": 0.23,
+    "betMaxima": 9.08,
+    "betMaximaMin": 5.0,
+    "betMaximaMax": 17.37
   },
   {
     "id": 437,
@@ -6063,7 +7943,7 @@
     "provider": "evolution",
     "emoji": "🐍",
     "theme": "fantasy",
-    "dist": 96,
+    "dist": 93,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -6071,7 +7951,12 @@
     "tag": null,
     "img": "https://imagedelivery.net/BgH9d8bzsn4n0yijn4h7IQ/002569fd-138c-440e-21aa-ae5f82aeec00/public",
     "link": "https://br.mt-antilope.com/home?inviteCode=VEU6ZR",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 2.01,
+    "betMinima": 0.8,
+    "betMaxima": 12.83,
+    "betMaximaMin": 4.75,
+    "betMaximaMax": 16.45
   },
   {
     "id": 440,
@@ -6079,7 +7964,7 @@
     "provider": "pragmatic",
     "emoji": "🎰",
     "theme": "fantasy",
-    "dist": 96,
+    "dist": 92,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -6087,7 +7972,12 @@
     "tag": null,
     "img": "https://imagedelivery.net/BgH9d8bzsn4n0yijn4h7IQ/e1f83515-d5c4-41c6-635e-977cd9cf9200/public",
     "link": "https://hms-tiradentesday.bet/?invite_code=8be79469",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 2.35,
+    "betMinima": 0.78,
+    "betMaxima": 10.22,
+    "betMaximaMin": 4.58,
+    "betMaximaMax": 15.53
   },
   {
     "id": 441,
@@ -6103,7 +7993,12 @@
     "tag": null,
     "img": "https://imagedelivery.net/BgH9d8bzsn4n0yijn4h7IQ/a5949939-eca3-42a6-de2e-ba5793dce400/public",
     "link": "https://coroa-gghhpg.com/?id=405842843",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 2.43,
+    "betMinima": 0.53,
+    "betMaxima": 12.3,
+    "betMaximaMin": 4.16,
+    "betMaximaMax": 10.46
   },
   {
     "id": 442,
@@ -6111,7 +8006,7 @@
     "provider": "pragmatic",
     "emoji": "❄️",
     "theme": "fantasy",
-    "dist": 96,
+    "dist": 93,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -6119,7 +8014,12 @@
     "tag": null,
     "img": "https://imagedelivery.net/BgH9d8bzsn4n0yijn4h7IQ/efa59140-46fe-4e06-d7a2-e83ca5b2e800/public",
     "link": "https://www.onebra77.com/?source_code=TWMWECDNJ2X",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 2.71,
+    "betMinima": 0.65,
+    "betMaxima": 4.52,
+    "betMaximaMin": 4.74,
+    "betMaximaMax": 10.89
   },
   {
     "id": 443,
@@ -6127,7 +8027,7 @@
     "provider": "pragmatic",
     "emoji": "🤠",
     "theme": "western",
-    "dist": 96,
+    "dist": 94,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -6135,7 +8035,12 @@
     "tag": null,
     "img": "https://imagedelivery.net/BgH9d8bzsn4n0yijn4h7IQ/560f72e8-3549-4295-97c0-621dce603a00/public",
     "link": "https://br.mt-antilope.com/home?inviteCode=VEU6ZR",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 2.38,
+    "betMinima": 0.59,
+    "betMaxima": 9.28,
+    "betMaximaMin": 5.67,
+    "betMaximaMax": 16.48
   },
   {
     "id": 445,
@@ -6143,7 +8048,7 @@
     "provider": "pragmatic",
     "emoji": "🎰",
     "theme": "fantasy",
-    "dist": 96,
+    "dist": 97,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -6151,7 +8056,12 @@
     "tag": null,
     "img": "https://imagedelivery.net/BgH9d8bzsn4n0yijn4h7IQ/3743052b-cee3-4a85-9724-2a37bb8da300/public",
     "link": "https://www.fy-fanta.com/?id=223975751",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 2.35,
+    "betMinima": 0.35,
+    "betMaxima": 10.37,
+    "betMaximaMin": 5.42,
+    "betMaximaMax": 10.37
   },
   {
     "id": 446,
@@ -6159,7 +8069,7 @@
     "provider": "pragmatic",
     "emoji": "🎰",
     "theme": "aztec",
-    "dist": 96,
+    "dist": 90,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -6167,7 +8077,12 @@
     "tag": null,
     "img": "https://imagedelivery.net/BgH9d8bzsn4n0yijn4h7IQ/c25d75cb-6d3f-4bb7-c887-61a82aeb8f00/public",
     "link": "https://hms-tiradentesday.bet/?invite_code=8be79469",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 2.42,
+    "betMinima": 0.44,
+    "betMaxima": 8.3,
+    "betMaximaMin": 4.12,
+    "betMaximaMax": 11.17
   },
   {
     "id": 447,
@@ -6175,7 +8090,7 @@
     "provider": "pragmatic",
     "emoji": "🎰",
     "theme": "fantasy",
-    "dist": 96,
+    "dist": 93,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -6183,7 +8098,12 @@
     "tag": null,
     "img": "https://imagedelivery.net/BgH9d8bzsn4n0yijn4h7IQ/909b9ab8-facf-4e65-6fb9-341c859ca300/public",
     "link": "https://coroa-gghhpg.com/?id=405842843",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 2.44,
+    "betMinima": 0.21,
+    "betMaxima": 4.16,
+    "betMaximaMin": 5.76,
+    "betMaximaMax": 11.22
   },
   {
     "id": 448,
@@ -6191,7 +8111,7 @@
     "provider": "pragmatic",
     "emoji": "🎰",
     "theme": "fantasy",
-    "dist": 96,
+    "dist": 95,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -6199,7 +8119,12 @@
     "tag": null,
     "img": "https://imagedelivery.net/BgH9d8bzsn4n0yijn4h7IQ/d65a1541-568a-4458-98a7-a14a7b5a6200/public",
     "link": "https://www.onebra77.com/?source_code=TWMWECDNJ2X",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 2.88,
+    "betMinima": 0.21,
+    "betMaxima": 12.78,
+    "betMaximaMin": 4.46,
+    "betMaximaMax": 16.82
   },
   {
     "id": 449,
@@ -6207,7 +8132,7 @@
     "provider": "pragmatic",
     "emoji": "🎰",
     "theme": "fantasy",
-    "dist": 96,
+    "dist": 93,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -6215,7 +8140,12 @@
     "tag": null,
     "img": "https://imagedelivery.net/BgH9d8bzsn4n0yijn4h7IQ/8d4ace92-26b2-46ad-5180-d3d1398c1100/public",
     "link": "https://br.mt-antilope.com/home?inviteCode=VEU6ZR",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 2.89,
+    "betMinima": 0.7,
+    "betMaxima": 5.25,
+    "betMaximaMin": 5.72,
+    "betMaximaMax": 11.99
   },
   {
     "id": 450,
@@ -6223,7 +8153,7 @@
     "provider": "pragmatic",
     "emoji": "⚡",
     "theme": "greek",
-    "dist": 96,
+    "dist": 92,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -6231,7 +8161,12 @@
     "tag": null,
     "img": "https://imagedelivery.net/BgH9d8bzsn4n0yijn4h7IQ/dc3ba267-77ec-47a6-affe-621ea9139e00/public",
     "link": "https://kk-judy777.vip/?id=649076826&currency=BRL&type=2",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 3.11,
+    "betMinima": 0.55,
+    "betMaxima": 6.42,
+    "betMaximaMin": 4.74,
+    "betMaximaMax": 12.75
   },
   {
     "id": 451,
@@ -6239,7 +8174,7 @@
     "provider": "pragmatic",
     "emoji": "🎰",
     "theme": "fantasy",
-    "dist": 96,
+    "dist": 97,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -6247,7 +8182,12 @@
     "tag": null,
     "img": "https://imagedelivery.net/BgH9d8bzsn4n0yijn4h7IQ/51cdcfde-619d-491d-c7fa-a84491c7d000/public",
     "link": "https://www.fy-fanta.com/?id=223975751",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 3.35,
+    "betMinima": 0.7,
+    "betMaxima": 4.47,
+    "betMaximaMin": 4.35,
+    "betMaximaMax": 15.57
   },
   {
     "id": 453,
@@ -6255,7 +8195,7 @@
     "provider": "pragmatic",
     "emoji": "🎰",
     "theme": "fantasy",
-    "dist": 96,
+    "dist": 93,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -6263,7 +8203,12 @@
     "tag": null,
     "img": "https://imagedelivery.net/BgH9d8bzsn4n0yijn4h7IQ/45b17548-6e7e-4716-db97-bdfe0860dc00/public",
     "link": "https://coroa-gghhpg.com/?id=405842843",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 3.25,
+    "betMinima": 0.32,
+    "betMaxima": 7.82,
+    "betMaximaMin": 5.73,
+    "betMaximaMax": 17.09
   },
   {
     "id": 454,
@@ -6271,7 +8216,7 @@
     "provider": "pragmatic",
     "emoji": "🎰",
     "theme": "fantasy",
-    "dist": 96,
+    "dist": 93,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -6279,7 +8224,12 @@
     "tag": null,
     "img": "https://imagedelivery.net/BgH9d8bzsn4n0yijn4h7IQ/f24e7b6e-2b16-4428-c34c-0d82eb0e6700/public",
     "link": "https://www.onebra77.com/?source_code=TWMWECDNJ2X",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 2.57,
+    "betMinima": 0.68,
+    "betMaxima": 5.81,
+    "betMaximaMin": 4.11,
+    "betMaximaMax": 14.1
   },
   {
     "id": 455,
@@ -6287,7 +8237,7 @@
     "provider": "pragmatic",
     "emoji": "🍀",
     "theme": "chinese",
-    "dist": 96,
+    "dist": 92,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -6295,7 +8245,12 @@
     "tag": null,
     "img": "https://imagedelivery.net/BgH9d8bzsn4n0yijn4h7IQ/aee448ce-0e70-4256-fa79-304746f6de00/public",
     "link": "https://br.mt-antilope.com/home?inviteCode=VEU6ZR",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 3.05,
+    "betMinima": 0.47,
+    "betMaxima": 6.52,
+    "betMaximaMin": 6.0,
+    "betMaximaMax": 17.66
   },
   {
     "id": 456,
@@ -6303,7 +8258,7 @@
     "provider": "pragmatic",
     "emoji": "🎰",
     "theme": "fantasy",
-    "dist": 96,
+    "dist": 93,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -6311,7 +8266,12 @@
     "tag": null,
     "img": "https://imagedelivery.net/BgH9d8bzsn4n0yijn4h7IQ/9bbda6c2-e573-4a85-aa61-9e2ea0b8eb00/public",
     "link": "https://kk-judy777.vip/?id=649076826&currency=BRL&type=2",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 3.23,
+    "betMinima": 0.56,
+    "betMaxima": 6.69,
+    "betMaximaMin": 5.05,
+    "betMaximaMax": 13.38
   },
   {
     "id": 457,
@@ -6319,7 +8279,7 @@
     "provider": "pragmatic",
     "emoji": "🎰",
     "theme": "fantasy",
-    "dist": 96,
+    "dist": 86,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -6327,7 +8287,12 @@
     "tag": null,
     "img": "https://imagedelivery.net/BgH9d8bzsn4n0yijn4h7IQ/ddc82d33-8bd6-4632-762b-bafed7fc1e00/public",
     "link": "https://www.fy-fanta.com/?id=223975751",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 3.15,
+    "betMinima": 0.3,
+    "betMaxima": 12.96,
+    "betMaximaMin": 5.72,
+    "betMaximaMax": 15.97
   },
   {
     "id": 458,
@@ -6335,7 +8300,7 @@
     "provider": "pragmatic",
     "emoji": "🎰",
     "theme": "fantasy",
-    "dist": 96,
+    "dist": 97,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -6343,7 +8308,12 @@
     "tag": null,
     "img": "https://imagedelivery.net/BgH9d8bzsn4n0yijn4h7IQ/0b60717a-d832-469c-75a0-d0b5dba2de00/public",
     "link": "https://hms-tiradentesday.bet/?invite_code=8be79469",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 3.33,
+    "betMinima": 0.68,
+    "betMaxima": 12.02,
+    "betMaximaMin": 4.56,
+    "betMaximaMax": 10.31
   },
   {
     "id": 459,
@@ -6359,7 +8329,12 @@
     "tag": null,
     "img": "https://imagedelivery.net/BgH9d8bzsn4n0yijn4h7IQ/0269ef4a-bfce-4e3d-599d-c1975a650200/public",
     "link": "https://coroa-gghhpg.com/?id=405842843",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 2.83,
+    "betMinima": 0.63,
+    "betMaxima": 7.51,
+    "betMaximaMin": 5.51,
+    "betMaximaMax": 17.83
   },
   {
     "id": 460,
@@ -6367,7 +8342,7 @@
     "provider": "pragmatic",
     "emoji": "🎰",
     "theme": "fantasy",
-    "dist": 96,
+    "dist": 87,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -6375,7 +8350,12 @@
     "tag": null,
     "img": "https://imagedelivery.net/BgH9d8bzsn4n0yijn4h7IQ/296fad2d-8124-421d-1a29-343acf63e000/public",
     "link": "https://www.onebra77.com/?source_code=TWMWECDNJ2X",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 3.34,
+    "betMinima": 0.45,
+    "betMaxima": 13.61,
+    "betMaximaMin": 5.69,
+    "betMaximaMax": 17.95
   },
   {
     "id": 462,
@@ -6391,7 +8371,12 @@
     "tag": null,
     "img": "https://imagedelivery.net/BgH9d8bzsn4n0yijn4h7IQ/1d02b7fa-0276-41cf-1a84-c025bcd36900/public",
     "link": "https://kk-judy777.vip/?id=649076826&currency=BRL&type=2",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 2.09,
+    "betMinima": 0.39,
+    "betMaxima": 6.35,
+    "betMaximaMin": 4.57,
+    "betMaximaMax": 13.18
   },
   {
     "id": 463,
@@ -6399,7 +8384,7 @@
     "provider": "pragmatic",
     "emoji": "🎰",
     "theme": "fantasy",
-    "dist": 96,
+    "dist": 94,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -6407,7 +8392,12 @@
     "tag": null,
     "img": "https://imagedelivery.net/BgH9d8bzsn4n0yijn4h7IQ/06dcd52f-4762-4f43-ad60-0f0fbe3f6500/public",
     "link": "https://www.fy-fanta.com/?id=223975751",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 2.36,
+    "betMinima": 0.61,
+    "betMaxima": 14.1,
+    "betMaximaMin": 4.97,
+    "betMaximaMax": 17.85
   },
   {
     "id": 464,
@@ -6415,7 +8405,7 @@
     "provider": "pragmatic",
     "emoji": "🍀",
     "theme": "fantasy",
-    "dist": 96,
+    "dist": 86,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -6423,7 +8413,12 @@
     "tag": null,
     "img": "https://imagedelivery.net/BgH9d8bzsn4n0yijn4h7IQ/41b6380b-26db-452a-d50d-b57a95a5d100/public",
     "link": "https://hms-tiradentesday.bet/?invite_code=8be79469",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 2.5,
+    "betMinima": 0.48,
+    "betMaxima": 6.88,
+    "betMaximaMin": 4.01,
+    "betMaximaMax": 16.45
   },
   {
     "id": 465,
@@ -6431,7 +8426,7 @@
     "provider": "pragmatic",
     "emoji": "🎰",
     "theme": "egypt",
-    "dist": 96,
+    "dist": 86,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -6439,7 +8434,12 @@
     "tag": null,
     "img": "https://imagedelivery.net/BgH9d8bzsn4n0yijn4h7IQ/eb4238ae-c439-474b-a363-8721c18b2100/public",
     "link": "https://coroa-gghhpg.com/?id=405842843",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 2.06,
+    "betMinima": 0.53,
+    "betMaxima": 12.4,
+    "betMaximaMin": 5.25,
+    "betMaximaMax": 11.45
   },
   {
     "id": 466,
@@ -6447,7 +8447,7 @@
     "provider": "pragmatic",
     "emoji": "❄️",
     "theme": "fishing",
-    "dist": 96,
+    "dist": 95,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -6455,7 +8455,12 @@
     "tag": null,
     "img": "https://imagedelivery.net/BgH9d8bzsn4n0yijn4h7IQ/480246ef-8367-4c1b-2f0e-df75a590ad00/public",
     "link": "https://www.onebra77.com/?source_code=TWMWECDNJ2X",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 2.88,
+    "betMinima": 0.54,
+    "betMaxima": 8.86,
+    "betMaximaMin": 5.5,
+    "betMaximaMax": 14.8
   },
   {
     "id": 469,
@@ -6463,7 +8468,7 @@
     "provider": "pragmatic",
     "emoji": "🎰",
     "theme": "fantasy",
-    "dist": 96,
+    "dist": 90,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -6471,7 +8476,12 @@
     "tag": null,
     "img": "https://imagedelivery.net/BgH9d8bzsn4n0yijn4h7IQ/8eee4a73-ca51-41ad-6c4b-bc339f473000/public",
     "link": "https://www.fy-fanta.com/?id=223975751",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 2.44,
+    "betMinima": 0.58,
+    "betMaxima": 12.48,
+    "betMaximaMin": 5.26,
+    "betMaximaMax": 10.38
   },
   {
     "id": 471,
@@ -6479,7 +8489,7 @@
     "provider": "pragmatic",
     "emoji": "⚡",
     "theme": "chinese",
-    "dist": 96,
+    "dist": 97,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -6487,7 +8497,12 @@
     "tag": null,
     "img": "https://imagedelivery.net/BgH9d8bzsn4n0yijn4h7IQ/35620d66-1685-4ae5-ff56-8f3843c53b00/public",
     "link": "https://coroa-gghhpg.com/?id=405842843",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 2.47,
+    "betMinima": 0.69,
+    "betMaxima": 13.64,
+    "betMaximaMin": 5.63,
+    "betMaximaMax": 17.79
   },
   {
     "id": 473,
@@ -6503,7 +8518,12 @@
     "tag": null,
     "img": "https://imagedelivery.net/BgH9d8bzsn4n0yijn4h7IQ/dcb17749-b282-4e44-ada0-803e85a54900/public",
     "link": "https://br.mt-antilope.com/home?inviteCode=VEU6ZR",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 2.49,
+    "betMinima": 0.33,
+    "betMaxima": 6.82,
+    "betMaximaMin": 4.8,
+    "betMaximaMax": 17.49
   },
   {
     "id": 474,
@@ -6511,7 +8531,7 @@
     "provider": "pragmatic",
     "emoji": "🎰",
     "theme": "fantasy",
-    "dist": 96,
+    "dist": 94,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -6519,7 +8539,12 @@
     "tag": null,
     "img": "https://imagedelivery.net/BgH9d8bzsn4n0yijn4h7IQ/eb1a9d20-4379-43d4-1905-fccd162db100/public",
     "link": "https://kk-judy777.vip/?id=649076826&currency=BRL&type=2",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 2.63,
+    "betMinima": 0.22,
+    "betMaxima": 9.84,
+    "betMaximaMin": 5.84,
+    "betMaximaMax": 17.27
   },
   {
     "id": 476,
@@ -6527,7 +8552,7 @@
     "provider": "pragmatic",
     "emoji": "❄️",
     "theme": "fantasy",
-    "dist": 96,
+    "dist": 93,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -6535,7 +8560,12 @@
     "tag": null,
     "img": "https://imagedelivery.net/BgH9d8bzsn4n0yijn4h7IQ/c1a7cb81-0910-4a2a-73da-364651fe2400/public",
     "link": "https://hms-tiradentesday.bet/?invite_code=8be79469",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 2.66,
+    "betMinima": 0.27,
+    "betMaxima": 14.33,
+    "betMaximaMin": 4.68,
+    "betMaximaMax": 11.14
   },
   {
     "id": 477,
@@ -6543,7 +8573,7 @@
     "provider": "pragmatic",
     "emoji": "🎰",
     "theme": "fantasy",
-    "dist": 96,
+    "dist": 85,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -6551,7 +8581,12 @@
     "tag": null,
     "img": "https://imagedelivery.net/BgH9d8bzsn4n0yijn4h7IQ/011c2a7e-b657-4d5d-db7e-8b742e0e4b00/public",
     "link": "https://coroa-gghhpg.com/?id=405842843",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 2.47,
+    "betMinima": 0.22,
+    "betMaxima": 9.71,
+    "betMaximaMin": 4.74,
+    "betMaximaMax": 10.88
   },
   {
     "id": 478,
@@ -6559,7 +8594,7 @@
     "provider": "pragmatic",
     "emoji": "🎰",
     "theme": "fantasy",
-    "dist": 96,
+    "dist": 97,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -6567,7 +8602,12 @@
     "tag": null,
     "img": "https://imagedelivery.net/BgH9d8bzsn4n0yijn4h7IQ/d3cfcc60-79d5-4da2-9466-6bdfb7c5a100/public",
     "link": "https://www.onebra77.com/?source_code=TWMWECDNJ2X",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 2.74,
+    "betMinima": 0.8,
+    "betMaxima": 4.53,
+    "betMaximaMin": 4.95,
+    "betMaximaMax": 14.37
   },
   {
     "id": 479,
@@ -6575,7 +8615,7 @@
     "provider": "pragmatic",
     "emoji": "🎰",
     "theme": "fantasy",
-    "dist": 96,
+    "dist": 94,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -6583,7 +8623,12 @@
     "tag": null,
     "img": "https://imagedelivery.net/BgH9d8bzsn4n0yijn4h7IQ/14ae20a5-798e-488a-fb34-571b3cf04400/public",
     "link": "https://br.mt-antilope.com/home?inviteCode=VEU6ZR",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 2.01,
+    "betMinima": 0.22,
+    "betMaxima": 10.37,
+    "betMaximaMin": 4.67,
+    "betMaximaMax": 11.25
   },
   {
     "id": 480,
@@ -6591,7 +8636,7 @@
     "provider": "pragmatic",
     "emoji": "🎰",
     "theme": "fantasy",
-    "dist": 96,
+    "dist": 90,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -6599,7 +8644,12 @@
     "tag": null,
     "img": "https://imagedelivery.net/BgH9d8bzsn4n0yijn4h7IQ/9a984113-e538-493b-b1f0-859ca6c1c000/public",
     "link": "https://kk-judy777.vip/?id=649076826&currency=BRL&type=2",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 2.07,
+    "betMinima": 0.5,
+    "betMaxima": 10.7,
+    "betMaximaMin": 5.5,
+    "betMaximaMax": 14.34
   },
   {
     "id": 483,
@@ -6607,7 +8657,7 @@
     "provider": "pragmatic",
     "emoji": "🎰",
     "theme": "fantasy",
-    "dist": 96,
+    "dist": 88,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -6615,7 +8665,12 @@
     "tag": null,
     "img": "https://imagedelivery.net/BgH9d8bzsn4n0yijn4h7IQ/c9dff93b-7d91-4696-2aa9-6a48dc94d000/public",
     "link": "https://coroa-gghhpg.com/?id=405842843",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 3.36,
+    "betMinima": 0.44,
+    "betMaxima": 5.2,
+    "betMaximaMin": 5.81,
+    "betMaximaMax": 10.1
   },
   {
     "id": 485,
@@ -6623,7 +8678,7 @@
     "provider": "pragmatic",
     "emoji": "🎰",
     "theme": "fantasy",
-    "dist": 96,
+    "dist": 84,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -6631,7 +8686,12 @@
     "tag": null,
     "img": "https://imagedelivery.net/BgH9d8bzsn4n0yijn4h7IQ/b4bfe18a-370c-4ad6-3cdb-cfa31c26aa00/public",
     "link": "https://br.mt-antilope.com/home?inviteCode=VEU6ZR",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 2.54,
+    "betMinima": 0.51,
+    "betMaxima": 5.4,
+    "betMaximaMin": 4.62,
+    "betMaximaMax": 14.55
   },
   {
     "id": 486,
@@ -6639,7 +8699,7 @@
     "provider": "pragmatic",
     "emoji": "🐉",
     "theme": "chinese",
-    "dist": 96,
+    "dist": 93,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -6647,7 +8707,12 @@
     "tag": null,
     "img": "https://imagedelivery.net/BgH9d8bzsn4n0yijn4h7IQ/02fd9084-6c5a-4108-39d3-f1001a0f6b00/public",
     "link": "https://kk-judy777.vip/?id=649076826&currency=BRL&type=2",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 2.85,
+    "betMinima": 0.71,
+    "betMaxima": 10.66,
+    "betMaximaMin": 4.73,
+    "betMaximaMax": 13.54
   },
   {
     "id": 487,
@@ -6655,7 +8720,7 @@
     "provider": "pragmatic",
     "emoji": "✨",
     "theme": "fantasy",
-    "dist": 96,
+    "dist": 94,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -6663,7 +8728,12 @@
     "tag": null,
     "img": "https://imagedelivery.net/BgH9d8bzsn4n0yijn4h7IQ/2c44229f-d924-4c53-c8a3-35d90c7a8400/public",
     "link": "https://www.fy-fanta.com/?id=223975751",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 2.18,
+    "betMinima": 0.54,
+    "betMaxima": 11.26,
+    "betMaximaMin": 4.05,
+    "betMaximaMax": 12.33
   },
   {
     "id": 488,
@@ -6671,7 +8741,7 @@
     "provider": "pragmatic",
     "emoji": "🎰",
     "theme": "fantasy",
-    "dist": 96,
+    "dist": 91,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -6679,7 +8749,12 @@
     "tag": null,
     "img": "https://imagedelivery.net/BgH9d8bzsn4n0yijn4h7IQ/98b62cfa-2e46-4131-1cca-40549a6a4400/public",
     "link": "https://hms-tiradentesday.bet/?invite_code=8be79469",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 3.3,
+    "betMinima": 0.34,
+    "betMaxima": 4.04,
+    "betMaximaMin": 5.31,
+    "betMaximaMax": 15.39
   },
   {
     "id": 489,
@@ -6687,7 +8762,7 @@
     "provider": "pragmatic",
     "emoji": "🎰",
     "theme": "fantasy",
-    "dist": 96,
+    "dist": 92,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -6695,7 +8770,12 @@
     "tag": null,
     "img": "https://imagedelivery.net/BgH9d8bzsn4n0yijn4h7IQ/00946da2-e4da-482d-9f0b-66ccdf9d1300/public",
     "link": "https://coroa-gghhpg.com/?id=405842843",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 3.04,
+    "betMinima": 0.77,
+    "betMaxima": 13.71,
+    "betMaximaMin": 5.18,
+    "betMaximaMax": 10.68
   },
   {
     "id": 490,
@@ -6703,7 +8783,7 @@
     "provider": "pragmatic",
     "emoji": "🎰",
     "theme": "fantasy",
-    "dist": 96,
+    "dist": 94,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -6711,7 +8791,12 @@
     "tag": null,
     "img": "https://imagedelivery.net/BgH9d8bzsn4n0yijn4h7IQ/f42f4dc6-6455-4a3e-3e25-a2abd930e600/public",
     "link": "https://www.onebra77.com/?source_code=TWMWECDNJ2X",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 2.91,
+    "betMinima": 0.22,
+    "betMaxima": 10.55,
+    "betMaximaMin": 4.47,
+    "betMaximaMax": 15.11
   },
   {
     "id": 492,
@@ -6727,7 +8812,12 @@
     "tag": null,
     "img": "https://imagedelivery.net/BgH9d8bzsn4n0yijn4h7IQ/96722760-cdfa-49b0-56f5-1f67b040e500/public",
     "link": "https://kk-judy777.vip/?id=649076826&currency=BRL&type=2",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 2.58,
+    "betMinima": 0.61,
+    "betMaxima": 11.78,
+    "betMaximaMin": 4.65,
+    "betMaximaMax": 11.91
   },
   {
     "id": 493,
@@ -6735,7 +8825,7 @@
     "provider": "pragmatic",
     "emoji": "🎰",
     "theme": "fishing",
-    "dist": 96,
+    "dist": 93,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -6743,7 +8833,12 @@
     "tag": null,
     "img": "https://imagedelivery.net/BgH9d8bzsn4n0yijn4h7IQ/c2a507cf-df9a-4154-ecf7-92083aaa6500/public",
     "link": "https://www.fy-fanta.com/?id=223975751",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 2.64,
+    "betMinima": 0.73,
+    "betMaxima": 7.81,
+    "betMaximaMin": 4.77,
+    "betMaximaMax": 12.19
   },
   {
     "id": 494,
@@ -6751,7 +8846,7 @@
     "provider": "pragmatic",
     "emoji": "🪙",
     "theme": "luxury",
-    "dist": 96,
+    "dist": 88,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -6759,7 +8854,12 @@
     "tag": null,
     "img": "https://imagedelivery.net/BgH9d8bzsn4n0yijn4h7IQ/54682475-2570-488d-81a0-1f314d270b00/public",
     "link": "https://hms-tiradentesday.bet/?invite_code=8be79469",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 2.87,
+    "betMinima": 0.78,
+    "betMaxima": 5.72,
+    "betMaximaMin": 4.33,
+    "betMaximaMax": 11.77
   },
   {
     "id": 495,
@@ -6767,7 +8867,7 @@
     "provider": "pragmatic",
     "emoji": "🎰",
     "theme": "egypt",
-    "dist": 96,
+    "dist": 90,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -6775,7 +8875,12 @@
     "tag": null,
     "img": "https://imagedelivery.net/BgH9d8bzsn4n0yijn4h7IQ/0d598316-11f1-496f-e498-cd62408c2700/public",
     "link": "https://coroa-gghhpg.com/?id=405842843",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 2.19,
+    "betMinima": 0.2,
+    "betMaxima": 12.31,
+    "betMaximaMin": 4.1,
+    "betMaximaMax": 13.35
   },
   {
     "id": 496,
@@ -6783,7 +8888,7 @@
     "provider": "pragmatic",
     "emoji": "🎰",
     "theme": "fantasy",
-    "dist": 96,
+    "dist": 85,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -6791,7 +8896,12 @@
     "tag": null,
     "img": "https://imagedelivery.net/BgH9d8bzsn4n0yijn4h7IQ/a9987209-5ee3-452f-83d6-03e145a7ce00/public",
     "link": "https://www.onebra77.com/?source_code=TWMWECDNJ2X",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 3.16,
+    "betMinima": 0.56,
+    "betMaxima": 11.74,
+    "betMaximaMin": 4.85,
+    "betMaximaMax": 11.78
   },
   {
     "id": 499,
@@ -6799,7 +8909,7 @@
     "provider": "pragmatic",
     "emoji": "🪙",
     "theme": "luxury",
-    "dist": 96,
+    "dist": 92,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -6807,7 +8917,12 @@
     "tag": null,
     "img": "https://imagedelivery.net/BgH9d8bzsn4n0yijn4h7IQ/25d70e40-70d4-4b14-da61-cc89e5ed2b00/public",
     "link": "https://www.fy-fanta.com/?id=223975751",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 2.24,
+    "betMinima": 0.77,
+    "betMaxima": 5.03,
+    "betMaximaMin": 5.32,
+    "betMaximaMax": 17.01
   },
   {
     "id": 501,
@@ -6815,7 +8930,7 @@
     "provider": "pragmatic",
     "emoji": "🎰",
     "theme": "fantasy",
-    "dist": 96,
+    "dist": 97,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -6823,7 +8938,12 @@
     "tag": null,
     "img": "https://imagedelivery.net/BgH9d8bzsn4n0yijn4h7IQ/0246aa1b-e9f2-4e88-aa5f-1f336579fb00/public",
     "link": "https://coroa-gghhpg.com/?id=405842843",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 2.45,
+    "betMinima": 0.77,
+    "betMaxima": 5.78,
+    "betMaximaMin": 5.81,
+    "betMaximaMax": 14.53
   },
   {
     "id": 502,
@@ -6831,7 +8951,7 @@
     "provider": "pragmatic",
     "emoji": "❄️",
     "theme": "fantasy",
-    "dist": 96,
+    "dist": 89,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -6839,7 +8959,12 @@
     "tag": null,
     "img": "https://imagedelivery.net/BgH9d8bzsn4n0yijn4h7IQ/db7f643f-7e48-4027-4af2-c13172591700/public",
     "link": "https://www.onebra77.com/?source_code=TWMWECDNJ2X",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 2.59,
+    "betMinima": 0.59,
+    "betMaxima": 6.31,
+    "betMaximaMin": 4.41,
+    "betMaximaMax": 17.91
   },
   {
     "id": 503,
@@ -6847,7 +8972,7 @@
     "provider": "pragmatic",
     "emoji": "🎰",
     "theme": "fantasy",
-    "dist": 96,
+    "dist": 98,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -6855,7 +8980,12 @@
     "tag": null,
     "img": "https://imagedelivery.net/BgH9d8bzsn4n0yijn4h7IQ/97d8a357-6e1f-48c8-af4c-99c0fc50ce00/public",
     "link": "https://br.mt-antilope.com/home?inviteCode=VEU6ZR",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 3.27,
+    "betMinima": 0.56,
+    "betMaxima": 4.18,
+    "betMaximaMin": 4.22,
+    "betMaximaMax": 17.0
   },
   {
     "id": 504,
@@ -6863,7 +8993,7 @@
     "provider": "pragmatic",
     "emoji": "🍭",
     "theme": "candy",
-    "dist": 96,
+    "dist": 92,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -6871,7 +9001,12 @@
     "tag": null,
     "img": "https://imagedelivery.net/BgH9d8bzsn4n0yijn4h7IQ/9f4c7c56-e164-4acb-458a-25aeb65a3300/public",
     "link": "https://kk-judy777.vip/?id=649076826&currency=BRL&type=2",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 2.98,
+    "betMinima": 0.67,
+    "betMaxima": 12.46,
+    "betMaximaMin": 4.38,
+    "betMaximaMax": 17.63
   },
   {
     "id": 506,
@@ -6887,7 +9022,12 @@
     "tag": null,
     "img": "https://imagedelivery.net/BgH9d8bzsn4n0yijn4h7IQ/b794e8fb-1d47-4438-c786-9c5b25d35f00/public",
     "link": "https://hms-tiradentesday.bet/?invite_code=8be79469",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 2.83,
+    "betMinima": 0.62,
+    "betMaxima": 9.15,
+    "betMaximaMin": 5.13,
+    "betMaximaMax": 13.42
   },
   {
     "id": 507,
@@ -6895,7 +9035,7 @@
     "provider": "pragmatic",
     "emoji": "🎰",
     "theme": "fantasy",
-    "dist": 96,
+    "dist": 97,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -6903,7 +9043,12 @@
     "tag": null,
     "img": "https://imagedelivery.net/BgH9d8bzsn4n0yijn4h7IQ/04db7063-7ed0-4fd4-56aa-dc6290594800/public",
     "link": "https://coroa-gghhpg.com/?id=405842843",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 3.0,
+    "betMinima": 0.69,
+    "betMaxima": 12.32,
+    "betMaximaMin": 4.27,
+    "betMaximaMax": 13.25
   },
   {
     "id": 508,
@@ -6911,7 +9056,7 @@
     "provider": "pragmatic",
     "emoji": "🎰",
     "theme": "fantasy",
-    "dist": 96,
+    "dist": 97,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -6919,7 +9064,12 @@
     "tag": null,
     "img": "https://imagedelivery.net/BgH9d8bzsn4n0yijn4h7IQ/10b5bc6a-ea37-43c1-b98a-68efd11bee00/public",
     "link": "https://www.onebra77.com/?source_code=TWMWECDNJ2X",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 3.43,
+    "betMinima": 0.39,
+    "betMaxima": 13.52,
+    "betMaximaMin": 4.52,
+    "betMaximaMax": 11.17
   },
   {
     "id": 509,
@@ -6927,7 +9077,7 @@
     "provider": "pgsoft",
     "emoji": "🐼",
     "theme": "chinese",
-    "dist": 96,
+    "dist": 98,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -6935,7 +9085,12 @@
     "tag": null,
     "img": "https://imagedelivery.net/BgH9d8bzsn4n0yijn4h7IQ/bb030888-9023-49a5-19fc-48cb2e7cf900/public",
     "link": "https://br.mt-antilope.com/home?inviteCode=VEU6ZR",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 2.01,
+    "betMinima": 0.65,
+    "betMaxima": 9.41,
+    "betMaximaMin": 5.01,
+    "betMaximaMax": 15.91
   },
   {
     "id": 510,
@@ -6943,7 +9098,7 @@
     "provider": "pragmatic",
     "emoji": "🍭",
     "theme": "candy",
-    "dist": 96,
+    "dist": 94,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -6951,7 +9106,12 @@
     "tag": null,
     "img": "https://imagedelivery.net/BgH9d8bzsn4n0yijn4h7IQ/51c16b7f-4f31-4dc3-4e11-46a354494e00/public",
     "link": "https://kk-judy777.vip/?id=649076826&currency=BRL&type=2",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 3.49,
+    "betMinima": 0.52,
+    "betMaxima": 8.08,
+    "betMaximaMin": 4.04,
+    "betMaximaMax": 11.89
   },
   {
     "id": 512,
@@ -6959,7 +9119,7 @@
     "provider": "pragmatic",
     "emoji": "🎰",
     "theme": "fantasy",
-    "dist": 96,
+    "dist": 94,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -6967,7 +9127,12 @@
     "tag": null,
     "img": "https://imagedelivery.net/BgH9d8bzsn4n0yijn4h7IQ/fd602d11-4d0e-44a3-cd2b-a8ef08941a00/public",
     "link": "https://hms-tiradentesday.bet/?invite_code=8be79469",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 2.77,
+    "betMinima": 0.29,
+    "betMaxima": 13.87,
+    "betMaximaMin": 5.91,
+    "betMaximaMax": 10.18
   },
   {
     "id": 513,
@@ -6975,7 +9140,7 @@
     "provider": "evolution",
     "emoji": "🍀",
     "theme": "chinese",
-    "dist": 96,
+    "dist": 91,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -6983,7 +9148,12 @@
     "tag": null,
     "img": "https://imagedelivery.net/BgH9d8bzsn4n0yijn4h7IQ/ce7f55ec-628b-4573-80ff-3e66436b7400/public",
     "link": "https://coroa-gghhpg.com/?id=405842843",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 2.47,
+    "betMinima": 0.5,
+    "betMaxima": 7.06,
+    "betMaximaMin": 5.86,
+    "betMaximaMax": 14.7
   },
   {
     "id": 514,
@@ -6991,7 +9161,7 @@
     "provider": "pragmatic",
     "emoji": "🎰",
     "theme": "fantasy",
-    "dist": 96,
+    "dist": 95,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -6999,7 +9169,12 @@
     "tag": null,
     "img": "https://imagedelivery.net/BgH9d8bzsn4n0yijn4h7IQ/6bada9f7-f884-4caf-cdf1-b5eaa768f700/public",
     "link": "https://www.onebra77.com/?source_code=TWMWECDNJ2X",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 2.16,
+    "betMinima": 0.3,
+    "betMaxima": 14.22,
+    "betMaximaMin": 5.01,
+    "betMaximaMax": 17.68
   },
   {
     "id": 517,
@@ -7007,7 +9182,7 @@
     "provider": "pragmatic",
     "emoji": "🍭",
     "theme": "candy",
-    "dist": 96,
+    "dist": 92,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -7015,7 +9190,12 @@
     "tag": null,
     "img": "https://imagedelivery.net/BgH9d8bzsn4n0yijn4h7IQ/88e3ea47-3663-41a8-ac39-1a12c22f0400/public",
     "link": "https://www.fy-fanta.com/?id=223975751",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 2.86,
+    "betMinima": 0.37,
+    "betMaxima": 13.23,
+    "betMaximaMin": 4.84,
+    "betMaximaMax": 15.28
   },
   {
     "id": 519,
@@ -7023,7 +9203,7 @@
     "provider": "pragmatic",
     "emoji": "🎰",
     "theme": "egypt",
-    "dist": 96,
+    "dist": 87,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -7031,7 +9211,12 @@
     "tag": null,
     "img": "https://imagedelivery.net/BgH9d8bzsn4n0yijn4h7IQ/fe5bd210-2822-4d3f-76f4-093e9c432e00/public",
     "link": "https://coroa-gghhpg.com/?id=405842843",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 3.16,
+    "betMinima": 0.28,
+    "betMaxima": 8.67,
+    "betMaximaMin": 5.23,
+    "betMaximaMax": 16.89
   },
   {
     "id": 520,
@@ -7047,7 +9232,12 @@
     "tag": null,
     "img": "https://imagedelivery.net/BgH9d8bzsn4n0yijn4h7IQ/f4081283-5da7-4560-1481-5fb41195c300/public",
     "link": "https://www.onebra77.com/?source_code=TWMWECDNJ2X",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 3.22,
+    "betMinima": 0.72,
+    "betMaxima": 11.47,
+    "betMaximaMin": 5.76,
+    "betMaximaMax": 13.09
   },
   {
     "id": 524,
@@ -7055,7 +9245,7 @@
     "provider": "pragmatic",
     "emoji": "🎰",
     "theme": "fantasy",
-    "dist": 96,
+    "dist": 95,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -7063,7 +9253,12 @@
     "tag": null,
     "img": "https://imagedelivery.net/BgH9d8bzsn4n0yijn4h7IQ/23cf9d06-96b5-4f01-2186-82e39028fe00/public",
     "link": "https://hms-tiradentesday.bet/?invite_code=8be79469",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 2.73,
+    "betMinima": 0.5,
+    "betMaxima": 8.71,
+    "betMaximaMin": 4.32,
+    "betMaximaMax": 14.25
   },
   {
     "id": 525,
@@ -7071,7 +9266,7 @@
     "provider": "pragmatic",
     "emoji": "⚡",
     "theme": "fantasy",
-    "dist": 96,
+    "dist": 91,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -7079,7 +9274,12 @@
     "tag": null,
     "img": "https://imagedelivery.net/BgH9d8bzsn4n0yijn4h7IQ/bae5e154-056d-493e-6e44-faefc7994e00/public",
     "link": "https://coroa-gghhpg.com/?id=405842843",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 2.45,
+    "betMinima": 0.38,
+    "betMaxima": 8.17,
+    "betMaximaMin": 5.03,
+    "betMaximaMax": 10.51
   },
   {
     "id": 526,
@@ -7087,7 +9287,7 @@
     "provider": "pragmatic",
     "emoji": "🎰",
     "theme": "fantasy",
-    "dist": 96,
+    "dist": 87,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -7095,7 +9295,12 @@
     "tag": null,
     "img": "https://imagedelivery.net/BgH9d8bzsn4n0yijn4h7IQ/440072a8-4de1-4f29-9c7e-4d7c1fcd5900/public",
     "link": "https://www.onebra77.com/?source_code=TWMWECDNJ2X",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 2.51,
+    "betMinima": 0.39,
+    "betMaxima": 7.7,
+    "betMaximaMin": 4.16,
+    "betMaximaMax": 11.32
   },
   {
     "id": 529,
@@ -7103,7 +9308,7 @@
     "provider": "pragmatic",
     "emoji": "🎰",
     "theme": "fantasy",
-    "dist": 96,
+    "dist": 97,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -7111,7 +9316,12 @@
     "tag": null,
     "img": "https://imagedelivery.net/BgH9d8bzsn4n0yijn4h7IQ/89e2085c-0151-41b2-2fad-a4c165151400/public",
     "link": "https://www.fy-fanta.com/?id=223975751",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 3.11,
+    "betMinima": 0.41,
+    "betMaxima": 12.05,
+    "betMaximaMin": 4.34,
+    "betMaximaMax": 12.69
   },
   {
     "id": 532,
@@ -7119,7 +9329,7 @@
     "provider": "pragmatic",
     "emoji": "🍀",
     "theme": "chinese",
-    "dist": 96,
+    "dist": 93,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -7127,7 +9337,12 @@
     "tag": null,
     "img": "https://imagedelivery.net/BgH9d8bzsn4n0yijn4h7IQ/4f86eb8a-3556-4bdb-c4d8-98842138da00/public",
     "link": "https://www.onebra77.com/?source_code=TWMWECDNJ2X",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 3.25,
+    "betMinima": 0.3,
+    "betMaxima": 14.91,
+    "betMaximaMin": 4.11,
+    "betMaximaMax": 16.68
   },
   {
     "id": 533,
@@ -7135,7 +9350,7 @@
     "provider": "pragmatic",
     "emoji": "🎰",
     "theme": "fantasy",
-    "dist": 96,
+    "dist": 92,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -7143,7 +9358,12 @@
     "tag": null,
     "img": "https://imagedelivery.net/BgH9d8bzsn4n0yijn4h7IQ/1c4c7321-0f41-4c00-9e90-ad6e3ade7a00/public",
     "link": "https://br.mt-antilope.com/home?inviteCode=VEU6ZR",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 2.24,
+    "betMinima": 0.26,
+    "betMaxima": 7.68,
+    "betMaximaMin": 4.0,
+    "betMaximaMax": 16.18
   },
   {
     "id": 534,
@@ -7151,7 +9371,7 @@
     "provider": "pragmatic",
     "emoji": "🎰",
     "theme": "fantasy",
-    "dist": 96,
+    "dist": 94,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -7159,7 +9379,12 @@
     "tag": null,
     "img": "https://imagedelivery.net/BgH9d8bzsn4n0yijn4h7IQ/d996b4a0-8d89-4a53-bbb9-5fa579216d00/public",
     "link": "https://kk-judy777.vip/?id=649076826&currency=BRL&type=2",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 3.13,
+    "betMinima": 0.58,
+    "betMaxima": 13.73,
+    "betMaximaMin": 4.96,
+    "betMaximaMax": 16.36
   },
   {
     "id": 535,
@@ -7167,7 +9392,7 @@
     "provider": "pragmatic",
     "emoji": "🎰",
     "theme": "fantasy",
-    "dist": 96,
+    "dist": 97,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -7175,7 +9400,12 @@
     "tag": null,
     "img": "https://imagedelivery.net/BgH9d8bzsn4n0yijn4h7IQ/c991fc3e-3d20-4724-ad6c-ec5f33c2f800/public",
     "link": "https://www.fy-fanta.com/?id=223975751",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 3.29,
+    "betMinima": 0.78,
+    "betMaxima": 9.92,
+    "betMaximaMin": 4.86,
+    "betMaximaMax": 13.98
   },
   {
     "id": 537,
@@ -7183,7 +9413,7 @@
     "provider": "pragmatic",
     "emoji": "🎰",
     "theme": "fantasy",
-    "dist": 96,
+    "dist": 89,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -7191,7 +9421,12 @@
     "tag": null,
     "img": "https://imagedelivery.net/BgH9d8bzsn4n0yijn4h7IQ/e3de5666-ec4d-4ab2-83fa-ddfdfa52ec00/public",
     "link": "https://coroa-gghhpg.com/?id=405842843",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 2.38,
+    "betMinima": 0.72,
+    "betMaxima": 6.35,
+    "betMaximaMin": 5.23,
+    "betMaximaMax": 13.75
   },
   {
     "id": 538,
@@ -7199,7 +9434,7 @@
     "provider": "pragmatic",
     "emoji": "💎",
     "theme": "fantasy",
-    "dist": 96,
+    "dist": 94,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -7207,7 +9442,12 @@
     "tag": null,
     "img": "https://imagedelivery.net/BgH9d8bzsn4n0yijn4h7IQ/e033707a-979d-47a2-fbe8-7d56d6d02300/public",
     "link": "https://www.onebra77.com/?source_code=TWMWECDNJ2X",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 2.73,
+    "betMinima": 0.46,
+    "betMaxima": 13.94,
+    "betMaximaMin": 4.1,
+    "betMaximaMax": 15.11
   },
   {
     "id": 539,
@@ -7215,7 +9455,7 @@
     "provider": "pragmatic",
     "emoji": "🎰",
     "theme": "fantasy",
-    "dist": 96,
+    "dist": 94,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -7223,7 +9463,12 @@
     "tag": null,
     "img": "https://imagedelivery.net/BgH9d8bzsn4n0yijn4h7IQ/7185a333-003a-4ce0-c187-495b887cd800/public",
     "link": "https://br.mt-antilope.com/home?inviteCode=VEU6ZR",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 2.73,
+    "betMinima": 0.77,
+    "betMaxima": 9.58,
+    "betMaximaMin": 5.39,
+    "betMaximaMax": 15.6
   },
   {
     "id": 541,
@@ -7231,7 +9476,7 @@
     "provider": "pragmatic",
     "emoji": "🪙",
     "theme": "luxury",
-    "dist": 96,
+    "dist": 86,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -7239,7 +9484,12 @@
     "tag": null,
     "img": "https://imagedelivery.net/BgH9d8bzsn4n0yijn4h7IQ/83054e83-3f97-418d-195a-cce3a8e8cf00/public",
     "link": "https://www.fy-fanta.com/?id=223975751",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 2.36,
+    "betMinima": 0.31,
+    "betMaxima": 12.25,
+    "betMaximaMin": 5.35,
+    "betMaximaMax": 17.26
   },
   {
     "id": 543,
@@ -7247,7 +9497,7 @@
     "provider": "pragmatic",
     "emoji": "🎰",
     "theme": "fantasy",
-    "dist": 96,
+    "dist": 90,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -7255,7 +9505,12 @@
     "tag": null,
     "img": "https://imagedelivery.net/BgH9d8bzsn4n0yijn4h7IQ/4b957e01-b4ce-4fa8-5f53-e1b4269f2b00/public",
     "link": "https://coroa-gghhpg.com/?id=405842843",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 2.32,
+    "betMinima": 0.63,
+    "betMaxima": 14.88,
+    "betMaximaMin": 5.5,
+    "betMaximaMax": 14.85
   },
   {
     "id": 547,
@@ -7263,7 +9518,7 @@
     "provider": "pragmatic",
     "emoji": "🎰",
     "theme": "fantasy",
-    "dist": 96,
+    "dist": 83,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -7271,7 +9526,12 @@
     "tag": null,
     "img": "https://imagedelivery.net/BgH9d8bzsn4n0yijn4h7IQ/2203c170-4c05-41dd-565c-41639a741600/public",
     "link": "https://www.fy-fanta.com/?id=223975751",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 2.94,
+    "betMinima": 0.7,
+    "betMaxima": 12.65,
+    "betMaximaMin": 5.69,
+    "betMaximaMax": 16.37
   },
   {
     "id": 552,
@@ -7279,7 +9539,7 @@
     "provider": "pragmatic",
     "emoji": "🎰",
     "theme": "fantasy",
-    "dist": 96,
+    "dist": 91,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -7287,7 +9547,12 @@
     "tag": null,
     "img": "https://imagedelivery.net/BgH9d8bzsn4n0yijn4h7IQ/382dd626-d769-419f-b526-14da4cb4cf00/public",
     "link": "https://kk-judy777.vip/?id=649076826&currency=BRL&type=2",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 2.82,
+    "betMinima": 0.64,
+    "betMaxima": 7.78,
+    "betMaximaMin": 5.56,
+    "betMaximaMax": 16.51
   },
   {
     "id": 553,
@@ -7295,7 +9560,7 @@
     "provider": "pragmatic",
     "emoji": "🎰",
     "theme": "fantasy",
-    "dist": 96,
+    "dist": 97,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -7303,7 +9568,12 @@
     "tag": null,
     "img": "https://imagedelivery.net/BgH9d8bzsn4n0yijn4h7IQ/82ecf0b7-e274-4213-d0d7-ba262942de00/public",
     "link": "https://www.fy-fanta.com/?id=223975751",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 2.65,
+    "betMinima": 0.41,
+    "betMaxima": 8.49,
+    "betMaximaMin": 4.91,
+    "betMaximaMax": 15.03
   },
   {
     "id": 555,
@@ -7311,7 +9581,7 @@
     "provider": "pragmatic",
     "emoji": "🐱",
     "theme": "candy",
-    "dist": 96,
+    "dist": 97,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -7319,7 +9589,12 @@
     "tag": null,
     "img": "https://imagedelivery.net/BgH9d8bzsn4n0yijn4h7IQ/c97ad97b-0be9-4b8e-3824-1c72a1af2600/public",
     "link": "https://coroa-gghhpg.com/?id=405842843",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 2.25,
+    "betMinima": 0.48,
+    "betMaxima": 7.34,
+    "betMaximaMin": 5.78,
+    "betMaximaMax": 17.55
   },
   {
     "id": 559,
@@ -7335,7 +9610,12 @@
     "tag": null,
     "img": "https://imagedelivery.net/BgH9d8bzsn4n0yijn4h7IQ/18037cfc-2df6-4bb6-270a-098f81265a00/public",
     "link": "https://www.fy-fanta.com/?id=223975751",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 2.39,
+    "betMinima": 0.32,
+    "betMaxima": 12.03,
+    "betMaximaMin": 5.35,
+    "betMaximaMax": 10.4
   },
   {
     "id": 560,
@@ -7343,7 +9623,7 @@
     "provider": "pragmatic",
     "emoji": "🎰",
     "theme": "egypt",
-    "dist": 96,
+    "dist": 93,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -7351,7 +9631,12 @@
     "tag": null,
     "img": "https://imagedelivery.net/BgH9d8bzsn4n0yijn4h7IQ/e83c6a93-5bfd-4226-04d1-7874b72c8e00/public",
     "link": "https://hms-tiradentesday.bet/?invite_code=8be79469",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 3.08,
+    "betMinima": 0.7,
+    "betMaxima": 10.12,
+    "betMaximaMin": 5.29,
+    "betMaximaMax": 13.98
   },
   {
     "id": 569,
@@ -7359,7 +9644,7 @@
     "provider": "pragmatic",
     "emoji": "🐱",
     "theme": "chinese",
-    "dist": 96,
+    "dist": 91,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -7367,7 +9652,12 @@
     "tag": null,
     "img": "https://imagedelivery.net/BgH9d8bzsn4n0yijn4h7IQ/b5879da6-0cae-4c59-e9f4-f7b38e473c00/public",
     "link": "https://br.mt-antilope.com/home?inviteCode=VEU6ZR",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 3.44,
+    "betMinima": 0.47,
+    "betMaxima": 13.72,
+    "betMaximaMin": 5.62,
+    "betMaximaMax": 11.78
   },
   {
     "id": 571,
@@ -7375,7 +9665,7 @@
     "provider": "evolution",
     "emoji": "🎰",
     "theme": "egypt",
-    "dist": 96,
+    "dist": 91,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -7383,7 +9673,12 @@
     "tag": null,
     "img": "https://imagedelivery.net/BgH9d8bzsn4n0yijn4h7IQ/4cf0b908-aeb5-4988-0bbf-98eaa2f05c00/public",
     "link": "https://www.fy-fanta.com/?id=223975751",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 2.63,
+    "betMinima": 0.36,
+    "betMaxima": 11.39,
+    "betMaximaMin": 5.84,
+    "betMaximaMax": 16.8
   },
   {
     "id": 572,
@@ -7391,7 +9686,7 @@
     "provider": "pragmatic",
     "emoji": "🎰",
     "theme": "egypt",
-    "dist": 96,
+    "dist": 92,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -7399,7 +9694,12 @@
     "tag": null,
     "img": "https://imagedelivery.net/BgH9d8bzsn4n0yijn4h7IQ/8a8b2353-9d51-4937-6821-9f7f47b1f100/public",
     "link": "https://hms-tiradentesday.bet/?invite_code=8be79469",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 3.03,
+    "betMinima": 0.56,
+    "betMaxima": 8.1,
+    "betMaximaMin": 4.73,
+    "betMaximaMax": 14.2
   },
   {
     "id": 574,
@@ -7407,7 +9707,7 @@
     "provider": "pragmatic",
     "emoji": "🎰",
     "theme": "fantasy",
-    "dist": 96,
+    "dist": 92,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -7415,7 +9715,12 @@
     "tag": null,
     "img": "https://imagedelivery.net/BgH9d8bzsn4n0yijn4h7IQ/b53e0341-2a7a-4dbb-ca31-dfa3d5a67100/public",
     "link": "https://www.onebra77.com/?source_code=TWMWECDNJ2X",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 2.64,
+    "betMinima": 0.31,
+    "betMaxima": 14.5,
+    "betMaximaMin": 4.06,
+    "betMaximaMax": 14.8
   },
   {
     "id": 576,
@@ -7423,7 +9728,7 @@
     "provider": "pragmatic",
     "emoji": "💎",
     "theme": "fantasy",
-    "dist": 96,
+    "dist": 97,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -7431,7 +9736,12 @@
     "tag": null,
     "img": "https://imagedelivery.net/BgH9d8bzsn4n0yijn4h7IQ/248ae82f-7f7e-4150-59bc-fe5779b22700/public",
     "link": "https://kk-judy777.vip/?id=649076826&currency=BRL&type=2",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 2.62,
+    "betMinima": 0.4,
+    "betMaxima": 11.07,
+    "betMaximaMin": 5.68,
+    "betMaximaMax": 14.23
   },
   {
     "id": 577,
@@ -7439,7 +9749,7 @@
     "provider": "pragmatic",
     "emoji": "🎰",
     "theme": "fantasy",
-    "dist": 96,
+    "dist": 92,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -7447,7 +9757,12 @@
     "tag": null,
     "img": "https://imagedelivery.net/BgH9d8bzsn4n0yijn4h7IQ/11ec2240-1842-4def-6ca0-2e8e606ac400/public",
     "link": "https://www.fy-fanta.com/?id=223975751",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 3.48,
+    "betMinima": 0.74,
+    "betMaxima": 12.59,
+    "betMaximaMin": 5.41,
+    "betMaximaMax": 13.58
   },
   {
     "id": 578,
@@ -7455,7 +9770,7 @@
     "provider": "pragmatic",
     "emoji": "🔥",
     "theme": "fantasy",
-    "dist": 96,
+    "dist": 87,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -7463,7 +9778,12 @@
     "tag": null,
     "img": "https://imagedelivery.net/BgH9d8bzsn4n0yijn4h7IQ/5313acd6-52c8-4295-b949-06f748743300/public",
     "link": "https://hms-tiradentesday.bet/?invite_code=8be79469",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 2.08,
+    "betMinima": 0.5,
+    "betMaxima": 6.56,
+    "betMaximaMin": 4.32,
+    "betMaximaMax": 12.93
   },
   {
     "id": 581,
@@ -7471,7 +9791,7 @@
     "provider": "pragmatic",
     "emoji": "🎰",
     "theme": "fantasy",
-    "dist": 96,
+    "dist": 89,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -7479,7 +9799,12 @@
     "tag": null,
     "img": "https://imagedelivery.net/BgH9d8bzsn4n0yijn4h7IQ/270a98c1-a614-47d9-03ee-dd1f57df5c00/public",
     "link": "https://br.mt-antilope.com/home?inviteCode=VEU6ZR",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 2.93,
+    "betMinima": 0.22,
+    "betMaxima": 5.16,
+    "betMaximaMin": 4.98,
+    "betMaximaMax": 15.33
   },
   {
     "id": 587,
@@ -7487,7 +9812,7 @@
     "provider": "pragmatic",
     "emoji": "🎰",
     "theme": "fantasy",
-    "dist": 96,
+    "dist": 98,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -7495,7 +9820,12 @@
     "tag": null,
     "img": "https://imagedelivery.net/BgH9d8bzsn4n0yijn4h7IQ/f967b286-a670-49f4-d0df-83a404e9e400/public",
     "link": "https://br.mt-antilope.com/home?inviteCode=VEU6ZR",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 2.46,
+    "betMinima": 0.41,
+    "betMaxima": 6.45,
+    "betMaximaMin": 5.59,
+    "betMaximaMax": 14.99
   },
   {
     "id": 592,
@@ -7511,7 +9841,12 @@
     "tag": null,
     "img": "https://imagedelivery.net/BgH9d8bzsn4n0yijn4h7IQ/03ee691f-3914-47c7-8687-68eec4d01500/public",
     "link": "https://www.onebra77.com/?source_code=TWMWECDNJ2X",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 3.44,
+    "betMinima": 0.76,
+    "betMaxima": 9.93,
+    "betMaximaMin": 5.03,
+    "betMaximaMax": 11.04
   },
   {
     "id": 593,
@@ -7519,7 +9854,7 @@
     "provider": "pragmatic",
     "emoji": "🍀",
     "theme": "chinese",
-    "dist": 96,
+    "dist": 95,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -7527,7 +9862,12 @@
     "tag": null,
     "img": "https://imagedelivery.net/BgH9d8bzsn4n0yijn4h7IQ/f33a9e14-fe7e-4ac1-5859-defdb9c29000/public",
     "link": "https://br.mt-antilope.com/home?inviteCode=VEU6ZR",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 3.29,
+    "betMinima": 0.38,
+    "betMaxima": 11.19,
+    "betMaximaMin": 5.71,
+    "betMaximaMax": 10.49
   },
   {
     "id": 594,
@@ -7535,7 +9875,7 @@
     "provider": "pragmatic",
     "emoji": "🎰",
     "theme": "fantasy",
-    "dist": 96,
+    "dist": 95,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -7543,7 +9883,12 @@
     "tag": null,
     "img": "https://imagedelivery.net/BgH9d8bzsn4n0yijn4h7IQ/0c0dfb3f-c4ba-4ddf-b3f6-e872b9e31700/public",
     "link": "https://kk-judy777.vip/?id=649076826&currency=BRL&type=2",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 2.06,
+    "betMinima": 0.42,
+    "betMaxima": 7.59,
+    "betMaximaMin": 5.41,
+    "betMaximaMax": 17.5
   },
   {
     "id": 595,
@@ -7551,7 +9896,7 @@
     "provider": "pragmatic",
     "emoji": "🎰",
     "theme": "fantasy",
-    "dist": 96,
+    "dist": 90,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -7559,7 +9904,12 @@
     "tag": null,
     "img": "https://imagedelivery.net/BgH9d8bzsn4n0yijn4h7IQ/71cc89d3-b3cf-4a40-47d8-197dda45cf00/public",
     "link": "https://www.fy-fanta.com/?id=223975751",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 2.37,
+    "betMinima": 0.25,
+    "betMaxima": 9.85,
+    "betMaximaMin": 5.59,
+    "betMaximaMax": 16.4
   },
   {
     "id": 596,
@@ -7567,7 +9917,7 @@
     "provider": "pragmatic",
     "emoji": "🎰",
     "theme": "fantasy",
-    "dist": 96,
+    "dist": 83,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -7575,7 +9925,12 @@
     "tag": null,
     "img": "https://imagedelivery.net/BgH9d8bzsn4n0yijn4h7IQ/ecf11b5c-cb7c-4ec0-0073-1ff8186a6e00/public",
     "link": "https://hms-tiradentesday.bet/?invite_code=8be79469",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 2.65,
+    "betMinima": 0.43,
+    "betMaxima": 14.45,
+    "betMaximaMin": 5.51,
+    "betMaximaMax": 16.8
   },
   {
     "id": 597,
@@ -7583,7 +9938,7 @@
     "provider": "pragmatic",
     "emoji": "🎰",
     "theme": "fantasy",
-    "dist": 96,
+    "dist": 82,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -7591,7 +9946,12 @@
     "tag": null,
     "img": "https://imagedelivery.net/BgH9d8bzsn4n0yijn4h7IQ/df8dc9d6-d20b-4228-b228-372e0e6dda00/public",
     "link": "https://coroa-gghhpg.com/?id=405842843",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 2.68,
+    "betMinima": 0.77,
+    "betMaxima": 11.01,
+    "betMaximaMin": 4.28,
+    "betMaximaMax": 13.37
   },
   {
     "id": 598,
@@ -7599,7 +9959,7 @@
     "provider": "pragmatic",
     "emoji": "🎰",
     "theme": "fantasy",
-    "dist": 96,
+    "dist": 84,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -7607,7 +9967,12 @@
     "tag": null,
     "img": "https://imagedelivery.net/BgH9d8bzsn4n0yijn4h7IQ/d0c754d8-c792-4da1-6005-63287f3e0e00/public",
     "link": "https://www.onebra77.com/?source_code=TWMWECDNJ2X",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 2.41,
+    "betMinima": 0.71,
+    "betMaxima": 11.89,
+    "betMaximaMin": 5.67,
+    "betMaximaMax": 17.66
   },
   {
     "id": 599,
@@ -7615,7 +9980,7 @@
     "provider": "pragmatic",
     "emoji": "🪙",
     "theme": "egypt",
-    "dist": 96,
+    "dist": 83,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -7623,7 +9988,12 @@
     "tag": null,
     "img": "https://imagedelivery.net/BgH9d8bzsn4n0yijn4h7IQ/df318278-36c4-432e-ee8c-51ce7029b500/public",
     "link": "https://br.mt-antilope.com/home?inviteCode=VEU6ZR",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 2.35,
+    "betMinima": 0.58,
+    "betMaxima": 14.75,
+    "betMaximaMin": 5.54,
+    "betMaximaMax": 14.39
   },
   {
     "id": 601,
@@ -7631,7 +10001,7 @@
     "provider": "pragmatic",
     "emoji": "🎰",
     "theme": "fantasy",
-    "dist": 96,
+    "dist": 87,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -7639,7 +10009,12 @@
     "tag": null,
     "img": "https://imagedelivery.net/BgH9d8bzsn4n0yijn4h7IQ/7eaaeb49-0ab6-4cd1-d7a2-d886f3d69000/public",
     "link": "https://www.fy-fanta.com/?id=223975751",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 2.56,
+    "betMinima": 0.67,
+    "betMaxima": 14.92,
+    "betMaximaMin": 4.75,
+    "betMaximaMax": 17.51
   },
   {
     "id": 602,
@@ -7647,7 +10022,7 @@
     "provider": "pragmatic",
     "emoji": "🍭",
     "theme": "candy",
-    "dist": 96,
+    "dist": 94,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -7655,7 +10030,12 @@
     "tag": null,
     "img": "https://imagedelivery.net/BgH9d8bzsn4n0yijn4h7IQ/58d8856f-a9fb-49cd-b577-2c6a33c12200/public",
     "link": "https://hms-tiradentesday.bet/?invite_code=8be79469",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 3.44,
+    "betMinima": 0.25,
+    "betMaxima": 6.67,
+    "betMaximaMin": 5.75,
+    "betMaximaMax": 17.46
   },
   {
     "id": 603,
@@ -7663,7 +10043,7 @@
     "provider": "pgsoft",
     "emoji": "🍀",
     "theme": "chinese",
-    "dist": 96,
+    "dist": 93,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -7671,7 +10051,12 @@
     "tag": null,
     "img": "https://imagedelivery.net/BgH9d8bzsn4n0yijn4h7IQ/43a5b3d4-6027-460a-f405-17daee0a2800/public",
     "link": "https://coroa-gghhpg.com/?id=405842843",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 2.95,
+    "betMinima": 0.64,
+    "betMaxima": 5.5,
+    "betMaximaMin": 5.0,
+    "betMaximaMax": 12.08
   },
   {
     "id": 604,
@@ -7679,7 +10064,7 @@
     "provider": "pragmatic",
     "emoji": "🎰",
     "theme": "fantasy",
-    "dist": 96,
+    "dist": 93,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -7687,7 +10072,12 @@
     "tag": null,
     "img": "https://imagedelivery.net/BgH9d8bzsn4n0yijn4h7IQ/575e6faa-45e2-4b39-9d40-f4158a5fd800/public",
     "link": "https://www.onebra77.com/?source_code=TWMWECDNJ2X",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 3.06,
+    "betMinima": 0.53,
+    "betMaxima": 11.06,
+    "betMaximaMin": 5.89,
+    "betMaximaMax": 15.22
   },
   {
     "id": 605,
@@ -7695,7 +10085,7 @@
     "provider": "pragmatic",
     "emoji": "🐍",
     "theme": "fantasy",
-    "dist": 96,
+    "dist": 98,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -7703,7 +10093,12 @@
     "tag": null,
     "img": "https://imagedelivery.net/BgH9d8bzsn4n0yijn4h7IQ/4d209d8a-d3aa-4259-fcdb-b98d603be600/public",
     "link": "https://br.mt-antilope.com/home?inviteCode=VEU6ZR",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 3.09,
+    "betMinima": 0.7,
+    "betMaxima": 14.42,
+    "betMaximaMin": 5.75,
+    "betMaximaMax": 17.75
   },
   {
     "id": 606,
@@ -7711,7 +10106,7 @@
     "provider": "pragmatic",
     "emoji": "🎰",
     "theme": "fantasy",
-    "dist": 96,
+    "dist": 95,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -7719,7 +10114,12 @@
     "tag": null,
     "img": "https://imagedelivery.net/BgH9d8bzsn4n0yijn4h7IQ/e5d91813-0a88-43a0-8d0f-9a79eb315200/public",
     "link": "https://kk-judy777.vip/?id=649076826&currency=BRL&type=2",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 2.7,
+    "betMinima": 0.77,
+    "betMaxima": 7.41,
+    "betMaximaMin": 5.74,
+    "betMaximaMax": 16.6
   },
   {
     "id": 607,
@@ -7735,7 +10135,12 @@
     "tag": null,
     "img": "https://imagedelivery.net/BgH9d8bzsn4n0yijn4h7IQ/cefc76b5-f791-4b0a-e9eb-be06bf003600/public",
     "link": "https://www.fy-fanta.com/?id=223975751",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 3.05,
+    "betMinima": 0.64,
+    "betMaxima": 4.71,
+    "betMaximaMin": 5.75,
+    "betMaximaMax": 15.07
   },
   {
     "id": 608,
@@ -7743,7 +10148,7 @@
     "provider": "pragmatic",
     "emoji": "🪙",
     "theme": "luxury",
-    "dist": 96,
+    "dist": 88,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -7751,7 +10156,12 @@
     "tag": null,
     "img": "https://imagedelivery.net/BgH9d8bzsn4n0yijn4h7IQ/fc2ec15d-247b-43da-271f-125d91cd3c00/public",
     "link": "https://hms-tiradentesday.bet/?invite_code=8be79469",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 2.31,
+    "betMinima": 0.58,
+    "betMaxima": 12.35,
+    "betMaximaMin": 5.4,
+    "betMaximaMax": 14.18
   },
   {
     "id": 609,
@@ -7759,7 +10169,7 @@
     "provider": "pragmatic",
     "emoji": "🐉",
     "theme": "chinese",
-    "dist": 96,
+    "dist": 90,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -7767,7 +10177,12 @@
     "tag": null,
     "img": "https://imagedelivery.net/BgH9d8bzsn4n0yijn4h7IQ/90c0acb9-ee01-4fe1-849e-7972d6f00900/public",
     "link": "https://coroa-gghhpg.com/?id=405842843",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 3.37,
+    "betMinima": 0.58,
+    "betMaxima": 6.32,
+    "betMaximaMin": 4.47,
+    "betMaximaMax": 10.69
   },
   {
     "id": 610,
@@ -7775,7 +10190,7 @@
     "provider": "pragmatic",
     "emoji": "🐉",
     "theme": "chinese",
-    "dist": 96,
+    "dist": 95,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -7783,7 +10198,12 @@
     "tag": null,
     "img": "https://imagedelivery.net/BgH9d8bzsn4n0yijn4h7IQ/64e4d69c-c670-4f62-391c-ea1ed17cab00/public",
     "link": "https://www.onebra77.com/?source_code=TWMWECDNJ2X",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 2.48,
+    "betMinima": 0.71,
+    "betMaxima": 14.65,
+    "betMaximaMin": 4.94,
+    "betMaximaMax": 16.43
   },
   {
     "id": 611,
@@ -7791,7 +10211,7 @@
     "provider": "pragmatic",
     "emoji": "🪙",
     "theme": "egypt",
-    "dist": 96,
+    "dist": 92,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -7799,7 +10219,12 @@
     "tag": null,
     "img": "https://imagedelivery.net/BgH9d8bzsn4n0yijn4h7IQ/bb69c438-e517-43f6-52a1-ca26cd5fbb00/public",
     "link": "https://br.mt-antilope.com/home?inviteCode=VEU6ZR",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 2.62,
+    "betMinima": 0.58,
+    "betMaxima": 8.24,
+    "betMaximaMin": 4.38,
+    "betMaximaMax": 17.21
   },
   {
     "id": 612,
@@ -7807,7 +10232,7 @@
     "provider": "pragmatic",
     "emoji": "🎰",
     "theme": "fantasy",
-    "dist": 96,
+    "dist": 84,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -7815,7 +10240,12 @@
     "tag": null,
     "img": "https://imagedelivery.net/BgH9d8bzsn4n0yijn4h7IQ/29a5cd77-b496-4208-dab5-5b1f6706fa00/public",
     "link": "https://kk-judy777.vip/?id=649076826&currency=BRL&type=2",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 2.44,
+    "betMinima": 0.28,
+    "betMaxima": 10.03,
+    "betMaximaMin": 5.73,
+    "betMaximaMax": 12.23
   },
   {
     "id": 613,
@@ -7823,7 +10253,7 @@
     "provider": "pragmatic",
     "emoji": "🎰",
     "theme": "fantasy",
-    "dist": 96,
+    "dist": 95,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -7831,7 +10261,12 @@
     "tag": null,
     "img": "https://imagedelivery.net/BgH9d8bzsn4n0yijn4h7IQ/7ee4e0fe-6932-4abf-cec6-a856291c5700/public",
     "link": "https://www.fy-fanta.com/?id=223975751",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 2.48,
+    "betMinima": 0.32,
+    "betMaxima": 6.21,
+    "betMaximaMin": 4.6,
+    "betMaximaMax": 11.98
   },
   {
     "id": 614,
@@ -7847,7 +10282,12 @@
     "tag": null,
     "img": "https://imagedelivery.net/BgH9d8bzsn4n0yijn4h7IQ/4802aa33-91bb-4183-a4ef-409293e9ea00/public",
     "link": "https://hms-tiradentesday.bet/?invite_code=8be79469",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 2.25,
+    "betMinima": 0.66,
+    "betMaxima": 12.25,
+    "betMaximaMin": 4.55,
+    "betMaximaMax": 11.25
   },
   {
     "id": 617,
@@ -7855,7 +10295,7 @@
     "provider": "pragmatic",
     "emoji": "🛡️",
     "theme": "fantasy",
-    "dist": 96,
+    "dist": 95,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -7863,7 +10303,12 @@
     "tag": null,
     "img": "https://imagedelivery.net/BgH9d8bzsn4n0yijn4h7IQ/a009bf79-1b8f-404a-21f8-244c452a3500/public",
     "link": "https://br.mt-antilope.com/home?inviteCode=VEU6ZR",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 2.41,
+    "betMinima": 0.61,
+    "betMaxima": 8.04,
+    "betMaximaMin": 5.4,
+    "betMaximaMax": 17.18
   },
   {
     "id": 620,
@@ -7871,7 +10316,7 @@
     "provider": "pragmatic",
     "emoji": "🍀",
     "theme": "fantasy",
-    "dist": 96,
+    "dist": 92,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -7879,7 +10324,12 @@
     "tag": null,
     "img": "https://imagedelivery.net/BgH9d8bzsn4n0yijn4h7IQ/067e9f4f-25e5-42e6-f34d-1fb5deda8500/public",
     "link": "https://hms-tiradentesday.bet/?invite_code=8be79469",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 2.08,
+    "betMinima": 0.28,
+    "betMaxima": 5.97,
+    "betMaximaMin": 4.31,
+    "betMaximaMax": 13.65
   },
   {
     "id": 621,
@@ -7887,7 +10337,7 @@
     "provider": "pragmatic",
     "emoji": "🎰",
     "theme": "fantasy",
-    "dist": 96,
+    "dist": 87,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -7895,7 +10345,12 @@
     "tag": null,
     "img": "https://imagedelivery.net/BgH9d8bzsn4n0yijn4h7IQ/770079fc-9b8a-411f-ce39-a5737f2f8200/public",
     "link": "https://coroa-gghhpg.com/?id=405842843",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 3.15,
+    "betMinima": 0.66,
+    "betMaxima": 8.95,
+    "betMaximaMin": 4.88,
+    "betMaximaMax": 10.25
   },
   {
     "id": 622,
@@ -7903,7 +10358,7 @@
     "provider": "pragmatic",
     "emoji": "🤖",
     "theme": "fantasy",
-    "dist": 96,
+    "dist": 93,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -7911,7 +10366,12 @@
     "tag": null,
     "img": "https://imagedelivery.net/BgH9d8bzsn4n0yijn4h7IQ/9d22c163-20d9-4811-be01-b19f62c8dd00/public",
     "link": "https://www.onebra77.com/?source_code=TWMWECDNJ2X",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 2.6,
+    "betMinima": 0.32,
+    "betMaxima": 5.89,
+    "betMaximaMin": 4.13,
+    "betMaximaMax": 10.73
   },
   {
     "id": 623,
@@ -7919,7 +10379,7 @@
     "provider": "pragmatic",
     "emoji": "🎰",
     "theme": "fantasy",
-    "dist": 96,
+    "dist": 91,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -7927,7 +10387,12 @@
     "tag": null,
     "img": "https://imagedelivery.net/BgH9d8bzsn4n0yijn4h7IQ/753c82f3-7101-4ba5-1003-9da0f819d400/public",
     "link": "https://br.mt-antilope.com/home?inviteCode=VEU6ZR",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 2.83,
+    "betMinima": 0.35,
+    "betMaxima": 8.65,
+    "betMaximaMin": 4.72,
+    "betMaximaMax": 17.19
   },
   {
     "id": 624,
@@ -7935,7 +10400,7 @@
     "provider": "pragmatic",
     "emoji": "🎰",
     "theme": "fantasy",
-    "dist": 96,
+    "dist": 88,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -7943,7 +10408,12 @@
     "tag": null,
     "img": "https://imagedelivery.net/BgH9d8bzsn4n0yijn4h7IQ/af534853-ae05-48e9-b0b9-06572d374d00/public",
     "link": "https://kk-judy777.vip/?id=649076826&currency=BRL&type=2",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 3.35,
+    "betMinima": 0.29,
+    "betMaxima": 13.18,
+    "betMaximaMin": 5.15,
+    "betMaximaMax": 12.89
   },
   {
     "id": 625,
@@ -7951,7 +10421,7 @@
     "provider": "pragmatic",
     "emoji": "🐯",
     "theme": "chinese",
-    "dist": 96,
+    "dist": 95,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -7959,7 +10429,12 @@
     "tag": null,
     "img": "https://imagedelivery.net/BgH9d8bzsn4n0yijn4h7IQ/f5f5519e-f9de-4f67-2da5-14f6789d1800/public",
     "link": "https://www.fy-fanta.com/?id=223975751",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 3.14,
+    "betMinima": 0.36,
+    "betMaxima": 9.48,
+    "betMaximaMin": 5.85,
+    "betMaximaMax": 13.81
   },
   {
     "id": 626,
@@ -7967,7 +10442,7 @@
     "provider": "pragmatic",
     "emoji": "🔥",
     "theme": "fantasy",
-    "dist": 96,
+    "dist": 82,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -7975,7 +10450,12 @@
     "tag": null,
     "img": "https://imagedelivery.net/BgH9d8bzsn4n0yijn4h7IQ/e5950c4e-ef5f-4778-dc27-58dcb137a400/public",
     "link": "https://hms-tiradentesday.bet/?invite_code=8be79469",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 2.96,
+    "betMinima": 0.26,
+    "betMaxima": 7.49,
+    "betMaximaMin": 4.27,
+    "betMaximaMax": 15.44
   },
   {
     "id": 627,
@@ -7983,7 +10463,7 @@
     "provider": "evolution",
     "emoji": "🎰",
     "theme": "egypt",
-    "dist": 96,
+    "dist": 92,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -7991,7 +10471,12 @@
     "tag": null,
     "img": "https://imagedelivery.net/BgH9d8bzsn4n0yijn4h7IQ/3319c980-7338-4c65-c024-5724b92f9400/public",
     "link": "https://coroa-gghhpg.com/?id=405842843",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 2.72,
+    "betMinima": 0.74,
+    "betMaxima": 7.18,
+    "betMaximaMin": 4.59,
+    "betMaximaMax": 17.01
   },
   {
     "id": 629,
@@ -8007,7 +10492,12 @@
     "tag": null,
     "img": "https://imagedelivery.net/BgH9d8bzsn4n0yijn4h7IQ/6cd6b15d-d039-4594-8ff8-9df9cba20c00/public",
     "link": "https://br.mt-antilope.com/home?inviteCode=VEU6ZR",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 2.68,
+    "betMinima": 0.75,
+    "betMaxima": 4.75,
+    "betMaximaMin": 4.51,
+    "betMaximaMax": 15.12
   },
   {
     "id": 630,
@@ -8015,7 +10505,7 @@
     "provider": "evolution",
     "emoji": "🎰",
     "theme": "fantasy",
-    "dist": 96,
+    "dist": 85,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -8023,7 +10513,12 @@
     "tag": null,
     "img": "https://imagedelivery.net/BgH9d8bzsn4n0yijn4h7IQ/6d0d5b50-a9df-48bc-3d5f-878f230f6d00/public",
     "link": "https://kk-judy777.vip/?id=649076826&currency=BRL&type=2",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 2.97,
+    "betMinima": 0.46,
+    "betMaxima": 4.54,
+    "betMaximaMin": 5.94,
+    "betMaximaMax": 11.33
   },
   {
     "id": 636,
@@ -8031,7 +10526,7 @@
     "provider": "pgsoft",
     "emoji": "🎰",
     "theme": "fantasy",
-    "dist": 96,
+    "dist": 91,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -8039,7 +10534,12 @@
     "tag": null,
     "img": "https://imagedelivery.net/BgH9d8bzsn4n0yijn4h7IQ/f47ac719-c33f-4b62-ec74-0b7f5dac5e00/public",
     "link": "https://kk-judy777.vip/?id=649076826&currency=BRL&type=2",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 2.99,
+    "betMinima": 0.62,
+    "betMaxima": 12.92,
+    "betMaximaMin": 4.98,
+    "betMaximaMax": 17.59
   },
   {
     "id": 637,
@@ -8047,7 +10547,7 @@
     "provider": "pragmatic",
     "emoji": "🎰",
     "theme": "egypt",
-    "dist": 96,
+    "dist": 93,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -8055,7 +10555,12 @@
     "tag": null,
     "img": "https://imagedelivery.net/BgH9d8bzsn4n0yijn4h7IQ/f16e6da9-248a-43e4-3133-261a392c6b00/public",
     "link": "https://www.fy-fanta.com/?id=223975751",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 3.33,
+    "betMinima": 0.33,
+    "betMaxima": 9.27,
+    "betMaximaMin": 4.74,
+    "betMaximaMax": 17.41
   },
   {
     "id": 638,
@@ -8063,7 +10568,7 @@
     "provider": "pgsoft",
     "emoji": "🐯",
     "theme": "chinese",
-    "dist": 96,
+    "dist": 97,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -8071,7 +10576,12 @@
     "tag": null,
     "img": "https://imagedelivery.net/BgH9d8bzsn4n0yijn4h7IQ/64b68f35-5445-4bac-f363-b2797c428800/public",
     "link": "https://hms-tiradentesday.bet/?invite_code=8be79469",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 2.14,
+    "betMinima": 0.3,
+    "betMaxima": 13.81,
+    "betMaximaMin": 5.79,
+    "betMaximaMax": 15.58
   },
   {
     "id": 639,
@@ -8079,7 +10589,7 @@
     "provider": "pgsoft",
     "emoji": "🎰",
     "theme": "fantasy",
-    "dist": 96,
+    "dist": 85,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -8087,7 +10597,12 @@
     "tag": null,
     "img": "https://imagedelivery.net/BgH9d8bzsn4n0yijn4h7IQ/7080ae02-26b5-45af-bd41-1566d6aeb200/public",
     "link": "https://coroa-gghhpg.com/?id=405842843",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 3.21,
+    "betMinima": 0.5,
+    "betMaxima": 9.85,
+    "betMaximaMin": 4.6,
+    "betMaximaMax": 13.19
   },
   {
     "id": 640,
@@ -8095,7 +10610,7 @@
     "provider": "pgsoft",
     "emoji": "🎰",
     "theme": "fantasy",
-    "dist": 96,
+    "dist": 82,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -8103,7 +10618,12 @@
     "tag": null,
     "img": "https://imagedelivery.net/BgH9d8bzsn4n0yijn4h7IQ/11a1b388-5441-4954-290a-df746e8bcf00/public",
     "link": "https://www.onebra77.com/?source_code=TWMWECDNJ2X",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 2.36,
+    "betMinima": 0.67,
+    "betMaxima": 12.39,
+    "betMaximaMin": 5.9,
+    "betMaximaMax": 14.11
   },
   {
     "id": 641,
@@ -8111,7 +10631,7 @@
     "provider": "pgsoft",
     "emoji": "🎰",
     "theme": "fantasy",
-    "dist": 96,
+    "dist": 84,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -8119,7 +10639,12 @@
     "tag": null,
     "img": "https://imagedelivery.net/BgH9d8bzsn4n0yijn4h7IQ/41dd569b-d706-42a6-3bbb-83246b3af300/public",
     "link": "https://br.mt-antilope.com/home?inviteCode=VEU6ZR",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 2.67,
+    "betMinima": 0.3,
+    "betMaxima": 7.81,
+    "betMaximaMin": 5.67,
+    "betMaximaMax": 13.23
   },
   {
     "id": 642,
@@ -8127,7 +10652,7 @@
     "provider": "pgsoft",
     "emoji": "🎰",
     "theme": "fantasy",
-    "dist": 96,
+    "dist": 95,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -8135,7 +10660,12 @@
     "tag": null,
     "img": "https://imagedelivery.net/BgH9d8bzsn4n0yijn4h7IQ/25d604fe-a1e6-4ca4-3a12-dd15a1d8a200/public",
     "link": "https://kk-judy777.vip/?id=649076826&currency=BRL&type=2",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 2.91,
+    "betMinima": 0.33,
+    "betMaxima": 5.87,
+    "betMaximaMin": 4.04,
+    "betMaximaMax": 15.38
   },
   {
     "id": 643,
@@ -8151,7 +10681,12 @@
     "tag": null,
     "img": "https://imagedelivery.net/BgH9d8bzsn4n0yijn4h7IQ/acac725c-27c2-44f9-6697-f30de6250100/public",
     "link": "https://www.fy-fanta.com/?id=223975751",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 2.09,
+    "betMinima": 0.79,
+    "betMaxima": 7.29,
+    "betMaximaMin": 4.07,
+    "betMaximaMax": 16.03
   },
   {
     "id": 644,
@@ -8159,7 +10694,7 @@
     "provider": "pragmatic",
     "emoji": "🎰",
     "theme": "egypt",
-    "dist": 96,
+    "dist": 84,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -8167,7 +10702,12 @@
     "tag": null,
     "img": "https://imagedelivery.net/BgH9d8bzsn4n0yijn4h7IQ/01805268-3294-49bf-ccfb-30c5978f5b00/public",
     "link": "https://hms-tiradentesday.bet/?invite_code=8be79469",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 2.06,
+    "betMinima": 0.78,
+    "betMaxima": 4.49,
+    "betMaximaMin": 4.0,
+    "betMaximaMax": 12.39
   },
   {
     "id": 645,
@@ -8175,7 +10715,7 @@
     "provider": "pgsoft",
     "emoji": "🎰",
     "theme": "fantasy",
-    "dist": 96,
+    "dist": 97,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -8183,7 +10723,12 @@
     "tag": null,
     "img": "https://imagedelivery.net/BgH9d8bzsn4n0yijn4h7IQ/71d2efaa-11be-4f18-cc82-035c627c1e00/public",
     "link": "https://coroa-gghhpg.com/?id=405842843",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 3.25,
+    "betMinima": 0.75,
+    "betMaxima": 14.47,
+    "betMaximaMin": 4.29,
+    "betMaximaMax": 12.9
   },
   {
     "id": 646,
@@ -8191,7 +10736,7 @@
     "provider": "pgsoft",
     "emoji": "🎰",
     "theme": "fantasy",
-    "dist": 96,
+    "dist": 95,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -8199,7 +10744,12 @@
     "tag": null,
     "img": "https://imagedelivery.net/BgH9d8bzsn4n0yijn4h7IQ/324704ac-387a-4f1c-31d1-abe771a22c00/public",
     "link": "https://www.onebra77.com/?source_code=TWMWECDNJ2X",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 3.37,
+    "betMinima": 0.6,
+    "betMaxima": 9.7,
+    "betMaximaMin": 4.62,
+    "betMaximaMax": 17.37
   },
   {
     "id": 647,
@@ -8207,7 +10757,7 @@
     "provider": "pgsoft",
     "emoji": "🐉",
     "theme": "chinese",
-    "dist": 96,
+    "dist": 82,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -8215,7 +10765,12 @@
     "tag": null,
     "img": "https://imagedelivery.net/BgH9d8bzsn4n0yijn4h7IQ/cbb477c0-d387-4312-4aa8-6221b143d600/public",
     "link": "https://br.mt-antilope.com/home?inviteCode=VEU6ZR",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 2.4,
+    "betMinima": 0.55,
+    "betMaxima": 9.23,
+    "betMaximaMin": 5.04,
+    "betMaximaMax": 10.1
   },
   {
     "id": 648,
@@ -8223,7 +10778,7 @@
     "provider": "pgsoft",
     "emoji": "🐓",
     "theme": "fantasy",
-    "dist": 96,
+    "dist": 84,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -8231,7 +10786,12 @@
     "tag": null,
     "img": "https://imagedelivery.net/BgH9d8bzsn4n0yijn4h7IQ/2106de80-2ab7-4255-6cf5-6b374385e000/public",
     "link": "https://kk-judy777.vip/?id=649076826&currency=BRL&type=2",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 2.99,
+    "betMinima": 0.55,
+    "betMaxima": 7.63,
+    "betMaximaMin": 5.31,
+    "betMaximaMax": 17.63
   },
   {
     "id": 649,
@@ -8247,7 +10807,12 @@
     "tag": null,
     "img": "https://imagedelivery.net/BgH9d8bzsn4n0yijn4h7IQ/1dd56e44-5e99-4e00-6acd-ccace7a17500/public",
     "link": "https://www.fy-fanta.com/?id=223975751",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 2.57,
+    "betMinima": 0.43,
+    "betMaxima": 13.0,
+    "betMaximaMin": 5.52,
+    "betMaximaMax": 13.22
   },
   {
     "id": 650,
@@ -8255,7 +10820,7 @@
     "provider": "evolution",
     "emoji": "🎰",
     "theme": "fantasy",
-    "dist": 96,
+    "dist": 93,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -8263,7 +10828,12 @@
     "tag": null,
     "img": "https://imagedelivery.net/BgH9d8bzsn4n0yijn4h7IQ/09edd6e8-f83b-4a8f-9283-679616565400/public",
     "link": "https://hms-tiradentesday.bet/?invite_code=8be79469",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 2.84,
+    "betMinima": 0.77,
+    "betMaxima": 14.3,
+    "betMaximaMin": 5.23,
+    "betMaximaMax": 17.73
   },
   {
     "id": 651,
@@ -8271,7 +10841,7 @@
     "provider": "pgsoft",
     "emoji": "🎰",
     "theme": "fantasy",
-    "dist": 96,
+    "dist": 93,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -8279,7 +10849,12 @@
     "tag": null,
     "img": "https://imagedelivery.net/BgH9d8bzsn4n0yijn4h7IQ/faf29cb2-01c0-44eb-5fa6-98bdf4c2ad00/public",
     "link": "https://coroa-gghhpg.com/?id=405842843",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 2.84,
+    "betMinima": 0.27,
+    "betMaxima": 13.22,
+    "betMaximaMin": 4.33,
+    "betMaximaMax": 10.66
   },
   {
     "id": 652,
@@ -8287,7 +10862,7 @@
     "provider": "pgsoft",
     "emoji": "🎰",
     "theme": "fantasy",
-    "dist": 96,
+    "dist": 91,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -8295,7 +10870,12 @@
     "tag": null,
     "img": "https://imagedelivery.net/BgH9d8bzsn4n0yijn4h7IQ/ac909a7f-25e4-4f50-5ef6-5249e358df00/public",
     "link": "https://www.onebra77.com/?source_code=TWMWECDNJ2X",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 2.14,
+    "betMinima": 0.47,
+    "betMaxima": 13.7,
+    "betMaximaMin": 4.86,
+    "betMaximaMax": 16.7
   },
   {
     "id": 653,
@@ -8303,7 +10883,7 @@
     "provider": "pgsoft",
     "emoji": "🎰",
     "theme": "fantasy",
-    "dist": 96,
+    "dist": 98,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -8311,7 +10891,12 @@
     "tag": null,
     "img": "https://static.betfusion.bet.br/deploy-0dc17437db93f1cd9e19afdaf49f020a13a98cc6-266a430573433836561d/assets/customized-games/BT-JELLYEXPRESS.jpg",
     "link": "https://br.mt-antilope.com/home?inviteCode=VEU6ZR",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 3.23,
+    "betMinima": 0.74,
+    "betMaxima": 4.3,
+    "betMaximaMin": 4.71,
+    "betMaximaMax": 10.2
   },
   {
     "id": 654,
@@ -8319,7 +10904,7 @@
     "provider": "pgsoft",
     "emoji": "❄️",
     "theme": "fantasy",
-    "dist": 96,
+    "dist": 86,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -8327,7 +10912,12 @@
     "tag": null,
     "img": "https://imagedelivery.net/BgH9d8bzsn4n0yijn4h7IQ/84bd2159-6f89-4e87-228e-bc511e208200/public",
     "link": "https://kk-judy777.vip/?id=649076826&currency=BRL&type=2",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 2.21,
+    "betMinima": 0.64,
+    "betMaxima": 14.83,
+    "betMaximaMin": 4.04,
+    "betMaximaMax": 13.51
   },
   {
     "id": 655,
@@ -8335,7 +10925,7 @@
     "provider": "pgsoft",
     "emoji": "🎰",
     "theme": "fantasy",
-    "dist": 96,
+    "dist": 88,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -8343,7 +10933,12 @@
     "tag": null,
     "img": "https://imagedelivery.net/BgH9d8bzsn4n0yijn4h7IQ/502c014b-601d-40fc-b2cb-de10fa3b1a00/public",
     "link": "https://www.fy-fanta.com/?id=223975751",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 2.98,
+    "betMinima": 0.75,
+    "betMaxima": 7.44,
+    "betMaximaMin": 4.63,
+    "betMaximaMax": 16.98
   },
   {
     "id": 656,
@@ -8351,7 +10946,7 @@
     "provider": "pgsoft",
     "emoji": "🎰",
     "theme": "aztec",
-    "dist": 96,
+    "dist": 92,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -8359,7 +10954,12 @@
     "tag": null,
     "img": "https://static.betfusion.bet.br/deploy-0dc17437db93f1cd9e19afdaf49f020a13a98cc6-266a430573433836561d/assets/customized-games/BT-INCAQUEEN.jpg",
     "link": "https://hms-tiradentesday.bet/?invite_code=8be79469",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 2.42,
+    "betMinima": 0.65,
+    "betMaxima": 8.95,
+    "betMaximaMin": 4.11,
+    "betMaximaMax": 11.75
   },
   {
     "id": 657,
@@ -8367,7 +10967,7 @@
     "provider": "pragmatic",
     "emoji": "⚡",
     "theme": "greek",
-    "dist": 96,
+    "dist": 85,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -8375,7 +10975,12 @@
     "tag": null,
     "img": "https://static.betfusion.bet.br/deploy-0dc17437db93f1cd9e19afdaf49f020a13a98cc6-266a430573433836561d/assets/customized-games/BT-GOOR.jpg",
     "link": "https://coroa-gghhpg.com/?id=405842843",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 2.4,
+    "betMinima": 0.55,
+    "betMaxima": 10.82,
+    "betMaximaMin": 5.22,
+    "betMaximaMax": 16.47
   },
   {
     "id": 658,
@@ -8383,7 +10988,7 @@
     "provider": "pgsoft",
     "emoji": "🎰",
     "theme": "fantasy",
-    "dist": 96,
+    "dist": 89,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -8391,7 +10996,12 @@
     "tag": null,
     "img": "https://www.rainhadoslot.com.br/static/image/games/pg-soft/197.webp",
     "link": "https://www.onebra77.com/?source_code=TWMWECDNJ2X",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 2.64,
+    "betMinima": 0.35,
+    "betMaxima": 12.89,
+    "betMaximaMin": 5.8,
+    "betMaximaMax": 11.25
   },
   {
     "id": 659,
@@ -8399,7 +11009,7 @@
     "provider": "pgsoft",
     "emoji": "🍭",
     "theme": "candy",
-    "dist": 96,
+    "dist": 87,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -8407,7 +11017,12 @@
     "tag": null,
     "img": "https://www.rainhadoslot.com.br/static/image/games/pg-soft/100.webp",
     "link": "https://br.mt-antilope.com/home?inviteCode=VEU6ZR",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 2.36,
+    "betMinima": 0.36,
+    "betMaxima": 10.06,
+    "betMaximaMin": 5.82,
+    "betMaximaMax": 11.75
   },
   {
     "id": 660,
@@ -8415,7 +11030,7 @@
     "provider": "pgsoft",
     "emoji": "🎰",
     "theme": "fantasy",
-    "dist": 96,
+    "dist": 92,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -8423,7 +11038,12 @@
     "tag": null,
     "img": "https://www.rainhadoslot.com.br/static/image/games/pg-soft/199.webp",
     "link": "https://kk-judy777.vip/?id=649076826&currency=BRL&type=2",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 2.74,
+    "betMinima": 0.63,
+    "betMaxima": 9.01,
+    "betMaximaMin": 5.77,
+    "betMaximaMax": 16.57
   },
   {
     "id": 661,
@@ -8431,7 +11051,7 @@
     "provider": "pgsoft",
     "emoji": "🎰",
     "theme": "fantasy",
-    "dist": 96,
+    "dist": 97,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -8439,7 +11059,12 @@
     "tag": null,
     "img": "https://www.rainhadoslot.com.br/static/image/games/pg-soft/59.webp",
     "link": "https://www.fy-fanta.com/?id=223975751",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 2.9,
+    "betMinima": 0.76,
+    "betMaxima": 4.3,
+    "betMaximaMin": 5.26,
+    "betMaximaMax": 10.67
   },
   {
     "id": 662,
@@ -8447,7 +11072,7 @@
     "provider": "pgsoft",
     "emoji": "🐺",
     "theme": "western",
-    "dist": 96,
+    "dist": 95,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -8455,7 +11080,12 @@
     "tag": null,
     "img": "https://www.rainhadoslot.com.br/static/image/games/pg-soft/42.webp",
     "link": "https://hms-tiradentesday.bet/?invite_code=8be79469",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 3.45,
+    "betMinima": 0.62,
+    "betMaxima": 5.81,
+    "betMaximaMin": 5.63,
+    "betMaximaMax": 15.63
   },
   {
     "id": 663,
@@ -8463,7 +11093,7 @@
     "provider": "pgsoft",
     "emoji": "⚡",
     "theme": "chinese",
-    "dist": 96,
+    "dist": 91,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -8471,7 +11101,12 @@
     "tag": null,
     "img": "https://www.rainhadoslot.com.br/static/image/games/pg-soft/14.webp",
     "link": "https://coroa-gghhpg.com/?id=405842843",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 2.61,
+    "betMinima": 0.59,
+    "betMaxima": 6.43,
+    "betMaximaMin": 4.26,
+    "betMaximaMax": 12.58
   },
   {
     "id": 665,
@@ -8479,7 +11114,7 @@
     "provider": "pgsoft",
     "emoji": "🎰",
     "theme": "fantasy",
-    "dist": 96,
+    "dist": 95,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -8487,7 +11122,12 @@
     "tag": null,
     "img": "https://www.rainhadoslot.com.br/static/image/games/pg-soft/139.webp",
     "link": "https://br.mt-antilope.com/home?inviteCode=VEU6ZR",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 2.87,
+    "betMinima": 0.34,
+    "betMaxima": 4.86,
+    "betMaximaMin": 4.94,
+    "betMaximaMax": 16.0
   },
   {
     "id": 666,
@@ -8495,7 +11135,7 @@
     "provider": "pgsoft",
     "emoji": "🎰",
     "theme": "fantasy",
-    "dist": 96,
+    "dist": 83,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -8503,7 +11143,12 @@
     "tag": null,
     "img": "https://www.rainhadoslot.com.br/static/image/games/pg-soft/190.webp",
     "link": "https://kk-judy777.vip/?id=649076826&currency=BRL&type=2",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 2.52,
+    "betMinima": 0.29,
+    "betMaxima": 14.62,
+    "betMaximaMin": 4.93,
+    "betMaximaMax": 16.92
   },
   {
     "id": 667,
@@ -8519,7 +11164,12 @@
     "tag": null,
     "img": "https://www.rainhadoslot.com.br/static/image/games/pg-soft/192.webp",
     "link": "https://www.fy-fanta.com/?id=223975751",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 2.88,
+    "betMinima": 0.28,
+    "betMaxima": 12.81,
+    "betMaximaMin": 4.19,
+    "betMaximaMax": 10.64
   },
   {
     "id": 668,
@@ -8527,7 +11177,7 @@
     "provider": "pgsoft",
     "emoji": "📚",
     "theme": "fantasy",
-    "dist": 96,
+    "dist": 95,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -8535,7 +11185,12 @@
     "tag": null,
     "img": "https://www.rainhadoslot.com.br/static/image/games/pg-soft/114.webp",
     "link": "https://hms-tiradentesday.bet/?invite_code=8be79469",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 3.22,
+    "betMinima": 0.43,
+    "betMaxima": 6.84,
+    "betMaximaMin": 5.82,
+    "betMaximaMax": 15.14
   },
   {
     "id": 669,
@@ -8543,7 +11198,7 @@
     "provider": "pgsoft",
     "emoji": "🎰",
     "theme": "fantasy",
-    "dist": 96,
+    "dist": 83,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -8551,7 +11206,12 @@
     "tag": null,
     "img": "https://www.rainhadoslot.com.br/static/image/games/pg-soft/70.webp",
     "link": "https://coroa-gghhpg.com/?id=405842843",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 2.37,
+    "betMinima": 0.24,
+    "betMaxima": 5.2,
+    "betMaximaMin": 4.72,
+    "betMaximaMax": 10.54
   },
   {
     "id": 670,
@@ -8559,7 +11219,7 @@
     "provider": "pgsoft",
     "emoji": "🎰",
     "theme": "fantasy",
-    "dist": 96,
+    "dist": 91,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -8567,7 +11227,12 @@
     "tag": null,
     "img": "https://www.rainhadoslot.com.br/static/image/games/pg-soft/202.webp",
     "link": "https://www.onebra77.com/?source_code=TWMWECDNJ2X",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 2.96,
+    "betMinima": 0.45,
+    "betMaxima": 4.4,
+    "betMaximaMin": 5.0,
+    "betMaximaMax": 14.79
   },
   {
     "id": 671,
@@ -8575,7 +11240,7 @@
     "provider": "pgsoft",
     "emoji": "🛡️",
     "theme": "fantasy",
-    "dist": 96,
+    "dist": 97,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -8583,7 +11248,12 @@
     "tag": null,
     "img": "https://www.rainhadoslot.com.br/static/image/games/pg-soft/67.webp",
     "link": "https://br.mt-antilope.com/home?inviteCode=VEU6ZR",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 2.46,
+    "betMinima": 0.29,
+    "betMaxima": 5.69,
+    "betMaximaMin": 4.42,
+    "betMaximaMax": 13.7
   },
   {
     "id": 672,
@@ -8591,7 +11261,7 @@
     "provider": "pgsoft",
     "emoji": "🎭",
     "theme": "fantasy",
-    "dist": 96,
+    "dist": 90,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -8599,7 +11269,12 @@
     "tag": null,
     "img": "https://www.rainhadoslot.com.br/static/image/games/pg-soft/82.webp",
     "link": "https://kk-judy777.vip/?id=649076826&currency=BRL&type=2",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 2.55,
+    "betMinima": 0.59,
+    "betMaxima": 10.08,
+    "betMaximaMin": 5.25,
+    "betMaximaMax": 11.97
   },
   {
     "id": 673,
@@ -8607,7 +11282,7 @@
     "provider": "pgsoft",
     "emoji": "🎰",
     "theme": "fantasy",
-    "dist": 96,
+    "dist": 92,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -8615,7 +11290,12 @@
     "tag": null,
     "img": "https://www.rainhadoslot.com.br/static/image/games/pg-soft/104.webp",
     "link": "https://www.fy-fanta.com/?id=223975751",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 2.29,
+    "betMinima": 0.74,
+    "betMaxima": 7.83,
+    "betMaximaMin": 4.91,
+    "betMaximaMax": 16.99
   },
   {
     "id": 674,
@@ -8623,7 +11303,7 @@
     "provider": "pgsoft",
     "emoji": "🐵",
     "theme": "fantasy",
-    "dist": 96,
+    "dist": 86,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -8631,7 +11311,12 @@
     "tag": null,
     "img": "https://www.rainhadoslot.com.br/static/image/games/pg-soft/86.webp",
     "link": "https://hms-tiradentesday.bet/?invite_code=8be79469",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 2.59,
+    "betMinima": 0.34,
+    "betMaxima": 12.77,
+    "betMaximaMin": 4.22,
+    "betMaximaMax": 16.07
   },
   {
     "id": 675,
@@ -8647,7 +11332,12 @@
     "tag": null,
     "img": "https://www.rainhadoslot.com.br/static/image/games/pg-soft/87.webp",
     "link": "https://coroa-gghhpg.com/?id=405842843",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 2.92,
+    "betMinima": 0.55,
+    "betMaxima": 5.8,
+    "betMaximaMin": 5.52,
+    "betMaximaMax": 15.77
   },
   {
     "id": 676,
@@ -8655,7 +11345,7 @@
     "provider": "pgsoft",
     "emoji": "🍀",
     "theme": "chinese",
-    "dist": 96,
+    "dist": 93,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -8663,7 +11353,12 @@
     "tag": null,
     "img": "https://www.rainhadoslot.com.br/static/image/games/pg-soft/182.webp",
     "link": "https://www.onebra77.com/?source_code=TWMWECDNJ2X",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 2.8,
+    "betMinima": 0.64,
+    "betMaxima": 6.1,
+    "betMaximaMin": 4.07,
+    "betMaximaMax": 15.34
   },
   {
     "id": 677,
@@ -8671,7 +11366,7 @@
     "provider": "pgsoft",
     "emoji": "🎰",
     "theme": "fantasy",
-    "dist": 96,
+    "dist": 94,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -8679,7 +11374,12 @@
     "tag": null,
     "img": "https://www.rainhadoslot.com.br/static/image/games/pg-soft/186.webp",
     "link": "https://br.mt-antilope.com/home?inviteCode=VEU6ZR",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 2.55,
+    "betMinima": 0.41,
+    "betMaxima": 14.16,
+    "betMaximaMin": 4.51,
+    "betMaximaMax": 12.55
   },
   {
     "id": 678,
@@ -8687,7 +11387,7 @@
     "provider": "pgsoft",
     "emoji": "🎰",
     "theme": "egypt",
-    "dist": 96,
+    "dist": 92,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -8695,7 +11395,12 @@
     "tag": null,
     "img": "https://www.rainhadoslot.com.br/static/image/games/pg-soft/63.webp",
     "link": "https://kk-judy777.vip/?id=649076826&currency=BRL&type=2",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 3.13,
+    "betMinima": 0.37,
+    "betMaxima": 4.09,
+    "betMaximaMin": 4.61,
+    "betMaximaMax": 13.11
   },
   {
     "id": 679,
@@ -8703,7 +11408,7 @@
     "provider": "pgsoft",
     "emoji": "🎰",
     "theme": "fantasy",
-    "dist": 96,
+    "dist": 95,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -8711,7 +11416,12 @@
     "tag": null,
     "img": "https://www.rainhadoslot.com.br/static/image/games/pg-soft/126.webp",
     "link": "https://www.fy-fanta.com/?id=223975751",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 3.4,
+    "betMinima": 0.79,
+    "betMaxima": 6.02,
+    "betMaximaMin": 5.89,
+    "betMaximaMax": 13.78
   },
   {
     "id": 680,
@@ -8719,7 +11429,7 @@
     "provider": "pgsoft",
     "emoji": "🎰",
     "theme": "fantasy",
-    "dist": 96,
+    "dist": 83,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -8727,7 +11437,12 @@
     "tag": null,
     "img": "https://www.rainhadoslot.com.br/static/image/games/pg-soft/46.webp",
     "link": "https://hms-tiradentesday.bet/?invite_code=8be79469",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 3.37,
+    "betMinima": 0.72,
+    "betMaxima": 9.22,
+    "betMaximaMin": 4.59,
+    "betMaximaMax": 17.15
   },
   {
     "id": 681,
@@ -8735,7 +11450,7 @@
     "provider": "pgsoft",
     "emoji": "🎰",
     "theme": "fantasy",
-    "dist": 96,
+    "dist": 84,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -8743,7 +11458,12 @@
     "tag": null,
     "img": "https://www.rainhadoslot.com.br/static/image/games/pg-soft/178.webp",
     "link": "https://coroa-gghhpg.com/?id=405842843",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 3.24,
+    "betMinima": 0.45,
+    "betMaxima": 13.96,
+    "betMaximaMin": 4.47,
+    "betMaximaMax": 16.47
   },
   {
     "id": 683,
@@ -8751,7 +11471,7 @@
     "provider": "pgsoft",
     "emoji": "🎰",
     "theme": "fantasy",
-    "dist": 96,
+    "dist": 97,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -8759,7 +11479,12 @@
     "tag": null,
     "img": "https://www.rainhadoslot.com.br/static/image/games/pg-soft/198.webp",
     "link": "https://br.mt-antilope.com/home?inviteCode=VEU6ZR",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 2.99,
+    "betMinima": 0.51,
+    "betMaxima": 13.73,
+    "betMaximaMin": 4.82,
+    "betMaximaMax": 13.0
   },
   {
     "id": 684,
@@ -8767,7 +11492,7 @@
     "provider": "pgsoft",
     "emoji": "🎰",
     "theme": "fantasy",
-    "dist": 96,
+    "dist": 97,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -8775,7 +11500,12 @@
     "tag": null,
     "img": "https://www.rainhadoslot.com.br/static/image/games/pg-soft/79.webp",
     "link": "https://kk-judy777.vip/?id=649076826&currency=BRL&type=2",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 2.48,
+    "betMinima": 0.51,
+    "betMaxima": 13.16,
+    "betMaximaMin": 4.27,
+    "betMaximaMax": 13.68
   },
   {
     "id": 685,
@@ -8783,7 +11513,7 @@
     "provider": "pgsoft",
     "emoji": "💎",
     "theme": "luxury",
-    "dist": 96,
+    "dist": 95,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -8791,7 +11521,12 @@
     "tag": null,
     "img": "https://www.rainhadoslot.com.br/static/image/games/pg-soft/99.webp",
     "link": "https://www.fy-fanta.com/?id=223975751",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 2.89,
+    "betMinima": 0.73,
+    "betMaxima": 14.69,
+    "betMaximaMin": 5.0,
+    "betMaximaMax": 16.14
   },
   {
     "id": 686,
@@ -8799,7 +11534,7 @@
     "provider": "pgsoft",
     "emoji": "🎰",
     "theme": "fantasy",
-    "dist": 96,
+    "dist": 82,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -8807,7 +11542,12 @@
     "tag": null,
     "img": "https://www.rainhadoslot.com.br/static/image/games/pg-soft/195.webp",
     "link": "https://hms-tiradentesday.bet/?invite_code=8be79469",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 3.05,
+    "betMinima": 0.68,
+    "betMaxima": 6.68,
+    "betMaximaMin": 5.27,
+    "betMaximaMax": 16.96
   },
   {
     "id": 687,
@@ -8815,7 +11555,7 @@
     "provider": "pgsoft",
     "emoji": "🎰",
     "theme": "fantasy",
-    "dist": 96,
+    "dist": 91,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -8823,7 +11563,12 @@
     "tag": null,
     "img": "https://www.rainhadoslot.com.br/static/image/games/pg-soft/75.webp",
     "link": "https://coroa-gghhpg.com/?id=405842843",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 2.62,
+    "betMinima": 0.39,
+    "betMaxima": 9.87,
+    "betMaximaMin": 4.8,
+    "betMaximaMax": 10.22
   },
   {
     "id": 688,
@@ -8839,7 +11584,12 @@
     "tag": null,
     "img": "https://www.rainhadoslot.com.br/static/image/games/pg-soft/109.webp",
     "link": "https://www.onebra77.com/?source_code=TWMWECDNJ2X",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 3.39,
+    "betMinima": 0.6,
+    "betMaxima": 6.18,
+    "betMaximaMin": 4.36,
+    "betMaximaMax": 16.72
   },
   {
     "id": 689,
@@ -8855,7 +11605,12 @@
     "tag": null,
     "img": "https://www.rainhadoslot.com.br/static/image/games/pg-soft/191.webp",
     "link": "https://br.mt-antilope.com/home?inviteCode=VEU6ZR",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 2.15,
+    "betMinima": 0.65,
+    "betMaxima": 11.74,
+    "betMaximaMin": 5.23,
+    "betMaximaMax": 14.37
   },
   {
     "id": 690,
@@ -8863,7 +11618,7 @@
     "provider": "pgsoft",
     "emoji": "🎰",
     "theme": "fantasy",
-    "dist": 96,
+    "dist": 89,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -8871,7 +11626,12 @@
     "tag": null,
     "img": "https://www.rainhadoslot.com.br/static/image/games/pg-soft/103.webp",
     "link": "https://kk-judy777.vip/?id=649076826&currency=BRL&type=2",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 2.36,
+    "betMinima": 0.25,
+    "betMaxima": 9.03,
+    "betMaximaMin": 5.21,
+    "betMaximaMax": 17.75
   },
   {
     "id": 691,
@@ -8879,7 +11639,7 @@
     "provider": "pgsoft",
     "emoji": "🌊",
     "theme": "fantasy",
-    "dist": 96,
+    "dist": 95,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -8887,7 +11647,12 @@
     "tag": null,
     "img": "https://www.rainhadoslot.com.br/static/image/games/pg-soft/5.webp",
     "link": "https://www.fy-fanta.com/?id=223975751",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 2.71,
+    "betMinima": 0.37,
+    "betMaxima": 6.42,
+    "betMaximaMin": 5.1,
+    "betMaximaMax": 11.95
   },
   {
     "id": 692,
@@ -8895,7 +11660,7 @@
     "provider": "pgsoft",
     "emoji": "🎰",
     "theme": "egypt",
-    "dist": 96,
+    "dist": 94,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -8903,7 +11668,12 @@
     "tag": null,
     "img": "https://www.rainhadoslot.com.br/static/image/games/pg-soft/183.webp",
     "link": "https://hms-tiradentesday.bet/?invite_code=8be79469",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 2.08,
+    "betMinima": 0.29,
+    "betMaxima": 11.95,
+    "betMaximaMin": 5.02,
+    "betMaximaMax": 17.58
   },
   {
     "id": 693,
@@ -8919,7 +11689,12 @@
     "tag": null,
     "img": "https://www.rainhadoslot.com.br/static/image/games/pg-soft/69.webp",
     "link": "https://coroa-gghhpg.com/?id=405842843",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 3.46,
+    "betMinima": 0.35,
+    "betMaxima": 14.6,
+    "betMaximaMin": 5.21,
+    "betMaximaMax": 16.91
   },
   {
     "id": 694,
@@ -8927,7 +11702,7 @@
     "provider": "pgsoft",
     "emoji": "🎰",
     "theme": "fantasy",
-    "dist": 96,
+    "dist": 91,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -8935,7 +11710,12 @@
     "tag": null,
     "img": "https://www.rainhadoslot.com.br/static/image/games/pg-soft/201.webp",
     "link": "https://www.onebra77.com/?source_code=TWMWECDNJ2X",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 2.58,
+    "betMinima": 0.31,
+    "betMaxima": 11.51,
+    "betMaximaMin": 5.26,
+    "betMaximaMax": 11.77
   },
   {
     "id": 695,
@@ -8943,7 +11723,7 @@
     "provider": "pgsoft",
     "emoji": "💎",
     "theme": "fantasy",
-    "dist": 96,
+    "dist": 94,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -8951,7 +11731,12 @@
     "tag": null,
     "img": "https://www.rainhadoslot.com.br/static/image/games/pg-soft/143.webp",
     "link": "https://br.mt-antilope.com/home?inviteCode=VEU6ZR",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 2.36,
+    "betMinima": 0.53,
+    "betMaxima": 10.38,
+    "betMaximaMin": 4.57,
+    "betMaximaMax": 13.41
   },
   {
     "id": 696,
@@ -8959,7 +11744,7 @@
     "provider": "pgsoft",
     "emoji": "🎰",
     "theme": "fantasy",
-    "dist": 96,
+    "dist": 95,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -8967,7 +11752,12 @@
     "tag": null,
     "img": "https://www.rainhadoslot.com.br/static/image/games/pg-soft/85.webp",
     "link": "https://kk-judy777.vip/?id=649076826&currency=BRL&type=2",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 3.14,
+    "betMinima": 0.79,
+    "betMaxima": 11.59,
+    "betMaximaMin": 5.38,
+    "betMaximaMax": 13.82
   },
   {
     "id": 697,
@@ -8975,7 +11765,7 @@
     "provider": "pgsoft",
     "emoji": "🔥",
     "theme": "fantasy",
-    "dist": 96,
+    "dist": 90,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -8983,7 +11773,12 @@
     "tag": null,
     "img": "https://www.rainhadoslot.com.br/static/image/games/pg-soft/102.webp",
     "link": "https://www.fy-fanta.com/?id=223975751",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 2.52,
+    "betMinima": 0.25,
+    "betMaxima": 6.44,
+    "betMaximaMin": 4.47,
+    "betMaximaMax": 13.12
   },
   {
     "id": 698,
@@ -8991,7 +11786,7 @@
     "provider": "pgsoft",
     "emoji": "⚔️",
     "theme": "egypt",
-    "dist": 96,
+    "dist": 91,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -8999,7 +11794,12 @@
     "tag": null,
     "img": "https://www.rainhadoslot.com.br/static/image/games/pg-soft/105.webp",
     "link": "https://hms-tiradentesday.bet/?invite_code=8be79469",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 2.44,
+    "betMinima": 0.69,
+    "betMaxima": 8.79,
+    "betMaximaMin": 4.3,
+    "betMaximaMax": 11.18
   },
   {
     "id": 699,
@@ -9007,7 +11807,7 @@
     "provider": "pgsoft",
     "emoji": "🎰",
     "theme": "fantasy",
-    "dist": 96,
+    "dist": 97,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -9015,7 +11815,12 @@
     "tag": null,
     "img": "https://www.rainhadoslot.com.br/static/image/games/pg-soft/185.webp",
     "link": "https://coroa-gghhpg.com/?id=405842843",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 3.09,
+    "betMinima": 0.78,
+    "betMaxima": 11.33,
+    "betMaximaMin": 4.08,
+    "betMaximaMax": 15.1
   },
   {
     "id": 700,
@@ -9023,7 +11828,7 @@
     "provider": "pgsoft",
     "emoji": "🎰",
     "theme": "fantasy",
-    "dist": 96,
+    "dist": 91,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -9031,7 +11836,12 @@
     "tag": null,
     "img": "https://www.rainhadoslot.com.br/static/image/games/pg-soft/15.webp",
     "link": "https://www.onebra77.com/?source_code=TWMWECDNJ2X",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 2.58,
+    "betMinima": 0.63,
+    "betMaxima": 14.29,
+    "betMaximaMin": 5.38,
+    "betMaximaMax": 11.82
   },
   {
     "id": 701,
@@ -9039,7 +11849,7 @@
     "provider": "pgsoft",
     "emoji": "💎",
     "theme": "fantasy",
-    "dist": 96,
+    "dist": 94,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -9047,7 +11857,12 @@
     "tag": null,
     "img": "https://www.rainhadoslot.com.br/static/image/games/pg-soft/142.webp",
     "link": "https://br.mt-antilope.com/home?inviteCode=VEU6ZR",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 2.82,
+    "betMinima": 0.3,
+    "betMaxima": 4.54,
+    "betMaximaMin": 4.68,
+    "betMaximaMax": 13.3
   },
   {
     "id": 702,
@@ -9055,7 +11870,7 @@
     "provider": "pgsoft",
     "emoji": "🏺",
     "theme": "egypt",
-    "dist": 96,
+    "dist": 95,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -9063,7 +11878,12 @@
     "tag": null,
     "img": "https://www.rainhadoslot.com.br/static/image/games/pg-soft/194.webp",
     "link": "https://kk-judy777.vip/?id=649076826&currency=BRL&type=2",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 3.25,
+    "betMinima": 0.24,
+    "betMaxima": 7.84,
+    "betMaximaMin": 4.44,
+    "betMaximaMax": 15.85
   },
   {
     "id": 703,
@@ -9071,7 +11891,7 @@
     "provider": "pgsoft",
     "emoji": "🎰",
     "theme": "fantasy",
-    "dist": 96,
+    "dist": 93,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -9079,7 +11899,12 @@
     "tag": null,
     "img": "https://www.rainhadoslot.com.br/static/image/games/pg-soft/56.webp",
     "link": "https://www.fy-fanta.com/?id=223975751",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 2.53,
+    "betMinima": 0.75,
+    "betMaxima": 9.21,
+    "betMaximaMin": 5.72,
+    "betMaximaMax": 11.29
   },
   {
     "id": 705,
@@ -9087,7 +11912,7 @@
     "provider": "pgsoft",
     "emoji": "🎰",
     "theme": "asian",
-    "dist": 96,
+    "dist": 98,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -9095,7 +11920,12 @@
     "tag": null,
     "img": "https://www.rainhadoslot.com.br/static/image/games/pg-soft/98.webp",
     "link": "https://coroa-gghhpg.com/?id=405842843",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 3.0,
+    "betMinima": 0.31,
+    "betMaxima": 13.32,
+    "betMaximaMin": 4.6,
+    "betMaximaMax": 17.52
   },
   {
     "id": 706,
@@ -9103,7 +11933,7 @@
     "provider": "pgsoft",
     "emoji": "💎",
     "theme": "space",
-    "dist": 96,
+    "dist": 83,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -9111,7 +11941,12 @@
     "tag": null,
     "img": "https://www.rainhadoslot.com.br/static/image/games/pg-soft/134.webp",
     "link": "https://www.onebra77.com/?source_code=TWMWECDNJ2X",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 2.32,
+    "betMinima": 0.36,
+    "betMaxima": 5.28,
+    "betMaximaMin": 4.02,
+    "betMaximaMax": 13.18
   },
   {
     "id": 707,
@@ -9119,7 +11954,7 @@
     "provider": "pgsoft",
     "emoji": "🀄",
     "theme": "chinese",
-    "dist": 96,
+    "dist": 95,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -9127,7 +11962,12 @@
     "tag": null,
     "img": "https://www.rainhadoslot.com.br/static/image/games/pg-soft/116.webp",
     "link": "https://br.mt-antilope.com/home?inviteCode=VEU6ZR",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 3.35,
+    "betMinima": 0.57,
+    "betMaxima": 7.33,
+    "betMaximaMin": 5.77,
+    "betMaximaMax": 17.86
   },
   {
     "id": 708,
@@ -9135,7 +11975,7 @@
     "provider": "pgsoft",
     "emoji": "🍀",
     "theme": "chinese",
-    "dist": 96,
+    "dist": 94,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -9143,7 +11983,12 @@
     "tag": null,
     "img": "https://www.rainhadoslot.com.br/static/image/games/pg-soft/200.webp",
     "link": "https://kk-judy777.vip/?id=649076826&currency=BRL&type=2",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 3.16,
+    "betMinima": 0.27,
+    "betMaxima": 9.89,
+    "betMaximaMin": 4.57,
+    "betMaximaMax": 16.45
   },
   {
     "id": 709,
@@ -9151,7 +11996,7 @@
     "provider": "pgsoft",
     "emoji": "🎰",
     "theme": "fantasy",
-    "dist": 96,
+    "dist": 97,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -9159,7 +12004,12 @@
     "tag": null,
     "img": "https://www.rainhadoslot.com.br/static/image/games/pg-soft/188.webp",
     "link": "https://www.fy-fanta.com/?id=223975751",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 2.68,
+    "betMinima": 0.54,
+    "betMaxima": 5.35,
+    "betMaximaMin": 4.72,
+    "betMaximaMax": 12.03
   },
   {
     "id": 710,
@@ -9167,7 +12017,7 @@
     "provider": "pgsoft",
     "emoji": "🐱",
     "theme": "fantasy",
-    "dist": 96,
+    "dist": 94,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -9175,7 +12025,12 @@
     "tag": null,
     "img": "https://www.rainhadoslot.com.br/static/image/games/pg-soft/92.webp",
     "link": "https://hms-tiradentesday.bet/?invite_code=8be79469",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 3.31,
+    "betMinima": 0.22,
+    "betMaxima": 10.56,
+    "betMaximaMin": 5.93,
+    "betMaximaMax": 14.57
   },
   {
     "id": 711,
@@ -9183,7 +12038,7 @@
     "provider": "pgsoft",
     "emoji": "🎰",
     "theme": "fantasy",
-    "dist": 96,
+    "dist": 93,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -9191,7 +12046,12 @@
     "tag": null,
     "img": "https://www.rainhadoslot.com.br/static/image/games/pg-soft/110.webp",
     "link": "https://coroa-gghhpg.com/?id=405842843",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 2.48,
+    "betMinima": 0.4,
+    "betMaxima": 10.04,
+    "betMaximaMin": 5.53,
+    "betMaximaMax": 11.37
   },
   {
     "id": 712,
@@ -9199,7 +12059,7 @@
     "provider": "pgsoft",
     "emoji": "🎰",
     "theme": "fantasy",
-    "dist": 96,
+    "dist": 98,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -9207,7 +12067,12 @@
     "tag": null,
     "img": "https://www.rainhadoslot.com.br/static/image/games/pg-soft/84.webp",
     "link": "https://www.onebra77.com/?source_code=TWMWECDNJ2X",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 2.66,
+    "betMinima": 0.63,
+    "betMaxima": 5.92,
+    "betMaximaMin": 4.67,
+    "betMaximaMax": 17.68
   },
   {
     "id": 714,
@@ -9215,7 +12080,7 @@
     "provider": "pgsoft",
     "emoji": "🍀",
     "theme": "fantasy",
-    "dist": 96,
+    "dist": 95,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -9223,7 +12088,12 @@
     "tag": null,
     "img": "https://www.rainhadoslot.com.br/static/image/games/pg-soft/68.webp",
     "link": "https://kk-judy777.vip/?id=649076826&currency=BRL&type=2",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 2.95,
+    "betMinima": 0.62,
+    "betMaxima": 6.99,
+    "betMaximaMin": 4.46,
+    "betMaximaMax": 17.93
   },
   {
     "id": 715,
@@ -9231,7 +12101,7 @@
     "provider": "pgsoft",
     "emoji": "🎰",
     "theme": "egypt",
-    "dist": 96,
+    "dist": 89,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -9239,7 +12109,12 @@
     "tag": null,
     "img": "https://www.rainhadoslot.com.br/static/image/games/pg-soft/184.webp",
     "link": "https://www.fy-fanta.com/?id=223975751",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 2.06,
+    "betMinima": 0.5,
+    "betMaxima": 10.78,
+    "betMaximaMin": 5.85,
+    "betMaximaMax": 11.92
   },
   {
     "id": 716,
@@ -9247,7 +12122,7 @@
     "provider": "pgsoft",
     "emoji": "🎰",
     "theme": "egypt",
-    "dist": 96,
+    "dist": 88,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -9255,7 +12130,12 @@
     "tag": null,
     "img": "https://www.rainhadoslot.com.br/static/image/games/pg-soft/140.webp",
     "link": "https://hms-tiradentesday.bet/?invite_code=8be79469",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 3.47,
+    "betMinima": 0.79,
+    "betMaxima": 8.58,
+    "betMaximaMin": 5.57,
+    "betMaximaMax": 13.4
   },
   {
     "id": 717,
@@ -9263,7 +12143,7 @@
     "provider": "pgsoft",
     "emoji": "🎰",
     "theme": "fantasy",
-    "dist": 96,
+    "dist": 93,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -9271,7 +12151,12 @@
     "tag": null,
     "img": "https://www.rainhadoslot.com.br/static/image/games/pg-soft/33.webp",
     "link": "https://coroa-gghhpg.com/?id=405842843",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 3.4,
+    "betMinima": 0.76,
+    "betMaxima": 14.7,
+    "betMaximaMin": 4.69,
+    "betMaximaMax": 10.23
   },
   {
     "id": 718,
@@ -9279,7 +12164,7 @@
     "provider": "pgsoft",
     "emoji": "🪙",
     "theme": "egypt",
-    "dist": 96,
+    "dist": 95,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -9287,7 +12172,12 @@
     "tag": null,
     "img": "https://www.rainhadoslot.com.br/static/image/games/pg-soft/193.webp",
     "link": "https://www.onebra77.com/?source_code=TWMWECDNJ2X",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 3.24,
+    "betMinima": 0.57,
+    "betMaxima": 4.58,
+    "betMaximaMin": 4.06,
+    "betMaximaMax": 12.47
   },
   {
     "id": 719,
@@ -9295,7 +12185,7 @@
     "provider": "pgsoft",
     "emoji": "🐉",
     "theme": "chinese",
-    "dist": 96,
+    "dist": 84,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -9303,7 +12193,12 @@
     "tag": null,
     "img": "https://www.rainhadoslot.com.br/static/image/games/pg-soft/37.webp",
     "link": "https://br.mt-antilope.com/home?inviteCode=VEU6ZR",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 2.17,
+    "betMinima": 0.53,
+    "betMaxima": 5.3,
+    "betMaximaMin": 5.11,
+    "betMaximaMax": 17.54
   },
   {
     "id": 720,
@@ -9311,7 +12206,7 @@
     "provider": "pgsoft",
     "emoji": "🍀",
     "theme": "chinese",
-    "dist": 96,
+    "dist": 91,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -9319,7 +12214,12 @@
     "tag": null,
     "img": "https://www.rainhadoslot.com.br/static/image/games/pg-soft/196.webp",
     "link": "https://kk-judy777.vip/?id=649076826&currency=BRL&type=2",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 2.73,
+    "betMinima": 0.69,
+    "betMaxima": 6.55,
+    "betMaximaMin": 4.81,
+    "betMaximaMax": 13.98
   },
   {
     "id": 721,
@@ -9327,7 +12227,7 @@
     "provider": "pgsoft",
     "emoji": "🎰",
     "theme": "fantasy",
-    "dist": 96,
+    "dist": 93,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -9335,7 +12235,12 @@
     "tag": null,
     "img": "https://www.rainhadoslot.com.br/static/image/games/pg-soft/57.webp",
     "link": "https://www.fy-fanta.com/?id=223975751",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 3.12,
+    "betMinima": 0.54,
+    "betMaxima": 6.27,
+    "betMaximaMin": 5.88,
+    "betMaximaMax": 11.35
   },
   {
     "id": 722,
@@ -9343,7 +12248,7 @@
     "provider": "pgsoft",
     "emoji": "🎰",
     "theme": "aztec",
-    "dist": 96,
+    "dist": 95,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -9351,7 +12256,12 @@
     "tag": null,
     "img": "https://www.rainhadoslot.com.br/static/image/games/pg-soft/181.webp",
     "link": "https://hms-tiradentesday.bet/?invite_code=8be79469",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 2.19,
+    "betMinima": 0.21,
+    "betMaxima": 4.69,
+    "betMaximaMin": 4.66,
+    "betMaximaMax": 15.13
   },
   {
     "id": 723,
@@ -9359,7 +12269,7 @@
     "provider": "pgsoft",
     "emoji": "🐉",
     "theme": "chinese",
-    "dist": 96,
+    "dist": 98,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -9367,7 +12277,12 @@
     "tag": null,
     "img": "https://www.rainhadoslot.com.br/static/image/games/pg-soft/41.webp",
     "link": "https://coroa-gghhpg.com/?id=405842843",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 2.58,
+    "betMinima": 0.7,
+    "betMaxima": 10.95,
+    "betMaximaMin": 5.91,
+    "betMaximaMax": 17.4
   },
   {
     "id": 724,
@@ -9375,7 +12290,7 @@
     "provider": "pgsoft",
     "emoji": "🎰",
     "theme": "fantasy",
-    "dist": 96,
+    "dist": 91,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -9383,7 +12298,12 @@
     "tag": null,
     "img": "https://www.rainhadoslot.com.br/static/image/games/pg-soft/65.webp",
     "link": "https://www.onebra77.com/?source_code=TWMWECDNJ2X",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 2.57,
+    "betMinima": 0.37,
+    "betMaxima": 14.06,
+    "betMaximaMin": 5.52,
+    "betMaximaMax": 14.6
   },
   {
     "id": 725,
@@ -9391,7 +12311,7 @@
     "provider": "pgsoft",
     "emoji": "🎰",
     "theme": "fantasy",
-    "dist": 96,
+    "dist": 95,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -9399,7 +12319,12 @@
     "tag": null,
     "img": "https://www.rainhadoslot.com.br/static/image/games/pg-soft/35.webp",
     "link": "https://br.mt-antilope.com/home?inviteCode=VEU6ZR",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 2.27,
+    "betMinima": 0.5,
+    "betMaxima": 14.78,
+    "betMaximaMin": 5.34,
+    "betMaximaMax": 15.42
   },
   {
     "id": 726,
@@ -9407,7 +12332,7 @@
     "provider": "pgsoft",
     "emoji": "🎰",
     "theme": "egypt",
-    "dist": 96,
+    "dist": 91,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -9415,7 +12340,12 @@
     "tag": null,
     "img": "https://www.rainhadoslot.com.br/static/image/games/pg-soft/133.webp",
     "link": "https://kk-judy777.vip/?id=649076826&currency=BRL&type=2",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 3.48,
+    "betMinima": 0.61,
+    "betMaxima": 11.41,
+    "betMaximaMin": 4.57,
+    "betMaximaMax": 12.77
   },
   {
     "id": 727,
@@ -9423,7 +12353,7 @@
     "provider": "pgsoft",
     "emoji": "🎰",
     "theme": "fantasy",
-    "dist": 96,
+    "dist": 90,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -9431,7 +12361,12 @@
     "tag": null,
     "img": "https://www.rainhadoslot.com.br/static/image/games/pg-soft/137.webp",
     "link": "https://www.fy-fanta.com/?id=223975751",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 2.78,
+    "betMinima": 0.68,
+    "betMaxima": 5.05,
+    "betMaximaMin": 4.02,
+    "betMaximaMax": 13.43
   },
   {
     "id": 728,
@@ -9439,7 +12374,7 @@
     "provider": "pgsoft",
     "emoji": "🎰",
     "theme": "fantasy",
-    "dist": 96,
+    "dist": 95,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -9447,7 +12382,12 @@
     "tag": null,
     "img": "https://www.rainhadoslot.com.br/static/image/games/pg-soft/107.webp",
     "link": "https://hms-tiradentesday.bet/?invite_code=8be79469",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 2.05,
+    "betMinima": 0.22,
+    "betMaxima": 10.13,
+    "betMaximaMin": 4.56,
+    "betMaximaMax": 10.85
   },
   {
     "id": 729,
@@ -9455,7 +12395,7 @@
     "provider": "pgsoft",
     "emoji": "🎰",
     "theme": "fantasy",
-    "dist": 96,
+    "dist": 98,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -9463,7 +12403,12 @@
     "tag": null,
     "img": "https://www.rainhadoslot.com.br/static/image/games/pg-soft/187.webp",
     "link": "https://coroa-gghhpg.com/?id=405842843",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 2.44,
+    "betMinima": 0.67,
+    "betMaxima": 9.36,
+    "betMaximaMin": 4.03,
+    "betMaximaMax": 15.28
   },
   {
     "id": 730,
@@ -9471,7 +12416,7 @@
     "provider": "pgsoft",
     "emoji": "🔥",
     "theme": "fantasy",
-    "dist": 96,
+    "dist": 95,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -9479,7 +12424,12 @@
     "tag": null,
     "img": "https://www.rainhadoslot.com.br/static/image/games/pg-soft/95.webp",
     "link": "https://www.onebra77.com/?source_code=TWMWECDNJ2X",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 2.14,
+    "betMinima": 0.64,
+    "betMaxima": 6.17,
+    "betMaximaMin": 4.01,
+    "betMaximaMax": 16.08
   },
   {
     "id": 731,
@@ -9487,7 +12437,7 @@
     "provider": "pgsoft",
     "emoji": "🐉",
     "theme": "chinese",
-    "dist": 96,
+    "dist": 83,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -9495,7 +12445,12 @@
     "tag": null,
     "img": "https://www.rainhadoslot.com.br/static/image/games/pg-soft/189.webp",
     "link": "https://br.mt-antilope.com/home?inviteCode=VEU6ZR",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 2.06,
+    "betMinima": 0.68,
+    "betMaxima": 11.21,
+    "betMaximaMin": 4.14,
+    "betMaximaMax": 14.12
   },
   {
     "id": 732,
@@ -9503,7 +12458,7 @@
     "provider": "pgsoft",
     "emoji": "🎰",
     "theme": "fantasy",
-    "dist": 96,
+    "dist": 86,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -9511,7 +12466,12 @@
     "tag": null,
     "img": "https://www.rainhadoslot.com.br/static/image/games/pg-soft/115.webp",
     "link": "https://kk-judy777.vip/?id=649076826&currency=BRL&type=2",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 3.48,
+    "betMinima": 0.74,
+    "betMaxima": 6.95,
+    "betMaximaMin": 4.09,
+    "betMaximaMax": 11.53
   },
   {
     "id": 733,
@@ -9519,7 +12479,7 @@
     "provider": "pgsoft",
     "emoji": "⚔️",
     "theme": "egypt",
-    "dist": 96,
+    "dist": 92,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -9527,7 +12487,12 @@
     "tag": null,
     "img": "https://www.rainhadoslot.com.br/static/image/games/pg-soft/71.webp",
     "link": "https://www.fy-fanta.com/?id=223975751",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 2.28,
+    "betMinima": 0.23,
+    "betMaxima": 12.57,
+    "betMaximaMin": 5.88,
+    "betMaximaMax": 16.84
   },
   {
     "id": 734,
@@ -9535,7 +12500,7 @@
     "provider": "pgsoft",
     "emoji": "🎰",
     "theme": "fantasy",
-    "dist": 96,
+    "dist": 90,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -9543,7 +12508,12 @@
     "tag": null,
     "img": "https://www.rainhadoslot.com.br/static/image/games/pg-soft/135.webp",
     "link": "https://hms-tiradentesday.bet/?invite_code=8be79469",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 3.13,
+    "betMinima": 0.22,
+    "betMaxima": 4.55,
+    "betMaximaMin": 5.11,
+    "betMaximaMax": 10.3
   },
   {
     "id": 737,
@@ -9551,7 +12521,7 @@
     "provider": "pragmatic",
     "emoji": "🪙",
     "theme": "luxury",
-    "dist": 96,
+    "dist": 97,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -9559,7 +12529,12 @@
     "tag": null,
     "img": "",
     "link": "https://kk-judy777.vip/?id=649076826&currency=BRL&type=2",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 2.31,
+    "betMinima": 0.65,
+    "betMaxima": 9.84,
+    "betMaximaMin": 5.62,
+    "betMaximaMax": 14.6
   },
   {
     "id": 738,
@@ -9567,7 +12542,7 @@
     "provider": "pragmatic",
     "emoji": "🪙",
     "theme": "luxury",
-    "dist": 96,
+    "dist": 90,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -9575,7 +12550,12 @@
     "tag": null,
     "img": "",
     "link": "https://www.fy-fanta.com/?id=223975751",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 3.03,
+    "betMinima": 0.68,
+    "betMaxima": 11.24,
+    "betMaximaMin": 5.33,
+    "betMaximaMax": 17.79
   },
   {
     "id": 739,
@@ -9583,7 +12563,7 @@
     "provider": "pragmatic",
     "emoji": "🪄",
     "theme": "fantasy",
-    "dist": 96,
+    "dist": 84,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -9591,7 +12571,12 @@
     "tag": null,
     "img": "",
     "link": "https://hms-tiradentesday.bet/?invite_code=8be79469",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 2.54,
+    "betMinima": 0.34,
+    "betMaxima": 6.7,
+    "betMaximaMin": 4.91,
+    "betMaximaMax": 11.78
   },
   {
     "id": 741,
@@ -9599,7 +12584,7 @@
     "provider": "pragmatic",
     "emoji": "📚",
     "theme": "egypt",
-    "dist": 96,
+    "dist": 85,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -9607,7 +12592,12 @@
     "tag": null,
     "img": "",
     "link": "https://www.onebra77.com/?source_code=TWMWECDNJ2X",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 2.52,
+    "betMinima": 0.52,
+    "betMaxima": 10.06,
+    "betMaximaMin": 4.14,
+    "betMaximaMax": 17.14
   },
   {
     "id": 743,
@@ -9615,7 +12605,7 @@
     "provider": "pragmatic",
     "emoji": "💎",
     "theme": "fantasy",
-    "dist": 96,
+    "dist": 84,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -9623,7 +12613,12 @@
     "tag": null,
     "img": "",
     "link": "https://kk-judy777.vip/?id=649076826&currency=BRL&type=2",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 2.48,
+    "betMinima": 0.26,
+    "betMaxima": 12.48,
+    "betMaximaMin": 4.95,
+    "betMaximaMax": 13.0
   },
   {
     "id": 744,
@@ -9631,7 +12626,7 @@
     "provider": "pragmatic",
     "emoji": "🌊",
     "theme": "fishing",
-    "dist": 96,
+    "dist": 94,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -9639,7 +12634,12 @@
     "tag": null,
     "img": "",
     "link": "https://www.fy-fanta.com/?id=223975751",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 3.28,
+    "betMinima": 0.23,
+    "betMaxima": 10.22,
+    "betMaximaMin": 5.38,
+    "betMaximaMax": 13.6
   },
   {
     "id": 745,
@@ -9655,7 +12655,12 @@
     "tag": null,
     "img": "",
     "link": "https://hms-tiradentesday.bet/?invite_code=8be79469",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 3.06,
+    "betMinima": 0.79,
+    "betMaxima": 9.34,
+    "betMaximaMin": 4.59,
+    "betMaximaMax": 10.74
   },
   {
     "id": 747,
@@ -9663,7 +12668,7 @@
     "provider": "pragmatic",
     "emoji": "🎰",
     "theme": "western",
-    "dist": 96,
+    "dist": 93,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -9671,7 +12676,12 @@
     "tag": null,
     "img": "",
     "link": "https://www.onebra77.com/?source_code=TWMWECDNJ2X",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 2.23,
+    "betMinima": 0.8,
+    "betMaxima": 4.98,
+    "betMaximaMin": 4.58,
+    "betMaximaMax": 16.35
   },
   {
     "id": 748,
@@ -9679,7 +12689,7 @@
     "provider": "pragmatic",
     "emoji": "💎",
     "theme": "aztec",
-    "dist": 96,
+    "dist": 82,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -9687,7 +12697,12 @@
     "tag": null,
     "img": "",
     "link": "https://br.mt-antilope.com/home?inviteCode=VEU6ZR",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 2.38,
+    "betMinima": 0.42,
+    "betMaxima": 12.35,
+    "betMaximaMin": 4.7,
+    "betMaximaMax": 15.46
   },
   {
     "id": 754,
@@ -9695,7 +12710,7 @@
     "provider": "pragmatic",
     "emoji": "🌶️",
     "theme": "mexico",
-    "dist": 96,
+    "dist": 92,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -9703,7 +12718,12 @@
     "tag": null,
     "img": "",
     "link": "https://br.mt-antilope.com/home?inviteCode=VEU6ZR",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 3.3,
+    "betMinima": 0.67,
+    "betMaxima": 11.12,
+    "betMaximaMin": 4.04,
+    "betMaximaMax": 16.95
   },
   {
     "id": 756,
@@ -9711,7 +12731,7 @@
     "provider": "pragmatic",
     "emoji": "🎰",
     "theme": "asian",
-    "dist": 96,
+    "dist": 91,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -9719,7 +12739,12 @@
     "tag": null,
     "img": "",
     "link": "https://www.fy-fanta.com/?id=223975751",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 3.03,
+    "betMinima": 0.36,
+    "betMaxima": 11.0,
+    "betMaximaMin": 4.52,
+    "betMaximaMax": 11.15
   },
   {
     "id": 759,
@@ -9727,7 +12752,7 @@
     "provider": "pragmatic",
     "emoji": "🎰",
     "theme": "fantasy",
-    "dist": 96,
+    "dist": 97,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -9735,7 +12760,12 @@
     "tag": null,
     "img": "",
     "link": "https://www.onebra77.com/?source_code=TWMWECDNJ2X",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 2.21,
+    "betMinima": 0.71,
+    "betMaxima": 8.65,
+    "betMaximaMin": 5.71,
+    "betMaximaMax": 13.65
   },
   {
     "id": 767,
@@ -9743,7 +12773,7 @@
     "provider": "pragmatic",
     "emoji": "🔥",
     "theme": "classic",
-    "dist": 96,
+    "dist": 97,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -9751,7 +12781,12 @@
     "tag": null,
     "img": "",
     "link": "https://kk-judy777.vip/?id=649076826&currency=BRL&type=2",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 2.44,
+    "betMinima": 0.71,
+    "betMaxima": 14.15,
+    "betMaximaMin": 4.22,
+    "betMaximaMax": 11.83
   },
   {
     "id": 769,
@@ -9759,7 +12794,7 @@
     "provider": "pragmatic",
     "emoji": "🔥",
     "theme": "classic",
-    "dist": 96,
+    "dist": 91,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -9767,7 +12802,12 @@
     "tag": null,
     "img": "",
     "link": "https://hms-tiradentesday.bet/?invite_code=8be79469",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 2.22,
+    "betMinima": 0.71,
+    "betMaxima": 7.93,
+    "betMaximaMin": 5.39,
+    "betMaximaMax": 11.31
   },
   {
     "id": 773,
@@ -9775,7 +12815,7 @@
     "provider": "pragmatic",
     "emoji": "🍌",
     "theme": "jungle",
-    "dist": 96,
+    "dist": 89,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -9783,7 +12823,12 @@
     "tag": null,
     "img": "",
     "link": "https://kk-judy777.vip/?id=649076826&currency=BRL&type=2",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 2.95,
+    "betMinima": 0.8,
+    "betMaxima": 14.8,
+    "betMaximaMin": 5.61,
+    "betMaximaMax": 10.1
   },
   {
     "id": 774,
@@ -9791,7 +12836,7 @@
     "provider": "pragmatic",
     "emoji": "🎰",
     "theme": "classic",
-    "dist": 96,
+    "dist": 93,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -9799,7 +12844,12 @@
     "tag": null,
     "img": "",
     "link": "https://www.fy-fanta.com/?id=223975751",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 3.38,
+    "betMinima": 0.4,
+    "betMaxima": 14.92,
+    "betMaximaMin": 4.11,
+    "betMaximaMax": 12.2
   },
   {
     "id": 775,
@@ -9807,7 +12857,7 @@
     "provider": "pragmatic",
     "emoji": "🎰",
     "theme": "classic",
-    "dist": 96,
+    "dist": 94,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -9815,7 +12865,12 @@
     "tag": null,
     "img": "",
     "link": "https://hms-tiradentesday.bet/?invite_code=8be79469",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 2.55,
+    "betMinima": 0.49,
+    "betMaxima": 6.86,
+    "betMaximaMin": 4.95,
+    "betMaximaMax": 15.35
   },
   {
     "id": 776,
@@ -9823,7 +12878,7 @@
     "provider": "pragmatic",
     "emoji": "🎰",
     "theme": "classic",
-    "dist": 96,
+    "dist": 98,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -9831,7 +12886,12 @@
     "tag": null,
     "img": "",
     "link": "https://coroa-gghhpg.com/?id=405842843",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 2.09,
+    "betMinima": 0.62,
+    "betMaxima": 9.27,
+    "betMaximaMin": 5.35,
+    "betMaximaMax": 12.51
   },
   {
     "id": 777,
@@ -9839,7 +12899,7 @@
     "provider": "pragmatic",
     "emoji": "🎰",
     "theme": "classic",
-    "dist": 96,
+    "dist": 95,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -9847,7 +12907,12 @@
     "tag": null,
     "img": "",
     "link": "https://www.onebra77.com/?source_code=TWMWECDNJ2X",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 3.27,
+    "betMinima": 0.42,
+    "betMaxima": 13.64,
+    "betMaximaMin": 5.91,
+    "betMaximaMax": 11.48
   },
   {
     "id": 780,
@@ -9855,7 +12920,7 @@
     "provider": "pragmatic",
     "emoji": "📚",
     "theme": "nordic",
-    "dist": 96,
+    "dist": 90,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -9863,7 +12928,12 @@
     "tag": null,
     "img": "",
     "link": "https://www.fy-fanta.com/?id=223975751",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 2.35,
+    "betMinima": 0.67,
+    "betMaxima": 12.03,
+    "betMaximaMin": 4.09,
+    "betMaximaMax": 13.27
   },
   {
     "id": 782,
@@ -9871,7 +12941,7 @@
     "provider": "pragmatic",
     "emoji": "🐶",
     "theme": "fantasy",
-    "dist": 96,
+    "dist": 94,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -9879,7 +12949,12 @@
     "tag": null,
     "img": "",
     "link": "https://coroa-gghhpg.com/?id=405842843",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 2.64,
+    "betMinima": 0.5,
+    "betMaxima": 11.66,
+    "betMaximaMin": 4.38,
+    "betMaximaMax": 11.65
   },
   {
     "id": 784,
@@ -9887,7 +12962,7 @@
     "provider": "pragmatic",
     "emoji": "🏺",
     "theme": "egypt",
-    "dist": 96,
+    "dist": 85,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -9895,7 +12970,12 @@
     "tag": null,
     "img": "",
     "link": "https://br.mt-antilope.com/home?inviteCode=VEU6ZR",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 2.8,
+    "betMinima": 0.41,
+    "betMaxima": 12.97,
+    "betMaximaMin": 5.13,
+    "betMaximaMax": 12.29
   },
   {
     "id": 800,
@@ -9903,7 +12983,7 @@
     "provider": "evolution",
     "emoji": "🎡",
     "theme": "party",
-    "dist": 96,
+    "dist": 86,
     "rtp": 96.08,
     "minBet": 0.1,
     "maxBet": 2500,
@@ -9911,7 +12991,12 @@
     "tag": null,
     "img": "https://games.evolution.com/wp-content/uploads/2023/04/crazy_time_thumbnail_1000x563_2023_03-400x225.jpg",
     "link": "https://www.fy-fanta.com/?id=223975751",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 2.86,
+    "betMinima": 0.56,
+    "betMaxima": 5.17,
+    "betMaximaMin": 5.83,
+    "betMaximaMax": 11.03
   },
   {
     "id": 801,
@@ -9919,7 +13004,7 @@
     "provider": "evolution",
     "emoji": "🎩",
     "theme": "party",
-    "dist": 96,
+    "dist": 98,
     "rtp": 96.23,
     "minBet": 0.1,
     "maxBet": 2500,
@@ -9927,7 +13012,12 @@
     "tag": null,
     "img": "https://games.evolution.com/wp-content/uploads/2023/03/monopoly-live-thumbnail-400x225.jpg",
     "link": "https://hms-tiradentesday.bet/?invite_code=8be79469",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 3.5,
+    "betMinima": 0.36,
+    "betMaxima": 8.41,
+    "betMaximaMin": 4.75,
+    "betMaximaMax": 15.26
   },
   {
     "id": 802,
@@ -9935,7 +13025,7 @@
     "provider": "evolution",
     "emoji": "⚡",
     "theme": "luxury",
-    "dist": 96,
+    "dist": 93,
     "rtp": 97.3,
     "minBet": 0.2,
     "maxBet": 5000,
@@ -9943,7 +13033,12 @@
     "tag": null,
     "img": "https://games.evolution.com/wp-content/uploads/2023/02/lightning_roulette_web_imagery_1000x563_2023_01-400x225.jpg",
     "link": "https://coroa-gghhpg.com/?id=405842843",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 2.66,
+    "betMinima": 0.59,
+    "betMaxima": 8.66,
+    "betMaximaMin": 5.18,
+    "betMaximaMax": 13.99
   },
   {
     "id": 803,
@@ -9951,7 +13046,7 @@
     "provider": "evolution",
     "emoji": "🪙",
     "theme": "luxury",
-    "dist": 96,
+    "dist": 83,
     "rtp": 96.05,
     "minBet": 0.1,
     "maxBet": 1000,
@@ -9959,7 +13054,12 @@
     "tag": null,
     "img": "https://games.evolution.com/wp-content/uploads/2023/02/crazy_coin_flip_web_imagery_1000x563_2023_01_02-400x225.jpg",
     "link": "https://www.onebra77.com/?source_code=TWMWECDNJ2X",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 3.19,
+    "betMinima": 0.6,
+    "betMaxima": 4.59,
+    "betMaximaMin": 4.29,
+    "betMaximaMax": 14.98
   },
   {
     "id": 804,
@@ -9967,7 +13067,7 @@
     "provider": "evolution",
     "emoji": "🕺",
     "theme": "party",
-    "dist": 96,
+    "dist": 92,
     "rtp": 95.93,
     "minBet": 0.1,
     "maxBet": 2500,
@@ -9975,7 +13075,12 @@
     "tag": null,
     "img": "https://games.evolution.com/wp-content/uploads/2023/05/funky_time_thumbnail_1000x563_2023_05-400x225.jpg",
     "link": "https://br.mt-antilope.com/home?inviteCode=VEU6ZR",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 3.42,
+    "betMinima": 0.66,
+    "betMaxima": 4.72,
+    "betMaximaMin": 4.94,
+    "betMaximaMax": 13.38
   },
   {
     "id": 805,
@@ -9983,7 +13088,7 @@
     "provider": "evolution",
     "emoji": "🎰",
     "theme": "party",
-    "dist": 96,
+    "dist": 92,
     "rtp": 95.6,
     "minBet": 0.1,
     "maxBet": 1000,
@@ -9991,7 +13096,12 @@
     "tag": null,
     "img": "",
     "link": "https://kk-judy777.vip/?id=649076826&currency=BRL&type=2",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 3.29,
+    "betMinima": 0.39,
+    "betMaxima": 14.89,
+    "betMaximaMin": 4.88,
+    "betMaximaMax": 17.27
   },
   {
     "id": 806,
@@ -9999,7 +13109,7 @@
     "provider": "evolution",
     "emoji": "💼",
     "theme": "luxury",
-    "dist": 96,
+    "dist": 92,
     "rtp": 95.42,
     "minBet": 0.1,
     "maxBet": 2500,
@@ -10007,7 +13117,12 @@
     "tag": null,
     "img": "",
     "link": "https://www.fy-fanta.com/?id=223975751",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 2.95,
+    "betMinima": 0.79,
+    "betMaxima": 4.28,
+    "betMaximaMin": 5.2,
+    "betMaximaMax": 17.96
   },
   {
     "id": 807,
@@ -10015,7 +13130,7 @@
     "provider": "evolution",
     "emoji": "🎯",
     "theme": "luxury",
-    "dist": 96,
+    "dist": 90,
     "rtp": 96.58,
     "minBet": 0.1,
     "maxBet": 2500,
@@ -10023,7 +13138,12 @@
     "tag": null,
     "img": "https://games.evolution.com/wp-content/uploads/2023/04/dream_catcher_thumbnail_1000x563_2023_03-400x225.jpg",
     "link": "https://hms-tiradentesday.bet/?invite_code=8be79469",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 3.26,
+    "betMinima": 0.2,
+    "betMaxima": 12.02,
+    "betMaximaMin": 4.79,
+    "betMaximaMax": 13.77
   },
   {
     "id": 808,
@@ -10031,7 +13151,7 @@
     "provider": "evolution",
     "emoji": "⚽",
     "theme": "party",
-    "dist": 96,
+    "dist": 85,
     "rtp": 95.4,
     "minBet": 0.1,
     "maxBet": 1000,
@@ -10039,7 +13159,12 @@
     "tag": null,
     "img": "https://games.evolution.com/wp-content/uploads/2023/02/mega_ball_web_imagery_1000x563_2023_01-400x225.jpg",
     "link": "https://coroa-gghhpg.com/?id=405842843",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 3.38,
+    "betMinima": 0.48,
+    "betMaxima": 13.57,
+    "betMaximaMin": 4.44,
+    "betMaximaMax": 10.6
   },
   {
     "id": 809,
@@ -10047,7 +13172,7 @@
     "provider": "evolution",
     "emoji": "🚀",
     "theme": "luxury",
-    "dist": 96,
+    "dist": 93,
     "rtp": 99.59,
     "minBet": 0.1,
     "maxBet": 2500,
@@ -10055,7 +13180,12 @@
     "tag": null,
     "img": "",
     "link": "https://www.onebra77.com/?source_code=TWMWECDNJ2X",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 2.08,
+    "betMinima": 0.21,
+    "betMaxima": 10.4,
+    "betMaximaMin": 5.08,
+    "betMaximaMax": 13.12
   },
   {
     "id": 810,
@@ -10063,7 +13193,7 @@
     "provider": "evolution",
     "emoji": "🎰",
     "theme": "luxury",
-    "dist": 96,
+    "dist": 90,
     "rtp": 97.3,
     "minBet": 0.2,
     "maxBet": 5000,
@@ -10071,7 +13201,12 @@
     "tag": null,
     "img": "https://imagedelivery.net/BgH9d8bzsn4n0yijn4h7IQ/d1a0d12c-8ce3-4cf3-340d-080d5c740b00/public",
     "link": "https://br.mt-antilope.com/home?inviteCode=VEU6ZR",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 2.86,
+    "betMinima": 0.46,
+    "betMaxima": 9.36,
+    "betMaximaMin": 4.75,
+    "betMaximaMax": 17.07
   },
   {
     "id": 811,
@@ -10079,7 +13214,7 @@
     "provider": "evolution",
     "emoji": "🎰",
     "theme": "luxury",
-    "dist": 96,
+    "dist": 90,
     "rtp": 97.3,
     "minBet": 0.1,
     "maxBet": 1000,
@@ -10087,7 +13222,12 @@
     "tag": null,
     "img": "https://imagedelivery.net/BgH9d8bzsn4n0yijn4h7IQ/0d1d98d3-6def-433f-8a68-ccaa052e3100/public",
     "link": "https://kk-judy777.vip/?id=649076826&currency=BRL&type=2",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 3.41,
+    "betMinima": 0.26,
+    "betMaxima": 5.96,
+    "betMaximaMin": 4.2,
+    "betMaximaMax": 12.92
   },
   {
     "id": 812,
@@ -10095,7 +13235,7 @@
     "provider": "evolution",
     "emoji": "⚡",
     "theme": "luxury",
-    "dist": 96,
+    "dist": 94,
     "rtp": 96.59,
     "minBet": 0.2,
     "maxBet": 5000,
@@ -10103,7 +13243,12 @@
     "tag": null,
     "img": "https://games.evolution.com/wp-content/uploads/2023/04/xxxtreme_lightning_roulette_thumbnail_1000x563_2023_04-400x225.jpg",
     "link": "https://www.fy-fanta.com/?id=223975751",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 2.67,
+    "betMinima": 0.77,
+    "betMaxima": 5.77,
+    "betMaximaMin": 4.9,
+    "betMaximaMax": 14.13
   },
   {
     "id": 813,
@@ -10111,7 +13256,7 @@
     "provider": "evolution",
     "emoji": "🎰",
     "theme": "luxury",
-    "dist": 96,
+    "dist": 97,
     "rtp": 97.3,
     "minBet": 0.2,
     "maxBet": 5000,
@@ -10119,7 +13264,12 @@
     "tag": null,
     "img": "https://imagedelivery.net/BgH9d8bzsn4n0yijn4h7IQ/d1a0d12c-8ce3-4cf3-340d-080d5c740b00/public",
     "link": "https://hms-tiradentesday.bet/?invite_code=8be79469",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 2.46,
+    "betMinima": 0.68,
+    "betMaxima": 13.15,
+    "betMaximaMin": 4.97,
+    "betMaximaMax": 12.44
   },
   {
     "id": 814,
@@ -10127,7 +13277,7 @@
     "provider": "evolution",
     "emoji": "👑",
     "theme": "luxury",
-    "dist": 96,
+    "dist": 88,
     "rtp": 97.3,
     "minBet": 5,
     "maxBet": 25000,
@@ -10135,7 +13285,12 @@
     "tag": null,
     "img": "https://imagedelivery.net/BgH9d8bzsn4n0yijn4h7IQ/749079eb-e440-4abd-af41-dfac77267500/public",
     "link": "https://coroa-gghhpg.com/?id=405842843",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 2.55,
+    "betMinima": 0.54,
+    "betMaxima": 8.09,
+    "betMaximaMin": 5.39,
+    "betMaximaMax": 17.01
   },
   {
     "id": 815,
@@ -10143,7 +13298,7 @@
     "provider": "evolution",
     "emoji": "⚡",
     "theme": "brazil",
-    "dist": 96,
+    "dist": 91,
     "rtp": 97.3,
     "minBet": 0.2,
     "maxBet": 5000,
@@ -10151,7 +13306,12 @@
     "tag": null,
     "img": "",
     "link": "https://www.onebra77.com/?source_code=TWMWECDNJ2X",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 2.14,
+    "betMinima": 0.45,
+    "betMaxima": 6.85,
+    "betMaximaMin": 4.47,
+    "betMaximaMax": 12.47
   },
   {
     "id": 816,
@@ -10159,7 +13319,7 @@
     "provider": "evolution",
     "emoji": "🃏",
     "theme": "luxury",
-    "dist": 96,
+    "dist": 98,
     "rtp": 99.51,
     "minBet": 1,
     "maxBet": 5000,
@@ -10167,7 +13327,12 @@
     "tag": null,
     "img": "https://imagedelivery.net/BgH9d8bzsn4n0yijn4h7IQ/4cf0b908-aeb5-4988-0bbf-98eaa2f05c00/public",
     "link": "https://br.mt-antilope.com/home?inviteCode=VEU6ZR",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 3.19,
+    "betMinima": 0.42,
+    "betMaxima": 14.38,
+    "betMaximaMin": 4.49,
+    "betMaximaMax": 17.54
   },
   {
     "id": 817,
@@ -10175,7 +13340,7 @@
     "provider": "evolution",
     "emoji": "⚡",
     "theme": "luxury",
-    "dist": 96,
+    "dist": 94,
     "rtp": 99.56,
     "minBet": 1,
     "maxBet": 2500,
@@ -10183,7 +13348,12 @@
     "tag": null,
     "img": "https://games.evolution.com/wp-content/uploads/2023/04/lightning_blackjack_thumbnail_1000x563_2023_04-400x225.jpg",
     "link": "https://kk-judy777.vip/?id=649076826&currency=BRL&type=2",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 2.8,
+    "betMinima": 0.24,
+    "betMaxima": 11.97,
+    "betMaximaMin": 5.69,
+    "betMaximaMax": 10.71
   },
   {
     "id": 818,
@@ -10191,7 +13361,7 @@
     "provider": "evolution",
     "emoji": "🃏",
     "theme": "luxury",
-    "dist": 96,
+    "dist": 90,
     "rtp": 99.29,
     "minBet": 5,
     "maxBet": 5000,
@@ -10199,7 +13369,12 @@
     "tag": null,
     "img": "https://imagedelivery.net/BgH9d8bzsn4n0yijn4h7IQ/4cf0b908-aeb5-4988-0bbf-98eaa2f05c00/public",
     "link": "https://www.fy-fanta.com/?id=223975751",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 3.11,
+    "betMinima": 0.71,
+    "betMaxima": 5.08,
+    "betMaximaMin": 5.3,
+    "betMaximaMax": 16.05
   },
   {
     "id": 819,
@@ -10207,7 +13382,7 @@
     "provider": "evolution",
     "emoji": "🃏",
     "theme": "luxury",
-    "dist": 96,
+    "dist": 97,
     "rtp": 98.45,
     "minBet": 5,
     "maxBet": 5000,
@@ -10215,7 +13390,12 @@
     "tag": null,
     "img": "",
     "link": "https://hms-tiradentesday.bet/?invite_code=8be79469",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 2.15,
+    "betMinima": 0.53,
+    "betMaxima": 5.65,
+    "betMaximaMin": 5.94,
+    "betMaximaMax": 16.43
   },
   {
     "id": 820,
@@ -10223,7 +13403,7 @@
     "provider": "evolution",
     "emoji": "🃏",
     "theme": "luxury",
-    "dist": 96,
+    "dist": 90,
     "rtp": 98.8,
     "minBet": 5,
     "maxBet": 5000,
@@ -10231,7 +13411,12 @@
     "tag": null,
     "img": "",
     "link": "https://coroa-gghhpg.com/?id=405842843",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 2.49,
+    "betMinima": 0.59,
+    "betMaxima": 6.64,
+    "betMaximaMin": 5.9,
+    "betMaximaMax": 17.69
   },
   {
     "id": 821,
@@ -10239,7 +13424,7 @@
     "provider": "evolution",
     "emoji": "⚡",
     "theme": "luxury",
-    "dist": 96,
+    "dist": 91,
     "rtp": 98.76,
     "minBet": 1,
     "maxBet": 5000,
@@ -10247,7 +13432,12 @@
     "tag": null,
     "img": "https://imagedelivery.net/BgH9d8bzsn4n0yijn4h7IQ/eae9c734-0699-4583-130c-9cc0bdce7c00/public",
     "link": "https://www.onebra77.com/?source_code=TWMWECDNJ2X",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 3.03,
+    "betMinima": 0.58,
+    "betMaxima": 10.22,
+    "betMaximaMin": 4.83,
+    "betMaximaMax": 10.97
   },
   {
     "id": 822,
@@ -10255,7 +13445,7 @@
     "provider": "evolution",
     "emoji": "🎰",
     "theme": "luxury",
-    "dist": 96,
+    "dist": 91,
     "rtp": 98.94,
     "minBet": 1,
     "maxBet": 5000,
@@ -10263,7 +13453,12 @@
     "tag": null,
     "img": "https://imagedelivery.net/BgH9d8bzsn4n0yijn4h7IQ/eae9c734-0699-4583-130c-9cc0bdce7c00/public",
     "link": "https://br.mt-antilope.com/home?inviteCode=VEU6ZR",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 2.51,
+    "betMinima": 0.48,
+    "betMaxima": 12.49,
+    "betMaximaMin": 4.14,
+    "betMaximaMax": 11.05
   },
   {
     "id": 823,
@@ -10271,7 +13466,7 @@
     "provider": "evolution",
     "emoji": "🎰",
     "theme": "luxury",
-    "dist": 96,
+    "dist": 95,
     "rtp": 98.76,
     "minBet": 1,
     "maxBet": 5000,
@@ -10279,7 +13474,12 @@
     "tag": null,
     "img": "",
     "link": "https://kk-judy777.vip/?id=649076826&currency=BRL&type=2",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 2.21,
+    "betMinima": 0.25,
+    "betMaxima": 5.35,
+    "betMaximaMin": 5.19,
+    "betMaximaMax": 16.81
   },
   {
     "id": 824,
@@ -10287,7 +13487,7 @@
     "provider": "evolution",
     "emoji": "🃏",
     "theme": "luxury",
-    "dist": 96,
+    "dist": 95,
     "rtp": 99.47,
     "minBet": 1,
     "maxBet": 1000,
@@ -10295,7 +13495,12 @@
     "tag": null,
     "img": "https://imagedelivery.net/BgH9d8bzsn4n0yijn4h7IQ/6d0d5b50-a9df-48bc-3d5f-878f230f6d00/public",
     "link": "https://www.fy-fanta.com/?id=223975751",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 2.19,
+    "betMinima": 0.63,
+    "betMaxima": 5.2,
+    "betMaximaMin": 4.72,
+    "betMaximaMax": 11.66
   },
   {
     "id": 825,
@@ -10303,7 +13508,7 @@
     "provider": "evolution",
     "emoji": "🃏",
     "theme": "luxury",
-    "dist": 96,
+    "dist": 88,
     "rtp": 96.63,
     "minBet": 1,
     "maxBet": 1000,
@@ -10311,7 +13516,12 @@
     "tag": null,
     "img": "",
     "link": "https://hms-tiradentesday.bet/?invite_code=8be79469",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 2.3,
+    "betMinima": 0.6,
+    "betMaxima": 6.66,
+    "betMaximaMin": 5.94,
+    "betMaximaMax": 17.49
   },
   {
     "id": 826,
@@ -10319,7 +13529,7 @@
     "provider": "evolution",
     "emoji": "🃏",
     "theme": "luxury",
-    "dist": 96,
+    "dist": 86,
     "rtp": 94.78,
     "minBet": 1,
     "maxBet": 1000,
@@ -10327,7 +13537,12 @@
     "tag": null,
     "img": "",
     "link": "https://coroa-gghhpg.com/?id=405842843",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 3.44,
+    "betMinima": 0.45,
+    "betMaxima": 6.44,
+    "betMaximaMin": 5.45,
+    "betMaximaMax": 12.22
   },
   {
     "id": 827,
@@ -10335,7 +13550,7 @@
     "provider": "evolution",
     "emoji": "🃏",
     "theme": "luxury",
-    "dist": 96,
+    "dist": 97,
     "rtp": 96.69,
     "minBet": 0.2,
     "maxBet": 1000,
@@ -10343,7 +13558,12 @@
     "tag": null,
     "img": "",
     "link": "https://www.onebra77.com/?source_code=TWMWECDNJ2X",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 3.27,
+    "betMinima": 0.33,
+    "betMaxima": 5.7,
+    "betMaximaMin": 5.74,
+    "betMaximaMax": 14.99
   },
   {
     "id": 828,
@@ -10351,7 +13571,7 @@
     "provider": "evolution",
     "emoji": "⚽",
     "theme": "sports",
-    "dist": 96,
+    "dist": 97,
     "rtp": 96.27,
     "minBet": 0.1,
     "maxBet": 1000,
@@ -10359,7 +13579,12 @@
     "tag": null,
     "img": "",
     "link": "https://br.mt-antilope.com/home?inviteCode=VEU6ZR",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 2.77,
+    "betMinima": 0.78,
+    "betMaxima": 13.42,
+    "betMaximaMin": 5.28,
+    "betMaximaMax": 10.58
   },
   {
     "id": 829,
@@ -10367,7 +13592,7 @@
     "provider": "evolution",
     "emoji": "🎰",
     "theme": "fantasy",
-    "dist": 96,
+    "dist": 97,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -10375,7 +13600,12 @@
     "tag": null,
     "img": "https://games.evolution.com/wp-content/uploads/2023/02/bac_bo_web_imagery_1000x563_2023_01-400x225.jpg",
     "link": "https://www.fy-fanta.com/?id=223975751",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 3.38,
+    "betMinima": 0.4,
+    "betMaxima": 9.8,
+    "betMaximaMin": 4.71,
+    "betMaximaMax": 17.69
   },
   {
     "id": 830,
@@ -10383,7 +13613,7 @@
     "provider": "evolution",
     "emoji": "🎰",
     "theme": "fantasy",
-    "dist": 96,
+    "dist": 93,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -10391,7 +13621,12 @@
     "tag": null,
     "img": "https://games.evolution.com/wp-content/uploads/2023/04/teen_patti_thumbnail_1000x563_2023_04-400x225.jpg",
     "link": "https://hms-tiradentesday.bet/?invite_code=8be79469",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 2.89,
+    "betMinima": 0.59,
+    "betMaxima": 8.15,
+    "betMaximaMin": 5.27,
+    "betMaximaMax": 14.85
   },
   {
     "id": 831,
@@ -10399,7 +13634,7 @@
     "provider": "evolution",
     "emoji": "🎰",
     "theme": "fantasy",
-    "dist": 96,
+    "dist": 93,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -10407,7 +13642,12 @@
     "tag": null,
     "img": "https://games.evolution.com/wp-content/uploads/2023/03/big-baller-thumbnail-400x225.jpg",
     "link": "https://coroa-gghhpg.com/?id=405842843",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 2.92,
+    "betMinima": 0.38,
+    "betMaxima": 13.24,
+    "betMaximaMin": 4.34,
+    "betMaximaMax": 15.19
   },
   {
     "id": 832,
@@ -10415,7 +13655,7 @@
     "provider": "evolution",
     "emoji": "🎰",
     "theme": "fantasy",
-    "dist": 96,
+    "dist": 94,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -10423,7 +13663,12 @@
     "tag": null,
     "img": "https://games.evolution.com/wp-content/uploads/2024/01/casino_holdem_1000-400x225.png",
     "link": "https://www.onebra77.com/?source_code=TWMWECDNJ2X",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 2.78,
+    "betMinima": 0.63,
+    "betMaxima": 4.21,
+    "betMaximaMin": 5.42,
+    "betMaximaMax": 13.18
   },
   {
     "id": 833,
@@ -10431,7 +13676,7 @@
     "provider": "evolution",
     "emoji": "🎰",
     "theme": "egypt",
-    "dist": 96,
+    "dist": 94,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -10439,7 +13684,12 @@
     "tag": null,
     "img": "https://games.evolution.com/wp-content/uploads/2023/04/craps_thumbnail_1000x563_2023_03-400x225.jpg",
     "link": "https://br.mt-antilope.com/home?inviteCode=VEU6ZR",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 3.14,
+    "betMinima": 0.56,
+    "betMaxima": 12.29,
+    "betMaximaMin": 4.75,
+    "betMaximaMax": 10.86
   },
   {
     "id": 834,
@@ -10447,7 +13697,7 @@
     "provider": "evolution",
     "emoji": "🎰",
     "theme": "fantasy",
-    "dist": 96,
+    "dist": 92,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -10455,7 +13705,12 @@
     "tag": null,
     "img": "https://games.evolution.com/wp-content/uploads/2023/03/dond-live-thumbnail-400x225.jpg",
     "link": "https://kk-judy777.vip/?id=649076826&currency=BRL&type=2",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 3.42,
+    "betMinima": 0.39,
+    "betMaxima": 11.39,
+    "betMaximaMin": 4.79,
+    "betMaximaMax": 14.47
   },
   {
     "id": 835,
@@ -10463,7 +13718,7 @@
     "provider": "evolution",
     "emoji": "🎰",
     "theme": "egypt",
-    "dist": 96,
+    "dist": 90,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -10471,7 +13726,12 @@
     "tag": null,
     "img": "https://games.evolution.com/wp-content/uploads/2023/05/extra_chilli_epic_spins_thumbnail_1000x563_2023_05-400x225.jpg",
     "link": "https://www.fy-fanta.com/?id=223975751",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 2.86,
+    "betMinima": 0.76,
+    "betMaxima": 4.46,
+    "betMaximaMin": 5.68,
+    "betMaximaMax": 12.28
   },
   {
     "id": 836,
@@ -10479,7 +13739,7 @@
     "provider": "evolution",
     "emoji": "🎰",
     "theme": "fantasy",
-    "dist": 96,
+    "dist": 94,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -10487,7 +13747,12 @@
     "tag": null,
     "img": "https://games.evolution.com/wp-content/uploads/2023/02/fan_tan_web_imagery_1000x563_2023_01-400x225.jpg",
     "link": "https://hms-tiradentesday.bet/?invite_code=8be79469",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 2.26,
+    "betMinima": 0.78,
+    "betMaxima": 11.09,
+    "betMaximaMin": 4.97,
+    "betMaximaMax": 12.38
   },
   {
     "id": 837,
@@ -10495,7 +13760,7 @@
     "provider": "evolution",
     "emoji": "❄️",
     "theme": "fantasy",
-    "dist": 96,
+    "dist": 93,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -10503,7 +13768,12 @@
     "tag": null,
     "img": "https://games.evolution.com/wp-content/uploads/2023/04/football_studio_dice_thumbnail_1000x563_2023_04-400x225.jpg",
     "link": "https://coroa-gghhpg.com/?id=405842843",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 3.25,
+    "betMinima": 0.42,
+    "betMaxima": 12.79,
+    "betMaximaMin": 5.51,
+    "betMaximaMax": 14.37
   },
   {
     "id": 838,
@@ -10511,7 +13781,7 @@
     "provider": "evolution",
     "emoji": "🪙",
     "theme": "luxury",
-    "dist": 96,
+    "dist": 94,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -10519,7 +13789,12 @@
     "tag": null,
     "img": "https://games.evolution.com/wp-content/uploads/2023/08/gold_vault_roulette_thumbnail_1000x563_2023_08-400x225.jpg",
     "link": "https://www.onebra77.com/?source_code=TWMWECDNJ2X",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 3.42,
+    "betMinima": 0.27,
+    "betMaxima": 7.0,
+    "betMaximaMin": 4.86,
+    "betMaximaMax": 16.31
   },
   {
     "id": 839,
@@ -10527,7 +13802,7 @@
     "provider": "evolution",
     "emoji": "🪙",
     "theme": "egypt",
-    "dist": 96,
+    "dist": 84,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -10535,7 +13810,12 @@
     "tag": null,
     "img": "https://games.evolution.com/wp-content/uploads/2023/02/golden_wealth_baccarat_web_imagery_1000x563_2023_01-400x225.jpg",
     "link": "https://br.mt-antilope.com/home?inviteCode=VEU6ZR",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 2.83,
+    "betMinima": 0.44,
+    "betMaxima": 10.94,
+    "betMaximaMin": 5.94,
+    "betMaximaMax": 12.05
   },
   {
     "id": 840,
@@ -10543,7 +13823,7 @@
     "provider": "evolution",
     "emoji": "🎰",
     "theme": "fantasy",
-    "dist": 96,
+    "dist": 97,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -10551,7 +13831,12 @@
     "tag": null,
     "img": "https://games.evolution.com/wp-content/uploads/2023/09/gonzo_treasure_map_thumbnail_1000x563_2023_08-1-1-400x225.jpg",
     "link": "https://kk-judy777.vip/?id=649076826&currency=BRL&type=2",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 3.26,
+    "betMinima": 0.74,
+    "betMaxima": 10.4,
+    "betMaximaMin": 5.55,
+    "betMaximaMax": 17.01
   },
   {
     "id": 841,
@@ -10559,7 +13844,7 @@
     "provider": "evolution",
     "emoji": "🍀",
     "theme": "fantasy",
-    "dist": 96,
+    "dist": 86,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -10567,7 +13852,12 @@
     "tag": null,
     "img": "https://games.evolution.com/wp-content/uploads/2024/01/lucky_7_1000-400x225.png",
     "link": "https://www.fy-fanta.com/?id=223975751",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 2.87,
+    "betMinima": 0.65,
+    "betMaxima": 8.88,
+    "betMaximaMin": 5.52,
+    "betMaximaMax": 11.96
   },
   {
     "id": 842,
@@ -10575,7 +13865,7 @@
     "provider": "evolution",
     "emoji": "🎰",
     "theme": "egypt",
-    "dist": 96,
+    "dist": 91,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -10583,7 +13873,12 @@
     "tag": null,
     "img": "https://games.evolution.com/wp-content/uploads/2023/04/peek_baccarat_thumbnail_1000x563_2023_03-400x225.jpg",
     "link": "https://hms-tiradentesday.bet/?invite_code=8be79469",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 3.06,
+    "betMinima": 0.24,
+    "betMaxima": 5.68,
+    "betMaximaMin": 4.9,
+    "betMaximaMax": 16.86
   },
   {
     "id": 843,
@@ -10591,7 +13886,7 @@
     "provider": "evolution",
     "emoji": "🎰",
     "theme": "fantasy",
-    "dist": 96,
+    "dist": 93,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -10599,7 +13894,12 @@
     "tag": null,
     "img": "https://games.evolution.com/wp-content/uploads/2023/04/super_andar_bahar_thumbnail_1000x563_2023_03-400x225.jpg",
     "link": "https://coroa-gghhpg.com/?id=405842843",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 3.23,
+    "betMinima": 0.4,
+    "betMaxima": 4.55,
+    "betMaximaMin": 5.22,
+    "betMaximaMax": 10.37
   },
   {
     "id": 844,
@@ -10607,7 +13907,7 @@
     "provider": "evolution",
     "emoji": "🎰",
     "theme": "fantasy",
-    "dist": 96,
+    "dist": 89,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -10615,7 +13915,12 @@
     "tag": null,
     "img": "https://games.evolution.com/wp-content/uploads/2023/04/super_sic_bo_web_imagery_1000x563_2023_04-400x225.jpg",
     "link": "https://www.onebra77.com/?source_code=TWMWECDNJ2X",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 2.73,
+    "betMinima": 0.74,
+    "betMaxima": 4.71,
+    "betMaximaMin": 5.96,
+    "betMaximaMax": 17.49
   },
   {
     "id": 845,
@@ -10623,7 +13928,7 @@
     "provider": "evolution",
     "emoji": "🎰",
     "theme": "fantasy",
-    "dist": 96,
+    "dist": 92,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -10631,7 +13936,12 @@
     "tag": null,
     "img": "https://games.evolution.com/wp-content/uploads/2024/01/ultimate_roulette_1000-400x225.png",
     "link": "https://br.mt-antilope.com/home?inviteCode=VEU6ZR",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 3.37,
+    "betMinima": 0.75,
+    "betMaxima": 7.02,
+    "betMaximaMin": 5.57,
+    "betMaximaMax": 16.78
   },
   {
     "id": 846,
@@ -10639,7 +13949,7 @@
     "provider": "evolution",
     "emoji": "🎰",
     "theme": "fantasy",
-    "dist": 96,
+    "dist": 93,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -10647,7 +13957,12 @@
     "tag": null,
     "img": "https://games.evolution.com/wp-content/uploads/2024/01/ultimate_sic_bo_1000-400x225.png",
     "link": "https://kk-judy777.vip/?id=649076826&currency=BRL&type=2",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 2.82,
+    "betMinima": 0.24,
+    "betMaxima": 12.97,
+    "betMaximaMin": 4.01,
+    "betMaximaMax": 10.27
   },
   {
     "id": 847,
@@ -10655,7 +13970,7 @@
     "provider": "evolution",
     "emoji": "🎰",
     "theme": "fantasy",
-    "dist": 96,
+    "dist": 97,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -10663,7 +13978,12 @@
     "tag": null,
     "img": "https://games.evolution.com/wp-content/uploads/2024/01/video_blackjack_1000-400x225.png",
     "link": "https://www.fy-fanta.com/?id=223975751",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 2.18,
+    "betMinima": 0.64,
+    "betMaxima": 4.62,
+    "betMaximaMin": 4.48,
+    "betMaximaMax": 12.15
   },
   {
     "id": 848,
@@ -10671,7 +13991,7 @@
     "provider": "evolution",
     "emoji": "🎰",
     "theme": "fantasy",
-    "dist": 96,
+    "dist": 98,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -10679,7 +13999,12 @@
     "tag": null,
     "img": "https://games.evolution.com/wp-content/uploads/2023/07/video_poker_web_imagery_1000x563_2023_07-400x225.jpg",
     "link": "https://hms-tiradentesday.bet/?invite_code=8be79469",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 3.5,
+    "betMinima": 0.52,
+    "betMaxima": 11.02,
+    "betMaximaMin": 4.32,
+    "betMaximaMax": 16.26
   },
   {
     "id": 849,
@@ -10687,7 +14012,7 @@
     "provider": "hacksaw",
     "emoji": "🎰",
     "theme": "fantasy",
-    "dist": 96,
+    "dist": 91,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -10695,7 +14020,12 @@
     "tag": null,
     "img": "https://www-live.hacksawgaming.com/casino_thumbnails/2243.jpg",
     "link": "https://coroa-gghhpg.com/?id=405842843",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 2.04,
+    "betMinima": 0.73,
+    "betMaxima": 12.67,
+    "betMaximaMin": 4.95,
+    "betMaximaMax": 13.31
   },
   {
     "id": 850,
@@ -10703,7 +14033,7 @@
     "provider": "hacksaw",
     "emoji": "🪄",
     "theme": "fantasy",
-    "dist": 96,
+    "dist": 84,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -10711,7 +14041,12 @@
     "tag": null,
     "img": "https://www-live.hacksawgaming.com/casino_thumbnails/2258.jpg",
     "link": "https://www.onebra77.com/?source_code=TWMWECDNJ2X",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 3.31,
+    "betMinima": 0.6,
+    "betMaxima": 9.1,
+    "betMaximaMin": 4.06,
+    "betMaximaMax": 10.54
   },
   {
     "id": 851,
@@ -10719,7 +14054,7 @@
     "provider": "hacksaw",
     "emoji": "🎰",
     "theme": "fantasy",
-    "dist": 96,
+    "dist": 90,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -10727,7 +14062,12 @@
     "tag": null,
     "img": "https://www-live.hacksawgaming.com/casino_thumbnails/2229.jpg",
     "link": "https://br.mt-antilope.com/home?inviteCode=VEU6ZR",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 2.51,
+    "betMinima": 0.59,
+    "betMaxima": 8.68,
+    "betMaximaMin": 4.25,
+    "betMaximaMax": 16.47
   },
   {
     "id": 852,
@@ -10735,7 +14075,7 @@
     "provider": "hacksaw",
     "emoji": "🎰",
     "theme": "fantasy",
-    "dist": 96,
+    "dist": 94,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -10743,7 +14083,12 @@
     "tag": null,
     "img": "https://www-live.hacksawgaming.com/casino_thumbnails/2082.jpg",
     "link": "https://kk-judy777.vip/?id=649076826&currency=BRL&type=2",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 3.27,
+    "betMinima": 0.3,
+    "betMaxima": 9.53,
+    "betMaximaMin": 5.87,
+    "betMaximaMax": 11.08
   },
   {
     "id": 853,
@@ -10751,7 +14096,7 @@
     "provider": "hacksaw",
     "emoji": "🎰",
     "theme": "fantasy",
-    "dist": 96,
+    "dist": 98,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -10759,7 +14104,12 @@
     "tag": null,
     "img": "https://www-live.hacksawgaming.com/casino_thumbnails/2234.jpg",
     "link": "https://www.fy-fanta.com/?id=223975751",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 2.38,
+    "betMinima": 0.62,
+    "betMaxima": 9.52,
+    "betMaximaMin": 4.57,
+    "betMaximaMax": 13.43
   },
   {
     "id": 854,
@@ -10767,7 +14117,7 @@
     "provider": "hacksaw",
     "emoji": "🎰",
     "theme": "fantasy",
-    "dist": 96,
+    "dist": 97,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -10775,7 +14125,12 @@
     "tag": null,
     "img": "https://www-live.hacksawgaming.com/casino_thumbnails/2219.jpg",
     "link": "https://hms-tiradentesday.bet/?invite_code=8be79469",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 2.01,
+    "betMinima": 0.24,
+    "betMaxima": 11.55,
+    "betMaximaMin": 5.11,
+    "betMaximaMax": 12.39
   },
   {
     "id": 855,
@@ -10783,7 +14138,7 @@
     "provider": "hacksaw",
     "emoji": "🐂",
     "theme": "fantasy",
-    "dist": 96,
+    "dist": 98,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -10791,7 +14146,12 @@
     "tag": null,
     "img": "https://www-live.hacksawgaming.com/casino_thumbnails/2185.jpg",
     "link": "https://coroa-gghhpg.com/?id=405842843",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 3.26,
+    "betMinima": 0.2,
+    "betMaxima": 5.95,
+    "betMaximaMin": 5.21,
+    "betMaximaMax": 13.56
   },
   {
     "id": 856,
@@ -10799,7 +14159,7 @@
     "provider": "hacksaw",
     "emoji": "🎰",
     "theme": "fantasy",
-    "dist": 96,
+    "dist": 91,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -10807,7 +14167,12 @@
     "tag": null,
     "img": "https://www-live.hacksawgaming.com/casino_thumbnails/2195.jpg",
     "link": "https://www.onebra77.com/?source_code=TWMWECDNJ2X",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 2.02,
+    "betMinima": 0.78,
+    "betMaxima": 11.74,
+    "betMaximaMin": 4.34,
+    "betMaximaMax": 10.15
   },
   {
     "id": 857,
@@ -10815,7 +14180,7 @@
     "provider": "hacksaw",
     "emoji": "✨",
     "theme": "fantasy",
-    "dist": 96,
+    "dist": 95,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -10823,7 +14188,12 @@
     "tag": null,
     "img": "https://www-live.hacksawgaming.com/casino_thumbnails/2190.jpg",
     "link": "https://br.mt-antilope.com/home?inviteCode=VEU6ZR",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 3.22,
+    "betMinima": 0.7,
+    "betMaxima": 14.71,
+    "betMaximaMin": 4.08,
+    "betMaximaMax": 12.17
   },
   {
     "id": 858,
@@ -10831,7 +14201,7 @@
     "provider": "hacksaw",
     "emoji": "🎰",
     "theme": "fantasy",
-    "dist": 96,
+    "dist": 88,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -10839,7 +14209,12 @@
     "tag": null,
     "img": "https://www-live.hacksawgaming.com/casino_thumbnails/2148.jpg",
     "link": "https://kk-judy777.vip/?id=649076826&currency=BRL&type=2",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 2.66,
+    "betMinima": 0.29,
+    "betMaxima": 13.28,
+    "betMaximaMin": 5.39,
+    "betMaximaMax": 14.65
   },
   {
     "id": 859,
@@ -10847,7 +14222,7 @@
     "provider": "hacksaw",
     "emoji": "🎰",
     "theme": "egypt",
-    "dist": 96,
+    "dist": 97,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -10855,7 +14230,12 @@
     "tag": null,
     "img": "https://www-live.hacksawgaming.com/casino_thumbnails/2143.jpg",
     "link": "https://www.fy-fanta.com/?id=223975751",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 2.5,
+    "betMinima": 0.26,
+    "betMaxima": 14.33,
+    "betMaximaMin": 4.05,
+    "betMaximaMax": 10.31
   },
   {
     "id": 860,
@@ -10863,7 +14243,7 @@
     "provider": "hacksaw",
     "emoji": "🎰",
     "theme": "fantasy",
-    "dist": 96,
+    "dist": 94,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -10871,7 +14251,12 @@
     "tag": null,
     "img": "https://www-live.hacksawgaming.com/casino_thumbnails/2062.jpg",
     "link": "https://hms-tiradentesday.bet/?invite_code=8be79469",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 2.45,
+    "betMinima": 0.28,
+    "betMaxima": 5.22,
+    "betMaximaMin": 4.68,
+    "betMaximaMax": 17.67
   },
   {
     "id": 861,
@@ -10879,7 +14264,7 @@
     "provider": "hacksaw",
     "emoji": "✨",
     "theme": "fantasy",
-    "dist": 96,
+    "dist": 89,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -10887,7 +14272,12 @@
     "tag": null,
     "img": "https://www-live.hacksawgaming.com/casino_thumbnails/2138.jpg",
     "link": "https://coroa-gghhpg.com/?id=405842843",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 3.15,
+    "betMinima": 0.29,
+    "betMaxima": 14.52,
+    "betMaximaMin": 5.42,
+    "betMaximaMax": 15.73
   },
   {
     "id": 862,
@@ -10895,7 +14285,7 @@
     "provider": "hacksaw",
     "emoji": "⚡",
     "theme": "greek",
-    "dist": 96,
+    "dist": 90,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -10903,7 +14293,12 @@
     "tag": null,
     "img": "https://www-live.hacksawgaming.com/casino_thumbnails/2077.jpg",
     "link": "https://www.onebra77.com/?source_code=TWMWECDNJ2X",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 3.41,
+    "betMinima": 0.24,
+    "betMaxima": 4.29,
+    "betMaximaMin": 5.26,
+    "betMaximaMax": 12.19
   },
   {
     "id": 863,
@@ -10911,7 +14306,7 @@
     "provider": "hacksaw",
     "emoji": "🌊",
     "theme": "fishing",
-    "dist": 96,
+    "dist": 88,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -10919,7 +14314,12 @@
     "tag": null,
     "img": "https://www-live.hacksawgaming.com/casino_thumbnails/2057.jpg",
     "link": "https://br.mt-antilope.com/home?inviteCode=VEU6ZR",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 2.69,
+    "betMinima": 0.63,
+    "betMaxima": 7.88,
+    "betMaximaMin": 4.86,
+    "betMaximaMax": 15.28
   },
   {
     "id": 864,
@@ -10927,7 +14327,7 @@
     "provider": "hacksaw",
     "emoji": "🎰",
     "theme": "egypt",
-    "dist": 96,
+    "dist": 94,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -10935,7 +14335,12 @@
     "tag": null,
     "img": "https://www-live.hacksawgaming.com/casino_thumbnails/2115.jpg",
     "link": "https://kk-judy777.vip/?id=649076826&currency=BRL&type=2",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 3.36,
+    "betMinima": 0.21,
+    "betMaxima": 13.55,
+    "betMaximaMin": 4.45,
+    "betMaximaMax": 12.69
   },
   {
     "id": 865,
@@ -10943,7 +14348,7 @@
     "provider": "hacksaw",
     "emoji": "🎰",
     "theme": "fantasy",
-    "dist": 96,
+    "dist": 92,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -10951,7 +14356,12 @@
     "tag": null,
     "img": "https://www-live.hacksawgaming.com/casino_thumbnails/2000.jpg",
     "link": "https://www.fy-fanta.com/?id=223975751",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 3.32,
+    "betMinima": 0.21,
+    "betMaxima": 13.84,
+    "betMaximaMin": 4.0,
+    "betMaximaMax": 11.42
   },
   {
     "id": 866,
@@ -10959,7 +14369,7 @@
     "provider": "hacksaw",
     "emoji": "🎰",
     "theme": "fantasy",
-    "dist": 96,
+    "dist": 98,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -10967,7 +14377,12 @@
     "tag": null,
     "img": "https://www-live.hacksawgaming.com/casino_thumbnails/2019.jpg",
     "link": "https://hms-tiradentesday.bet/?invite_code=8be79469",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 2.65,
+    "betMinima": 0.43,
+    "betMaxima": 14.55,
+    "betMaximaMin": 4.07,
+    "betMaximaMax": 10.48
   },
   {
     "id": 867,
@@ -10975,7 +14390,7 @@
     "provider": "hacksaw",
     "emoji": "🐉",
     "theme": "chinese",
-    "dist": 96,
+    "dist": 94,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -10983,7 +14398,12 @@
     "tag": null,
     "img": "https://www-live.hacksawgaming.com/casino_thumbnails/1981.jpg",
     "link": "https://coroa-gghhpg.com/?id=405842843",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 2.33,
+    "betMinima": 0.71,
+    "betMaxima": 12.5,
+    "betMaximaMin": 4.38,
+    "betMaximaMax": 15.24
   },
   {
     "id": 868,
@@ -10991,7 +14411,7 @@
     "provider": "hacksaw",
     "emoji": "🎰",
     "theme": "fantasy",
-    "dist": 96,
+    "dist": 84,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -10999,7 +14419,12 @@
     "tag": null,
     "img": "https://www-live.hacksawgaming.com/casino_thumbnails/1971.jpg",
     "link": "https://www.onebra77.com/?source_code=TWMWECDNJ2X",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 3.41,
+    "betMinima": 0.3,
+    "betMaxima": 14.16,
+    "betMaximaMin": 5.13,
+    "betMaximaMax": 15.54
   },
   {
     "id": 869,
@@ -11007,7 +14432,7 @@
     "provider": "hacksaw",
     "emoji": "🎰",
     "theme": "fantasy",
-    "dist": 96,
+    "dist": 93,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -11015,7 +14440,12 @@
     "tag": null,
     "img": "https://www-live.hacksawgaming.com/casino_thumbnails/2004.jpg",
     "link": "https://br.mt-antilope.com/home?inviteCode=VEU6ZR",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 2.52,
+    "betMinima": 0.53,
+    "betMaxima": 5.32,
+    "betMaximaMin": 4.45,
+    "betMaximaMax": 14.36
   },
   {
     "id": 870,
@@ -11023,7 +14453,7 @@
     "provider": "hacksaw",
     "emoji": "❄️",
     "theme": "fantasy",
-    "dist": 96,
+    "dist": 97,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -11031,7 +14461,12 @@
     "tag": null,
     "img": "https://www-live.hacksawgaming.com/casino_thumbnails/1946.jpg",
     "link": "https://kk-judy777.vip/?id=649076826&currency=BRL&type=2",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 2.32,
+    "betMinima": 0.33,
+    "betMaxima": 9.72,
+    "betMaximaMin": 5.36,
+    "betMaximaMax": 17.94
   },
   {
     "id": 871,
@@ -11039,7 +14474,7 @@
     "provider": "hacksaw",
     "emoji": "🎰",
     "theme": "fantasy",
-    "dist": 96,
+    "dist": 83,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -11047,7 +14482,12 @@
     "tag": null,
     "img": "https://www-live.hacksawgaming.com/casino_thumbnails/1977.jpg",
     "link": "https://www.fy-fanta.com/?id=223975751",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 3.0,
+    "betMinima": 0.31,
+    "betMaxima": 7.59,
+    "betMaximaMin": 4.18,
+    "betMaximaMax": 10.63
   },
   {
     "id": 872,
@@ -11055,7 +14495,7 @@
     "provider": "hacksaw",
     "emoji": "🎰",
     "theme": "fantasy",
-    "dist": 96,
+    "dist": 85,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -11063,7 +14503,12 @@
     "tag": null,
     "img": "https://www-live.hacksawgaming.com/casino_thumbnails/1938.jpg",
     "link": "https://hms-tiradentesday.bet/?invite_code=8be79469",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 3.17,
+    "betMinima": 0.72,
+    "betMaxima": 6.48,
+    "betMaximaMin": 5.36,
+    "betMaximaMax": 12.98
   },
   {
     "id": 873,
@@ -11071,7 +14516,7 @@
     "provider": "hacksaw",
     "emoji": "🎰",
     "theme": "fantasy",
-    "dist": 96,
+    "dist": 93,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -11079,7 +14524,12 @@
     "tag": null,
     "img": "https://www-live.hacksawgaming.com/casino_thumbnails/1871.jpg",
     "link": "https://coroa-gghhpg.com/?id=405842843",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 3.28,
+    "betMinima": 0.6,
+    "betMaxima": 8.61,
+    "betMaximaMin": 5.58,
+    "betMaximaMax": 17.81
   },
   {
     "id": 874,
@@ -11087,7 +14537,7 @@
     "provider": "hacksaw",
     "emoji": "🤠",
     "theme": "western",
-    "dist": 96,
+    "dist": 84,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -11095,7 +14545,12 @@
     "tag": null,
     "img": "https://www-live.hacksawgaming.com/casino_thumbnails/1924.jpg",
     "link": "https://www.onebra77.com/?source_code=TWMWECDNJ2X",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 2.23,
+    "betMinima": 0.34,
+    "betMaxima": 14.16,
+    "betMaximaMin": 5.69,
+    "betMaximaMax": 13.8
   },
   {
     "id": 875,
@@ -11111,7 +14566,12 @@
     "tag": null,
     "img": "https://www-live.hacksawgaming.com/casino_thumbnails/1914.jpg",
     "link": "https://br.mt-antilope.com/home?inviteCode=VEU6ZR",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 3.2,
+    "betMinima": 0.68,
+    "betMaxima": 8.07,
+    "betMaximaMin": 4.92,
+    "betMaximaMax": 17.36
   },
   {
     "id": 876,
@@ -11119,7 +14579,7 @@
     "provider": "hacksaw",
     "emoji": "🎰",
     "theme": "fantasy",
-    "dist": 96,
+    "dist": 93,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -11127,7 +14587,12 @@
     "tag": null,
     "img": "https://www-live.hacksawgaming.com/casino_thumbnails/1803.jpg",
     "link": "https://kk-judy777.vip/?id=649076826&currency=BRL&type=2",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 3.33,
+    "betMinima": 0.64,
+    "betMaxima": 10.69,
+    "betMaximaMin": 4.54,
+    "betMaximaMax": 15.69
   },
   {
     "id": 877,
@@ -11135,7 +14600,7 @@
     "provider": "hacksaw",
     "emoji": "🎰",
     "theme": "fantasy",
-    "dist": 96,
+    "dist": 92,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -11143,7 +14608,12 @@
     "tag": null,
     "img": "https://www-live.hacksawgaming.com/casino_thumbnails/1928.jpg",
     "link": "https://www.fy-fanta.com/?id=223975751",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 2.53,
+    "betMinima": 0.4,
+    "betMaxima": 9.81,
+    "betMaximaMin": 5.78,
+    "betMaximaMax": 15.26
   },
   {
     "id": 878,
@@ -11151,7 +14621,7 @@
     "provider": "nolimit",
     "emoji": "🎰",
     "theme": "fantasy",
-    "dist": 96,
+    "dist": 85,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -11159,7 +14629,12 @@
     "tag": null,
     "img": "https://fan-cdn.nolimitcity.com/small_Website_Icon_AFK_d294ef0970.jpg",
     "link": "https://hms-tiradentesday.bet/?invite_code=8be79469",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 3.11,
+    "betMinima": 0.66,
+    "betMaxima": 7.71,
+    "betMaximaMin": 4.88,
+    "betMaximaMax": 10.99
   },
   {
     "id": 879,
@@ -11167,7 +14642,7 @@
     "provider": "nolimit",
     "emoji": "🌊",
     "theme": "fantasy",
-    "dist": 96,
+    "dist": 95,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -11175,7 +14650,12 @@
     "tag": null,
     "img": "https://fan-cdn.nolimitcity.com/small_Website_Icon_Soaked_by_Seamen_3618e8672a.jpg",
     "link": "https://coroa-gghhpg.com/?id=405842843",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 3.44,
+    "betMinima": 0.6,
+    "betMaxima": 14.2,
+    "betMaximaMin": 4.73,
+    "betMaximaMax": 16.84
   },
   {
     "id": 880,
@@ -11183,7 +14663,7 @@
     "provider": "nolimit",
     "emoji": "🎰",
     "theme": "fantasy",
-    "dist": 96,
+    "dist": 87,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -11191,7 +14671,12 @@
     "tag": null,
     "img": "https://fan-cdn.nolimitcity.com/small_Website_Icon_Tanked3_da2dd597f4.png",
     "link": "https://www.onebra77.com/?source_code=TWMWECDNJ2X",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 2.15,
+    "betMinima": 0.44,
+    "betMaxima": 6.8,
+    "betMaximaMin": 5.22,
+    "betMaximaMax": 15.95
   },
   {
     "id": 881,
@@ -11207,7 +14692,12 @@
     "tag": null,
     "img": "https://fan-cdn.nolimitcity.com/x_Loot_1_3759fade78.png",
     "link": "https://br.mt-antilope.com/home?inviteCode=VEU6ZR",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 3.49,
+    "betMinima": 0.24,
+    "betMaxima": 9.49,
+    "betMaximaMin": 4.4,
+    "betMaximaMax": 11.4
   },
   {
     "id": 882,
@@ -11215,7 +14705,7 @@
     "provider": "nolimit",
     "emoji": "⚡",
     "theme": "fantasy",
-    "dist": 96,
+    "dist": 87,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -11223,7 +14713,12 @@
     "tag": null,
     "img": "https://fan-cdn.nolimitcity.com/x_God_f05a7647e8.png",
     "link": "https://kk-judy777.vip/?id=649076826&currency=BRL&type=2",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 2.48,
+    "betMinima": 0.56,
+    "betMaxima": 11.72,
+    "betMaximaMin": 5.05,
+    "betMaximaMax": 13.66
   },
   {
     "id": 883,
@@ -11231,7 +14726,7 @@
     "provider": "nolimit",
     "emoji": "🎰",
     "theme": "fantasy",
-    "dist": 96,
+    "dist": 89,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -11239,7 +14734,12 @@
     "tag": null,
     "img": "https://fan-cdn.nolimitcity.com/x_Glitch_5546b4f237.png",
     "link": "https://www.fy-fanta.com/?id=223975751",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 2.8,
+    "betMinima": 0.46,
+    "betMaxima": 12.87,
+    "betMaximaMin": 4.07,
+    "betMaximaMax": 13.46
   },
   {
     "id": 884,
@@ -11255,7 +14755,12 @@
     "tag": null,
     "img": "https://fan-cdn.nolimitcity.com/xtra_58f8e2f2ed.png",
     "link": "https://hms-tiradentesday.bet/?invite_code=8be79469",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 2.14,
+    "betMinima": 0.4,
+    "betMaxima": 6.05,
+    "betMaximaMin": 4.64,
+    "betMaximaMax": 15.32
   },
   {
     "id": 885,
@@ -11263,7 +14768,7 @@
     "provider": "nolimit",
     "emoji": "🎰",
     "theme": "fantasy",
-    "dist": 96,
+    "dist": 95,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -11271,7 +14776,12 @@
     "tag": null,
     "img": "https://fan-cdn.nolimitcity.com/small_Website_Icon_True_Grit_Redemption_2_1_1_39a2b44575.jpg",
     "link": "https://coroa-gghhpg.com/?id=405842843",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 3.41,
+    "betMinima": 0.76,
+    "betMaxima": 14.31,
+    "betMaximaMin": 5.93,
+    "betMaximaMax": 13.01
   },
   {
     "id": 886,
@@ -11279,7 +14789,7 @@
     "provider": "nolimit",
     "emoji": "🎰",
     "theme": "fantasy",
-    "dist": 96,
+    "dist": 98,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -11287,7 +14797,12 @@
     "tag": null,
     "img": "https://fan-cdn.nolimitcity.com/infectious_Ways_752f21cfca.png",
     "link": "https://www.onebra77.com/?source_code=TWMWECDNJ2X",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 2.0,
+    "betMinima": 0.29,
+    "betMaxima": 14.93,
+    "betMaximaMin": 4.46,
+    "betMaximaMax": 11.43
   },
   {
     "id": 887,
@@ -11295,7 +14810,7 @@
     "provider": "nolimit",
     "emoji": "🎰",
     "theme": "fantasy",
-    "dist": 96,
+    "dist": 98,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -11303,7 +14818,12 @@
     "tag": null,
     "img": "https://fan-cdn.nolimitcity.com/x_Ways_bb82eaff71.png",
     "link": "https://br.mt-antilope.com/home?inviteCode=VEU6ZR",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 2.01,
+    "betMinima": 0.46,
+    "betMaxima": 13.68,
+    "betMaximaMin": 4.52,
+    "betMaximaMax": 18.0
   },
   {
     "id": 888,
@@ -11311,7 +14831,7 @@
     "provider": "nolimit",
     "emoji": "🎰",
     "theme": "fantasy",
-    "dist": 96,
+    "dist": 94,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -11319,7 +14839,12 @@
     "tag": null,
     "img": "https://fan-cdn.nolimitcity.com/x_Split_0f7c30ce11.png",
     "link": "https://kk-judy777.vip/?id=649076826&currency=BRL&type=2",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 3.34,
+    "betMinima": 0.68,
+    "betMaxima": 4.08,
+    "betMaximaMin": 5.3,
+    "betMaximaMax": 12.94
   },
   {
     "id": 889,
@@ -11327,7 +14852,7 @@
     "provider": "nolimit",
     "emoji": "🎰",
     "theme": "fantasy",
-    "dist": 96,
+    "dist": 91,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -11335,7 +14860,12 @@
     "tag": null,
     "img": "https://fan-cdn.nolimitcity.com/Resurs_2x_Bomb_Black_8120a19cf1.png",
     "link": "https://www.fy-fanta.com/?id=223975751",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 3.36,
+    "betMinima": 0.74,
+    "betMaxima": 13.66,
+    "betMaximaMin": 4.76,
+    "betMaximaMax": 10.92
   },
   {
     "id": 890,
@@ -11343,7 +14873,7 @@
     "provider": "nolimit",
     "emoji": "⚰️",
     "theme": "fantasy",
-    "dist": 96,
+    "dist": 95,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -11351,7 +14881,12 @@
     "tag": null,
     "img": "https://fan-cdn.nolimitcity.com/small_Website_Icon_Tombstone_Begins_With_Text_546ac56c44.png",
     "link": "https://hms-tiradentesday.bet/?invite_code=8be79469",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 2.99,
+    "betMinima": 0.54,
+    "betMaxima": 6.29,
+    "betMaximaMin": 4.09,
+    "betMaximaMax": 13.75
   },
   {
     "id": 891,
@@ -11359,7 +14894,7 @@
     "provider": "nolimit",
     "emoji": "🎰",
     "theme": "fantasy",
-    "dist": 96,
+    "dist": 95,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -11367,7 +14902,12 @@
     "tag": null,
     "img": "https://fan-cdn.nolimitcity.com/x_Nudge_8363f65537.png",
     "link": "https://coroa-gghhpg.com/?id=405842843",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 2.44,
+    "betMinima": 0.49,
+    "betMaxima": 6.36,
+    "betMaximaMin": 4.42,
+    "betMaximaMax": 13.91
   },
   {
     "id": 892,
@@ -11375,7 +14915,7 @@
     "provider": "nolimit",
     "emoji": "🎰",
     "theme": "fantasy",
-    "dist": 96,
+    "dist": 87,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -11383,7 +14923,12 @@
     "tag": null,
     "img": "https://fan-cdn.nolimitcity.com/small_Website_Icon_San_Quentin_Manhunt_1_18dc169434.jpg",
     "link": "https://www.onebra77.com/?source_code=TWMWECDNJ2X",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 3.16,
+    "betMinima": 0.4,
+    "betMaxima": 11.25,
+    "betMaximaMin": 4.25,
+    "betMaximaMax": 15.39
   },
   {
     "id": 893,
@@ -11391,7 +14936,7 @@
     "provider": "nolimit",
     "emoji": "🎰",
     "theme": "fantasy",
-    "dist": 96,
+    "dist": 95,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -11399,7 +14944,12 @@
     "tag": null,
     "img": "https://fan-cdn.nolimitcity.com/small_Website_Icon_Punk_Rocker_3_58f4112111.jpg",
     "link": "https://br.mt-antilope.com/home?inviteCode=VEU6ZR",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 2.8,
+    "betMinima": 0.26,
+    "betMaxima": 9.92,
+    "betMaximaMin": 4.79,
+    "betMaximaMax": 15.61
   },
   {
     "id": 894,
@@ -11407,7 +14957,7 @@
     "provider": "nolimit",
     "emoji": "🐱",
     "theme": "fishing",
-    "dist": 96,
+    "dist": 94,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -11415,7 +14965,12 @@
     "tag": null,
     "img": "https://fan-cdn.nolimitcity.com/small_Website_Icon_Catfish_Hunters_47ef66edfe.jpg",
     "link": "https://kk-judy777.vip/?id=649076826&currency=BRL&type=2",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 2.16,
+    "betMinima": 0.74,
+    "betMaxima": 4.35,
+    "betMaximaMin": 4.76,
+    "betMaximaMax": 15.17
   },
   {
     "id": 895,
@@ -11423,7 +14978,7 @@
     "provider": "nolimit",
     "emoji": "🎰",
     "theme": "fantasy",
-    "dist": 96,
+    "dist": 90,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -11431,7 +14986,12 @@
     "tag": null,
     "img": "https://fan-cdn.nolimitcity.com/small_Website_Icon_The_Crypt_2_c9798a343b.png",
     "link": "https://www.fy-fanta.com/?id=223975751",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 2.59,
+    "betMinima": 0.43,
+    "betMaxima": 12.65,
+    "betMaximaMin": 5.48,
+    "betMaximaMax": 11.21
   },
   {
     "id": 896,
@@ -11439,7 +14999,7 @@
     "provider": "nolimit",
     "emoji": "🎰",
     "theme": "fantasy",
-    "dist": 96,
+    "dist": 97,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -11447,7 +15007,12 @@
     "tag": null,
     "img": "https://fan-cdn.nolimitcity.com/small_Icon_Text_Supersized_ac779b1c58.png",
     "link": "https://hms-tiradentesday.bet/?invite_code=8be79469",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 3.26,
+    "betMinima": 0.61,
+    "betMaxima": 7.78,
+    "betMaximaMin": 5.92,
+    "betMaximaMax": 14.61
   },
   {
     "id": 897,
@@ -11455,7 +15020,7 @@
     "provider": "nolimit",
     "emoji": "🪙",
     "theme": "luxury",
-    "dist": 96,
+    "dist": 85,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -11463,7 +15028,12 @@
     "tag": null,
     "img": "https://fan-cdn.nolimitcity.com/small_Website_Icon_Golden_Shower_With_Text_db17e088cf.png",
     "link": "https://coroa-gghhpg.com/?id=405842843",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 3.45,
+    "betMinima": 0.24,
+    "betMaxima": 12.35,
+    "betMaximaMin": 5.03,
+    "betMaximaMax": 12.99
   },
   {
     "id": 898,
@@ -11479,7 +15049,12 @@
     "tag": null,
     "img": "https://fan-cdn.nolimitcity.com/small_Website_Icon_Duck_Hunter_Happy_Hour_3e860e5a07.png",
     "link": "https://www.onebra77.com/?source_code=TWMWECDNJ2X",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 2.1,
+    "betMinima": 0.41,
+    "betMaxima": 8.04,
+    "betMaximaMin": 4.47,
+    "betMaximaMax": 14.49
   },
   {
     "id": 899,
@@ -11487,7 +15062,7 @@
     "provider": "nolimit",
     "emoji": "🎰",
     "theme": "fantasy",
-    "dist": 96,
+    "dist": 92,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -11495,7 +15070,12 @@
     "tag": null,
     "img": "https://fan-cdn.nolimitcity.com/small_Website_Icon_Das_x_Boat2_With_Text_b16e3ef8e8.png",
     "link": "https://br.mt-antilope.com/home?inviteCode=VEU6ZR",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 2.43,
+    "betMinima": 0.36,
+    "betMaxima": 10.98,
+    "betMaximaMin": 4.95,
+    "betMaximaMax": 14.65
   },
   {
     "id": 900,
@@ -11503,7 +15083,7 @@
     "provider": "nolimit",
     "emoji": "🎰",
     "theme": "egypt",
-    "dist": 96,
+    "dist": 95,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -11511,7 +15091,12 @@
     "tag": null,
     "img": "https://fan-cdn.nolimitcity.com/small_Website_Icon_Crazy_Ex_GF_170a6daf84.png",
     "link": "https://kk-judy777.vip/?id=649076826&currency=BRL&type=2",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 2.88,
+    "betMinima": 0.63,
+    "betMaxima": 8.55,
+    "betMaximaMin": 4.87,
+    "betMaximaMax": 17.66
   },
   {
     "id": 901,
@@ -11519,7 +15104,7 @@
     "provider": "nolimit",
     "emoji": "🎰",
     "theme": "fantasy",
-    "dist": 96,
+    "dist": 88,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -11527,7 +15112,12 @@
     "tag": null,
     "img": "https://fan-cdn.nolimitcity.com/small_Website_Icon_Bizzare_986f388490.png",
     "link": "https://www.fy-fanta.com/?id=223975751",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 3.2,
+    "betMinima": 0.55,
+    "betMaxima": 5.23,
+    "betMaximaMin": 4.45,
+    "betMaximaMax": 13.14
   },
   {
     "id": 902,
@@ -11535,7 +15125,7 @@
     "provider": "nolimit",
     "emoji": "🎰",
     "theme": "fantasy",
-    "dist": 96,
+    "dist": 93,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -11543,7 +15133,12 @@
     "tag": null,
     "img": "https://fan-cdn.nolimitcity.com/small_Website_Icon_Disorder_4bcb3086f3.png",
     "link": "https://hms-tiradentesday.bet/?invite_code=8be79469",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 2.41,
+    "betMinima": 0.5,
+    "betMaxima": 14.66,
+    "betMaximaMin": 5.1,
+    "betMaximaMax": 10.4
   },
   {
     "id": 903,
@@ -11551,7 +15146,7 @@
     "provider": "nolimit",
     "emoji": "🎰",
     "theme": "fantasy",
-    "dist": 96,
+    "dist": 95,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -11559,7 +15154,12 @@
     "tag": null,
     "img": "https://fan-cdn.nolimitcity.com/small_Website_Icon_Bangkok_Hilton_New_aeb48e4fbb.png",
     "link": "https://coroa-gghhpg.com/?id=405842843",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 2.26,
+    "betMinima": 0.55,
+    "betMaxima": 11.71,
+    "betMaximaMin": 5.65,
+    "betMaximaMax": 10.7
   },
   {
     "id": 904,
@@ -11567,7 +15167,7 @@
     "provider": "nolimit",
     "emoji": "🎰",
     "theme": "fantasy",
-    "dist": 96,
+    "dist": 83,
     "rtp": 96.5,
     "minBet": 0.2,
     "maxBet": 500,
@@ -11575,7 +15175,12 @@
     "tag": null,
     "img": "https://fan-cdn.nolimitcity.com/small_Website_Icon_Breakout_d0f6b8e743.png",
     "link": "https://www.onebra77.com/?source_code=TWMWECDNJ2X",
-    "clicks": 0
+    "clicks": 0,
+    "betPadrao": 2.05,
+    "betMinima": 0.36,
+    "betMaxima": 4.83,
+    "betMaximaMin": 4.14,
+    "betMaximaMax": 10.76
   }
 ];
 
@@ -11586,8 +15191,8 @@
     "color": "#E11D48",
     "colorAccent": "#FB7185",
     "tagline": "Slots & Live",
-    "enabled": true,
-    "logoSvg": "<svg viewBox=\"0 0 120 60\" xmlns=\"http://www.w3.org/2000/svg\"><defs><linearGradient id=\"lg-pgsoft\" x1=\"0%\" y1=\"0%\" x2=\"100%\" y2=\"100%\"><stop offset=\"0%\" stop-color=\"#FB7185\"/><stop offset=\"100%\" stop-color=\"#E11D48\"/></linearGradient></defs><text x=\"60\" y=\"38\" text-anchor=\"middle\" font-family=\"Arial Black, sans-serif\" font-weight=\"900\" font-size=\"28\" fill=\"url(#lg-pgsoft)\" letter-spacing=\"-1\">PG</text><text x=\"60\" y=\"52\" text-anchor=\"middle\" font-family=\"Arial, sans-serif\" font-weight=\"700\" font-size=\"9\" fill=\"#FBCFE8\" letter-spacing=\"3\">SOFT</text></svg>"
+    "logoSvg": "<svg viewBox=\"0 0 120 60\" xmlns=\"http://www.w3.org/2000/svg\"><defs><linearGradient id=\"lg-pgsoft\" x1=\"0%\" y1=\"0%\" x2=\"100%\" y2=\"100%\"><stop offset=\"0%\" stop-color=\"#FB7185\"/><stop offset=\"100%\" stop-color=\"#E11D48\"/></linearGradient></defs><text x=\"60\" y=\"38\" text-anchor=\"middle\" font-family=\"Arial Black, sans-serif\" font-weight=\"900\" font-size=\"28\" fill=\"url(#lg-pgsoft)\" letter-spacing=\"-1\">PG</text><text x=\"60\" y=\"52\" text-anchor=\"middle\" font-family=\"Arial, sans-serif\" font-weight=\"700\" font-size=\"9\" fill=\"#FBCFE8\" letter-spacing=\"3\">SOFT</text></svg>",
+    "enabled": true
   },
   {
     "key": "pragmatic",
@@ -11595,8 +15200,8 @@
     "color": "#F59E0B",
     "colorAccent": "#FBBF24",
     "tagline": "Slots Premiados",
-    "enabled": true,
-    "logoSvg": "<svg viewBox=\"0 0 120 60\" xmlns=\"http://www.w3.org/2000/svg\"><defs><linearGradient id=\"lg-pragmatic\" x1=\"0%\" y1=\"0%\" x2=\"100%\" y2=\"100%\"><stop offset=\"0%\" stop-color=\"#FBBF24\"/><stop offset=\"100%\" stop-color=\"#D97706\"/></linearGradient></defs><text x=\"60\" y=\"32\" text-anchor=\"middle\" font-family=\"Arial Black, sans-serif\" font-weight=\"900\" font-size=\"14\" fill=\"url(#lg-pragmatic)\" letter-spacing=\"-0.5\">PRAGMATIC</text><text x=\"60\" y=\"48\" text-anchor=\"middle\" font-family=\"Arial, sans-serif\" font-weight=\"700\" font-size=\"11\" fill=\"#FDE68A\" letter-spacing=\"4\">PLAY</text></svg>"
+    "logoSvg": "<svg viewBox=\"0 0 120 60\" xmlns=\"http://www.w3.org/2000/svg\"><defs><linearGradient id=\"lg-pragmatic\" x1=\"0%\" y1=\"0%\" x2=\"100%\" y2=\"100%\"><stop offset=\"0%\" stop-color=\"#FBBF24\"/><stop offset=\"100%\" stop-color=\"#D97706\"/></linearGradient></defs><text x=\"60\" y=\"32\" text-anchor=\"middle\" font-family=\"Arial Black, sans-serif\" font-weight=\"900\" font-size=\"14\" fill=\"url(#lg-pragmatic)\" letter-spacing=\"-0.5\">PRAGMATIC</text><text x=\"60\" y=\"48\" text-anchor=\"middle\" font-family=\"Arial, sans-serif\" font-weight=\"700\" font-size=\"11\" fill=\"#FDE68A\" letter-spacing=\"4\">PLAY</text></svg>",
+    "enabled": true
   },
   {
     "key": "evolution",
@@ -11604,8 +15209,8 @@
     "color": "#8B5CF6",
     "colorAccent": "#C4B5FD",
     "tagline": "Live Casino",
-    "enabled": true,
-    "logoSvg": "<svg viewBox=\"0 0 120 60\" xmlns=\"http://www.w3.org/2000/svg\"><defs><linearGradient id=\"lg-evolution\" x1=\"0%\" y1=\"0%\" x2=\"100%\" y2=\"100%\"><stop offset=\"0%\" stop-color=\"#C4B5FD\"/><stop offset=\"100%\" stop-color=\"#7C3AED\"/></linearGradient></defs><text x=\"60\" y=\"34\" text-anchor=\"middle\" font-family=\"Arial Black, sans-serif\" font-weight=\"900\" font-size=\"15\" fill=\"url(#lg-evolution)\" letter-spacing=\"-0.5\">EVOLUTION</text><text x=\"60\" y=\"48\" text-anchor=\"middle\" font-family=\"Arial, sans-serif\" font-weight=\"700\" font-size=\"9\" fill=\"#C4B5FD\" letter-spacing=\"3\">GAMING</text></svg>"
+    "logoSvg": "<svg viewBox=\"0 0 120 60\" xmlns=\"http://www.w3.org/2000/svg\"><defs><linearGradient id=\"lg-evolution\" x1=\"0%\" y1=\"0%\" x2=\"100%\" y2=\"100%\"><stop offset=\"0%\" stop-color=\"#C4B5FD\"/><stop offset=\"100%\" stop-color=\"#7C3AED\"/></linearGradient></defs><text x=\"60\" y=\"34\" text-anchor=\"middle\" font-family=\"Arial Black, sans-serif\" font-weight=\"900\" font-size=\"15\" fill=\"url(#lg-evolution)\" letter-spacing=\"-0.5\">EVOLUTION</text><text x=\"60\" y=\"48\" text-anchor=\"middle\" font-family=\"Arial, sans-serif\" font-weight=\"700\" font-size=\"9\" fill=\"#C4B5FD\" letter-spacing=\"3\">GAMING</text></svg>",
+    "enabled": true
   },
   {
     "key": "hacksaw",
@@ -11613,8 +15218,8 @@
     "color": "#F97316",
     "colorAccent": "#FB923C",
     "tagline": "Slots Modernos",
-    "enabled": true,
-    "logoSvg": "<svg viewBox=\"0 0 120 60\" xmlns=\"http://www.w3.org/2000/svg\"><defs><linearGradient id=\"lg-hacksaw\" x1=\"0%\" y1=\"0%\" x2=\"100%\" y2=\"100%\"><stop offset=\"0%\" stop-color=\"#FB923C\"/><stop offset=\"100%\" stop-color=\"#C2410C\"/></linearGradient></defs><text x=\"60\" y=\"34\" text-anchor=\"middle\" font-family=\"Arial Black, sans-serif\" font-weight=\"900\" font-size=\"16\" fill=\"url(#lg-hacksaw)\" letter-spacing=\"-0.5\">HACKSAW</text><text x=\"60\" y=\"50\" text-anchor=\"middle\" font-family=\"Arial, sans-serif\" font-weight=\"700\" font-size=\"10\" fill=\"#FED7AA\" letter-spacing=\"3\">GAMING</text></svg>"
+    "logoSvg": "<svg viewBox=\"0 0 120 60\" xmlns=\"http://www.w3.org/2000/svg\"><defs><linearGradient id=\"lg-hacksaw\" x1=\"0%\" y1=\"0%\" x2=\"100%\" y2=\"100%\"><stop offset=\"0%\" stop-color=\"#FB923C\"/><stop offset=\"100%\" stop-color=\"#C2410C\"/></linearGradient></defs><text x=\"60\" y=\"34\" text-anchor=\"middle\" font-family=\"Arial Black, sans-serif\" font-weight=\"900\" font-size=\"16\" fill=\"url(#lg-hacksaw)\" letter-spacing=\"-0.5\">HACKSAW</text><text x=\"60\" y=\"50\" text-anchor=\"middle\" font-family=\"Arial, sans-serif\" font-weight=\"700\" font-size=\"10\" fill=\"#FED7AA\" letter-spacing=\"3\">GAMING</text></svg>",
+    "enabled": true
   },
   {
     "key": "nolimit",
@@ -11622,8 +15227,8 @@
     "color": "#10B981",
     "colorAccent": "#34D399",
     "tagline": "Slots Disruptivos",
-    "enabled": true,
-    "logoSvg": "<svg viewBox=\"0 0 120 60\" xmlns=\"http://www.w3.org/2000/svg\"><defs><linearGradient id=\"lg-nolimit\" x1=\"0%\" y1=\"0%\" x2=\"100%\" y2=\"100%\"><stop offset=\"0%\" stop-color=\"#34D399\"/><stop offset=\"100%\" stop-color=\"#047857\"/></linearGradient></defs><text x=\"60\" y=\"32\" text-anchor=\"middle\" font-family=\"Arial Black, sans-serif\" font-weight=\"900\" font-size=\"13\" fill=\"url(#lg-nolimit)\" letter-spacing=\"0\">NOLIMIT</text><text x=\"60\" y=\"48\" text-anchor=\"middle\" font-family=\"Arial, sans-serif\" font-weight=\"800\" font-size=\"11\" fill=\"#A7F3D0\" letter-spacing=\"3\">CITY</text></svg>"
+    "logoSvg": "<svg viewBox=\"0 0 120 60\" xmlns=\"http://www.w3.org/2000/svg\"><defs><linearGradient id=\"lg-nolimit\" x1=\"0%\" y1=\"0%\" x2=\"100%\" y2=\"100%\"><stop offset=\"0%\" stop-color=\"#34D399\"/><stop offset=\"100%\" stop-color=\"#047857\"/></linearGradient></defs><text x=\"60\" y=\"32\" text-anchor=\"middle\" font-family=\"Arial Black, sans-serif\" font-weight=\"900\" font-size=\"13\" fill=\"url(#lg-nolimit)\" letter-spacing=\"0\">NOLIMIT</text><text x=\"60\" y=\"48\" text-anchor=\"middle\" font-family=\"Arial, sans-serif\" font-weight=\"800\" font-size=\"11\" fill=\"#A7F3D0\" letter-spacing=\"3\">CITY</text></svg>",
+    "enabled": true
   }
 ];
 
