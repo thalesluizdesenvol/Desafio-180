@@ -17,6 +17,7 @@ const STORAGE_KEYS = {
   CREDS:    'sm_admin_creds',        // mantido p/ compatibilidade
   USERS:    'sm_users_v1',            // novo: lista de perfis
   PROVIDERS:'sm_providers_v1',        // provedores parceiros (CRUD via admin)
+  PLATFORMS:'sm_platforms_v1',       // casas de aposta (Onde Jogar) — admin CRUD
   CATALOG_VERSION: 'sm_catalog_version', // versão do catalog.js que o usuário tem hoje
 };
 
@@ -299,6 +300,7 @@ function getProviders() {
       colorAccent: p.colorAccent || p.color || '#FBCFE8',
       tagline: p.tagline || '',
       logoSvg: p.logoSvg || '',
+      logoImg: p.logoImg || '',   // v3: URL/dataURL de logo real (sobrescreve logoSvg quando preenchido)
       enabled: p.enabled !== false,
     }));
   }
@@ -316,6 +318,117 @@ function restoreDefaultProviders() {
 }
 // Inicializa PROVIDER_META imediatamente (lê o storage ou cria os defaults)
 rebuildProviderMeta();
+
+/* ============================================
+   PLATFORMS — Casas de aposta (seção "Onde Jogar")
+   v3: agora vivem no storage com CRUD via admin (antes eram hardcoded no HTML).
+
+   Cada plataforma tem:
+   - key            (slug único, ex: "fanta", "tiradentes")
+   - name           (display, ex: "Fanta Bet")
+   - benefit        (texto do destaque, ex: "Bônus de boas-vindas")
+   - microcopy      (texto secundário, ex: "Pix instantâneo")
+   - logoImg        (URL/dataURL da logo real — futuro upload do admin)
+   - affiliate      (link de afiliado — também usado no round-robin dos jogos)
+   - hot            (boolean — mostra badge "🔥 Em alta")
+   - inRotation     (boolean — entra no round-robin dos cards de jogo)
+   - order          (int — ordem no grid "Onde Jogar")
+   - enabled        (boolean)
+   ============================================ */
+const DEFAULT_PLATFORMS = [
+  {
+    key: 'fanta', name: 'Fanta Bet',
+    benefit: 'Bônus de boas-vindas', microcopy: 'Pix instantâneo',
+    logoImg: '', affiliate: 'https://www.fy-fanta.com/?id=223975751',
+    hot: false, inRotation: true, order: 1, enabled: true,
+  },
+  {
+    key: 'tiradentes', name: 'Tiradentes',
+    benefit: 'Saque via Pix', microcopy: 'Liberação em minutos',
+    logoImg: '', affiliate: 'https://hms-tiradentesday.bet/?invite_code=8be79469',
+    hot: true, inRotation: true, order: 2, enabled: true,
+  },
+  {
+    key: 'coroa', name: 'Coroa Premium',
+    benefit: 'Prêmios diários', microcopy: 'Cashback em derrotas',
+    logoImg: '', affiliate: 'https://coroa-gghhpg.com/?id=405842843',
+    hot: false, inRotation: true, order: 3, enabled: true,
+  },
+  {
+    key: 'onebra', name: 'OneBra77',
+    benefit: 'Saque em 5 min', microcopy: 'Sem limite mínimo',
+    logoImg: '', affiliate: 'https://www.onebra77.com/?source_code=TWMWECDNJ2X',
+    hot: false, inRotation: true, order: 4, enabled: true,
+  },
+  {
+    key: 'antilope', name: 'Antilope BR',
+    benefit: 'Alto RTP', microcopy: 'Jogos com 97%+ de retorno',
+    logoImg: '', affiliate: 'https://br.mt-antilope.com/home?inviteCode=VEU6ZR',
+    hot: false, inRotation: true, order: 5, enabled: true,
+  },
+  {
+    key: 'judy', name: 'Judy 777',
+    benefit: 'Giros grátis', microcopy: 'No cadastro, sem depósito',
+    logoImg: '', affiliate: 'https://kk-judy777.vip/?id=649076826&currency=BRL&type=2',
+    hot: false, inRotation: false, order: 6, enabled: true, // não entra no rotação por default
+  },
+];
+
+function getPlatforms() {
+  let list = load(STORAGE_KEYS.PLATFORMS, null);
+  if (!Array.isArray(list) || !list.length) {
+    list = DEFAULT_PLATFORMS.map(p => ({ ...p }));
+    store(STORAGE_KEYS.PLATFORMS, list);
+  } else {
+    // Normaliza shape pra evitar undefineds
+    list = list.map(p => ({
+      key: p.key,
+      name: p.name || p.key,
+      benefit: p.benefit || '',
+      microcopy: p.microcopy || '',
+      logoImg: p.logoImg || '',
+      affiliate: p.affiliate || '',
+      hot: !!p.hot,
+      inRotation: p.inRotation !== false,
+      order: typeof p.order === 'number' ? p.order : 999,
+      enabled: p.enabled !== false,
+    }));
+  }
+  // Ordena
+  return list.sort((a, b) => (a.order || 999) - (b.order || 999));
+}
+
+function savePlatforms(list) {
+  store(STORAGE_KEYS.PLATFORMS, list);
+  try { window.dispatchEvent(new CustomEvent('sm:platformsUpdated')); } catch {}
+}
+
+function restoreDefaultPlatforms() {
+  const list = DEFAULT_PLATFORMS.map(p => ({ ...p }));
+  savePlatforms(list);
+  return list;
+}
+
+/* ============================================
+   ROUND-ROBIN DE AFILIADO PARA JOGOS
+   Distribui os 722 jogos entre as plataformas com inRotation=true.
+   Determinístico por game.id (mesmo jogo sempre cai na mesma casa).
+   Override manual: se game.customAffiliate estiver setado, ele vence.
+   ============================================ */
+function getAffiliateLinkForGame(game) {
+  if (!game) return '';
+  // 1) Override manual (admin pode forçar uma casa específica por jogo)
+  if (game.customAffiliate && typeof game.customAffiliate === 'string' && game.customAffiliate.trim()) {
+    return game.customAffiliate.trim();
+  }
+  // 2) Round-robin determinístico
+  const pool = getPlatforms()
+    .filter(p => p.enabled && p.inRotation && p.affiliate)
+    .map(p => p.affiliate);
+  if (!pool.length) return game.link || '';
+  const idx = Math.abs(Number(game.id) || 0) % pool.length;
+  return pool[idx];
+}
 
 /* ============================================
    SECURITY
@@ -999,8 +1112,13 @@ function renderCards(filter = 'all', search = '') {
     card.dataset.provider = g.provider;
     card.dataset.gameId = g.id;
 
-    const hasLink = g.link && g.link.trim() && g.link.trim() !== '#';
-    const href = hasLink ? g.link : '#';
+    // v3: link prioriza affiliate round-robin + override custom. Se nenhuma
+    // plataforma estiver na rotação, cai no g.link legado.
+    const affiliateUrl = getAffiliateLinkForGame(g);
+    const fallbackUrl = g.link && g.link.trim() && g.link.trim() !== '#' ? g.link.trim() : '';
+    const finalUrl = affiliateUrl || fallbackUrl;
+    const hasLink = !!finalUrl;
+    const href = hasLink ? finalUrl : '#';
     const thumb = resolveThumbnail(g);
     const prov = PROVIDER_META[g.provider] || { name: g.provider, color:'#C084FC' };
     const d = computeDynamicValues(g);
@@ -1436,6 +1554,7 @@ function initMain() {
   applySocialLinks();
   renderTicker();
   renderHeroConstellation();  // v2: constelação de providers no hero
+  renderPlatforms();          // v3: "Onde Jogar" dinâmico do storage
   renderProvidersGrid();
   assignTestLinks();      // links de placeholder para teste
   renderCards();
@@ -1461,6 +1580,15 @@ function initMain() {
     renderCards(f, q);
   });
 
+  window.addEventListener('sm:platformsUpdated', () => {
+    // Quando você edita plataformas no admin, atualiza "Onde Jogar" e
+    // re-renderiza os cards (porque o link round-robin pode ter mudado)
+    const f = document.querySelector('.tab.active')?.dataset.filter || 'all';
+    const q = document.getElementById('gameSearch')?.value.trim() || '';
+    renderPlatforms();
+    renderCards(f, q);
+  });
+
   // Counters
   const statsEl = document.querySelector('.hero-stats');
   if (statsEl) {
@@ -1476,10 +1604,7 @@ function initMain() {
 
 /* ============================================
    HERO CONSTELLATION — Provedores ao redor do core SlotMestre
-   v2: substituiu a "Os Estúdios por Trás dos Jogos" embaixo da página.
-   Renderiza 5 orbes em volta do core central, cada um com a logo do provider,
-   nome, e contagem de jogos. Clicar no orb leva direto pra seção #jogos
-   com o filtro daquele provider já aplicado.
+   v3: usa logoImg do provider quando disponível, fallback pro logoSvg.
    ============================================ */
 function renderHeroConstellation() {
   const wrap = document.getElementById('heroConstellation');
@@ -1493,7 +1618,6 @@ function renderHeroConstellation() {
   const counts = {};
   games.forEach(g => { if (g && g.provider) counts[g.provider] = (counts[g.provider] || 0) + 1; });
 
-  // Apenas providers com jogos, ordenados por quantidade
   const list = allProviders
     .filter(p => (counts[p.key] || 0) > 0)
     .sort((a, b) => (counts[b.key] || 0) - (counts[a.key] || 0))
@@ -1504,8 +1628,6 @@ function renderHeroConstellation() {
     return;
   }
 
-  // Distribui os orbes em ângulos uniformes (360 / N).
-  // Começa em -90 (topo) e gira no sentido horário.
   const N = list.length;
   const angleStep = 360 / N;
   const startAngle = -90;
@@ -1514,13 +1636,19 @@ function renderHeroConstellation() {
     const angle = startAngle + i * angleStep;
     const count = counts[p.key] || 0;
     const countLabel = count === 1 ? '1 jogo' : `${count} jogos`;
+
+    // v3: prioriza logoImg (URL/dataURL real) sobre logoSvg (tipografia placeholder)
+    const logoMarkup = p.logoImg
+      ? `<img class="hc-orb-img" src="${sanitize(p.logoImg)}" alt="${sanitize(p.name)}" loading="lazy">`
+      : (p.logoSvg || '');
+
     return `
       <button type="button" class="hc-orb"
               data-provider="${sanitize(p.key)}"
               style="--orb-angle: ${angle}deg; --orb-color: ${sanitize(p.color)}; --orb-color-2: ${sanitize(p.colorAccent || p.color)};"
               title="${sanitize(p.name)} — ${countLabel}">
         <div class="hc-orb-inner">
-          <div class="hc-orb-logo">${p.logoSvg || ''}</div>
+          <div class="hc-orb-logo">${logoMarkup}</div>
           <div class="hc-orb-count">${countLabel}</div>
         </div>
       </button>
@@ -1532,14 +1660,53 @@ function renderHeroConstellation() {
     btn.addEventListener('click', () => {
       const key = btn.dataset.provider;
       if (!key) return;
-      // Aplica filtro de provider
       const tab = document.querySelector(`.filter-row-providers .tab[data-filter="${key}"]`);
       if (tab) tab.click();
-      // Scroll suave pra seção jogos
       const sec = document.getElementById('jogos');
       if (sec) sec.scrollIntoView({ behavior: 'smooth', block: 'start' });
     });
   });
+}
+
+/* ============================================
+   RENDER PLATFORMS — "Onde Jogar" dinâmico (v3)
+   Renderiza as casas de aposta do storage sm_platforms_v1.
+   Cada plataforma vira um <a> que abre o link de afiliado em nova aba.
+   Plataformas com logoImg mostram a imagem; sem logoImg cai pro placeholder
+   tipográfico (com borda tracejada pra deixar claro que falta logo).
+   ============================================ */
+function renderPlatforms() {
+  const grid = document.getElementById('platformsGrid');
+  if (!grid) return;
+
+  const list = getPlatforms().filter(p => p.enabled);
+  if (!list.length) {
+    grid.innerHTML = `<div class="platforms-empty" style="grid-column: 1 / -1; text-align:center; padding: 40px 20px; color:#C4B5FD; opacity:0.6;">
+      Nenhuma plataforma configurada. Acesse o admin → Plataformas.
+    </div>`;
+    return;
+  }
+
+  grid.innerHTML = list.map(p => {
+    const logoMarkup = p.logoImg
+      ? `<img class="platform-logo" src="${sanitize(p.logoImg)}" alt="Logo ${sanitize(p.name)}" loading="lazy">`
+      : `<div class="platform-logo-placeholder">${sanitize(p.name)}</div>`;
+
+    const hotBadge = p.hot ? `<span class="platform-badge-hot">🔥 Em alta</span>` : '';
+    const hotClass = p.hot ? ' is-hot' : '';
+
+    return `
+      <a class="platform-card${hotClass}"
+         href="${sanitize(p.affiliate || '#')}"
+         target="_blank" rel="noopener noreferrer"
+         data-platform="${sanitize(p.key)}">
+        ${hotBadge}
+        <div class="platform-logo-wrap">${logoMarkup}</div>
+        <div class="platform-benefit">${sanitize(p.benefit || '')}</div>
+        <div class="platform-microcopy">${sanitize(p.microcopy || '')}</div>
+      </a>
+    `;
+  }).join('');
 }
 
 /* ============================================
@@ -1858,6 +2025,7 @@ function showAdminPage(page) {
     case 'insights':   renderInsightsPage(); break;
     case 'jogos':      renderCardsConfig(); break;
     case 'provedores': renderProvidersAdmin(); break;
+    case 'plataformas': renderPlatformsAdmin(); break;
     case 'social':     renderSocialConfig(); break;
     case 'settings':   renderSettingsPage(); break;
   }
@@ -2215,7 +2383,11 @@ function renderProvidersList() {
         </div>
 
         <div class="prov-row-preview" style="--prov-color:${sanitize(p.color)}; --prov-color-2:${sanitize(p.colorAccent || p.color)};">
-          <div class="prov-row-logo">${p.logoSvg || defaultProviderLogo(p)}</div>
+          <div class="prov-row-logo">${
+            p.logoImg
+              ? `<img src="${sanitize(p.logoImg)}" alt="" style="max-width:100%; max-height:60px; object-fit:contain;">`
+              : (p.logoSvg || defaultProviderLogo(p))
+          }</div>
         </div>
 
         <div class="prov-row-fields">
@@ -2246,7 +2418,19 @@ function renderProvidersList() {
             </div>
           </div>
           <div class="field-group field-svg">
-            <label>Logo SVG <span class="field-hint">(opcional — vazio = iniciais)</span></label>
+            <label>Logo (URL ou upload) <span class="field-hint">(prioridade sobre o SVG abaixo)</span></label>
+            <div class="logo-upload-row">
+              <input type="text" class="form-input f-prov-logoimg" value="${sanitize(p.logoImg || '')}" placeholder="https://... ou cole a URL da imagem">
+              <label class="btn-file-upload" title="Carregar arquivo">
+                📁 Upload
+                <input type="file" class="f-prov-logoimg-file" accept="image/*" hidden>
+              </label>
+              ${p.logoImg ? `<button type="button" class="btn-clear-logo" title="Limpar">✕</button>` : ''}
+            </div>
+            ${p.logoImg ? `<div class="logo-preview"><img src="${sanitize(p.logoImg)}" alt="" loading="lazy"></div>` : ''}
+          </div>
+          <div class="field-group field-svg">
+            <label>Logo SVG <span class="field-hint">(fallback — usado se Logo acima estiver vazio)</span></label>
             <textarea class="form-input f-prov-svg" rows="2" placeholder='<svg viewBox="0 0 120 60">...</svg>'>${sanitize(p.logoSvg || '')}</textarea>
           </div>
         </div>
@@ -2304,6 +2488,34 @@ function renderProvidersList() {
       btn.addEventListener('click', () => moveProvider(idx, btn.dataset.dir));
     });
 
+    // Upload de arquivo de logo (converte pra dataURL e salva)
+    const fileInput = row.querySelector('.f-prov-logoimg-file');
+    fileInput?.addEventListener('change', e => {
+      const file = e.target.files?.[0];
+      if (!file) return;
+      if (file.size > 500 * 1024) {
+        showToast('Arquivo muito grande. Use até 500KB.', 'error');
+        return;
+      }
+      const reader = new FileReader();
+      reader.onload = ev => {
+        const dataUrl = ev.target.result;
+        const urlInput = row.querySelector('.f-prov-logoimg');
+        if (urlInput) urlInput.value = dataUrl;
+        saveProviderRow(idx, row);
+        renderProvidersList(); // re-renderiza só pra atualizar o preview da imagem
+      };
+      reader.readAsDataURL(file);
+    });
+
+    // Limpar logoImg (volta pro logoSvg/iniciais)
+    row.querySelector('.btn-clear-logo')?.addEventListener('click', () => {
+      const urlInput = row.querySelector('.f-prov-logoimg');
+      if (urlInput) urlInput.value = '';
+      saveProviderRow(idx, row);
+      renderProvidersList();
+    });
+
     // Deletar
     row.querySelector('.btn-delete-prov')?.addEventListener('click', e => {
       const btn = e.currentTarget;
@@ -2338,6 +2550,7 @@ function saveProviderRow(idx, rowEl) {
     color: rowEl.querySelector('.f-prov-color-hex').value.trim() || '#F472B6',
     colorAccent: rowEl.querySelector('.f-prov-color2-hex').value.trim() || '#FBCFE8',
     logoSvg: rowEl.querySelector('.f-prov-svg').value.trim(),
+    logoImg: rowEl.querySelector('.f-prov-logoimg')?.value.trim() || '',
     enabled: rowEl.querySelector('.f-prov-enabled').checked,
   };
   list[idx] = updated;
@@ -2362,7 +2575,11 @@ function saveProviderRow(idx, rowEl) {
     previewEl.style.setProperty('--prov-color-2', updated.colorAccent);
   }
   if (logoEl) {
-    logoEl.innerHTML = updated.logoSvg || defaultProviderLogo(updated);
+    if (updated.logoImg) {
+      logoEl.innerHTML = `<img src="${sanitize(updated.logoImg)}" alt="" style="max-width:100%; max-height:60px; object-fit:contain;">`;
+    } else {
+      logoEl.innerHTML = updated.logoSvg || defaultProviderLogo(updated);
+    }
   }
   rowEl.classList.toggle('disabled', !updated.enabled);
   const tgLabel = rowEl.querySelector('.prov-toggle-label');
@@ -2412,6 +2629,280 @@ function addNewProvider() {
     const rows = document.querySelectorAll('.provider-row');
     const last = rows[rows.length - 1];
     last?.querySelector('.f-prov-name')?.focus();
+    last?.scrollIntoView({ behavior: 'smooth', block: 'center' });
+  }, 100);
+}
+
+/* ============================================
+   PLATFORMS ADMIN — CRUD de casas de aposta ("Onde Jogar")
+   ============================================ */
+function renderPlatformsAdmin() {
+  const el = document.getElementById('platformsAdminContent');
+  if (!el) return;
+  const list = getPlatforms();
+  const enabled = list.filter(p => p.enabled).length;
+  const inRotation = list.filter(p => p.enabled && p.inRotation && p.affiliate).length;
+
+  el.innerHTML = `
+    <div class="admin-panel">
+      <h3>🎰 Plataformas (Onde Jogar)</h3>
+      <p class="panel-desc">
+        Casas de apostas que aparecem na seção <strong>"Onde Jogar"</strong> do site.
+        Cada plataforma pode também entrar no <strong>round-robin</strong> que distribui
+        os links de afiliado pelos jogos do catálogo. Alterações salvas automaticamente.
+      </p>
+      <div class="providers-summary">
+        <div class="prov-stat"><span>Total</span><strong>${list.length}</strong></div>
+        <div class="prov-stat"><span>Visíveis</span><strong>${enabled}</strong></div>
+        <div class="prov-stat"><span>No round-robin</span><strong>${inRotation}</strong></div>
+      </div>
+
+      <div class="rotation-info">
+        <strong>💡 Como funciona o round-robin:</strong> Plataformas marcadas com
+        "<em>Entra no rodízio</em>" recebem os ${getGames().length} jogos do catálogo
+        de forma equilibrada (cada uma fica com ~${inRotation ? Math.round(getGames().length / inRotation) : 0} jogos).
+        A escolha é determinística por ID — o mesmo jogo sempre cai na mesma casa.
+      </div>
+
+      <div id="platformsList" class="providers-admin-list"></div>
+
+      <div class="panel-actions-footer">
+        <button class="btn-save" id="btnAddPlatform">➕ Adicionar Plataforma</button>
+        <button class="btn-save btn-secondary" id="btnRestorePlatforms">♻️ Restaurar Lista Padrão</button>
+      </div>
+    </div>
+  `;
+
+  renderPlatformsList();
+
+  document.getElementById('btnAddPlatform')?.addEventListener('click', addNewPlatform);
+  document.getElementById('btnRestorePlatforms')?.addEventListener('click', () => {
+    if (!confirm('Restaurar a lista padrão? Vai sobrescrever todas as suas customizações de plataformas.')) return;
+    restoreDefaultPlatforms();
+    renderPlatformsAdmin();
+    showToast('Lista de plataformas restaurada.', 'success');
+  });
+}
+
+function renderPlatformsList() {
+  const wrap = document.getElementById('platformsList');
+  if (!wrap) return;
+  const list = getPlatforms();
+
+  if (!list.length) {
+    wrap.innerHTML = `<div class="empty-state">Nenhuma plataforma cadastrada. Clique em "Adicionar Plataforma" para começar.</div>`;
+    return;
+  }
+
+  wrap.innerHTML = list.map((p, idx) => {
+    return `
+      <div class="provider-row platform-row ${p.enabled ? '' : 'disabled'}" data-idx="${idx}">
+        <div class="prov-row-handle" title="Reordenar">
+          <button class="plat-move" data-dir="up" title="Subir" ${idx === 0 ? 'disabled' : ''}>▲</button>
+          <button class="plat-move" data-dir="down" title="Descer" ${idx === list.length - 1 ? 'disabled' : ''}>▼</button>
+        </div>
+
+        <div class="prov-row-preview platform-row-preview">
+          <div class="prov-row-logo">${
+            p.logoImg
+              ? `<img src="${sanitize(p.logoImg)}" alt="" style="max-width:100%; max-height:70px; object-fit:contain;">`
+              : `<div class="platform-logo-placeholder" style="font-size:1rem; padding:8px 6px;">${sanitize(p.name)}</div>`
+          }</div>
+          ${p.hot ? `<span class="platform-badge-hot" style="position:absolute;top:6px;right:6px;font-size:0.55rem;">🔥 Em alta</span>` : ''}
+        </div>
+
+        <div class="prov-row-fields">
+          <div class="field-group">
+            <label>Nome da casa</label>
+            <input type="text" class="form-input f-plat-name" value="${sanitize(p.name)}" placeholder="Ex: Fanta Bet">
+          </div>
+          <div class="field-group">
+            <label>Chave técnica</label>
+            <input type="text" class="form-input f-plat-key" value="${sanitize(p.key)}" placeholder="ex: fanta" pattern="[a-z0-9_-]+">
+          </div>
+          <div class="field-group field-svg">
+            <label>Benefício (destaque) <span class="field-hint">— aparece em amarelo no card</span></label>
+            <input type="text" class="form-input f-plat-benefit" value="${sanitize(p.benefit || '')}" placeholder="Ex: Bônus de boas-vindas">
+          </div>
+          <div class="field-group field-svg">
+            <label>Microcopy <span class="field-hint">— linha de apoio em cinza</span></label>
+            <input type="text" class="form-input f-plat-microcopy" value="${sanitize(p.microcopy || '')}" placeholder="Ex: Pix instantâneo">
+          </div>
+          <div class="field-group field-svg">
+            <label>Link de afiliado <span class="field-hint">— usado em "Onde Jogar" e no round-robin dos jogos</span></label>
+            <input type="text" class="form-input f-plat-affiliate" value="${sanitize(p.affiliate || '')}" placeholder="https://...?id=SEU_CODIGO">
+          </div>
+          <div class="field-group field-svg">
+            <label>Logo (URL ou upload)</label>
+            <div class="logo-upload-row">
+              <input type="text" class="form-input f-plat-logoimg" value="${sanitize(p.logoImg || '')}" placeholder="https://... ou faça upload">
+              <label class="btn-file-upload" title="Carregar arquivo">
+                📁 Upload
+                <input type="file" class="f-plat-logoimg-file" accept="image/*" hidden>
+              </label>
+              ${p.logoImg ? `<button type="button" class="btn-clear-plat-logo" title="Limpar">✕</button>` : ''}
+            </div>
+            ${p.logoImg ? `<div class="logo-preview"><img src="${sanitize(p.logoImg)}" alt="" loading="lazy"></div>` : ''}
+          </div>
+        </div>
+
+        <div class="prov-row-meta">
+          <label class="prov-toggle" title="Aparece em Onde Jogar?">
+            <input type="checkbox" class="f-plat-enabled" ${p.enabled ? 'checked' : ''}>
+            <span class="prov-toggle-label">${p.enabled ? 'Visível' : 'Oculto'}</span>
+          </label>
+          <label class="prov-toggle" title="Marque pra mostrar badge 🔥 Em alta">
+            <input type="checkbox" class="f-plat-hot" ${p.hot ? 'checked' : ''}>
+            <span class="prov-toggle-label">${p.hot ? '🔥 Em alta' : 'Sem destaque'}</span>
+          </label>
+          <label class="prov-toggle" title="Entra no rodízio que distribui jogos do catálogo">
+            <input type="checkbox" class="f-plat-rotation" ${p.inRotation ? 'checked' : ''}>
+            <span class="prov-toggle-label">${p.inRotation ? 'No rodízio' : 'Fora do rodízio'}</span>
+          </label>
+          <button class="btn-delete-prov btn-delete-plat" title="Remover plataforma">🗑️</button>
+        </div>
+      </div>
+    `;
+  }).join('');
+
+  // Bindings
+  wrap.querySelectorAll('.platform-row').forEach(row => {
+    const idx = +row.dataset.idx;
+
+    // Auto-save em todos os inputs
+    row.querySelectorAll('input, textarea').forEach(input => {
+      input.addEventListener('change', () => savePlatformRow(idx, row));
+      if (input.type === 'text') {
+        let t;
+        input.addEventListener('input', () => {
+          clearTimeout(t);
+          t = setTimeout(() => savePlatformRow(idx, row), 400);
+        });
+      }
+    });
+
+    // Reordenar
+    row.querySelectorAll('.plat-move').forEach(btn => {
+      btn.addEventListener('click', () => movePlatform(idx, btn.dataset.dir));
+    });
+
+    // Upload de logo
+    const fileInput = row.querySelector('.f-plat-logoimg-file');
+    fileInput?.addEventListener('change', e => {
+      const file = e.target.files?.[0];
+      if (!file) return;
+      if (file.size > 500 * 1024) {
+        showToast('Arquivo muito grande. Use até 500KB.', 'error');
+        return;
+      }
+      const reader = new FileReader();
+      reader.onload = ev => {
+        const dataUrl = ev.target.result;
+        const urlInput = row.querySelector('.f-plat-logoimg');
+        if (urlInput) urlInput.value = dataUrl;
+        savePlatformRow(idx, row);
+        renderPlatformsList();
+      };
+      reader.readAsDataURL(file);
+    });
+
+    // Limpar logo
+    row.querySelector('.btn-clear-plat-logo')?.addEventListener('click', () => {
+      const urlInput = row.querySelector('.f-plat-logoimg');
+      if (urlInput) urlInput.value = '';
+      savePlatformRow(idx, row);
+      renderPlatformsList();
+    });
+
+    // Deletar
+    row.querySelector('.btn-delete-plat')?.addEventListener('click', () => deletePlatform(idx));
+  });
+}
+
+function savePlatformRow(idx, rowEl) {
+  const list = getPlatforms();
+  if (!list[idx]) return;
+  const oldKey = list[idx].key;
+  const newKey = rowEl.querySelector('.f-plat-key').value.trim().toLowerCase().replace(/[^a-z0-9_-]/g, '');
+  if (!newKey) {
+    showToast('A chave técnica não pode ficar vazia.', 'error');
+    return;
+  }
+  if (newKey !== oldKey && list.some((p, i) => i !== idx && p.key === newKey)) {
+    showToast(`Já existe outra plataforma com a chave "${newKey}".`, 'error');
+    rowEl.querySelector('.f-plat-key').value = oldKey;
+    return;
+  }
+  const updated = {
+    key: newKey,
+    name: rowEl.querySelector('.f-plat-name').value.trim() || newKey,
+    benefit: rowEl.querySelector('.f-plat-benefit').value.trim(),
+    microcopy: rowEl.querySelector('.f-plat-microcopy').value.trim(),
+    affiliate: rowEl.querySelector('.f-plat-affiliate').value.trim(),
+    logoImg: rowEl.querySelector('.f-plat-logoimg').value.trim(),
+    hot: rowEl.querySelector('.f-plat-hot').checked,
+    inRotation: rowEl.querySelector('.f-plat-rotation').checked,
+    enabled: rowEl.querySelector('.f-plat-enabled').checked,
+    order: list[idx].order, // mantém ordem
+  };
+  list[idx] = updated;
+  savePlatforms(list);
+
+  // Atualiza visual sem re-renderizar lista toda (preserva foco)
+  rowEl.classList.toggle('disabled', !updated.enabled);
+  const labels = rowEl.querySelectorAll('.prov-toggle-label');
+  if (labels[0]) labels[0].textContent = updated.enabled ? 'Visível' : 'Oculto';
+  if (labels[1]) labels[1].textContent = updated.hot ? '🔥 Em alta' : 'Sem destaque';
+  if (labels[2]) labels[2].textContent = updated.inRotation ? 'No rodízio' : 'Fora do rodízio';
+}
+
+function movePlatform(idx, dir) {
+  const list = getPlatforms();
+  const targetIdx = dir === 'up' ? idx - 1 : idx + 1;
+  if (targetIdx < 0 || targetIdx >= list.length) return;
+  // Troca a ordem (não a posição no array — o array já é ordenado pelo campo order)
+  const tmp = list[idx].order;
+  list[idx].order = list[targetIdx].order;
+  list[targetIdx].order = tmp;
+  savePlatforms(list);
+  renderPlatformsList();
+}
+
+function deletePlatform(idx) {
+  const list = getPlatforms();
+  if (!list[idx]) return;
+  const p = list[idx];
+  if (!confirm(`Remover a plataforma "${p.name}"? Os jogos que apontavam pra ela vão ser redistribuídos automaticamente entre as outras casas no rodízio.`)) return;
+  list.splice(idx, 1);
+  savePlatforms(list);
+  renderPlatformsAdmin();
+  showToast('Plataforma removida.', 'success');
+}
+
+function addNewPlatform() {
+  const list = getPlatforms();
+  let key = 'casa_' + (list.length + 1);
+  while (list.some(p => p.key === key)) key += '_' + Date.now().toString().slice(-3);
+  const maxOrder = Math.max(0, ...list.map(p => p.order || 0));
+  list.push({
+    key,
+    name: 'Nova Plataforma',
+    benefit: '',
+    microcopy: '',
+    affiliate: '',
+    logoImg: '',
+    hot: false,
+    inRotation: false,  // por padrão sai do rodízio (admin decide depois)
+    order: maxOrder + 1,
+    enabled: true,
+  });
+  savePlatforms(list);
+  renderPlatformsAdmin();
+  showToast('Plataforma adicionada. Edite os campos abaixo.', 'success');
+  setTimeout(() => {
+    const rows = document.querySelectorAll('.platform-row');
+    const last = rows[rows.length - 1];
+    last?.querySelector('.f-plat-name')?.focus();
     last?.scrollIntoView({ behavior: 'smooth', block: 'center' });
   }, 100);
 }
@@ -2972,6 +3463,7 @@ function renderSettingsPage() {
       exportedAt: new Date().toISOString(),
       games: getGames(),
       providers: getProviders(),
+      platforms: getPlatforms(),
       social: getSocial(),
     };
     const blob = new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' });
@@ -2979,7 +3471,7 @@ function renderSettingsPage() {
     const a = document.createElement('a');
     a.href = url; a.download = `slotmestre-backup-${Date.now()}.json`;
     a.click(); URL.revokeObjectURL(url);
-    showToast('Backup exportado (games + providers + social)!', 'success');
+    showToast('Backup exportado (games + providers + platforms + social)!', 'success');
   });
 
   document.getElementById('importFile')?.addEventListener('change', function() {
@@ -2991,6 +3483,7 @@ function renderSettingsPage() {
         const data = JSON.parse(e.target.result);
         if (data.games) saveGames(data.games);
         if (data.providers) saveProviders(data.providers);
+        if (data.platforms) savePlatforms(data.platforms);
         if (data.social) saveSocial(data.social);
         showToast('Dados importados!', 'success');
         renderDashboard();
@@ -3371,6 +3864,7 @@ function renderSettingsPage() {
       reason: 'backup-before-clear',
       games: games,
       providers: getProviders(),
+      platforms: getPlatforms(),
       social: getSocial(),
     };
     const blob = new Blob([JSON.stringify(backup, null, 2)], { type: 'application/json' });
