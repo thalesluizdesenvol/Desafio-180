@@ -3865,3 +3865,523 @@ body {
     flex-wrap: wrap;
   }
 }
+
+/* ============================================================
+   HERO CONSTELLATION — substitui "Os Estúdios por Trás dos Jogos"
+   Orbe central SlotMestre + 5 orbes orbitando com logos dos providers.
+   Cada orbe é clicável e filtra a seção #jogos pelo provider.
+   ============================================================ */
+
+/* Container da constelação dentro do hero-visual-frame.
+   Hero-visual-frame já é absolute/full size do lado direito, então só
+   posicionamos a constelação centralizada dentro dele. */
+.hero-constellation {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none; /* o frame não captura clicks, só os orbes */
+  z-index: 2;
+}
+
+.hero-constellation .hc-orbits {
+  position: relative;
+  width: min(520px, 95%);
+  height: min(520px, 95%);
+  max-width: 100%;
+  pointer-events: none;
+}
+
+/* ===== Core central (SlotMestre) ===== */
+.hc-core {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 130px;
+  height: 130px;
+  border-radius: 50%;
+  background: radial-gradient(
+    circle at 30% 30%,
+    rgba(244, 114, 182, 0.45) 0%,
+    rgba(139, 92, 246, 0.4) 50%,
+    rgba(45, 21, 82, 0.6) 100%
+  );
+  border: 2px solid rgba(244, 114, 182, 0.4);
+  box-shadow:
+    0 0 60px rgba(244, 114, 182, 0.5),
+    inset 0 2px 0 rgba(255, 255, 255, 0.15);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2px;
+  z-index: 3;
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  pointer-events: auto;
+  animation: hc-core-pulse 4s ease-in-out infinite;
+}
+
+@keyframes hc-core-pulse {
+  0%, 100% {
+    box-shadow:
+      0 0 60px rgba(244, 114, 182, 0.5),
+      inset 0 2px 0 rgba(255, 255, 255, 0.15);
+  }
+  50% {
+    box-shadow:
+      0 0 90px rgba(244, 114, 182, 0.8),
+      0 0 120px rgba(139, 92, 246, 0.4),
+      inset 0 2px 0 rgba(255, 255, 255, 0.15);
+  }
+}
+
+.hc-core-icon {
+  font-size: 2.4rem;
+  filter: drop-shadow(0 0 12px rgba(255, 255, 255, 0.4));
+  line-height: 1;
+  margin-bottom: 2px;
+}
+
+.hc-core-label {
+  font-family: 'Playfair Display', serif;
+  font-weight: 700;
+  font-size: 1.05rem;
+  color: #fff;
+  letter-spacing: -0.01em;
+  line-height: 1;
+}
+
+.hc-core-sub {
+  font-family: 'Exo 2', sans-serif;
+  font-weight: 600;
+  font-size: 0.6rem;
+  color: #FBCFE8;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  margin-top: 4px;
+}
+
+/* ===== Orbe Provider (5 orbitando o core) =====
+   Cada orb é posicionado em volta do centro usando uma rotação:
+     translate(-50%, -50%) rotate(angle) translate(orbit_radius)
+   E depois um counter-rotate dentro pra que o logo fique sempre reto. */
+.hc-orb {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 110px;
+  height: 110px;
+  margin-left: -55px;
+  margin-top: -55px;
+  border-radius: 50%;
+  border: 2px solid var(--orb-color, rgba(196, 181, 253, 0.4));
+  background: linear-gradient(135deg,
+    color-mix(in srgb, var(--orb-color, #c4b5fd) 30%, rgba(45, 21, 82, 0.85)) 0%,
+    rgba(45, 21, 82, 0.85) 100%);
+  padding: 0;
+  cursor: pointer;
+  pointer-events: auto;
+  /* Posiciona o orb na rotação angle e empurra pra fora 200px */
+  transform:
+    rotate(var(--orb-angle, 0deg))
+    translateY(-200px)
+    rotate(calc(var(--orb-angle, 0deg) * -1));
+  transition: transform 0.45s cubic-bezier(0.34, 1.56, 0.64, 1),
+              box-shadow 0.3s ease,
+              border-color 0.3s ease;
+  box-shadow:
+    0 8px 24px rgba(0, 0, 0, 0.4),
+    0 0 0 0 var(--orb-color, transparent),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  animation: hc-orb-float 6s ease-in-out infinite;
+  animation-delay: calc(var(--orb-angle, 0deg) * 0.01s);
+}
+
+@keyframes hc-orb-float {
+  0%, 100% {
+    transform:
+      rotate(var(--orb-angle, 0deg))
+      translateY(-200px)
+      rotate(calc(var(--orb-angle, 0deg) * -1))
+      translateZ(0);
+  }
+  50% {
+    transform:
+      rotate(var(--orb-angle, 0deg))
+      translateY(-210px)
+      rotate(calc(var(--orb-angle, 0deg) * -1))
+      translateZ(0);
+  }
+}
+
+.hc-orb:hover {
+  border-color: var(--orb-color-2, var(--orb-color));
+  box-shadow:
+    0 14px 32px rgba(0, 0, 0, 0.5),
+    0 0 30px var(--orb-color, rgba(244, 114, 182, 0.5)),
+    inset 0 1px 0 rgba(255, 255, 255, 0.2);
+  z-index: 4;
+}
+
+.hc-orb:hover .hc-orb-inner {
+  transform: scale(1.08);
+}
+
+.hc-orb-inner {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 12px 8px;
+  transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.hc-orb-logo {
+  width: 70px;
+  height: 38px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3));
+}
+
+.hc-orb-logo svg {
+  max-width: 100%;
+  max-height: 100%;
+}
+
+.hc-orb-count {
+  font-family: 'Rajdhani', sans-serif;
+  font-weight: 600;
+  font-size: 0.65rem;
+  color: var(--orb-color-2, #fff);
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  text-align: center;
+  line-height: 1;
+  background: rgba(0, 0, 0, 0.4);
+  padding: 3px 8px;
+  border-radius: 100px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  white-space: nowrap;
+}
+
+/* Hide do antigo emoji cluster do hero — apenas reduz e empurra pras
+   bordas para servir de decoração leve, sem competir com a constelação. */
+.hero-emoji-cluster-bg {
+  opacity: 0.35;
+  filter: blur(0.5px);
+  pointer-events: none;
+  z-index: 1;
+}
+.hero-emoji-cluster-bg .emoji-float {
+  font-size: 1.4rem !important;
+}
+
+/* ===== TABLET ===== */
+@media (max-width: 1100px) {
+  .hero-constellation .hc-orbits {
+    width: 440px;
+    height: 440px;
+  }
+  .hc-core {
+    width: 110px;
+    height: 110px;
+  }
+  .hc-core-icon { font-size: 2rem; }
+  .hc-core-label { font-size: 0.95rem; }
+  .hc-orb {
+    width: 95px;
+    height: 95px;
+    margin-left: -47.5px;
+    margin-top: -47.5px;
+    transform:
+      rotate(var(--orb-angle, 0deg))
+      translateY(-170px)
+      rotate(calc(var(--orb-angle, 0deg) * -1));
+  }
+  @keyframes hc-orb-float {
+    0%, 100% {
+      transform:
+        rotate(var(--orb-angle, 0deg))
+        translateY(-170px)
+        rotate(calc(var(--orb-angle, 0deg) * -1))
+        translateZ(0);
+    }
+    50% {
+      transform:
+        rotate(var(--orb-angle, 0deg))
+        translateY(-180px)
+        rotate(calc(var(--orb-angle, 0deg) * -1))
+        translateZ(0);
+    }
+  }
+  .hc-orb-logo { width: 60px; height: 32px; }
+}
+
+/* ===== MOBILE ===== */
+@media (max-width: 768px) {
+  .hero-constellation {
+    position: relative;
+    inset: auto;
+    margin-top: 32px;
+    padding: 20px 0;
+  }
+  .hero-constellation .hc-orbits {
+    width: 100%;
+    max-width: 380px;
+    height: 380px;
+    margin: 0 auto;
+  }
+  .hc-core {
+    width: 96px;
+    height: 96px;
+  }
+  .hc-core-icon { font-size: 1.6rem; }
+  .hc-core-label { font-size: 0.82rem; }
+  .hc-core-sub { font-size: 0.52rem; }
+  .hc-orb {
+    width: 78px;
+    height: 78px;
+    margin-left: -39px;
+    margin-top: -39px;
+    transform:
+      rotate(var(--orb-angle, 0deg))
+      translateY(-138px)
+      rotate(calc(var(--orb-angle, 0deg) * -1));
+  }
+  .hc-orb-logo { width: 50px; height: 26px; }
+  .hc-orb-count {
+    font-size: 0.55rem;
+    padding: 2px 6px;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-constellation .hc-orbits {
+    max-width: 320px;
+    height: 320px;
+  }
+  .hc-orb {
+    transform:
+      rotate(var(--orb-angle, 0deg))
+      translateY(-115px)
+      rotate(calc(var(--orb-angle, 0deg) * -1));
+  }
+}
+
+/* ============================================================
+   FILTROS EM 2 LINHAS (linha 1 providers, linha 2 quick filters)
+   ============================================================ */
+#filterTabs {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  align-items: stretch;
+}
+
+.filter-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  align-items: center;
+}
+
+.filter-row-providers {
+  /* Mantém o estilo original das tabs */
+}
+
+.filter-row-quick {
+  /* Linha 2: tonalidade ligeiramente diferente pra dar hierarquia */
+  padding-top: 6px;
+  border-top: 1px dashed rgba(196, 181, 253, 0.15);
+}
+
+/* ===== Botão de filtro rápido ===== */
+.qfilter {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 14px;
+  border-radius: 100px;
+  font-family: 'Rajdhani', sans-serif;
+  font-weight: 600;
+  font-size: 0.8rem;
+  letter-spacing: 0.04em;
+  color: #C4B5FD;
+  background: rgba(60, 28, 110, 0.45);
+  border: 1.5px solid rgba(196, 181, 253, 0.2);
+  cursor: pointer;
+  transition: all 0.25s ease;
+  white-space: nowrap;
+}
+
+.qfilter:hover {
+  color: #fff;
+  background: rgba(244, 114, 182, 0.15);
+  border-color: rgba(244, 114, 182, 0.5);
+  transform: translateY(-1px);
+}
+
+.qfilter.active {
+  color: #fff;
+  background: linear-gradient(135deg,
+    rgba(244, 114, 182, 0.4),
+    rgba(139, 92, 246, 0.35));
+  border-color: rgba(244, 114, 182, 0.7);
+  box-shadow: 0 4px 12px rgba(244, 114, 182, 0.25);
+}
+
+.qfilter-clear {
+  background: rgba(239, 68, 68, 0.12);
+  border-color: rgba(239, 68, 68, 0.3);
+  color: #FCA5A5;
+}
+.qfilter-clear:hover {
+  background: rgba(239, 68, 68, 0.2);
+  border-color: rgba(239, 68, 68, 0.5);
+}
+
+/* ===== Dropdown de tema ===== */
+.qfilter-dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.qfilter-dropdown-menu {
+  position: absolute;
+  top: calc(100% + 8px);
+  left: 0;
+  z-index: 50;
+  min-width: 180px;
+  background: linear-gradient(180deg,
+    rgba(45, 21, 82, 0.97),
+    rgba(30, 14, 60, 0.97));
+  border: 1px solid rgba(196, 181, 253, 0.25);
+  border-radius: 14px;
+  padding: 6px;
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  display: none;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.qfilter-dropdown-menu.open {
+  display: flex;
+  animation: qf-dropdown-in 0.2s ease-out;
+}
+
+@keyframes qf-dropdown-in {
+  from { opacity: 0; transform: translateY(-6px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.qfilter-dropdown-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 9px 14px;
+  background: transparent;
+  border: none;
+  border-radius: 8px;
+  color: #E5E7EB;
+  font-family: 'Exo 2', sans-serif;
+  font-size: 0.85rem;
+  font-weight: 500;
+  cursor: pointer;
+  text-align: left;
+  width: 100%;
+  transition: all 0.15s ease;
+}
+
+.qfilter-dropdown-item:hover {
+  background: rgba(244, 114, 182, 0.15);
+  color: #fff;
+}
+
+.qfilter-dropdown-item.active {
+  background: rgba(244, 114, 182, 0.25);
+  color: #fff;
+  font-weight: 700;
+}
+
+@media (max-width: 600px) {
+  .filter-row-quick {
+    gap: 6px;
+  }
+  .qfilter {
+    padding: 6px 11px;
+    font-size: 0.72rem;
+  }
+  .qfilter-dropdown-menu {
+    min-width: 160px;
+  }
+}
+
+/* ============================================================
+   BET SUGERIDA — bloco PD/MI/MX em valores R$ por jogo (catalog v2)
+   Aparece embaixo do bloco "APOSTAS SUGERIDAS" no card.
+   ============================================================ */
+.gcv2-bet-suggested {
+  margin-top: 8px;
+  padding: 10px 12px;
+  background: rgba(0, 0, 0, 0.25);
+  border: 1px solid rgba(196, 181, 253, 0.12);
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.gcv2-bet-suggested-title {
+  font-family: 'Rajdhani', sans-serif;
+  font-weight: 700;
+  font-size: 0.7rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #FBCFE8;
+  margin-bottom: 4px;
+}
+
+.gcv2-bet-suggested-row {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-family: 'Exo 2', sans-serif;
+  font-size: 0.78rem;
+  color: #E5E7EB;
+  line-height: 1.3;
+}
+
+.gcv2-bet-suggested-row span {
+  font-weight: 700;
+  color: #C4B5FD;
+  min-width: 28px;
+}
+
+.gcv2-bet-suggested-row strong {
+  font-weight: 600;
+  color: #FDE68A;
+}
+
+@media (max-width: 480px) {
+  .gcv2-bet-suggested {
+    padding: 8px 10px;
+  }
+  .gcv2-bet-suggested-row {
+    font-size: 0.72rem;
+  }
+  .gcv2-bet-suggested-title {
+    font-size: 0.62rem;
+  }
+}
