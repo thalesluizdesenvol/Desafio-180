@@ -26,7 +26,6 @@
     <nav class="nav-links" id="navLinks">
       <a href="#jogos" class="nav-link">Jogos</a>
       <a href="#plataformas" class="nav-link">Plataformas</a>
-      <a href="#provedores" class="nav-link">Provedores</a>
       <a href="#sobre" class="nav-link">Sobre</a>
     </nav>
 
@@ -97,16 +96,35 @@
     </div>
   </div>
 
-  <!-- Visual decorativo — elegante, leve, sem canvas pesado -->
+  <!-- Visual decorativo — Constelação de Provedores -->
   <div class="hero-visual">
     <div class="hero-visual-frame">
       <div class="hero-orb orb-1"></div>
       <div class="hero-orb orb-2"></div>
       <div class="hero-orb orb-3"></div>
-      <div class="hero-emoji-cluster">
+
+      <!-- ====== CONSTELAÇÃO DE PROVEDORES ======
+           Substituiu o emoji-cluster (🎰💎🍀...).
+           Cinco orbes orbitando um nó central com a marca SlotMestre.
+           Cada orbe traz o logo de um provedor real do catálogo.
+           As taglines pequenas reforçam que são parceiros de verdade,
+           não placeholder. -->
+      <div class="hero-constellation" id="heroConstellation">
+        <!-- Nó central -->
+        <div class="hc-core">
+          <div class="hc-core-icon">🎰</div>
+          <div class="hc-core-label">SlotMestre</div>
+          <div class="hc-core-sub">curadoria</div>
+        </div>
+
+        <!-- 5 orbes ao redor (renderizados via JS pra puxar dos providers reais) -->
+        <div class="hc-orbits"></div>
+      </div>
+
+      <!-- Emojis decorativos restantes — agora secundários, espalhados pelas bordas -->
+      <div class="hero-emoji-cluster hero-emoji-cluster-bg">
         <span class="emoji-float e1">🌸</span>
         <span class="emoji-float e2">✨</span>
-        <span class="emoji-float e3">🎰</span>
         <span class="emoji-float e4">💎</span>
         <span class="emoji-float e5">🍀</span>
         <span class="emoji-float e6">🦋</span>
@@ -223,31 +241,13 @@
   </div>
 </section>
 
-<!-- ============ PROVEDORES PARCEIROS ============ -->
-<!--
-  Notas de UX (refatoração):
-  - Esta seção depende de renderProvidersGrid() em app.js para popular o grid.
-  - O JS atual mostra TODOS os providers cadastrados, mesmo os sem nenhum jogo.
-    Isso é publicidade falsa: exibimos provedores que o usuário não vai encontrar
-    no catálogo. AJUSTE NECESSÁRIO EM app.js (renderProvidersGrid):
-      filter(p => p.enabled !== false && games.some(g => g.provider === p.key))
-  - Sugestão adicional: substituir os logoSvg (que hoje são apenas tipografia
-    estilizada em SVG) por arquivos SVG/PNG das logos oficiais dos provedores.
-    Hoje os "logos" não são reconhecíveis e parecem placeholder.
+<!-- ============ PROVEDORES (removido) ============
+  A seção "Os Estúdios por Trás dos Jogos" foi removida.
+  Os provedores agora são apresentados na constelação do hero, logo na
+  primeira tela — e estão acessíveis também pela linha 1 de filtros da
+  seção #jogos (Pragmatic, PG Soft, Evolution, Hacksaw, NoLimit).
+  Mantemos a renderProvidersGrid() em app.js apenas para o admin.
 -->
-<section class="section providers-section" id="provedores">
-  <div class="container">
-    <div class="section-header">
-      <div class="section-eyebrow">🏆 NOSSOS PROVEDORES</div>
-      <h2 class="section-title">Os Estúdios por Trás dos Jogos</h2>
-      <p class="section-sub">Os melhores estúdios do mundo reunidos no nosso catálogo. Toque para ver os jogos de cada um.</p>
-    </div>
-
-    <div class="providers-grid" id="providersGrid">
-      <!-- Renderizado por renderProvidersGrid() em app.js a partir do storage -->
-    </div>
-  </div>
-</section>
 
 <!-- ============ JOGOS ============ -->
 <section class="section" id="jogos">
